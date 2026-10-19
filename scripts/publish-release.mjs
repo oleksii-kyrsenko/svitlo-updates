@@ -26,7 +26,7 @@ const asset=release.assets.find(asset=>asset.name===meta.fileName);
 if(!asset||asset.state!=='uploaded'||asset.size!==meta.size||asset.digest!=='sha256:'+meta.sha256)throw new Error('Published APK failed verification');
 const current=existsSync('latest.json')?JSON.parse(readFileSync('latest.json','utf8')):null;
 if(!current||current.versionCode<=meta.versionCode){
-  writeFileSync('latest.json',JSON.stringify({schemaVersion:1,packageName:meta.packageName,version:meta.version,versionCode:meta.versionCode,apkUrl:asset.browser_download_url,size:meta.size,sha256:meta.sha256,notes:meta.notes || '',publishedAt:new Date().toISOString(),sourceCommit:meta.sourceCommit},null,2)+'\n');
+  writeFileSync('latest.json',JSON.stringify({schemaVersion:1,packageName:meta.packageName,version:meta.version,versionCode:meta.versionCode,apkUrl:asset.browser_download_url,size:meta.size,sha256:meta.sha256,notes:meta.notes || '',services:current?.services || {reverse:'https://nominatim.openstreetmap.org/reverse',nearby:'https://overpass-api.de/api/interpreter'},publishedAt:new Date().toISOString(),sourceCommit:meta.sourceCommit},null,2)+'\n');
   writeFileSync('certificate.json',JSON.stringify({sha256:certificate},null,2)+'\n');
 }
 console.log('Published verified Android update',meta.version,meta.versionCode,asset.browser_download_url);
