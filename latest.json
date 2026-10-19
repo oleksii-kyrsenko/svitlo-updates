@@ -1,12 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.2",
-  "versionCode": 7,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-7/svitlo-test-7.apk",
-  "size": 52639137,
-  "sha256": "393a9de6e680bb0f5a591544ae263bc9e572896014ec225af675b112fbe13d0c",
-  "notes": "Выбор места на карте, автоматический адрес и очередь Черкасиобленерго.",
-  "publishedAt": "2026-10-19T11:24:23.678Z",
-  "sourceCommit": "78f6c97adefef1f31c365aa3f877b787a38970b2"
+  "version": "0.1.3",
+  "versionCode": 10,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-10/svitlo-test-10.apk",
+  "size": 52668885,
+  "sha256": "933a1e6339486714ef5f74ad4f9f3eafd86fae94f47ee3be1aee94bcb0965495",
+  "notes": "Автоматический поиск ближайшего полного адреса, проверка очереди по официальным данным и обновления из приложения.",
+  "services": {
+    "reverse": "https://nominatim.openstreetmap.org/reverse",
+    "nearby": "https://overpass-api.de/api/interpreter"
+  },
+  "publishedAt": "2026-10-19T12:04:22.172Z",
+  "sourceCommit": "76483ce231599809333d52818d8ab53e7da04582"
 }
