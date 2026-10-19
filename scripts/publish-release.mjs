@@ -8,8 +8,9 @@ if(request.schemaVersion!==1||!meta||!Number.isInteger(meta.versionCode)||meta.p
 const file='artifact/'+meta.fileName,bytes=readFileSync(file);
 if(bytes.length!==meta.size||createHash('sha256').update(bytes).digest('hex')!==meta.sha256)throw new Error('APK checksum/size mismatch');
 const signature=readFileSync('artifact/signature.txt','utf8');
-const certificate=signature.match(/Signer #1 certificate SHA-256 digest:\s*([a-fA-F0-9]{64})/)?.[1].toLowerCase();
-if(!certificate)throw new Error('Missing signing certificate verification');
+const certificates=new Set([...signature.matchAll(/certificate SHA-256 digest:\s*([a-fA-F0-9]{64})/g)].map(match=>match[1].toLowerCase()));
+const certificate=certificates.size===1?[...certificates][0]:null;
+if(certificate!=='fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c')throw new Error('Missing signing certificate verification');
 if(existsSync('certificate.json')&&JSON.parse(readFileSync('certificate.json')).sha256!==certificate)throw new Error('Signing identity changed');
 const tag='android-test-'+meta.versionCode,repository=process.env.GH_REPO;
 let present;
