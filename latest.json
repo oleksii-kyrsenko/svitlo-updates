@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.4",
-  "versionCode": 11,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-11/svitlo-test-11.apk",
-  "size": 52675109,
-  "sha256": "d43ec6df6116610776c70de47ed952c1f4db355a8e2d1f7f843a6d826dfa0a2e",
-  "notes": "Исправлен поиск очереди для одинаковых адресов в разных сёлах. Учитываем населённый пункт по геолокации; при необходимости предлагаем выбрать филиал.",
+  "version": "0.1.5",
+  "versionCode": 13,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-13/svitlo-test-13.apk",
+  "size": 52684053,
+  "sha256": "bbf084f24100de9ade1bb87247543326f881af8c5a4a9614922b4bdafea2b2e1",
+  "notes": "Исправлен повторный поиск очереди, добавлены кнопки восстановления после ошибки и подсказка ближайшего GPS-адреса. Учтены Романенка / Романенко и буквенные номера домов. Пустой ответ оператора не означает подтверждённую очередь.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-19T13:16:58.128Z",
-  "sourceCommit": "4933a3d8e724177763b9d5f2496ffdd1ff176de9"
+  "publishedAt": "2026-10-19T14:00:48.100Z",
+  "sourceCommit": "60469ad2cdb868a5af1cdea0442c34b40e756ef6"
 }
