@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.7",
-  "versionCode": 21,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-21/svitlo-test-21.apk",
-  "size": 72731669,
-  "sha256": "d85af6982fe299b2f8442580d387e5c245b760fe87314c69487dc7127751709c",
-  "notes": "Официальный график Черкасиобленерго загружается автоматически без настройки сервера. Учтена очередь населения Попівки по официальному перечню. Изменение адреса обновляет очередь; ручную очередь можно менять отдельно. Добавлены напоминания при закрытом приложении и фоновое обновление Android.",
+  "version": "0.1.8",
+  "versionCode": 22,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-22/svitlo-test-22.apk",
+  "size": 72757413,
+  "sha256": "46b5ec26915aea80ee4331d94c38035d948f2dc6489e6aa1a607c9437f3a3598",
+  "notes": "Исправлен поиск улиц с переставленными именем и фамилией, включая Анни Ахматової, 48. Добавлены графики YASNO для Киева, ДТЕК Днепр и ЦЭК. Исправлена отмена ожидающего предупреждения перед восстановлением. Добавлены точное время Android, список ожидающих уведомлений и проверка доставки через 10 секунд.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-20T11:43:35.438Z",
-  "sourceCommit": "b5370a28cef5b2e69afa02fdf3c4e3a8d1773e28"
+  "publishedAt": "2026-10-20T18:23:36.320Z",
+  "sourceCommit": "40d55ff8118cf4ea16885c8a61fdf18b6c85e6d6"
 }
