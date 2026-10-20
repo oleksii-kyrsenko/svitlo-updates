@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.5",
-  "versionCode": 13,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-13/svitlo-test-13.apk",
-  "size": 52684053,
-  "sha256": "bbf084f24100de9ade1bb87247543326f881af8c5a4a9614922b4bdafea2b2e1",
-  "notes": "Исправлен повторный поиск очереди, добавлены кнопки восстановления после ошибки и подсказка ближайшего GPS-адреса. Учтены Романенка / Романенко и буквенные номера домов. Пустой ответ оператора не означает подтверждённую очередь.",
+  "version": "0.1.6",
+  "versionCode": 18,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-18/svitlo-test-18.apk",
+  "size": 72485215,
+  "sha256": "2353c93d7298987e6b610f737faa826ec0a0a3dd0e8e9e3813d5f37aaf35985a",
+  "notes": "Исправлен пустой экран: единый React и совместимый часовой пояс. В Android проверены запуск, чтение сохранённого адреса и повторная установка с сохранением данных. Скачайте APK и установите поверх старой версии.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-19T14:00:48.100Z",
-  "sourceCommit": "60469ad2cdb868a5af1cdea0442c34b40e756ef6"
+  "publishedAt": "2026-10-20T10:19:06.107Z",
+  "sourceCommit": "e8f9e93090c411678e38f56de72d471d94c9b7d4"
 }
