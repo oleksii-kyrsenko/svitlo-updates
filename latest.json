@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.6",
-  "versionCode": 18,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-18/svitlo-test-18.apk",
-  "size": 72485215,
-  "sha256": "2353c93d7298987e6b610f737faa826ec0a0a3dd0e8e9e3813d5f37aaf35985a",
-  "notes": "Исправлен пустой экран: единый React и совместимый часовой пояс. В Android проверены запуск, чтение сохранённого адреса и повторная установка с сохранением данных. Скачайте APK и установите поверх старой версии.",
+  "version": "0.1.7",
+  "versionCode": 21,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-21/svitlo-test-21.apk",
+  "size": 72731669,
+  "sha256": "d85af6982fe299b2f8442580d387e5c245b760fe87314c69487dc7127751709c",
+  "notes": "Официальный график Черкасиобленерго загружается автоматически без настройки сервера. Учтена очередь населения Попівки по официальному перечню. Изменение адреса обновляет очередь; ручную очередь можно менять отдельно. Добавлены напоминания при закрытом приложении и фоновое обновление Android.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-20T10:19:06.107Z",
-  "sourceCommit": "e8f9e93090c411678e38f56de72d471d94c9b7d4"
+  "publishedAt": "2026-10-20T11:43:35.438Z",
+  "sourceCommit": "b5370a28cef5b2e69afa02fdf3c4e3a8d1773e28"
 }
