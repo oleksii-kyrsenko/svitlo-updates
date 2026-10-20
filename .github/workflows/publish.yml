@@ -21,6 +21,8 @@ jobs:
           node-version: '24'
       - name: Fetch the short-lived APK artifact
         run: python3 scripts/fetch-artifact.py
+      - name: Include notices for bundled Android components
+        run: cp THIRD_PARTY_NOTICES.txt artifact/THIRD_PARTY_NOTICES.txt
       - name: Verify and publish the signed APK
         env:
           GH_TOKEN: ${{ github.token }}
