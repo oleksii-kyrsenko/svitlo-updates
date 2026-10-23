@@ -1,15 +1,1 @@
-{
-  "schemaVersion": 1,
-  "createdAt": "2026-10-23T11:50:08.031Z",
-  "artifactUrl": "https://productionresultssa11.blob.core.windows.net/actions-results/923d418c-a30f-8f58-bc77-c78f71cdc126/workflow-job-run-aaebc497-7ba6-5e2c-b464-005b9de20978/artifacts/63f78d3b4cb2141a6a12906abb6af2f45c8c6d6b15926e7c9e44786f3493920b.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-29.zip%22&rsct=application%2Fzip&se=2026-10-23T12%3A00%3A08Z&sig=1Ii6WU%2BANktXqwnivmYKhqUeJdarspS1jCwE6kuOcFI%3D&ske=2026-10-23T14%3A22%3A07Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T10%3A22%3A07Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T11%3A50%3A03Z&sv=2025-11-05",
-  "meta": {
-    "packageName": "ua.svitlo.app.testing",
-    "version": "0.1.13",
-    "versionCode": 29,
-    "fileName": "svitlo-test-29.apk",
-    "size": 72832741,
-    "sha256": "8b73ebcc3bed84ff9d7f28e6f284c6971d818d86c3226b3881a2ce869c08fa82",
-    "sourceCommit": "03ac9b44cb160a0d9d5e41796ebd891cda817245",
-    "notes": "Кнопки GPS/карты и адресные поля видны постоянно. GPS и карта автоматически заполняют поля; ручной выбор уточняет индекс, очередь и пин именно выбранного дома. Длительности и обратный отсчёт показываются в часах и минутах."
-  }
-}
+{"schemaVersion":1,"createdAt":"2026-10-23T12:28:09.697Z","artifactUrl":"https://productionresultssa4.blob.core.windows.net/actions-results/c3dadff8-b3ba-8f1e-8339-4bd02eaaaa31/workflow-job-run-82c2ecca-aa78-5799-9e45-32df72dac944/artifacts/31cc0472152759eb8cb67553eb4ea70e6086617e0b2fef32d1297da65358cc80.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-31.zip%22&rsct=application%2Fzip&se=2026-10-23T12%3A38%3A09Z&sig=oAH%2BLcCRAqYsuyR1jM8jO0rTq05ws%2B8aEDf3Ku8PlUw%3D&ske=2026-10-23T14%3A12%3A24Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T10%3A12%3A24Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T12%3A28%3A04Z&sv=2025-11-05","meta":{"packageName":"ua.svitlo.app.testing","version":"0.1.14","versionCode":31,"fileName":"svitlo-test-31.apk","size":72834569,"sha256":"5233ed702330c4adbe7065a3b2ee9ec4c8c923cd5a1e122760534291b0366476","sourceCommit":"8a5003d9d9be002b4270fd1bd0a8af6c92e88ed9","notes":"Для областных центров скрыт район, в поле города убраны технические коды. Номер дома можно менять даже при неполном совпадении со справочником. Исправлено сопоставление шоссе независимо от порядка слов: GPS-адрес, почтовый справочник и очередь YASNO находят одну улицу."}}
