@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.10",
-  "versionCode": 24,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-24/svitlo-test-24.apk",
-  "size": 72807613,
-  "sha256": "1c4fad0bd7bf3e2c651061cc1c248992cc5f0892fbc724395de5196d35ba8088",
-  "notes": "Добавлены общие адаптеры ДТЕК, Миколаївобленерго, Прикарпаттяобленерго, Чернівціобленерго и адресные сервисы Львова и Тернополя. Доступ к некоторым источникам ограничен защитой сайта; не все операторы поддерживают автопоиск и график. Статус подключения виден в настройках.",
+  "version": "0.1.11",
+  "versionCode": 27,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-27/svitlo-test-27.apk",
+  "size": 72824537,
+  "sha256": "5afec2dee767e41e1012834485240fc50e1f10a6c8c517c02cbd2f475a543248",
+  "notes": "Добавлен выбор адреса из справочника Укрпошты: область, район, населённый пункт с громадой, улица и дом. Почтовый индекс определяется по выбранному дому. Квартира указывается отдельно при необходимости. Смена адреса сбрасывает прежнюю очередь и запускает новый поиск. Экстренные отключения YASNO отображаются отдельно; напоминания отменённого графика снимаются.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-20T20:29:43.584Z",
-  "sourceCommit": "173f739f87f87ea2b3934b7335b759262a2b9bd2"
+  "publishedAt": "2026-10-23T09:57:43.554Z",
+  "sourceCommit": "1b0cd5794c12d8f1d720024753f288bac5c1f56e"
 }
