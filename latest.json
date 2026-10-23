@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.15",
-  "versionCode": 33,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-33/svitlo-test-33.apk",
-  "size": 72851753,
-  "sha256": "8214b0232eeb20574965a1fb95396acd3b845e5beaa65f6abe831913f7073fc7",
-  "notes": "Общий поиск улиц по словам, сокращениям и формам названий без списка имён и отдельных адресных исключений. Название после сопоставления берётся из Укрпошты. Для Киева в поле области — Київська область, городская сеть определяется отдельно. Город можно выбрать сразу после области.",
+  "version": "0.1.16",
+  "versionCode": 34,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-34/svitlo-test-34.apk",
+  "size": 72862929,
+  "sha256": "a1f64012925aab76e44661b3d80f8ae03d44f60edcf1889c93e9b5f50f74c313",
+  "notes": "Единое написание Харківське шосе во всех адресах; номер дома без индекса. Два отдельных таймпикера напоминаний с начальным значением 10 минут. Прошедшие интервалы сохраняются до конца дня. При экстренных отключениях отображается ориентировочный график YASNO, включая возможные отключения.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-23T14:32:48.978Z",
-  "sourceCommit": "d8f816259d917545b891c2943f1ba7dce233e73e"
+  "publishedAt": "2026-10-23T16:49:02.064Z",
+  "sourceCommit": "142f002b5aff9e2b093ca18fc4e0b80edece0369"
 }
