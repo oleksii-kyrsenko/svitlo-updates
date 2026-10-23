@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-10-23T10:34:10.889Z",
-  "artifactUrl": "https://productionresultssa5.blob.core.windows.net/actions-results/beb73f60-0c10-848d-9c88-9e3e61de44d6/workflow-job-run-2be3c83d-d240-5559-8743-5b75ceb0054e/artifacts/26f78b6efbbdc936ab3edf97595fc9e4d26df9c1e01aac2d7b171b32f4b40ded.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-28.zip%22&rsct=application%2Fzip&se=2026-10-23T10%3A44%3A10Z&sig=Rk%2BzCbAHOE3fKdnKOIJUsMoP7tEeoACIoCEDwj3pZxk%3D&ske=2026-10-23T14%3A23%3A22Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T10%3A23%3A22Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T10%3A34%3A05Z&sv=2025-11-05",
+  "createdAt": "2026-10-23T11:50:08.031Z",
+  "artifactUrl": "https://productionresultssa11.blob.core.windows.net/actions-results/923d418c-a30f-8f58-bc77-c78f71cdc126/workflow-job-run-aaebc497-7ba6-5e2c-b464-005b9de20978/artifacts/63f78d3b4cb2141a6a12906abb6af2f45c8c6d6b15926e7c9e44786f3493920b.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-29.zip%22&rsct=application%2Fzip&se=2026-10-23T12%3A00%3A08Z&sig=1Ii6WU%2BANktXqwnivmYKhqUeJdarspS1jCwE6kuOcFI%3D&ske=2026-10-23T14%3A22%3A07Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T10%3A22%3A07Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T11%3A50%3A03Z&sv=2025-11-05",
   "meta": {
     "packageName": "ua.svitlo.app.testing",
-    "version": "0.1.12",
-    "versionCode": 28,
-    "fileName": "svitlo-test-28.apk",
-    "size": 72822985,
-    "sha256": "f4a0b4efd91fbdd9f050ab7fc95247f26999a71ab24a87f5556b1c8e1c317fb3",
-    "sourceCommit": "f46c4c6954e782f05b5abe6ddba2b666d2c2f23d",
-    "notes": "Убраны номер квартиры и тип жилья: достаточно номера дома. «Добавить место» открывает пустую форму без предыдущего адреса и автоматического запуска GPS. Геопозиция и карта доступны отдельными кнопками."
+    "version": "0.1.13",
+    "versionCode": 29,
+    "fileName": "svitlo-test-29.apk",
+    "size": 72832741,
+    "sha256": "8b73ebcc3bed84ff9d7f28e6f284c6971d818d86c3226b3881a2ce869c08fa82",
+    "sourceCommit": "03ac9b44cb160a0d9d5e41796ebd891cda817245",
+    "notes": "Кнопки GPS/карты и адресные поля видны постоянно. GPS и карта автоматически заполняют поля; ручной выбор уточняет индекс, очередь и пин именно выбранного дома. Длительности и обратный отсчёт показываются в часах и минутах."
   }
 }
