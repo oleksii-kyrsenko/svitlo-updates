@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.13",
-  "versionCode": 29,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-29/svitlo-test-29.apk",
-  "size": 72832741,
-  "sha256": "8b73ebcc3bed84ff9d7f28e6f284c6971d818d86c3226b3881a2ce869c08fa82",
-  "notes": "Кнопки GPS/карты и адресные поля видны постоянно. GPS и карта автоматически заполняют поля; ручной выбор уточняет индекс, очередь и пин именно выбранного дома. Длительности и обратный отсчёт показываются в часах и минутах.",
+  "version": "0.1.14",
+  "versionCode": 31,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-31/svitlo-test-31.apk",
+  "size": 72834569,
+  "sha256": "5233ed702330c4adbe7065a3b2ee9ec4c8c923cd5a1e122760534291b0366476",
+  "notes": "Для областных центров скрыт район, в поле города убраны технические коды. Номер дома можно менять даже при неполном совпадении со справочником. Исправлено сопоставление шоссе независимо от порядка слов: GPS-адрес, почтовый справочник и очередь YASNO находят одну улицу.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-23T11:50:50.312Z",
-  "sourceCommit": "03ac9b44cb160a0d9d5e41796ebd891cda817245"
+  "publishedAt": "2026-10-23T12:28:47.010Z",
+  "sourceCommit": "8a5003d9d9be002b4270fd1bd0a8af6c92e88ed9"
 }
