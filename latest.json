@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.14",
-  "versionCode": 31,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-31/svitlo-test-31.apk",
-  "size": 72834569,
-  "sha256": "5233ed702330c4adbe7065a3b2ee9ec4c8c923cd5a1e122760534291b0366476",
-  "notes": "Для областных центров скрыт район, в поле города убраны технические коды. Номер дома можно менять даже при неполном совпадении со справочником. Исправлено сопоставление шоссе независимо от порядка слов: GPS-адрес, почтовый справочник и очередь YASNO находят одну улицу.",
+  "version": "0.1.15",
+  "versionCode": 33,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-33/svitlo-test-33.apk",
+  "size": 72851753,
+  "sha256": "8214b0232eeb20574965a1fb95396acd3b845e5beaa65f6abe831913f7073fc7",
+  "notes": "Общий поиск улиц по словам, сокращениям и формам названий без списка имён и отдельных адресных исключений. Название после сопоставления берётся из Укрпошты. Для Киева в поле области — Київська область, городская сеть определяется отдельно. Город можно выбрать сразу после области.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-23T12:28:47.010Z",
-  "sourceCommit": "8a5003d9d9be002b4270fd1bd0a8af6c92e88ed9"
+  "publishedAt": "2026-10-23T14:32:48.978Z",
+  "sourceCommit": "d8f816259d917545b891c2943f1ba7dce233e73e"
 }
