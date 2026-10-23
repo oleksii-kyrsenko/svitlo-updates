@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-10-23T09:56:17.180Z",
-  "artifactUrl": "https://productionresultssa1.blob.core.windows.net/actions-results/279cf3ce-ba73-891c-aa36-1a1edb21a0e6/workflow-job-run-98a277d5-bd5d-599b-a2e9-74ef7557d923/artifacts/27033f6c0051c4d6d0cee9c89aef5779a820fba193715f3086776787aeb12b79.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-27.zip%22&rsct=application%2Fzip&se=2026-10-23T10%3A06%3A17Z&sig=ZTkg%2Bqv4wYlwU8OYXY2AWuSpkaoZ%2FY6e6gMx1LOfRQw%3D&ske=2026-10-23T11%3A23%3A00Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T07%3A23%3A00Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T09%3A56%3A12Z&sv=2025-11-05",
+  "createdAt": "2026-10-23T10:34:10.889Z",
+  "artifactUrl": "https://productionresultssa5.blob.core.windows.net/actions-results/beb73f60-0c10-848d-9c88-9e3e61de44d6/workflow-job-run-2be3c83d-d240-5559-8743-5b75ceb0054e/artifacts/26f78b6efbbdc936ab3edf97595fc9e4d26df9c1e01aac2d7b171b32f4b40ded.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-28.zip%22&rsct=application%2Fzip&se=2026-10-23T10%3A44%3A10Z&sig=Rk%2BzCbAHOE3fKdnKOIJUsMoP7tEeoACIoCEDwj3pZxk%3D&ske=2026-10-23T14%3A23%3A22Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T10%3A23%3A22Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T10%3A34%3A05Z&sv=2025-11-05",
   "meta": {
     "packageName": "ua.svitlo.app.testing",
-    "version": "0.1.11",
-    "versionCode": 27,
-    "fileName": "svitlo-test-27.apk",
-    "size": 72824537,
-    "sha256": "5afec2dee767e41e1012834485240fc50e1f10a6c8c517c02cbd2f475a543248",
-    "sourceCommit": "1b0cd5794c12d8f1d720024753f288bac5c1f56e",
-    "notes": "Добавлен выбор адреса из справочника Укрпошты: область, район, населённый пункт с громадой, улица и дом. Почтовый индекс определяется по выбранному дому. Квартира указывается отдельно при необходимости. Смена адреса сбрасывает прежнюю очередь и запускает новый поиск. Экстренные отключения YASNO отображаются отдельно; напоминания отменённого графика снимаются."
+    "version": "0.1.12",
+    "versionCode": 28,
+    "fileName": "svitlo-test-28.apk",
+    "size": 72822985,
+    "sha256": "f4a0b4efd91fbdd9f050ab7fc95247f26999a71ab24a87f5556b1c8e1c317fb3",
+    "sourceCommit": "f46c4c6954e782f05b5abe6ddba2b666d2c2f23d",
+    "notes": "Убраны номер квартиры и тип жилья: достаточно номера дома. «Добавить место» открывает пустую форму без предыдущего адреса и автоматического запуска GPS. Геопозиция и карта доступны отдельными кнопками."
   }
 }
