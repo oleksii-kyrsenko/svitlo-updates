@@ -1,1 +1,15 @@
-{"schemaVersion":1,"createdAt":"2026-10-20T20:29:11.696Z","artifactUrl":"https://productionresultssa13.blob.core.windows.net/actions-results/b3b0a32d-7ec2-8a9a-a6e5-4faa8fccfb93/workflow-job-run-530f072c-535c-54a4-8c02-94ee8d8bbd2a/artifacts/df7be1ab3aba7871fefc36603924d4be86224d788ab77a3ee706a79cc54f4a24.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-24.zip%22&rsct=application%2Fzip&se=2026-10-20T20%3A39%3A11Z&sig=VtHXqtIHUACGrrHU6bWjkJXbfy5Sa9jCfl8D5oyx5uY%3D&ske=2026-10-21T00%3A01%3A48Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-20T20%3A01%3A48Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-20T20%3A29%3A06Z&sv=2025-11-05","meta":{"packageName":"ua.svitlo.app.testing","version":"0.1.10","versionCode":24,"fileName":"svitlo-test-24.apk","size":72807613,"sha256":"1c4fad0bd7bf3e2c651061cc1c248992cc5f0892fbc724395de5196d35ba8088","sourceCommit":"173f739f87f87ea2b3934b7335b759262a2b9bd2","notes":"Добавлены общие адаптеры ДТЕК, Миколаївобленерго, Прикарпаттяобленерго, Чернівціобленерго и адресные сервисы Львова и Тернополя. Доступ к некоторым источникам ограничен защитой сайта; не все операторы поддерживают автопоиск и график. Статус подключения виден в настройках."}}
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-23T09:56:17.180Z",
+  "artifactUrl": "https://productionresultssa1.blob.core.windows.net/actions-results/279cf3ce-ba73-891c-aa36-1a1edb21a0e6/workflow-job-run-98a277d5-bd5d-599b-a2e9-74ef7557d923/artifacts/27033f6c0051c4d6d0cee9c89aef5779a820fba193715f3086776787aeb12b79.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-27.zip%22&rsct=application%2Fzip&se=2026-10-23T10%3A06%3A17Z&sig=ZTkg%2Bqv4wYlwU8OYXY2AWuSpkaoZ%2FY6e6gMx1LOfRQw%3D&ske=2026-10-23T11%3A23%3A00Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-23T07%3A23%3A00Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-23T09%3A56%3A12Z&sv=2025-11-05",
+  "meta": {
+    "packageName": "ua.svitlo.app.testing",
+    "version": "0.1.11",
+    "versionCode": 27,
+    "fileName": "svitlo-test-27.apk",
+    "size": 72824537,
+    "sha256": "5afec2dee767e41e1012834485240fc50e1f10a6c8c517c02cbd2f475a543248",
+    "sourceCommit": "1b0cd5794c12d8f1d720024753f288bac5c1f56e",
+    "notes": "Добавлен выбор адреса из справочника Укрпошты: область, район, населённый пункт с громадой, улица и дом. Почтовый индекс определяется по выбранному дому. Квартира указывается отдельно при необходимости. Смена адреса сбрасывает прежнюю очередь и запускает новый поиск. Экстренные отключения YASNO отображаются отдельно; напоминания отменённого графика снимаются."
+  }
+}
