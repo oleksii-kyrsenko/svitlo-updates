@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.16",
-  "versionCode": 34,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-34/svitlo-test-34.apk",
-  "size": 72862929,
-  "sha256": "a1f64012925aab76e44661b3d80f8ae03d44f60edcf1889c93e9b5f50f74c313",
-  "notes": "Единое написание Харківське шосе во всех адресах; номер дома без индекса. Два отдельных таймпикера напоминаний с начальным значением 10 минут. Прошедшие интервалы сохраняются до конца дня. При экстренных отключениях отображается ориентировочный график YASNO, включая возможные отключения.",
+  "version": "0.1.17",
+  "versionCode": 35,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-35/svitlo-test-35.apk",
+  "size": 72864905,
+  "sha256": "c30975a97184b3bce4fd6fcd7043607d299b74875133bfcabd44f55d6ca209b7",
+  "notes": "Полоса сохранённых мест заменена выпадающим списком. Новое место сразу становится активным; последнее выбранное место восстанавливается после закрытия приложения. Пункт добавления находится в списке; без мест поле остаётся пустым.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-23T16:49:02.064Z",
-  "sourceCommit": "142f002b5aff9e2b093ca18fc4e0b80edece0369"
+  "publishedAt": "2026-10-24T08:05:05.052Z",
+  "sourceCommit": "2c21d19cb0a8a50d2d1adb1e75645a27ff29ff67"
 }
