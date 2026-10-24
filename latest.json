@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.18",
-  "versionCode": 37,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-37/svitlo-test-37.apk",
-  "size": 72870013,
-  "sha256": "ca45ee426ba3f9d924bd2753bee9e0c43585dc5348031cef2c4c30b97e0891ff",
-  "notes": "Новий графік картками інтервалів в одному рядку: зі світлом, вимкнення та сіра зона. Поточний інтервал виділено; довгу стрічку можна гортати. Інтерфейс, пошук адрес, повідомлення про помилки, оновлення та сповіщення перекладено українською. Збережені місця й налаштування залишаються.",
+  "version": "0.1.19",
+  "versionCode": 38,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-38/svitlo-test-38.apk",
+  "size": 72872173,
+  "sha256": "1b55f5be8eefa16e4da51a1077a4e1faa91a71e9ae7a0499ddae4f329f647972",
+  "notes": "Вертикальний графік із картками інтервалів. Поточна картка розгорнута: час до наступної зміни та перебіг інтервалу. Інші картки відкриваються натисканням. Минулі періоди, сіра зона й орієнтовний графік під час екстрених вимкнень збережені. Місця й налаштування залишаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-24T10:04:28.610Z",
-  "sourceCommit": "b16b160f755344ffcdc9ba89a6613939939f5a5d"
+  "publishedAt": "2026-10-24T10:52:18.244Z",
+  "sourceCommit": "4654d50048baf172e8344b4cb99c714a3454d6a9"
 }
