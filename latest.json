@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.17",
-  "versionCode": 35,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-35/svitlo-test-35.apk",
-  "size": 72864905,
-  "sha256": "c30975a97184b3bce4fd6fcd7043607d299b74875133bfcabd44f55d6ca209b7",
-  "notes": "Полоса сохранённых мест заменена выпадающим списком. Новое место сразу становится активным; последнее выбранное место восстанавливается после закрытия приложения. Пункт добавления находится в списке; без мест поле остаётся пустым.",
+  "version": "0.1.18",
+  "versionCode": 37,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-37/svitlo-test-37.apk",
+  "size": 72870013,
+  "sha256": "ca45ee426ba3f9d924bd2753bee9e0c43585dc5348031cef2c4c30b97e0891ff",
+  "notes": "Новий графік картками інтервалів в одному рядку: зі світлом, вимкнення та сіра зона. Поточний інтервал виділено; довгу стрічку можна гортати. Інтерфейс, пошук адрес, повідомлення про помилки, оновлення та сповіщення перекладено українською. Збережені місця й налаштування залишаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-24T08:05:05.052Z",
-  "sourceCommit": "2c21d19cb0a8a50d2d1adb1e75645a27ff29ff67"
+  "publishedAt": "2026-10-24T10:04:28.610Z",
+  "sourceCommit": "b16b160f755344ffcdc9ba89a6613939939f5a5d"
 }
