@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.24",
-  "versionCode": 49,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-49/svitlo-test-49.apk",
-  "size": 72883729,
-  "sha256": "8d5b47f2ba959c23503562eac4adf3c09801d7da00d0322037bad71c340f26d1",
-  "notes": "Сповіщення з головного екрана відкриваються у вікні з тими самими налаштуваннями. У графіку одразу видно всі інтервали дня, без «Раніше сьогодні». Завантаження, дозвіл Android і встановлення оновлення перенесено в попап; після завантаження — кнопка «Оновити додаток».",
+  "version": "0.1.25",
+  "versionCode": 51,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-51/svitlo-test-51.apk",
+  "size": 72897713,
+  "sha256": "6260d534dc9dd188086fe3d18b81fcd2b021112493efb1d5249cdc887ca81f51",
+  "notes": "Динамічний пошук черги за адресою: живі довідники операторів, браузерний резерв ДТЕК, попередні назви вулиць і повторна перевірка збережених результатів. Вбудовану прив’язку села до черги прибрано.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-25T13:41:28.556Z",
-  "sourceCommit": "8e1a50290601dfaae5fe25d35cff02c87c6d5da3"
+  "publishedAt": "2026-10-25T15:15:36.424Z",
+  "sourceCommit": "fb33c72ad7b59b24330fb0c954fd5b6005906f0f"
 }
