@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.20",
-  "versionCode": 44,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-44/svitlo-test-44.apk",
-  "size": 72880537,
-  "sha256": "762803e241a25ead25bb161d9a3ca986a2f8a7c502e36bd83f664def516eb455",
-  "notes": "Простіший перший запуск: введення адреси без дозволів, підтвердження будинку з GPS і збереження без очікування мапи. Компактний головний екран із найближчою зміною та окремим станом сірої зони. Зрозумілий статус і ввімкнення нагадувань. Захист незбережених змін; місця й налаштування залишаються.",
+  "version": "0.1.21",
+  "versionCode": 46,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-46/svitlo-test-46.apk",
+  "size": 72879593,
+  "sha256": "1703e37e736d3ca945b0dbdf784f61a6ee90857e0963aba7c943d54f5818f501",
+  "notes": "Оновлено лише екран графіка: черга під адресою, повна дата, без окремого блока планового стану. Під час екстрених відключень збережений графік залишається під затемненням «Графіки не діють». Джерело з чергою, часом оновлення й двома кнопками завжди відкрите; нагадування перенесено вниз.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-24T15:23:21.227Z",
-  "sourceCommit": "5d4bd7fd572f3b1fa6dad87d7e2b08a37f0ce9d4"
+  "publishedAt": "2026-10-25T10:32:50.793Z",
+  "sourceCommit": "4af26d9294c54b18109726ac0fa75f3b5a5ab7f5"
 }
