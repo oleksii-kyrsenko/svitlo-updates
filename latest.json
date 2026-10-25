@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.21",
-  "versionCode": 46,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-46/svitlo-test-46.apk",
-  "size": 72879593,
-  "sha256": "1703e37e736d3ca945b0dbdf784f61a6ee90857e0963aba7c943d54f5818f501",
-  "notes": "Оновлено лише екран графіка: черга під адресою, повна дата, без окремого блока планового стану. Під час екстрених відключень збережений графік залишається під затемненням «Графіки не діють». Джерело з чергою, часом оновлення й двома кнопками завжди відкрите; нагадування перенесено вниз.",
+  "version": "0.1.22",
+  "versionCode": 47,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-47/svitlo-test-47.apk",
+  "size": 72880785,
+  "sha256": "7a53a869d7e5e9f272511332a446021499df5555f520aed76380eb56c80e76fb",
+  "notes": "Повернуто автоматичне вікно з новою версією та кнопкою «Оновити». Вікно можна закрити й оновити застосунок пізніше в налаштуваннях. Після закриття та сама версія не пропонується повторно в поточному сеансі.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-25T10:32:50.793Z",
-  "sourceCommit": "4af26d9294c54b18109726ac0fa75f3b5a5ab7f5"
+  "publishedAt": "2026-10-25T11:24:46.595Z",
+  "sourceCommit": "f06c3eeca6e7aafdcf41872ac979cc43626b6c6f"
 }
