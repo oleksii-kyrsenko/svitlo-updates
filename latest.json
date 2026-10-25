@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.25",
-  "versionCode": 51,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-51/svitlo-test-51.apk",
-  "size": 72897713,
-  "sha256": "6260d534dc9dd188086fe3d18b81fcd2b021112493efb1d5249cdc887ca81f51",
-  "notes": "Динамічний пошук черги за адресою: живі довідники операторів, браузерний резерв ДТЕК, попередні назви вулиць і повторна перевірка збережених результатів. Вбудовану прив’язку села до черги прибрано.",
+  "version": "0.1.26",
+  "versionCode": 54,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-54/svitlo-test-54.apk",
+  "size": 72903073,
+  "sha256": "7c84eebaa90174d76049de14b690a6f7d0e3f2eca3b66ae11f81031448c5c021",
+  "notes": "Виправлено пошук черги у вбудованому браузері Android та повторний пошук після втрати зв’язку. Збережені підтверджені черги залишаються доступними під час тимчасової помилки джерела.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-25T15:15:36.424Z",
-  "sourceCommit": "fb33c72ad7b59b24330fb0c954fd5b6005906f0f"
+  "publishedAt": "2026-10-25T18:55:17.497Z",
+  "sourceCommit": "a8645888468f0c9858da576141c04fc3c41d0e5d"
 }
