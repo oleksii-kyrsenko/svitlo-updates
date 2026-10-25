@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.23",
-  "versionCode": 48,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-48/svitlo-test-48.apk",
-  "size": 72882641,
-  "sha256": "c66fa736f14349112f28f26fe237762c44c4cc236bc3e7502cedd6bd436c5d2b",
-  "notes": "Блок «Сповіщення» розміщено під адресою та чергою, перед вибором дня. Кнопка «Увімкнути» активує сповіщення для обраного місця, «Налаштувати» відкриває їхні налаштування. Попередній блок унизу прибрано.",
+  "version": "0.1.24",
+  "versionCode": 49,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-49/svitlo-test-49.apk",
+  "size": 72883729,
+  "sha256": "8d5b47f2ba959c23503562eac4adf3c09801d7da00d0322037bad71c340f26d1",
+  "notes": "Сповіщення з головного екрана відкриваються у вікні з тими самими налаштуваннями. У графіку одразу видно всі інтервали дня, без «Раніше сьогодні». Завантаження, дозвіл Android і встановлення оновлення перенесено в попап; після завантаження — кнопка «Оновити додаток».",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-25T12:47:09.076Z",
-  "sourceCommit": "3ae4a5c2588851bfc9af0caf4d09e247cb917be3"
+  "publishedAt": "2026-10-25T13:41:28.556Z",
+  "sourceCommit": "8e1a50290601dfaae5fe25d35cff02c87c6d5da3"
 }
