@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.26",
-  "versionCode": 54,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-54/svitlo-test-54.apk",
-  "size": 72903073,
-  "sha256": "7c84eebaa90174d76049de14b690a6f7d0e3f2eca3b66ae11f81031448c5c021",
-  "notes": "Виправлено пошук черги у вбудованому браузері Android та повторний пошук після втрати зв’язку. Збережені підтверджені черги залишаються доступними під час тимчасової помилки джерела.",
+  "version": "0.1.27",
+  "versionCode": 57,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-57/svitlo-test-57.apk",
+  "size": 77003613,
+  "sha256": "f7aad33cf6a0df801993c7436f8944c9d4bbd585d68672fa8cc43d78b3dde529",
+  "notes": "Додано читання актуальних PDF-переліків Черкасиобленерго як запасного джерела черги. Враховуються філія, однойменні населені пункти, строк дії та суперечливі записи. Черга з переліку позначається окремо від підтвердження підключення будинку. Часткові вечірні оновлення графіка застосовуються зі збереженням історії дня.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-25T18:55:17.497Z",
-  "sourceCommit": "a8645888468f0c9858da576141c04fc3c41d0e5d"
+  "publishedAt": "2026-10-26T05:16:08.921Z",
+  "sourceCommit": "0b1bb5023332a9e2241c75fc5e5b2be5853b7373"
 }
