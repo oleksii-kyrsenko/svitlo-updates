@@ -1,1 +1,15 @@
-{"schemaVersion":1,"createdAt":"2026-10-26T05:15:09.107Z","artifactUrl":"https://productionresultssa1.blob.core.windows.net/actions-results/108d51a8-dae3-8df0-a24a-d398e3cc1c71/workflow-job-run-c5d5a305-4e7c-5368-99cc-889cda09977b/artifacts/b8eb48441a235eb550760b5099d10641cfbf2f4104e2de602aa8beb8e71d9d3c.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-57.zip%22&rsct=application%2Fzip&se=2026-10-26T05%3A25%3A09Z&sig=1NZM6ttLhCAYQ203Kiu6KX4JwzF3cPzAXC3UpXjlZgQ%3D&ske=2026-10-26T06%3A20%3A41Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-26T02%3A20%3A41Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-26T05%3A15%3A04Z&sv=2025-11-05","meta":{"packageName":"ua.svitlo.app.testing","version":"0.1.27","versionCode":57,"fileName":"svitlo-test-57.apk","size":77003613,"sha256":"f7aad33cf6a0df801993c7436f8944c9d4bbd585d68672fa8cc43d78b3dde529","sourceCommit":"0b1bb5023332a9e2241c75fc5e5b2be5853b7373","notes":"Додано читання актуальних PDF-переліків Черкасиобленерго як запасного джерела черги. Враховуються філія, однойменні населені пункти, строк дії та суперечливі записи. Черга з переліку позначається окремо від підтвердження підключення будинку. Часткові вечірні оновлення графіка застосовуються зі збереженням історії дня."}}
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-27T07:48:37.615Z",
+  "artifactUrl": "https://productionresultssa2.blob.core.windows.net/actions-results/a2106f1f-d45b-8b99-81fe-9ca718d40aa0/workflow-job-run-e2fd1e3c-9125-5902-830d-a2938c04e68b/artifacts/7511deb9ea8b88913a61d16fcf972b4b552bf556819b321415ae24d1c2a9a45a.zip?rscd=attachment%3B+filename%3D%22svitlo-android-test-58.zip%22&rsct=application%2Fzip&se=2026-10-27T07%3A58%3A37Z&sig=qnHR6r4T6oR8s08s%2B8dFF4U8fEWJXVIib3CbJFb8wVY%3D&ske=2026-10-27T08%3A58%3A33Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-10-27T04%3A58%3A33Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-10-27T07%3A48%3A32Z&sv=2025-11-05",
+  "meta": {
+    "packageName": "ua.svitlo.app.testing",
+    "version": "0.1.28",
+    "versionCode": 58,
+    "fileName": "svitlo-test-58.apk",
+    "size": 77104377,
+    "sha256": "b73032c5128602e60c23b8e84f38c0f600acd2adc4b808882d3ca25da3f452b0",
+    "sourceCommit": "093e0c855b20af48d3c2818f18b69468b954a8d3",
+    "notes": "Розширено адресний пошук черги: Волинь, Закарпаття, Житомирщина й Сумщина. Додано уточнення підключення за підтримуваними оператором реквізитами та захищене збереження на телефоні. Збережені адреси й підтверджені черги залишаються. Відсутні дані не підміняються випадковою чергою."
+  }
+}
