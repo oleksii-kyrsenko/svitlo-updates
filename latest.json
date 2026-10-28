@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.29",
-  "versionCode": 59,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-59/svitlo-test-59.apk",
-  "size": 77232061,
-  "sha256": "4d6fa4bf7acfa64ec3d8d9a8cc90afc75659cfc1c243023c2311fb50d590f9b9",
-  "notes": "Розширено автоматичний пошук черги за чинними адресними сервісами, офіційними PDF, XLSX і пов’язаними таблицями. Враховується підтверджена оператором територія: будинок, вулиця або населений пункт. Чергу можна ввести чи виправити без посилання; автоматичне оновлення не перезаписує ручну правку. Повне покриття всіх адрес ще не забезпечене.",
+  "version": "0.1.30",
+  "versionCode": 62,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-62/svitlo-test-62.apk",
+  "size": 77287585,
+  "sha256": "6fd205500f33c453506e17ab176a1400c81125443d451b4def5f1c511f5a1c7a",
+  "notes": "Додано безкоштовний спільний кеш офіційних переліків на GitHub. Дані збираються автоматично кожні шість годин; застосунок перевіряє вік і цілісність копії та використовує її після помилки прямого джерела. Ручні черги зберігають пріоритет. Початковий кеш охоплює документи Черкасиобленерго, Хмельницькобленерго та Рівнеобленерго.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-28T08:28:28.879Z",
-  "sourceCommit": "45b17eb3d0b7bfe9880a5acba2515358102adc36"
+  "publishedAt": "2026-10-28T09:38:21.776Z",
+  "sourceCommit": "caaa0a2c49c13db5583aad5eeffc230c11a3da78"
 }
