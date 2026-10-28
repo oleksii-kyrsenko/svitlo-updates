@@ -1,0 +1,848 @@
+{
+  "schemaVersion": 1,
+  "description": "QA targets only. Streets and houses are selected from the real app UI; no queue assignments are seeded.",
+  "cases": [
+    {
+      "id": "UA-05-1",
+      "regionId": "UA-05",
+      "region": "Вінницька область",
+      "regionQuery": "Вінницька",
+      "city": "Вінниця",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-05-2",
+      "regionId": "UA-05",
+      "region": "Вінницька область",
+      "regionQuery": "Вінницька",
+      "city": "Гайсин",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-05-3",
+      "regionId": "UA-05",
+      "region": "Вінницька область",
+      "regionQuery": "Вінницька",
+      "city": "Стрижавка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-05-4",
+      "regionId": "UA-05",
+      "region": "Вінницька область",
+      "regionQuery": "Вінницька",
+      "city": "Агрономічне",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-07-1",
+      "regionId": "UA-07",
+      "region": "Волинська область",
+      "regionQuery": "Волинська",
+      "city": "Луцьк",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-07-2",
+      "regionId": "UA-07",
+      "region": "Волинська область",
+      "regionQuery": "Волинська",
+      "city": "Ковель",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-07-3",
+      "regionId": "UA-07",
+      "region": "Волинська область",
+      "regionQuery": "Волинська",
+      "city": "Рокині",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-07-4",
+      "regionId": "UA-07",
+      "region": "Волинська область",
+      "regionQuery": "Волинська",
+      "city": "Липини",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-12-1",
+      "regionId": "UA-12",
+      "region": "Дніпропетровська область",
+      "regionQuery": "Дніпропетровська",
+      "city": "Дніпро",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-12-2",
+      "regionId": "UA-12",
+      "region": "Дніпропетровська область",
+      "regionQuery": "Дніпропетровська",
+      "city": "Павлоград",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-12-3",
+      "regionId": "UA-12",
+      "region": "Дніпропетровська область",
+      "regionQuery": "Дніпропетровська",
+      "city": "Слобожанське",
+      "role": "мале поселення",
+      "cityHint": "Слобожанська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-12-4",
+      "regionId": "UA-12",
+      "region": "Дніпропетровська область",
+      "regionQuery": "Дніпропетровська",
+      "city": "Новоолександрівка",
+      "role": "мале поселення",
+      "cityHint": "Новоолександрівська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-14-1",
+      "regionId": "UA-14",
+      "region": "Донецька область",
+      "regionQuery": "Донецька",
+      "city": "Донецьк",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-14-2",
+      "regionId": "UA-14",
+      "region": "Донецька область",
+      "regionQuery": "Донецька",
+      "city": "Краматорськ",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-14-3",
+      "regionId": "UA-14",
+      "region": "Донецька область",
+      "regionQuery": "Донецька",
+      "city": "Новодонецьке",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-14-4",
+      "regionId": "UA-14",
+      "region": "Донецька область",
+      "regionQuery": "Донецька",
+      "city": "Шахове",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-18-1",
+      "regionId": "UA-18",
+      "region": "Житомирська область",
+      "regionQuery": "Житомирська",
+      "city": "Житомир",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-18-2",
+      "regionId": "UA-18",
+      "region": "Житомирська область",
+      "regionQuery": "Житомирська",
+      "city": "Коростень",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-18-3",
+      "regionId": "UA-18",
+      "region": "Житомирська область",
+      "regionQuery": "Житомирська",
+      "city": "Глибочиця",
+      "role": "мале поселення",
+      "cityHint": "Глибочицька",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-18-4",
+      "regionId": "UA-18",
+      "region": "Житомирська область",
+      "regionQuery": "Житомирська",
+      "city": "Станишівка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-21-1",
+      "regionId": "UA-21",
+      "region": "Закарпатська область",
+      "regionQuery": "Закарпатська",
+      "city": "Ужгород",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-21-2",
+      "regionId": "UA-21",
+      "region": "Закарпатська область",
+      "regionQuery": "Закарпатська",
+      "city": "Мукачево",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-21-3",
+      "regionId": "UA-21",
+      "region": "Закарпатська область",
+      "regionQuery": "Закарпатська",
+      "city": "Оноківці",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-21-4",
+      "regionId": "UA-21",
+      "region": "Закарпатська область",
+      "regionQuery": "Закарпатська",
+      "city": "Минай",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-23-1",
+      "regionId": "UA-23",
+      "region": "Запорізька область",
+      "regionQuery": "Запорізька",
+      "city": "Запоріжжя",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-23-2",
+      "regionId": "UA-23",
+      "region": "Запорізька область",
+      "regionQuery": "Запорізька",
+      "city": "Пологи",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-23-3",
+      "regionId": "UA-23",
+      "region": "Запорізька область",
+      "regionQuery": "Запорізька",
+      "city": "Кушугум",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-23-4",
+      "regionId": "UA-23",
+      "region": "Запорізька область",
+      "regionQuery": "Запорізька",
+      "city": "Широке",
+      "role": "мале поселення",
+      "cityHint": "Широківська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-26-1",
+      "regionId": "UA-26",
+      "region": "Івано-Франківська область",
+      "regionQuery": "Івано-Франківська",
+      "city": "Івано-Франківськ",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-26-2",
+      "regionId": "UA-26",
+      "region": "Івано-Франківська область",
+      "regionQuery": "Івано-Франківська",
+      "city": "Калуш",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-26-3",
+      "regionId": "UA-26",
+      "region": "Івано-Франківська область",
+      "regionQuery": "Івано-Франківська",
+      "city": "Ямниця",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-26-4",
+      "regionId": "UA-26",
+      "region": "Івано-Франківська область",
+      "regionQuery": "Івано-Франківська",
+      "city": "Угринів",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-32-1",
+      "regionId": "UA-32",
+      "region": "Київська область",
+      "regionQuery": "Київська",
+      "city": "Київ",
+      "role": "обласний центр",
+      "preferredStreet": "Харківське",
+      "preferredHouse": "188",
+      "note": "Адміністративний центр області — Київ; адреса належить міській мережі, що має визначити застосунок."
+    },
+    {
+      "id": "UA-32-2",
+      "regionId": "UA-32",
+      "region": "Київська область",
+      "regionQuery": "Київська",
+      "city": "Фастів",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-32-3",
+      "regionId": "UA-32",
+      "region": "Київська область",
+      "regionQuery": "Київська",
+      "city": "Борова",
+      "role": "мале поселення",
+      "cityHint": "Фастівський",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-32-4",
+      "regionId": "UA-32",
+      "region": "Київська область",
+      "regionQuery": "Київська",
+      "city": "Хотів",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-35-1",
+      "regionId": "UA-35",
+      "region": "Кіровоградська область",
+      "regionQuery": "Кіровоградська",
+      "city": "Кропивницький",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-35-2",
+      "regionId": "UA-35",
+      "region": "Кіровоградська область",
+      "regionQuery": "Кіровоградська",
+      "city": "Олександрія",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-35-3",
+      "regionId": "UA-35",
+      "region": "Кіровоградська область",
+      "regionQuery": "Кіровоградська",
+      "city": "Соколівське",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-35-4",
+      "regionId": "UA-35",
+      "region": "Кіровоградська область",
+      "regionQuery": "Кіровоградська",
+      "city": "Велика Северинка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-44-1",
+      "regionId": "UA-44",
+      "region": "Луганська область",
+      "regionQuery": "Луганська",
+      "city": "Луганськ",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-44-2",
+      "regionId": "UA-44",
+      "region": "Луганська область",
+      "regionQuery": "Луганська",
+      "city": "Старобільськ",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-44-3",
+      "regionId": "UA-44",
+      "region": "Луганська область",
+      "regionQuery": "Луганська",
+      "city": "Білокуракине",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-44-4",
+      "regionId": "UA-44",
+      "region": "Луганська область",
+      "regionQuery": "Луганська",
+      "city": "Чмирівка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-46-1",
+      "regionId": "UA-46",
+      "region": "Львівська область",
+      "regionQuery": "Львівська",
+      "city": "Львів",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-46-2",
+      "regionId": "UA-46",
+      "region": "Львівська область",
+      "regionQuery": "Львівська",
+      "city": "Дрогобич",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-46-3",
+      "regionId": "UA-46",
+      "region": "Львівська область",
+      "regionQuery": "Львівська",
+      "city": "Солонка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-46-4",
+      "regionId": "UA-46",
+      "region": "Львівська область",
+      "regionQuery": "Львівська",
+      "city": "Зимна Вода",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-48-1",
+      "regionId": "UA-48",
+      "region": "Миколаївська область",
+      "regionQuery": "Миколаївська",
+      "city": "Миколаїв",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-48-2",
+      "regionId": "UA-48",
+      "region": "Миколаївська область",
+      "regionQuery": "Миколаївська",
+      "city": "Вознесенськ",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-48-3",
+      "regionId": "UA-48",
+      "region": "Миколаївська область",
+      "regionQuery": "Миколаївська",
+      "city": "Коблеве",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-48-4",
+      "regionId": "UA-48",
+      "region": "Миколаївська область",
+      "regionQuery": "Миколаївська",
+      "city": "Ольшанське",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-51-1",
+      "regionId": "UA-51",
+      "region": "Одеська область",
+      "regionQuery": "Одеська",
+      "city": "Одеса",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-51-2",
+      "regionId": "UA-51",
+      "region": "Одеська область",
+      "regionQuery": "Одеська",
+      "city": "Подільськ",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-51-3",
+      "regionId": "UA-51",
+      "region": "Одеська область",
+      "regionQuery": "Одеська",
+      "city": "Авангард",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-51-4",
+      "regionId": "UA-51",
+      "region": "Одеська область",
+      "regionQuery": "Одеська",
+      "city": "Фонтанка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-53-1",
+      "regionId": "UA-53",
+      "region": "Полтавська область",
+      "regionQuery": "Полтавська",
+      "city": "Полтава",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-53-2",
+      "regionId": "UA-53",
+      "region": "Полтавська область",
+      "regionQuery": "Полтавська",
+      "city": "Кременчук",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-53-3",
+      "regionId": "UA-53",
+      "region": "Полтавська область",
+      "regionQuery": "Полтавська",
+      "city": "Розсошенці",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-53-4",
+      "regionId": "UA-53",
+      "region": "Полтавська область",
+      "regionQuery": "Полтавська",
+      "city": "Щербані",
+      "role": "мале поселення",
+      "cityHint": "Щербанівська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-56-1",
+      "regionId": "UA-56",
+      "region": "Рівненська область",
+      "regionQuery": "Рівненська",
+      "city": "Рівне",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-56-2",
+      "regionId": "UA-56",
+      "region": "Рівненська область",
+      "regionQuery": "Рівненська",
+      "city": "Сарни",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-56-3",
+      "regionId": "UA-56",
+      "region": "Рівненська область",
+      "regionQuery": "Рівненська",
+      "city": "Квасилів",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-56-4",
+      "regionId": "UA-56",
+      "region": "Рівненська область",
+      "regionQuery": "Рівненська",
+      "city": "Біла Криниця",
+      "role": "мале поселення",
+      "cityHint": "Білокриницька",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-59-1",
+      "regionId": "UA-59",
+      "region": "Сумська область",
+      "regionQuery": "Сумська",
+      "city": "Суми",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-59-2",
+      "regionId": "UA-59",
+      "region": "Сумська область",
+      "regionQuery": "Сумська",
+      "city": "Конотоп",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-59-3",
+      "regionId": "UA-59",
+      "region": "Сумська область",
+      "regionQuery": "Сумська",
+      "city": "Степанівка",
+      "role": "мале поселення",
+      "cityHint": "Степанівська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-59-4",
+      "regionId": "UA-59",
+      "region": "Сумська область",
+      "regionQuery": "Сумська",
+      "city": "Бездрик",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-61-1",
+      "regionId": "UA-61",
+      "region": "Тернопільська область",
+      "regionQuery": "Тернопільська",
+      "city": "Тернопіль",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-61-2",
+      "regionId": "UA-61",
+      "region": "Тернопільська область",
+      "regionQuery": "Тернопільська",
+      "city": "Чортків",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-61-3",
+      "regionId": "UA-61",
+      "region": "Тернопільська область",
+      "regionQuery": "Тернопільська",
+      "city": "Велика Березовиця",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-61-4",
+      "regionId": "UA-61",
+      "region": "Тернопільська область",
+      "regionQuery": "Тернопільська",
+      "city": "Байківці",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-63-1",
+      "regionId": "UA-63",
+      "region": "Харківська область",
+      "regionQuery": "Харківська",
+      "city": "Харків",
+      "role": "обласний центр",
+      "preferredStreet": "",
+      "selectionNote": "Choose an existing street from the visible unfiltered list; Unicode automation search failed repeatedly. No street, house or queue is seeded."
+    },
+    {
+      "id": "UA-63-2",
+      "regionId": "UA-63",
+      "region": "Харківська область",
+      "regionQuery": "Харківська",
+      "city": "Лозова",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-63-3",
+      "regionId": "UA-63",
+      "region": "Харківська область",
+      "regionQuery": "Харківська",
+      "city": "Пісочин",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-63-4",
+      "regionId": "UA-63",
+      "region": "Харківська область",
+      "regionQuery": "Харківська",
+      "city": "Мала Данилівка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-65-1",
+      "regionId": "UA-65",
+      "region": "Херсонська область",
+      "regionQuery": "Херсонська",
+      "city": "Херсон",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-65-2",
+      "regionId": "UA-65",
+      "region": "Херсонська область",
+      "regionQuery": "Херсонська",
+      "city": "Берислав",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-65-3",
+      "regionId": "UA-65",
+      "region": "Херсонська область",
+      "regionQuery": "Херсонська",
+      "city": "Чорнобаївка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-65-4",
+      "regionId": "UA-65",
+      "region": "Херсонська область",
+      "regionQuery": "Херсонська",
+      "city": "Білозерка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-68-1",
+      "regionId": "UA-68",
+      "region": "Хмельницька область",
+      "regionQuery": "Хмельницька",
+      "city": "Хмельницький",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-68-2",
+      "regionId": "UA-68",
+      "region": "Хмельницька область",
+      "regionQuery": "Хмельницька",
+      "city": "Шепетівка",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-68-3",
+      "regionId": "UA-68",
+      "region": "Хмельницька область",
+      "regionQuery": "Хмельницька",
+      "city": "Лісові Гринівці",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-68-4",
+      "regionId": "UA-68",
+      "region": "Хмельницька область",
+      "regionQuery": "Хмельницька",
+      "city": "Розсоша",
+      "role": "мале поселення",
+      "cityHint": "Розсошанська",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-71-1",
+      "regionId": "UA-71",
+      "region": "Черкаська область",
+      "regionQuery": "Черкаська",
+      "city": "Черкаси",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-71-2",
+      "regionId": "UA-71",
+      "region": "Черкаська область",
+      "regionQuery": "Черкаська",
+      "city": "Умань",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-71-3",
+      "regionId": "UA-71",
+      "region": "Черкаська область",
+      "regionQuery": "Черкаська",
+      "city": "Руська Поляна",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-71-4",
+      "regionId": "UA-71",
+      "region": "Черкаська область",
+      "regionQuery": "Черкаська",
+      "city": "Попівка",
+      "role": "мале поселення",
+      "cityHint": "Смілянський",
+      "preferredStreet": "Романенка",
+      "preferredHouse": "2А"
+    },
+    {
+      "id": "UA-73-1",
+      "regionId": "UA-73",
+      "region": "Чернівецька область",
+      "regionQuery": "Чернівецька",
+      "city": "Чернівці",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-73-2",
+      "regionId": "UA-73",
+      "region": "Чернівецька область",
+      "regionQuery": "Чернівецька",
+      "city": "Кельменці",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-73-3",
+      "regionId": "UA-73",
+      "region": "Чернівецька область",
+      "regionQuery": "Чернівецька",
+      "city": "Мамаївці",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-73-4",
+      "regionId": "UA-73",
+      "region": "Чернівецька область",
+      "regionQuery": "Чернівецька",
+      "city": "Магала",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-74-1",
+      "regionId": "UA-74",
+      "region": "Чернігівська область",
+      "regionQuery": "Чернігівська",
+      "city": "Чернігів",
+      "role": "обласний центр"
+    },
+    {
+      "id": "UA-74-2",
+      "regionId": "UA-74",
+      "region": "Чернігівська область",
+      "regionQuery": "Чернігівська",
+      "city": "Ніжин",
+      "role": "районний центр"
+    },
+    {
+      "id": "UA-74-3",
+      "regionId": "UA-74",
+      "region": "Чернігівська область",
+      "regionQuery": "Чернігівська",
+      "city": "Киїнка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-74-4",
+      "regionId": "UA-74",
+      "region": "Чернігівська область",
+      "regionQuery": "Чернігівська",
+      "city": "Олишівка",
+      "role": "мале поселення",
+      "allowAnyCommunity": true
+    },
+    {
+      "id": "UA-30-1",
+      "regionId": "UA-30",
+      "region": "Київ",
+      "regionQuery": "Київська",
+      "city": "Київ",
+      "role": "місто окремо",
+      "preferredStreet": "Анни Ахматової",
+      "preferredHouse": "48"
+    }
+  ]
+}
