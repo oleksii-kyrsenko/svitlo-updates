@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.28",
-  "versionCode": 58,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-58/svitlo-test-58.apk",
-  "size": 77104377,
-  "sha256": "b73032c5128602e60c23b8e84f38c0f600acd2adc4b808882d3ca25da3f452b0",
-  "notes": "Розширено адресний пошук черги: Волинь, Закарпаття, Житомирщина й Сумщина. Додано уточнення підключення за підтримуваними оператором реквізитами та захищене збереження на телефоні. Збережені адреси й підтверджені черги залишаються. Відсутні дані не підміняються випадковою чергою.",
+  "version": "0.1.29",
+  "versionCode": 59,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-59/svitlo-test-59.apk",
+  "size": 77232061,
+  "sha256": "4d6fa4bf7acfa64ec3d8d9a8cc90afc75659cfc1c243023c2311fb50d590f9b9",
+  "notes": "Розширено автоматичний пошук черги за чинними адресними сервісами, офіційними PDF, XLSX і пов’язаними таблицями. Враховується підтверджена оператором територія: будинок, вулиця або населений пункт. Чергу можна ввести чи виправити без посилання; автоматичне оновлення не перезаписує ручну правку. Повне покриття всіх адрес ще не забезпечене.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-27T07:50:00.122Z",
-  "sourceCommit": "093e0c855b20af48d3c2818f18b69468b954a8d3"
+  "publishedAt": "2026-10-28T08:28:28.879Z",
+  "sourceCommit": "45b17eb3d0b7bfe9880a5acba2515358102adc36"
 }
