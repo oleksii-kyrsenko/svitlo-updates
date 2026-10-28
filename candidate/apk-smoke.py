@@ -19,6 +19,14 @@ def wait_for(*labels):
         if all(label in s for label in labels):return s
         if time.monotonic()>deadline:raise AssertionError('Missing screen labels: '+repr(labels))
         time.sleep(2)
+def bounds(node):
+    return list(map(int,re.findall(r'\d+',node.get('bounds',''))))
+def scroll_down(tree):
+    candidates=[bounds(n) for n in tree.iter('node') if n.get('scrollable')=='true']
+    candidates=[b for b in candidates if len(b)==4 and b[2]>b[0] and b[3]>b[1]]
+    assert candidates,'No scrollable form'
+    b=max(candidates,key=lambda b:(b[2]-b[0])*(b[3]-b[1]));x=(b[0]+b[2])//2;height=b[3]-b[1]
+    adb('shell','input','swipe',str(x),str(b[1]+height*4//5),str(x),str(b[1]+height//4),'350');time.sleep(1)
 def tap(label,scroll=False):
     for _ in range(8 if scroll else 1):
         r=E.fromstring(xml())
@@ -27,7 +35,7 @@ def tap(label,scroll=False):
             b=list(map(int,re.findall(r'\d+',node.get('bounds',''))))
             if len(b)==4 and b[2]>b[0] and b[3]>b[1]:
                 adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));time.sleep(1);return
-        if scroll:adb('shell','input','swipe','540','1650','540','650','350');time.sleep(1)
+        if scroll:scroll_down(r)
     raise AssertionError('Missing action: '+label)
 def launch():
     adb('shell','am','force-stop',pkg)
@@ -60,12 +68,18 @@ try:
     print(adb('install','-r','-g','--abi','x86_64',str(root/meta['fileName'])),flush=True)
     launch();s=wait_for('Романенка','Черга 3.1');evidence('upgraded',s);flags['updatedPlacePreserved']=True
     tap('Змінити місце');tap('Виправити чергу, назву або оператора ⌄',scroll=True)
-    field=next(n for n in E.fromstring(xml()).iter('node') if n.get('class')=='android.widget.EditText' and n.get('text')=='3.1')
+    field=None
+    for _ in range(10):
+        tree=E.fromstring(xml())
+        field=next((n for n in tree.iter('node') if n.get('class')=='android.widget.EditText' and n.get('text')=='3.1' and len(bounds(n))==4 and bounds(n)[3]>bounds(n)[1]),None)
+        if field is not None:break
+        scroll_down(tree)
+    assert field is not None,'Queue input is not visible after scrolling'
     b=list(map(int,re.findall(r'\d+',field.get('bounds'))))
     adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));adb('shell','input','keyevent','123')
     for _ in range(3):adb('shell','input','keyevent','67')
     adb('shell','input','text','2.2')
-    if re.search(r'\b(?:mInputShown|mIsInputViewShown)\s*[=:]\s*true',adb('shell','dumpsys','input_method')):adb('shell','input','keyevent','4')
+    if re.search(r'\b(?:mInputShown|mIsInputViewShown|mInputViewShown)\s*[=:]\s*true',adb('shell','dumpsys','input_method')):adb('shell','input','keyevent','4')
     tap('Зберегти зміни',scroll=True);wait_for('Черга 2.2','вказано вами');flags['manualQueueEdited']=True
     launch();s=wait_for('Черга 2.2','вказано вами');evidence('manual-after-restart',s)
     adb('shell','am','force-stop',pkg);adb('pull',remote,str(out/'persisted.db'))
