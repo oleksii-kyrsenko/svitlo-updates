@@ -1,71 +1,58 @@
 {
-  "startedAt": 1793192556610,
+  "startedAt": 1793201373908,
   "agents": {
     "official": [
       {
+        "sourceUrl": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+        "sha256": "eee52ea3baa1ddb147089e2c59df665ce6139f09cfe1db6cb0502639f0ab078d",
+        "discoveredChannels": [],
+        "links": [
+          "https://energy.volyn.ua/spozhyvacham/pzree/!files/voe-reestr.pdf"
+        ]
+      },
+      {
         "sourceUrl": "https://www.dtek-dnem.com.ua/ua/shutdowns",
-        "sha256": "94bd2c3fb0251365462793776d6d95c6efe124a8747078cf250d12b986065be9",
+        "sha256": "1781b27f19437ba607e40a8db20d6d43a0d65f790577fd2e597242179d84a5fd",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.dtek-dem.com.ua/ua/shutdowns",
-        "sha256": "38c3c6f7bf1155ff35cf21390a552206ba35a18d0a0462c4a6b540df52e18781",
+        "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
-        "sha256": "2b3e70414fa972bb81f307ff942b6d05fa9d9578e153bc60db68e3f513f34299",
+        "sha256": "6657a4d123188f0f88be4c64afe93c63ceae03a7278acd509a4871c9595fd79c",
         "discoveredChannels": [],
         "links": []
       },
       {
-        "sourceUrl": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
-        "sha256": "36e91af233620d0bbbec165e2faabc9ef4b08802aaa9cef2efaea1da1bd88994",
+        "sourceUrl": "https://www.zoe.com.ua/outage/",
+        "sha256": "3f6630ad932dc5edb22aa136d5a855ff6ffe33d5cedabca694458ff320dfe916",
         "discoveredChannels": [],
         "links": [
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-1.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-2.pdf",
-          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-2.pdf"
+          "https://www.zoe.com.ua/wp-content/uploads/2024/10/Адреси-споживвачів-АТ-Укрзалізниця-які-з0заживлені-від-мереж-ПАТ-Запоріжжяобленерго.pdf",
+          "https://www.zoe.com.ua/wp-content/uploads/2025/12/замовити-безкоштовну-послугу-в-ппко.pdf",
+          "https://www.zoe.com.ua/wp-content/uploads/2025/12/замовити-платну-послугу-в-ппко.pdf"
         ]
       },
       {
         "sourceUrl": "https://www.dtek-kem.com.ua/ua/shutdowns",
-        "sha256": "6dcf7b39c7a148afc62c41623d2771b178f516f0af79d60477f5df543e6dee9e",
+        "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.dtek-krem.com.ua/ua/shutdowns",
-        "sha256": "07d79a13f079870ca6587850d9295d0ec54aefbfd5115a9b6b753dc98bc49744",
+        "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://kiroe.com.ua/electricity-blackout",
-        "sha256": "594c135165cb71467ae8f4bda8ecef6e04a8ea43aee48c1d33f018da04c8c27c",
+        "sha256": "42894a219216fb5c2fbde44941564509c9bcea298978c1b9cc7040b989b4a555",
         "discoveredChannels": [
           {
             "url": "https://t.me/s/SvitloBlagovishenskogoRajonu",
@@ -207,13 +194,13 @@
       },
       {
         "sourceUrl": "https://www.dtek-oem.com.ua/ua/shutdowns",
-        "sha256": "6c28265a31d52c422ba2395c3461fd4169af80d926f1fb7726d8937bb91aac98",
+        "sha256": "1509b2869fcd48959f3241e01195bd7a02fddae90a1832434ebae690d39ff0c0",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://oe.if.ua/uk/emergency_shutdowns",
-        "sha256": "a50f9de08ed8963db0871009c5b972d8bdc004327fa2a43f3e58eb210a21ed00",
+        "sha256": "40df74d30816e917bfb7af914b69c1a8edc147f2494aec13440279941bb9c2fb",
         "discoveredChannels": [],
         "links": []
       },
@@ -224,35 +211,10 @@
         "links": []
       },
       {
-        "sourceUrl": "https://www.roe.vsei.ua/disconnections",
-        "sha256": "a90851de70fcf972674460342229c668617326c713256e4423e688dd3f09ab26",
+        "sourceUrl": "https://oblenergo.kharkiv.ua/uk/gaoinfo",
+        "sha256": "74ddda54fcdd5db8cb601590a5bf84813e775478101172a3254db8994430e785",
         "discoveredChannels": [],
-        "links": [
-          "https://www.roe.vsei.ua/docs/public/Polityka_PRaT_ROE_schodo_lichylnykiv_elektr_energii.pdf",
-          "https://www.roe.vsei.ua/docs/public/Polityka_PRaT_ROE_schodo_lichylnykiv_elektr_energii.pdf",
-          "https://www.roe.vsei.ua/wp-content/uploads/2026/10/GPV_cherga_misto_Rivne-1.pdf",
-          "https://www.roe.vsei.ua/wp-content/uploads/2026/10/GPV_cherga_Rivnenska_oblast-1.pdf",
-          "https://www.roe.vsei.ua/wp-content/uploads/2026/10/planovi-28.10.2026.xlsx",
-          "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2021.xlsx",
-          "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2022.xlsx",
-          "https://www.roe.vsei.ua/docs/public/Poriadok_rozghliadu_zvernen.pdf",
-          "https://www.roe.vsei.ua/docs/public/Zvit_zvern_spozhyvachiv_za_2021.xlsx",
-          "https://www.roe.vsei.ua/docs/public/Zvit_zvern_spozhyvachiv_za_2022.xlsx",
-          "https://www.roe.vsei.ua/docs/public/Zvit_zvern_spozhyvachiv_za_2023.xlsx",
-          "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2023.xlsx",
-          "https://www.roe.vsei.ua/docs/public/Zvit_zvernen_spozhyvachiv_za_2024_rik.xlsx",
-          "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2024.xlsx"
-        ]
-      },
-      {
-        "sourceUrl": "https://ksoe.com.ua/",
-        "sha256": "32222c167968956d7e8d1f75462fd8147f950e38fa6f368b4a4328e1df75f729",
-        "discoveredChannels": [],
-        "links": [
-          "https://ksoe.com.ua/statics/web/files/RegisterOfSuppliers_07092026.pdf",
-          "https://ksoe.com.ua/statics/web/files/ppko_2025_publichniy_dogovir.pdf",
-          "https://ksoe.com.ua/statics/web/files/poryadok_diy_pri_viyavlenni_zauvazhen_do_roboty_vuzliv_obliku_VAD.pdf"
-        ]
+        "links": []
       },
       {
         "sourceUrl": "https://hoe.com.ua/page/informatsija-vidkljuchennja",
@@ -274,50 +236,428 @@
           }
         ],
         "links": []
+      },
+      {
+        "sourceUrl": "https://oblenergo.cv.ua/shutdowns/",
+        "sha256": "6cde82e9adf66a5e3d239283037310db98deae4a497e52538a29a8cece2c2a1e",
+        "discoveredChannels": [],
+        "links": []
+      }
+    ],
+    "discovery": [
+      {
+        "url": "https://www.vmr.gov.ua/",
+        "candidates": 2
+      },
+      {
+        "url": "https://haisyn-municipality.gov.ua/",
+        "candidates": 0
+      },
+      {
+        "url": "https://stryzhavska-rada.gov.ua/",
+        "candidates": 60
+      },
+      {
+        "url": "https://agronomichna-gromada.toolkit.in.ua/",
+        "candidates": 0
+      },
+      {
+        "url": "https://www.lutskrada.gov.ua/",
+        "candidates": 3
+      },
+      {
+        "url": "https://pidgayci-gromada.gov.ua/",
+        "candidates": 1
+      },
+      {
+        "url": "https://www.rada-poltava.gov.ua/ua",
+        "candidates": 2
+      },
+      {
+        "url": "https://rivnerada.gov.ua/portal/",
+        "candidates": 0
+      },
+      {
+        "url": "https://sarny-rada.gov.ua/",
+        "candidates": 3
+      },
+      {
+        "url": "https://bilokrynycka-gromada.gov.ua/",
+        "candidates": 1
+      },
+      {
+        "url": "https://sherbanivska-gromada.gov.ua/",
+        "candidates": 2
+      },
+      {
+        "query": "Стрижавська громада черги електроенергії",
+        "results": [
+          {
+            "url": "https://alerts.energy/vinnytska-oblast/vinnickij-rayon/strizhavska-terytorialna-hromada",
+            "title": "Відключення світла - Стрижавська територіальна громада",
+            "query": "Стрижавська громада черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://svitlo.live/strijavska-gromada",
+            "title": "Графік відключення світла Стрижавська громада - Svitlo.live",
+            "query": "Стрижавська громада черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://stryzhavska-rada.gov.ua/",
+            "title": "Стрижавська громада - вітаємо на офіційному вебсайті",
+            "query": "Стрижавська громада черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://alarmmap.online/ua/atu/vinnytska-oblast/vinnickij-rayon/strizhavska-terytorialna-hromada/electricity",
+            "title": "Електроенергія у Стрижавська територіальна громада - актуальна ситуація ...",
+            "query": "Стрижавська громада черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://www.facebook.com/stryzhavska.rada/",
+            "title": "Стрижавська територіальна громада | Strizhavka",
+            "query": "Стрижавська громада черги електроенергії",
+            "status": "needs_source_review"
+          }
+        ],
+        "irrelevantDiscarded": 5
+      },
+      {
+        "query": "Щербанівська громада Полтавська черги електроенергії",
+        "results": [
+          {
+            "url": "https://sherbanivska-gromada.gov.ua/",
+            "title": "Щербанівська громада - вітаємо на офіційному вебсайті",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://svitlo.live/scherbanivska-gromada",
+            "title": "Графік відключення світла Щербанівська громада - Svitlo.live",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://alerts.energy/poltavska-oblast/poltavskij-rayon/sherbanivska-terytorialna-hromada/electricity",
+            "title": "Графік відключення світла - Щербанівська територіальна громада",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://bezsvitla.com.ua/poltavska-oblast/serbanivska-hromada",
+            "title": "Щербанівська ТГ — графік відключень світла на сьогодні",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://sherbanivska-gromada.gov.ua/planovi-vidkljuchennya-elektroenergii-15-10-23-03-04-2023/?p=1",
+            "title": "Планові відключення електроенергії | Щербанівська громада, Полтавська ...",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://alarmmap.online/ua/atu/poltavska-oblast/poltavskij-rayon/sherbanivska-terytorialna-hromada/electricity",
+            "title": "Електроенергія у Щербанівська територіальна громада - актуальна ...",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://www.facebook.com/Scherbani.TG/",
+            "title": "Щербанівська територіальна громада",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://energy-ua.info/grafik/%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D0%B0/%D0%A9%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0",
+            "title": "Графік відключення світла Полтава, Щербанівська",
+            "query": "Щербанівська громада Полтавська черги електроенергії",
+            "status": "needs_source_review"
+          }
+        ],
+        "irrelevantDiscarded": 2
+      },
+      {
+        "query": "Підгайцівська громада Волинь Липини черга відключень",
+        "results": [
+          {
+            "url": "https://svitlo.live/pidgaytsivska-gromada",
+            "title": "Графік відключення світла Підгайцівська громада - Svitlo.live",
+            "query": "Підгайцівська громада Волинь Липини черга відключень",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://alerts.energy/volynska-oblast/luckij-rayon/pidgajcivska-terytorialna-hromada",
+            "title": "Відключення світла - Підгайцівська територіальна громада",
+            "query": "Підгайцівська громада Волинь Липини черга відключень",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://bezsvitla.com.ua/volynska-oblast/pidgajcivska-hromada/lipini",
+            "title": "Графік відключень світла у Липини на сьогодні",
+            "query": "Підгайцівська громада Волинь Липини черга відключень",
+            "status": "needs_source_review"
+          },
+          {
+            "url": "https://svitlo.live/selo-lipini",
+            "title": "Графік відключення світла село Липини - Svitlo.live",
+            "query": "Підгайцівська громада Волинь Липини черга відключень",
+            "status": "needs_source_review"
+          }
+        ],
+        "irrelevantDiscarded": 6
       }
     ],
     "community": [
       {
+        "url": "https://kop.net.ua/onovlenyj-perelik-cherg-vidklyuchen-elektroenergiyi-dlya-kremenchuka/",
+        "pages": 1,
+        "posts": 1,
+        "stopReason": "direct_article",
+        "historyDaysRequested": 180,
+        "readUrls": [
+          "https://kop.net.ua/onovlenyj-perelik-cherg-vidklyuchen-elektroenergiyi-dlya-kremenchuka/"
+        ],
+        "errors": []
+      },
+      {
         "url": "https://t.me/s/suspilnepoltava",
-        "recentMessages": 16
+        "pages": 4,
+        "posts": 68,
+        "oldestPublishedAt": 1792943172000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 54594,
+        "errors": []
       },
       {
         "url": "https://t.me/s/suspilnekherson",
-        "recentMessages": 20
+        "pages": 4,
+        "posts": 66,
+        "oldestPublishedAt": 1792582141000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 85122,
+        "errors": []
       },
       {
         "url": "https://t.me/s/pat_cherkasyoblenergo",
-        "recentMessages": 17
+        "pages": 4,
+        "posts": 70,
+        "oldestPublishedAt": 1791823566000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 1820,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/stryzhavska_rada",
+        "pages": 4,
+        "posts": 24,
+        "oldestPublishedAt": 1791813870000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 10231,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/lutskradanews",
+        "pages": 4,
+        "posts": 24,
+        "oldestPublishedAt": 1792922240000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 16552,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/rada_poltava",
+        "pages": 4,
+        "posts": 45,
+        "oldestPublishedAt": 1792756231000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 8016,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/sarnyrada",
+        "pages": 1,
+        "posts": 0,
+        "oldestPublishedAt": 1645695302000,
+        "historyDaysRequested": 180,
+        "stopReason": "history_window",
+        "nextBackfillCursor": null,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/bilokrynycka_gromada",
+        "pages": 4,
+        "posts": 58,
+        "oldestPublishedAt": 1789846735000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 2860,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/ok_kremen",
+        "pages": 4,
+        "posts": 71,
+        "oldestPublishedAt": 1793047429000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 59524,
+        "errors": []
+      },
+      {
+        "url": "https://t.me/s/SarnyNewsCity",
+        "pages": 4,
+        "posts": 80,
+        "oldestPublishedAt": 1792845220000,
+        "historyDaysRequested": 180,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 11275,
+        "errors": []
+      },
+      {
+        "url": "https://www.vmr.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://haisyn-municipality.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://stryzhavska-rada.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://agronomichna-gromada.toolkit.in.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://www.lutskrada.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://pidgayci-gromada.gov.ua/",
+        "pages": 1,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [
+          "https://pidgayci-gromada.gov.ua/news/1792480732/"
+        ],
+        "errors": []
+      },
+      {
+        "url": "https://www.rada-poltava.gov.ua/ua",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://rivnerada.gov.ua/portal/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://sarny-rada.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://bilokrynycka-gromada.gov.ua/",
+        "pages": 0,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [],
+        "errors": []
+      },
+      {
+        "url": "https://sherbanivska-gromada.gov.ua/",
+        "pages": 1,
+        "posts": 0,
+        "stopReason": "article_limit",
+        "historyDaysRequested": 180,
+        "readUrls": [
+          "https://sherbanivska-gromada.gov.ua/planovi-vidkljuchennya-elektroenergii-15-10-23-03-04-2023/"
+        ],
+        "errors": []
       }
     ],
     "extraction": {
-      "messages": 30
+      "messages": 507,
+      "relevantMessages": 0,
+      "modelCalls": 0
     },
     "verification": {
-      "accepted": 0,
-      "mode": "active"
+      "accepted": 649,
+      "archivedLeads": 0,
+      "mode": "active",
+      "modelBudgetExhausted": false
     }
   },
   "errors": [
     {
       "agent": "official",
       "url": "https://www.voe.com.ua/disconnection/detailed",
-      "error": "HTTP Error 403: Forbidden"
+      "error": "HTTP Error 404: Not Found"
     },
     {
       "agent": "official",
-      "url": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+      "url": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
       "error": "HTTP Error 403: Forbidden"
-    },
-    {
-      "agent": "official",
-      "url": "https://www.zoe.com.ua/графіки-погодинних-стабілізаційних/",
-      "error": "<urlopen error timed out>"
     },
     {
       "agent": "official",
       "url": "https://www.poe.pl.ua/disconnection/hrafik-pohodynnoho-vidkliuchennia-elektroenerhii/",
-      "error": "<urlopen error timed out>"
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "agent": "official",
+      "url": "https://www.roe.vsei.ua/disconnections",
+      "error": "[Errno -2] Name or service not known"
     },
     {
       "agent": "official",
@@ -326,19 +666,24 @@
     },
     {
       "agent": "official",
-      "url": "https://www.oblenergo.kharkov.ua/getinfoingao",
-      "error": "HTTP Error 403: Forbidden"
-    },
-    {
-      "agent": "official",
-      "url": "https://oblenergo.cv.ua/shutdowns/",
-      "error": "HTTP Error 403: Forbidden"
+      "url": "https://ksoe.com.ua/",
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "agent": "official",
       "url": "https://chernihivoblenergo.com.ua/blackouts",
-      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "agent": "discovery",
+      "url": "https://kovelrada.gov.ua/",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "agent": "community",
+      "url": "https://kovelrada.gov.ua/",
+      "error": "HTTP Error 429: Too Many Requests"
     }
   ],
-  "finishedAt": 1793192636993
+  "finishedAt": 1793201486815
 }

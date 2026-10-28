@@ -124,6 +124,16 @@
   ],
   "community": [
     {
+      "url": "https://kop.net.ua/onovlenyj-perelik-cherg-vidklyuchen-elektroenergiyi-dlya-kremenchuka/",
+      "operatorId": "poltava",
+      "regionId": "UA-53",
+      "community": "Кременчуцька",
+      "settlement": "Кременчук",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.kremen.gov.ua/",
+      "roster": true
+    },
+    {
       "url": "https://t.me/s/suspilnepoltava",
       "expectedTitle": "Суспільне Полтава",
       "regionId": "UA-53",
@@ -143,6 +153,292 @@
       "regionId": "UA-71",
       "operatorId": "cherkasy",
       "discoveredFrom": "https://www.cherkasyoblenergo.com/off"
+    },
+    {
+      "url": "https://t.me/s/stryzhavska_rada",
+      "expectedTitle": "Стрижавська ТГ",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "community": "Стрижавська",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://stryzhavska-rada.gov.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/lutskradanews",
+      "expectedTitle": "Луцька міська рада",
+      "regionId": "UA-07",
+      "operatorId": "volyn",
+      "community": "Луцька",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.lutskrada.gov.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/rada_poltava",
+      "expectedTitle": "Полтавська міська рада",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "community": "Полтавська",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.rada-poltava.gov.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/sarnyrada",
+      "expectedTitle": "Сарненська міська рада",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "community": "Сарненська",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://sarny-rada.gov.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/bilokrynycka_gromada",
+      "expectedTitle": "Білокриницька",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "community": "Білокриницька",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://bilokrynycka-gromada.gov.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/ok_kremen",
+      "expectedTitle": "ОК Кременчук",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "community": "Кременчуцька",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://kop.net.ua/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/SarnyNewsCity",
+      "expectedTitle": "СарниNews.City",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "community": "Сарненська",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://sarnynews.city/",
+      "maxPages": 4
+    },
+    {
+      "url": "https://www.vmr.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Вінницька",
+      "operatorId": "vinnytsia",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.vmr.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://haisyn-municipality.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Гайсинська",
+      "operatorId": "vinnytsia",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://haisyn-municipality.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://stryzhavska-rada.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Стрижавська",
+      "operatorId": "vinnytsia",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://stryzhavska-rada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://agronomichna-gromada.toolkit.in.ua/",
+      "regionId": "UA-05",
+      "community": "Агрономічна",
+      "operatorId": "vinnytsia",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://agronomichna-gromada.toolkit.in.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://www.lutskrada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Луцька",
+      "operatorId": "volyn",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.lutskrada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://kovelrada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Ковельська",
+      "operatorId": "volyn",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://kovelrada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://pidgayci-gromada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Підгайцівська",
+      "operatorId": "volyn",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://pidgayci-gromada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://www.rada-poltava.gov.ua/",
+      "regionId": "UA-53",
+      "community": "Полтавська",
+      "operatorId": "poltava",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://www.rada-poltava.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://rivnerada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Рівненська",
+      "operatorId": "rivne",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://rivnerada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://sarny-rada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Сарненська",
+      "operatorId": "rivne",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://sarny-rada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://bilokrynycka-gromada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Білокриницька",
+      "operatorId": "rivne",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://bilokrynycka-gromada.gov.ua/",
+      "maxPages": 3
+    },
+    {
+      "url": "https://sherbanivska-gromada.gov.ua/",
+      "regionId": "UA-53",
+      "community": "Щербанівська",
+      "operatorId": "poltava",
+      "index": true,
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://decentralization.gov.ua/newgromada/4458",
+      "maxPages": 4
+    },
+    {
+      "url": "https://t.me/s/sherbani",
+      "expectedTitle": "Щербанівська ТГ — офіційний канал",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "community": "Щербанівська",
+      "geographyVerified": true,
+      "geographyBasisUrl": "https://sherbanivska-gromada.gov.ua/",
+      "maxPages": 4
+    }
+  ],
+  "discovery": [
+    {
+      "url": "https://www.vmr.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Вінницька"
+    },
+    {
+      "url": "https://haisyn-municipality.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Гайсинська"
+    },
+    {
+      "url": "https://stryzhavska-rada.gov.ua/",
+      "regionId": "UA-05",
+      "community": "Стрижавська"
+    },
+    {
+      "url": "https://agronomichna-gromada.toolkit.in.ua/",
+      "regionId": "UA-05",
+      "community": "Агрономічна"
+    },
+    {
+      "url": "https://www.lutskrada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Луцька"
+    },
+    {
+      "url": "https://kovelrada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Ковельська"
+    },
+    {
+      "url": "https://pidgayci-gromada.gov.ua/",
+      "regionId": "UA-07",
+      "community": "Підгайцівська"
+    },
+    {
+      "url": "https://www.rada-poltava.gov.ua/",
+      "regionId": "UA-53",
+      "community": "Полтавська"
+    },
+    {
+      "url": "https://rivnerada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Рівненська"
+    },
+    {
+      "url": "https://sarny-rada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Сарненська"
+    },
+    {
+      "url": "https://bilokrynycka-gromada.gov.ua/",
+      "regionId": "UA-56",
+      "community": "Білокриницька"
+    },
+    {
+      "url": "https://sherbanivska-gromada.gov.ua/",
+      "regionId": "UA-53",
+      "community": "Щербанівська"
+    }
+  ],
+  "searches": [
+    {
+      "query": "Стрижавська громада черги електроенергії",
+      "terms": [
+        "Стрижавська",
+        "Стрижавка"
+      ]
+    },
+    {
+      "query": "Щербанівська громада Полтавська черги електроенергії",
+      "terms": [
+        "Щербанівська",
+        "Щербані",
+        "Розсошенці"
+      ]
+    },
+    {
+      "query": "Підгайцівська громада Волинь Липини черга відключень",
+      "terms": [
+        "Підгайцівська",
+        "Липини"
+      ]
     }
   ]
 }

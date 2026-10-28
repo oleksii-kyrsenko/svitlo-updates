@@ -4,8 +4,8 @@ on:
     - cron: '47 4 * * *'
   workflow_dispatch:
   push:
-    branches: [feature/public-evidence-agents]
-    paths: ['public-evidence/agents.py', 'public-evidence/setup-model.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
+    branches: [feature/public-evidence-agents, feature/targeted-public-coverage]
+    paths: ['public-evidence/agents.py', 'public-evidence/coverage.py', 'public-evidence/history.py', 'public-evidence/discovery.py', 'public-evidence/qa/test_coverage.py', 'public-evidence/setup-model.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
 permissions:
   contents: write
 concurrency:
@@ -26,7 +26,7 @@ jobs:
           key: evidence-model-${{ hashFiles('public-evidence/model-lock.json') }}
       - name: Public document and OCR readers
         run: |
-          pip install pypdf==6.1.1 openpyxl==3.1.5 pillow==12.0.0 defusedxml==0.7.1
+          pip install beautifulsoup4==4.14.2 pypdf==6.1.1 openpyxl==3.1.5 pillow==12.0.0 defusedxml==0.7.1
           sudo apt-get update -qq
           sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-ukr
       - name: Prepare verified free local inference
@@ -42,6 +42,8 @@ jobs:
             except Exception:time.sleep(1)
           else:raise RuntimeError('Local model did not start')
           PY
+      - name: Verify discovery and address boundary controls
+        run: python public-evidence/qa/test_coverage.py
       - name: Quality gate before processing live publications
         run: python public-evidence/qa/benchmark.py
       - name: Four roles collect, extract and verify public evidence
@@ -56,12 +58,14 @@ jobs:
             public-evidence/report.json
             public-evidence/manifest.json
             public-evidence/discovered-sources.json
+            public-evidence/research-candidates.json
+            public-evidence/history-state.json
           retention-days: 14
       - name: Publish auditable public data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public-evidence/manifest.json public-evidence/report.json public-evidence/discovered-sources.json public-evidence/qa/benchmark-result.json
+          git add public-evidence/manifest.json public-evidence/report.json public-evidence/discovered-sources.json public-evidence/qa/benchmark-result.json public-evidence/research-candidates.json public-evidence/history-state.json
           git diff --cached --quiet && exit 0
           git commit -m 'Refresh public evidence and quality report'
           git pull --rebase origin ${{ github.ref_name }}
