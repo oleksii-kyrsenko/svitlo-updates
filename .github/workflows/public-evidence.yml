@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: [feature/public-evidence-agents]
-    paths: ['public-evidence/*.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
+    paths: ['public-evidence/agents.py', 'public-evidence/setup-model.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
 permissions:
   contents: write
 concurrency:
