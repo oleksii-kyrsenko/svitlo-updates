@@ -1,0 +1,47 @@
+name: Refresh public operator documents
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [feature/public-source-cache]
+    paths: ['public-source-cache/**', '.github/workflows/public-source-cache.yml']
+permissions:
+  contents: write
+concurrency:
+  group: public-operator-cache
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --prefix public-source-cache --ignore-scripts
+      - run: pip install openpyxl==3.1.5 defusedxml==0.7.1
+      - name: Collect complete source bundles
+        run: node public-source-cache/collect.mjs
+      - name: Publish verified assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: node public-source-cache/publish.mjs
+      - name: Publish the cache manifest
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public-source-cache/manifest.json
+          git commit -m 'Refresh verified public source timestamps' || exit 0
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}
+      - name: Remove expired unreferenced cache assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: node public-source-cache/publish.mjs --cleanup
