@@ -8,7 +8,14 @@
       "region": "Вінницька область",
       "regionQuery": "Вінницька",
       "city": "Вінниця",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Вінниця · Вінницька громада · КАТОТТГ 05020030010063857",
+      "baselineAddress": "Вінниця, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-05-2",
@@ -16,7 +23,14 @@
       "region": "Вінницька область",
       "regionQuery": "Вінницька",
       "city": "Гайсин",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Гайсин · Гайсинська громада · КАТОТТГ 05040030010071792",
+      "baselineAddress": "Гайсин, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-05-3",
@@ -25,7 +39,14 @@
       "regionQuery": "Вінницька",
       "city": "Стрижавка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "с-ще Стрижавка · Стрижавська громада · КАТОТТГ 05020230010011069",
+      "baselineAddress": "Стрижавка, вулиця Шевченка, 8",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-05-4",
@@ -34,7 +55,14 @@
       "regionQuery": "Вінницька",
       "city": "Агрономічне",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Агрономічне · Агрономічна громада · КАТОТТГ 05020010010058853",
+      "baselineAddress": "Агрономічне, вулиця Шевченка, 4",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-07-1",
@@ -42,7 +70,14 @@
       "region": "Волинська область",
       "regionQuery": "Волинська",
       "city": "Луцьк",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Луцьк · Луцька громада · КАТОТТГ 07080170010083384",
+      "baselineAddress": "Луцьк, вулиця Шевченка, 8",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-07-2",
@@ -50,7 +85,14 @@
       "region": "Волинська область",
       "regionQuery": "Волинська",
       "city": "Ковель",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Ковель · Ковельська громада · КАТОТТГ 07060190010068509",
+      "baselineAddress": "Ковель, вулиця Шевченка, 8",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-07-3",
@@ -59,7 +101,14 @@
       "regionQuery": "Волинська",
       "city": "Рокині",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Рокині · Луцька громада · КАТОТТГ 07080170020024355",
+      "baselineAddress": "Рокині, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-07-4",
@@ -68,7 +117,14 @@
       "regionQuery": "Волинська",
       "city": "Липини",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Липини · Підгайцівська громада · КАТОТТГ 07080230120023252",
+      "baselineAddress": "Липини, вулиця Шевченка, 4",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-12-1",
@@ -76,7 +132,14 @@
       "region": "Дніпропетровська область",
       "regionQuery": "Дніпропетровська",
       "city": "Дніпро",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Дніпро · Дніпровська громада · КАТОТТГ 12020010010037010",
+      "baselineAddress": "Дніпро, вулиця Шевченка, 8",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-12-2",
@@ -84,7 +147,14 @@
       "region": "Дніпропетровська область",
       "regionQuery": "Дніпропетровська",
       "city": "Павлоград",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Павлоград · Павлоградська громада · КАТОТТГ 12120070010055676",
+      "baselineAddress": "Павлоград, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-12-3",
@@ -94,7 +164,14 @@
       "city": "Слобожанське",
       "role": "мале поселення",
       "cityHint": "Слобожанська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Слобожанське · Слобожанська громада · КАТОТТГ 12020250010046556",
+      "baselineAddress": "Слобожанське, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-12-4",
@@ -104,7 +181,14 @@
       "city": "Новоолександрівка",
       "role": "мале поселення",
       "cityHint": "Новоолександрівська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Тараса Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Тараса Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Новоолександрівка · Новоолександрівська громада · КАТОТТГ 12020130010023313",
+      "baselineAddress": "Новоолександрівка, вулиця Тараса Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-14-1",
@@ -112,7 +196,10 @@
       "region": "Донецька область",
       "regionQuery": "Донецька",
       "city": "Донецьк",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactCityLabel": "м. Донецьк · Донецька громада · КАТОТТГ 14080030010048113",
+      "baselineAddress": null,
+      "baselineOutcome": "house_unavailable"
     },
     {
       "id": "UA-14-2",
@@ -120,7 +207,14 @@
       "region": "Донецька область",
       "regionQuery": "Донецька",
       "city": "Краматорськ",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Краматорськ · Краматорська громада · КАТОТТГ 14120090010038661",
+      "baselineAddress": "Краматорськ, вулиця Миру, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-14-3",
@@ -129,7 +223,14 @@
       "regionQuery": "Донецька",
       "city": "Новодонецьке",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Тараса Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Тараса Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Новодонецьке · Новодонецька громада · КАТОТТГ 14120150010028915",
+      "baselineAddress": "Новодонецьке, вулиця Тараса Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-14-4",
@@ -138,7 +239,14 @@
       "regionQuery": "Донецька",
       "city": "Шахове",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Шахове · Шахівська громада · КАТОТТГ 14160270010010515",
+      "baselineAddress": "Шахове, вулиця Миру, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-18-1",
@@ -146,7 +254,14 @@
       "region": "Житомирська область",
       "regionQuery": "Житомирська",
       "city": "Житомир",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Житомир · Житомирська громада · КАТОТТГ 18040190010057814",
+      "baselineAddress": "Житомир, вулиця Шевченка, 10",
+      "baselineOutcome": "not_included"
     },
     {
       "id": "UA-18-2",
@@ -154,7 +269,14 @@
       "region": "Житомирська область",
       "regionQuery": "Житомирська",
       "city": "Коростень",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Коростень · Коростенська громада · КАТОТТГ 18060090010074365",
+      "baselineAddress": "Коростень, вулиця Шевченка, 8",
+      "baselineOutcome": "needs_selection"
     },
     {
       "id": "UA-18-3",
@@ -164,7 +286,14 @@
       "city": "Глибочиця",
       "role": "мале поселення",
       "cityHint": "Глибочицька",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Глибочиця · Глибочицька громада · КАТОТТГ 18040150010023707",
+      "baselineAddress": "Глибочиця, вулиця Шевченка, 4",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-18-4",
@@ -173,7 +302,14 @@
       "regionQuery": "Житомирська",
       "city": "Станишівка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Станишівка · Станишівська громада · КАТОТТГ 18040490010045864",
+      "baselineAddress": "Станишівка, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-21-1",
@@ -181,7 +317,14 @@
       "region": "Закарпатська область",
       "regionQuery": "Закарпатська",
       "city": "Ужгород",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Тараса Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Тараса Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Ужгород · Ужгородська громада · КАТОТТГ 21100230010016545",
+      "baselineAddress": "Ужгород, вулиця Тараса Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-21-2",
@@ -189,7 +332,14 @@
       "region": "Закарпатська область",
       "regionQuery": "Закарпатська",
       "city": "Мукачево",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка Тараса",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка Тараса",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Мукачево · Мукачівська громада · КАТОТТГ 21040150010056148",
+      "baselineAddress": "Мукачево, вулиця Шевченка Тараса, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-21-3",
@@ -198,7 +348,14 @@
       "regionQuery": "Закарпатська",
       "city": "Оноківці",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Оноківці · Оноківська громада · КАТОТТГ 21100110010025535",
+      "baselineAddress": "Оноківці, вулиця Шевченка, 4",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-21-4",
@@ -207,7 +364,14 @@
       "regionQuery": "Закарпатська",
       "city": "Минай",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Минай · Холмківська громада · КАТОТТГ 21100250060052060",
+      "baselineAddress": "Минай, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-23-1",
@@ -215,7 +379,14 @@
       "region": "Запорізька область",
       "regionQuery": "Запорізька",
       "city": "Запоріжжя",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "бульвар Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "бульвар Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Запоріжжя · Запорізька громада · КАТОТТГ 23060070010069526",
+      "baselineAddress": "Запоріжжя, бульвар Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-23-2",
@@ -223,7 +394,14 @@
       "region": "Запорізька область",
       "regionQuery": "Запорізька",
       "city": "Пологи",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "12",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "12",
+      "exactCityLabel": "м. Пологи · Пологівська громада · КАТОТТГ 23100190010032690",
+      "baselineAddress": "Пологи, вулиця Шевченка, 12",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-23-3",
@@ -232,7 +410,14 @@
       "regionQuery": "Запорізька",
       "city": "Кушугум",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "с-ще Кушугум · Кушугумська громада · КАТОТТГ 23060110010013081",
+      "baselineAddress": "Кушугум, вулиця Шевченка, 8",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-23-4",
@@ -242,7 +427,14 @@
       "city": "Широке",
       "role": "мале поселення",
       "cityHint": "Широківська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Широке (Запорізький) · Широківська громада · КАТОТТГ 23060330010051301",
+      "baselineAddress": "Широке (Запорізький), вулиця Миру, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-26-1",
@@ -250,7 +442,14 @@
       "region": "Івано-Франківська область",
       "regionQuery": "Івано-Франківська",
       "city": "Івано-Франківськ",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Івано-Франківськ · Івано-Франківська громада · КАТОТТГ 26040190010045761",
+      "baselineAddress": "Івано-Франківськ, вулиця Шевченка, 8",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-26-2",
@@ -258,7 +457,14 @@
       "region": "Івано-Франківська область",
       "regionQuery": "Івано-Франківська",
       "city": "Калуш",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Калуш · Калуська громада · КАТОТТГ 26060170010082672",
+      "baselineAddress": "Калуш, вулиця Шевченка, 8",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-26-3",
@@ -267,7 +473,14 @@
       "regionQuery": "Івано-Франківська",
       "city": "Ямниця",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Ямниця · Ямницька громада · КАТОТТГ 26040390010046852",
+      "baselineAddress": "Ямниця, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-26-4",
@@ -276,7 +489,14 @@
       "regionQuery": "Івано-Франківська",
       "city": "Угринів",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Угринів · Угринівська громада · КАТОТТГ 26040370010026626",
+      "baselineAddress": "Угринів, вулиця Шевченка, 4",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-32-1",
@@ -285,9 +505,14 @@
       "regionQuery": "Київська",
       "city": "Київ",
       "role": "обласний центр",
-      "preferredStreet": "Харківське",
+      "preferredStreet": "Харківське шосе",
       "preferredHouse": "188",
-      "note": "Адміністративний центр області — Київ; адреса належить міській мережі, що має визначити застосунок."
+      "note": "Адміністративний центр області — Київ; адреса належить міській мережі, що має визначити застосунок.",
+      "exactStreet": "Харківське шосе",
+      "exactHouse": "188",
+      "exactCityLabel": "м. Київ · Київ громада · КАТОТТГ 80000000000093317",
+      "baselineAddress": "Київ, Харківське шосе, 188",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-32-2",
@@ -295,7 +520,14 @@
       "region": "Київська область",
       "regionQuery": "Київська",
       "city": "Фастів",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Фастів · Фастівська громада · КАТОТТГ 32140150010091295",
+      "baselineAddress": "Фастів, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-32-3",
@@ -305,7 +537,14 @@
       "city": "Борова",
       "role": "мале поселення",
       "cityHint": "Фастівський",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Борова · Фастівська громада · КАТОТТГ 32140150020027754",
+      "baselineAddress": "Борова, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-32-4",
@@ -314,7 +553,14 @@
       "regionQuery": "Київська",
       "city": "Хотів",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Хотів · Феодосіївська громада · КАТОТТГ 32120170080064470",
+      "baselineAddress": "Хотів, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-35-1",
@@ -322,7 +568,14 @@
       "region": "Кіровоградська область",
       "regionQuery": "Кіровоградська",
       "city": "Кропивницький",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "м. Кропивницький · Кропивницька громада · КАТОТТГ 35040210010019355",
+      "baselineAddress": "Кропивницький, вулиця Шевченка, 4",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-35-2",
@@ -330,7 +583,14 @@
       "region": "Кіровоградська область",
       "regionQuery": "Кіровоградська",
       "city": "Олександрія",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Олександрія · Олександрійська громада · КАТОТТГ 35080050010051027",
+      "baselineAddress": "Олександрія, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-35-3",
@@ -339,7 +599,14 @@
       "regionQuery": "Кіровоградська",
       "city": "Соколівське",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Соколівське · Соколівська громада · КАТОТТГ 35040290010080227",
+      "baselineAddress": "Соколівське, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-35-4",
@@ -348,7 +615,14 @@
       "regionQuery": "Кіровоградська",
       "city": "Велика Северинка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Велика Северинка · Великосеверинівська громада · КАТОТТГ 35040050010097904",
+      "baselineAddress": "Велика Северинка, вулиця Миру, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-44-1",
@@ -356,7 +630,10 @@
       "region": "Луганська область",
       "regionQuery": "Луганська",
       "city": "Луганськ",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactCityLabel": "м. Луганськ · Луганська громада · КАТОТТГ 44060010010012753",
+      "baselineAddress": null,
+      "baselineOutcome": "house_unavailable"
     },
     {
       "id": "UA-44-2",
@@ -364,7 +641,14 @@
       "region": "Луганська область",
       "regionQuery": "Луганська",
       "city": "Старобільськ",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Старобільськ · Старобільська громада · КАТОТТГ 44140110010014704",
+      "baselineAddress": "Старобільськ, вулиця Шевченка, 8",
+      "baselineOutcome": "operator_missing"
     },
     {
       "id": "UA-44-3",
@@ -373,7 +657,14 @@
       "regionQuery": "Луганська",
       "city": "Білокуракине",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Білокуракине · Білокуракинська громада · КАТОТТГ 44100010010025116",
+      "baselineAddress": "Білокуракине, вулиця Шевченка, 10",
+      "baselineOutcome": "operator_missing"
     },
     {
       "id": "UA-44-4",
@@ -382,7 +673,14 @@
       "regionQuery": "Луганська",
       "city": "Чмирівка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Чмирівка · Чмирівська громада · КАТОТТГ 44140130010025204",
+      "baselineAddress": "Чмирівка, вулиця Миру, 10",
+      "baselineOutcome": "operator_missing"
     },
     {
       "id": "UA-46-1",
@@ -390,7 +688,14 @@
       "region": "Львівська область",
       "regionQuery": "Львівська",
       "city": "Львів",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка Т.",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка Т.",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Львів · Львівська громада · КАТОТТГ 46060250010015970",
+      "baselineAddress": "Львів, вулиця Шевченка Т., 8",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-46-2",
@@ -398,7 +703,14 @@
       "region": "Львівська область",
       "regionQuery": "Львівська",
       "city": "Дрогобич",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Майдан Шевченка",
+      "exactHouse": "1",
+      "preferredStreet": "вулиця Майдан Шевченка",
+      "preferredHouse": "1",
+      "exactCityLabel": "м. Дрогобич · Дрогобицька громада · КАТОТТГ 46020030010069501",
+      "baselineAddress": "Дрогобич, вулиця Майдан Шевченка, 1",
+      "baselineOutcome": "ambiguous"
     },
     {
       "id": "UA-46-3",
@@ -407,7 +719,14 @@
       "regionQuery": "Львівська",
       "city": "Солонка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Солонка · Солонківська громада · КАТОТТГ 46060430010053981",
+      "baselineAddress": "Солонка, вулиця Шевченка, 10",
+      "baselineOutcome": "not_included"
     },
     {
       "id": "UA-46-4",
@@ -416,7 +735,14 @@
       "regionQuery": "Львівська",
       "city": "Зимна Вода",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Зимна Вода · Зимноводівська громада · КАТОТТГ 46060170010088194",
+      "baselineAddress": "Зимна Вода, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-48-1",
@@ -424,7 +750,14 @@
       "region": "Миколаївська область",
       "regionQuery": "Миколаївська",
       "city": "Миколаїв",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "м. Миколаїв · Миколаївська громада · КАТОТТГ 48060150010035747",
+      "baselineAddress": "Миколаїв, вулиця Шевченка, 4",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-48-2",
@@ -432,7 +765,14 @@
       "region": "Миколаївська область",
       "regionQuery": "Миколаївська",
       "city": "Вознесенськ",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Вознесенськ · Вознесенська громада · КАТОТТГ 48040070010053688",
+      "baselineAddress": "Вознесенськ, вулиця Шевченка, 8",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-48-3",
@@ -441,7 +781,14 @@
       "regionQuery": "Миколаївська",
       "city": "Коблеве",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Коблеве · Коблівська громада · КАТОТТГ 48060090010065073",
+      "baselineAddress": "Коблеве, вулиця Миру, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-48-4",
@@ -450,7 +797,14 @@
       "regionQuery": "Миколаївська",
       "city": "Ольшанське",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Єдності",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Єдності",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Ольшанське · Ольшанська громада · КАТОТТГ 48060230010054298",
+      "baselineAddress": "Ольшанське, вулиця Єдності, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-51-1",
@@ -458,7 +812,14 @@
       "region": "Одеська область",
       "regionQuery": "Одеська",
       "city": "Одеса",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "проспект Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "проспект Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "м. Одеса · Одеська громада · КАТОТТГ 51100270010076757",
+      "baselineAddress": "Одеса, проспект Шевченка, 4",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-51-2",
@@ -466,7 +827,14 @@
       "region": "Одеська область",
       "regionQuery": "Одеська",
       "city": "Подільськ",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Подільськ · Подільська громада · КАТОТТГ 51120190010049331",
+      "baselineAddress": "Подільськ, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-51-3",
@@ -475,7 +843,14 @@
       "regionQuery": "Одеська",
       "city": "Авангард",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Садова",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Садова",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Авангард · Авангардівська громада · КАТОТТГ 51100010010083015",
+      "baselineAddress": "Авангард, вулиця Садова, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-51-4",
@@ -484,7 +859,14 @@
       "regionQuery": "Одеська",
       "city": "Фонтанка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Фонтанка · Фонтанська громада · КАТОТТГ 51100350010073678",
+      "baselineAddress": "Фонтанка, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-53-1",
@@ -492,7 +874,14 @@
       "region": "Полтавська область",
       "regionQuery": "Полтавська",
       "city": "Полтава",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Полтава · Полтавська громада · КАТОТТГ 53080370010073240",
+      "baselineAddress": "Полтава, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-53-2",
@@ -500,7 +889,14 @@
       "region": "Полтавська область",
       "regionQuery": "Полтавська",
       "city": "Кременчук",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Тараса Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Тараса Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Кременчук · Кременчуцька громада · КАТОТТГ 53020110010031694",
+      "baselineAddress": "Кременчук, вулиця Тараса Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-53-3",
@@ -509,7 +905,14 @@
       "regionQuery": "Полтавська",
       "city": "Розсошенці",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Розсошенці · Щербанівська громада · КАТОТТГ 53080470120047950",
+      "baselineAddress": "Розсошенці, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-53-4",
@@ -519,7 +922,14 @@
       "city": "Щербані",
       "role": "мале поселення",
       "cityHint": "Щербанівська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Щербані · Щербанівська громада · КАТОТТГ 53080470010087826",
+      "baselineAddress": "Щербані, вулиця Миру, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-56-1",
@@ -527,7 +937,14 @@
       "region": "Рівненська область",
       "regionQuery": "Рівненська",
       "city": "Рівне",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "3",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "3",
+      "exactCityLabel": "м. Рівне · Рівненська громада · КАТОТТГ 56060470010041018",
+      "baselineAddress": "Рівне, вулиця Шевченка, 3",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-56-2",
@@ -535,7 +952,14 @@
       "region": "Рівненська область",
       "regionQuery": "Рівненська",
       "city": "Сарни",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Сарни · Сарненська громада · КАТОТТГ 56080170010061049",
+      "baselineAddress": "Сарни, вулиця Шевченка, 10",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-56-3",
@@ -544,7 +968,14 @@
       "regionQuery": "Рівненська",
       "city": "Квасилів",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Квасилів · Рівненська громада · КАТОТТГ 56060470020082951",
+      "baselineAddress": "Квасилів, вулиця Шевченка, 10",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-56-4",
@@ -554,7 +985,14 @@
       "city": "Біла Криниця",
       "role": "мале поселення",
       "cityHint": "Білокриницька",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "с. Біла Криниця · Білокриницька громада · КАТОТТГ 56060050010058826",
+      "baselineAddress": "Біла Криниця, вулиця Шевченка, 4",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-59-1",
@@ -562,7 +1000,14 @@
       "region": "Сумська область",
       "regionQuery": "Сумська",
       "city": "Суми",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "12",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "12",
+      "exactCityLabel": "м. Суми · Сумська громада · КАТОТТГ 59080270010036634",
+      "baselineAddress": "Суми, вулиця Шевченка, 12",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-59-2",
@@ -570,7 +1015,14 @@
       "region": "Сумська область",
       "regionQuery": "Сумська",
       "city": "Конотоп",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Конотоп · Конотопська громада · КАТОТТГ 59020070010054283",
+      "baselineAddress": "Конотоп, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-59-3",
@@ -580,7 +1032,14 @@
       "city": "Степанівка",
       "role": "мале поселення",
       "cityHint": "Степанівська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "12",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "12",
+      "exactCityLabel": "с-ще Степанівка · Степанівська громада · КАТОТТГ 59080250010051865",
+      "baselineAddress": "Степанівка, вулиця Шевченка, 12",
+      "baselineOutcome": "no_public_data"
     },
     {
       "id": "UA-59-4",
@@ -589,7 +1048,14 @@
       "regionQuery": "Сумська",
       "city": "Бездрик",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Бездрик · Бездрицька громада · КАТОТТГ 59080010010088745",
+      "baselineAddress": "Бездрик, вулиця Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-61-1",
@@ -597,7 +1063,14 @@
       "region": "Тернопільська область",
       "regionQuery": "Тернопільська",
       "city": "Тернопіль",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "бульвар Тараса Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "бульвар Тараса Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Тернопіль · Тернопільська громада · КАТОТТГ 61040490010069060",
+      "baselineAddress": "Тернопіль, бульвар Тараса Шевченка, 10",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-61-2",
@@ -605,7 +1078,14 @@
       "region": "Тернопільська область",
       "regionQuery": "Тернопільська",
       "city": "Чортків",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Чортків · Чортківська громада · КАТОТТГ 61060430010047348",
+      "baselineAddress": "Чортків, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-61-3",
@@ -614,7 +1094,14 @@
       "regionQuery": "Тернопільська",
       "city": "Велика Березовиця",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Велика Березовиця · Великоберезовицька громада · КАТОТТГ 61040070010077050",
+      "baselineAddress": "Велика Березовиця, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-61-4",
@@ -623,7 +1110,14 @@
       "regionQuery": "Тернопільська",
       "city": "Байківці",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Байківці · Байковецька громада · КАТОТТГ 61040010010041632",
+      "baselineAddress": "Байківці, вулиця Шевченка, 10",
+      "baselineOutcome": "not_found"
     },
     {
       "id": "UA-63-1",
@@ -633,7 +1127,10 @@
       "city": "Харків",
       "role": "обласний центр",
       "preferredStreet": "",
-      "selectionNote": "Choose an existing street from the visible unfiltered list; Unicode automation search failed repeatedly. No street, house or queue is seeded."
+      "selectionNote": "Choose an existing street from the visible unfiltered list; Unicode automation search failed repeatedly. No street, house or queue is seeded.",
+      "exactCityLabel": "м. Харків · Харківська громада · КАТОТТГ 63120270010096107",
+      "baselineAddress": null,
+      "baselineOutcome": "audit_blocked"
     },
     {
       "id": "UA-63-2",
@@ -641,7 +1138,14 @@
       "region": "Харківська область",
       "regionQuery": "Харківська",
       "city": "Лозова",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "бульвар Шевченка",
+      "exactHouse": "4",
+      "preferredStreet": "бульвар Шевченка",
+      "preferredHouse": "4",
+      "exactCityLabel": "м. Лозова · Лозівська громада · КАТОТТГ 63100050010081626",
+      "baselineAddress": "Лозова, бульвар Шевченка, 4",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-63-3",
@@ -650,7 +1154,14 @@
       "regionQuery": "Харківська",
       "city": "Пісочин",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "в’їзд Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "в’їзд Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Пісочин · Пісочинська громада · КАТОТТГ 63120210010032897",
+      "baselineAddress": "Пісочин, в’їзд Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-63-4",
@@ -659,7 +1170,14 @@
       "regionQuery": "Харківська",
       "city": "Мала Данилівка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Мала Данилівка · Малоданилівська громада · КАТОТТГ 63120130010037422",
+      "baselineAddress": "Мала Данилівка, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-65-1",
@@ -667,7 +1185,14 @@
       "region": "Херсонська область",
       "regionQuery": "Херсонська",
       "city": "Херсон",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "22",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "22",
+      "exactCityLabel": "м. Херсон · Херсонська громада · КАТОТТГ 65100150010064384",
+      "baselineAddress": "Херсон, вулиця Шевченка, 22",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-65-2",
@@ -675,7 +1200,14 @@
       "region": "Херсонська область",
       "regionQuery": "Херсонська",
       "city": "Берислав",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Берислав · Бериславська громада · КАТОТТГ 65020010010095508",
+      "baselineAddress": "Берислав, вулиця Шевченка, 10",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-65-3",
@@ -684,7 +1216,14 @@
       "regionQuery": "Херсонська",
       "city": "Чорнобаївка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця 8 Березня",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця 8 Березня",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Чорнобаївка · Чорнобаївська громада · КАТОТТГ 65100170010020440",
+      "baselineAddress": "Чорнобаївка, вулиця 8 Березня, 10",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-65-4",
@@ -693,7 +1232,14 @@
       "regionQuery": "Херсонська",
       "city": "Білозерка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Білозерка · Білозерська громада · КАТОТТГ 65100010010090594",
+      "baselineAddress": "Білозерка, вулиця Шевченка, 10",
+      "baselineOutcome": "integration_required"
     },
     {
       "id": "UA-68-1",
@@ -701,7 +1247,14 @@
       "region": "Хмельницька область",
       "regionQuery": "Хмельницька",
       "city": "Хмельницький",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Хмельницький · Хмельницька громада · КАТОТТГ 68040470010096613",
+      "baselineAddress": "Хмельницький, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-68-2",
@@ -709,7 +1262,14 @@
       "region": "Хмельницька область",
       "regionQuery": "Хмельницька",
       "city": "Шепетівка",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Шепетівка · Шепетівська громада · КАТОТТГ 68060330010023704",
+      "baselineAddress": "Шепетівка, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-68-3",
@@ -718,7 +1278,14 @@
       "regionQuery": "Хмельницька",
       "city": "Лісові Гринівці",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Миру",
+      "exactHouse": "7",
+      "preferredStreet": "вулиця Миру",
+      "preferredHouse": "7",
+      "exactCityLabel": "с. Лісові Гринівці · Лісовогринівецька громада · КАТОТТГ 68040250010044651",
+      "baselineAddress": "Лісові Гринівці, вулиця Миру, 7",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-68-4",
@@ -728,7 +1295,14 @@
       "city": "Розсоша",
       "role": "мале поселення",
       "cityHint": "Розсошанська",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Розсоша · Розсошанська громада · КАТОТТГ 68040330010062625",
+      "baselineAddress": "Розсоша, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-71-1",
@@ -736,7 +1310,14 @@
       "region": "Черкаська область",
       "regionQuery": "Черкаська",
       "city": "Черкаси",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "бульвар Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "бульвар Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Черкаси · Черкаська громада · КАТОТТГ 71080490010015879",
+      "baselineAddress": "Черкаси, бульвар Шевченка, 10",
+      "baselineOutcome": "no_public_data"
     },
     {
       "id": "UA-71-2",
@@ -744,7 +1325,14 @@
       "region": "Черкаська область",
       "regionQuery": "Черкаська",
       "city": "Умань",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Умань · Уманська громада · КАТОТТГ 71060210010010251",
+      "baselineAddress": "Умань, вулиця Шевченка, 10",
+      "baselineOutcome": "no_public_data"
     },
     {
       "id": "UA-71-3",
@@ -753,7 +1341,14 @@
       "regionQuery": "Черкаська",
       "city": "Руська Поляна",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "с. Руська Поляна · Руськополянська громада · КАТОТТГ 71080350010034182",
+      "baselineAddress": "Руська Поляна, вулиця Шевченка, 8",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-71-4",
@@ -763,8 +1358,13 @@
       "city": "Попівка",
       "role": "мале поселення",
       "cityHint": "Смілянський",
-      "preferredStreet": "Романенка",
-      "preferredHouse": "2А"
+      "preferredStreet": "провулок Романенка",
+      "preferredHouse": "2А",
+      "exactStreet": "провулок Романенка",
+      "exactHouse": "2А",
+      "exactCityLabel": "с. Попівка (Смілянський) · Тернівська громада · КАТОТТГ 71080450050098203",
+      "baselineAddress": "Попівка (Смілянський), провулок Романенка, 2А",
+      "baselineOutcome": "queue_found"
     },
     {
       "id": "UA-73-1",
@@ -772,7 +1372,14 @@
       "region": "Чернівецька область",
       "regionQuery": "Чернівецька",
       "city": "Чернівці",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка Тараса",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка Тараса",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Чернівці · Чернівецька громада · КАТОТТГ 73060610010033137",
+      "baselineAddress": "Чернівці, вулиця Шевченка Тараса, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-73-2",
@@ -780,7 +1387,14 @@
       "region": "Чернівецька область",
       "regionQuery": "Чернівецька",
       "city": "Кельменці",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Кельменці · Кельменецька громада · КАТОТТГ 73040030010052462",
+      "baselineAddress": "Кельменці, вулиця Шевченка, 10",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-73-3",
@@ -789,7 +1403,14 @@
       "regionQuery": "Чернівецька",
       "city": "Мамаївці",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка Тараса",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка Тараса",
+      "preferredHouse": "8",
+      "exactCityLabel": "с. Мамаївці · Мамаївська громада · КАТОТТГ 73060370010090405",
+      "baselineAddress": "Мамаївці, вулиця Шевченка Тараса, 8",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-73-4",
@@ -798,7 +1419,14 @@
       "regionQuery": "Чернівецька",
       "city": "Магала",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Аксакі Г.",
+      "exactHouse": "16",
+      "preferredStreet": "вулиця Аксакі Г.",
+      "preferredHouse": "16",
+      "exactCityLabel": "с. Магала · Магальська громада · КАТОТТГ 73060350010055735",
+      "baselineAddress": "Магала, вулиця Аксакі Г., 16",
+      "baselineOutcome": "source_protected"
     },
     {
       "id": "UA-74-1",
@@ -806,7 +1434,14 @@
       "region": "Чернігівська область",
       "regionQuery": "Чернігівська",
       "city": "Чернігів",
-      "role": "обласний центр"
+      "role": "обласний центр",
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "8",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "8",
+      "exactCityLabel": "м. Чернігів · Чернігівська громада · КАТОТТГ 74100390010054825",
+      "baselineAddress": "Чернігів, вулиця Шевченка, 8",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-74-2",
@@ -814,7 +1449,14 @@
       "region": "Чернігівська область",
       "regionQuery": "Чернігівська",
       "city": "Ніжин",
-      "role": "районний центр"
+      "role": "районний центр",
+      "exactStreet": "вулиця Привокзальна",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Привокзальна",
+      "preferredHouse": "10",
+      "exactCityLabel": "м. Ніжин · Ніжинська громада · КАТОТТГ 74040250010023991",
+      "baselineAddress": "Ніжин, вулиця Привокзальна, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-74-3",
@@ -823,7 +1465,14 @@
       "regionQuery": "Чернігівська",
       "city": "Киїнка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с. Киїнка · Киїнська громада · КАТОТТГ 74100130010068937",
+      "baselineAddress": "Киїнка, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-74-4",
@@ -832,7 +1481,14 @@
       "regionQuery": "Чернігівська",
       "city": "Олишівка",
       "role": "мале поселення",
-      "allowAnyCommunity": true
+      "allowAnyCommunity": true,
+      "exactStreet": "вулиця Шевченка",
+      "exactHouse": "10",
+      "preferredStreet": "вулиця Шевченка",
+      "preferredHouse": "10",
+      "exactCityLabel": "с-ще Олишівка · Олишівська громада · КАТОТТГ 74100290010097907",
+      "baselineAddress": "Олишівка, вулиця Шевченка, 10",
+      "baselineOutcome": "source_unavailable"
     },
     {
       "id": "UA-30-1",
@@ -841,8 +1497,13 @@
       "regionQuery": "Київська",
       "city": "Київ",
       "role": "місто окремо",
-      "preferredStreet": "Анни Ахматової",
-      "preferredHouse": "48"
+      "preferredStreet": "вулиця Ахматової Анни",
+      "preferredHouse": "48",
+      "exactStreet": "вулиця Ахматової Анни",
+      "exactHouse": "48",
+      "exactCityLabel": "м. Київ · Київ громада · КАТОТТГ 80000000000093317",
+      "baselineAddress": "Київ, вулиця Ахматової Анни, 48",
+      "baselineOutcome": "queue_found"
     }
   ]
 }

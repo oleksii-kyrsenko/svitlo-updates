@@ -284,6 +284,8 @@ class Audit:
                 value = re.sub(r'^(?:м\.?|с\.?|с-ще\.?|смт\.?|селище|село|місто)\s+', '', value)
                 return norm(re.sub(r'\s*\([^)]*\)', '', value))
             matches = [n for n in options if city_name(n.get('content-desc')) == norm(case['city'])]
+            if case.get('exactCityLabel'):
+                matches=[n for n in matches if norm(n.get('content-desc'))==norm(case['exactCityLabel'])]
             if len(matches)>1 and case['role'] in ['обласний центр','районний центр','місто окремо']:
                 cities=[n for n in matches if re.match(r'^м\.?\s+',n.get('content-desc'))]
                 if cities:
@@ -302,7 +304,7 @@ class Audit:
             self.screenshot('city-selected-from-list', xml)
             self.choose_option(matches[0])
             result['stage'] = 'street'
-            queries = list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
+            queries = [case['exactStreet']] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
             selected = None
             street_open = False
             tried_streets = set()
@@ -315,7 +317,7 @@ class Audit:
                 else:
                     self.type_search('Вулиця', query)
                     options, xml = self.wait_options()
-                selected = next((n for n in options if n.get('content-desc') not in tried_streets), None)
+                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or norm(n.get('content-desc').split(' · ')[0])==norm(case['exactStreet']))), None)
                 if selected is None:
                     continue
                 result['selectedStreetLabel'] = selected.get('content-desc')
@@ -325,7 +327,7 @@ class Audit:
                 result['stage'] = 'house'
                 options, xml = self.field('Будинок', case.get('preferredHouse', ''))
                 numeric = [n for n in options if re.match(r'^\d', n.get('content-desc'))]
-                if not numeric and case.get('preferredHouse'):
+                if not numeric and case.get('preferredHouse') and not case.get('exactHouse'):
                     self.type_search('Будинок', '')
                     options, xml = self.wait_options()
                     numeric = [n for n in options if re.match(r'^\d', n.get('content-desc'))]
@@ -338,6 +340,10 @@ class Audit:
             if not numeric:
                 result.update(outcome='house_unavailable' if tried_streets else 'street_unavailable', visibleText=self.texts(xml))
                 return result
+            if case.get('exactHouse'):
+                numeric=[n for n in numeric if norm(n.get('content-desc'))==norm(case['exactHouse'])]
+                if not numeric:
+                    result.update(outcome='house_unavailable',visibleText=self.texts(xml));return result
             houses = [case.get('preferredHouse', ''), '10', '12', '22', '8', '4', '2', '1']
             selected = next((n for h in houses for n in numeric if norm(n.get('content-desc')) == norm(h)), numeric[0])
             result['selectedHouse'] = selected.get('content-desc')
