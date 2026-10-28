@@ -1,6 +1,6 @@
 {
   "model": "Qwen2.5-1.5B-Instruct Q4_K_M",
-  "startedAt": 1793192496880,
+  "startedAt": 1793194019909,
   "cases": [
     {
       "id": "house",
@@ -34,7 +34,7 @@
           ]
         }
       ],
-      "seconds": 13.47
+      "seconds": 16.38
     },
     {
       "id": "street",
@@ -64,7 +64,7 @@
           "houses": []
         }
       ],
-      "seconds": 3.91
+      "seconds": 6.63
     },
     {
       "id": "settlement",
@@ -94,7 +94,7 @@
           "houses": []
         }
       ],
-      "seconds": 3.34
+      "seconds": 5.35
     },
     {
       "id": "outage",
@@ -116,7 +116,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.74
+      "seconds": 6.92
     },
     {
       "id": "question",
@@ -138,7 +138,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.44
+      "seconds": 6.57
     },
     {
       "id": "uncertain",
@@ -160,7 +160,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.65
+      "seconds": 6.54
     },
     {
       "id": "old",
@@ -182,7 +182,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.85
+      "seconds": 6.79
     },
     {
       "id": "correction",
@@ -204,7 +204,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.68
+      "seconds": 6.92
     },
     {
       "id": "conflict",
@@ -226,7 +226,29 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.0
+      "seconds": 7.67
+    },
+    {
+      "id": "future",
+      "passed": true,
+      "expected": 0,
+      "raw": {
+        "claims": [
+          {
+            "settlement": "Тестове",
+            "community": "Тестова громада",
+            "street": "Садова",
+            "queue": "3.2",
+            "scope": "house",
+            "quote": "З 1 листопада село Тестове, Тестова громада, вулиця Садова, будинок 12 — черга 3.2.",
+            "houses": [
+              "12"
+            ]
+          }
+        ]
+      },
+      "accepted": [],
+      "seconds": 6.92
     },
     {
       "id": "range",
@@ -239,17 +261,40 @@
             "community": "Тестова громада",
             "street": "Садова",
             "queue": "3.2",
-            "scope": "street",
+            "scope": "houses",
             "quote": "Село Тестове, Тестова громада, вулиця Садова, будинки 1–25 — черга 3.2.",
             "houses": [
               "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
               "25"
             ]
           }
         ]
       },
       "accepted": [],
-      "seconds": 4.15
+      "seconds": 11.74
     },
     {
       "id": "injection",
@@ -259,7 +304,7 @@
         "claims": [
           {
             "settlement": "Тестове",
-            "community": "Тестове",
+            "community": "",
             "street": "Садова",
             "queue": "9.9",
             "scope": "house",
@@ -271,7 +316,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 3.26
+      "seconds": 4.33
     },
     {
       "id": "no-locality",
@@ -293,9 +338,9 @@
         ]
       },
       "accepted": [],
-      "seconds": 3.08
+      "seconds": 4.85
     }
   ],
-  "seconds": 59.64,
+  "seconds": 97.6,
   "passed": true
 }
