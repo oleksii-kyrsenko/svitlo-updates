@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.30",
-  "versionCode": 62,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-62/svitlo-test-62.apk",
-  "size": 77287585,
-  "sha256": "6fd205500f33c453506e17ab176a1400c81125443d451b4def5f1c511f5a1c7a",
-  "notes": "Додано безкоштовний спільний кеш офіційних переліків на GitHub. Дані збираються автоматично кожні шість годин; застосунок перевіряє вік і цілісність копії та використовує її після помилки прямого джерела. Ручні черги зберігають пріоритет. Початковий кеш охоплює документи Черкасиобленерго, Хмельницькобленерго та Рівнеобленерго.",
+  "version": "0.1.31",
+  "versionCode": 63,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-63/svitlo-test-63.apk",
+  "size": 77297029,
+  "sha256": "16426bdb92b82740e3364c05bfe7eaf1a6f0afb63f24438c6ed2ab2e398c9ddb",
+  "notes": "Додано підтримку ймовірної черги з місцевого публічного джерела після невдалого офіційного пошуку: посилання, дата, попередження та ручне виправлення. Чотири безкоштовні пакетні агенти працюють на GitHub з відкритою локальною моделлю. Початковий збір трьох каналів не дав нових адресних черг; приріст покриття поки не підтверджений.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-28T09:38:21.776Z",
-  "sourceCommit": "caaa0a2c49c13db5583aad5eeffc230c11a3da78"
+  "publishedAt": "2026-10-28T13:29:58.615794+00:00",
+  "sourceCommit": "2531b45197087caa886ab31f5e713d4ae7adf069"
 }
