@@ -85,7 +85,6 @@ try:
     b=list(map(int,re.findall(r'\d+',field.get('bounds'))))
     adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));adb('shell','input','keyevent','123')
     for _ in range(3):adb('shell','input','keyevent','67')
-    wait_edit('')
     for part,value in [('2','2'),('.','2.'),('2','2.2')]:
         adb('shell','input','text',part);wait_edit(value)
     evidence('queue-value-before-save',wait_edit('2.2'))
