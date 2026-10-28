@@ -1,7 +1,7 @@
 name: National address audit of released APK
 on:
   push:
-    branches: [audit/android-63-97]
+    branches: [audit/android-64-targeted]
     paths: ['.github/qa/national-audit-request.json']
   workflow_dispatch:
     inputs:
@@ -71,12 +71,12 @@ jobs:
       - name: Fetch the exact public APK without changing application code
         run: |
           mkdir -p artifacts national-audit
-          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-63.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/872add2/candidate/svitlo-test-63.apk
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-64.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/f58e8880e14fb3372fc15f65f19ec768ee184cfc/candidate/svitlo-test-64.apk
           python3 - <<'PY'
           import hashlib,pathlib
-          p=pathlib.Path('artifacts/svitlo-test-63.apk')
-          assert p.stat().st_size==77297029
-          assert hashlib.sha256(p.read_bytes()).hexdigest()=='16426bdb92b82740e3364c05bfe7eaf1a6f0afb63f24438c6ed2ab2e398c9ddb'
+          p=pathlib.Path('artifacts/svitlo-test-64.apk')
+          assert p.stat().st_size==77306085
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='ff34ff42c3513f9c3aeb88a5f40b1666374536efee79923cc0dcc7027de3bbdb'
           PY
       - name: Install Unicode-capable native UI automation
         run: |
@@ -103,7 +103,7 @@ jobs:
           script: |
             appium --address 127.0.0.1 --port 4723 --log national-audit/appium.log > national-audit/appium-stdout.log 2>&1 &
             python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
-            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-63.apk --region '${{ matrix.region }}' --limit '${{ needs.plan.outputs.limit }}' --case-ids '${{ needs.plan.outputs.cases }}'
+            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-64.apk --region '${{ matrix.region }}' --limit '${{ needs.plan.outputs.limit }}' --case-ids '${{ needs.plan.outputs.cases }}'
       - name: Preserve per-address screenshots, accessibility trees and app-written results
         if: always()
         uses: actions/upload-artifact@v4

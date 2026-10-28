@@ -266,7 +266,7 @@ class Audit:
         start = time.monotonic()
         result = {**case, 'startedAt': stamp(), 'method': 'released-apk-visible-ui', 'stage': 'open', 'uiIssues': [],
                   'auditRunId':os.environ.get('GITHUB_RUN_ID'), 'auditCommit':os.environ.get('GITHUB_SHA'),
-                  'apkVersion':'0.1.31', 'apkCode':63, 'androidApi':35}
+                  'apkVersion':'0.1.32', 'apkCode':64, 'androidApi':35}
         try:
             self.open_new_editor()
             self.phase = 'select-region'
@@ -452,7 +452,7 @@ def main():
             print('AUDIT_CASE_START', case['id'], case['city'], stamp(), flush=True)
             result = audit.run_case(case)
             results.append(result)
-            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1, 'apkVersion':'0.1.31', 'apkCode':63,
+            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1, 'apkVersion':'0.1.32', 'apkCode':64,
                 'region':args.region, 'cases':results}, ensure_ascii=False, indent=2)+'\n')
             print('AUDIT_CASE_RESULT', json.dumps({k:result.get(k) for k in ['id','city','outcome','actualAddress','visibleQueue','lookupSeconds','totalSeconds','automationError']}, ensure_ascii=False), flush=True)
     finally:
