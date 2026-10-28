@@ -1,0 +1,119 @@
+name: Compare protected DTEK source on APK62 and APK63
+on:
+  push:
+    branches: [audit/android-63-97]
+    paths: ['.github/qa/dtek-control-request.json']
+  workflow_dispatch:
+    inputs:
+      regions:
+        description: Region IDs as JSON array
+        required: true
+        default: '["UA-30","UA-71"]'
+      limit:
+        description: Number of settlements per region (pilot 1, full 4)
+        required: true
+        default: '1'
+permissions:
+  contents: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      regions: ${{ steps.plan.outputs.regions }}
+      limit: ${{ steps.plan.outputs.limit }}
+      cases: ${{ steps.plan.outputs.cases }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate the requested audit subset
+        id: plan
+        env:
+          INPUT_REGIONS: ${{ inputs.regions }}
+          INPUT_LIMIT: ${{ inputs.limit }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          path=pathlib.Path('.github/qa/dtek-control-request.json')
+          request=json.loads(path.read_text()) if path.exists() else {}
+          regions=json.loads(os.environ['INPUT_REGIONS']) if os.environ.get('INPUT_REGIONS') else request['regions']
+          limit=int(os.environ.get('INPUT_LIMIT') or request.get('limit',4))
+          cases=request.get('caseIds',[]) if not os.environ.get('INPUT_REGIONS') else []
+          targets=json.loads(pathlib.Path('.github/qa/national-address-cases.json').read_text())['cases']
+          assert isinstance(regions,list) and regions and len(set(regions))==len(regions)
+          assert all(r in {c['regionId'] for c in targets} for r in regions)
+          assert 1<=limit<=4
+          assert isinstance(cases,list) and all(c in {v['id'] for v in targets if v['regionId'] in regions} for c in cases)
+          if cases:assert all(any(c['regionId']==r and c['id'] in cases for c in targets) for r in regions)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+            f.write('regions='+json.dumps(regions)+'\nlimit='+str(limit)+'\ncases='+','.join(cases)+'\n')
+          print('Planned audit',regions,'limit',limit,'specific cases',cases)
+          PY
+  audit:
+    needs: plan
+    name: Audit ${{ matrix.region }}
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        region: ${{ fromJSON(needs.plan.outputs.regions) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      APPIUM_HOME: /tmp/svitlo-appium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Fetch the exact public APK without changing application code
+        run: |
+          mkdir -p artifacts control-audit
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-63.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/872add2/candidate/svitlo-test-63.apk
+          python3 - <<'PY'
+          import hashlib,pathlib
+          p=pathlib.Path('artifacts/svitlo-test-63.apk')
+          assert p.stat().st_size==77297029
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='16426bdb92b82740e3364c05bfe7eaf1a6f0afb63f24438c6ed2ab2e398c9ddb'
+          PY
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-62.apk https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-62/svitlo-test-62.apk
+          echo '6fd205500f33c453506e17ab176a1400c81125443d451b4def5f1c511f5a1c7a  artifacts/svitlo-test-62.apk' | sha256sum --check
+      - name: Install Unicode-capable native UI automation
+        run: |
+          npm install --prefix "$RUNNER_TEMP/svitlo-ui-tools" --no-audit --no-fund appium@3.8.0
+          echo "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin/appium" driver install --source=npm appium-uiautomator2-driver@8.7.0
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Select addresses and obtain queues using the actual application UI
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 4096M
+          heap-size: 768M
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: |
+            appium --address 127.0.0.1 --port 4723 --log control-audit/appium.log > control-audit/appium-stdout.log 2>&1 &
+            python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
+            adb uninstall ua.svitlo.app.testing || true
+            python3 .github/qa/dtek-control-62.py --apk artifacts/svitlo-test-62.apk --out control-audit/build62 --region '${{ matrix.region }}' --limit 1 --case-ids '${{ needs.plan.outputs.cases }}'
+            adb uninstall ua.svitlo.app.testing
+            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-63.apk --out control-audit/build63 --region '${{ matrix.region }}' --limit 1 --case-ids '${{ needs.plan.outputs.cases }}'
+      - name: Preserve per-address screenshots, accessibility trees and app-written results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-control-${{ matrix.region }}-${{ github.run_id }}
+          path: control-audit/
+          if-no-files-found: error
+          retention-days: 30
