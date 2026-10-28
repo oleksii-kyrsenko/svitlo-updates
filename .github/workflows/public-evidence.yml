@@ -1,0 +1,68 @@
+name: Public evidence agents
+on:
+  schedule:
+    - cron: '47 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [feature/public-evidence-agents]
+    paths: ['public-evidence/*.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
+permissions:
+  contents: write
+concurrency:
+  group: public-evidence-agents
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: public-evidence/.cache
+          key: evidence-model-${{ hashFiles('public-evidence/model-lock.json') }}
+      - name: Public document and OCR readers
+        run: |
+          pip install pypdf==6.1.1 openpyxl==3.1.5 pillow==12.0.0 defusedxml==0.7.1
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-ukr
+      - name: Prepare verified free local inference
+        run: python public-evidence/setup-model.py
+      - name: Start CPU model bound to localhost
+        run: |
+          "$EVIDENCE_SERVER" -m "$EVIDENCE_MODEL" --host 127.0.0.1 --port 8765 -c 4096 -t 4 > /tmp/evidence-model.log 2>&1 &
+          python - <<'PY'
+          import time,urllib.request
+          for attempt in range(60):
+            try:
+              if urllib.request.urlopen('http://127.0.0.1:8765/health',timeout=2).status==200:break
+            except Exception:time.sleep(1)
+          else:raise RuntimeError('Local model did not start')
+          PY
+      - name: Quality gate before processing live publications
+        run: python public-evidence/qa/benchmark.py
+      - name: Four roles collect, extract and verify public evidence
+        run: python public-evidence/agents.py
+      - name: Preserve results including failed quality controls
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-evidence-${{ github.run_id }}
+          path: |
+            public-evidence/qa/benchmark-result.json
+            public-evidence/report.json
+            public-evidence/manifest.json
+            public-evidence/discovered-sources.json
+          retention-days: 14
+      - name: Publish auditable public data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public-evidence/manifest.json public-evidence/report.json public-evidence/discovered-sources.json public-evidence/qa/benchmark-result.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh public evidence and quality report'
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}

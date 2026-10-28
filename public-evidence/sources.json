@@ -1,0 +1,148 @@
+{
+  "enabled": true,
+  "official": [
+    {
+      "url": "https://www.voe.com.ua/disconnection/detailed",
+      "operatorId": "vinnytsia",
+      "regionId": "UA-05"
+    },
+    {
+      "url": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+      "operatorId": "volyn",
+      "regionId": "UA-07"
+    },
+    {
+      "url": "https://www.dtek-dnem.com.ua/ua/shutdowns",
+      "operatorId": "dtek-dnipro",
+      "regionId": "UA-12"
+    },
+    {
+      "url": "https://www.dtek-dem.com.ua/ua/shutdowns",
+      "operatorId": "dtek-donetsk",
+      "regionId": "UA-14"
+    },
+    {
+      "url": "https://www.ztoe.com.ua/unhooking-search.php",
+      "operatorId": "zhytomyr",
+      "regionId": "UA-18"
+    },
+    {
+      "url": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
+      "operatorId": "zakarpattia",
+      "regionId": "UA-21"
+    },
+    {
+      "url": "https://www.zoe.com.ua/графіки-погодинних-стабілізаційних/",
+      "operatorId": "zaporizhzhia",
+      "regionId": "UA-23"
+    },
+    {
+      "url": "https://www.dtek-kem.com.ua/ua/shutdowns",
+      "operatorId": "dtek-kyiv",
+      "regionId": "UA-30"
+    },
+    {
+      "url": "https://www.dtek-krem.com.ua/ua/shutdowns",
+      "operatorId": "dtek-kyiv-region",
+      "regionId": "UA-32"
+    },
+    {
+      "url": "https://kiroe.com.ua/electricity-blackout",
+      "operatorId": "kirovohrad",
+      "regionId": "UA-35"
+    },
+    {
+      "url": "https://poweron.loe.lviv.ua/",
+      "operatorId": "lviv",
+      "regionId": "UA-46"
+    },
+    {
+      "url": "https://off.energy.mk.ua/",
+      "operatorId": "mykolaiv",
+      "regionId": "UA-48"
+    },
+    {
+      "url": "https://www.dtek-oem.com.ua/ua/shutdowns",
+      "operatorId": "dtek-odesa",
+      "regionId": "UA-51"
+    },
+    {
+      "url": "https://www.poe.pl.ua/disconnection/hrafik-pohodynnoho-vidkliuchennia-elektroenerhii/",
+      "operatorId": "poltava",
+      "regionId": "UA-53"
+    },
+    {
+      "url": "https://oe.if.ua/uk/emergency_shutdowns",
+      "operatorId": "prykarpattia",
+      "regionId": "UA-26"
+    },
+    {
+      "url": "https://www.soe.com.ua/consumers/shutdowns",
+      "operatorId": "sumy",
+      "regionId": "UA-59"
+    },
+    {
+      "url": "https://www.roe.vsei.ua/disconnections",
+      "operatorId": "rivne",
+      "regionId": "UA-56"
+    },
+    {
+      "url": "https://www.toe.com.ua/",
+      "operatorId": "ternopil",
+      "regionId": "UA-61"
+    },
+    {
+      "url": "https://www.oblenergo.kharkov.ua/getinfoingao",
+      "operatorId": "kharkiv",
+      "regionId": "UA-63"
+    },
+    {
+      "url": "https://ksoe.com.ua/",
+      "operatorId": "kherson",
+      "regionId": "UA-65"
+    },
+    {
+      "url": "https://hoe.com.ua/page/informatsija-vidkljuchennja",
+      "operatorId": "khmelnytskyi",
+      "regionId": "UA-68"
+    },
+    {
+      "url": "https://www.cherkasyoblenergo.com/off",
+      "operatorId": "cherkasy",
+      "regionId": "UA-71"
+    },
+    {
+      "url": "https://oblenergo.cv.ua/shutdowns/",
+      "operatorId": "chernivtsi",
+      "regionId": "UA-73"
+    },
+    {
+      "url": "https://chernihivoblenergo.com.ua/blackouts",
+      "operatorId": "chernihiv",
+      "regionId": "UA-74"
+    }
+  ],
+  "community": [
+    {
+      "url": "https://t.me/s/suspilnepoltava",
+      "expectedTitle": "Суспільне Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "discoveryMethod": "Public channel preview reviewed; owner not independently verified"
+    },
+    {
+      "url": "https://t.me/s/suspilnekherson",
+      "expectedTitle": "Суспільне Херсон",
+      "regionId": "UA-65",
+      "operatorId": "kherson",
+      "discoveryMethod": "Public channel preview reviewed; owner not independently verified"
+    },
+    {
+      "url": "https://t.me/s/pat_cherkasyoblenergo",
+      "expectedTitle": "Черкасиобленерго",
+      "regionId": "UA-71",
+      "operatorId": "cherkasy",
+      "discoveredFrom": "https://www.cherkasyoblenergo.com/off"
+    }
+  ]
+}
