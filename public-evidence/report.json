@@ -1,58 +1,71 @@
 {
-  "startedAt": 1793192346109,
+  "startedAt": 1793192556610,
   "agents": {
     "official": [
       {
-        "sourceUrl": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
-        "sha256": "d49f415abea6d61dfb62d6d00938a82974f9b2cf03395cf0710cf403c0518835",
-        "discoveredChannels": [],
-        "links": [
-          "https://energy.volyn.ua/spozhyvacham/pzree/!files/voe-reestr.pdf"
-        ]
-      },
-      {
         "sourceUrl": "https://www.dtek-dnem.com.ua/ua/shutdowns",
-        "sha256": "135dc5f844820c2fef208a1f31e1ee4f5323ac71c72c9ce738caf699b17d2e9d",
+        "sha256": "94bd2c3fb0251365462793776d6d95c6efe124a8747078cf250d12b986065be9",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.dtek-dem.com.ua/ua/shutdowns",
-        "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
+        "sha256": "38c3c6f7bf1155ff35cf21390a552206ba35a18d0a0462c4a6b540df52e18781",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
-        "sha256": "0cb1a5874f970134f3966adaaa24d3690e59a71235826d97d79febc45cf52542",
+        "sha256": "2b3e70414fa972bb81f307ff942b6d05fa9d9578e153bc60db68e3f513f34299",
         "discoveredChannels": [],
         "links": []
       },
       {
-        "sourceUrl": "https://www.zoe.com.ua/outage/",
-        "sha256": "0a076ffe76e407adede6d01d674a34c3317bf0db5433a8330b900984aedf23f6",
+        "sourceUrl": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
+        "sha256": "36e91af233620d0bbbec165e2faabc9ef4b08802aaa9cef2efaea1da1bd88994",
         "discoveredChannels": [],
         "links": [
-          "https://www.zoe.com.ua/wp-content/uploads/2024/10/Адреси-споживвачів-АТ-Укрзалізниця-які-з0заживлені-від-мереж-ПАТ-Запоріжжяобленерго.pdf",
-          "https://www.zoe.com.ua/wp-content/uploads/2025/12/замовити-безкоштовну-послугу-в-ппко.pdf",
-          "https://www.zoe.com.ua/wp-content/uploads/2025/12/замовити-платну-послугу-в-ппко.pdf"
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv1-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv2-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv3-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv4-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv5-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-1.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-2.pdf",
+          "https://zakarpat.energy/wp-content/uploads/2026/09/gpv6-2.pdf"
         ]
       },
       {
         "sourceUrl": "https://www.dtek-kem.com.ua/ua/shutdowns",
-        "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
+        "sha256": "6dcf7b39c7a148afc62c41623d2771b178f516f0af79d60477f5df543e6dee9e",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.dtek-krem.com.ua/ua/shutdowns",
-        "sha256": "ee18bb73c854991d579868c5641e6c14967ded467a3e1ee722dc4fa5e943709c",
+        "sha256": "07d79a13f079870ca6587850d9295d0ec54aefbfd5115a9b6b753dc98bc49744",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://kiroe.com.ua/electricity-blackout",
-        "sha256": "003da3a5362a7ce4a4c43a41d7dcc46d9e589e9c69934900ace6e0a675aedd86",
+        "sha256": "594c135165cb71467ae8f4bda8ecef6e04a8ea43aee48c1d33f018da04c8c27c",
         "discoveredChannels": [
           {
             "url": "https://t.me/s/SvitloBlagovishenskogoRajonu",
@@ -194,17 +207,15 @@
       },
       {
         "sourceUrl": "https://www.dtek-oem.com.ua/ua/shutdowns",
-        "sha256": "6dc54fc80fb1f7adff4a7f9a4984fe5f0a75c6f4c6c41f611b2a741b70809fbd",
+        "sha256": "6c28265a31d52c422ba2395c3461fd4169af80d926f1fb7726d8937bb91aac98",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://oe.if.ua/uk/emergency_shutdowns",
-        "sha256": "8ff65af6913e5e0ccf27dcf23aa4fd73aa50c66000eac3897491fe8919f7b5bc",
+        "sha256": "a50f9de08ed8963db0871009c5b972d8bdc004327fa2a43f3e58eb210a21ed00",
         "discoveredChannels": [],
-        "links": [
-          "https://oe.if.ua/uploads/privacy_policy.pdf"
-        ]
+        "links": []
       },
       {
         "sourceUrl": "https://www.soe.com.ua/consumers/shutdowns",
@@ -214,7 +225,7 @@
       },
       {
         "sourceUrl": "https://www.roe.vsei.ua/disconnections",
-        "sha256": "f0301b216512ae9f14f904746a3792a0f1289766ada2e367d8e03f45abffbfac",
+        "sha256": "a90851de70fcf972674460342229c668617326c713256e4423e688dd3f09ab26",
         "discoveredChannels": [],
         "links": [
           "https://www.roe.vsei.ua/docs/public/Polityka_PRaT_ROE_schodo_lichylnykiv_elektr_energii.pdf",
@@ -234,14 +245,8 @@
         ]
       },
       {
-        "sourceUrl": "https://oblenergo.kharkiv.ua/uk/gaoinfo",
-        "sha256": "8efd9ea22204c2ce80294444ecd5937fa77839e2e23e9c2d223cd6a9d6ee126a",
-        "discoveredChannels": [],
-        "links": []
-      },
-      {
         "sourceUrl": "https://ksoe.com.ua/",
-        "sha256": "a9bd9b36f89ce2516d5da1e4af24f9fc8ef34b58af363a901873f6663e6dc1e4",
+        "sha256": "32222c167968956d7e8d1f75462fd8147f950e38fa6f368b4a4328e1df75f729",
         "discoveredChannels": [],
         "links": [
           "https://ksoe.com.ua/statics/web/files/RegisterOfSuppliers_07092026.pdf",
@@ -269,12 +274,6 @@
           }
         ],
         "links": []
-      },
-      {
-        "sourceUrl": "https://oblenergo.cv.ua/shutdowns/",
-        "sha256": "8156387e781e45bf5667c491928ec6fcd77af3d4312d0a0d616a16c0432df89d",
-        "discoveredChannels": [],
-        "links": []
       }
     ],
     "community": [
@@ -296,24 +295,29 @@
     },
     "verification": {
       "accepted": 0,
-      "mode": "shadow"
+      "mode": "active"
     }
   },
   "errors": [
     {
       "agent": "official",
       "url": "https://www.voe.com.ua/disconnection/detailed",
-      "error": "HTTP Error 404: Not Found"
-    },
-    {
-      "agent": "official",
-      "url": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
       "error": "HTTP Error 403: Forbidden"
     },
     {
       "agent": "official",
+      "url": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "agent": "official",
+      "url": "https://www.zoe.com.ua/графіки-погодинних-стабілізаційних/",
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "agent": "official",
       "url": "https://www.poe.pl.ua/disconnection/hrafik-pohodynnoho-vidkliuchennia-elektroenerhii/",
-      "error": "HTTP Error 503: Service Unavailable"
+      "error": "<urlopen error timed out>"
     },
     {
       "agent": "official",
@@ -322,9 +326,19 @@
     },
     {
       "agent": "official",
+      "url": "https://www.oblenergo.kharkov.ua/getinfoingao",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "agent": "official",
+      "url": "https://oblenergo.cv.ua/shutdowns/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "agent": "official",
       "url": "https://chernihivoblenergo.com.ua/blackouts",
-      "error": "HTTP Error 503: Service Unavailable"
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
     }
   ],
-  "finishedAt": 1793192396858
+  "finishedAt": 1793192636993
 }
