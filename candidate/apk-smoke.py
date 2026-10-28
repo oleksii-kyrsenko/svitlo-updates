@@ -21,6 +21,13 @@ def wait_for(*labels):
         time.sleep(2)
 def bounds(node):
     return list(map(int,re.findall(r'\d+',node.get('bounds',''))))
+def wait_edit(value):
+    deadline=time.monotonic()+20
+    while True:
+        s=xml()
+        if any(n.get('class')=='android.widget.EditText' and n.get('text')==value for n in E.fromstring(s).iter('node')):return s
+        if time.monotonic()>deadline:raise AssertionError('Queue input did not contain '+repr(value))
+        time.sleep(1)
 def scroll_down(tree):
     candidates=[bounds(n) for n in tree.iter('node') if n.get('scrollable')=='true']
     candidates=[b for b in candidates if len(b)==4 and b[2]>b[0] and b[3]>b[1]]
@@ -48,7 +55,7 @@ def evidence(name,s):
 flags={}
 try:
     print(adb('root',check=False),flush=True);adb('wait-for-device')
-    # Offline fixture assertions cannot be changed by a live operator publication.
+    # Fixture-based UI/state checks; network isolation is not asserted.
     adb('shell','svc','wifi','disable');adb('shell','svc','data','disable')
     print(adb('install','-r','-g','--abi','x86_64','previous.apk'),flush=True)
     state=json.loads((root/'fixture.json').read_text());place=state['places'][0]
@@ -71,14 +78,17 @@ try:
     field=None
     for _ in range(10):
         tree=E.fromstring(xml())
-        field=next((n for n in tree.iter('node') if n.get('class')=='android.widget.EditText' and n.get('text')=='3.1' and len(bounds(n))==4 and bounds(n)[3]>bounds(n)[1]),None)
+        field=next((n for n in tree.iter('node') if n.get('class')=='android.widget.EditText' and n.get('text')=='3.1' and len(bounds(n))==4 and bounds(n)[3]-bounds(n)[1]>=60),None)
         if field is not None:break
         scroll_down(tree)
     assert field is not None,'Queue input is not visible after scrolling'
     b=list(map(int,re.findall(r'\d+',field.get('bounds'))))
     adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));adb('shell','input','keyevent','123')
     for _ in range(3):adb('shell','input','keyevent','67')
-    adb('shell','input','text','2.2')
+    wait_edit('')
+    for part,value in [('2','2'),('.','2.'),('2','2.2')]:
+        adb('shell','input','text',part);wait_edit(value)
+    evidence('queue-value-before-save',wait_edit('2.2'))
     if re.search(r'\b(?:mInputShown|mIsInputViewShown|mInputViewShown)\s*[=:]\s*true',adb('shell','dumpsys','input_method')):adb('shell','input','keyevent','4')
     tap('Зберегти зміни',scroll=True);wait_for('Черга 2.2','вказано вами');flags['manualQueueEdited']=True
     launch();s=wait_for('Черга 2.2','вказано вами');evidence('manual-after-restart',s)
@@ -91,5 +101,5 @@ try:
     assert 'Success' in adb('shell','pm','clear',pkg)
     launch();s=wait_for('Ввести адресу');evidence('cleared-data',s);flags['startsWithClearedData']=True
 finally:
-    result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'apkSha256':meta['sha256'],'scope':'startup, update, manual correction, restart, cleared storage; offline fixture only','flags':flags,'allPassed':len(flags)==5 and all(flags.values())}
+    result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'apkSha256':meta['sha256'],'scope':'fixture-based startup, update, manual correction, restart, cleared storage; live-source/graph/notification behavior and network isolation are not asserted','flags':flags,'allPassed':len(flags)==5 and all(flags.values())}
     (out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result),flush=True)
