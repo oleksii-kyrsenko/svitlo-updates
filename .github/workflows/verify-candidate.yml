@@ -39,7 +39,7 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
-          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/cache-smoke.py
+          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -71,8 +71,12 @@ jobs:
           pathlib.Path('candidate/cache-results.json').write_text(json.dumps(caches,ensure_ascii=False,indent=2)+'\n')
           meta=json.load(open('candidate/meta.json'));assert all(r['apkSha256']==meta['sha256'] for r in results)
           pathlib.Path('candidate/native-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
-          notes='Світло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK пройшла нативну перевірку на API 30, 35 і 36: запуск попередньої версії, оновлення зі збереженим місцем, виправлення автоматичної черги, збереження ручної правки після перезапуску та запуск після очищення даних. Це перевірка з ізольованими тестовими даними; живі джерела, графіки та сповіщення в цьому нативному прогоні не перевірялися. Ізоляція мережі не стверджується. Окремо на цих трьох API підтверджено автоматичний пошук через GitHub-кеш при заблокованому на емуляторі домені оператора: точний будинок і вся вулиця, джерело, час перевірки та збереження після перезапуску.\n\n201 Node-тест, 55 перевірок React-екранів, 3 браузерні перевірки виконані окремо. Живі перевірки кешу поза APK підтвердили точний будинок у Лісових Гринівцях і всю вулицю у Квасилові. Вихідний коміт APK: '+meta['sourceCommit']+'. Код застосунку зберігається в приватному репозиторії.\n'
+          public_results=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/public-queue-result.json')]
+          assert {r['api'] for r in public_results}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in public_results)
+          pathlib.Path('candidate/public-queue-results.json').write_text(json.dumps(public_results,ensure_ascii=False,indent=2)+'\n')
+          notes='Світло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK пройшла нативну перевірку на API 30, 35 і 36: запуск попередньої версії, оновлення зі збереженим місцем, виправлення автоматичної черги, збереження ручної правки після перезапуску та запуск після очищення даних. Це перевірка з ізольованими тестовими даними; живі джерела, графіки та сповіщення в цьому нативному прогоні не перевірялися. Ізоляція мережі не стверджується. Окремо на цих трьох API підтверджено автоматичний пошук через GitHub-кеш при заблокованому на емуляторі домені оператора: точний будинок і вся вулиця, джерело, час перевірки та збереження після перезапуску.\n\n207 Node-тестів, 56 перевірок React-екранів, 3 браузерні перевірки виконані окремо. Живі перевірки кешу поза APK підтвердили точний будинок у Лісових Гринівцях і всю вулицю у Квасилові. Вихідний коміт APK: '+meta['sourceCommit']+'. Код застосунку зберігається в приватному репозиторії.\n'
+          notes+='\nДодатково на трьох API перевірено умовні публічні дані: попередження, відмінність недоступності офіційного сайту від відсутності адреси, перезапуск і відкликання прострочених даних. Це тестові записи, не нові знайдені адреси.\n'
           pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
           PY
-          gh release upload android-test-62 candidate/svitlo-test-62.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json candidate/cache-results.json --clobber
-          gh release edit android-test-62 --draft=false --prerelease --title 'Світло 0.1.30 — Android 62' --notes-file candidate/VERIFIED-NOTES.md
+          gh release upload android-test-63 candidate/svitlo-test-63.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json candidate/cache-results.json candidate/public-queue-results.json --clobber
+          gh release edit android-test-63 --draft=false --prerelease --title 'Світло 0.1.31 — Android 63' --notes-file candidate/VERIFIED-NOTES.md
