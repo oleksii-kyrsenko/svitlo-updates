@@ -1,0 +1,75 @@
+name: Verify public Android candidate
+on:
+  push:
+    branches: ['candidates/**']
+    paths: ['candidate/**', '.github/workflows/verify-candidate.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify signed candidate and fetch the published baseline
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import json,urllib.request,hashlib,pathlib
+          meta=json.load(open('latest.json'))
+          data=urllib.request.urlopen(meta['apkUrl'],timeout=90).read()
+          assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          pathlib.Path('previous.apk').write_bytes(data)
+          PY
+      - name: Enable available runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: python3 -u candidate/apk-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-apk-api${{ matrix.api }}
+          path: apk-diagnostics/
+  publish:
+    needs: native
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: public-apk-api*
+          path: verified-native
+      - name: Verify results and publish the candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json
+          results=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/result.json')]
+          assert {r['api'] for r in results}=={'30','35','36'} and all(r['allPassed'] for r in results)
+          meta=json.load(open('candidate/meta.json'));assert all(r['apkSha256']==meta['sha256'] for r in results)
+          pathlib.Path('candidate/native-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
+          notes='Світло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK пройшла нативну перевірку на API 30, 35 і 36: запуск попередньої версії, оновлення зі збереженим місцем, виправлення автоматичної черги, збереження ручної правки після перезапуску та запуск після очищення даних. Це перевірка з ізольованими даними без мережі; живі джерела, графіки та сповіщення в цьому нативному прогоні не перевірялися.\n\n190 Node-тестів, 51 перевірка React-екранів, 3 браузерні перевірки виконані окремо. 16 додаткових черг відтворено кодом із живими джерелами, поза APK. Вихідний коміт APK: '+meta['sourceCommit']+'. Код застосунку зберігається в приватному репозиторії.\n'
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
+          PY
+          gh release upload android-test-59 candidate/svitlo-test-59.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json --clobber
+          gh release edit android-test-59 --draft=false --prerelease --title 'Світло 0.1.29 — Android 59' --notes-file candidate/VERIFIED-NOTES.md
