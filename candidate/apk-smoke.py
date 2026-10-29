@@ -8,8 +8,13 @@ def adb(*args,check=True):
     return p.stdout
 def xml():
     adb('shell','rm','/sdcard/apk-qa.xml',check=False)
-    adb('shell','uiautomator','dump','/sdcard/apk-qa.xml')
-    s=adb('shell','cat','/sdcard/apk-qa.xml');tree=E.fromstring(s)
+    for attempt in range(4):
+        adb('shell','uiautomator','dump','/sdcard/apk-qa.xml',check=False)
+        s=adb('shell','cat','/sdcard/apk-qa.xml',check=False)
+        try:tree=E.fromstring(s);break
+        except E.ParseError:
+            if attempt==3:raise
+            time.sleep(2)
     if any(n.get('text')=="Pixel Launcher isn't responding" for n in tree.iter('node')):
         recovered=getattr(xml,'launcher_recoveries',0);assert recovered<2,'Pixel Launcher repeatedly failed'
         xml.launcher_recoveries=recovered+1
@@ -94,12 +99,16 @@ try:
     assert field is not None,'Queue input is not visible after scrolling'
     b=list(map(int,re.findall(r'\d+',field.get('bounds'))))
     adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));adb('shell','input','keyevent','123')
-    for _ in range(3):
-        adb('shell','input','keyevent','67');time.sleep(.3)
-    # Let the controlled input commit its cleared value before issuing the replacement.
-    time.sleep(1)
-    cleared=E.fromstring(xml());assert any(n.get('class')=='android.widget.EditText' and n.get('focused')=='true' and n.get('text') in ['', 'Наприклад, 2.1'] for n in cleared.iter('node'))
-    adb('shell','input','text','2.2');wait_edit('2.2')
+    api=int(adb('shell','getprop','ro.build.version.sdk').strip())
+    if api>=33:
+        # Replace the selection in one edit. Clearing the controlled value first
+        # starts an address lookup whose optional connection panel moves this field.
+        adb('shell','input','keycombination','113','29')
+        adb('shell','input','text','2.2');wait_edit('2.2')
+    else:
+        for _ in range(3):adb('shell','input','keyevent','67')
+        for part,value in [('2','2'),('.','2.'),('2','2.2')]:
+            adb('shell','input','text',part);wait_edit(value)
     evidence('queue-value-before-save',wait_edit('2.2'))
     if re.search(r'\b(?:mInputShown|mIsInputViewShown|mInputViewShown)\s*[=:]\s*true',adb('shell','dumpsys','input_method')):adb('shell','input','keyevent','4')
     tap('Зберегти зміни',scroll=True);wait_for('Черга 2.2','вказано вами');flags['manualQueueEdited']=True
