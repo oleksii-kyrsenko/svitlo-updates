@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.41",
+  "versionCode": 73,
+  "fileName": "svitlo-test-73.apk",
+  "sourceCommit": "8aa708050b8a95c9eaa19118dbf288c772fd187c",
+  "privateBuildRun": 40931492386,
+  "notes": "Компактна кнопка пошуку черги, очищення всередині поля та видалення адреси без заливки. «Зберегти зміни» активна лише за наявності змін; повернення початкових значень знову вимикає кнопку. Фонове уточнення не вважається ручною правкою.",
+  "size": 77323449,
+  "sha256": "8b828b0a64875fe4dcd68ce6156e6457540f2921cf1808faab38012e6831143a",
+  "nodeTests": 217,
+  "reactChecks": 85,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 4
+}
