@@ -49,4 +49,20 @@ class Documents(unittest.TestCase):
   with patch('documents.inspect_document',return_value={'format':'pdf','pages':1,'textCharacters':1}):
    report=watch_documents({'url':url,'operatorId':'poltava','regionId':'UA-53','documentHosts':['operator.example']},fetch,1793190000000)
   self.assertEqual(len(report['documents']),3);self.assertEqual(len(calls),4)
+ def test_operator_landing_is_followed_without_fixed_document_name(self):
+  url='https://news.example/article';landing='https://operator.example/disconnection/hrafik/';doc='https://operator.example/current-season.pdf';calls=[]
+  body='<time class="content-date" datetime="2026-10-27T21:00:00+02:00"></time><article><a href="'+landing+'">Посилання</a></article>'
+  def fetch(u):
+   calls.append(u)
+   return (body.encode(),'text/html',u) if u==url else (('<a href="'+doc+'">PDF</a>').encode(),'text/html',u) if u==landing else (b'%PDF-test','application/pdf',u)
+  with patch('documents.inspect_document',return_value={'format':'pdf','pages':1,'textCharacters':100}):
+   report=watch_documents({'url':url,'operatorId':'poltava','regionId':'UA-53','documentHosts':['operator.example']},fetch,1793190000000)
+  self.assertEqual(calls,[url,landing,doc]);self.assertEqual(report['documents'][0]['discoveryPath'],[url,landing,doc]);self.assertIsNone(report['documents'][0]['linkedFromPublishedAt']);self.assertIsNone(report['documents'][0]['documentPublishedAt']);self.assertEqual(report['runtimeRecords'],0)
+ def test_landing_failure_does_not_claim_document_was_read(self):
+  url='https://news.example/article';body=b'<time class="content-date" datetime="2026-10-27T21:00:00+02:00"></time><article><a href="https://operator.example/disconnection/">Graph</a></article>'
+  def fetch(u):
+   if u==url:return body,'text/html',url
+   raise ValueError('503 unavailable')
+  report=watch_documents({'url':url,'operatorId':'poltava','regionId':'UA-53','documentHosts':['operator.example']},fetch,1793190000000)
+  self.assertEqual(report['documents'],[]);self.assertEqual(report['landingPages'][0]['status'],'fetch_or_format_error');self.assertIn('503',report['landingPages'][0]['error'])
 if __name__=='__main__':unittest.main()
