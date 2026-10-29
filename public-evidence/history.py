@@ -2,6 +2,7 @@
 import re,html,datetime,urllib.parse,hashlib
 from bs4 import BeautifulSoup
 from coverage import published_at
+from documents import document_links
 DAY=86400000
 
 def telegram_page(body,url,now):
@@ -59,6 +60,6 @@ def read_articles(source,fetch,now,days=180,max_pages=5):
    article=p.select_one('article .entry-content, article, main') or p
    for tag in article.select('script,style,nav,header,footer'):tag.decompose()
    text=article.get_text(' ',strip=True)
-   messages.append({'text':text,'sourceUrl':url,'publishedAt':published,'html':raw.decode('utf-8',errors='replace') if isinstance(raw,bytes) else raw})
+   messages.append({'text':text,'sourceUrl':url,'publishedAt':published,'html':raw.decode('utf-8',errors='replace') if isinstance(raw,bytes) else raw,'documentCandidates':document_links(str(article),url,source.get('documentHosts',[]))})
   except Exception as e:errors.append({'url':url,'error':str(e)[:160]})
  return messages,{'url':final,'pages':len(urls),'posts':len(messages),'stopReason':'article_limit' if source.get('index') else 'direct_article','historyDaysRequested':days,'readUrls':read_urls,'errors':errors}

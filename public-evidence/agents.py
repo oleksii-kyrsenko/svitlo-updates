@@ -156,11 +156,20 @@ def collect():
  from history import read_telegram,read_articles
  from discovery import discover_links,search_sources
  from coverage import parse_roster
+ from documents import watch_documents
  deadline=time.monotonic()+18*60;now=NOW();state_path=ROOT/'history-state.json';history_state=json.loads(state_path.read_text()) if state_path.exists() else {};config=json.loads((ROOT/'sources.json').read_text());report={'startedAt':now,'agents':{'official':[],'discovery':[],'community':[],'extraction':{'messages':0,'relevantMessages':0,'modelCalls':0},'verification':{}},'errors':[]};candidates=[];archive=[];discoveries=[];feeds=[];seen_publications=set()
  for source in config['official']:
   if time.monotonic()>deadline:break
   try:report['agents']['official'].append(official_agent(source))
   except Exception as e:report['errors'].append({'agent':'official','url':source['url'],'error':str(e)[:200]})
+ # Linked-document observations stay outside the runtime manifest. A news
+ # date does not establish the publication date or validity of its attachment.
+ document_reports=[]
+ for source in config.get('documents',[])[:4]:
+  if time.monotonic()>deadline:break
+  try:document_reports.append(watch_documents(source,fetch,now,deadline))
+  except Exception as e:document_reports.append({'indexUrl':source['url'],'error':str(e)[:200],'runtimeRecords':0})
+ report['agents']['documents']=document_reports
  for source in config.get('discovery',[])[:20]:
   if time.monotonic()>deadline:break
   try:
@@ -179,6 +188,7 @@ def collect():
    report['agents']['community'].append(stats);seen_publications.update(stats.get('readUrls',[]));seen_publications.update(m['sourceUrl'] for m in messages)
    for message in messages:
     report['agents']['extraction']['messages']+=1
+    discoveries.extend({**link,'discoveredFrom':message['sourceUrl'],'linkedFromPublishedAt':message['publishedAt'],'regionId':source['regionId'],'status':'needs_document_review'} for link in message.get('documentCandidates',[]))
     if message.get('html') and source.get('roster'):
      for record in parse_roster(message['html'],{**source,'url':message['sourceUrl']},now):
       (candidates if record['expiresAt']>now else archive).append(record)

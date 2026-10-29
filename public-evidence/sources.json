@@ -440,5 +440,19 @@
         "Липини"
       ]
     }
+  ],
+  "documents": [
+    {
+      "url": "https://poltava.to/project/poltavaoblenergo/",
+      "index": true,
+      "operatorId": "poltava",
+      "regionId": "UA-53",
+      "documentHosts": [
+        "www.poe.pl.ua",
+        "poe.pl.ua"
+      ],
+      "reviewBasisUrl": "https://poltava.to/project/11187/",
+      "note": "Document discovery only. No queues, seasons or address mappings in configuration."
+    }
   ]
 }
