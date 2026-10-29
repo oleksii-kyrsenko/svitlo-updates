@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.38",
+  "versionCode": 70,
+  "fileName": "svitlo-test-70.apk",
+  "sourceCommit": "0e4ba82f6860ffb281a575a0035120e9685c9c8e",
+  "privateBuildRun": 40917205906,
+  "notes": "Екран «Налаштування адреси»: усі поля відкриті одразу, геопозиція, мапа й видалення оформлені кнопками. Нова адреса відкриває мапу біля поточної геопозиції; збережена — з позначкою свого будинку. Мапа одразу наближена, підтвердження незміненої позначки зберігає адресу та чергу.",
+  "size": 77321653,
+  "sha256": "0dfd93ddb9b57b9a391ca991b77572f4ecc73d36f69f29dd73375191539ae420",
+  "nodeTests": 217,
+  "reactChecks": 78,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 4
+}
