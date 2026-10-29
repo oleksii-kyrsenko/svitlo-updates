@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.34",
-  "versionCode": 66,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-66/svitlo-test-66.apk",
-  "size": 77311221,
-  "sha256": "214ea733735781d6fe57bee02f7143f31df30bcfe8be80a9d59169ed50b9b390",
-  "notes": "Час останнього оновлення перенесено під заголовок «Графік на добу». Фонові перевірки графіка, збереженої адреси, черги та версії застосунку більше не показують прелоадери. Індикатори залишено для першого завантаження та дій, результату яких ви очікуєте.",
+  "version": "0.1.35",
+  "versionCode": 67,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-67/svitlo-test-67.apk",
+  "size": 77317933,
+  "sha256": "12388dd79173042b3adac0a0800e893c704b1828046488d626d8643059f66fd1",
+  "notes": "Редагування й видалення місця з підтвердженням. Після видалення відкривається перше збережене місце або форма додавання. Налаштування стали спільними для застосунку: дозволи та фонова робота, опис можливостей і розділ «Вигляд» з позначкою «Незабаром».",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-29T11:24:10.291545+00:00",
-  "sourceCommit": "ad0413575d5744116a64aba3bf7e89662b840d07"
+  "publishedAt": "2026-10-29T12:53:54.817020+00:00",
+  "sourceCommit": "3c8226cd119fa76bdd2cbdaec3b9b7897d073845"
 }
