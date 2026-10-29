@@ -1,0 +1,42 @@
+{
+  "places": [
+    {
+      "id": "cache-qa",
+      "name": "Cache QA",
+      "address": "Лісові Гринівці, вулиця Миру, 7",
+      "latitude": null,
+      "longitude": null,
+      "regionId": "UA-68",
+      "operatorId": "khmelnytskyi",
+      "operatorConfirmed": true,
+      "queue": null,
+      "queueOrigin": null,
+      "queueScope": null,
+      "queueConfirmed": false,
+      "queueCheckedAt": null,
+      "addressContext": {
+        "regionId": "UA-68",
+        "settlement": "Лісові Гринівці"
+      },
+      "reminders": {
+        "enabled": false,
+        "off": false,
+        "on": false,
+        "changes": false,
+        "offMinutes": 10,
+        "onMinutes": 10
+      },
+      "addressParts": {
+        "settlement": "Лісові Гринівці",
+        "street": "вулиця Миру",
+        "house": "7"
+      }
+    }
+  ],
+  "deleted": [],
+  "snapshots": {},
+  "endpoint": "",
+  "gpsAsked": true,
+  "pushToken": null,
+  "notificationsEnabled": false
+}
