@@ -35,7 +35,7 @@ try:
   time.sleep(1)
  else:raise TimeoutError('server health')
  allcases=json.loads((ROOT/'inputs.json').read_text())['cases'];cases=[c for i,c in enumerate(allcases) if i%shards==shard]
- manifest={'model':model,'modelLock':lock,'runtimeLock':locks['runtime'],'shard':shard,'shards':shards,'threads':4,'context':6144,'reasoningBudget':192,'maxTokens':512,'temperature':0,'seed':42,'caseCount':len(cases),'command':command,'platform':subprocess.check_output(['uname','-a'],text=True).strip(),'cpu':subprocess.check_output(['lscpu'],text=True),'inputsSha256':hashlib.file_digest((ROOT/'inputs.json').open('rb'),'sha256').hexdigest()};(out/'manifest.json').write_text(json.dumps(manifest,indent=2))
+ manifest={'model':model,'modelLock':lock,'runtimeLock':locks['runtime'],'shard':shard,'shards':shards,'threads':4,'context':6144,'reasoningBudget':192,'maxTokens':768,'temperature':0,'seed':42,'caseCount':len(cases),'command':command,'platform':subprocess.check_output(['uname','-a'],text=True).strip(),'cpu':subprocess.check_output(['lscpu'],text=True),'inputsSha256':hashlib.file_digest((ROOT/'inputs.json').open('rb'),'sha256').hexdigest()};(out/'manifest.json').write_text(json.dumps(manifest,indent=2))
  for c in cases:
   t=time.monotonic();row={'id':c['id'],'kyivControl':c['kyivControl'],'model':model,'inputSha256':c['inputSha256']}
   try:row.update(infer(c))
