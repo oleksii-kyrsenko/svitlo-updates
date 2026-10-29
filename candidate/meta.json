@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.42",
+  "versionCode": 74,
+  "fileName": "svitlo-test-74.apk",
+  "sourceCommit": "0ed1336f468f1323d471f355f8ce926ab9c0530c",
+  "privateBuildRun": 40952810403,
+  "notes": "Компактні дії редагування адреси та збереження лише за наявності змін. Якщо оновлення недоступне, останній графік залишається на телефоні з початковою датою перевірки й попередженням. Кнопка оновлення має чіткий вигляд і стан виконання; фонові перевірки без прелоадерів.",
+  "size": 77326497,
+  "sha256": "f9a6315997c69d6e25e0f15c506855c9711285dbf15964f0e071b4ce0eb96872",
+  "nodeTests": 223,
+  "reactChecks": 93,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 5
+}

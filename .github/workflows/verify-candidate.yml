@@ -1,0 +1,99 @@
+name: Verify public Android candidate
+on:
+  push:
+    branches: ['candidates/**']
+    paths: ['candidate/**', '.github/workflows/verify-candidate.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify signed candidate and fetch the published baseline
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import json,urllib.request,hashlib,pathlib
+          meta=json.load(open('latest.json'))
+          data=urllib.request.urlopen(meta['apkUrl'],timeout=90).read()
+          assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          pathlib.Path('previous.apk').write_bytes(data)
+          PY
+      - name: Enable available runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/schedule-ui-smoke.py && python3 -u candidate/editor-map-smoke.py && python3 -u candidate/offline-ui-smoke.py && python3 -u candidate/settings-ui-smoke.py && python3 -u candidate/navigation-ui-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-apk-api${{ matrix.api }}
+          path: apk-diagnostics/
+  publish:
+    needs: native
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: public-apk-api*
+          path: verified-native
+      - name: Verify results and publish the candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json
+          results=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/result.json')]
+          assert {r['api'] for r in results}=={'30','35','36'} and all(r['allPassed'] for r in results)
+          caches=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/cache-result.json')]
+          assert {r['api'] for r in caches}=={'30','35','36'} and all(r['allPassed'] for r in caches)
+          pathlib.Path('candidate/cache-results.json').write_text(json.dumps(caches,ensure_ascii=False,indent=2)+'\n')
+          meta=json.load(open('candidate/meta.json'));assert all(r['apkSha256']==meta['sha256'] for r in results)
+          layout=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/schedule-ui-result.json')]
+          assert {r['api'] for r in layout}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in layout)
+          pathlib.Path('candidate/schedule-ui-results.json').write_text(json.dumps(layout,ensure_ascii=False,indent=2)+'\n')
+          pathlib.Path('candidate/native-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
+          public_results=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/public-queue-result.json')]
+          assert {r['api'] for r in public_results}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in public_results)
+          pathlib.Path('candidate/public-queue-results.json').write_text(json.dumps(public_results,ensure_ascii=False,indent=2)+'\n')
+          settings=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/settings-ui-result.json')]
+          assert {r['api'] for r in settings}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in settings)
+          pathlib.Path('candidate/settings-ui-results.json').write_text(json.dumps(settings,ensure_ascii=False,indent=2)+'\n')
+          navigation=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/navigation-ui-result.json')]
+          assert {r['api'] for r in navigation}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in navigation)
+          pathlib.Path('candidate/navigation-ui-results.json').write_text(json.dumps(navigation,ensure_ascii=False,indent=2)+'\n')
+          maps=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/editor-map-result.json')]
+          assert {r['api'] for r in maps}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in maps)
+          pathlib.Path('candidate/editor-map-results.json').write_text(json.dumps(maps,ensure_ascii=False,indent=2)+'\n')
+          offline=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/offline-ui-result.json')]
+          assert {r['api'] for r in offline}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in offline)
+          pathlib.Path('candidate/offline-ui-results.json').write_text(json.dumps(offline,ensure_ascii=False,indent=2)+'\n')
+          notes='Світло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK перевірена на API30/35/36: оновлення з попередньої версії зі збереженням адрес, ручна правка черги та перезапуск, картка «Поточна адреса» й окрема кнопка «Обрати іншу», прямий перехід до «Мої адреси», довга назва зі збільшеним системним шрифтом, порожній список адрес, меню з трьома діями та вибір адреси, повернення системною кнопкою Android, відсутність нижньої панелі, адреса й редагування в блоці джерела. Збережені перевірки глобальних налаштувань, реальних переходів до дозволів Android, видалення адрес, часу оновлення графіка, фонових індикаторів, офіційного кешу й публічних попереджень. Тестові адресні дані поза APK; це не новий аудит живого покриття чи тест фізичного телефона.\n\n223 Node-тестів, 93 сценаріїв React, 11 сценаріїв оновлення, 5 сценаріїв сповіщень, 5 перевірок фонової роботи та 3 браузерні перевірки виконані окремо. Вихідний коміт: '+meta['sourceCommit']+'. Код застосунку приватний.\n'
+          notes+='\nКомпактні дії за варіантом1: очищення всередині поля, пошук контурною кнопкою та видалення без заливки. Без змін або після незміненого піну кнопка збереження неактивна; ручна правка черги активує її й зберігається. Повернення початкової назви/черги, фонове уточнення без активації, нова адреса й рух піну перевірені окремими реальними React-сценаріями.\n'
+          notes+='\nДодатково перевірено відкриті поля адреси/назви/оператора/черги, кнопки геопозиції, мапи й видалення; пін збереженої адреси без дозволу GPS, підтвердження незміненої точки, нова адреса з GPS емулятора та скасування без зміни черги. Реальний вміст мапи також перевірений виконанням згенерованого JavaScript у тестах: координати, пін і початкове наближення19.\n'
+          notes+='\nОфлайн-перевірка тієї самої APK: при вимкненій мережі повні збережені плани на сьогодні/завтра, початкові checkedAt/validUntil, попередження про кеш, перезапуск без втрати інтервалів і натискання реальної кнопки повторного оновлення. Порожній кеш не створює вигаданих годин. Відновлення свіжого плану і черга ручного запиту після фонового перевірені React-сценаріями.\n'
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
+          PY
+          gh release upload android-test-74 candidate/svitlo-test-74.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json candidate/cache-results.json candidate/public-queue-results.json candidate/schedule-ui-results.json candidate/settings-ui-results.json candidate/navigation-ui-results.json candidate/editor-map-results.json candidate/offline-ui-results.json --clobber
+          gh release edit android-test-74 --draft=false --prerelease --title 'Світло 0.1.42 — Android 74' --notes-file candidate/VERIFIED-NOTES.md
