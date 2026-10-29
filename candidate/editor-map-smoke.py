@@ -24,7 +24,7 @@ def map_pin(s):
  views=[bounds(n) for n in tree.iter('node') if n.get('class')=='android.webkit.WebView' and positive(n) and bounds(n)[0]<=b[0] and bounds(n)[1]<=b[1] and bounds(n)[2]>=b[2] and bounds(n)[3]>=b[3]];assert views,'Marker is not inside the map WebView';v=min(views,key=lambda b:(b[2]-b[0])*(b[3]-b[1]));x=(b[0]+b[2])/2;y=(b[1]+b[3])/2
  assert v[0]+.2*(v[2]-v[0])<x<v[0]+.8*(v[2]-v[0]) and v[1]+.2*(v[3]-v[1])<y<v[1]+.8*(v[3]-v[1]),'Initial pin is not near map centre'
 
-stop=threading.Event();thread=None
+stop=threading.Event();thread=None;location_consent=False;location_retries=0
 try:
  state=json.loads(pathlib.Path('candidate/fixture.json').read_text());p=state['places'][0];p.update(name='QA Address',queue='3.1',queueOrigin='manual',queueConfirmed=True,coordinateAccuracy='house',addressParts={'settlement':'Попівка','street':'провулок Романенка','house':'2а'});state.update(activePlaceId=p['id'],snapshots={})
  seed(state)
@@ -44,17 +44,29 @@ try:
  form_top();tap('Обрати на мапі');s=wait('Пошук адреси на мапі','Позначка адреси','Знайти адресу',p['address']);map_pin(s);flags['savedHousePinWithoutGPSPermission']=True;evidence('editor-saved-house-map',s)
  tap('Знайти адресу');wait('Налаштування адреси');tap('Зберегти зміни');source_wait('Черга 3.1','вказано вами');persisted=c['state_read']()['places'][0];assert persisted['name']==p['name'] and persisted['address']==p['address'] and persisted['queue']=='3.1' and persisted['queueOrigin']=='manual' and persisted['latitude']==p['latitude'] and persisted['longitude']==p['longitude'];assert all(key not in persisted for key in ['zoom','label','chosen','origin']);flags['unchangedMapPinPreservesAddressQueue']=True
  for permission in ['android.permission.ACCESS_COARSE_LOCATION','android.permission.ACCESS_FINE_LOCATION']:adb('shell','pm','grant',pkg,permission)
- adb('shell','settings','put','secure','location_mode','3');adb('shell','cmd','location','set-location-enabled','true',check=False)
+ adb('shell','svc','wifi','enable');adb('shell','svc','data','enable');adb('shell','settings','put','secure','location_mode','3');adb('shell','cmd','location','set-location-enabled','true',check=False)
  launch();wait('current-address-card');c['navigate']('＋ Додати адресу');wait('Налаштування адреси')
  gps={'latitude':p['latitude']+.02,'longitude':p['longitude']+.03}
  def publish_gps():
-  for _ in range(15):
+  for _ in range(120):
    if stop.is_set():break
    adb('emu','geo','fix',str(gps['longitude']),str(gps['latitude']),check=False);stop.wait(1)
- thread=threading.Thread(target=publish_gps,daemon=True);thread.start();tap('Обрати на мапі');s=wait('Пошук адреси на мапі','Поточна геопозиція','Позначка адреси','Знайти адресу');map_pin(s);stop.set();thread.join(timeout=5);flags['newAddressMapUsesCurrentGPS']=True;evidence('editor-new-address-gps-map',s)
+ thread=threading.Thread(target=publish_gps,daemon=True);thread.start();tap('Обрати на мапі');deadline=time.monotonic()+140
+ while True:
+  s=xml();tree=E.fromstring(s)
+  if all(label in s for label in ['Пошук адреси на мапі','Поточна геопозиція','Позначка адреси','Знайти адресу']):break
+  accepts=[n for n in tree.iter('node') if n.get('class')=='android.widget.Button' and n.get('text','').lower() in ['turn on','yes','agree','i agree','ok'] and n.get('package') in ['com.google.android.gms','android']]
+  if accepts and 'location' in s.lower() and any(word in s.lower() for word in ['accuracy','improve','better experience']):
+   evidence('editor-location-accuracy-consent',s);tap(accepts[0].get('text'));location_consent=True;continue
+  if location_consent and location_retries<1 and 'Повторити відкриття мапи' in s:
+   evidence('editor-gps-retry-after-system-setup',s);tap('Повторити відкриття мапи');location_retries+=1;continue
+  if time.monotonic()>deadline:raise AssertionError('Current GPS map did not open after emulator location consent')
+  time.sleep(1)
+ map_pin(s);stop.set();thread.join(timeout=5);flags['newAddressMapUsesCurrentGPS']=True;evidence('editor-new-address-gps-map',s)
  tap('Скасувати');s=wait('Налаштування адреси','Оберіть область');assert p['address'] not in s;flags['cancelMapKeepsNewDraftBlank']=True;evidence('editor-new-map-cancelled',s)
 finally:
  stop.set()
+ adb('shell','svc','wifi','disable',check=False);adb('shell','svc','data','disable',check=False)
  if thread:thread.join(timeout=5)
  (out/'editor-map-location.txt').write_text(adb('shell','dumpsys','location',check=False))
- result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'flags':flags,'apkSha256':c['c']['meta']['sha256'],'allPassed':len(flags)==9 and all(flags.values()),'scope':'Injected saved-house coordinates and Android emulator GPS; visible real WebView marker and GPS/address entry, generated map centre/zoom separately tested in JavaScript. Live tile coverage/house geocoder and physical GPS accuracy not asserted.'};(out/'editor-map-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('EDITOR_MAP_RESULT',json.dumps(result),flush=True)
+ result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'flags':flags,'apkSha256':c['c']['meta']['sha256'],'allPassed':len(flags)==9 and all(flags.values()),'locationAccuracyConsent':location_consent,'gpsRetryAfterConsent':location_retries,'scope':'Injected saved-house coordinates and Android emulator GPS; visible real WebView marker and GPS/address entry, generated map centre/zoom separately tested in JavaScript. Live tile coverage/house geocoder and physical GPS accuracy not asserted.'};(out/'editor-map-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('EDITOR_MAP_RESULT',json.dumps(result),flush=True)
