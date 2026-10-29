@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   directory:
-    runs-on: macos-14
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
