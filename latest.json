@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.40",
-  "versionCode": 72,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-72/svitlo-test-72.apk",
-  "size": 77321693,
-  "sha256": "956a8b9f7ace4f9031bf231afc1e974f5973e96eaf931b0c368b923d59b853e4",
-  "notes": "Екран «Налаштування адреси» з відкритими полями й кнопками геопозиції, мапи та видалення. Нова адреса відкриває мапу біля поточного GPS, збережена — на своєму будинку, з максимальним наближенням. Нова форма відкривається зверху, а незмінений пін зберігає адресу та чергу.",
+  "version": "0.1.42",
+  "versionCode": 74,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-74/svitlo-test-74.apk",
+  "size": 77326497,
+  "sha256": "f9a6315997c69d6e25e0f15c506855c9711285dbf15964f0e071b4ce0eb96872",
+  "notes": "Компактні дії редагування адреси та збереження лише за наявності змін. Якщо оновлення недоступне, останній графік залишається на телефоні з початковою датою перевірки й попередженням. Кнопка оновлення має чіткий вигляд і стан виконання; фонові перевірки без прелоадерів.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-29T18:05:21.866348+00:00",
-  "sourceCommit": "26c241fe1269668d059d5c279af6071c313260d0"
+  "publishedAt": "2026-10-29T21:11:04.063Z",
+  "sourceCommit": "0ed1336f468f1323d471f355f8ce926ab9c0530c"
 }
