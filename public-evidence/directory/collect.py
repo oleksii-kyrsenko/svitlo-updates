@@ -5,6 +5,9 @@ from reader import street_links,observe
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 async def collect():
  config=json.loads((ROOT/'sources.json').read_text());state_path=ROOT/'directory-state.json';state=json.loads(state_path.read_text()) if state_path.exists() else {};now=int(time.time()*1000);deadline=time.monotonic()+6*60;accepted=[];read_urls=set();eligible={};report={'executionEnvironment':'github-actions' if os.environ.get('GITHUB_ACTIONS')=='true' else 'workspace','startedAt':now,'sources':[],'errors':[],'records':0}
+ sources=json.loads((pathlib.Path(__file__).parent/'sources.json').read_text())
+ if not sources:
+  (ROOT/'directory-report.json').write_text(json.dumps({**report,'status':'disabled'},ensure_ascii=False,indent=2)+'\n');return
  executable=os.environ.get('SVITLO_BROWSER_BIN') or shutil.which('google-chrome') or shutil.which('chromium')
  async with async_playwright() as p:
   options={'headless':True,'args':['--no-sandbox']}
@@ -21,7 +24,7 @@ async def collect():
    if len(text)>2_000_000:raise ValueError('Page size limit')
    return text
   try:
-   for source in json.loads((pathlib.Path(__file__).parent/'sources.json').read_text())[:4]:
+   for source in sources[:4]:
     if time.monotonic()>deadline:break
     stats={'url':source['url'],'pages':0,'candidates':0,'accepted':0,'errors':[]};report['sources'].append(stats)
     try:

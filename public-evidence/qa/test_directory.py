@@ -1,6 +1,7 @@
 import unittest,sys,pathlib,datetime
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/'directory'))
 from reader import observe,street_links
+from disable import disable
 class Directory(unittest.TestCase):
  source={'url':'https://energy-ua.info/select/%D1%81.%2BТестове','sourceSettlement':'с. Тестове','settlement':'Тестове','community':'Тестова','regionName':'Полтавська область','regionId':'UA-53','operatorId':'poltava','geographyBasisUrl':'https://example.invalid/community'}
  url='https://energy-ua.info/grafik/%D1%81.%2BТестове/Садова'
@@ -29,4 +30,11 @@ class Directory(unittest.TestCase):
  def test_combined_street_label_invalidates_component_blanket_claims(self):
   body='<h1>Графік відключення електроенергії с. Тестове (Полтавська область)</h1><a href="'+self.url+'">Садова</a><a href="'+self.url+'%2CМиру">Садова,Миру</a>'
   self.assertEqual(street_links(body,self.source),[])
+ def test_directory_rollback_preserves_existing_sources_and_original_times(self):
+  import tempfile,json
+  with tempfile.TemporaryDirectory() as tmp:
+   root=pathlib.Path(tmp);(root/'directory').mkdir();(root/'directory/sources.json').write_text('[{}]')
+   legacy={'id':'existing','fetchedAt':123,'expiresAt':789,'evidenceType':'section-roster'}
+   (root/'manifest.json').write_text(json.dumps({'schemaVersion':2,'enabled':True,'generatedAt':100,'records':[legacy,{'id':'new','evidenceType':'address-directory'}]}))
+   self.assertEqual(disable(root),1);data=json.loads((root/'manifest.json').read_text());self.assertTrue(data['enabled']);self.assertEqual(data['records'],[legacy]);self.assertEqual(json.loads((root/'directory/sources.json').read_text()),[])
 if __name__=='__main__':unittest.main()
