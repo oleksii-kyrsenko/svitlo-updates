@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.37",
-  "versionCode": 69,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-69/svitlo-test-69.apk",
-  "size": 77319509,
-  "sha256": "fb968f6586fff192bfe896b116b36d212be878d0039aa84d4bf6840f7e270000",
-  "notes": "Замість селектора — картка «Поточна адреса» з окремою кнопкою «Обрати іншу». Кнопка відкриває екран «Мої адреси». Довгі назви й збільшений шрифт підтримуються; збережені адреси та налаштування зберігаються.",
+  "version": "0.1.40",
+  "versionCode": 72,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-72/svitlo-test-72.apk",
+  "size": 77321693,
+  "sha256": "956a8b9f7ace4f9031bf231afc1e974f5973e96eaf931b0c368b923d59b853e4",
+  "notes": "Екран «Налаштування адреси» з відкритими полями й кнопками геопозиції, мапи та видалення. Нова адреса відкриває мапу біля поточного GPS, збережена — на своєму будинку, з максимальним наближенням. Нова форма відкривається зверху, а незмінений пін зберігає адресу та чергу.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-29T16:31:16.435707+00:00",
-  "sourceCommit": "988fa57b0bd4d519207eedcf7e8ec38d3e0af56b"
+  "publishedAt": "2026-10-29T18:05:21.866348+00:00",
+  "sourceCommit": "26c241fe1269668d059d5c279af6071c313260d0"
 }
