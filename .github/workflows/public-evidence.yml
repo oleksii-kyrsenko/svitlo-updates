@@ -4,8 +4,8 @@ on:
     - cron: '47 4 * * *'
   workflow_dispatch:
   push:
-    branches: [feature/public-evidence-agents, feature/targeted-public-coverage]
-    paths: ['public-evidence/agents.py', 'public-evidence/coverage.py', 'public-evidence/history.py', 'public-evidence/discovery.py', 'public-evidence/qa/test_coverage.py', 'public-evidence/setup-model.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
+    branches: [feature/public-evidence-agents, feature/targeted-public-coverage, feature/poltava-dynamic-sources]
+    paths: ['public-evidence/agents.py', 'public-evidence/coverage.py', 'public-evidence/history.py', 'public-evidence/discovery.py', 'public-evidence/documents.py', 'public-evidence/qa/test_coverage.py', 'public-evidence/setup-model.py', 'public-evidence/sources.json', 'public-evidence/model-lock.json', 'public-evidence/qa/benchmark.py', '.github/workflows/public-evidence.yml']
 permissions:
   contents: write
 concurrency:

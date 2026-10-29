@@ -42,7 +42,8 @@ def published_at(soup):
   for value in re.findall(r'"datePublished"\s*:\s*"([^"]+)"',tag.get_text()):
    try:return timestamp(value)
    except ValueError:pass
- for tag in soup.select('time[itemprop="datePublished"], time.entry-date'):
+ # Read the article's own date; never a generic sidebar/footer <time>.
+ for tag in soup.select('time[itemprop="datePublished"], time.entry-date, time.content-date[datetime]'):
   try:return timestamp(tag.get('datetime',''))
   except ValueError:pass
  return None
