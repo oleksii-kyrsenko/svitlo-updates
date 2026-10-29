@@ -1,0 +1,28 @@
+name: Complete long-context model comparison cases
+on:
+  push:
+    branches: [bench/deepseek-96]
+    paths: ['qa/model-comparison-retry/**', '.github/workflows/model-comparison-retry.yml']
+permissions:
+  contents: read
+jobs:
+  retry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [qwen, deepseek]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retry identical long input with larger context
+        env:
+          BENCH_OUTPUT: results
+          BENCH_CASE_IDS: UA-68-1,UA-68-2
+        run: python qa/model-comparison-retry/run_retry.py '${{ matrix.model }}' 0 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: model-${{ matrix.model }}-99
+          path: results/
+          retention-days: 7
