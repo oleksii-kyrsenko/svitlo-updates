@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.31",
-  "versionCode": 63,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-63/svitlo-test-63.apk",
-  "size": 77297029,
-  "sha256": "16426bdb92b82740e3364c05bfe7eaf1a6f0afb63f24438c6ed2ab2e398c9ddb",
-  "notes": "Додано підтримку ймовірної черги з місцевого публічного джерела після невдалого офіційного пошуку: посилання, дата, попередження та ручне виправлення. Чотири безкоштовні пакетні агенти працюють на GitHub з відкритою локальною моделлю. Початковий збір трьох каналів не дав нових адресних черг; приріст покриття поки не підтверджений.",
+  "version": "0.1.32",
+  "versionCode": 64,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-64/svitlo-test-64.apk",
+  "size": 77306085,
+  "sha256": "ff34ff42c3513f9c3aeb88a5f40b1666374536efee79923cc0dcc7027de3bbdb",
+  "notes": "Розширено пошук публічних місцевих джерел та історії повідомлень. Додано перевірку діапазонів будинків, парності, винятків, попередніх поштових назв вулиць і явно вказаного чинного періоду переліку. Публічні відомості залишаються ймовірними з посиланням, датою та ручним виправленням.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-28T13:29:58.615794+00:00",
-  "sourceCommit": "2531b45197087caa886ab31f5e713d4ae7adf069"
+  "publishedAt": "2026-10-28T15:56:46.317396+00:00",
+  "sourceCommit": "51307ee41fb7a1856d435463b08a4e11b2eca11e"
 }
