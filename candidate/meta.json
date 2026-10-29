@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.36",
+  "versionCode": 68,
+  "fileName": "svitlo-test-68.apk",
+  "sourceCommit": "a7e25e361f2bed7da32b9f6e6ea7ad68d71e25d8",
+  "privateBuildRun": 40900478451,
+  "notes": "Нова навігація без нижньої панелі: меню «⋯» з налаштуваннями, списком «Мої адреси» й додаванням адреси. Адресу, чергу та редагування перенесено до блока «Джерело». Назви дій оновлено з «місце» на «адреса»; збережені адреси та їхні налаштування зберігаються.",
+  "size": 77319785,
+  "sha256": "7f3ace03795950482d42f6a908c1cb6d41e264df88147b9d8d309685ef0683ff",
+  "nodeTests": 214,
+  "reactChecks": 65,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 4
+}
