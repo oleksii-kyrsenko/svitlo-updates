@@ -1,0 +1,70 @@
+name: Paired APK64 and APK65 Odessa source check
+on:
+  push:
+    branches: [audit/android-65-poltava]
+    paths: ['.github/workflows/odessa-pair.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    name: Compare Odessa APK64 and APK65
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      APPIUM_HOME: /tmp/svitlo-appium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Fetch the exact public APK without changing application code
+        run: |
+          mkdir -p artifacts national-audit
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-65.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/8ea3e1e8b19360b29d3d676bfb479d742c3b72e6/candidate/svitlo-test-65.apk
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-64.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/f58e8880e14fb3372fc15f65f19ec768ee184cfc/candidate/svitlo-test-64.apk
+          python3 - <<'PY'
+          import hashlib,pathlib
+          old=pathlib.Path('artifacts/svitlo-test-64.apk');assert old.stat().st_size==77306085 and hashlib.sha256(old.read_bytes()).hexdigest()=='ff34ff42c3513f9c3aeb88a5f40b1666374536efee79923cc0dcc7027de3bbdb'
+          p=pathlib.Path('artifacts/svitlo-test-65.apk')
+          assert p.stat().st_size==77311061
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='c9ec0ec6ae0c8a7b01be3f132a967e2fc329c56773da83abd271b185556b2afc'
+          PY
+      - name: Install Unicode-capable native UI automation
+        run: |
+          npm install --prefix "$RUNNER_TEMP/svitlo-ui-tools" --no-audit --no-fund appium@3.8.0
+          echo "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin/appium" driver install --source=npm appium-uiautomator2-driver@8.7.0
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Select addresses and obtain queues using the actual application UI
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 4096M
+          heap-size: 768M
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: |
+            appium --address 127.0.0.1 --port 4723 --log national-audit/appium.log > national-audit/appium-stdout.log 2>&1 &
+            python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
+            python3 .github/qa/comparison-audit64.py --apk artifacts/svitlo-test-64.apk --region UA-51 --limit 4 --out national-audit/apk64
+            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-65.apk --region UA-51 --limit 4 --out national-audit/apk65
+      - name: Preserve per-address screenshots, accessibility trees and app-written results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: odessa-pair-${{ github.run_id }}
+          path: national-audit/
+          if-no-files-found: error
+          retention-days: 30
