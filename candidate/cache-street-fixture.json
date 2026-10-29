@@ -1,0 +1,42 @@
+{
+  "places": [
+    {
+      "id": "street-cache-qa",
+      "name": "Street Cache QA",
+      "address": "Квасилів, вулиця Шевченка, 10",
+      "latitude": null,
+      "longitude": null,
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "operatorConfirmed": true,
+      "queue": null,
+      "queueOrigin": null,
+      "queueScope": null,
+      "queueConfirmed": false,
+      "queueCheckedAt": null,
+      "addressContext": {
+        "regionId": "UA-56",
+        "settlement": "Квасилів"
+      },
+      "reminders": {
+        "enabled": false,
+        "off": false,
+        "on": false,
+        "changes": false,
+        "offMinutes": 10,
+        "onMinutes": 10
+      },
+      "addressParts": {
+        "settlement": "Квасилів",
+        "street": "вулиця Шевченка",
+        "house": "10"
+      }
+    }
+  ],
+  "deleted": [],
+  "snapshots": {},
+  "endpoint": "",
+  "gpsAsked": true,
+  "pushToken": null,
+  "notificationsEnabled": false
+}

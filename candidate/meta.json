@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.37",
+  "versionCode": 69,
+  "fileName": "svitlo-test-69.apk",
+  "sourceCommit": "988fa57b0bd4d519207eedcf7e8ec38d3e0af56b",
+  "privateBuildRun": 40908215780,
+  "notes": "Замість селектора — картка «Поточна адреса» з окремою кнопкою «Обрати іншу». Кнопка відкриває екран «Мої адреси». Довгі назви й збільшений шрифт підтримуються; збережені адреси та налаштування зберігаються.",
+  "size": 77319509,
+  "sha256": "fb968f6586fff192bfe896b116b36d212be878d0039aa84d4bf6840f7e270000",
+  "nodeTests": 214,
+  "reactChecks": 67,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 4
+}
