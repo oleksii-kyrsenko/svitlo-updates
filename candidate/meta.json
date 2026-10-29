@@ -1,0 +1,17 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.40",
+  "versionCode": 72,
+  "fileName": "svitlo-test-72.apk",
+  "sourceCommit": "26c241fe1269668d059d5c279af6071c313260d0",
+  "privateBuildRun": 40924400342,
+  "notes": "Екран «Налаштування адреси» з відкритими полями й кнопками геопозиції, мапи та видалення. Нова адреса відкриває мапу біля поточного GPS, збережена — на своєму будинку, з максимальним наближенням. Нова форма відкривається зверху, а незмінений пін зберігає адресу та чергу.",
+  "size": 77321693,
+  "sha256": "956a8b9f7ace4f9031bf231afc1e974f5973e96eaf931b0c368b923d59b853e4",
+  "nodeTests": 217,
+  "reactChecks": 79,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 4
+}
