@@ -1,0 +1,29 @@
+name: Free model comparison on frozen 96 addresses plus Kyiv
+on:
+  push:
+    branches: [bench/deepseek-96]
+    paths: ['qa/model-comparison-96/**', '.github/workflows/model-comparison-96.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [qwen, deepseek]
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute source-only inference
+        env:
+          BENCH_OUTPUT: results
+        run: python qa/model-comparison-96/run_benchmark.py '${{ matrix.model }}' '${{ matrix.shard }}' 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: model-${{ matrix.model }}-${{ matrix.shard }}
+          path: results/
+          retention-days: 7
