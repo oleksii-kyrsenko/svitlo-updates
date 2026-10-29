@@ -6,9 +6,9 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 async def collect():
  config=json.loads((ROOT/'sources.json').read_text());state_path=ROOT/'directory-state.json';state=json.loads(state_path.read_text()) if state_path.exists() else {};now=int(time.time()*1000);deadline=time.monotonic()+6*60;accepted=[];read_urls=set();report={'startedAt':now,'sources':[],'errors':[],'records':0}
  executable=os.environ.get('SVITLO_BROWSER_BIN') or shutil.which('google-chrome') or shutil.which('chromium')
- if not executable:raise RuntimeError('A standard Chromium browser is required')
  async with async_playwright() as p:
-  options={'executable_path':executable,'headless':True,'args':['--no-sandbox']}
+  options={'headless':True,'args':['--no-sandbox']}
+  if executable:options['executable_path']=executable
   proxy=os.environ.get('HTTPS_PROXY') or os.environ.get('HTTP_PROXY')
   if proxy:options['proxy']={'server':proxy}
   browser=await p.chromium.launch(**options)
@@ -43,5 +43,7 @@ async def collect():
  records=list({r['id']:r for r in records}.values())
  manifest={**old,'enabled':config.get('enabled') is True,'generatedAt':int(time.time()*1000),'records':records};body=json.dumps(manifest,ensure_ascii=False,indent=2)+'\n'
  if len(body.encode())>1_800_000 or len(records)>10000:raise ValueError('Complete manifest size budget exceeded')
- report.update(finishedAt=int(time.time()*1000),records=len(accepted),totalRuntimeRecords=len(records));(ROOT/'directory-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');path.write_text(body);state_path.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,ensure_ascii=False))
+ report.update(finishedAt=int(time.time()*1000),records=len(accepted),totalRuntimeRecords=len(records),status='current' if any(s['pages'] for s in report['sources']) else 'source_unavailable');(ROOT/'directory-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+ if report['status']!='current':raise RuntimeError('No directory pages could be read; previous manifest was not refreshed')
+ path.write_text(body);state_path.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__':asyncio.run(collect())
