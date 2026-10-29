@@ -1,11 +1,12 @@
 {
-  "startedAt": 1793252279642,
+  "executionEnvironment": "workspace",
+  "startedAt": 1793253332391,
   "sources": [
     {
       "url": "https://energy-ua.info/select/%D1%81.%2B%D0%A9%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D1%96",
-      "pages": 40,
-      "candidates": 40,
-      "accepted": 40,
+      "pages": 34,
+      "candidates": 34,
+      "accepted": 34,
       "errors": [],
       "streetLimitReached": false,
       "startCursor": 0,
@@ -14,9 +15,9 @@
     },
     {
       "url": "https://energy-ua.info/select/%D1%81.%2B%D0%A0%D0%BE%D0%B7%D1%81%D0%BE%D1%88%D0%B5%D0%BD%D1%86%D1%96",
-      "pages": 60,
-      "candidates": 60,
-      "accepted": 58,
+      "pages": 53,
+      "candidates": 53,
+      "accepted": 53,
       "errors": [],
       "streetLimitReached": false,
       "startCursor": 0,
@@ -26,18 +27,18 @@
     {
       "url": "https://energy-ua.info/select/%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D0%B0",
       "pages": 80,
-      "candidates": 606,
-      "accepted": 57,
+      "candidates": 564,
+      "accepted": 80,
       "errors": [],
       "streetLimitReached": true,
-      "startCursor": 0,
+      "startCursor": 240,
       "stopReason": "street_limit",
-      "nextCursor": 80
+      "nextCursor": 320
     }
   ],
   "errors": [],
-  "records": 155,
-  "finishedAt": 1793252326814,
-  "totalRuntimeRecords": 804,
+  "records": 167,
+  "finishedAt": 1793253379093,
+  "totalRuntimeRecords": 1030,
   "status": "current"
 }

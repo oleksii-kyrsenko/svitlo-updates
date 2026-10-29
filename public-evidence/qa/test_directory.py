@@ -17,4 +17,16 @@ class Directory(unittest.TestCase):
   self.assertEqual(street_links(body,self.source),[{'url':self.url,'label':'Садова'}])
  def test_expiry_stops_at_kyiv_midnight(self):
   now=int(datetime.datetime(2026,10,29,21,30,tzinfo=datetime.timezone.utc).timestamp()*1000);r=observe(self.html,self.url,'Садова',self.source,now);self.assertEqual(r['expiresAt']-now,30*60000)
+ def test_house_selection_alias_prevents_blanket_street_assignment(self):
+  body='<h1>Графік відключення електроенергії с. Тестове (Полтавська область)</h1><a href="'+self.url+'">Садова</a><a href="https://energy-ua.info/select/%D1%81.%2BТестове/вул.%2BСадова">вул. Садова</a>'
+  self.assertEqual(street_links(body,self.source),[])
+ def test_partial_street_alias_cannot_be_hidden_by_scan_window(self):
+  body='<h1>Графік відключення електроенергії с. Тестове (Полтавська область)</h1><a href="'+self.url+'">Садова</a><a href="'+self.url+'%28непарні%29">Садова(непарні)</a>'
+  self.assertEqual(street_links(body,self.source),[])
+ def test_numeric_house_tail_invalidates_a_whole_street_alias(self):
+  body='<h1>Графік відключення електроенергії с. Тестове (Полтавська область)</h1><a href="'+self.url+'">Садова</a><a href="'+self.url+'%2C1-25">Садова,1-25</a>'
+  self.assertEqual(street_links(body,self.source),[])
+ def test_combined_street_label_invalidates_component_blanket_claims(self):
+  body='<h1>Графік відключення електроенергії с. Тестове (Полтавська область)</h1><a href="'+self.url+'">Садова</a><a href="'+self.url+'%2CМиру">Садова,Миру</a>'
+  self.assertEqual(street_links(body,self.source),[])
 if __name__=='__main__':unittest.main()

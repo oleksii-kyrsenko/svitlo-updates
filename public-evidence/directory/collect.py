@@ -4,7 +4,7 @@ from playwright.async_api import async_playwright
 from reader import street_links,observe
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 async def collect():
- config=json.loads((ROOT/'sources.json').read_text());state_path=ROOT/'directory-state.json';state=json.loads(state_path.read_text()) if state_path.exists() else {};now=int(time.time()*1000);deadline=time.monotonic()+6*60;accepted=[];read_urls=set();report={'startedAt':now,'sources':[],'errors':[],'records':0}
+ config=json.loads((ROOT/'sources.json').read_text());state_path=ROOT/'directory-state.json';state=json.loads(state_path.read_text()) if state_path.exists() else {};now=int(time.time()*1000);deadline=time.monotonic()+6*60;accepted=[];read_urls=set();eligible={};report={'executionEnvironment':'github-actions' if os.environ.get('GITHUB_ACTIONS')=='true' else 'workspace','startedAt':now,'sources':[],'errors':[],'records':0}
  executable=os.environ.get('SVITLO_BROWSER_BIN') or shutil.which('google-chrome') or shutil.which('chromium')
  async with async_playwright() as p:
   options={'headless':True,'args':['--no-sandbox']}
@@ -25,7 +25,7 @@ async def collect():
     if time.monotonic()>deadline:break
     stats={'url':source['url'],'pages':0,'candidates':0,'accepted':0,'errors':[]};report['sources'].append(stats)
     try:
-     links=street_links(await read(source['url']),source);stats['candidates']=len(links);stats['streetLimitReached']=len(links)>80
+     links=street_links(await read(source['url']),source);eligible[source['url']]={x['url'] for x in links};stats['candidates']=len(links);stats['streetLimitReached']=len(links)>80
      cursor=state.get(source['url'],0)%len(links) if links else 0;selected=(links[cursor:]+links[:cursor])[:80];stats['startCursor']=cursor
      for link in selected:
       if time.monotonic()>deadline:stats['stopReason']='time_budget';break
@@ -39,7 +39,7 @@ async def collect():
  path=ROOT/'manifest.json';old=json.loads(path.read_text());assert old.get('schemaVersion')==2 and isinstance(old.get('records'),list)
  # Failed reads never renew an observation; successful rereads retract missing
  # or changed claims. Other readers' current records retain their provenance.
- records=[r for r in old['records'] if r.get('expiresAt',0)>now and not (r.get('evidenceType')=='address-directory' and r.get('sourceUrl') in read_urls)]+accepted
+ records=[r for r in old['records'] if r.get('expiresAt',0)>now and not (r.get('evidenceType')=='address-directory' and (r.get('sourceUrl') in read_urls or r.get('observation',{}).get('listingUrl') in eligible and r.get('sourceUrl') not in eligible[r['observation']['listingUrl']]))]+accepted
  records=list({r['id']:r for r in records}.values())
  manifest={**old,'enabled':config.get('enabled') is True,'generatedAt':int(time.time()*1000),'records':records};body=json.dumps(manifest,ensure_ascii=False,indent=2)+'\n'
  if len(body.encode())>1_800_000 or len(records)>10000:raise ValueError('Complete manifest size budget exceeded')
