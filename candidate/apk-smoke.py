@@ -32,7 +32,7 @@ def wait_for(*labels):
         if time.monotonic()>deadline:raise AssertionError('Missing screen labels: '+repr(labels))
         time.sleep(2)
 def bounds(node):
-    return list(map(int,re.findall(r'\d+',node.get('bounds',''))))
+    return list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
 def wait_edit(value):
     deadline=time.monotonic()+20
     while True:
@@ -54,7 +54,7 @@ def tap(label,scroll=False):
         r=E.fromstring(xml())
         for node in r.iter('node'):
             if label not in [node.get('text'),node.get('content-desc'),node.get('resource-id')]:continue
-            b=list(map(int,re.findall(r'\d+',node.get('bounds',''))))
+            b=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
             if len(b)==4 and b[2]>b[0] and b[3]>b[1]:
                 adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));time.sleep(1);return
         if scroll:scroll_down(r)
@@ -73,17 +73,21 @@ def top():
 def navigate(label):
     tap('Меню застосунку');tap(label)
 def wait_source(*labels):
-    top()
-    for _ in range(12):
+    top();deadline=time.monotonic()+150
+    while True:
         s=xml();tree=E.fromstring(s)
-        edits=[n for n in tree.iter('node') if n.get('content-desc')=='Редагувати адресу' and len(bounds(n))==4 and bounds(n)[3]>bounds(n)[1]]
-        if edits:
-            # Bring the entire address/queue row up from the bottom edge before reading it.
-            if bounds(edits[0])[1]>1000:
-                adb('shell','input','swipe','540','1500','540','850','300');time.sleep(.5)
-            return wait_for(*labels)
-        scroll_down(tree)
-    raise AssertionError('Source address/edit row did not become visible')
+        viewport=next((bounds(n) for n in tree.iter('node') if n.get('resource-id','').split('/')[-1]=='main-scroll'),[0,220,1080,1857])
+        def visible(n):
+            b=bounds(n)
+            return len(b)==4 and b[2]>b[0] and b[3]>b[1] and b[1]>=viewport[1] and b[3]<=viewport[3]
+        edit=next((n for n in tree.iter('node') if n.get('content-desc')=='Редагувати адресу' and visible(n)),None)
+        if edit is not None and all(any(label in (n.get('text','')+' '+n.get('content-desc','')) and visible(n) for n in tree.iter('node')) for label in labels):return s
+        if time.monotonic()>deadline:raise AssertionError('Source labels did not become visible: '+repr(labels))
+        # Live schedule/history cards can arrive above this card while the request
+        # is pending. Reacquire the source instead of waiting at stale coordinates.
+        if edit is None or bounds(edit)[1]>viewport[3]-350:scroll_down(tree)
+        else:time.sleep(1)
+
 
 flags={}
 try:
