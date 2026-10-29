@@ -1,0 +1,49 @@
+name: Compact-prompt model comparison on frozen 96 addresses plus Kyiv
+on:
+  push:
+    branches: [bench/deepseek-96]
+    paths: ['qa/model-comparison-v2/**', '.github/workflows/model-comparison-v2.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {model: qwen, shard: 0, shards: 4}
+          - {model: qwen, shard: 1, shards: 4}
+          - {model: qwen, shard: 2, shards: 4}
+          - {model: qwen, shard: 3, shards: 4}
+          - {model: deepseek, shard: 0, shards: 16}
+          - {model: deepseek, shard: 1, shards: 16}
+          - {model: deepseek, shard: 2, shards: 16}
+          - {model: deepseek, shard: 3, shards: 16}
+          - {model: deepseek, shard: 4, shards: 16}
+          - {model: deepseek, shard: 5, shards: 16}
+          - {model: deepseek, shard: 6, shards: 16}
+          - {model: deepseek, shard: 7, shards: 16}
+          - {model: deepseek, shard: 8, shards: 16}
+          - {model: deepseek, shard: 9, shards: 16}
+          - {model: deepseek, shard: 10, shards: 16}
+          - {model: deepseek, shard: 11, shards: 16}
+          - {model: deepseek, shard: 12, shards: 16}
+          - {model: deepseek, shard: 13, shards: 16}
+          - {model: deepseek, shard: 14, shards: 16}
+          - {model: deepseek, shard: 15, shards: 16}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute source-only inference
+        env:
+          BENCH_OUTPUT: results
+        run: python qa/model-comparison-v2/run_benchmark.py '${{ matrix.model }}' '${{ matrix.shard }}' '${{ matrix.shards }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: model-${{ matrix.model }}-${{ matrix.shard }}
+          path: results/
+          retention-days: 7
