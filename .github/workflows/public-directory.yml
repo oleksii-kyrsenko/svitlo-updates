@@ -1,0 +1,46 @@
+name: Public address directory observations
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [feature/poltava-dynamic-sources]
+    paths: ['public-evidence/directory/**', 'public-evidence/qa/test_directory.py', '.github/workflows/public-directory.yml']
+permissions:
+  contents: write
+concurrency:
+  group: public-evidence-agents
+  cancel-in-progress: false
+jobs:
+  directory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install public browser reader
+        run: pip install playwright==1.56.0 beautifulsoup4==4.14.2
+      - name: Check directory grounding and expiry
+        run: python public-evidence/qa/test_directory.py
+      - name: Read current street-level public directory pages
+        run: python public-evidence/directory/collect.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-directory-${{ github.run_id }}
+          path: |
+            public-evidence/directory-report.json
+            public-evidence/directory-state.json
+            public-evidence/manifest.json
+          retention-days: 14
+      - name: Publish auditable observations
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public-evidence/manifest.json public-evidence/directory-report.json public-evidence/directory-state.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh public address directory observations'
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}
