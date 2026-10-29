@@ -42,7 +42,7 @@ try:
  find('connection-value');flags['connectionFormInitiallyVisible']=True
  s,button=find('delete-place');assert button.get('class')=='android.widget.Button';flags['deleteIsButton']=True;evidence('editor-delete-button',s)
  form_top();tap('Обрати на мапі');s=wait('Пошук адреси на мапі','Позначка адреси','Знайти адресу',p['address']);map_pin(s);flags['savedHousePinWithoutGPSPermission']=True;evidence('editor-saved-house-map',s)
- tap('Знайти адресу');wait('Налаштування адреси');tap('Закрити');source_wait('Черга 3.1','вказано вами');persisted=c['state_read']()['places'][0];assert persisted['address']==p['address'] and persisted['queue']=='3.1' and persisted['queueOrigin']=='manual' and persisted['latitude']==p['latitude'] and persisted['longitude']==p['longitude'];flags['unchangedMapPinPreservesAddressQueue']=True
+ tap('Знайти адресу');wait('Налаштування адреси');tap('Зберегти зміни');source_wait('Черга 3.1','вказано вами');persisted=c['state_read']()['places'][0];assert persisted['name']==p['name'] and persisted['address']==p['address'] and persisted['queue']=='3.1' and persisted['queueOrigin']=='manual' and persisted['latitude']==p['latitude'] and persisted['longitude']==p['longitude'];assert all(key not in persisted for key in ['zoom','label','chosen','origin']);flags['unchangedMapPinPreservesAddressQueue']=True
  for permission in ['android.permission.ACCESS_COARSE_LOCATION','android.permission.ACCESS_FINE_LOCATION']:adb('shell','pm','grant',pkg,permission)
  adb('shell','settings','put','secure','location_mode','3');adb('shell','cmd','location','set-location-enabled','true',check=False)
  launch();wait('current-address-card');c['navigate']('＋ Додати адресу');wait('Налаштування адреси')
