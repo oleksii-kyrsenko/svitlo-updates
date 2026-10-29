@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.35",
-  "versionCode": 67,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-67/svitlo-test-67.apk",
-  "size": 77317933,
-  "sha256": "12388dd79173042b3adac0a0800e893c704b1828046488d626d8643059f66fd1",
-  "notes": "Редагування й видалення місця з підтвердженням. Після видалення відкривається перше збережене місце або форма додавання. Налаштування стали спільними для застосунку: дозволи та фонова робота, опис можливостей і розділ «Вигляд» з позначкою «Незабаром».",
+  "version": "0.1.36",
+  "versionCode": 68,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-68/svitlo-test-68.apk",
+  "size": 77319785,
+  "sha256": "7f3ace03795950482d42f6a908c1cb6d41e264df88147b9d8d309685ef0683ff",
+  "notes": "Нова навігація без нижньої панелі: меню «⋯» з налаштуваннями, списком «Мої адреси» й додаванням адреси. Адресу, чергу та редагування перенесено до блока «Джерело». Назви дій оновлено з «місце» на «адреса»; збережені адреси та їхні налаштування зберігаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-29T12:53:54.817020+00:00",
-  "sourceCommit": "3c8226cd119fa76bdd2cbdaec3b9b7897d073845"
+  "publishedAt": "2026-10-29T15:35:02.106564+00:00",
+  "sourceCommit": "a7e25e361f2bed7da32b9f6e6ea7ad68d71e25d8"
 }
