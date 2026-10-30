@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.42",
-  "versionCode": 74,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-74/svitlo-test-74.apk",
-  "size": 77326497,
-  "sha256": "f9a6315997c69d6e25e0f15c506855c9711285dbf15964f0e071b4ce0eb96872",
-  "notes": "Компактні дії редагування адреси та збереження лише за наявності змін. Якщо оновлення недоступне, останній графік залишається на телефоні з початковою датою перевірки й попередженням. Кнопка оновлення має чіткий вигляд і стан виконання; фонові перевірки без прелоадерів.",
+  "version": "0.1.43",
+  "versionCode": 75,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-75/svitlo-test-75.apk",
+  "size": 77326413,
+  "sha256": "675bace5887b71e52021d7a02dfe91400d9690414719ac8dc75dc3710825c49a",
+  "notes": "На екранах «Налаштування» та «Мої адреси» — проста шапка з назвою й дією «Закрити», як у налаштуваннях адреси. Без повторного заголовка, стрілки, логотипа та меню. Шапка графіка без змін.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-29T21:11:04.063Z",
-  "sourceCommit": "0ed1336f468f1323d471f355f8ce926ab9c0530c"
+  "publishedAt": "2026-10-30T06:37:04.036671+00:00",
+  "sourceCommit": "e010033463aa580173b90c7bce191a82e3f3ce2d"
 }
