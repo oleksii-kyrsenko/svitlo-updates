@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": 1793366089199,
+  "generatedAt": 1793399503319,
   "operators": [
     {
       "operatorId": "cherkasy",
-      "fetchedAt": 1793366089213,
-      "expiresAt": 1793409289213,
+      "fetchedAt": 1793399503351,
+      "expiresAt": 1793442703351,
       "sha256": "37583d805d475520d8d0ad9a2784025cff0564ad5c9a2b3af927511200e4c64e",
       "size": 249421,
       "decodedSize": 1298369,
@@ -13,8 +13,8 @@
     },
     {
       "operatorId": "khmelnytskyi",
-      "fetchedAt": 1793366095359,
-      "expiresAt": 1793409295359,
+      "fetchedAt": 1793399508334,
+      "expiresAt": 1793442708334,
       "sha256": "8a521ce743ce0c7147e9f8b90374dc3151891bce6d83944fe0c30343e091d093",
       "size": 555145,
       "decodedSize": 3774130,
@@ -22,12 +22,12 @@
     },
     {
       "operatorId": "rivne",
-      "fetchedAt": 1793366102716,
-      "expiresAt": 1793409302716,
-      "sha256": "909a474963780eb54f1cf62ab6503540cde9430389fedec8f85a13c3705b9066",
-      "size": 118084,
+      "fetchedAt": 1793399514884,
+      "expiresAt": 1793442714884,
+      "sha256": "254de027b4f05d530684252d8e0c88bfbb946bd5a42e7f04750f636751e44a3f",
+      "size": 118083,
       "decodedSize": 892907,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-909a474963780eb54f1cf62ab6503540cde9430389fedec8f85a13c3705b9066.json.gz"
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-254de027b4f05d530684252d8e0c88bfbb946bd5a42e7f04750f636751e44a3f.json.gz"
     }
   ],
   "failures": [
