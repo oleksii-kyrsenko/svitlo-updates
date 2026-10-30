@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.46",
-  "versionCode": 78,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-78/svitlo-test-78.apk",
-  "size": 81466199,
-  "sha256": "902c13880ebf45a2cdca17fce799678e088e88a2a8cabfbd7872d07253319bd0",
-  "notes": "Дві теми оформлення: Aurora Glass за замовчуванням і світла Moss Studio. Перемикання та збереження вибору в «Налаштування → Вигляд». Спільні SVG-іконки, градієнти й анімовані індикатори; фонові оновлення з наявними даними залишаються без прелоадерів.",
+  "version": "0.1.47",
+  "versionCode": 81,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-81/svitlo-test-81.apk",
+  "size": 81472259,
+  "sha256": "d7c054bca207c097583eba2d52597ab4ceeac8d8b0216e9ca3886081c954c9a9",
+  "notes": "Aurora Glass приведено до затвердженого макета: темне прозоре скло, блакитне світіння, білий логотип, кольорові підкладки іконок і золоті акценти. Компактніші відступи. Функції, графіки та вибір теми збережено.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-30T13:21:37.372232+00:00",
-  "sourceCommit": "d638a40bdca787e6e2d6bae9637c9dae9240cb8d"
+  "publishedAt": "2026-10-30T14:59:55.123407+00:00",
+  "sourceCommit": "789aa5e48bd38d2c6e5b14787fd8d9554b551bcc"
 }
