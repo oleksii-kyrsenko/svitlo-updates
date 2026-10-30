@@ -18,6 +18,7 @@ jobs:
       - run: pip install pillow==12.0.0
       - name: Verify signed icon resources and baseline
         run: |
+          sha256sum -c candidate/qa-input-helper.sha256
           python3 candidate/verify-apk.py
           python3 candidate/verify-icon-resources.py
           python3 - <<'PY'

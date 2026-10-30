@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ua.svitlo.qa.input">
+ <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36"/>
+ <application android:label="Native QA input helper" android:hasCode="true"/>
+ <instrumentation android:name=".InputBridge" android:targetPackage="ua.svitlo.qa.input" android:functionalTest="true"/>
+</manifest>
