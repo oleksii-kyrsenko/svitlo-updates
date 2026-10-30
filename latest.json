@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.49",
-  "versionCode": 83,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-83/svitlo-test-83.apk",
-  "size": 82128158,
-  "sha256": "8e01bea78155cc25e37db3161a056e52da87ea7b02cbb6c15cc0abf8875f342c",
-  "notes": "Нова іконка застосунку: скляна блакитна лампа із золотою блискавкою. Адаптивна форма для Android і монохромний символ для системних значків. Вигляд екранів, адреси та графіки збережено.",
+  "version": "0.1.50",
+  "versionCode": 86,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-86/svitlo-test-86.apk",
+  "size": 82139042,
+  "sha256": "ecb326fa9cb37f24c1e9b626e158eb9b4c869f5ee86432ee986d68daae7dda6f",
+  "notes": "Нова назва — «Коли світло», без позначки «Тест». Усі підтвердження й повідомлення застосунку використовують оформлення обраної теми, зокрема вихід із незбереженого редагування. Адреси, ручні черги, теми та графіки зберігаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-30T18:15:15.687191+00:00",
-  "sourceCommit": "6ccf7757214e5e3b2089f2b36023baa606cee351"
+  "publishedAt": "2026-10-30T19:19:45.885082+00:00",
+  "sourceCommit": "063e3c92d9d9746404d795df04ccd714c7fa190b"
 }
