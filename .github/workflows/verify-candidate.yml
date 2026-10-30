@@ -1,0 +1,50 @@
+name: Verify glass bulb launcher candidate
+on:
+  push:
+    branches: ['candidates/**']
+    paths: ['candidate/**', '.github/workflows/verify-candidate.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow==12.0.0
+      - name: Verify signed icon resources and baseline
+        run: |
+          python3 candidate/verify-apk.py
+          python3 candidate/verify-icon-resources.py
+          python3 - <<'PY'
+          import pathlib,json,urllib.request,hashlib
+          meta=json.load(open('latest.json'));assert meta['versionCode']==82
+          data=urllib.request.urlopen(meta['apkUrl'],timeout=90).read()
+          assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          pathlib.Path('previous.apk').write_bytes(data)
+          PY
+      - name: Enable runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: python3 candidate/prepare-emulator.py && python3 candidate/isolate-schedule-source.py && python3 -u candidate/launcher-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-apk-launcher-api${{ matrix.api }}
+          path: apk-diagnostics/
+# Publish separately only after viewing actual native launcher screenshots.
