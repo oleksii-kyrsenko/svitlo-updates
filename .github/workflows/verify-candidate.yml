@@ -1,0 +1,52 @@
+name: Verify Aurora Light candidate
+on:
+  push:
+    branches: ['candidates/**']
+    paths: ['candidate/**', '.github/workflows/verify-candidate.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+        suite: [visual, controls]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify signed binary and published baseline
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,urllib.request,hashlib
+          meta=json.load(open('latest.json'));assert meta['versionCode']==81
+          data=urllib.request.urlopen(meta['apkUrl'],timeout=90).read()
+          assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          pathlib.Path('previous.apk').write_bytes(data)
+          PY
+      - name: Native screenshot comparison
+        run: pip install pillow==12.0.0
+      - name: Enable runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: adb root && adb wait-for-device && python3 candidate/isolate-schedule-source.py && ${{ matrix.suite == 'visual' && 'python3 -u candidate/reference-visual-smoke.py' || 'adb install -r -g --abi x86_64 candidate/svitlo-test-82.apk && python3 -u candidate/shared-ui-smoke.py && python3 -u candidate/offline-ui-smoke.py' }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-apk-${{ matrix.suite }}-api${{ matrix.api }}
+          path: apk-diagnostics/
+# Deliberately no publication job: review the real screenshots against the
+# approved design before publishing the candidate or changing the update channel.
