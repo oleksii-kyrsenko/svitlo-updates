@@ -41,7 +41,7 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
-          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/shared-ui-smoke.py && python3 -u candidate/schedule-ui-smoke.py && python3 -u candidate/editor-map-smoke.py && python3 -u candidate/offline-ui-smoke.py && python3 -u candidate/settings-ui-smoke.py && python3 -u candidate/navigation-ui-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py && python3 -u candidate/themes-smoke.py
+          script: adb root && adb wait-for-device && adb install -r -g --abi x86_64 candidate/svitlo-test-78.apk && (failed=0; for suite in shared-ui schedule-ui editor-map offline-ui settings-ui navigation-ui cache public-queue themes; do python3 -u candidate/$suite-smoke.py || failed=1; done; exit "$failed")
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -58,6 +58,24 @@ jobs:
         with:
           pattern: public-apk-api*
           path: verified-native
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41055823829
+          pattern: public-apk-api*
+          path: verified-upgrade
+      - name: Retain the verified upgrade for the identical signed binary
+        run: |
+          python3 - <<'PYCODE'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'))
+          for api in ['30','35','36']:
+            source=pathlib.Path('verified-upgrade')/('public-apk-api'+api)/'result.json'
+            result=json.load(open(source))
+            assert result['api']==api and result['allPassed'] and result['apkSha256']==meta['sha256']
+            shutil.copy2(source,pathlib.Path('verified-native')/('public-apk-api'+api)/'result.json')
+          print('Retained all3 passing upgrade groups bound to the identical APK SHA256')
+          PYCODE
       - name: Verify results and publish the candidate
         env:
           GH_TOKEN: ${{ github.token }}

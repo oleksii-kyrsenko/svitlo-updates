@@ -13,7 +13,7 @@ def full_row(id):
   # UIAutomator exposes partly clipped rows; inspect only after the entire row
   # is inside the real ScrollView viewport, clear of the sticky Save footer.
   x=(v[0]+v[2])//2;middle=(v[1]+v[3])//2;distance=min(350,(v[3]-v[1])//3)
-  if len(b)==4 and b[1]<=v[1]+8:adb('shell','input','swipe',str(x),str(middle-distance//2),str(x),str(middle+distance//2),'250')
+  if len(b)==4 and b[2]>b[0] and b[3]>b[1] and b[1]<=v[1]+8:adb('shell','input','swipe',str(x),str(middle-distance//2),str(x),str(middle+distance//2),'250')
   else:adb('shell','input','swipe',str(x),str(middle+distance//2),str(x),str(middle-distance//2),'250')
   time.sleep(.7)
  raise AssertionError('Full row did not enter the viewport: '+id)
