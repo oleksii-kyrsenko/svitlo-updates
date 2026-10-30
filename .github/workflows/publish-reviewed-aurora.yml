@@ -1,0 +1,99 @@
+name: Publish visually reviewed Aurora Light
+on:
+  workflow_dispatch:
+  push:
+    branches: ['candidates/android-82']
+    paths: ['reviewed-aurora-82.json', '.github/workflows/publish-reviewed-aurora.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41088239842
+          pattern: public-apk-controls-*
+          path: verified-controls
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41088239842
+          name: public-apk-visual-api30
+          path: verified-visual-api30
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41088239842
+          name: public-apk-visual-api35
+          path: verified-visual-api35
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41088239842
+          name: public-apk-visual-api36
+          path: verified-visual-api36
+      - name: Verify the binary, all native reports and the visual review
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-aurora-82.json'))
+          assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and all(review['criteria'].values())
+          for group in ['shared-ui','offline-ui','reference-visual']:
+            rows=[]
+            for api in ['30','35','36']:
+              path=pathlib.Path('verified-visual-api'+api)/'reference-visual-result.json' if group=='reference-visual' else pathlib.Path('verified-controls')/('public-apk-controls-api'+api)/(group+'-result.json')
+              row=json.load(open(path));assert row['api']==api and row['allPassed'] and row['apkSha256']==meta['sha256'],(api,group)
+              if group=='reference-visual':assert row['metrics']['auroraChangedPixelFraction']<.005
+              rows.append(row)
+            pathlib.Path('candidate/'+group+'-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+          for kind in ['main','editor','settings','source']:shutil.copy2('verified-visual-api30/light-reference-'+kind+'.png','candidate/light-'+kind+'.png')
+          shutil.copy2('reviewed-aurora-82.json','candidate/visual-review.json')
+          notes='Світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nAurora Light звірено із затвердженим макетом за реальними Android-знімками підписаного APK. Крижане біло-блакитне скло, тонкі контури, темний текст, золоті акценти та кольорові іконки. Попередній збережений вибір світлої теми автоматично відкриває Aurora Light; тем лише дві.\n\nAPI30/35/36: оновлення81→82 зі збереженням світлої теми, ручної черги й кешу; піксельне порівняння незміненої Aurora Glass; графік, редактор, пошук/мапа, сповіщення, налаштування, перемикання та перезапуск; довгі назви/очищення/Save при fonts1/1.5; офлайн-графіки та кнопка оновлення.224 Node,98 React,11 theme,11 updater. Дані QA зовнішні. Це не новий аудит покриття чи перевірка фізичного телефона.\n\nRuntime: '+meta['sourceCommit']+'. Код застосунку приватний. Скріншоти — реальний APK.\n'
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
+          PY
+      - name: Publish only the reviewed candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload android-test-82 candidate/svitlo-test-82.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/shared-ui-results.json candidate/offline-ui-results.json candidate/reference-visual-results.json candidate/visual-review.json candidate/light-main.png candidate/light-editor.png candidate/light-settings.png candidate/light-source.png --clobber
+          gh release edit android-test-82 --draft=false --prerelease --title 'Світло 0.1.48 — Aurora Light — світле крижане скло' --notes-file candidate/VERIFIED-NOTES.md
+      - name: Verify anonymous APK bytes and preserve services when promoting the channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,urllib.request,subprocess,base64,datetime
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-aurora-82.json'))
+          url='https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-82/'+meta['fileName']
+          data=urllib.request.urlopen(url,timeout=120).read();assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          for attempt in range(3):
+            current=json.loads(subprocess.check_output(['gh','api','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json'],text=True))
+            previous=json.loads(base64.b64decode(current['content']));assert previous['versionCode']==review['baselineVersionCode']
+            pathlib.Path('candidate/previous-channel.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n')
+            updated={**previous,**{k:meta[k] for k in ['packageName','version','versionCode','size','sha256','notes','sourceCommit']},'apkUrl':url,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+            assert updated['services']==previous['services']
+            payload={'message':'Publish visually reviewed Aurora Light0.1.48 /82','sha':current['sha'],'content':base64.b64encode((json.dumps(updated,ensure_ascii=False,indent=2)+'\n').encode()).decode()}
+            pathlib.Path('candidate/channel-write.json').write_text(json.dumps(payload))
+            result=subprocess.run(['gh','api','--method','PUT','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json','--input','candidate/channel-write.json'],stdout=subprocess.PIPE,text=True)
+            if result.returncode==0:break
+          else:raise RuntimeError('Channel update raced repeatedly; no forced write')
+          pathlib.Path('candidate/ci-channel-check.json').write_text(json.dumps({'anonymousDownloadVerified':True,'size':len(data),'sha256':meta['sha256'],'versionCode':meta['versionCode'],'servicesPreserved':True},indent=2)+'\n')
+          print('Published reviewed APK and preserved services; full anonymous bytes verified')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviewed-aurora-publication
+          path: |
+            candidate/*-results.json
+            candidate/visual-review.json
+            candidate/previous-channel.json
+            candidate/ci-channel-check.json
+            candidate/VERIFIED-NOTES.md
