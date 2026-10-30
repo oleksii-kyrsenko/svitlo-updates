@@ -9,8 +9,9 @@ adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait'];seed=c['seed'];launch=c['l
 def by_id(s,id):return next((n for n in E.fromstring(s).iter('node') if n.get('resource-id','').split('/')[-1]==id),None)
 def snap(name,light):
  s=xml();evidence(name,s);im=Image.open(out/(name+'.png')).convert('RGB')
- # The same clear margin belongs to the application canvas, away from text/cards.
- points=[im.getpixel((10,y)) for y in range(im.height//3,im.height*2//3,10)]
+ # Sample the clear header margin, away from cards, map tiles and the system IME.
+ # Keyboard colours may lag the app theme; they are not application-canvas pixels.
+ points=[im.getpixel((10,y)) for y in range(80,160,10)]
  mean=sum(sum(p)/3 for p in points)/len(points)
  threshold=100 if 'dialog' in name else 180
  assert mean>threshold if light else mean<85,(name,mean)

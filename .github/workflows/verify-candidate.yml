@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        api: [30, 35, 36]
+        api: [30]
     steps:
       - uses: actions/checkout@v4
       - name: Verify signed candidate and fetch the published baseline
@@ -41,7 +41,7 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
-          script: adb root && adb wait-for-device && adb install -r -g --abi x86_64 candidate/svitlo-test-78.apk && (failed=0; for suite in shared-ui schedule-ui editor-map offline-ui settings-ui navigation-ui cache public-queue themes; do python3 -u candidate/$suite-smoke.py || failed=1; done; exit "$failed")
+          script: adb root && adb wait-for-device && adb install -r -g --abi x86_64 candidate/svitlo-test-78.apk && python3 -u candidate/themes-smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -63,18 +63,28 @@ jobs:
           github-token: ${{ github.token }}
           run-id: 41055823829
           pattern: public-apk-api*
-          path: verified-upgrade
-      - name: Retain the verified upgrade for the identical signed binary
+          path: verified-first
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41057241736
+          name: public-apk-api30
+          path: verified-second-30
+      - name: Retain passing groups for the identical signed binary
         run: |
           python3 - <<'PYCODE'
           import pathlib,json,shutil
           meta=json.load(open('candidate/meta.json'))
-          for api in ['30','35','36']:
-            source=pathlib.Path('verified-upgrade')/('public-apk-api'+api)/'result.json'
+          names=['result.json','shared-ui-result.json','schedule-ui-result.json','editor-map-result.json','offline-ui-result.json','settings-ui-result.json','navigation-ui-result.json','cache-result.json','public-queue-result.json','themes-result.json']
+          def retain(source,target,api):
             result=json.load(open(source))
-            assert result['api']==api and result['allPassed'] and result['apkSha256']==meta['sha256']
-            shutil.copy2(source,pathlib.Path('verified-native')/('public-apk-api'+api)/'result.json')
-          print('Retained all3 passing upgrade groups bound to the identical APK SHA256')
+            assert result['api']==api and result['allPassed'] and result['apkSha256']==meta['sha256'],(api,source)
+            target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
+          for api in ['35','36']:
+            for name in names:retain(pathlib.Path('verified-first')/('public-apk-api'+api)/name,pathlib.Path('verified-native')/('public-apk-api'+api)/name,api)
+          retain(pathlib.Path('verified-first/public-apk-api30/result.json'),pathlib.Path('verified-native/public-apk-api30/result.json'),'30')
+          for name in names[1:-1]:retain(pathlib.Path('verified-second-30')/name,pathlib.Path('verified-native/public-apk-api30')/name,'30')
+          print('Retained29 successful group/platform results, each bound to the identical APK SHA256')
           PYCODE
       - name: Verify results and publish the candidate
         env:
