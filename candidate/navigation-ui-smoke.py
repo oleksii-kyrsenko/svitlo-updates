@@ -6,7 +6,7 @@ adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait'];top=c['top'];seed=c['seed'
 def by_id(tree,name):return next((n for n in tree.iter('node') if n.get('resource-id','').split('/')[-1]==name),None)
 def inside(a,b):return len(a)==len(b)==4 and a[0]<=b[0]<b[2]<=a[2] and a[1]<=b[1]<b[3]<=a[3]
 def simple_header(s,title):
- tree=E.fromstring(s);header=by_id(tree,'screen-header');close=by_id(tree,'close-screen');assert header is not None and close is not None;titles=[n for n in header.iter('node') if n.get('text')==title];assert len(titles)==1;assert inside(bounds(header),bounds(titles[0])) and inside(bounds(header),bounds(close));assert bounds(titles[0])[2]<=bounds(close)[0];assert close.get('content-desc')=='Закрити';assert 'app-menu-button' not in s and 'ϟ СВІТЛО' not in s and 'back-to-schedule' not in s
+ tree=E.fromstring(s);header=by_id(tree,'screen-header');close=by_id(tree,'close-screen');assert header is not None and close is not None;titles=[n for n in tree.iter('node') if n.get('text')==title];assert len(titles)==1 and inside(bounds(header),bounds(titles[0]));assert inside(bounds(header),bounds(titles[0])) and inside(bounds(header),bounds(close));assert bounds(titles[0])[2]<=bounds(close)[0];assert close.get('content-desc')=='Закрити';assert 'app-menu-button' not in s and 'ϟ СВІТЛО' not in s and 'back-to-schedule' not in s
 
 try:
  state=json.loads(pathlib.Path('candidate/fixture.json').read_text());first=state['places'][0];first.update(name='QA Home',queueOrigin='manual',queueConfirmed=True)
