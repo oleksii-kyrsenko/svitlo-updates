@@ -1,0 +1,18 @@
+{
+  "packageName": "ua.svitlo.app.testing",
+  "version": "0.1.46",
+  "versionCode": 78,
+  "fileName": "svitlo-test-78.apk",
+  "sourceCommit": "d638a40bdca787e6e2d6bae9637c9dae9240cb8d",
+  "privateBuildRun": 41055234660,
+  "notes": "Дві теми оформлення: Aurora Glass за замовчуванням і світла Moss Studio. Перемикання та збереження вибору в «Налаштування → Вигляд». Спільні SVG-іконки, градієнти й анімовані індикатори; фонові оновлення з наявними даними залишаються без прелоадерів.",
+  "size": 81466199,
+  "sha256": "902c13880ebf45a2cdca17fce799678e088e88a2a8cabfbd7872d07253319bd0",
+  "nodeTests": 224,
+  "reactChecks": 98,
+  "themeChecks": 12,
+  "updateChecks": 11,
+  "browserHookChecks": 3,
+  "notificationChecks": 5,
+  "backgroundChecks": 5
+}
