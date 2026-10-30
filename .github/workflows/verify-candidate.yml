@@ -41,7 +41,7 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
-          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/shared-ui-smoke.py && python3 -u candidate/schedule-ui-smoke.py && python3 -u candidate/editor-map-smoke.py && python3 -u candidate/offline-ui-smoke.py && python3 -u candidate/settings-ui-smoke.py && python3 -u candidate/navigation-ui-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py
+          script: adb root && adb wait-for-device && adb install -r -g --abi x86_64 candidate/svitlo-test-76.apk && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -52,12 +52,35 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
+      actions: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           pattern: public-apk-api*
           path: verified-native
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41022728789
+          pattern: public-apk-api*
+          path: verified-prior
+      - name: Retain seven already verified groups for the identical APK
+        run: |
+          python3 - <<'PYCODE'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'))
+          names=['result.json','shared-ui-result.json','schedule-ui-result.json','editor-map-result.json','offline-ui-result.json','settings-ui-result.json','navigation-ui-result.json']
+          for api in ['30','35','36']:
+            source=pathlib.Path('verified-prior')/('public-apk-api'+api)
+            target=pathlib.Path('verified-native')/('public-apk-api'+api)
+            assert target.is_dir()
+            for name in names:
+              result=json.load(open(source/name))
+              assert result['api']==api and result['allPassed'] and result['apkSha256']==meta['sha256'],(api,name)
+              shutil.copy2(source/name,target/name)
+          print('Retained21 successful group/platform results, each bound to the exact APK SHA256')
+          PYCODE
       - name: Verify results and publish the candidate
         env:
           GH_TOKEN: ${{ github.token }}
@@ -94,7 +117,7 @@ jobs:
           shared=[json.loads(p.read_text()) for p in pathlib.Path('verified-native').glob('*/shared-ui-result.json')]
           assert {r['api'] for r in shared}=={'30','35','36'} and all(r['allPassed'] and r['apkSha256']==meta['sha256'] for r in shared)
           pathlib.Path('candidate/shared-ui-results.json').write_text(json.dumps(shared,ensure_ascii=False,indent=2)+'\n')
-          notes='Світло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK перевірена на API30/35/36: оновлення з попередньої версії зі збереженням адрес, ручна черга й перезапуск, графік та офлайн-кеш, редактор і мапа, глобальні налаштування й дозволи Android, навігація та видалення, офіційний кеш і попередження про публічні черги. Додатково: очищення назви/черги/пошуку реальними натисканнями; довгі назви й окрема права область стрілок за пікселями знімків при системному шрифті1/1.5. Початковий масштаб17 і точний центр мапи перевірені виконанням JavaScript у браузері.\n\n224 Node-тести, 96 сценаріїв React, 11 сценаріїв оновлення, 5 сценаріїв сповіщень, 5 фонових перевірок, 3 браузерні сценарії джерел і перевірка Leaflet виконані окремо. Тестові адреси й дані поза APK. Це не новий аудит живого покриття чи тест фізичного телефона. Вихідний коміт: '+meta['sourceCommit']+'. Код застосунку приватний.\n'
+          notes='Попередні7 груп: https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41022728789; решта2 груп: цей запуск. Усі результати прив’язані до того самого SHA256 APK.\n\nСвітло '+meta['version']+', Android '+str(meta['versionCode'])+'.\n\n'+meta['notes']+'\n\nТа сама підписана APK перевірена на API30/35/36: оновлення з попередньої версії зі збереженням адрес, ручна черга й перезапуск, графік та офлайн-кеш, редактор і мапа, глобальні налаштування й дозволи Android, навігація та видалення, офіційний кеш і попередження про публічні черги. Додатково: очищення назви/черги/пошуку реальними натисканнями; довгі назви й окрема права область стрілок за пікселями знімків при системному шрифті1/1.5. Початковий масштаб17 і точний центр мапи перевірені виконанням JavaScript у браузері.\n\n224 Node-тести, 96 сценаріїв React, 11 сценаріїв оновлення, 5 сценаріїв сповіщень, 5 фонових перевірок, 3 браузерні сценарії джерел і перевірка Leaflet виконані окремо. Тестові адреси й дані поза APK. Це не новий аудит живого покриття чи тест фізичного телефона. Вихідний коміт: '+meta['sourceCommit']+'. Код застосунку приватний.\n'
           pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
           PY
           gh release upload android-test-76 candidate/svitlo-test-76.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json candidate/cache-results.json candidate/public-queue-results.json candidate/schedule-ui-results.json candidate/settings-ui-results.json candidate/navigation-ui-results.json candidate/editor-map-results.json candidate/offline-ui-results.json candidate/shared-ui-results.json --clobber
