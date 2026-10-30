@@ -1,0 +1,28 @@
+{
+  "reference": "docs/design/aurora-glass-approved.png",
+  "runtimeSource": "789aa5e48bd38d2c6e5b14787fd8d9554b551bcc",
+  "reviewer": "assistant",
+  "userApproval": "Original variant1; no claim of user approval for the implementation screenshots.",
+  "reviewedScreenshots": [
+    "aurora-main.png",
+    "aurora-editor.png",
+    "aurora-settings.png",
+    "aurora-source.png"
+  ],
+  "criteria": {
+    "darkBlueTranslucentSurfaces": true,
+    "cyanEdgesAndLocalGlow": true,
+    "whiteWordmarkAndFilledCyanBolt": true,
+    "goldBellAndEditAction": true,
+    "homeAndLocationIcons": true,
+    "greenAndGoldStatusIconTiles": true,
+    "amberCurrentOutage": true,
+    "sharedEditorAndSettingsMaterial": true,
+    "mossMatchesPublishedPixels": true
+  },
+  "notes": "Reviewed actual API30 main/editor/settings/source screenshots against the approved image. Dynamic dates, addresses, cache warnings and current-interval expansion remain truthful; marketing phone bezel is outside app UI.",
+  "reviewed": true,
+  "apkSha256": "d7c054bca207c097583eba2d52597ab4ceeac8d8b0216e9ca3886081c954c9a9",
+  "versionCode": 81,
+  "baselineVersionCode": 78
+}
