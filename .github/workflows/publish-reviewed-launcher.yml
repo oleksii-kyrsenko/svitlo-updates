@@ -1,0 +1,68 @@
+name: Publish reviewed glass bulb launcher
+on:
+  push:
+    branches: ['candidates/android-83']
+    paths: ['reviewed-launcher-83.json', '.github/workflows/publish-reviewed-launcher.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41099291972
+          pattern: public-apk-launcher-*
+          path: verified
+      - name: Verify exact binary, native results and reviewed screenshots
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-launcher-83.json'));assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and all(review['criteria'].values())
+          rows=[]
+          for api in ['30','35','36']:
+            root=pathlib.Path('verified/public-apk-launcher-api'+api);row=json.load(open(root/'launcher-result.json'));assets=json.load(open(root/'icon-resources-result.json'));assert row['api']==api and row['allPassed'] and assets['allPassed'];assert row['apkSha256']==assets['apkSha256']==meta['sha256'];assert row['metrics']['appGraphChangedPixelFraction']<.005;rows.append(row)
+          pathlib.Path('candidate/launcher-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+          shutil.copy2('verified/public-apk-launcher-api30/icon-resources-result.json','candidate/icon-resources-result.json')
+          for name in ['launcher-drawer','system-app-info','launched-by-icon']:shutil.copy2('verified/public-apk-launcher-api30/'+name+'.png','candidate/'+name+'.png')
+          shutil.copy2('reviewed-launcher-83.json','candidate/visual-review.json')
+          notes='Світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nВибрано варіант4: скляна блакитна лампа із золотою блискавкою на темному склі. Окремі адаптивні шари,5 щільностей, безпечна зона66/108dp; монохромний системний знак і біла іконка сповіщень. Назва та ідентифікатор застосунку збережені.\n\nРеальний підписаний APK: API30/35/36, оновлення82→83, збереження адреси/ручної черги/теми/кешу, незмінений екран графіка, реальний значок у Pixel Launcher та запуск натисканням, системна сторінка застосунку.224 Node перевірок. Знімки переглянуто перед публікацією, ресурси перевірено всередині APK. Це не перевірка всіх OEM чи фізичного телефона, не нове дослідження покриття.\n\nRuntime: '+meta['sourceCommit']+'. Код застосунку приватний.\n'
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
+          PY
+      - name: Publish reviewed APK and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload android-test-83 candidate/svitlo-test-83.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/launcher-results.json candidate/icon-resources-result.json candidate/visual-review.json candidate/launcher-drawer.png candidate/system-app-info.png candidate/launched-by-icon.png --clobber
+          gh release edit android-test-83 --draft=false --prerelease --title 'Світло 0.1.49 — іконка «Лампа-імпульс»' --notes-file candidate/VERIFIED-NOTES.md
+      - name: Verify full anonymous APK download and preserve service configuration
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,urllib.request,subprocess,base64,datetime
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-launcher-83.json'));url='https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-83/'+meta['fileName'];data=urllib.request.urlopen(url,timeout=120).read();assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          for attempt in range(3):
+            current=json.loads(subprocess.check_output(['gh','api','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json'],text=True));previous=json.loads(base64.b64decode(current['content']));assert previous['versionCode']==review['baselineVersionCode'];pathlib.Path('candidate/previous-channel.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n')
+            updated={**previous,**{k:meta[k] for k in ['packageName','version','versionCode','size','sha256','notes','sourceCommit']},'apkUrl':url,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()};assert updated['services']==previous['services'];payload={'message':'Publish reviewed bulb launcher0.1.49 /83','sha':current['sha'],'content':base64.b64encode((json.dumps(updated,ensure_ascii=False,indent=2)+'\n').encode()).decode()};pathlib.Path('candidate/channel-write.json').write_text(json.dumps(payload));result=subprocess.run(['gh','api','--method','PUT','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json','--input','candidate/channel-write.json'],stdout=subprocess.PIPE,text=True)
+            if result.returncode==0:break
+          else:raise RuntimeError('Concurrent channel updates; no forced write')
+          pathlib.Path('candidate/ci-channel-check.json').write_text(json.dumps({'anonymousDownloadVerified':True,'size':len(data),'sha256':meta['sha256'],'versionCode':meta['versionCode'],'servicesPreserved':True},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviewed-launcher-publication
+          path: |
+            candidate/*-results.json
+            candidate/icon-resources-result.json
+            candidate/visual-review.json
+            candidate/previous-channel.json
+            candidate/ci-channel-check.json
+            candidate/VERIFIED-NOTES.md

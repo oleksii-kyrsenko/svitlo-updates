@@ -1,0 +1,23 @@
+{
+  "reviewed": true,
+  "reviewer": "Codex: viewed real signed APK launcher and Android application details screenshots on API30/35/36 before publication",
+  "reviewedAt": "2026-10-30T18:14:50.953288+00:00",
+  "apkSha256": "8e01bea78155cc25e37db3161a056e52da87ea7b02cbb6c15cc0abf8875f342c",
+  "runtimeSource": "6ccf7757214e5e3b2089f2b36023baa606cee351",
+  "baselineVersionCode": 82,
+  "nativeRun": 41099291972,
+  "reference": "docs/design/launcher-five-approved-options.png, selected option4",
+  "criteria": {
+    "cyanGlassBulbAndGoldLightningRecognizable": true,
+    "navyGlassBackgroundAndNoClippedCoreSymbol": true,
+    "actualNativeLauncherAndAppInfoReviewed": true,
+    "launcherTapOpensApp": true,
+    "addressThemeManualQueueAndCacheRetained": true,
+    "unchangedGraphPixelsOnThreeApis": true,
+    "compiledAdaptiveLegacyMonoAndNotificationResourcesChecked": true
+  },
+  "notes": [
+    "Actual Android masks own the icon shape; the board illustrated a rounded square. Native screenshots show system-owned circular masks.",
+    "Single-color icons use the same bulb/bolt outline for system tinting; UI wordmark and application name/package retained."
+  ]
+}
