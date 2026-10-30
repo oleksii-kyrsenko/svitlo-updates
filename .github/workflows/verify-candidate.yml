@@ -41,7 +41,7 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
-          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/schedule-ui-smoke.py && python3 -u candidate/editor-map-smoke.py && python3 -u candidate/offline-ui-smoke.py && python3 -u candidate/settings-ui-smoke.py && python3 -u candidate/navigation-ui-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py && python3 -u candidate/shared-ui-smoke.py
+          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/shared-ui-smoke.py && python3 -u candidate/schedule-ui-smoke.py && python3 -u candidate/editor-map-smoke.py && python3 -u candidate/offline-ui-smoke.py && python3 -u candidate/settings-ui-smoke.py && python3 -u candidate/navigation-ui-smoke.py && python3 -u candidate/cache-smoke.py && python3 -u candidate/public-queue-smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

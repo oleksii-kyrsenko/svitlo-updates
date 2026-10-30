@@ -46,7 +46,7 @@ try:
  assert any(n.get('checkable')=='true' for n in E.fromstring(s).iter('node'))
  s,_=find('Черга · якщо знаєте її номер');assert any(n.get('class')=='android.widget.EditText' and n.get('text')=='3.1' for n in E.fromstring(s).iter('node'));flags['nameOperatorQueueInitiallyVisible']=True;evidence('editor-expanded-data',s)
  find('connection-value');flags['connectionFormInitiallyVisible']=True
- tap('connection-value');adb('shell','input','text','12345678');c['c']['wait_edit']('12345678');hide_keyboard();s=wait('clear-connection-input');evidence('editor-inline-clear-filled',s);tap('clear-connection-input');hide_keyboard();s=xml();assert 'clear-connection-input' not in s;assert not save_enabled(s);flags['inlineClearKeepsSaveDisabled']=True
+ tap('connection-value');adb('shell','input','text','12345678');c['c']['wait_edit']('12345678');hide_keyboard();s=wait('clear-connection-input');evidence('editor-inline-clear-filled',s);tap('clear-connection-input');s=xml();assert 'clear-connection-input' not in s;assert not save_enabled(s);flags['inlineClearKeepsSaveDisabled']=True
  s,search=find('lookup-connection');b=bounds(search);assert b[2]-b[0]<750,'Search action is still full width';evidence('editor-compact-search',s)
  s,button=find('delete-place');assert button.get('class')=='android.widget.Button';flags['deleteIsButton']=True;evidence('editor-delete-button',s)
  form_top();tap('Обрати на мапі');s=wait('Пошук адреси на мапі','Позначка адреси','Знайти адресу',p['address']);map_pin(s);flags['savedHousePinWithoutGPSPermission']=True;evidence('editor-saved-house-map',s)
