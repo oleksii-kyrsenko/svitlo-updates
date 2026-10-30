@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.48",
-  "versionCode": 82,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-82/svitlo-test-82.apk",
-  "size": 81472659,
-  "sha256": "b5dd610b4539b1a10941227821c7ebf096e7aadcabd2e4edf7d81ea37448843e",
-  "notes": "Aurora Light замінює попередню світлу тему: крижане скло, блакитні контури, темний текст і золоті акценти. Збережений вибір світлої теми, адреси та графіки залишаються. Темна Aurora Glass без змін.",
+  "version": "0.1.49",
+  "versionCode": 83,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-83/svitlo-test-83.apk",
+  "size": 82128158,
+  "sha256": "8e01bea78155cc25e37db3161a056e52da87ea7b02cbb6c15cc0abf8875f342c",
+  "notes": "Нова іконка застосунку: скляна блакитна лампа із золотою блискавкою. Адаптивна форма для Android і монохромний символ для системних значків. Вигляд екранів, адреси та графіки збережено.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-30T16:34:50.217947+00:00",
-  "sourceCommit": "251c10d4ac980e78d20e3694c6b50c0ed2762167"
+  "publishedAt": "2026-10-30T18:15:15.687191+00:00",
+  "sourceCommit": "6ccf7757214e5e3b2089f2b36023baa606cee351"
 }
