@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "reviewedAt": "2026-10-30T19:19:14.276721+00:00",
+  "nativeRun": 41113103234,
+  "baselineVersionCode": 83,
+  "runtimeSource": "063e3c92d9d9746404d795df04ccd714c7fa190b",
+  "apkSha256": "ecb326fa9cb37f24c1e9b626e158eb9b4c869f5ee86432ee986d68daae7dda6f",
+  "criteria": {
+    "sharedPopupStylesInBothThemes": true,
+    "noSystemAlertPanelInAppDialogs": true,
+    "confirmationCancelBackAndDiscard": true,
+    "validationPreservesDraft": true,
+    "deleteCancellationPreservesAddress": true,
+    "stateThemeManualQueueAndCachePreserved": true,
+    "newNameWithoutTestInAppAndAndroid": true,
+    "wordmarkFitsNormalAndLargeFont": true,
+    "launcherLampPreserved": true,
+    "graphBelowHeaderPreserved": true
+  },
+  "notes": "Raw final API30 light and API35 dark confirmation/validation/delete, wordmarks and Android app info viewed before publication. API36 all eleven assertions passed on identical signed APK. Launcher grid may truncate long labels according to Android; full app name is Коли світло. OS permission/installer UI is Android-owned."
+}

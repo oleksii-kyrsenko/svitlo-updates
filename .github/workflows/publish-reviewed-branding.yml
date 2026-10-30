@@ -1,0 +1,70 @@
+name: Publish reviewed Коли світло dialogs
+on:
+  push:
+    branches: ['candidates/android-86']
+    paths: ['reviewed-branding-86.json', '.github/workflows/publish-reviewed-branding.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 41113103234
+          pattern: public-apk-branding-*
+          path: verified
+      - name: Verify exact binary, native results and reviewed screenshots
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-branding-86.json'));assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and all(review['criteria'].values())
+          rows=[]
+          for api in ['30','35','36']:
+            root=pathlib.Path('verified/public-apk-branding-api'+api);row=json.load(open(root/'branding-result.json'));assets=json.load(open(root/'icon-resources-result.json'));assert row['api']==api and row['allPassed'] and assets['allPassed'];assert row['apkSha256']==assets['apkSha256']==meta['sha256'];assert row['metrics']['appGraphChangedPixelFraction']<.005;rows.append(row)
+          pathlib.Path('candidate/branding-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+          shutil.copy2('verified/public-apk-branding-api30/icon-resources-result.json','candidate/icon-resources-result.json')
+          for name in ['launcher-drawer','system-app-info','launched-by-icon','wordmark-font-1.0','wordmark-font-1.5','new-name-about']:shutil.copy2('verified/public-apk-branding-api30/'+name+'.png','candidate/'+name+'.png')
+          shutil.copy2('reviewed-branding-86.json','candidate/visual-review.json')
+          for suffix,api,theme in [('dark','35','aurora'),('light','30','moss')]:
+            for kind in ['discard-dialog','validation-dialog','delete-dialog']:shutil.copy2('verified/public-apk-branding-api'+api+'/'+kind+'-'+theme+'.png','candidate/'+kind+'-'+suffix+'.png')
+          notes='Коли світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nНазва встановлення в усіх варіантах — «Коли світло». Пакет, сертифікат, локальні ключі та GitHub URLs збережені. Усі власні підтвердження та повідомлення використовують спільні Dialog/Button і активну тему; native Alert/ActionSheet/Toast заборонені ownership-перевіркою. Системні дозволи та інсталятор лишаються під керуванням Android.\n\nAPI30/35/36:83→86 зі збереженням адреси/черги/теми/кешу, графік нижче шапки, напис при393dp/font1 і320dp/font1.5, опис/лаунчер/запуск/системне ім’я. Реальні власні діалоги: незбережені зміни, помилка черги, видалення; Continue/Android Back зберігають чернетку, Discard скидає тільки правки, скасування видалення лишає адресу. Темний режим на API35, світлий на API30/36.224 Node,98 React,12 theme,12 updater,5 notification,6 dialog перевірок. Знімки переглянуто до публікації. Це не тест всіх OEM чи фізичного телефона, не нове дослідження покриття.\n\nRuntime: '+meta['sourceCommit']+'. Код застосунку приватний.\n'
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text(notes)
+          PY
+      - name: Publish reviewed APK and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload android-test-86 candidate/svitlo-test-86.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/branding-results.json candidate/icon-resources-result.json candidate/visual-review.json candidate/launcher-drawer.png candidate/system-app-info.png candidate/launched-by-icon.png candidate/wordmark-font-1.0.png candidate/wordmark-font-1.5.png candidate/new-name-about.png candidate/discard-dialog-dark.png candidate/discard-dialog-light.png candidate/validation-dialog-dark.png candidate/validation-dialog-light.png candidate/delete-dialog-dark.png candidate/delete-dialog-light.png --clobber
+          gh release edit android-test-86 --draft=false --prerelease --title 'Коли світло 0.1.50 — назва й тематичні діалоги' --notes-file candidate/VERIFIED-NOTES.md
+      - name: Verify full anonymous APK download and preserve service configuration
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,urllib.request,subprocess,base64,datetime
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-branding-86.json'));url='https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-86/'+meta['fileName'];data=urllib.request.urlopen(url,timeout=120).read();assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          for attempt in range(3):
+            current=json.loads(subprocess.check_output(['gh','api','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json'],text=True));previous=json.loads(base64.b64decode(current['content']));assert previous['versionCode']==review['baselineVersionCode'];pathlib.Path('candidate/previous-channel.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n')
+            updated={**previous,**{k:meta[k] for k in ['packageName','version','versionCode','size','sha256','notes','sourceCommit']},'apkUrl':url,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()};assert updated['services']==previous['services'];payload={'message':'Publish reviewed Коли світло dialogs 0.1.50 /86','sha':current['sha'],'content':base64.b64encode((json.dumps(updated,ensure_ascii=False,indent=2)+'\n').encode()).decode()};pathlib.Path('candidate/channel-write.json').write_text(json.dumps(payload));result=subprocess.run(['gh','api','--method','PUT','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json','--input','candidate/channel-write.json'],stdout=subprocess.PIPE,text=True)
+            if result.returncode==0:break
+          else:raise RuntimeError('Concurrent channel updates; no forced write')
+          pathlib.Path('candidate/ci-channel-check.json').write_text(json.dumps({'anonymousDownloadVerified':True,'size':len(data),'sha256':meta['sha256'],'versionCode':meta['versionCode'],'servicesPreserved':True},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviewed-branding-publication
+          path: |
+            candidate/*-results.json
+            candidate/icon-resources-result.json
+            candidate/visual-review.json
+            candidate/previous-channel.json
+            candidate/ci-channel-check.json
+            candidate/VERIFIED-NOTES.md
