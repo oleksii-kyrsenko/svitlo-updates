@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.44",
-  "versionCode": 76,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-76/svitlo-test-76.apk",
-  "size": 77327773,
-  "sha256": "8954827de7b2839b6c730774ee92d7112b6dbe472574ce739529e2fee7ff48bd",
-  "notes": "Мапа відкривається з ширшим оглядом навколо піну. Спільні компоненти кнопок, полів, шапок, списків і графіка. Стрілки закріплені праворуч, довгі назви переносяться. Назву адреси, чергу та пошук можна очистити одним натисканням ×. Збережені адреси, ручні черги й офлайн-графіки зберігаються.",
+  "version": "0.1.45",
+  "versionCode": 77,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-77/svitlo-test-77.apk",
+  "size": 77327809,
+  "sha256": "7ac4d6f4524275384772b0396240414a05ae1f37a62b998559718db9c1925637",
+  "notes": "Стрілка у спільних полях вибору адреси спрямована вниз. Залишається праворуч, окремо від тексту, з перенесенням довгих назв.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-30T08:14:28.883116+00:00",
-  "sourceCommit": "9239f5effa2219750393cf39bc2300051f74b83e"
+  "publishedAt": "2026-10-30T08:32:44.951679+00:00",
+  "sourceCommit": "bc485f387c9fc61c4e551baed6530dbffe216f33"
 }
