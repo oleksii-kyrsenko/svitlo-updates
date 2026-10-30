@@ -1,0 +1,69 @@
+name: Verify Android secondary headers
+on:
+  push:
+    branches: ['candidates/android-test-77']
+    paths: ['candidate/**', '.github/workflows/verify-candidate.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify signed candidate and fetch the published baseline
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import json,urllib.request,hashlib,pathlib
+          meta=json.load(open('latest.json'))
+          data=urllib.request.urlopen(meta['apkUrl'],timeout=90).read()
+          assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          pathlib.Path('previous.apk').write_bytes(data)
+          PY
+      - name: Native screenshot reader
+        run: pip install pillow==12.0.0
+      - name: Enable available runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: python3 -u candidate/apk-smoke.py && python3 -u candidate/select-ui-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-apk-api${{ matrix.api }}
+          path: apk-diagnostics/
+  publish:
+    needs: native
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: public-apk-api*
+          path: verified-native
+      - name: Verify results and publish the candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 candidate/verify-apk.py
+          python3 candidate/publish.py
+          gh release upload android-test-77 candidate/svitlo-test-77.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/native-results.json candidate/select-ui-results.json --clobber
+          gh release edit android-test-77 --draft=false --prerelease --title 'Світло 0.1.45 — Android 77' --notes-file candidate/VERIFIED-NOTES.md
