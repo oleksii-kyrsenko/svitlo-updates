@@ -25,6 +25,8 @@ class Tests(unittest.TestCase):
   self.fail=False
   for _ in range(10):*_,state,_examined=self.run_batch(state,50)
   self.assertGreaterEqual(self.seen.count((1,1)),4)
+ def test_missing_community_is_omitted_without_invented_context(self):
+  self.assertEqual(m.records({'id':1,'name':'city'},{'id':2,'name':'street'},[{'buildingName':'1','chergGpv':'11'}],1000),[])
  def test_unknown_success_replaces_whole_street(self):
   def f(path,**values):return [{'id':1,'name':'street'}] if path=='/pw_streets' else [{'buildingName':'1','chergGpv':'Інший ОСР'}]
   rows,completed,_,state,_=m.crawl(self.cities,m.initial_state(),8,1,f,lambda _:None,1000)

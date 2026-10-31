@@ -12,3 +12,9 @@ test('street refresh retains untouched old expiry, invalidates refreshed unknown
 });
 test('refuse accidental subscriber metadata in public record',()=>{const b=sample();b.records[0].accountId='private';assert.throws(()=>validateBundle(b,now));});
 test('refuse records unsupported by client validator',()=>{for(const mutate of [r=>r.community='',r=>r.houses=['1'.repeat(31)],r=>r.houseRanges=['1-10'],r=>r.expiresAt=now+100000]){const b=sample();mutate(b.records[0]);assert.throws(()=>validateBundle(b,now));}});
+test('post-collection clock accepts new observations without truncating their validity',()=>{
+ const started=now,observed=started+1000,published=observed+5000;
+ const fresh=sample();fresh.generatedAt=observed;fresh.expiresAt=observed+86400000;fresh.records[0].checkedAt=observed;fresh.records[0].expiresAt=fresh.expiresAt;
+ const wrong=mergeSnapshots(null,fresh,started);assert.throws(()=>validateBundle(wrong,started));
+ const merged=mergeSnapshots(null,fresh,published);assert.doesNotThrow(()=>validateBundle(merged,published));assert.equal(merged.records[0].expiresAt,fresh.records[0].expiresAt);assert.equal(merged.records[0].checkedAt,observed);
+});

@@ -19,6 +19,8 @@ def qvalue(value):
  if re.fullmatch('[1-6][12]',s):s=s[0]+'.'+s[1]
  return s if re.fullmatch(r'[1-6]\.[12]',s) else None
 def records(city,street,rows,now):
+ # Missing source context cannot be invented to make a publishable record.
+ if not isinstance(city.get('name'),str) or not city['name'].strip() or not isinstance((city.get('otg') or {}).get('name'),str) or not city['otg']['name'].strip() or not isinstance(street.get('name'),str) or not street['name'].strip():return []
  grouped={}
  for row in rows:
   house=str(row.get('buildingName','')).strip()
