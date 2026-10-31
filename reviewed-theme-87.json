@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "reviewedAt": "2026-10-31T07:35:49.922851+00:00",
+  "nativeRun": 41180560783,
+  "baselineVersionCode": 86,
+  "runtimeSource": "86de65bff76ef376f1b2232e5aac9fac8fb8bb68",
+  "apkSha256": "96192b1a06f7662a2d1bcc42465b88185f84aafb3b06df12e67d7d9f96d12a20",
+  "criteria": {
+    "onlyAuroraGlassAvailable": true,
+    "savedLightDisplaysAuroraGlass": true,
+    "savedAppearancePreferenceRetained": true,
+    "activeAddressManualQueueRemindersOfflineCacheAndTimestampsPreserved": true,
+    "restartKeepsDarkThemeAndCache": true,
+    "confirmationBackContinueDiscardAndValidationRetainExpectedState": true,
+    "deleteCancellationAndManualQueueEditingWork": true,
+    "cleanStartOffersOnlyAuroraGlass": true,
+    "darkGraphMatches86": true,
+    "realAndroidScreenshotsViewedBeforePublication": true
+  },
+  "notes": "Reviewed final API30/35/36 moss-origin main graph, appearance settings with only Aurora Glass, and shared themed discard dialog. Earlier same-APK API35 aurora-origin graph also viewed. All six isolated saved-theme/platform cases pass all9 groups;0.0 changed graph pixels versus86 Aurora Glass on matching external fixture. Exact signed APK unchanged through QA-driver fixes. System permission/installer UI remains Android-owned; no new physical/OEM-wide/coverage claim."
+}
