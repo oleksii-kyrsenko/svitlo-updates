@@ -11,3 +11,4 @@ test('street refresh retains untouched old expiry, invalidates refreshed unknown
  const fresh={completedStreetIds:['1:2'],records:[]};const result=mergeSnapshots(previous,fresh,now);assert.deepEqual(result.records,[previous.records[1]]);assert.equal(result.records[0].expiresAt,now+10000);
 });
 test('refuse accidental subscriber metadata in public record',()=>{const b=sample();b.records[0].accountId='private';assert.throws(()=>validateBundle(b,now));});
+test('refuse records unsupported by client validator',()=>{for(const mutate of [r=>r.community='',r=>r.houses=['1'.repeat(31)],r=>r.houseRanges=['1-10'],r=>r.expiresAt=now+100000]){const b=sample();mutate(b.records[0]);assert.throws(()=>validateBundle(b,now));}});
