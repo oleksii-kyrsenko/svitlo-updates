@@ -34,12 +34,12 @@ jobs:
           assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and all(review['criteria'].values())
           rows=[]
           for api in ['30','35','36']:
-            root=pathlib.Path('verified/public-apk-theme-api'+api);row=json.load(open(root/'theme-result.json'));assets=json.load(open(root/'icon-resources-result.json'))
-            assert row['api']==api and row['allPassed'] and len(row['flags'])==12 and all(row['flags'].values()) and assets['allPassed']
-            assert row['apkSha256']==assets['apkSha256']==meta['sha256']
-            assert all(row['metrics'][theme+'GraphChangedPixelFraction']<.005 for theme in ['aurora','moss']);rows.append(row)
-            for name in ['upgraded-87-moss','appearance-moss','restarted-87-moss','discard-dialog-aurora','manual-queue-saved','clean-start-87']:
-              shutil.copy2(root/(name+'.png'),'candidate/api'+api+'-'+name+'.png')
+            for theme in ['aurora','moss']:
+              root=pathlib.Path('verified/public-apk-theme-api'+api+'-'+theme);row=json.load(open(root/'theme-result.json'));assets=json.load(open(root/'icon-resources-result.json'))
+              assert row['api']==api and row['savedTheme']==theme and row['allPassed'] and len(row['flags'])==9 and all(row['flags'].values()) and assets['allPassed']
+              assert row['apkSha256']==assets['apkSha256']==meta['sha256'] and row['metrics']['appGraphChangedPixelFraction']<.005;rows.append(row)
+              for name in ['upgraded-87-'+theme,'appearance-'+theme,'restarted-87-'+theme,'discard-dialog-aurora','manual-queue-saved','clean-start-87']:
+                shutil.copy2(root/(name+'.png'),'candidate/api'+api+'-'+theme+'-'+name+'.png')
           pathlib.Path('candidate/theme-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
           shutil.copy2('reviewed-theme-87.json','candidate/visual-review.json')
           pathlib.Path('candidate/VERIFIED-NOTES.md').write_text('Коли світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nПеревірено точну підписану APK на Android11/15/16 (API30/35/36): оновлення86→87 з обох тем, лише Aurora Glass у виборі, збереження адреси/ручної черги/офлайн-графіка/часу джерела та початкового вибору теми. Перезапуск, власні діалоги, ручне виправлення черги й чистий запуск. Темне оформлення графіка збігається з86. Знімки переглянуті перед публікацією.224 Node,97 React,13 theme,12 updater,5 notification,6 dialog перевірок.\n\nПакет і сертифікат незмінні. Код приватний, дані QA зовнішні. Перевірки не є аудитом покриття чи всіх фізичних пристроїв.\n\nRuntime: '+meta['sourceCommit']+'\n')

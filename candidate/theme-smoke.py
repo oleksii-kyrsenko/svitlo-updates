@@ -1,5 +1,5 @@
 """Native display-name/update acceptance; external fixtures never enter the product."""
-import pathlib,json,sqlite3,time,copy,datetime,zoneinfo,xml.etree.ElementTree as E
+import pathlib,json,sqlite3,time,copy,datetime,zoneinfo,xml.etree.ElementTree as E,os,subprocess
 from PIL import Image,ImageChops
 c={'__name__':'launcher_helpers'};exec(compile(pathlib.Path('candidate/apk-smoke.py').read_text().split('\nflags={}')[0],'launcher_helpers','exec'),c)
 adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait_for'];launch=c['launch'];evidence=c['evidence'];out=c['out'];pkg=c['pkg'];meta=c['meta'];bounds=c['bounds'];flags={};metrics={}
@@ -64,24 +64,24 @@ try:
  slots=[{'start':0,'end':600,'type':'NotPlanned'},{'start':600,'end':720,'type':'Definite'},{'start':720,'end':1440,'type':'NotPlanned'}]
  plans={key:{'operatorId':p['operatorId'],'queue':p['queue'],'status':'ready','date':(day+datetime.timedelta(days=offset)).isoformat(),'checkedAt':instant.isoformat(),'validUntil':(stamp+86400)*1000,'intervals':[],'slots':slots,'refreshError':{'status':'source_unavailable','attemptedAt':instant.isoformat()}} for key,offset in [('today',0),('tomorrow',1)]}
  state.update(activePlaceId=p['id'],snapshots={p['id']:plans},notificationsEnabled=False,gpsAsked=True)
- reference=None
- for savedTheme in ['aurora','moss']:
-  # Reinstall baseline between independent update cases; downgrade is not used.
-  adb('uninstall',pkg,check=False);adb('install','-g','--abi','x86_64','previous.apk');seed(copy.deepcopy(state),savedTheme);launch();baseline=graph('baseline-86-'+savedTheme)
-  if savedTheme=='aurora':reference=baseline
-  else:assert dark_difference(reference,baseline)>.05,'Baseline light fixture was not light'
-  adb('shell','am','force-stop',pkg);adb('install','-r','-g','--abi','x86_64','candidate/'+meta['fileName']);launch();candidate=graph('upgraded-87-'+savedTheme)
-  fraction=dark_difference(reference,candidate);metrics[savedTheme+'GraphChangedPixelFraction']=fraction;assert fraction<.005,(savedTheme,fraction)
-  flags[savedTheme+'UpgradeUsesUnchangedAuroraGlass']=True
-  appearance_check();current=saved();assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme}
-  v=current['svitlo.state.v1'];assert v['activePlaceId']==p['id'] and v['places'][0]['reminders']==p['reminders'] and v['notificationsEnabled']==state['notificationsEnabled'];assert v['places'][0]['id']==p['id'] and v['places'][0]['address']==p['address'] and v['places'][0]['queue']=='3.1' and v['places'][0]['queueOrigin']=='manual'
-  for key in ['today','tomorrow']:
-   assert v['snapshots'][p['id']][key]['slots']==slots and v['snapshots'][p['id']][key]['checkedAt']==plans[key]['checkedAt']
-  flags[savedTheme+'AppearanceAddressManualQueueAndOfflineCachePreserved']=True
-  launch();restarted=graph('restarted-87-'+savedTheme);assert dark_difference(reference,restarted)<.005;flags[savedTheme+'RestartRetainsDarkAppearanceAndCache']=True
+ initialTheme=os.environ['SAVED_THEME'];assert initialTheme in ['aurora','moss'];savedTheme=initialTheme
+ # One baseline installation per emulator; never uninstall/reinstall an older version between cases.
+ adb('install','-r','-g','--abi','x86_64','previous.apk');seed(copy.deepcopy(state),'aurora');launch();reference=graph('baseline-86-aurora')
+ if savedTheme=='moss':
+  seed(copy.deepcopy(state),'moss');launch();baseline=graph('baseline-86-moss');assert dark_difference(reference,baseline)>.05,'Baseline light fixture was not light'
+ adb('shell','am','force-stop',pkg);adb('install','-r','-g','--abi','x86_64','candidate/'+meta['fileName']);launch();candidate=graph('upgraded-87-'+savedTheme)
+ fraction=dark_difference(reference,candidate);metrics['appGraphChangedPixelFraction']=fraction;assert fraction<.005,(savedTheme,fraction);flags['UpgradeUsesUnchangedAuroraGlass']=True
+ appearance_check();current=saved();assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme}
+ v=current['svitlo.state.v1'];assert v['activePlaceId']==p['id'] and v['places'][0]['reminders']==p['reminders'] and v['notificationsEnabled']==state['notificationsEnabled'];assert v['places'][0]['id']==p['id'] and v['places'][0]['address']==p['address'] and v['places'][0]['queue']=='3.1' and v['places'][0]['queueOrigin']=='manual'
+ for key in ['today','tomorrow']:assert v['snapshots'][p['id']][key]['slots']==slots and v['snapshots'][p['id']][key]['checkedAt']==plans[key]['checkedAt']
+ flags['AppearanceAddressManualQueueAndOfflineCachePreserved']=True
+ launch();restarted=graph('restarted-87-'+savedTheme);assert dark_difference(reference,restarted)<.005;flags['RestartRetainsDarkAppearanceAndCache']=True
  # Dialogs and editor still work for an installation whose persisted selection is light.
  popup_checks('aurora')
- c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');full_field('address-queue-input');replace_text('address-queue-input','2.2');hide_keyboard();tap('save-place');home_after_editor();c['wait_source']('Черга 2.2');evidence('manual-queue-saved',xml());current=saved();assert current['svitlo.state.v1']['places'][0]['queue']=='2.2' and current['svitlo.state.v1']['places'][0]['queueOrigin']=='manual';assert current['svitlo.appearance.v1']=={'version':1,'theme':'moss'};flags['ManualQueueEditWorksAfterLightFallback']=True
+ c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');full_field('address-queue-input');replace_text('address-queue-input','2.2');hide_keyboard();tap('save-place');home_after_editor();c['wait_source']('Черга 2.2');evidence('manual-queue-saved',xml());current=saved();assert current['svitlo.state.v1']['places'][0]['queue']=='2.2' and current['svitlo.state.v1']['places'][0]['queueOrigin']=='manual';assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme};flags['ManualQueueEditWorksAfterThemeFallback']=True
  adb('shell','pm','clear',pkg);launch();s=wait('Ввести адресу');evidence('clean-start-87',s);savedTheme='clean';appearance_check();flags['CleanStartOffersOnlyAuroraGlass']=True
 finally:
- result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'apkSha256':meta['sha256'],'flags':flags,'metrics':metrics,'allPassed':len(flags)==12 and all(flags.values()),'scope':'Exact signed APK86→87 upgrade on both saved theme IDs; Aurora Glass rendering matches86 dark baseline, light option hidden, original appearance key retained, address/manual queue/offline cache and timestamps survive restart. Themed confirmation/validation/delete actions and manual queue editing checked; clean launch. External emulator fixtures and QA input helper only.'};(out/'theme-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('THEME_RESULT',json.dumps(result),flush=True)
+ try:
+  (out/'final-logcat.txt').write_text(adb('logcat','-d',check=False));(out/'final-window.png').write_bytes(subprocess.check_output(['adb','exec-out','screencap','-p'],timeout=60))
+ except Exception as diagnostic_error:print('Diagnostic collection:',str(diagnostic_error),flush=True)
+ result={'savedTheme':os.environ['SAVED_THEME'],'api':adb('shell','getprop','ro.build.version.sdk').strip(),'apkSha256':meta['sha256'],'flags':flags,'metrics':metrics,'allPassed':len(flags)==9 and all(flags.values()),'scope':'Exact signed APK86→87 upgrade; six independent emulator/theme cases cover both saved IDs; Aurora Glass rendering matches86 dark baseline, light option hidden, original appearance key retained, address/manual queue/offline cache and timestamps survive restart. Themed confirmation/validation/delete actions and manual queue editing checked; clean launch. External emulator fixtures and QA input helper only.'};(out/'theme-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('THEME_RESULT',json.dumps(result),flush=True)
