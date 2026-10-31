@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.50",
-  "versionCode": 86,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-86/svitlo-test-86.apk",
-  "size": 82139042,
-  "sha256": "ecb326fa9cb37f24c1e9b626e158eb9b4c869f5ee86432ee986d68daae7dda6f",
-  "notes": "Нова назва — «Коли світло», без позначки «Тест». Усі підтвердження й повідомлення застосунку використовують оформлення обраної теми, зокрема вихід із незбереженого редагування. Адреси, ручні черги, теми та графіки зберігаються.",
+  "version": "0.1.51",
+  "versionCode": 87,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-87/svitlo-test-87.apk",
+  "size": 82139070,
+  "sha256": "96192b1a06f7662a2d1bcc42465b88185f84aafb3b06df12e67d7d9f96d12a20",
+  "notes": "Світлу тему тимчасово приховано для доопрацювання. Застосунок використовує Aurora Glass, зокрема після оновлення зі світлою темою. Збережені адреси, ручні черги, графіки та налаштування залишаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-30T19:19:45.885082+00:00",
-  "sourceCommit": "063e3c92d9d9746404d795df04ccd714c7fa190b"
+  "publishedAt": "2026-10-31T07:36:22.352015+00:00",
+  "sourceCommit": "86de65bff76ef376f1b2232e5aac9fac8fb8bb68"
 }
