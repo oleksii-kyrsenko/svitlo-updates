@@ -1,0 +1,79 @@
+name: Dynamic coverage data and source monitor
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: dynamic-coverage-publisher
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate publisher and monitor
+        run: |
+          node --test coverage/qa/build.test.mjs
+          python3 coverage/qa/test-monitor.py
+      - name: Monitor every operator and discover registry changes
+        run: python3 coverage/monitor.py --registry
+      - name: Maintain one investigation task
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 coverage/report-issue.py
+      - name: Persist source health independently of signing
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add coverage/report.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh operator source health'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Load signing key from secret
+        env:
+          COVERAGE_SIGNING_KEY: ${{ secrets.DYNAMIC_COVERAGE_SIGNING_KEY }}
+        run: |
+          if [ -z "$COVERAGE_SIGNING_KEY" ]; then
+            echo 'Signing key unavailable. Collection report remains available; signed data will not be replaced.'
+            exit 1
+          fi
+          umask 077
+          key_file="$RUNNER_TEMP/coverage-signing.pem"
+          printf '%s\n' "$COVERAGE_SIGNING_KEY" > "$key_file"
+          echo "DYNAMIC_COVERAGE_KEY_FILE=$key_file" >> "$GITHUB_ENV"
+      - name: Collect and sign compatible public data
+        run: node coverage/refresh.mjs
+      - name: Publish complete data packages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dynamic-coverage coverage/report.json coverage/refresh-report.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh signed coverage and source health'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynamic-coverage-${{ github.run_id }}
+          path: |
+            coverage/report.json
+            coverage/refresh-report.json
+            coverage/staging/*.report.json
+          retention-days: 30
+      - name: Remove ephemeral key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/coverage-signing.pem"

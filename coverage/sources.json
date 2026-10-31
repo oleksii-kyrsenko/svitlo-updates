@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "registryPage": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
+  "operators": [
+    {
+      "id": "vinnytsia",
+      "name": "Вінницяобленерго",
+      "regionIds": [
+        "UA-05"
+      ],
+      "sourceUrl": "https://www.voe.com.ua/disconnection/detailed",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "volyn",
+      "name": "Волиньобленерго",
+      "regionIds": [
+        "UA-07"
+      ],
+      "sourceUrl": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-dnipro",
+      "name": "ДТЕК Дніпровські електромережі",
+      "regionIds": [
+        "UA-12"
+      ],
+      "sourceUrl": "https://www.dtek-dnem.com.ua/ua/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-donetsk",
+      "name": "ДТЕК Донецькі електромережі",
+      "regionIds": [
+        "UA-14"
+      ],
+      "sourceUrl": "https://www.dtek-dem.com.ua/ua/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "zhytomyr",
+      "name": "Житомиробленерго",
+      "regionIds": [
+        "UA-18"
+      ],
+      "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "zakarpattia",
+      "name": "Закарпаттяобленерго",
+      "regionIds": [
+        "UA-21"
+      ],
+      "sourceUrl": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "zaporizhzhia",
+      "name": "Запоріжжяобленерго",
+      "regionIds": [
+        "UA-23"
+      ],
+      "sourceUrl": "https://www.zoe.com.ua/графіки-погодинних-стабілізаційних/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-kyiv",
+      "name": "ДТЕК Київські електромережі",
+      "regionIds": [
+        "UA-30"
+      ],
+      "sourceUrl": "https://www.dtek-kem.com.ua/ua/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-kyiv-region",
+      "name": "ДТЕК Київські регіональні електромережі",
+      "regionIds": [
+        "UA-32"
+      ],
+      "sourceUrl": "https://www.dtek-krem.com.ua/ua/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "kirovohrad",
+      "name": "Кіровоградобленерго",
+      "regionIds": [
+        "UA-35"
+      ],
+      "sourceUrl": "https://kiroe.com.ua/electricity-blackout",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "luhansk",
+      "name": "Луганське енергетичне об’єднання",
+      "regionIds": [
+        "UA-44"
+      ],
+      "sourceUrl": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "lviv",
+      "name": "Львівобленерго",
+      "regionIds": [
+        "UA-46"
+      ],
+      "sourceUrl": "https://poweron.loe.lviv.ua/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "mykolaiv",
+      "name": "Миколаївобленерго",
+      "regionIds": [
+        "UA-48"
+      ],
+      "sourceUrl": "https://off.energy.mk.ua/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-odesa",
+      "name": "ДТЕК Одеські електромережі",
+      "regionIds": [
+        "UA-51"
+      ],
+      "sourceUrl": "https://www.dtek-oem.com.ua/ua/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "poltava",
+      "name": "Полтаваобленерго",
+      "regionIds": [
+        "UA-53"
+      ],
+      "sourceUrl": "https://www.poe.pl.ua/disconnection/hrafik-pohodynnoho-vidkliuchennia-elektroenerhii/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "prykarpattia",
+      "name": "Прикарпаттяобленерго",
+      "regionIds": [
+        "UA-26"
+      ],
+      "sourceUrl": "https://oe.if.ua/uk/emergency_shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "sumy",
+      "name": "Сумиобленерго",
+      "regionIds": [
+        "UA-59"
+      ],
+      "sourceUrl": "https://www.soe.com.ua/consumers/shutdowns",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "rivne",
+      "name": "Рівнеобленерго",
+      "regionIds": [
+        "UA-56"
+      ],
+      "sourceUrl": "https://www.roe.vsei.ua/disconnections",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "ternopil",
+      "name": "Тернопільобленерго",
+      "regionIds": [
+        "UA-61"
+      ],
+      "sourceUrl": "https://www.toe.com.ua/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "kharkiv",
+      "name": "Харківобленерго",
+      "regionIds": [
+        "UA-63"
+      ],
+      "sourceUrl": "https://www.oblenergo.kharkov.ua/getinfoingao",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "kherson",
+      "name": "Херсонобленерго",
+      "regionIds": [
+        "UA-65"
+      ],
+      "sourceUrl": "https://ksoe.com.ua/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "khmelnytskyi",
+      "name": "Хмельницькобленерго",
+      "regionIds": [
+        "UA-68"
+      ],
+      "sourceUrl": "https://hoe.com.ua/page/informatsija-vidkljuchennja",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "cherkasy",
+      "name": "Черкасиобленерго",
+      "regionIds": [
+        "UA-71"
+      ],
+      "sourceUrl": "https://www.cherkasyoblenergo.com/off",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "chernivtsi",
+      "name": "Чернівціобленерго",
+      "regionIds": [
+        "UA-73"
+      ],
+      "sourceUrl": "https://oblenergo.cv.ua/shutdowns/",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "chernihiv",
+      "name": "Чернігівобленерго",
+      "regionIds": [
+        "UA-74"
+      ],
+      "sourceUrl": "https://chernihivoblenergo.com.ua/blackouts",
+      "kind": "regional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-pem",
+      "name": "ДТЕК ПЕМ-Енерговугілля",
+      "regionIds": [
+        "UA-14"
+      ],
+      "sourceUrl": "https://www.dtek-pem.com.ua/ua/shutdowns-schedule",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "dtek-vvm",
+      "name": "ДТЕК Високовольтні мережі",
+      "regionIds": [
+        "UA-14"
+      ],
+      "sourceUrl": "https://www.dtek-vvm.com.ua/ua/shutdowns-schedule",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "cek",
+      "name": "ПЕЕМ «ЦЕК»",
+      "regionIds": [
+        "UA-12"
+      ],
+      "sourceUrl": "https://cek.dp.ua/index.php/cpojivaham/vidkliuchennia.html",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "naftogaz-teplo",
+      "name": "Нафтогаз Тепло",
+      "regionIds": [],
+      "sourceUrl": "https://www.naftogazteplo.com.ua/?page_id=4582",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "ukrzaliznytsia",
+      "name": "Укрзалізниця",
+      "regionIds": [],
+      "sourceUrl": "https://uz.gov.ua/about/activity/electropostachannia/electro_consumers/temporary_shutdown/",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "regional-networks",
+      "name": "Регіональні електричні мережі",
+      "regionIds": [],
+      "sourceUrl": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "id": "atomservice",
+      "name": "Атомсервіс",
+      "regionIds": [
+        "UA-48"
+      ],
+      "sourceUrl": "https://info.dpem.mk.ua/off_graf.html",
+      "kind": "additional",
+      "directorySource": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    }
+  ]
+}
