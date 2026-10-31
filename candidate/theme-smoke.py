@@ -4,14 +4,26 @@ from PIL import Image,ImageChops
 c={'__name__':'launcher_helpers'};exec(compile(pathlib.Path('candidate/apk-smoke.py').read_text().split('\nflags={}')[0],'launcher_helpers','exec'),c)
 adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait_for'];launch=c['launch'];evidence=c['evidence'];out=c['out'];pkg=c['pkg'];meta=c['meta'];bounds=c['bounds'];flags={};metrics={}
 def seed(state,theme):
- adb('shell','am','force-stop',pkg);p=out/'launcher-RKStorage';p.unlink(missing_ok=True)
- with sqlite3.connect(p) as db:
+ adb('shell','am','force-stop',pkg);p=out/'launcher-RKStorage'
+ for suffix in ['', '-wal', '-shm']:pathlib.Path(str(p)+suffix).unlink(missing_ok=True)
+ db=sqlite3.connect(p)
+ try:
   db.execute('CREATE TABLE catalystLocalStorage(key TEXT PRIMARY KEY,value TEXT NOT NULL)');db.execute('PRAGMA user_version=1')
   for k,v in [('svitlo.state.v1',state),('svitlo.appearance.v1',{'version':1,'theme':theme})]:db.execute('INSERT INTO catalystLocalStorage VALUES (?,?)',(k,json.dumps(v,ensure_ascii=False)))
- remote=f'/data/data/{pkg}/databases';adb('shell','mkdir','-p',remote);adb('push',str(p),remote+'/RKStorage');uid=adb('shell','stat','-c','%u',f'/data/data/{pkg}').strip();assert uid.isdigit();adb('shell','chown','-R',f'{uid}:{uid}',remote);adb('shell','restorecon','-R',remote)
+  db.commit()
+ finally:db.close()
+ remote=f'/data/data/{pkg}/databases';adb('shell','mkdir','-p',remote)
+ adb('shell','rm','-f',remote+'/RKStorage',remote+'/RKStorage-wal',remote+'/RKStorage-shm')
+ adb('push',str(p),remote+'/RKStorage');uid=adb('shell','stat','-c','%u',f'/data/data/{pkg}').strip();assert uid.isdigit();adb('shell','chown','-R',f'{uid}:{uid}',remote);adb('shell','restorecon','-R',remote)
 def saved():
- adb('shell','am','force-stop',pkg);p=out/'saved.db';adb('pull',f'/data/data/{pkg}/databases/RKStorage',str(p))
- with sqlite3.connect(p) as db:return {k:json.loads(v) for k,v in db.execute('SELECT key,value FROM catalystLocalStorage WHERE key IN (?,?)',('svitlo.state.v1','svitlo.appearance.v1'))}
+ adb('shell','am','force-stop',pkg);p=out/'saved.db';remote=f'/data/data/{pkg}/databases/RKStorage'
+ for suffix in ['', '-wal', '-shm']:pathlib.Path(str(p)+suffix).unlink(missing_ok=True)
+ adb('pull',remote,str(p))
+ for suffix in ['-wal','-shm']:
+  if adb('shell',f'test -f {remote}{suffix} && echo yes',check=False).strip()=='yes':adb('pull',remote+suffix,str(p)+suffix)
+ db=sqlite3.connect(p)
+ try:return {k:json.loads(v) for k,v in db.execute('SELECT key,value FROM catalystLocalStorage WHERE key IN (?,?)',('svitlo.state.v1','svitlo.appearance.v1'))}
+ finally:db.close()
 def icon_node(s):return next((n for n in E.fromstring(s).iter('node') if n.get('text')=='Коли світло' or n.get('content-desc')=='Коли світло'),None)
 def by_id(s,id):return next((n for n in E.fromstring(s).iter('node') if n.get('resource-id','').split('/')[-1]==id),None)
 def full_field(id):
