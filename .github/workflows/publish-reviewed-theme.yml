@@ -1,0 +1,84 @@
+name: Publish reviewed Aurora Glass-only update
+on:
+  push:
+    branches: ['candidates/android-87']
+    paths: ['reviewed-theme-87.json']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select reviewed native run
+        id: review
+        run: |
+          python3 - <<'PYCODE'
+          import os,json
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+            f.write('run='+str(json.load(open('reviewed-theme-87.json'))['nativeRun'])+'\n')
+          PYCODE
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.review.outputs.run }}
+          pattern: public-apk-theme-*
+          path: verified
+      - name: Verify exact signed binary and reviewed native evidence
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-theme-87.json'))
+          assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and all(review['criteria'].values())
+          rows=[]
+          for api in ['30','35','36']:
+            root=pathlib.Path('verified/public-apk-theme-api'+api);row=json.load(open(root/'theme-result.json'));assets=json.load(open(root/'icon-resources-result.json'))
+            assert row['api']==api and row['allPassed'] and len(row['flags'])==12 and all(row['flags'].values()) and assets['allPassed']
+            assert row['apkSha256']==assets['apkSha256']==meta['sha256']
+            assert all(row['metrics'][theme+'GraphChangedPixelFraction']<.005 for theme in ['aurora','moss']);rows.append(row)
+            for name in ['upgraded-87-moss','appearance-moss','restarted-87-moss','discard-dialog-aurora','manual-queue-saved','clean-start-87']:
+              shutil.copy2(root/(name+'.png'),'candidate/api'+api+'-'+name+'.png')
+          pathlib.Path('candidate/theme-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+          shutil.copy2('reviewed-theme-87.json','candidate/visual-review.json')
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text('Коли світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nПеревірено точну підписану APK на Android11/15/16 (API30/35/36): оновлення86→87 з обох тем, лише Aurora Glass у виборі, збереження адреси/ручної черги/офлайн-графіка/часу джерела та початкового вибору теми. Перезапуск, власні діалоги, ручне виправлення черги й чистий запуск. Темне оформлення графіка збігається з86. Знімки переглянуті перед публікацією.224 Node,97 React,13 theme,12 updater,5 notification,6 dialog перевірок.\n\nПакет і сертифікат незмінні. Код приватний, дані QA зовнішні. Перевірки не є аудитом покриття чи всіх фізичних пристроїв.\n\nRuntime: '+meta['sourceCommit']+'\n')
+          PY
+      - name: Publish APK and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create android-test-87 --target "$GITHUB_SHA" --draft --prerelease --title 'Коли світло 0.1.51 — тимчасово лише Aurora Glass' --notes-file candidate/VERIFIED-NOTES.md
+          gh release upload android-test-87 candidate/svitlo-test-87.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/theme-results.json candidate/visual-review.json candidate/api*.png
+          gh release edit android-test-87 --draft=false
+      - name: Verify anonymous download and promote preserving all other channel fields
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,urllib.request,subprocess,base64,datetime
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-theme-87.json'));url='https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-87/'+meta['fileName']
+          data=urllib.request.urlopen(url,timeout=180).read();assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          for attempt in range(3):
+            current=json.loads(subprocess.check_output(['gh','api','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json?ref=main'],text=True));previous=json.loads(base64.b64decode(current['content']));assert previous['versionCode']==review['baselineVersionCode']
+            pathlib.Path('candidate/previous-channel.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n')
+            updated={**previous,**{k:meta[k] for k in ['packageName','version','versionCode','size','sha256','notes','sourceCommit']},'apkUrl':url,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+            release_fields={'packageName','version','versionCode','size','sha256','notes','sourceCommit','apkUrl','publishedAt'}
+            assert {k:v for k,v in updated.items() if k not in release_fields}=={k:v for k,v in previous.items() if k not in release_fields}
+            payload={'message':'Publish reviewed Aurora Glass-only 0.1.51 /87','branch':'main','sha':current['sha'],'content':base64.b64encode((json.dumps(updated,ensure_ascii=False,indent=2)+'\n').encode()).decode()}
+            pathlib.Path('candidate/channel-write.json').write_text(json.dumps(payload));result=subprocess.run(['gh','api','--method','PUT','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json','--input','candidate/channel-write.json'],stdout=subprocess.PIPE,text=True)
+            if result.returncode==0:break
+          else:raise RuntimeError('Concurrent channel update; no forced write')
+          pathlib.Path('candidate/ci-channel-check.json').write_text(json.dumps({'anonymousDownloadVerified':True,'size':len(data),'sha256':meta['sha256'],'versionCode':meta['versionCode'],'nonReleaseFieldsPreserved':True},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviewed-theme-publication
+          path: |
+            candidate/theme-results.json
+            candidate/visual-review.json
+            candidate/previous-channel.json
+            candidate/ci-channel-check.json
+            candidate/VERIFIED-NOTES.md
