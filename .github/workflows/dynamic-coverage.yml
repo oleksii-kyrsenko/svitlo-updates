@@ -25,6 +25,7 @@ jobs:
         run: |
           node --test coverage/qa/build.test.mjs
           python3 coverage/qa/test-monitor.py
+          python3 coverage/qa/test-crawl.py
       - name: Monitor every operator and discover registry changes
         run: python3 coverage/monitor.py --registry
       - name: Maintain one investigation task
@@ -54,6 +55,8 @@ jobs:
           printf '%s\n' "$COVERAGE_SIGNING_KEY" > "$key_file"
           echo "DYNAMIC_COVERAGE_KEY_FILE=$key_file" >> "$GITHUB_ENV"
       - name: Collect and sign compatible public data
+        env:
+          COVERAGE_STREET_BUDGET: ${{ vars.COVERAGE_STREET_BUDGET || '8' }}
         run: |
           node coverage/refresh.mjs
           node coverage/verify.mjs
@@ -61,11 +64,22 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add dynamic-coverage coverage/report.json coverage/refresh-report.json
+          git add dynamic-coverage coverage/report.json coverage/refresh-report.json coverage/crawl-state.json
           git diff --cached --quiet && exit 0
           git commit -m 'Refresh signed coverage and source health'
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Persist bounded crawl cursor even after failed collection
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add coverage/crawl-state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Advance resumable official source crawl cursor'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
       - name: Preserve diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,6 +88,7 @@ jobs:
           path: |
             coverage/report.json
             coverage/refresh-report.json
+            coverage/crawl-state.json
             coverage/staging/*.report.json
           retention-days: 30
       - name: Remove ephemeral key
