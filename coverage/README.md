@@ -15,7 +15,7 @@ The client pins the matching public key and verifies signature, bounds, SHA256, 
 
 Bootstrap source health: 24 available pages, 4 protected, 4 unavailable in this workspace. These are not address success rates. The bounded Lviv official collection produced 586 house records in its first live pass, with three street failures; see the separately retained harvest report. No fresh 20-address-per-OSR national audit is claimed.
 
-The current connected GitHub identity returns HTTP403 for Actions secret public-key access, so it cannot install the signing secret. A local protected key and matching client pin have been generated. Local signing works; unattended signed publication requires that same key to be provisioned as the named secret. The workflow fails explicitly and preserves the previous signed manifest while the secret is absent. Do not replace it with an unsigned publisher or put a private key in this public repository.
+The connected identity returned HTTP403 for Actions secret management; the user installed the named secret separately. Hosted run [41200570297](https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41200570297) passed collection, signing, integrity verification, publication and cursor persistence. It published revision3 with736 records (586 earlier Lviv records retaining original times, plus150 freshly collected Brody records). A prior timestamp validation bug was fixed in9976eab. If the secret is absent in the future, publication fails explicitly and preserves the previous signed manifest. Do not replace it with an unsigned publisher or put a private key in this public repository.
 
 ## Agent responsibilities
 
