@@ -1,6 +1,6 @@
 {
   "model": "Qwen2.5-1.5B-Instruct Q4_K_M",
-  "startedAt": 1793358118620,
+  "startedAt": 1793443019114,
   "cases": [
     {
       "id": "house",
@@ -37,7 +37,7 @@
           "recordVersion": 2
         }
       ],
-      "seconds": 15.02
+      "seconds": 13.98
     },
     {
       "id": "street",
@@ -67,7 +67,7 @@
           "houses": []
         }
       ],
-      "seconds": 4.26
+      "seconds": 3.86
     },
     {
       "id": "settlement",
@@ -97,7 +97,7 @@
           "houses": []
         }
       ],
-      "seconds": 3.52
+      "seconds": 3.56
     },
     {
       "id": "outage",
@@ -119,7 +119,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.89
+      "seconds": 4.7
     },
     {
       "id": "question",
@@ -141,7 +141,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.51
+      "seconds": 4.44
     },
     {
       "id": "uncertain",
@@ -163,7 +163,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.76
+      "seconds": 4.59
     },
     {
       "id": "old",
@@ -185,7 +185,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.84
+      "seconds": 4.66
     },
     {
       "id": "correction",
@@ -207,7 +207,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.92
+      "seconds": 4.8
     },
     {
       "id": "conflict",
@@ -229,7 +229,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.12
+      "seconds": 4.93
     },
     {
       "id": "future",
@@ -251,7 +251,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.89
+      "seconds": 4.64
     },
     {
       "id": "range",
@@ -289,7 +289,7 @@
           "recordVersion": 2
         }
       ],
-      "seconds": 4.65
+      "seconds": 4.46
     },
     {
       "id": "injection",
@@ -311,7 +311,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 3.5
+      "seconds": 3.38
     },
     {
       "id": "no-locality",
@@ -333,9 +333,9 @@
         ]
       },
       "accepted": [],
-      "seconds": 3.18
+      "seconds": 3.07
     }
   ],
-  "seconds": 68.17,
+  "seconds": 65.08,
   "passed": true
 }
