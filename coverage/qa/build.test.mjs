@@ -10,3 +10,4 @@ test('street refresh retains untouched old expiry, invalidates refreshed unknown
  const previous={records:[{id:'old',officialCityId:'1:2',expiresAt:now+5000},{id:'untouched',officialCityId:'1:3',expiresAt:now+10000},{id:'stale',officialCityId:'1:4',expiresAt:now-1}]};
  const fresh={completedStreetIds:['1:2'],records:[]};const result=mergeSnapshots(previous,fresh,now);assert.deepEqual(result.records,[previous.records[1]]);assert.equal(result.records[0].expiresAt,now+10000);
 });
+test('refuse accidental subscriber metadata in public record',()=>{const b=sample();b.records[0].accountId='private';assert.throws(()=>validateBundle(b,now));});

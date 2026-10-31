@@ -54,7 +54,9 @@ jobs:
           printf '%s\n' "$COVERAGE_SIGNING_KEY" > "$key_file"
           echo "DYNAMIC_COVERAGE_KEY_FILE=$key_file" >> "$GITHUB_ENV"
       - name: Collect and sign compatible public data
-        run: node coverage/refresh.mjs
+        run: |
+          node coverage/refresh.mjs
+          node coverage/verify.mjs
       - name: Publish complete data packages
         run: |
           git config user.name 'github-actions[bot]'

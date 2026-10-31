@@ -7,7 +7,9 @@ export const hash=data=>createHash('sha256').update(data).digest('hex');
 const https=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.hash;}catch{return false;}};
 export function validateBundle(b,now=Date.now()){
  if(b?.schemaVersion!==1||!/^[-a-z0-9]+$/.test(b.operatorId)||!Number.isFinite(b.generatedAt)||b.generatedAt>now||now-b.generatedAt>86400000||!Number.isFinite(b.expiresAt)||b.expiresAt<=now||b.expiresAt>b.generatedAt+86400000||!Array.isArray(b.records)||!b.records.length||b.records.length>100000)throw Error('invalid_bundle');
+ const allowed=new Set(['id','official','regionId','settlement','community','street','scope','houses','houseRanges','excludedHouses','queue','sourceUrl','quote','quoteType','publishedAt','checkedAt','expiresAt','officialCityId','katottg']);
  const ids=new Set();for(const r of b.records){
+  if(Object.keys(r).some(k=>!allowed.has(k)))throw Error('unexpected_record_field');
   if(!r||typeof r.id!=='string'||ids.has(r.id)||r.official!==true||!/^UA-\d\d$/.test(r.regionId)||!r.settlement||typeof r.community!=='string'||!['house','street','settlement'].includes(r.scope)||!/^\d{1,2}(?:\.\d{1,2})?$/.test(r.queue)||!https(r.sourceUrl)||typeof r.quote!=='string'||r.quote.length<3||r.quote.length>2500||!Number.isFinite(r.checkedAt)||r.checkedAt>now||!Number.isFinite(r.expiresAt)||r.expiresAt<=now||r.expiresAt>r.checkedAt+86400000)throw Error('invalid_record');
   if(r.scope!=='settlement'&&!r.street)throw Error('missing_street');
   if(r.scope==='house'&&(!Array.isArray(r.houses)||!r.houses.length||r.houses.some(h=>typeof h!=='string'||!h.trim())))throw Error('missing_houses');
