@@ -28,7 +28,7 @@ export async function build({catalog,bundles,revision,keyFile,out,now=Date.now()
  if(!publicKey.export({type:'spki',format:'der'}).equals(trusted))throw Error('signing_key_does_not_match_client_pin');await mkdir(out+'/bundles',{recursive:true});
  for(const bundle of bundles){validateBundle(bundle,now);if(!operators.has(bundle.operatorId)||ids.has(bundle.operatorId))throw Error('unknown_or_duplicate_operator');ids.add(bundle.operatorId);const bytes=Buffer.from(JSON.stringify(bundle)+'\n');if(bytes.length>8*1024*1024)throw Error('oversize_bundle');const sha256=hash(bytes);await writeFile(out+'/bundles/'+sha256+'.json',bytes);descriptors.push({operatorId:bundle.operatorId,url:BASE+'bundles/'+sha256+'.json',sha256,size:bytes.length,expiresAt:bundle.expiresAt});}
  if(!descriptors.length)throw Error('empty_publication');
- const payload=Buffer.from(JSON.stringify({schemaVersion:1,revision,generatedAt:now,expiresAt:Math.min(now+86400000,catalog.expiresAt,...bundles.map(b=>b.expiresAt)),minClientVersion:1,enabled:true,catalog,bundles:descriptors}));
+ const payload=Buffer.from(JSON.stringify({schemaVersion:1,revision,generatedAt:now,expiresAt:Math.min(now+86400000,catalog.expiresAt,Math.max(...bundles.map(b=>b.expiresAt))),minClientVersion:1,enabled:true,catalog,bundles:descriptors}));
  const signature=sign(null,payload,privateKey);if(!verify(null,payload,publicKey,signature))throw Error('self_verification_failed');const envelope={schemaVersion:1,keyId:'coverage-v1',payload:payload.toString('base64'),signature:signature.toString('base64')};
  await writeFile(out+'/manifest.json',JSON.stringify(envelope,null,2)+'\n');return {revision,operators:descriptors.length,records:bundles.reduce((a,b)=>a+b.records.length,0)};
 }
