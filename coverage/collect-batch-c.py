@@ -134,7 +134,9 @@ def main():
  state=state.setdefault(args.operator,{}) if 'operators' not in state else state['operators'].setdefault(args.operator,{})
  try:records,completed,errors,checked=yasno(args.operator,state,max(1,min(args.budget,100)),client) if args.operator in CONFIG else dtek(args.operator,client,state,max(1,min(args.budget,100)))
  except Exception as e:records,completed,errors,checked=[],[],[{'stage':'collection','reason':str(e)[:180]}],0
- report={'schemaVersion':1,'operatorId':args.operator,'generatedAt':now,'expiresAt':now+86400000,'records':records,'completedStreetIds':completed,'errors':errors,'checkedAddresses':checked,'requestCount':client.requests,'observations':client.observations,'context':state.get('lastContext'),'auditSamples':state.get('auditSamples',[])}
+ finished=int(time.time()*1000)
+ deadline=max((r['expiresAt'] for r in records),default=finished+86400000)
+ report={'schemaVersion':1,'operatorId':args.operator,'generatedAt':finished,'expiresAt':deadline,'records':records,'completedStreetIds':completed,'errors':errors,'checkedAddresses':checked,'requestCount':client.requests,'observations':client.observations,'context':state.get('lastContext'),'auditSamples':state.get('auditSamples',[])}
  Path(args.output).parent.mkdir(parents=True,exist_ok=True);Path(args.output+'.report.json').write_text(json.dumps({**report,'records':len(records),'constraint':None if records else 'no-verified-geographic-context-or-source-data'},ensure_ascii=False,indent=2)+'\n')
  if records:Path(args.output).write_text(json.dumps({k:report[k] for k in ['schemaVersion','operatorId','generatedAt','expiresAt','records','completedStreetIds']},ensure_ascii=False,separators=(',',':'))+'\n')
  if args.state:

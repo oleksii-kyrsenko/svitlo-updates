@@ -1,4 +1,6 @@
-import sys,unittest,importlib.util
+import sys,unittest,importlib.util,tempfile,json,contextlib,io
+from unittest.mock import patch
+from types import SimpleNamespace
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_utils import record
@@ -20,4 +22,13 @@ class BatchControls(unittest.TestCase):
  def test_dtek_data_parser_rejects_javascript(self):
   m=module('collect-batch-c');self.assertEqual(m.assignment('DisconSchedule.streets = {"Зразок":["Нова"]};','DisconSchedule.streets'),{'Зразок':['Нова']})
   with self.assertRaises(ValueError):m.assignment('DisconSchedule.streets = evil();','DisconSchedule.streets')
+ def test_collection_clock_does_not_expire_fresh_records_before_publication(self):
+  m=module('collect-batch-c')
+  r=record('dtek-kyiv','UA-30','Зразок','Зразкова','Нова','1','1.1','https://example.org/source',1001000)
+  with tempfile.TemporaryDirectory() as folder:
+   output=str(Path(folder)/'packet.json')
+   with patch.object(sys,'argv',['collector','--operator','dtek-kyiv','--output',output]),patch.object(m,'Client',return_value=SimpleNamespace(requests=1,observations=[])),patch.object(m,'yasno',return_value=([r],[],[],1)),patch.object(m.time,'time',side_effect=[1000,1002]),contextlib.redirect_stdout(io.StringIO()):m.main()
+   packet=json.loads(Path(output).read_text())
+   self.assertGreaterEqual(packet['generatedAt'],r['checkedAt']);self.assertEqual(packet['expiresAt'],r['expiresAt'])
+
 if __name__=='__main__':unittest.main()
