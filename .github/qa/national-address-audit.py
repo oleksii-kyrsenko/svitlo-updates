@@ -273,8 +273,8 @@ class Audit:
             xml = self.source()
             if 'Незбережені зміни буде втрачено' in xml:
                 self.tap('Відкинути зміни')
-            elif 'Закрити список адрес' in xml:
-                self.tap('Закрити список адрес')
+            elif 'Закрити список адрес' in xml and self.tap('Закрити список адрес',required=False):
+                pass
             elif 'Налаштування адреси' in xml:
                 self.tap('Закрити')
             elif 'Закрити вибір місця' in xml:
