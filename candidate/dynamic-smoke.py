@@ -36,8 +36,12 @@ def fixture():
  return state
 try:
  adb('root',check=False);adb('wait-for-device');adb('shell','svc','wifi','disable');adb('shell','svc','data','disable')
- state=fixture();seed(state);launch();wait('public-queue-proposals');evidence('dynamic-public-proposals',xml());flags['proposalsVisibleWithoutAutomaticQueue']=True
- tap('confirm-public-candidate-native-direct',scroll=True);time.sleep(2)
+ state=fixture();seed(state);launch();s=wait('public-queue-proposals','Переглянути джерело 1 ↗','Обрати чергу 2.2')
+ nodes=list(E.fromstring(s).iter('node'))
+ assert any(n.get('text')=='Переглянути джерело 1 ↗' for n in nodes),'Source link must have visible native text'
+ assert any(n.get('text')=='Обрати чергу 2.2' for n in nodes),'Confirmation button must have visible native text'
+ evidence('dynamic-public-proposals',s);flags['proposalsVisibleWithoutAutomaticQueue']=True
+ tap('Обрати чергу 2.2',scroll=True);time.sleep(2)
  actual=saved()['places'][0]
  assert actual['queue']=='2.2' and actual['queueOrigin']=='public' and actual['queueConfirmed'] is True and actual.get('queueUserConfirmedAt')
  assert actual['reminders']['enabled'] is False

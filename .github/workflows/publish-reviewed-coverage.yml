@@ -1,0 +1,101 @@
+name: Publish reviewed dynamic coverage update
+on:
+  push:
+    branches: ['candidates/android-88']
+    paths: ['reviewed-coverage-88.json']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select reviewed native run
+        id: review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PYCODE'
+          import os,json,subprocess
+          review=json.load(open('reviewed-coverage-88.json'))
+          assert isinstance(review['nativeRun'],int) and not isinstance(review['nativeRun'],bool) and review['nativeRun']>0 and review['baselineVersionCode']==87
+          assert review['reviewed'] is True
+          assert review['criteria']['realAndroidScreenshotsViewedBeforePublication'] is True
+          assert review['criteria']['automationSigningReady'] is True
+          run=json.loads(subprocess.check_output(['gh','api',f"repos/{os.environ['GH_REPO']}/actions/runs/{review['nativeRun']}"],text=True))
+          assert run['conclusion']=='success' and run['status']=='completed'
+          assert run['head_repository']['full_name']==os.environ['GH_REPO'] and run['head_branch']=='candidates/android-88'
+          assert run['name']=='Verify dynamic coverage release88'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+            f.write('run='+str(json.load(open('reviewed-coverage-88.json'))['nativeRun'])+'\n')
+          PYCODE
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.review.outputs.run }}
+          pattern: public-apk-dynamic-*
+          path: verified
+      - name: Verify exact signed binary and reviewed native evidence
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import pathlib,json,shutil
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-coverage-88.json'))
+          assert review['reviewed'] and review['apkSha256']==meta['sha256'] and review['runtimeSource']==meta['sourceCommit'] and review['criteria'] and all(v is True for v in review['criteria'].values())
+          assert meta['versionCode']==88 and meta['version']=='0.1.52'
+          assert isinstance(meta['nodeTests'],int) and meta['nodeTests']>=263
+          assert [meta[k] for k in ['reactChecks','themeChecks','updateChecks','notificationChecks','dialogChecks']]==[99,13,12,5,6]
+          rows=[]
+          for api in ['30','35','36']:
+            for theme in ['aurora','moss']:
+              root=pathlib.Path('verified/public-apk-dynamic-api'+api+'-'+theme);row=json.load(open(root/'theme-result.json'));assets=json.load(open(root/'icon-resources-result.json'));dynamic=json.load(open(root/'dynamic-result.json'))
+              assert row['api']==api and row['savedTheme']==theme and row['allPassed'] is True and len(row['flags'])==9 and all(v is True for v in row['flags'].values()) and assets['allPassed'] is True
+              assert row['apkSha256']==assets['apkSha256']==meta['sha256'] and row['metrics']['appGraphChangedPixelFraction']<.005
+              assert dynamic['api']==api and dynamic['savedTheme']==theme and dynamic['apkSha256']==meta['sha256'] and dynamic['allPassed'] is True and len(dynamic['flags'])==5 and all(v is True for v in dynamic['flags'].values())
+              rows.append({'theme':row,'dynamic':dynamic})
+              for name in ['upgraded-88-'+theme,'appearance-'+theme,'restarted-88-'+theme,'discard-dialog-aurora','manual-queue-saved','clean-start-88','dynamic-public-proposals','dynamic-public-selected','dynamic-official-delivery','dynamic-expired-proposals']:
+                shutil.copy2(root/(name+'.png'),'candidate/api'+api+'-'+theme+'-'+name+'.png')
+          pathlib.Path('candidate/coverage-results.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+          shutil.copy2('reviewed-coverage-88.json','candidate/visual-review.json')
+          pathlib.Path('candidate/VERIFIED-NOTES.md').write_text('Коли світло '+meta['version']+' / '+str(meta['versionCode'])+'\n\n'+meta['notes']+'\n\nОдин пакет оновлення: підписані динамічні адресні дані та каталог 32 ОСР, покращення зіставлення вулиць і будинків, пропозиції з місцевих джерел із явним вибором користувача та збереженням походження. Після вибору місцевої черги нагадування вмикаються окремо.\n\nПочаткове динамічне покриття обмежене: 586 адресних записів, витягнутих із джерела Львівобленерго; незалежна перевірка всіх 586 записів не проводилась. Каталог усіх ОСР не означає повну інтеграцію або визначення всіх адрес України; пошук графіків має окреме покриття.\n\nТочну підписану APK перевірено на Android11/15/16 (API30/35/36) з обома збереженими ID тем: оновлення87→88, адреси, ручні черги, нагадування, кеш, час джерела, перезапуск, діалоги та ручне редагування. Додатково: пропозиції, явний вибір, походження, прострочення та справжній підписаний динамічний довідник без заздалегідь збереженої черги. Знімки переглянуті.'+str(meta['nodeTests'])+' Node,99 React,13 theme,12 updater,5 notification,6 dialog перевірок. Контрольна вибірка: 60 адрес, усі 27 початкових успішних результатів збережені.\n\nПакет і сертифікат незмінні. Код приватний; дані QA зовнішні. Регулярне безкоштовне збирання та підписання даних налаштоване; ІІ-дослідження виконуються в доступних робочих сесіях.\n\nRuntime: '+meta['sourceCommit']+'\n')
+          PY
+      - name: Publish APK and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create android-test-88 --target "$GITHUB_SHA" --draft --prerelease --title 'Коли світло 0.1.52 — динамічне покриття ОСР' --notes-file candidate/VERIFIED-NOTES.md
+          gh release upload android-test-88 candidate/svitlo-test-88.apk candidate/SHA256SUMS.txt candidate/signature.txt candidate/THIRD_PARTY_NOTICES.txt candidate/coverage-results.json candidate/visual-review.json candidate/api*.png
+          gh release edit android-test-88 --draft=false
+      - name: Verify anonymous download and promote preserving all other channel fields
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib,urllib.request,subprocess,base64,datetime
+          meta=json.load(open('candidate/meta.json'));review=json.load(open('reviewed-coverage-88.json'));url='https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/'+meta['fileName']
+          data=urllib.request.urlopen(url,timeout=180).read();assert len(data)==meta['size'] and hashlib.sha256(data).hexdigest()==meta['sha256']
+          for attempt in range(3):
+            current=json.loads(subprocess.check_output(['gh','api','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json?ref=main'],text=True));previous=json.loads(base64.b64decode(current['content']));assert previous['versionCode']==review['baselineVersionCode']
+            pathlib.Path('candidate/previous-channel.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n')
+            updated={**previous,**{k:meta[k] for k in ['packageName','version','versionCode','size','sha256','notes','sourceCommit']},'apkUrl':url,'publishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+            release_fields={'packageName','version','versionCode','size','sha256','notes','sourceCommit','apkUrl','publishedAt'}
+            assert {k:v for k,v in updated.items() if k not in release_fields}=={k:v for k,v in previous.items() if k not in release_fields}
+            payload={'message':'Publish reviewed dynamic coverage 0.1.52 /88','branch':'main','sha':current['sha'],'content':base64.b64encode((json.dumps(updated,ensure_ascii=False,indent=2)+'\n').encode()).decode()}
+            pathlib.Path('candidate/channel-write.json').write_text(json.dumps(payload));result=subprocess.run(['gh','api','--method','PUT','repos/oleksii-kyrsenko/svitlo-updates/contents/latest.json','--input','candidate/channel-write.json'],stdout=subprocess.PIPE,text=True)
+            if result.returncode==0:break
+          else:raise RuntimeError('Concurrent channel update; no forced write')
+          pathlib.Path('candidate/ci-channel-check.json').write_text(json.dumps({'anonymousDownloadVerified':True,'size':len(data),'sha256':meta['sha256'],'versionCode':meta['versionCode'],'nonReleaseFieldsPreserved':True},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reviewed-coverage-publication
+          path: |
+            candidate/coverage-results.json
+            candidate/visual-review.json
+            candidate/previous-channel.json
+            candidate/ci-channel-check.json
+            candidate/VERIFIED-NOTES.md
