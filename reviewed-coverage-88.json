@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "reviewedAt": "2026-11-01T14:18:51.160749+00:00",
+  "nativeRun": 41288038933,
+  "baselineVersionCode": 87,
+  "runtimeSource": "243a9a339b1fdcfa44f3850aee2e051e121b0dff",
+  "apkSha256": "da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a",
+  "criteria": {
+    "realAndroidScreenshotsViewedBeforePublication": true,
+    "automationSigningReady": true,
+    "allSixExactBinaryCasesPassed": true,
+    "upgradePreservesManualAddressAppearanceAndOfflineCache": true,
+    "graphUnchangedFrom87": true,
+    "proposalSourceAndChoiceLabelsVisible": true,
+    "explicitChoiceRemainsPublicAndRemindersOff": true,
+    "realSignedRosterResolvesWithoutSeededQueue": true,
+    "appUidIpv4Ipv6IsolationVerified": true,
+    "expiredProposalsNotOffered": true
+  },
+  "notes": "Root inspected actual API30 proposal screen, API35 proposal and official delivery, API36 selected provenance and themed discard, appearance settings. All six cases passed9theme+5dynamic groups and icon checks, graph difference0.0. Test-only appUID IPv4/IPv6 isolation proves fallback; earlier radio-only driver allowed live official precedence and was corrected. Real signed data and synthetic UI controls remain external fixtures. No nationwide20-per-OSR audit claimed."
+}
