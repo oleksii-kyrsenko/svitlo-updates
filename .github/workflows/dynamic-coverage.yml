@@ -87,6 +87,11 @@ jobs:
           git commit -m 'Refresh signed coverage and source health'
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Add current collection gaps to the investigation task
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 coverage/report-issue.py
       - name: Persist bounded crawl cursor even after failed collection
         if: always()
         run: |

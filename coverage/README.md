@@ -1,5 +1,16 @@
 # Dynamic coverage operations
 
+Latest verified operation, 1November2026: hosted run41321360024 published
+revision10 with11 operator datasets. Revision11 additionally includes a
+workspace-collected Chernivtsi snapshot:25,618 explicit source house entries,
+20 source rereads, original observation times and expiry preserved. The hosted
+runner receives HTTP403 for Chernivtsi; automatic renewal for this operator is
+not established. See `manual-refresh-2026-11-01.json`. These are partial source
+datasets, not full coverage of12 operators or independently verified new
+addresses. Failed/unsupported collection remains visible in the single
+investigation task even when a source home page is reachable. APK channel88 is
+unchanged by these data publications.
+
 This directory contains public-data tooling, not application source. Existing public-evidence/Qwen and document-cache jobs remain independent. Queue/address mappings are harvested at runtime; neither samples nor expected queues are built into the app.
 
 - `monitor.py` probes every configured OSR (32 at bootstrap), classifies HTTP protection separately, collects document/channel leads and checks the current NERC registry index. A reachable page is **not** an integrated address service. Links are research leads, not facts. The registry check detects register URL changes; legal status review remains an agent task.
