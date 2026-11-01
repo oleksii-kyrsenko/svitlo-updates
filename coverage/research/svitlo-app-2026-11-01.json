@@ -1,0 +1,599 @@
+{
+  "checkedAt": "2026-11-01T16:09:22.787499+00:00",
+  "app": {
+    "name": "Світло",
+    "package": "com.svitlo.app",
+    "publisherListedOnGooglePlay": "Svitlo lab",
+    "playUrl": "https://play.google.com/store/apps/details?id=com.svitlo.app",
+    "yasnoAffiliationNotConfirmed": true,
+    "playDescriptionTerritories": 17,
+    "current13MenuEntriesNotIndependentlyReproduced": true,
+    "staticMirrorArtifact": {
+      "version": "1.8.0",
+      "versionCode": 89,
+      "sha256": "bd1d37786880d26b8ac24577e1fc073795c40c01ee9cd7a29ef5bae1dfe711fb",
+      "origin": "public APKPure mirror; not a Google Play delivery attestation",
+      "installedOrExecuted": false,
+      "redistributed": false
+    }
+  },
+  "officialDirectory": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+  "officialDtekSitesInDirectory": 7,
+  "missingDtekIdentities": [],
+  "competitorFaq": {
+    "url": "https://telegra.ph/CHast%D1%96-pitannya-11-01",
+    "links": [
+      {
+        "url": "https://www.dtek-kem.com.ua/ua/shutdowns",
+        "text": "м. Київ"
+      },
+      {
+        "url": "https://www.dtek-krem.com.ua/ua/shutdowns",
+        "text": "Київська обл."
+      },
+      {
+        "url": "https://poweroff.loe.lviv.ua/gav_city3",
+        "text": "Львівська обл."
+      },
+      {
+        "url": "https://www.dtek-dnem.com.ua/ua/shutdowns",
+        "text": "Дніпропетровська обл. (ДТЕК)"
+      },
+      {
+        "url": "https://cek.dp.ua/index.php/nashi-novyny/775-grafiki-stabilizatsijnikh-pogodinnikh-vidklyuchen-dlya-pobutovikh-i-yuridichnikh-spozhivachiv-m-dnipro-2.html",
+        "text": "- Дніпропетровська обл. (ЦЕК)"
+      },
+      {
+        "url": "https://www.dtek-oem.com.ua/ua/shutdowns",
+        "text": "Одеська обл."
+      },
+      {
+        "url": "https://www.oblenergo.kharkov.ua/gaoinfo",
+        "text": "Харківська обл."
+      },
+      {
+        "url": "https://www.energy.mk.ua/grafik-obmezhennya-spozhyvachiv/",
+        "text": "- Миколаївська обл."
+      },
+      {
+        "url": "https://chernihivoblenergo.com.ua/blackouts",
+        "text": "Чернігівська обл."
+      },
+      {
+        "url": "https://www.toe.com.ua/news/87",
+        "text": "- Тернопіль обл."
+      }
+    ],
+    "publishedDate": "2023-11-01",
+    "role": "historical-public-source-directory-not-attestation-of-current-app-menu"
+  },
+  "dtekChecks": [
+    {
+      "operatorId": "dtek-kyiv",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 0,
+      "sourceAddressChecks": 20,
+      "errors": [
+        {
+          "stage": "context",
+          "settlement": "Київ",
+          "reason": "community_not_published"
+        }
+      ],
+      "geography": {
+        "status": "unresolved",
+        "reason": "community_not_published",
+        "sourceUrl": "https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&accept-language=uk&lat=50.4500336&lon=30.5241361&zoom=12",
+        "checkedAt": 1793546419254
+      },
+      "observations": [
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/regions?",
+          "httpStatus": 200,
+          "bytes": 255,
+          "checkedAt": 1793548300555
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/streets?regionId=25&dsoId=902&query=%D0%B2%D1%83%D0%BB",
+          "httpStatus": 200,
+          "bytes": 1000,
+          "checkedAt": 1793548302324
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=25&dsoId=902&streetId=1&query=",
+          "httpStatus": 200,
+          "bytes": 29,
+          "checkedAt": 1793548304455
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1&houseId=4",
+          "httpStatus": 200,
+          "bytes": 25,
+          "checkedAt": 1793548306510
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=25&dsoId=902&streetId=11&query=",
+          "httpStatus": 200,
+          "bytes": 52,
+          "checkedAt": 1793548308701
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=11&houseId=971",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548310794
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=11&houseId=972",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548312823
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=25&dsoId=902&streetId=12&query=",
+          "httpStatus": 200,
+          "bytes": 395,
+          "checkedAt": 1793548315007
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=988",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548317048
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=989",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548319208
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=990",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548321500
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=991",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548323360
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=992",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548325436
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=993",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548327523
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=994",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548329625
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=995",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548331740
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=996",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548333881
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=997",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548335962
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=998",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548338116
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=999",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548340155
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1000",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548342280
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1002",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548344427
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1001",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548346445
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1003",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548348542
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=25&dsoId=902&streetId=13&query=",
+          "httpStatus": 200,
+          "bytes": 26,
+          "checkedAt": 1793548350667
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=13&houseId=1010",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548352782
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 0,
+      "sourceAddressChecks": 0,
+      "errors": [
+        {
+          "stage": "collection",
+          "reason": "source_protected_http_200"
+        }
+      ],
+      "geography": {
+        "status": "resolved",
+        "community": "Ірпінська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D1%80%D0%BF%D1%96%D0%BD%D1%8C%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793546473313,
+        "method": "nominatim-municipality"
+      },
+      "observations": [
+        {
+          "url": "https://www.dtek-krem.com.ua/ua/shutdowns",
+          "httpStatus": 200,
+          "bytes": 212,
+          "checkedAt": 1793548300504
+        },
+        {
+          "url": "https://www.dtek-krem.com.ua/ua/shutdowns",
+          "error": "source_protected_http_200",
+          "checkedAt": 1793548300504
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 20,
+      "sourceAddressChecks": 20,
+      "errors": [],
+      "geography": {
+        "status": "resolved",
+        "community": "Апостолівська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B0%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793544946469,
+        "method": "nominatim-municipality"
+      },
+      "observations": [
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/regions?",
+          "httpStatus": 200,
+          "bytes": 255,
+          "checkedAt": 1793548301659
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/cities?regionId=3&dsoId=301&query=",
+          "httpStatus": 200,
+          "bytes": 51735,
+          "checkedAt": 1793548303605
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/streets?regionId=3&dsoId=301&cityId=2&query=%D0%B2%D1%83%D0%BB",
+          "httpStatus": 200,
+          "bytes": 984,
+          "checkedAt": 1793548305455
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=3&dsoId=301&cityId=2&streetId=5&query=",
+          "httpStatus": 200,
+          "bytes": 164,
+          "checkedAt": 1793548308115
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=179",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548310198
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=180",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548312324
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=181",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548314372
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=182",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548316803
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=177",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548318701
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=5&houseId=178",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548320683
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=3&dsoId=301&cityId=2&streetId=6&query=",
+          "httpStatus": 200,
+          "bytes": 196,
+          "checkedAt": 1793548323001
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=183",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548324913
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=184",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548327287
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=185",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548329365
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=186",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548331418
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=187",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548333310
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=188",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548335394
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=189",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548337513
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=6&houseId=190",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548339667
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/houses?regionId=3&dsoId=301&cityId=2&streetId=7&query=",
+          "httpStatus": 200,
+          "bytes": 409,
+          "checkedAt": 1793548341753
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=191",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548343812
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=192",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548345910
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=193",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548348026
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=201",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548350281
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=202",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548354009
+        },
+        {
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=7&houseId=203",
+          "httpStatus": 200,
+          "bytes": 24,
+          "checkedAt": 1793548355134
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 20,
+      "sourceAddressChecks": 20,
+      "errors": [],
+      "geography": {
+        "status": "resolved",
+        "community": "Ізмаїльська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D0%B7%D0%BC%D0%B0%D1%97%D0%BB%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793545257419,
+        "method": "nominatim-municipality"
+      },
+      "observations": [
+        {
+          "url": "https://www.dtek-oem.com.ua/ua/shutdowns",
+          "httpStatus": 200,
+          "bytes": 913285,
+          "checkedAt": 1793548302698
+        },
+        {
+          "url": "https://www.dtek-oem.com.ua/ua/ajax",
+          "httpStatus": 200,
+          "bytes": 4122,
+          "checkedAt": 1793548303280
+        },
+        {
+          "url": "https://www.dtek-oem.com.ua/ua/ajax",
+          "httpStatus": 200,
+          "bytes": 8046,
+          "checkedAt": 1793548304439
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 0,
+      "sourceAddressChecks": 0,
+      "errors": [
+        {
+          "stage": "collection",
+          "reason": "source_protected_http_200"
+        }
+      ],
+      "geography": {
+        "status": "unresolved",
+        "reason": "no_matching_locality",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D0%B7%D1%81%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793547014252
+      },
+      "observations": [
+        {
+          "url": "https://www.dtek-dem.com.ua/ua/shutdowns",
+          "httpStatus": 200,
+          "bytes": 212,
+          "checkedAt": 1793548305801
+        },
+        {
+          "url": "https://www.dtek-dem.com.ua/ua/shutdowns",
+          "error": "source_protected_http_200",
+          "checkedAt": 1793548305801
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-pem",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 0,
+      "sourceAddressChecks": 0,
+      "errors": [
+        {
+          "stage": "collection",
+          "reason": "source_protected_http_200"
+        }
+      ],
+      "geography": null,
+      "observations": [
+        {
+          "url": "https://www.dtek-pem.com.ua/ua/shutdowns",
+          "httpStatus": 200,
+          "bytes": 212,
+          "checkedAt": 1793548306609
+        },
+        {
+          "url": "https://www.dtek-pem.com.ua/ua/shutdowns",
+          "error": "source_protected_http_200",
+          "checkedAt": 1793548306609
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-vvm",
+      "nativeAdapterPresentInBuild88": true,
+      "normalizedRecordsCollected": 0,
+      "sourceAddressChecks": 0,
+      "errors": [
+        {
+          "stage": "collection",
+          "reason": "source_protected_http_200"
+        }
+      ],
+      "geography": null,
+      "observations": [
+        {
+          "url": "https://www.dtek-vvm.com.ua/ua/shutdowns",
+          "httpStatus": 200,
+          "bytes": 212,
+          "checkedAt": 1793548307955
+        },
+        {
+          "url": "https://www.dtek-vvm.com.ua/ua/shutdowns",
+          "error": "source_protected_http_200",
+          "checkedAt": 1793548307956
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "Correct PEM/VVM collector paths to /ua/shutdowns-schedule",
+    "Use distinct streets in normalized DTEK data and retain prior selectors only on their original streets",
+    "Refuse publication of one official identity shared by unrelated streets",
+    "Retain all40 previously ready Dnipro/Odesa source-derived house entries and add40 fresh source-derived entries",
+    "Update signed Kharkiv source link to canonical new domain; captcha-protected address form is not counted as integrated",
+    "Discover HTTPS address-service iframe links for source review"
+  ],
+  "apkChanged": false,
+  "apkVersionCode": 88,
+  "publishedRevision": 12,
+  "tests": {
+    "nodePublisherAndMerge": 18,
+    "batchPython": 7,
+    "monitorPython": 4
+  },
+  "limitations": [
+    "Not an independent random-address or national coverage audit.",
+    "All7 native adapters and source links exist; live queue access is not established for every DTEK network.",
+    "Kyiv direct YASNO lookup works; its normalized bundle remains blocked by absent community metadata.",
+    "Protection differs by request path, cookies and runner network. No captcha or source protections were bypassed.",
+    "A saved legacy city selector on a newly added DTEK street remains a conservative miss in the shipped dynamic matcher; previously supported street selectors were preserved.",
+    "Operator dataset count remains12. Added source entries do not establish newly covered geographic territories or independently verified application coverage gains."
+  ],
+  "dataControls": {
+    "retainedBaselineReady": 40,
+    "freshSourceDerivedReady": 40,
+    "wrongReturnedQueues": 0
+  }
+}

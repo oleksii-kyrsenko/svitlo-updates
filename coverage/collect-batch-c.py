@@ -6,6 +6,8 @@ from pathlib import Path
 API='https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/'
 CONFIG={'dtek-kyiv':(25,902,'UA-30'),'dtek-dnipro':(3,301,'UA-12'),'cek':(3,303,'UA-12')}
 DTEK={'dtek-kyiv-region':'www.dtek-krem.com.ua','dtek-odesa':'www.dtek-oem.com.ua','dtek-donetsk':'www.dtek-dem.com.ua','dtek-pem':'www.dtek-pem.com.ua','dtek-vvm':'www.dtek-vvm.com.ua'}
+def dtek_page_url(operator):
+ return 'https://'+DTEK[operator]+('/ua/shutdowns-schedule' if operator in ('dtek-pem','dtek-vvm') else '/ua/shutdowns')
 class Client:
  def __init__(self):self.opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()));self.requests=0;self.observations=[]
  def read(self,url,data=None):
@@ -96,7 +98,7 @@ def assignment(text,label):
  return json.JSONDecoder().raw_decode(text[match.end():])[0]
 
 def dtek(operator,client,state,budget,resolver=resolve,now=None):
- now=now or int(time.time()*1000);url='https://'+DTEK[operator]+'/ua/shutdowns';text=client.read(url);streets=assignment(text,'DisconSchedule.streets')
+ now=now or int(time.time()*1000);url=dtek_page_url(operator);text=client.read(url);streets=assignment(text,'DisconSchedule.streets')
  if not isinstance(streets,dict) or not streets:raise ValueError('empty_city_dictionary')
  cities=sorted([c for c,s in streets.items() if isinstance(s,list) and s],key=lambda c:(city_order(c),c));ci=state.get('cityIndex',0)%len(cities);city=cities[ci];items=streets[city]
  region={'dtek-kyiv-region':'UA-32','dtek-odesa':'UA-51','dtek-donetsk':'UA-14','dtek-pem':'UA-14','dtek-vvm':'UA-14'}[operator]
@@ -119,7 +121,9 @@ def dtek(operator,client,state,budget,resolver=resolve,now=None):
    if not qs or not all(qs) or len({q.group(1) for q in qs})!=1:continue
    queue=qs[0].group(1);state['auditSamples'].append({'settlement':city,'street':items[si],'house':name,'queue':queue,'sourceUrl':source,'checkedAt':now})
    if context.get('status')=='resolved':
-    record=source_record({'id':city,'value':city},{'id':items[si],'value':items[si]},{'id':name,'value':name},queue,operator,region,context['community'],source,now);record['officialCityId']=city;out.append(record)
+    # A city value is not a street identity in the normalized client protocol.
+    # City/street/house still form the stable record id and quoted provenance.
+    out.append(source_record({'id':city,'value':city},{'id':items[si],'value':items[si]},{'id':name,'value':name},queue,operator,region,context['community'],source,now))
   state['houseIndex']=hi
   if hi>=len(houses):completed.append(city+':'+items[si]);si+=1;state['houseIndex']=0
   else:break

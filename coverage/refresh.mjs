@@ -4,6 +4,20 @@ import {createPublicKey,verify} from 'node:crypto';import {pathToFileURL} from '
 import {build,validateBundle,hash} from './build.mjs';import {mergeSnapshots,compactSnapshot} from './snapshots.mjs';
 import {GROUPS,collectorCommand} from './collector-registry.mjs';
 const run=promisify(execFile);
+export function prepareDtekSnapshot(previous,fresh){
+ if(!fresh?.operatorId?.startsWith('dtek-'))return fresh;
+ const key=r=>JSON.stringify([r.regionId,r.settlement,r.community,r.street]);
+ const legacy=new Map();
+ for(const r of previous?.records||[]){if(r.officialCityId===r.settlement)legacy.set(key(r),r.officialCityId);}
+ return {...fresh,records:fresh.records.map(r=>{
+  // Retain the already shipped city selector only on its original street.
+  // New streets use their own normalized street name, never another street's
+  // city selector. Do not rewrite an unrelated operator/branch identity.
+  const copy={...r};if(copy.officialCityId===copy.settlement)delete copy.officialCityId;
+  if(!copy.officialCityId&&legacy.has(key(copy)))copy.officialCityId=legacy.get(key(copy));
+  return copy;
+ })};
+}
 export function liveSnapshot(value,now=Date.now()){
  const copy={...value,records:value.records?.filter(r=>!Number.isFinite(r.expiresAt)||r.expiresAt>now)};
  return validateBundle(copy,now);
@@ -11,7 +25,8 @@ export function liveSnapshot(value,now=Date.now()){
 export function combineSnapshots(previous,collected,now=Date.now()){
  const result=new Map();for(const old of previous){try{const live=liveSnapshot(old,now);result.set(live.operatorId,live);}catch{}}
  const errors=[];
- for(const fresh of collected){try{
+ for(const raw of collected){let fresh=raw;try{
+  fresh=prepareDtekSnapshot(result.get(raw?.operatorId),raw);
   validateBundle(fresh,now);
   const merged=compactSnapshot(mergeSnapshots(fresh.completeSnapshot?null:result.get(fresh.operatorId),fresh,now));validateBundle(merged,now);result.set(fresh.operatorId,merged);
  }catch{errors.push({operatorId:fresh?.operatorId,error:'fresh_snapshot_invalid_previous_unexpired_preserved'});}}

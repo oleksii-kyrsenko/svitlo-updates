@@ -9,7 +9,7 @@ const https=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.
 export function validateBundle(b,now=Date.now()){
  if(b?.schemaVersion!==1||!/^[-a-z0-9]+$/.test(b.operatorId)||!Number.isFinite(b.generatedAt)||b.generatedAt>now||now-b.generatedAt>86400000||!Number.isFinite(b.expiresAt)||b.expiresAt<=now||b.expiresAt>b.generatedAt+86400000||!Array.isArray(b.records)||!b.records.length||b.records.length>100000)throw Error('invalid_bundle');
  const allowed=new Set(['id','official','regionId','settlement','community','street','scope','houses','houseRanges','excludedHouses','queue','sourceUrl','quote','quoteType','publishedAt','checkedAt','expiresAt','officialCityId','katottg']);
- const ids=new Set();for(const r of b.records){
+ const ids=new Set(),streetIdentities=new Map();for(const r of b.records){
   if(Object.keys(r).some(k=>!allowed.has(k)))throw Error('unexpected_record_field');
   if(!r||!text(r.id,150)||ids.has(r.id)||r.official!==true||!/^UA-\d\d$/.test(r.regionId)||!text(r.settlement)||!text(r.community)||!['house','street','settlement'].includes(r.scope)||!/^\d{1,2}(?:\.\d{1,2})?$/.test(r.queue)||!text(r.sourceUrl,2000)||!https(r.sourceUrl)||!text(r.quote,2500)||!Number.isFinite(r.checkedAt)||r.checkedAt>now||!Number.isFinite(r.expiresAt)||r.expiresAt<=now||r.expiresAt>r.checkedAt+86400000||r.expiresAt>b.expiresAt)throw Error('invalid_record');
   if(r.scope!=='settlement'&&!text(r.street))throw Error('missing_street');
@@ -19,6 +19,13 @@ export function validateBundle(b,now=Date.now()){
   if(r.houseRanges?.length)throw Error('unexpanded_house_ranges');
   if(r.excludedHouses&&(!Array.isArray(r.excludedHouses)||r.excludedHouses.some(h=>!text(h,30))))throw Error('invalid_house_exclusions');
   if(r.officialCityId!==undefined&&!text(r.officialCityId,150))throw Error('invalid_official_street_id');
+  // Shipped clients use this field as a street identity. Reusing a city-only
+  // identity for different streets could join houses from unrelated streets.
+  if(r.officialCityId&&r.scope!=='settlement'){
+   const identity=JSON.stringify([r.regionId,r.settlement,r.community,r.officialCityId]);
+   if(streetIdentities.has(identity)&&streetIdentities.get(identity)!==r.street)throw Error('official_identity_spans_different_streets');
+   streetIdentities.set(identity,r.street);
+  }
   ids.add(r.id);
  }
  return b;

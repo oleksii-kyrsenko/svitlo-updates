@@ -1,6 +1,12 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {validateBundle} from '../build.mjs';
 const now=Date.now();const sample=()=>({schemaVersion:1,operatorId:'operator',generatedAt:now,expiresAt:now+60000,records:[{id:'house',official:true,regionId:'UA-46',settlement:'місто',community:'громада',street:'вулиця',scope:'house',houses:['1'],queue:'1.1',sourceUrl:'https://example.org/list',quote:'Official fields',checkedAt:now,expiresAt:now+60000}]});
 test('accept bounded official house source',()=>assert.equal(validateBundle(sample(),now).records.length,1));
+test('refuse one source identity shared by unrelated streets before publication',()=>{
+ const b=sample();b.records[0].officialCityId='source-city';
+ b.records.push({...b.records[0],id:'other-house',street:'Інша вулиця',houses:['2'],queue:'2.1'});
+ assert.throws(()=>validateBundle(b,now),/official_identity_spans_different_streets/);
+ b.records[1].officialCityId='source-city:other-street';assert.doesNotThrow(()=>validateBundle(b,now));
+});
 test('refuse expired and mixed subscriber queue records',()=>{const b=sample();b.records[0].expiresAt=now-1;assert.throws(()=>validateBundle(b,now));});
 test('refuse street extrapolation',()=>{const b=sample();b.records[0].scope='street';assert.throws(()=>validateBundle(b,now));});
 test('refuse duplicate records',()=>{const b=sample();b.records.push({...b.records[0]});assert.throws(()=>validateBundle(b,now));});

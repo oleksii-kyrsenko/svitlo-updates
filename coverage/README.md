@@ -1,5 +1,15 @@
 # Dynamic coverage operations
 
+DTEK audit, 1November2026: all seven sites in the state source directory are
+registered. PEM/VVM collectors now use `/ua/shutdowns-schedule`, matching the
+native registry. City-only legacy selectors remain on their original street;
+new streets cannot reuse that selector. Publisher validation refuses one
+explicit identity shared by unrelated streets. Revision12 retains40 previous
+Dnipro/Odesa house entries and adds40 fresh source-derived entries. This is
+not an independent address-coverage audit or proof that protected sites work.
+The verified Kharkiv canonical source link is now in `sources.json`; its
+Turnstile form is still unintegrated. See `research/svitlo-app-2026-11-01.json`.
+
 Latest verified operation, 1November2026: hosted run41321360024 published
 revision10 with11 operator datasets. Revision11 additionally includes a
 workspace-collected Chernivtsi snapshot:25,618 explicit source house entries,

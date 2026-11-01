@@ -6,4 +6,6 @@ class Tests(unittest.TestCase):
  def test_ok_is_only_availability(self):self.assertEqual(m.classify(200,'page'),'page_available')
  def test_discovery_never_makes_queue(self):
   p=m.Links('https://example.org/');p.feed('<a href="https://t.me/channel">channel</a><a href="/list.pdf">doc</a><a href="javascript:alert(1)">bad</a>');self.assertEqual(len(p.links),2)
+ def test_address_portal_iframe_is_a_discovery_lead_only(self):
+  p=m.Links('https://example.org/');p.feed('<iframe src="https://portal.example.org/disconnection-by-address"></iframe><iframe src="javascript:alert(1)"></iframe>');self.assertEqual(p.links,['https://portal.example.org/disconnection-by-address'])
 if __name__=='__main__':unittest.main()

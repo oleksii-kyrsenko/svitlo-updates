@@ -7,8 +7,8 @@ MAX_BYTES=2_000_000
 class Links(HTMLParser):
  def __init__(self,base):super().__init__();self.base=base;self.links=[]
  def handle_starttag(self,tag,attrs):
-  values=dict(attrs);href=values.get('href','');url=urljoin(self.base,href)
-  if tag=='a' and urlsplit(url).scheme=='https' and re.search(r't\.me/|\.pdf(?:\?|$)|\.xlsx(?:\?|$)|відключ|vidk|shutdown|blackout|черг|cherg',url,re.I):self.links.append(url)
+  values=dict(attrs);href=values.get('src' if tag=='iframe' else 'href','');url=urljoin(self.base,href)
+  if tag in ('a','iframe') and urlsplit(url).scheme=='https' and re.search(r't\.me/|\.pdf(?:\?|$)|\.xlsx(?:\?|$)|відключ|vidk|shutdown|blackout|disconnection|gaoinfo|черг|cherg',url,re.I):self.links.append(url)
 def classify(status,text):
  if status in (403,429) or re.search(r'cf-chl-|challenge-platform|Incapsula incident|Request unsuccessful\. Incapsula|verify you are human',text,re.I):return 'source_protected'
  return 'page_available' if status==200 else 'source_unavailable'

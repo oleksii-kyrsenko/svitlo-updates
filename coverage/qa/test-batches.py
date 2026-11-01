@@ -8,6 +8,10 @@ from source_utils import record
 def module(name):
  spec=importlib.util.spec_from_file_location(name,Path(__file__).resolve().parents[1]/(name+'.py'));m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 class BatchControls(unittest.TestCase):
+ def test_special_dtek_schedule_paths_match_official_directory(self):
+  m=module('collect-batch-c')
+  for op in ('dtek-pem','dtek-vvm'):self.assertEqual(m.dtek_page_url(op),'https://'+m.DTEK[op]+'/ua/shutdowns-schedule')
+  self.assertEqual(m.dtek_page_url('dtek-odesa'),'https://www.dtek-oem.com.ua/ua/shutdowns')
  def test_street_type_spacing_is_normalised_without_changing_its_identity(self):
   r=record('test','UA-46','Зразок','Зразкова','ПРОВ.Нова','1','8','https://example.org',1000)
   self.assertEqual(r['street'],'ПРОВ. Нова');self.assertEqual(r['houses'],['1'])
