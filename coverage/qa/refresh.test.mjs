@@ -36,3 +36,8 @@ test('malformed DTEK collection cannot abort publication or replace working data
  const result=combineSnapshots([old],[{operatorId:'dtek-odesa',records:[null]}],at);
  assert.equal(result.errors.length,1);assert.equal(result.bundles[0].records[0].id,'old');
 });
+test('spacing after a street abbreviation cannot duplicate a retained legacy selector',()=>{
+ const old={...packet([row('old','1','1.1',{street:'вул. Нова',officialCityId:'Зразок'})]),operatorId:'dtek-odesa'};
+ const fresh={...packet([row('fresh','1','1.1',{street:'вул.Нова'})]),operatorId:'dtek-odesa'};
+ const result=combineSnapshots([old],[fresh],at);assert.equal(result.errors.length,0);assert.equal(result.bundles[0].records.length,1);assert.equal(result.bundles[0].records[0].officialCityId,'Зразок');assert.equal(result.bundles[0].records[0].street,'вул. Нова');
+});

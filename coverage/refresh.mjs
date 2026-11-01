@@ -1,19 +1,19 @@
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 import {execFile} from 'node:child_process';import {promisify} from 'node:util';
 import {createPublicKey,verify} from 'node:crypto';import {pathToFileURL} from 'node:url';
-import {build,validateBundle,hash} from './build.mjs';import {mergeSnapshots,compactSnapshot} from './snapshots.mjs';
+import {build,validateBundle,hash} from './build.mjs';import {mergeSnapshots,compactSnapshot,canonicalStreet} from './snapshots.mjs';
 import {GROUPS,collectorCommand} from './collector-registry.mjs';
 const run=promisify(execFile);
 export function prepareDtekSnapshot(previous,fresh){
  if(!fresh?.operatorId?.startsWith('dtek-'))return fresh;
- const key=r=>JSON.stringify([r.regionId,r.settlement,r.community,r.street]);
+ const key=r=>JSON.stringify([r.regionId,r.settlement,r.community,canonicalStreet(r.street)]);
  const legacy=new Map();
  for(const r of previous?.records||[]){if(r.officialCityId===r.settlement)legacy.set(key(r),r.officialCityId);}
  return {...fresh,records:fresh.records.map(r=>{
   // Retain the already shipped city selector only on its original street.
   // New streets use their own normalized street name, never another street's
   // city selector. Do not rewrite an unrelated operator/branch identity.
-  const copy={...r};if(copy.officialCityId===copy.settlement)delete copy.officialCityId;
+  const copy={...r};if(copy.street)copy.street=canonicalStreet(copy.street);if(copy.officialCityId===copy.settlement)delete copy.officialCityId;
   if(!copy.officialCityId&&legacy.has(key(copy)))copy.officialCityId=legacy.get(key(copy));
   return copy;
  })};
