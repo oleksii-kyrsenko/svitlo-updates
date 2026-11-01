@@ -1,0 +1,62 @@
+{
+  "[\"geo-v4\", \"UA-73\", \"чернівці\", null]": {
+    "expiresAt": 1796135414.1005461,
+    "result": {
+      "status": "resolved",
+      "community": "Чернівецька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%A7%D0%95%D0%A0%D0%9D%D0%86%D0%92%D0%A6%D0%86%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793543414100,
+      "method": "nominatim-municipality"
+    }
+  },
+  "[\"geo-v4\", \"UA-48\", \"арбузинка\", null]": {
+    "expiresAt": 1796137542.552517,
+    "result": {
+      "status": "resolved",
+      "community": "Арбузинська селищна громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B0%D1%80%D0%B1%D1%83%D0%B7%D0%B8%D0%BD%D0%BA%D0%B0%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793545542552,
+      "method": "nominatim-municipality"
+    }
+  },
+  "[\"geo-v4\", \"UA-18\", \"андрушівка\", null]": {
+    "expiresAt": 1796135417.7217107,
+    "result": {
+      "status": "resolved",
+      "community": "Андрушівська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%BC%D1%96%D1%81%D1%82%D0%BE+%D0%90%D0%BD%D0%B4%D1%80%D1%83%D1%88%D1%96%D0%B2%D0%BA%D0%B0%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793543417721,
+      "method": "nominatim-municipality"
+    }
+  },
+  "[\"geo-v4\", \"UA-48\", \"південноукраїнськ\", null]": {
+    "expiresAt": 1796135452.7119236,
+    "result": {
+      "status": "resolved",
+      "community": "Південноукраїнська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%9F%D1%96%D0%B2%D0%B4%D0%B5%D0%BD%D0%BD%D0%BE%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793543452711,
+      "method": "nominatim-municipality"
+    }
+  },
+  "[\"geo-v4\", \"UA-12\", \"апостолове\", null]": {
+    "expiresAt": 1796136946.4694374,
+    "result": {
+      "status": "resolved",
+      "community": "Апостолівська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B0%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793544946469,
+      "method": "nominatim-municipality"
+    }
+  },
+  "[\"geo-v4\", \"UA-51\", \"ізмаїл\", null]": {
+    "expiresAt": 1796137257.419872,
+    "result": {
+      "status": "resolved",
+      "community": "Ізмаїльська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D0%B7%D0%BC%D0%B0%D1%97%D0%BB%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+      "checkedAt": 1793545257419,
+      "method": "nominatim-municipality"
+    }
+  }
+}

@@ -21,11 +21,24 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install bounded public PDF reader
+        run: pip install pdfplumber==0.11.9
+      - uses: actions/cache@v4
+        with:
+          path: coverage/geography-cache.json
+          key: geography-${{ hashFiles('coverage/geography.py') }}-${{ github.run_id }}
+          restore-keys: geography-${{ hashFiles('coverage/geography.py') }}-
+      - name: Restore sourced geography bootstrap on a cold cache
+        run: |
+          if [ ! -f coverage/geography-cache.json ]; then cp coverage/geography-bootstrap.json coverage/geography-cache.json; fi
       - name: Validate publisher and monitor
         run: |
-          node --test coverage/qa/build.test.mjs
+          node --test coverage/qa/build.test.mjs coverage/qa/refresh.test.mjs
           python3 coverage/qa/test-monitor.py
           python3 coverage/qa/test-crawl.py
+          python3 coverage/test_geography.py
+          python3 coverage/qa/test-remainder.py
+          python3 coverage/qa/test-batches.py
       - name: Monitor every operator and discover registry changes
         run: python3 coverage/monitor.py --registry
       - name: Maintain one investigation task
@@ -57,6 +70,9 @@ jobs:
       - name: Collect and sign compatible public data
         env:
           COVERAGE_STREET_BUDGET: ${{ vars.COVERAGE_STREET_BUDGET || '8' }}
+          COVERAGE_ADDRESS_BUDGET: ${{ vars.COVERAGE_ADDRESS_BUDGET || '20' }}
+          COVERAGE_OPERATORS: ${{ vars.COVERAGE_OPERATORS }}
+          SVITLO_GEOGRAPHY_CACHE: coverage/geography-cache.json
         run: |
           node coverage/refresh.mjs
           node coverage/verify.mjs
@@ -65,6 +81,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add dynamic-coverage coverage/report.json coverage/refresh-report.json coverage/crawl-state.json
+          files=(coverage/cursors/*.json)
+          if [ -e "${files[0]}" ]; then git add "${files[@]}"; fi
           git diff --cached --quiet && exit 0
           git commit -m 'Refresh signed coverage and source health'
           git pull --rebase origin main
@@ -75,6 +93,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add coverage/crawl-state.json
+          files=(coverage/cursors/*.json)
+          if [ -e "${files[0]}" ]; then git add "${files[@]}"; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Advance resumable official source crawl cursor'
             git pull --rebase origin main
@@ -90,6 +110,7 @@ jobs:
             coverage/refresh-report.json
             coverage/crawl-state.json
             coverage/staging/*.report.json
+            coverage/cursors/*.json
           retention-days: 30
       - name: Remove ephemeral key
         if: always()

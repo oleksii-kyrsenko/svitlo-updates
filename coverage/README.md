@@ -20,3 +20,27 @@ The connected identity returned HTTP403 for Actions secret management; the user 
 ## Agent responsibilities
 
 Coordinator owns baseline, regression triage and rollout. Three researchers own disjoint OSR groups and search official sources, municipalities, local sites and public channels. Address specialist owns adaptive matching. Independent verifier compares evidence and unchanged old behavior. Automatic collection continues between agent sessions; the existing free Qwen batch job remains available for its existing extraction tasks. No paid persistent service or hosted inference API is introduced.
+
+## Multi-operator normalized collectors
+
+The registry covers all32 operator identities. A registry entry or successful web
+page is not proof of a working queue assignment. Four bounded workers invoke
+standalone official API/HTML/PDF collectors; empty, protected and unsupported
+sources are reported separately. Fresh valid assignments are merged with only
+unexpired prior data. Failed collectors do not renew prior observations.
+
+`COVERAGE_ADDRESS_BUDGET` defaults20 address checks (batchA needs up to80 source
+requests); `COVERAGE_STREET_BUDGET` defaults8. Per-host rate limits and subprocess
+budgets bound collection. Cursors and sourced community metadata persist between
+runs. Public geography bootstrap values retain original provenance and expiry;
+no municipality is invented from a city name. Historical client ID UA-73 is
+matched to published ISO UA-77 without changing existing app storage IDs.
+
+Literal house groups compact identical source observations without extending
+any deadline. Partial house batches replace observed houses only. Different
+street identities remain distinct. Settlement-wide rows require explicit whole
+settlement wording in the publication; their count is not a count of houses.
+
+Batch reports distinguish source-derived checks, rereads, unresolved geographic
+context and protection. They are not a nationwide random address audit. Public
+message collection remains independent and may legitimately accept zero records.
