@@ -9,6 +9,11 @@ Dnipro/Odesa house entries and adds40 fresh source-derived entries. This is
 not an independent address-coverage audit or proof that protected sites work.
 The verified Kharkiv canonical source link is now in `sources.json`; its
 Turnstile form is still unintegrated. See `research/svitlo-app-2026-11-01.json`.
+Hosted run41324880451 subsequently passed18Node/32Python controls and published
+revision13:36 Kyiv-region,60 Dnipro and40 Odesa house entries. All59 prior DTEK
+source-derived ready cases and77 added entries match the shipped client. This
+does not establish independent coverage gains or successful access to all seven
+networks. A follow-up abbreviation-spacing fix passed all9merge controls locally.
 
 Latest verified operation, 1November2026: hosted run41321360024 published
 revision10 with11 operator datasets. Revision11 additionally includes a
