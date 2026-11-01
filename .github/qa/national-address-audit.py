@@ -20,10 +20,15 @@ def norm(value):
 
 
 def street_key(value):
-    # Canonical street type placement/abbreviation only; no fuzzy identity.
-    value=norm(value)
-    value=re.sub(r'(?<!\w)(?:вулиця|вул\.?|проспект|просп\.?|пр-т|провулок|пров\.?|площа|пл\.?|бульвар|бульв\.?|бул\.?|узвіз|набережна|шосе|алея)(?!\w)', ' ', value)
-    return norm(value).strip(' .,-')
+    # Remove a single explicit type; keep names such as «вулиця Набережна».
+    value=norm(value).strip(' .,-')
+    types=[r'вулиця|вул\.?',r'провулок|пров\.?',r'проспект|просп\.?|пр-т',r'площа|пл\.?',r'бульвар|бульв\.?|бул\.?',r'узвіз',r'набережна',r'шосе',r'алея']
+    for kind in types:
+        prefix=re.match(r'^(?:'+kind+r')\s+',value)
+        suffix=re.search(r'\s+(?:'+kind+r')$',value)
+        if prefix:return norm(value[prefix.end():]).strip(' .,-')
+        if suffix:return norm(value[:suffix.start()]).strip(' .,-')
+    return value
 
 
 def street_matches(label,target):
