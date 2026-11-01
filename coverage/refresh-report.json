@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1793546396537,
+  "checkedAt": 1793546942530,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -34,6 +34,10 @@
       "error": "collector_failed"
     },
     {
+      "operatorId": "dtek-kyiv",
+      "error": "collector_failed"
+    },
+    {
       "operatorId": "dtek-donetsk",
       "error": "collector_failed"
     },
@@ -43,10 +47,6 @@
     },
     {
       "operatorId": "dtek-vvm",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "dtek-kyiv",
       "error": "collector_failed"
     },
     {
@@ -63,10 +63,6 @@
     },
     {
       "operatorId": "naftogaz-teplo",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "cek",
       "error": "collector_failed"
     },
     {
@@ -88,18 +84,6 @@
     {
       "operatorId": "poltava",
       "error": "collector_failed"
-    },
-    {
-      "operatorId": "dtek-kyiv-region",
-      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
-    },
-    {
-      "operatorId": "dtek-odesa",
-      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
-    },
-    {
-      "operatorId": "dtek-dnipro",
-      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
     }
   ],
   "collections": [
@@ -148,14 +132,14 @@
     {
       "operatorId": "lviv",
       "status": "collected",
-      "records": 250,
+      "records": 108,
       "constraint": null,
       "caseChecks": null
     },
     {
       "operatorId": "zhytomyr",
       "status": "collected",
-      "records": 23,
+      "records": 32,
       "constraint": null,
       "caseChecks": 20
     },
@@ -176,7 +160,7 @@
     {
       "operatorId": "ternopil",
       "status": "collected",
-      "records": 18,
+      "records": 14,
       "constraint": null,
       "caseChecks": 20
     },
@@ -188,16 +172,16 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "mykolaiv",
-      "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
+      "operatorId": "dtek-kyiv",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 20
     },
     {
       "operatorId": "dtek-kyiv-region",
       "status": "collected",
-      "records": 16,
+      "records": 19,
       "constraint": null,
       "caseChecks": 20
     },
@@ -213,7 +197,7 @@
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 1
+      "caseChecks": 2
     },
     {
       "operatorId": "dtek-pem",
@@ -230,23 +214,23 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-kyiv",
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
+      "operatorId": "mykolaiv",
+      "status": "collected",
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
+    },
+    {
+      "operatorId": "rivne",
+      "status": "collected",
+      "records": 97,
+      "constraint": null,
       "caseChecks": 20
     },
     {
       "operatorId": "dtek-dnipro",
       "status": "collected",
       "records": 20,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "rivne",
-      "status": "collected",
-      "records": 97,
       "constraint": null,
       "caseChecks": 20
     },
@@ -279,18 +263,18 @@
       "caseChecks": 20
     },
     {
+      "operatorId": "cek",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
       "operatorId": "naftogaz-teplo",
       "status": "not_collected",
       "records": 0,
       "constraint": "address-protocol-or-geographic-context-not-yet-verified",
       "caseChecks": 0
-    },
-    {
-      "operatorId": "cek",
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 20
     },
     {
       "operatorId": "luhansk",
@@ -328,10 +312,10 @@
       "caseChecks": 0
     }
   ],
-  "publicationCheckedAt": 1793546531705,
+  "publicationCheckedAt": 1793547066684,
   "publication": {
-    "revision": 9,
-    "operators": 7,
-    "records": 241
+    "revision": 10,
+    "operators": 11,
+    "records": 393
   }
 }
