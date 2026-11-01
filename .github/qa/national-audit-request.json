@@ -1,12 +1,1 @@
-{
-  "regions": [
-    "UA-32",
-    "UA-51"
-  ],
-  "limit": 4,
-  "caseIds": [
-    "UA-32-2",
-    "UA-51-1"
-  ],
-  "runLabel": "Repeat two baseline-found DTEK addresses after browser protection response; same APK63 and exact frozen addresses"
-}
+{"regions":["UA-05","UA-07"],"limit":1,"caseIds":[],"runLabel":"Pilot APK88 real UI, fixed independent geographic addresses"}

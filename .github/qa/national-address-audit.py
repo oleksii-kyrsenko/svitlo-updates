@@ -19,6 +19,17 @@ def norm(value):
     return re.sub(r'\s+', ' ', value.lower().replace('’', "'").replace('ʼ', "'")).strip()
 
 
+def street_key(value):
+    # Canonical street type placement/abbreviation only; no fuzzy identity.
+    value=norm(value)
+    value=re.sub(r'(?<!\w)(?:вулиця|вул\.?|проспект|просп\.?|пр-т|провулок|пров\.?|площа|пл\.?|бульвар|бульв\.?|бул\.?|узвіз|набережна|шосе|алея)(?!\w)', ' ', value)
+    return norm(value).strip(' .,-')
+
+
+def street_matches(label,target):
+    return any(street_key(re.sub(r'^раніше\s+', '', part))==street_key(target) for part in label.split(' · '))
+
+
 class Audit:
     def __init__(self, apk, out):
         self.out = out
@@ -38,7 +49,7 @@ class Audit:
         self.size = self.call('GET', '/window/rect')
         time.sleep(5)
         try:
-            self.wait(lambda x: 'СВІТЛО' in x or 'Ввести адресу' in x, 55)
+            self.wait(lambda x: 'КОЛИ СВІТЛО' in x or 'Ввести адресу' in x, 55)
         except Exception:
             self.screenshot('startup-failed')
             (self.case_dir/'startup.log').write_text(self.adb('logcat','-d'))
@@ -162,6 +173,7 @@ class Audit:
 
     def type_search(self, label, text):
         self.current_query = text
+        self.current_field = label
         self.phase = 'type-search-'+label
         for attempt in range(3):
             self.source()  # Dismiss an identified Android fullscreen onboarding tip.
@@ -211,8 +223,13 @@ class Audit:
                 raise RuntimeError('Address list closed before an option was selected')
             options = self.options(xml)
             if options:
-                tokens = re.findall(r'[\w\d]+',norm(getattr(self,'current_query','')))
-                matching = [n for n in options if all(token in norm(n.get('content-desc')) for token in tokens)]
+                query=getattr(self,'current_query','')
+                if getattr(self,'current_field',None)=='Вулиця':
+                    tokens=re.findall(r'[\w\d]+',street_key(query))
+                    matching=[n for n in options if all(token in street_key(n.get('content-desc')) for token in tokens)]
+                else:
+                    tokens = re.findall(r'[\w\d]+',norm(query))
+                    matching = [n for n in options if all(token in norm(n.get('content-desc')) for token in tokens)]
                 if matching:
                     return matching, xml
             loading = any(n.get('class') == 'android.widget.ProgressBar' for n in ET.fromstring(xml).iter())
@@ -235,7 +252,13 @@ class Audit:
         db = next(directory.rglob('RKStorage'), None)
         if not db:
             return {}
-        with sqlite3.connect(db) as connection:
+        with sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True) as connection:
+            coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',('@svitlo/dynamic-coverage-v1',)).fetchone()
+            self.coverage_snapshot=None
+            if coverage:
+                try:
+                    envelope=json.loads(coverage[0]);manifest=json.loads(base64.b64decode(envelope['payload']));self.coverage_snapshot={k:manifest.get(k) for k in ['revision','generatedAt','expiresAt','enabled']}
+                except (ValueError,KeyError):self.coverage_snapshot={'unparsed':True}
             row = connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?', ('svitlo.state.v1',)).fetchone()
         return json.loads(row[0]) if row else {}
 
@@ -247,14 +270,16 @@ class Audit:
                 self.tap('Відкинути зміни')
             elif 'Закрити список адрес' in xml:
                 self.tap('Закрити список адрес')
-            elif 'Вибір місця' in xml:
+            elif 'Налаштування адреси' in xml:
                 self.tap('Закрити')
             elif 'Закрити вибір місця' in xml:
                 self.tap('Закрити вибір місця')
             else:
-                if self.tap('Ввести адресу',required=False) or self.tap('＋ Додати місце',required=False):
+                if self.tap('Ввести адресу',required=False) or self.tap('Додати адресу',required=False):
                     self.wait(lambda x:'Обрати: Область' in x,15)
                     return
+                if 'app-menu-button' in xml:
+                    self.tap('app-menu-button')
             time.sleep(1)
         raise RuntimeError('Could not return from the previous editor to a new empty place')
 
@@ -266,12 +291,12 @@ class Audit:
         start = time.monotonic()
         result = {**case, 'startedAt': stamp(), 'method': 'released-apk-visible-ui', 'stage': 'open', 'uiIssues': [],
                   'auditRunId':os.environ.get('GITHUB_RUN_ID'), 'auditCommit':os.environ.get('GITHUB_SHA'),
-                  'apkVersion':'0.1.31', 'apkCode':63, 'androidApi':35}
+                  'apkVersion':'0.1.52', 'apkCode':88, 'androidApi':35}
         try:
             self.open_new_editor()
             self.phase = 'select-region'
             options, xml = self.field('Область', case['regionQuery'])
-            expected = case['regionQuery']+' область'
+            expected = case.get('regionLabel') or ('Київ' if case['regionId']=='UA-30' else case['regionQuery']+' область')
             match = next((n for n in options if norm(n.get('content-desc')) == norm(expected)), None)
             if match is None:
                 raise RuntimeError('Requested region is absent from app list')
@@ -304,7 +329,7 @@ class Audit:
             self.screenshot('city-selected-from-list', xml)
             self.choose_option(matches[0])
             result['stage'] = 'street'
-            queries = [case['exactStreet']] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
+            queries = [street_key(case['exactStreet'])] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
             selected = None
             street_open = False
             tried_streets = set()
@@ -317,7 +342,8 @@ class Audit:
                 else:
                     self.type_search('Вулиця', query)
                     options, xml = self.wait_options()
-                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or norm(n.get('content-desc').split(' · ')[0])==norm(case['exactStreet']))), None)
+                result['streetOptions']=[n.get('content-desc') for n in options]
+                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or street_matches(n.get('content-desc'),case['exactStreet']))), None)
                 if selected is None:
                     continue
                 result['selectedStreetLabel'] = selected.get('content-desc')
@@ -336,26 +362,28 @@ class Audit:
                 if numeric:
                     break
                 self.screenshot('empty-house-list-'+str(len(tried_streets)), xml)
-                self.tap('Закрити список адрес')
-            if not numeric:
-                result.update(outcome='house_unavailable' if tried_streets else 'street_unavailable', visibleText=self.texts(xml))
-                return result
+                if not case.get('exactHouse'):self.tap('Закрити список адрес')
             if case.get('exactHouse'):
                 numeric=[n for n in numeric if norm(n.get('content-desc'))==norm(case['exactHouse'])]
-                if not numeric:
-                    result.update(outcome='house_unavailable',visibleText=self.texts(xml));return result
+            if not numeric and tried_streets and case.get('exactHouse') and 'Пошук: Будинок' in xml:
+                self.tap('Застосувати номер будинку')
+                result['selectedHouse']=case['exactHouse']
+                result['houseEnteredThroughUI']=True
+            elif not numeric:
+                result.update(outcome='house_unavailable' if tried_streets else 'street_unavailable', visibleText=self.texts(xml))
+                return result
             houses = [case.get('preferredHouse', ''), '10', '12', '22', '8', '4', '2', '1']
-            selected = next((n for h in houses for n in numeric if norm(n.get('content-desc')) == norm(h)), numeric[0])
-            result['selectedHouse'] = selected.get('content-desc')
-            self.screenshot('house-selected-from-list', xml)
-            self.choose_option(selected)
+            if numeric:
+                selected = next((n for h in houses for n in numeric if norm(n.get('content-desc')) == norm(h)), numeric[0])
+                result['selectedHouse'] = selected.get('content-desc')
+                self.screenshot('house-selected-from-list', xml)
+                self.choose_option(selected)
             lookup_start = time.monotonic()
             result['addressSelectedThroughUI'] = True
             result['addressFromUI'] = ', '.join([re.sub(r'^(?:м\.?|с\.?|с-ще\.?|смт\.?|селище|село|місто)\s+', '', result['selectedCityLabel'].split(' · ')[0]), result['selectedStreetLabel'].split(' · ')[0], result['selectedHouse']])
             result['stage'] = 'queue'
             # Bring status below the address fields into view. No manual queue is entered.
-            for _ in range(4):
-                self.scroll()
+            self.scroll()
             deadline = time.monotonic()+200
             final_xml = self.source()
             while time.monotonic() < deadline:
@@ -370,7 +398,7 @@ class Audit:
                 if 'Оберіть оператора в додаткових налаштуваннях' in joined:
                     result['outcome'] = 'operator_missing'
                     break
-                if not pending and time.monotonic()-lookup_start > 6:
+                if not pending and time.monotonic()-lookup_start > 12:
                     result['outcome'] = 'no_confirmed_queue'
                     break
                 time.sleep(1.5)
@@ -382,20 +410,31 @@ class Audit:
             # Save using the app control; inspect only the state the APK writes.
             result['stage'] = 'save'
             if self.tap('save-place', required=False):
-                self.wait(lambda x: 'Вибір місця' not in x, 15)
+                self.wait(lambda x: 'Налаштування адреси' not in x, 15)
                 time.sleep(3)
                 state = self.read_state()
                 place = next((p for p in state.get('places', []) if p.get('id') == state.get('activePlaceId')), None)
+                result['dynamicCoverageFromApp']=self.coverage_snapshot
                 result['persistedPlace'] = place
                 result['saved'] = bool(place)
                 if place:
                     if place.get('queueOrigin') == 'manual':
                         raise RuntimeError('A manually assigned queue cannot count as an audit result')
                     selection = place.get('addressSelection') or {}
-                    if place.get('addressOrigin') != 'postal' or not all(selection.get(k,{}).get('id') for k in ['city','street','house']):
+                    if place.get('addressOrigin') != 'postal' or not all(selection.get(k,{}).get('id') for k in ['city','street']) or not (selection.get('house',{}).get('id') or result.get('houseEnteredThroughUI')):
                         raise RuntimeError('Saved address was not fully selected from the postal UI')
                     result['actualAddress'] = place.get('address')
                     result['snapshot'] = state.get('snapshots', {}).get(place['id'])
+                    result['queueOrigin']=place.get('queueOrigin')
+                    result['queueCheckStatus']=place.get('queueCheckStatus')
+                    result['publicCandidates']=place.get('queuePublicCandidates',[])
+                    result['queueTransport']=place.get('queueTransport')
+                    if place.get('queueConfirmed') and place.get('queue'):
+                        if result.get('visibleQueue')!=place.get('queue'):raise RuntimeError('Visible queue differs from app-written queue')
+                        result['outcome']='queue_found_public' if place.get('queueOrigin')=='public' else 'queue_found_official'
+                    elif place.get('queuePublicCandidates'):
+                        result['outcome']='public_proposal_requires_confirmation'
+                    else:result['outcome']=place.get('queueCheckStatus') or result['outcome']
                 self.screenshot('saved-in-app')
             else:
                 result['saved'] = False
@@ -427,7 +466,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--apk', type=pathlib.Path, required=True)
     parser.add_argument('--region', required=True)
-    parser.add_argument('--limit', type=int, default=4)
+    parser.add_argument('--limit', type=int, default=5)
     parser.add_argument('--case-ids', default='')
     parser.add_argument('--out', type=pathlib.Path, default=pathlib.Path('national-audit'))
     args = parser.parse_args()
@@ -452,7 +491,7 @@ def main():
             print('AUDIT_CASE_START', case['id'], case['city'], stamp(), flush=True)
             result = audit.run_case(case)
             results.append(result)
-            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1, 'apkVersion':'0.1.31', 'apkCode':63,
+            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1, 'apkVersion':'0.1.52', 'apkCode':88,
                 'region':args.region, 'cases':results}, ensure_ascii=False, indent=2)+'\n')
             print('AUDIT_CASE_RESULT', json.dumps({k:result.get(k) for k in ['id','city','outcome','actualAddress','visibleQueue','lookupSeconds','totalSeconds','automationError']}, ensure_ascii=False), flush=True)
     finally:

@@ -1,7 +1,7 @@
 name: National address audit of released APK
 on:
   push:
-    branches: [audit/android-63-97]
+    branches: [audit/capitals-88]
     paths: ['.github/qa/national-audit-request.json']
   workflow_dispatch:
     inputs:
@@ -10,7 +10,7 @@ on:
         required: true
         default: '["UA-30","UA-71"]'
       limit:
-        description: Number of settlements per region (pilot 1, full 4)
+        description: Number of fixed addresses per capital (pilot 1, full 5)
         required: true
         default: '1'
 permissions:
@@ -35,12 +35,12 @@ jobs:
           path=pathlib.Path('.github/qa/national-audit-request.json')
           request=json.loads(path.read_text()) if path.exists() else {}
           regions=json.loads(os.environ['INPUT_REGIONS']) if os.environ.get('INPUT_REGIONS') else request['regions']
-          limit=int(os.environ.get('INPUT_LIMIT') or request.get('limit',4))
+          limit=int(os.environ.get('INPUT_LIMIT') or request.get('limit',5))
           cases=request.get('caseIds',[]) if not os.environ.get('INPUT_REGIONS') else []
           targets=json.loads(pathlib.Path('.github/qa/national-address-cases.json').read_text())['cases']
           assert isinstance(regions,list) and regions and len(set(regions))==len(regions)
           assert all(r in {c['regionId'] for c in targets} for r in regions)
-          assert 1<=limit<=4
+          assert 1<=limit<=5
           assert isinstance(cases,list) and all(c in {v['id'] for v in targets if v['regionId'] in regions} for c in cases)
           if cases:assert all(any(c['regionId']==r and c['id'] in cases for c in targets) for r in regions)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
@@ -56,7 +56,7 @@ jobs:
       matrix:
         region: ${{ fromJSON(needs.plan.outputs.regions) }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       APPIUM_HOME: /tmp/svitlo-appium
     steps:
@@ -71,12 +71,12 @@ jobs:
       - name: Fetch the exact public APK without changing application code
         run: |
           mkdir -p artifacts national-audit
-          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-63.apk https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/872add2/candidate/svitlo-test-63.apk
+          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-88.apk https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/svitlo-test-88.apk
           python3 - <<'PY'
           import hashlib,pathlib
-          p=pathlib.Path('artifacts/svitlo-test-63.apk')
-          assert p.stat().st_size==77297029
-          assert hashlib.sha256(p.read_bytes()).hexdigest()=='16426bdb92b82740e3364c05bfe7eaf1a6f0afb63f24438c6ed2ab2e398c9ddb'
+          p=pathlib.Path('artifacts/svitlo-test-88.apk')
+          assert p.stat().st_size==82323533
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a'
           PY
       - name: Install Unicode-capable native UI automation
         run: |
@@ -103,7 +103,7 @@ jobs:
           script: |
             appium --address 127.0.0.1 --port 4723 --log national-audit/appium.log > national-audit/appium-stdout.log 2>&1 &
             python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
-            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-63.apk --region '${{ matrix.region }}' --limit '${{ needs.plan.outputs.limit }}' --case-ids '${{ needs.plan.outputs.cases }}'
+            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-88.apk --region '${{ matrix.region }}' --limit '${{ needs.plan.outputs.limit }}' --case-ids '${{ needs.plan.outputs.cases }}'
       - name: Preserve per-address screenshots, accessibility trees and app-written results
         if: always()
         uses: actions/upload-artifact@v4
