@@ -312,7 +312,7 @@ class Audit:
             self.open_new_editor()
             self.phase = 'select-region'
             options, xml = self.field('Область', case['regionQuery'])
-            expected = case.get('regionLabel') or ('Київ' if case['regionId']=='UA-30' else case['regionQuery']+' область')
+            expected = case.get('regionLabel') or ('Київська область' if case['regionId']=='UA-30' else case['regionQuery']+' область')
             match = next((n for n in options if norm(n.get('content-desc')) == norm(expected)), None)
             if match is None:
                 raise RuntimeError('Requested region is absent from app list')
