@@ -20,18 +20,25 @@
           "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
           "checkedAt": 1793549531000,
           "method": "nominatim-municipality"
+        },
+        "UA-14|м. Білозерське": {
+          "status": "resolved",
+          "community": "Білозерська міська громада",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%BE%D0%B7%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793570484899,
+          "method": "nominatim-municipality"
         }
       },
       "lastContext": {
         "status": "resolved",
-        "community": "Добропільська міська громада",
-        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%B8%D1%86%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1793549531000,
+        "community": "Білозерська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%BE%D0%B7%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793570484899,
         "method": "nominatim-municipality"
       },
       "auditSamples": [],
-      "houseIndex": 0,
-      "streetIndex": 0,
+      "houseIndex": 18,
+      "streetIndex": 2,
       "cityIndex": 3
     }
   }

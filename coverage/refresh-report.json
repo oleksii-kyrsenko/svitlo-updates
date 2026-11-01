@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1793549454696,
+  "checkedAt": 1793570432740,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -34,11 +34,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-odesa",
+      "operatorId": "cek",
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-kyiv",
+      "operatorId": "dtek-donetsk",
       "error": "collector_failed"
     },
     {
@@ -50,7 +50,7 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-donetsk",
+      "operatorId": "dtek-kyiv",
       "error": "collector_failed"
     },
     {
@@ -136,14 +136,14 @@
     {
       "operatorId": "lviv",
       "status": "collected",
-      "records": 80,
+      "records": 45,
       "constraint": null,
       "caseChecks": null
     },
     {
       "operatorId": "zhytomyr",
       "status": "collected",
-      "records": 38,
+      "records": 46,
       "constraint": null,
       "caseChecks": 20
     },
@@ -162,42 +162,42 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "zakarpattia",
-      "status": "collected",
-      "records": 4,
-      "constraint": null,
-      "caseChecks": 5
-    },
-    {
       "operatorId": "ternopil",
       "status": "collected",
-      "records": 17,
+      "records": 20,
       "constraint": null,
       "caseChecks": 20
     },
     {
-      "operatorId": "mykolaiv",
+      "operatorId": "zakarpattia",
       "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
-    },
-    {
-      "operatorId": "dtek-kyiv-region",
-      "status": "collected",
-      "records": 17,
+      "records": 20,
       "constraint": null,
       "caseChecks": 20
     },
     {
-      "operatorId": "dtek-odesa",
+      "operatorId": "cek",
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-kyiv",
+      "operatorId": "dtek-kyiv-region",
+      "status": "collected",
+      "records": 12,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-donetsk",
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
@@ -218,11 +218,18 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-donetsk",
+      "operatorId": "dtek-kyiv",
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 9
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "rivne",
+      "status": "collected",
+      "records": 97,
+      "constraint": null,
+      "caseChecks": 20
     },
     {
       "operatorId": "dtek-dnipro",
@@ -232,18 +239,18 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "cek",
-      "status": "collected",
-      "records": 15,
-      "constraint": null,
-      "caseChecks": 15
-    },
-    {
       "operatorId": "kharkiv",
       "status": "not_collected",
       "records": 0,
       "constraint": "source-protected",
       "caseChecks": 0
+    },
+    {
+      "operatorId": "mykolaiv",
+      "status": "collected",
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
     },
     {
       "operatorId": "kherson",
@@ -258,13 +265,6 @@
       "records": 0,
       "constraint": "collection-unavailable",
       "caseChecks": 0
-    },
-    {
-      "operatorId": "rivne",
-      "status": "collected",
-      "records": 97,
-      "constraint": null,
-      "caseChecks": 20
     },
     {
       "operatorId": "atomservice",
@@ -316,10 +316,10 @@
       "caseChecks": 0
     }
   ],
-  "publicationCheckedAt": 1793549587070,
+  "publicationCheckedAt": 1793570540376,
   "publication": {
-    "revision": 13,
+    "revision": 14,
     "operators": 12,
-    "records": 2200
+    "records": 2334
   }
 }
