@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1793546942530,
+  "checkedAt": 1793549454696,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -34,11 +34,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-kyiv",
+      "operatorId": "dtek-odesa",
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-donetsk",
+      "operatorId": "dtek-kyiv",
       "error": "collector_failed"
     },
     {
@@ -47,6 +47,10 @@
     },
     {
       "operatorId": "dtek-vvm",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-donetsk",
       "error": "collector_failed"
     },
     {
@@ -132,14 +136,14 @@
     {
       "operatorId": "lviv",
       "status": "collected",
-      "records": 108,
+      "records": 80,
       "constraint": null,
       "caseChecks": null
     },
     {
       "operatorId": "zhytomyr",
       "status": "collected",
-      "records": 32,
+      "records": 38,
       "constraint": null,
       "caseChecks": 20
     },
@@ -158,18 +162,39 @@
       "caseChecks": 0
     },
     {
+      "operatorId": "zakarpattia",
+      "status": "collected",
+      "records": 4,
+      "constraint": null,
+      "caseChecks": 5
+    },
+    {
       "operatorId": "ternopil",
       "status": "collected",
-      "records": 14,
+      "records": 17,
       "constraint": null,
       "caseChecks": 20
     },
     {
-      "operatorId": "zakarpattia",
+      "operatorId": "mykolaiv",
       "status": "collected",
-      "records": 20,
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "status": "collected",
+      "records": 17,
       "constraint": null,
       "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
     },
     {
       "operatorId": "dtek-kyiv",
@@ -177,27 +202,6 @@
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
       "caseChecks": 20
-    },
-    {
-      "operatorId": "dtek-kyiv-region",
-      "status": "collected",
-      "records": 19,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "dtek-odesa",
-      "status": "collected",
-      "records": 20,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "dtek-donetsk",
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 2
     },
     {
       "operatorId": "dtek-pem",
@@ -214,18 +218,11 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "mykolaiv",
-      "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
-    },
-    {
-      "operatorId": "rivne",
-      "status": "collected",
-      "records": 97,
-      "constraint": null,
-      "caseChecks": 20
+      "operatorId": "dtek-donetsk",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 9
     },
     {
       "operatorId": "dtek-dnipro",
@@ -233,6 +230,13 @@
       "records": 20,
       "constraint": null,
       "caseChecks": 20
+    },
+    {
+      "operatorId": "cek",
+      "status": "collected",
+      "records": 15,
+      "constraint": null,
+      "caseChecks": 15
     },
     {
       "operatorId": "kharkiv",
@@ -256,16 +260,16 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "atomservice",
+      "operatorId": "rivne",
       "status": "collected",
-      "records": 29,
+      "records": 97,
       "constraint": null,
       "caseChecks": 20
     },
     {
-      "operatorId": "cek",
+      "operatorId": "atomservice",
       "status": "collected",
-      "records": 20,
+      "records": 29,
       "constraint": null,
       "caseChecks": 20
     },
@@ -312,10 +316,10 @@
       "caseChecks": 0
     }
   ],
-  "publicationCheckedAt": 1793547066684,
+  "publicationCheckedAt": 1793549587070,
   "publication": {
-    "revision": 10,
-    "operators": 11,
-    "records": 393
+    "revision": 13,
+    "operators": 12,
+    "records": 2200
   }
 }
