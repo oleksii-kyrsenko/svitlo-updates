@@ -1,0 +1,52 @@
+name: Diagnose dynamic coverage on exact candidate APK
+on:
+  push:
+    branches: ['candidates/android-88']
+    paths: ['.github/qa/dynamic-diag-request.json']
+permissions:
+  contents: read
+jobs:
+  dynamic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [30, 35, 36]
+    env:
+      SAVED_THEME: aurora
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow==12.0.0
+      - name: Verify the exact requested signed APK
+        run: |
+          python3 candidate/verify-apk.py
+          python3 - <<'PY'
+          import json
+          request=json.load(open('.github/qa/dynamic-diag-request.json'))
+          meta=json.load(open('candidate/meta.json'))
+          assert request['versionCode']==meta['versionCode']==88
+          assert request['apkSha256']==meta['sha256']
+          assert request['sourceCommit']==meta['sourceCommit']
+          PY
+      - name: Enable runner acceleration
+        run: |
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu ${{ matrix.api == 36 && 'swiftshader' || 'swiftshader_indirect' }}
+          script: python3 candidate/prepare-emulator.py && python3 candidate/install-diagnostic.py && python3 -u candidate/dynamic-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diagnostic-api${{ matrix.api }}
+          overwrite: true
+          path: apk-diagnostics/

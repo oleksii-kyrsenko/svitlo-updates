@@ -18,11 +18,25 @@ def seed(state,extra=None):
  for name in ['RKStorage','RKStorage-wal','RKStorage-shm','RKStorage-journal']:adb('shell','rm','-f',remote+'/'+name)
  adb('push',str(local),remote+'/RKStorage');uid=adb('shell','stat','-c','%u',f'/data/data/{pkg}').strip();assert uid.isdigit()
  adb('shell','chown','-R',f'{uid}:{uid}',remote);adb('shell','restorecon','-R',remote)
-def saved():
- adb('shell','am','force-stop',pkg)
+def saved(stop=True):
+ if stop:adb('shell','am','force-stop',pkg)
  target=out/('dynamic-saved-'+str(time.time_ns()));target.mkdir()
  adb('pull',f'/data/data/{pkg}/databases',str(target))
  with sqlite3.connect(target/'databases'/'RKStorage') as db:return json.loads(db.execute('SELECT value FROM catalystLocalStorage WHERE key=?',('svitlo.state.v1',)).fetchone()[0])
+def await_official_delivery(row):
+ deadline=time.monotonic()+100;latest=None
+ while time.monotonic()<deadline:
+  try:
+   latest=saved(stop=False)['places'][0]
+   if latest.get('queue')==row['queue'] and latest.get('queueOrigin')=='official' and latest.get('queueEvidence')=='dynamic-roster':return latest
+  except (sqlite3.DatabaseError,KeyError,IndexError):pass
+  time.sleep(4)
+ evidence('dynamic-official-failure',xml())
+ (out/'dynamic-failure-logcat.txt').write_text(adb('logcat','-d',check=False))
+ (out/'dynamic-failure-state.json').write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\n')
+ saved() # Force-stop and preserve the actual final DB, including all delivery keys.
+ raise AssertionError('Dynamic official queue did not resolve: '+json.dumps(latest,ensure_ascii=False))
+
 def fixture():
  state=json.loads(pathlib.Path('candidate/fixture.json').read_text());p=state['places'][0]
  p.update(queue=None,queueConfirmed=False,queueOrigin=None,queueUserConfirmedAt=None,queuePublicConflict=True)
@@ -62,7 +76,7 @@ try:
  state=fixture();p=state['places'][0]
  p.update(address=', '.join([row['settlement'],row['street'],row['houses'][0]]),addressParts={'settlement':row['settlement'],'street':row['street'],'house':row['houses'][0]},addressContext={'regionId':row['regionId'],'community':row['community']},latitude=49.87,longitude=24.04,regionId=row['regionId'],operatorId='lviv',operatorOrigin='manual',officialCityId=None,queue=None,queueConfirmed=False,queueOrigin=None,queuePublicCandidates=[],queuePublicConflict=False)
  extra={'@svitlo/dynamic-coverage-v1':env,'@svitlo/dynamic-coverage-v1/lviv':{'sha256':entry['sha256'],'text':bundle_text}}
- seed(state,extra);launch();c['wait_source']('Черга '+row['queue']);time.sleep(2);evidence('dynamic-official-delivery',xml())
+ seed(state,extra);launch();await_official_delivery(row);c['wait_source']('Черга '+row['queue']);time.sleep(2);evidence('dynamic-official-delivery',xml())
  resolved=saved()['places'][0]
  assert resolved['queue']==row['queue'] and resolved['queueOrigin']=='official' and resolved['queueEvidence']=='dynamic-roster',resolved
  assert resolved['queueCheckedAt']==row['checkedAt'] and resolved['queueSource']==row['sourceUrl']
@@ -72,5 +86,6 @@ try:
  seed(state);launch();wait('current-address-card');time.sleep(3)
  assert 'confirm-public-candidate-' not in xml();evidence('dynamic-expired-proposals',xml());flags['expiredCandidatesNotOffered']=True
 finally:
+ (out/'dynamic-final-logcat.txt').write_text(adb('logcat','-d',check=False))
  result={'api':adb('shell','getprop','ro.build.version.sdk').strip(),'savedTheme':__import__('os').environ['SAVED_THEME'],'apkSha256':c['meta']['sha256'],'flags':flags,'allPassed':len(flags)==5 and all(flags.values()),'scope':'External synthetic proposal fixtures; direct/inferred presentation, explicit selection, public provenance, reminders off, offline restart and expiry. Real signed official roster delivered through persisted remote cache resolves an unseeded queue offline; this is a sampled delivery check, not national coverage.'}
  (out/'dynamic-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('DYNAMIC_RESULT',json.dumps(result),flush=True)
