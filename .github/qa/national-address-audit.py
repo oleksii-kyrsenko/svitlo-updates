@@ -19,20 +19,31 @@ def norm(value):
     return re.sub(r'\s+', ' ', value.lower().replace('’', "'").replace('ʼ', "'")).strip()
 
 
-def street_key(value):
-    # Remove a single explicit type; keep names such as «вулиця Набережна».
+def street_identity(value):
     value=norm(value).strip(' .,-')
-    types=[r'вулиця|вул\.?',r'провулок|пров\.?',r'проспект|просп\.?|пр-т',r'площа|пл\.?',r'бульвар|бульв\.?|бул\.?',r'узвіз',r'набережна',r'шосе',r'алея']
-    for kind in types:
+    types=[('вулиця',r'вулиця|вул\.?'),('провулок',r'провулок|пров\.?'),('проспект',r'проспект|просп\.?|пр-т'),('площа',r'площа|пл\.?'),('бульвар',r'бульвар|бульв\.?|бул\.?'),('узвіз',r'узвіз'),('набережна',r'набережна'),('шосе',r'шосе'),('алея',r'алея'),('тупик',r'тупик'),('проїзд',r'проїзд'),('дорога',r'дорога')]
+    for canonical,kind in types:
         prefix=re.match(r'^(?:'+kind+r')\s+',value)
         suffix=re.search(r'\s+(?:'+kind+r')$',value)
-        if prefix:return norm(value[prefix.end():]).strip(' .,-')
-        if suffix:return norm(value[:suffix.start()]).strip(' .,-')
-    return value
+        if prefix:return canonical,norm(value[prefix.end():]).strip(' .,-')
+        if suffix:return canonical,norm(value[:suffix.start()]).strip(' .,-')
+    return None,value
+
+
+def street_key(value):
+    kind,name=street_identity(value)
+    return (kind or '')+'|'+name
 
 
 def street_matches(label,target):
-    return any(street_key(re.sub(r'^раніше\s+', '', part))==street_key(target) for part in label.split(' · '))
+    target_kind,target_name=street_identity(target)
+    current_kind,_=street_identity(label.split(' · ')[0])
+    for part in label.split(' · '):
+        old=part.startswith('раніше ')
+        kind,name=street_identity(re.sub(r'^раніше\s+', '', part))
+        if old and kind is None:kind=current_kind
+        if kind==target_kind and name==target_name:return True
+    return False
 
 
 class Audit:
