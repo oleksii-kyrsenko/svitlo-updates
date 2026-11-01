@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.51",
-  "versionCode": 87,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-87/svitlo-test-87.apk",
-  "size": 82139070,
-  "sha256": "96192b1a06f7662a2d1bcc42465b88185f84aafb3b06df12e67d7d9f96d12a20",
-  "notes": "Світлу тему тимчасово приховано для доопрацювання. Застосунок використовує Aurora Glass, зокрема після оновлення зі світлою темою. Збережені адреси, ручні черги, графіки та налаштування залишаються.",
+  "version": "0.1.52",
+  "versionCode": 88,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/svitlo-test-88.apk",
+  "size": 82323533,
+  "sha256": "da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a",
+  "notes": "Динамічні джерела й каталог ОСР, покращений пошук адрес та пропозиції черги з місцевих джерел із вашим підтвердженням. Збережені адреси, ручні виправлення та офлайн-дані залишаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-10-31T07:36:22.352015+00:00",
-  "sourceCommit": "86de65bff76ef376f1b2232e5aac9fac8fb8bb68"
+  "publishedAt": "2026-11-01T14:19:27.577662+00:00",
+  "sourceCommit": "243a9a339b1fdcfa44f3850aee2e051e121b0dff"
 }
