@@ -1,0 +1,186 @@
+{
+  "operators": {
+    "dtek-dnipro": {
+      "contexts": {
+        "UA-12|м. Апостолове": {
+          "status": "resolved",
+          "community": "Апостолівська міська громада",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B0%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793544946469,
+          "method": "nominatim-municipality"
+        }
+      },
+      "auditSamples": [
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "1",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=39",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "7",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=43",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "22",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=41",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "63",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=42",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "107",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=40",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "Б/Н",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=46",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "б/н ввод 1",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=44",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "Без вулиці",
+          "house": "Б/Н ввод 2",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=2&houseId=45",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "1",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=47",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "1А",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=48",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "2",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=74",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "2А",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=75",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "3",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=88",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "4",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=98",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "4А",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=99",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "4Б",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=100",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "5",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=113",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "6",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=124",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "7",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=134",
+          "checkedAt": 1793546424205
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Авангардна",
+          "house": "7А",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=3&houseId=135",
+          "checkedAt": 1793546424205
+        }
+      ],
+      "houseIndex": 12,
+      "streetIndex": 1,
+      "lastContext": {
+        "status": "resolved",
+        "community": "Апостолівська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B0%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793544946469,
+        "method": "nominatim-municipality"
+      }
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "operators": {
+    "dtek-odesa": {
+      "contexts": {
+        "UA-51|м. Ізмаїл": {
+          "status": "resolved",
+          "community": "Ізмаїльська міська громада",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D0%B7%D0%BC%D0%B0%D1%97%D0%BB%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793545257419,
+          "method": "nominatim-municipality"
+        }
+      },
+      "lastContext": {
+        "status": "resolved",
+        "community": "Ізмаїльська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D0%B7%D0%BC%D0%B0%D1%97%D0%BB%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793545257419,
+        "method": "nominatim-municipality"
+      },
+      "auditSamples": [
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "1",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "100",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "101",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "102-Б",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "102/А",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "102А",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "103",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "104",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "105",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "106",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "107",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "108",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "109",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "110",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "110А",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "110Б",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "110В",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "111",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "111Б",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        },
+        {
+          "settlement": "м. Ізмаїл",
+          "street": "просп. Незалежності",
+          "house": "112",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-oem.com.ua/ua/ajax",
+          "checkedAt": 1793546473933
+        }
+      ],
+      "houseIndex": 20,
+      "streetIndex": 0
+    }
+  }
+}

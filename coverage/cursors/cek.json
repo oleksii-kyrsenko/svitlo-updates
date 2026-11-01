@@ -1,0 +1,186 @@
+{
+  "operators": {
+    "cek": {
+      "contexts": {
+        "UA-12|с. Дніпровське": {
+          "status": "unresolved",
+          "reason": "ambiguous_locality",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B4%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793546436575
+        }
+      },
+      "auditSamples": [
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "1",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5488",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "1А",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5493",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "2",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5489",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "4",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5490",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "6",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5491",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Набережна",
+          "house": "8",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=1&houseId=5492",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Нова",
+          "house": "1",
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=2&houseId=5494",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Спортивна",
+          "house": "9",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=3&houseId=5495",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Центральна",
+          "house": "19",
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=4&houseId=5496",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Шкільна",
+          "house": "2",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=5&houseId=5497",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Шкільна",
+          "house": "6",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=5&houseId=5498",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Шкільна",
+          "house": "10",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=5&houseId=5499",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "1",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5470",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "1а",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5487",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "3",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5471",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "5",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5472",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "7",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5473",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "11",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5474",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "13",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5475",
+          "checkedAt": 1793546430783
+        },
+        {
+          "settlement": "с. Дніпровське",
+          "street": "вул. Лісна ",
+          "house": "15",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=1&streetId=6&houseId=5476",
+          "checkedAt": 1793546430783
+        }
+      ],
+      "houseIndex": 0,
+      "streetIndex": 0,
+      "cityIndex": 1,
+      "queryIndex": 0,
+      "lastContext": {
+        "status": "unresolved",
+        "reason": "ambiguous_locality",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B4%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793546436575
+      }
+    }
+  }
+}

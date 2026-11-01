@@ -1,10 +1,337 @@
 {
-  "checkedAt": 1793539174845,
-  "errors": [],
-  "publicationCheckedAt": 1793539182031,
+  "checkedAt": 1793546396537,
+  "errors": [
+    {
+      "operatorId": "chernivtsi",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "cherkasy",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "sumy",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "vinnytsia",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "volyn",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "prykarpattia",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "kirovohrad",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "khmelnytskyi",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-pem",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-vvm",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-kyiv",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "kharkiv",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "kherson",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "chernihiv",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "naftogaz-teplo",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "cek",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "luhansk",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "regional-networks",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "zaporizhzhia",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "ukrzaliznytsia",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "poltava",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
+    }
+  ],
+  "collections": [
+    {
+      "operatorId": "chernivtsi",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "cherkasy",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "sumy",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "vinnytsia",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "volyn",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "prykarpattia",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "lviv",
+      "status": "collected",
+      "records": 250,
+      "constraint": null,
+      "caseChecks": null
+    },
+    {
+      "operatorId": "zhytomyr",
+      "status": "collected",
+      "records": 23,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "kirovohrad",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "khmelnytskyi",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": null,
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "ternopil",
+      "status": "collected",
+      "records": 18,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "zakarpattia",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "mykolaiv",
+      "status": "collected",
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "status": "collected",
+      "records": 16,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 1
+    },
+    {
+      "operatorId": "dtek-pem",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "dtek-vvm",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "dtek-kyiv",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "rivne",
+      "status": "collected",
+      "records": 97,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "kharkiv",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "source-protected",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "kherson",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "address-protocol-or-geographic-context-not-yet-verified",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "chernihiv",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "atomservice",
+      "status": "collected",
+      "records": 29,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "naftogaz-teplo",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "address-protocol-or-geographic-context-not-yet-verified",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "cek",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "luhansk",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "registry-identity-only-no-address-source",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "regional-networks",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "registry-identity-only-no-address-source",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "zaporizhzhia",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "ukrzaliznytsia",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "poltava",
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
+      "caseChecks": 0
+    }
+  ],
+  "publicationCheckedAt": 1793546531705,
   "publication": {
-    "revision": 8,
-    "operators": 1,
-    "records": 58
+    "revision": 9,
+    "operators": 7,
+    "records": 241
   }
 }
