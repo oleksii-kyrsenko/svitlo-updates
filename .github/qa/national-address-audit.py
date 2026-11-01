@@ -395,7 +395,7 @@ class Audit:
                 final_xml = self.source()
                 texts = self.texts(final_xml)
                 joined = ' '.join(texts)
-                pending = 'Перевіряємо чергу за адресою' in joined
+                pending = any(label in joined for label in ['Перевіряємо чергу за адресою', 'Шукаємо чергу за адресою'])
                 ready = re.search(r'(?:Черга|Ймовірна черга)\s+([\d.\-]+)\s*·\s*(знайдено автоматично|за офіційним переліком|публічне джерело)', joined)
                 if ready:
                     result.update(outcome='queue_found', visibleQueue=ready.group(1))
