@@ -49,7 +49,11 @@ def fixture():
  state.update(places=[p],activePlaceId=p['id'],snapshots={},notificationsEnabled=False,gpsAsked=True,endpoint='')
  return state
 try:
- adb('root',check=False);adb('wait-for-device');adb('shell','svc','wifi','disable');adb('shell','svc','data','disable')
+ adb('root',check=False);adb('wait-for-device')
+ # svc wifi/data toggles do not reliably disable emulator Ethernet. Enforce a
+ # UID-specific IPv4/IPv6 firewall before testing any offline fallback.
+ __import__('subprocess').run(['python3','candidate/isolate-app-network.py'],check=True)
+ adb('shell','svc','wifi','disable');adb('shell','svc','data','disable')
  state=fixture();seed(state);launch();s=wait('public-queue-proposals','Переглянути джерело 1 ↗','Обрати чергу 2.2')
  nodes=list(E.fromstring(s).iter('node'))
  assert any(n.get('text')=='Переглянути джерело 1 ↗' for n in nodes),'Source link must have visible native text'
