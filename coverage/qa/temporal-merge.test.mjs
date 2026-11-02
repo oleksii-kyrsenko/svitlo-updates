@@ -44,3 +44,8 @@ test('contradictory equal-time positive assignments remain ambiguous and a tie c
  const negative=combineSnapshots([old],[packet([],at+300,{observedHouses:[observation(at+250)]})],at+400);
  const tied=combineSnapshots(negative.sourceSnapshots,[packet([row(at+250,'3.1')],at+250)],at+500);assert.deepEqual(tied.bundles,[]);
 });
+
+test('late snapshot generation does not hide an older per-house observation inside a full read',()=>{
+ const old=packet([row(at+500,'2.1')],at+500),fresh=packet([row(at+100,'1.1')],at+800,{completeSnapshot:true});
+ const merged=combineSnapshots([old],[fresh],at+1000);assert.equal(merged.errors.length,0);assert.equal(merged.bundles[0].records.length,1);assert.equal(merged.bundles[0].records[0].queue,'2.1');assert.equal(merged.bundles[0].records[0].checkedAt,at+500);
+});

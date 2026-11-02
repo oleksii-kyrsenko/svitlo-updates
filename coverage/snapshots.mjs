@@ -46,7 +46,7 @@ export function mergeSnapshots(previous,fresh,now=Date.now()){
  for(const r of previousRows){
   const checkedAt=time(r,previous),fullRemoval=(fresh.completeSnapshot||touched.has(r.officialCityId))&&freshAt>=checkedAt;
   if(r.scope==='house'){
-   const houses=r.houses.filter(h=>!fullRemoval&&!wmFor(r,h).some(w=>w.checkedAt>=checkedAt)&&!covering(selectedIndex,r,h).some(next=>time(next,fresh)>checkedAt||time(next,fresh)===checkedAt&&next.queue===r.queue));
+   const houses=r.houses.filter(h=>!(fullRemoval&&!covering(rawIndex,r,h).length)&&!wmFor(r,h).some(w=>w.checkedAt>=checkedAt)&&!covering(selectedIndex,r,h).some(next=>time(next,fresh)>checkedAt||time(next,fresh)===checkedAt&&next.queue===r.queue));
    if(houses.length)retained.push({...r,houses});
   }else if(!fullRemoval&&!selected.some(next=>next.scope===r.scope&&sameGeography(next,r)&&(r.scope==='settlement'||streetKey(next)===streetKey(r)&&compatible(next,r))&&(time(next,fresh)>checkedAt||time(next,fresh)===checkedAt&&next.queue===r.queue)))retained.push(r);
  }
