@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1793570432740,
+  "checkedAt": 1793599167093,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -136,14 +136,14 @@
     {
       "operatorId": "lviv",
       "status": "collected",
-      "records": 45,
+      "records": 80,
       "constraint": null,
       "caseChecks": null
     },
     {
       "operatorId": "zhytomyr",
       "status": "collected",
-      "records": 46,
+      "records": 21,
       "constraint": null,
       "caseChecks": 20
     },
@@ -164,7 +164,7 @@
     {
       "operatorId": "ternopil",
       "status": "collected",
-      "records": 20,
+      "records": 15,
       "constraint": null,
       "caseChecks": 20
     },
@@ -185,7 +185,7 @@
     {
       "operatorId": "dtek-kyiv-region",
       "status": "collected",
-      "records": 12,
+      "records": 20,
       "constraint": null,
       "caseChecks": 20
     },
@@ -201,7 +201,7 @@
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 20
+      "caseChecks": 5
     },
     {
       "operatorId": "dtek-pem",
@@ -218,17 +218,17 @@
       "caseChecks": 0
     },
     {
+      "operatorId": "mykolaiv",
+      "status": "collected",
+      "records": 59,
+      "constraint": null,
+      "caseChecks": 59
+    },
+    {
       "operatorId": "dtek-kyiv",
       "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "rivne",
-      "status": "collected",
-      "records": 97,
-      "constraint": null,
       "caseChecks": 20
     },
     {
@@ -246,13 +246,6 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "mykolaiv",
-      "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
-    },
-    {
       "operatorId": "kherson",
       "status": "not_collected",
       "records": 0,
@@ -265,6 +258,13 @@
       "records": 0,
       "constraint": "collection-unavailable",
       "caseChecks": 0
+    },
+    {
+      "operatorId": "rivne",
+      "status": "collected",
+      "records": 97,
+      "constraint": null,
+      "caseChecks": 20
     },
     {
       "operatorId": "atomservice",
@@ -316,10 +316,10 @@
       "caseChecks": 0
     }
   ],
-  "publicationCheckedAt": 1793570540376,
+  "publicationCheckedAt": 1793599279934,
   "publication": {
-    "revision": 14,
+    "revision": 15,
     "operators": 12,
-    "records": 2334
+    "records": 2459
   }
 }
