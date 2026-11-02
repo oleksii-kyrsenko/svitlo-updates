@@ -13,167 +13,167 @@
       "auditSamples": [
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
+          "street": "вул. Відродження",
+          "house": "5",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=567",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Відродження",
+          "house": "6",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=569",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Відродження",
+          "house": "7",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=575",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Відродження",
           "house": "8",
           "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=521",
-          "checkedAt": 1793599196170
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=576",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
+          "street": "вул. Відродження",
           "house": "9",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=522",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "9А",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=523",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "10",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=481",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "11",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=482",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "12",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=483",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "13",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=484",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "14",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=485",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "15",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=486",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "16А",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=487",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "16Б",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=488",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Вишні Остапа",
-          "house": "17",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=10&houseId=489",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Відродження",
-          "house": "1 ввод 1",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=524",
-          "checkedAt": 1793599196170
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Відродження",
-          "house": "1 ввод 2",
           "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=525",
-          "checkedAt": 1793599196170
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=581",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
           "street": "вул. Відродження",
-          "house": "1А",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=526",
-          "checkedAt": 1793599196170
+          "house": "10",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=530",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
           "street": "вул. Відродження",
-          "house": "1Б",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=527",
-          "checkedAt": 1793599196170
+          "house": "11",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=532",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
           "street": "вул. Відродження",
-          "house": "1В",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=528",
-          "checkedAt": 1793599196170
+          "house": "12",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=533",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
           "street": "вул. Відродження",
-          "house": "1Г",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=529",
-          "checkedAt": 1793599196170
+          "house": "13",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=534",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
           "street": "вул. Відродження",
+          "house": "14",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=535",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Відродження",
+          "house": "15",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=536",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Відродження",
+          "house": "16",
+          "queue": "6.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=537",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
           "house": "2",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=542",
-          "checkedAt": 1793599196170
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=607",
+          "checkedAt": 1793634377311
         },
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Відродження",
+          "street": "вул. Вокзальна",
           "house": "4",
           "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=11&houseId=563",
-          "checkedAt": 1793599196170
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=620",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "5",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=626",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "5Ж",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=627",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "5С",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=628",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "6",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=637",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "8",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=647",
+          "checkedAt": 1793634377311
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Вокзальна",
+          "house": "10",
+          "queue": "4.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=12&houseId=588",
+          "checkedAt": 1793634377311
         }
       ],
       "houseIndex": 8,
-      "streetIndex": 9,
+      "streetIndex": 10,
       "lastContext": {
         "status": "resolved",
         "community": "Апостолівська міська громада",
