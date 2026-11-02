@@ -1,11 +1,14 @@
-"""Audit the released APK through its visible UI; never seed an address or queue.
+"""Audit a pinned signed APK through its visible UI; never seed an address or queue.
 
 Appium only supplies Unicode typing and the accessibility tree. All choices and
 save actions use the app's controls. SQLite is read solely to verify what the app
 actually persisted, and is never written by this audit.
 """
-import argparse, base64, datetime, json, os, pathlib, re, sqlite3, subprocess, time, traceback
+import argparse, base64, datetime, hashlib, importlib.util, json, os, pathlib, re, sqlite3, subprocess, time, traceback
 import urllib.error, urllib.request, xml.etree.ElementTree as ET
+
+_spec=importlib.util.spec_from_file_location('audit_contract',pathlib.Path(__file__).with_name('audit-contract.py'))
+audit_contract=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(audit_contract)
 
 PKG = 'ua.svitlo.app.testing'
 EID = 'element-6066-11e4-a52e-4f735466cecf'
@@ -54,8 +57,30 @@ def street_matches(label,target):
     return False
 
 
+def validate_saved_address(case,result,place):
+    selection=place.get('addressSelection') or {}
+    street=selection.get('street') or {};house=selection.get('house') or {}
+    if not selection.get('city',{}).get('id'):raise RuntimeError('Saved city was not selected through the UI')
+    origin=place.get('addressOrigin')
+    if origin=='postal':
+        if not street.get('id'):raise RuntimeError('Saved postal street has no directory identity')
+    elif origin=='structured':
+        typed=street.get('manual') is True and result.get('streetEnteredThroughUI') is True and street.get('source')=='user'
+        official=street.get('source')=='official-roster' and bool(street.get('id')) and not result.get('streetEnteredThroughUI')
+        if not(typed or official):raise RuntimeError('Structured street lacks visible typed action or selected official entry')
+    else:raise RuntimeError('Unsupported saved address origin')
+    if not(house.get('id') or result.get('houseEnteredThroughUI') or (house.get('source')=='official-roster' and result.get('houseSelectedFromList'))):raise RuntimeError('House was not selected or entered through the UI')
+    parts=place.get('addressParts') or {}
+    if norm(parts.get('settlement',''))!=norm(case['city']):raise RuntimeError('Saved city differs from frozen target')
+    variants=[case['exactStreet']]+case.get('confirmedStreetVariants',[])
+    if not any(street_matches(parts.get('street',''),variant) for variant in variants):raise RuntimeError('Saved street/type differs from frozen target')
+    if norm(parts.get('house',''))!=norm(case['exactHouse']):raise RuntimeError('Saved house/letter/corpus differs from frozen target')
+
+
 class Audit:
-    def __init__(self, apk, out):
+    def __init__(self, apk, out, contract=None):
+        self.contract=contract or audit_contract.contract({})
+        audit_contract.verify_apk(apk,self.contract)
         self.out = out
         self.case_dir = out/'startup'
         self.case_dir.mkdir(exist_ok=True,parents=True)
@@ -70,6 +95,7 @@ class Audit:
                 'appium:settings[waitForIdleTimeout]': 100,
                 'appium:settings[waitForSelectorTimeout]': 100}
         self.sid = self.request('POST', '/session', {'capabilities': {'alwaysMatch': caps}})['sessionId']
+        self.verify_installed_apk()
         self.size = self.call('GET', '/window/rect')
         time.sleep(5)
         try:
@@ -78,6 +104,17 @@ class Audit:
             self.screenshot('startup-failed')
             (self.case_dir/'startup.log').write_text(self.adb('logcat','-d'))
             raise
+
+    def verify_installed_apk(self):
+        api=int(self.adb('shell','getprop','ro.build.version.sdk').strip())
+        if api!=self.contract['androidApi']:raise RuntimeError('Emulator API differs from the requested audit')
+        paths=[line.removeprefix('package:').strip() for line in self.adb('shell','pm','path',PKG).splitlines() if line.startswith('package:')]
+        if len(paths)!=1 or not paths[0].startswith('/data/app/') or not paths[0].endswith('.apk'):
+            raise RuntimeError('Unexpected installed package/split structure')
+        digest=self.adb('shell','sha256sum',paths[0]).split()[0]
+        if digest!=self.contract['apkSha256']:raise RuntimeError('Installed APK differs from the pinned download')
+        self.installed_apk_sha256=digest
+        (self.case_dir/'installed-binary.json').write_text(json.dumps({'packageName':PKG,'apkSha256':digest,'androidApi':api,'versionCode':self.contract['versionCode'],'version':self.contract['version']},indent=2)+'\n')
 
     def request(self, method, path, data=None):
         payload = None if data is None else json.dumps(data, ensure_ascii=False).encode()
@@ -277,12 +314,15 @@ class Audit:
         if not db:
             return {}
         with sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True) as connection:
-            coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',('@svitlo/dynamic-coverage-v1',)).fetchone()
-            self.coverage_snapshot=None
-            if coverage:
+            self.coverage_snapshot=None;self.city_coverage_snapshot=None
+            for schema,key in [(1,'@svitlo/dynamic-coverage-v1'),(2,'@svitlo/dynamic-coverage-v2')]:
+                coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',(key,)).fetchone()
+                if not coverage:continue
                 try:
-                    envelope=json.loads(coverage[0]);manifest=json.loads(base64.b64decode(envelope['payload']));self.coverage_snapshot={k:manifest.get(k) for k in ['revision','generatedAt','expiresAt','enabled']}
-                except (ValueError,KeyError):self.coverage_snapshot={'unparsed':True}
+                    envelope=json.loads(coverage[0]);manifest=json.loads(base64.b64decode(envelope['payload']));snapshot={k:manifest.get(k) for k in ['schemaVersion','revision','generatedAt','expiresAt','enabled']};snapshot['envelopeSha256']=hashlib.sha256(coverage[0].encode()).hexdigest()
+                except (ValueError,KeyError):snapshot={'unparsed':True}
+                if schema==1:self.coverage_snapshot=snapshot
+                else:self.city_coverage_snapshot=snapshot
             row = connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?', ('svitlo.state.v1',)).fetchone()
         return json.loads(row[0]) if row else {}
 
@@ -313,9 +353,9 @@ class Audit:
         self.input_retries = []
         self.phase = 'open-place-editor'
         start = time.monotonic()
-        result = {**case, 'startedAt': stamp(), 'method': 'released-apk-visible-ui', 'stage': 'open', 'uiIssues': [],
+        result = {**case, 'startedAt': stamp(), 'method': 'signed-apk-visible-ui', 'stage': 'open', 'uiIssues': [],
                   'auditRunId':os.environ.get('GITHUB_RUN_ID'), 'auditCommit':os.environ.get('GITHUB_SHA'),
-                  'apkVersion':'0.1.52', 'apkCode':88, 'androidApi':35}
+                  'apkVersion':self.contract['version'], 'apkCode':self.contract['versionCode'], 'apkSha256':self.installed_apk_sha256, 'androidApi':self.contract['androidApi'], 'sampleSha256':self.contract['sampleSha256'], 'queueEnteredManually':False, 'addressStorageSeeded':False}
         try:
             self.open_new_editor()
             self.phase = 'select-region'
@@ -389,9 +429,30 @@ class Audit:
                     break
                 self.screenshot('empty-house-list-'+str(len(tried_streets)), xml)
                 if not case.get('exactHouse'):self.tap('Закрити список адрес')
+            if not tried_streets and case.get('exactStreet'):
+                # A missing postal street is entered only through the app's
+                # explicit typed-street action, including its exact street type.
+                if not street_open:
+                    options,xml=self.field('Вулиця',case['exactStreet'])
+                    street_open=True
+                else:
+                    self.type_search('Вулиця',case['exactStreet'])
+                    options,xml=self.wait_options()
+                self.screenshot('typed-street-before-apply',xml)
+                if self.tap('Застосувати введену вулицю',required=False):
+                    self.wait(lambda x:'Закрити список адрес' not in x,5)
+                    result['selectedStreetLabel']=case['exactStreet']
+                    result['streetEnteredThroughUI']=True
+                    tried_streets.add(case['exactStreet'])
+                    street_open=False
+                    self.screenshot('typed-street-applied')
+                    result['stage']='house'
+                    options,xml=self.field('Будинок',case['exactHouse'])
+                    numeric=[n for n in options if re.match(r'^\d',n.get('content-desc'))]
             if case.get('exactHouse'):
                 numeric=[n for n in numeric if norm(n.get('content-desc'))==norm(case['exactHouse'])]
             if not numeric and tried_streets and case.get('exactHouse') and 'Пошук: Будинок' in xml:
+                self.screenshot('typed-house-before-apply',xml)
                 self.tap('Застосувати номер будинку')
                 result['selectedHouse']=case['exactHouse']
                 result['houseEnteredThroughUI']=True
@@ -404,6 +465,7 @@ class Audit:
                 result['selectedHouse'] = selected.get('content-desc')
                 self.screenshot('house-selected-from-list', xml)
                 self.choose_option(selected)
+                result['houseSelectedFromList']=True
             lookup_start = time.monotonic()
             result['addressSelectedThroughUI'] = True
             result['addressFromUI'] = ', '.join([re.sub(r'^(?:м\.?|с\.?|с-ще\.?|смт\.?|селище|село|місто)\s+', '', result['selectedCityLabel'].split(' · ')[0]), result['selectedStreetLabel'].split(' · ')[0], result['selectedHouse']])
@@ -441,14 +503,13 @@ class Audit:
                 state = self.read_state()
                 place = next((p for p in state.get('places', []) if p.get('id') == state.get('activePlaceId')), None)
                 result['dynamicCoverageFromApp']=self.coverage_snapshot
+                result['cityDynamicCoverageFromApp']=self.city_coverage_snapshot
                 result['persistedPlace'] = place
                 result['saved'] = bool(place)
                 if place:
                     if place.get('queueOrigin') == 'manual':
                         raise RuntimeError('A manually assigned queue cannot count as an audit result')
-                    selection = place.get('addressSelection') or {}
-                    if place.get('addressOrigin') != 'postal' or not all(selection.get(k,{}).get('id') for k in ['city','street']) or not (selection.get('house',{}).get('id') or result.get('houseEnteredThroughUI')):
-                        raise RuntimeError('Saved address was not fully selected from the postal UI')
+                    validate_saved_address(case,result,place)
                     result['actualAddress'] = place.get('address')
                     result['snapshot'] = state.get('snapshots', {}).get(place['id'])
                     result['queueOrigin']=place.get('queueOrigin')
@@ -494,10 +555,15 @@ def main():
     parser.add_argument('--region', required=True)
     parser.add_argument('--limit', type=int, default=5)
     parser.add_argument('--case-ids', default='')
+    parser.add_argument('--contract',type=pathlib.Path)
+    parser.add_argument('--sample',type=pathlib.Path)
     parser.add_argument('--out', type=pathlib.Path, default=pathlib.Path('national-audit'))
     args = parser.parse_args()
     args.out.mkdir(exist_ok=True, parents=True)
-    data = json.loads(pathlib.Path('.github/qa/national-address-cases.json').read_text())
+    binary=audit_contract.contract(json.loads(args.contract.read_text()) if args.contract else {})
+    if args.sample and str(args.sample)!=binary['sample']:raise ValueError('Sample override differs from pinned contract')
+    data=json.loads(audit_contract.sample_path('.',binary['sample']).read_text())
+    if not 1<=args.limit<=20:raise ValueError('Audit limit must be1..20')
     selected = set(filter(None,args.case_ids.split(',')))
     cases = [c for c in data['cases'] if c['regionId'] == args.region and (not selected or c['id'] in selected)][:args.limit]
     assert cases, 'No audit cases selected'
@@ -510,15 +576,15 @@ def main():
         time.sleep(2)
     else:
         raise RuntimeError('Test emulator did not expose its expected root access')
-    audit = Audit(args.apk, args.out)
+    audit = Audit(args.apk, args.out,binary)
     results = []
     try:
         for case in cases:
             print('AUDIT_CASE_START', case['id'], case['city'], stamp(), flush=True)
             result = audit.run_case(case)
             results.append(result)
-            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1, 'apkVersion':'0.1.52', 'apkCode':88,
-                'region':args.region, 'cases':results}, ensure_ascii=False, indent=2)+'\n')
+            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1,'apkVersion':binary['version'],'apkCode':binary['versionCode'],'apkSha256':binary['apkSha256'],'androidApi':binary['androidApi'],'sampleSha256':binary['sampleSha256'],'noAddressStorageSeeding':True,'noManualQueueInputs':True,
+                'region':args.region,'cases':results}, ensure_ascii=False, indent=2)+'\n')
             print('AUDIT_CASE_RESULT', json.dumps({k:result.get(k) for k in ['id','city','outcome','actualAddress','visibleQueue','lookupSeconds','totalSeconds','automationError']}, ensure_ascii=False), flush=True)
     finally:
         audit.call('DELETE', '')

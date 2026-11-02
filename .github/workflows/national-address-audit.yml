@@ -1,64 +1,80 @@
-name: National address audit of released APK
+name: National address audit of pinned signed APK
 on:
   push:
-    branches: [audit/capitals-88]
+    branches: [audit/capitals-88, feature/capital-coverage-90]
     paths: ['.github/qa/national-audit-request.json']
   workflow_dispatch:
     inputs:
       regions:
-        description: Region IDs as JSON array
-        required: true
-        default: '["UA-30","UA-71"]'
+        description: Region IDs as JSON array (empty uses the committed request)
+        required: false
       limit:
-        description: Number of fixed addresses per capital (pilot 1, full 5)
-        required: true
-        default: '1'
+        description: Frozen addresses per city, 1..20 (empty uses the committed request)
+        required: false
+      apk_url:
+        description: Public HTTPS candidate APK URL (empty keeps request/default88)
+        required: false
+      apk_sha256:
+        description: Exact candidate APK SHA256
+        required: false
+      apk_size:
+        description: Exact candidate APK size in bytes
+        required: false
+      version_code:
+        description: Expected Android versionCode
+        required: false
+      version:
+        description: Expected Android versionName
+        required: false
+      api:
+        description: Android API, 30, 35 or36
+        required: false
+      sample:
+        description: Committed frozen sample JSON path
+        required: false
+      chunk_size:
+        description: Fixed addresses per emulator, 1..5
+        required: false
 permissions:
   contents: read
 jobs:
   plan:
     runs-on: ubuntu-24.04
     outputs:
-      regions: ${{ steps.plan.outputs.regions }}
-      limit: ${{ steps.plan.outputs.limit }}
-      cases: ${{ steps.plan.outputs.cases }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+      contract: ${{ steps.plan.outputs.contract }}
     steps:
       - uses: actions/checkout@v4
-      - name: Validate the requested audit subset
+      - name: Test binary, frozen-sample and structured-address audit controls
+        run: python3 .github/qa/test-audit-contract.py
+      - name: Validate and freeze requested audit chunks
         id: plan
         env:
           INPUT_REGIONS: ${{ inputs.regions }}
           INPUT_LIMIT: ${{ inputs.limit }}
-        run: |
-          python3 - <<'PY'
-          import json,os,pathlib
-          path=pathlib.Path('.github/qa/national-audit-request.json')
-          request=json.loads(path.read_text()) if path.exists() else {}
-          regions=json.loads(os.environ['INPUT_REGIONS']) if os.environ.get('INPUT_REGIONS') else request['regions']
-          limit=int(os.environ.get('INPUT_LIMIT') or request.get('limit',5))
-          cases=request.get('caseIds',[]) if not os.environ.get('INPUT_REGIONS') else []
-          targets=json.loads(pathlib.Path('.github/qa/national-address-cases.json').read_text())['cases']
-          assert isinstance(regions,list) and regions and len(set(regions))==len(regions)
-          assert all(r in {c['regionId'] for c in targets} for r in regions)
-          assert 1<=limit<=5
-          assert isinstance(cases,list) and all(c in {v['id'] for v in targets if v['regionId'] in regions} for c in cases)
-          if cases:assert all(any(c['regionId']==r and c['id'] in cases for c in targets) for r in regions)
-          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
-            f.write('regions='+json.dumps(regions)+'\nlimit='+str(limit)+'\ncases='+','.join(cases)+'\n')
-          print('Planned audit',regions,'limit',limit,'specific cases',cases)
-          PY
+          INPUT_APK_URL: ${{ inputs.apk_url }}
+          INPUT_APK_SHA256: ${{ inputs.apk_sha256 }}
+          INPUT_APK_SIZE: ${{ inputs.apk_size }}
+          INPUT_VERSION_CODE: ${{ inputs.version_code }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_API: ${{ inputs.api }}
+          INPUT_SAMPLE: ${{ inputs.sample }}
+          INPUT_CHUNK_SIZE: ${{ inputs.chunk_size }}
+        run: python3 .github/qa/audit-contract.py plan
   audit:
     needs: plan
-    name: Audit ${{ matrix.region }}
+    name: Audit ${{ matrix.region }} chunk${{ matrix.chunk }}
     strategy:
       fail-fast: false
       max-parallel: 8
-      matrix:
-        region: ${{ fromJSON(needs.plan.outputs.regions) }}
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
       APPIUM_HOME: /tmp/svitlo-appium
+      AUDIT_CONTRACT: ${{ needs.plan.outputs.contract }}
+      AUDIT_REGION: ${{ matrix.region }}
+      AUDIT_CASES: ${{ matrix.caseIds }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -68,16 +84,26 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Fetch the exact public APK without changing application code
+      - name: Fetch and verify the exact signed binary and its pinned metadata
         run: |
           mkdir -p artifacts national-audit
-          curl --fail --location --retry 2 --max-time 150 -o artifacts/svitlo-test-88.apk https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/svitlo-test-88.apk
           python3 - <<'PY'
-          import hashlib,pathlib
-          p=pathlib.Path('artifacts/svitlo-test-88.apk')
-          assert p.stat().st_size==82323533
-          assert hashlib.sha256(p.read_bytes()).hexdigest()=='da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a'
+          import json,os,pathlib,urllib.request
+          c=json.loads(os.environ['AUDIT_CONTRACT'])
+          pathlib.Path('artifacts/contract.json').write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
+          # Download only this pinned binary. Redirects do not change the
+          # required size/hash/certificate/package/version checks below.
+          with urllib.request.urlopen(c['apkUrl'],timeout=150) as source,open('artifacts/candidate.apk','wb') as target:
+            size=0
+            while True:
+              block=source.read(1048576)
+              if not block:break
+              size+=len(block)
+              if size>c['apkSize']:raise RuntimeError('APK exceeds requested size')
+              target.write(block)
           PY
+          python3 .github/qa/audit-contract.py verify --request artifacts/contract.json --apk artifacts/candidate.apk --output national-audit/binary-verification.json
+          cp artifacts/contract.json national-audit/contract.json
       - name: Install Unicode-capable native UI automation
         run: |
           npm install --prefix "$RUNNER_TEMP/svitlo-ui-tools" --no-audit --no-fund appium@3.8.0
@@ -88,10 +114,10 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Select addresses and obtain queues using the actual application UI
+      - name: Select frozen addresses and obtain queues using actual application controls
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: ${{ fromJSON(needs.plan.outputs.contract).androidApi }}
           target: google_apis
           arch: x86_64
           profile: pixel_2
@@ -103,12 +129,12 @@ jobs:
           script: |
             appium --address 127.0.0.1 --port 4723 --log national-audit/appium.log > national-audit/appium-stdout.log 2>&1 &
             python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
-            python3 .github/qa/national-address-audit.py --apk artifacts/svitlo-test-88.apk --region '${{ matrix.region }}' --limit '${{ needs.plan.outputs.limit }}' --case-ids '${{ needs.plan.outputs.cases }}'
-      - name: Preserve per-address screenshots, accessibility trees and app-written results
+            python3 .github/qa/national-address-audit.py --apk artifacts/candidate.apk --contract artifacts/contract.json --region "$AUDIT_REGION" --limit 5 --case-ids "$AUDIT_CASES"
+      - name: Preserve every substantive attempt, screenshot, tree and app-written result
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: national-audit-${{ matrix.region }}-${{ github.run_id }}
+          name: national-audit-${{ matrix.region }}-chunk${{ matrix.chunk }}-${{ github.run_id }}
           path: national-audit/
           if-no-files-found: error
           retention-days: 30
