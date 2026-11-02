@@ -4,7 +4,7 @@ import {createPublicKey,verify} from 'node:crypto';import {pathToFileURL} from '
 import {build,validateBundle,hash} from './build.mjs';import {mergeSnapshots,compactSnapshot,canonicalStreet} from './snapshots.mjs';
 import {GROUPS,collectionPlan} from './collector-registry.mjs';
 import {buildCityCoverage} from './build-v2.mjs';
-import {readSourceSnapshots} from './publisher-snapshots.mjs';
+import {readSourceSnapshots,validatePublisherSnapshot} from './publisher-snapshots.mjs';
 import {legacyCompatibleBundles} from './legacy-compat.mjs';
 const run=promisify(execFile);
 export function prepareDtekSnapshot(previous,fresh){
@@ -22,12 +22,12 @@ export function prepareDtekSnapshot(previous,fresh){
  })};
 }
 export function liveSnapshot(value,now=Date.now()){
- const copy={...value,records:value.records?.filter(r=>!Number.isFinite(r.expiresAt)||r.expiresAt>now)};
- return validateBundle(copy,now);
+ const copy={...value,records:value.records?.filter(r=>!Number.isFinite(r.expiresAt)||r.expiresAt>now),negativeHouseWatermarks:(value.negativeHouseWatermarks||[]).filter(w=>w.expiresAt>now)};
+ return validatePublisherSnapshot(copy,now);
 }
 export function combineSnapshots(previous,collected,now=Date.now()){
  const result=new Map();for(const old of previous){try{const live=liveSnapshot(old,now);result.set(live.operatorId,live);}catch{}}
- const errors=[],withdrawnOperators=new Set();
+ const errors=[];
  for(const raw of collected){let fresh=raw;try{
   fresh=prepareDtekSnapshot(result.get(raw?.operatorId),raw);
   const emptyObservation=fresh?.schemaVersion===1&&Array.isArray(fresh.records)&&fresh.records.length===0&&Array.isArray(fresh.observedHouses)&&fresh.observedHouses.length>0;
@@ -35,11 +35,12 @@ export function combineSnapshots(previous,collected,now=Date.now()){
    if(!/^[-a-z0-9]+$/.test(fresh.operatorId)||!Number.isFinite(fresh.generatedAt)||fresh.generatedAt>now||now-fresh.generatedAt>86400000||!Number.isFinite(fresh.expiresAt)||fresh.expiresAt<=now||fresh.expiresAt>fresh.generatedAt+86400000||fresh.observedHouses.length>100000)throw Error('invalid_empty_observation');
    for(const o of fresh.observedHouses)if(!/^UA-\d\d$/.test(o.regionId)||!['settlement','community','street','house'].every(k=>typeof o[k]==='string'&&o[k].length>0&&o[k].length<=500))throw Error('invalid_observed_house');
   }else validateBundle(fresh,now);
-  const merged=compactSnapshot(mergeSnapshots(fresh.completeSnapshot?null:result.get(fresh.operatorId),fresh,now));
-  if(emptyObservation&&!merged.records.length){result.delete(fresh.operatorId);withdrawnOperators.add(fresh.operatorId);continue;}
-  validateBundle(merged,now);result.set(fresh.operatorId,merged);withdrawnOperators.delete(fresh.operatorId);
+  const merged=compactSnapshot(mergeSnapshots(result.get(fresh.operatorId),fresh,now));
+  validatePublisherSnapshot(merged,now);result.set(fresh.operatorId,merged);
  }catch{errors.push({operatorId:fresh?.operatorId,error:'fresh_snapshot_invalid_previous_unexpired_preserved'});}}
- return {bundles:[...result.values()],errors,withdrawnOperators:[...withdrawnOperators]};
+ const sourceSnapshots=[...result.values()];
+ const bundles=sourceSnapshots.filter(b=>b.records.length).map(({negativeHouseWatermarks,...bundle})=>bundle);
+ return {bundles,sourceSnapshots,errors,withdrawnOperators:sourceSnapshots.filter(b=>!b.records.length).map(b=>b.operatorId)};
 }
 function checkedPrevious(envelope,version,key,now){
  const bytes=Buffer.from(envelope?.payload||'','base64');
@@ -91,7 +92,7 @@ export async function refresh(){
  let previousManifest=null;try{previousManifest=JSON.parse(await readFile(out+'/v2/manifest.json'));}catch(error){if(error.code!=='ENOENT')throw error;}
  const legacy=legacyCompatibleBundles(combined.bundles,previous.legacyBundles,now);report.legacyConstraints=legacy.constraints;
  report.publication=await build({catalog,bundles:legacy.bundles,revision:previous.revision,keyFile:process.env.DYNAMIC_COVERAGE_KEY_FILE,out,now,allowEmptyPublication:legacy.constraints.length>0||combined.withdrawnOperators.length>0});
- report.cityPublication=await buildCityCoverage({catalog,bundles:combined.bundles,revision:previous.revision,keyFile:process.env.DYNAMIC_COVERAGE_KEY_FILE,out:out+'/v2',geography,now,previousManifest,allowEmptyPublication:combined.withdrawnOperators.length>0});
+ report.cityPublication=await buildCityCoverage({catalog,bundles:combined.bundles,revision:previous.revision,keyFile:process.env.DYNAMIC_COVERAGE_KEY_FILE,out:out+'/v2',geography,now,previousManifest,sourceSnapshots:combined.sourceSnapshots,allowEmptyPublication:combined.withdrawnOperators.length>0});
  await writeReport();console.log(JSON.stringify({legacy:report.publication,cities:report.cityPublication}));return report;
 }
 if(import.meta.url===pathToFileURL(process.argv[1]||'').href)await refresh();

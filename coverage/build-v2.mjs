@@ -60,7 +60,7 @@ export function validateCityShard(b,now=Date.now()){
 }
 function cityIdentity(entry){return JSON.stringify([entry.operatorId,entry.cityId]);}
 function tombstone(entry){const {url,sha256,size,expiresAt,...city}=entry;return city;}
-export async function buildCityCoverage({bundles,catalog,revision,keyFile,out,geography,now=Date.now(),previousManifest=null,allowEmptyPublication=false}){
+export async function buildCityCoverage({bundles,catalog,revision,keyFile,out,geography,now=Date.now(),previousManifest=null,allowEmptyPublication=false,sourceSnapshots=bundles}){
  if(!Number.isSafeInteger(revision)||revision<1)throw Error('invalid_revision');
  const key=createPrivateKey(await readFile(keyFile)),pub=createPublicKey(key),trusted=createPublicKey(await readFile(new URL('./public.pem',import.meta.url)));
  if(!pub.export({type:'spki',format:'der'}).equals(trusted.export({type:'spki',format:'der'})))throw Error('signing_key_does_not_match_client_pin');
@@ -105,7 +105,7 @@ export async function buildCityCoverage({bundles,catalog,revision,keyFile,out,ge
   const retired=new Map();for(const e of [...previous.bundles,...(previous.retiredCities||[])])if(!active.has(cityIdentity(e))&&!skippedIds.has(cityIdentity(e)))retired.set(cityIdentity(e),tombstone(e));retiredCities=[...retired.values()];
  }
  if(entries.length+retiredCities.length>5000)throw Error('city_index_limit');
- const sourceCache=await storeSourceSnapshots(bundles,out,now);
+ const sourceCache=await storeSourceSnapshots(sourceSnapshots,out,now);
  const value={schemaVersion:2,minClientVersion:2,revision,enabled:true,generatedAt:now,expiresAt:Math.min(now+day,catalog.expiresAt,entries.length||sourceCache.descriptors.length?Math.max(...entries.map(e=>e.expiresAt),...sourceCache.descriptors.map(e=>e.expiresAt)):now+day),catalog,bundles:entries,retiredCities,sourceSnapshots:sourceCache.descriptors};
  const payload=Buffer.from(JSON.stringify(value));if(payload.length>2*1024*1024)throw Error('city_index_size_limit');
  const signature=sign(null,payload,key),envelope={schemaVersion:2,keyId:'coverage-v1',payload:payload.toString('base64'),signature:signature.toString('base64')};

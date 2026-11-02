@@ -28,7 +28,7 @@ export async function rebuildFromStaging({out='dynamic-coverage',staging='covera
   let previousManifest=null;try{previousManifest=JSON.parse(await readFile(out+'/v2/manifest.json'));}catch(error){if(error.code!=='ENOENT')throw error;}
   const catalog={schemaVersion:1,generatedAt:now,expiresAt:now+86400000,operators:cfg.operators};
   report.publication=await build({catalog,bundles:legacy.bundles,revision:previous.revision,keyFile,out,now,allowEmptyPublication:legacy.constraints.length>0||combined.withdrawnOperators.length>0});
-  report.cityPublication=await buildCityCoverage({catalog,bundles:combined.bundles,revision:previous.revision,keyFile,out:out+'/v2',geography,now,previousManifest,allowEmptyPublication:combined.withdrawnOperators.length>0});
+  report.cityPublication=await buildCityCoverage({catalog,bundles:combined.bundles,revision:previous.revision,keyFile,out:out+'/v2',geography,now,previousManifest,sourceSnapshots:combined.sourceSnapshots,allowEmptyPublication:combined.withdrawnOperators.length>0});
  }
  await writeFile(reportFile,JSON.stringify(report,null,2)+'\n');return report;
 }

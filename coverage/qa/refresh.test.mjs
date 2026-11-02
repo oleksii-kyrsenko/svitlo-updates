@@ -10,7 +10,7 @@ test('house grouping preserves each original deadline and remains a literal hous
  const b=compactSnapshot(packet([row('a','1'),row('b','2'),row('c','3','1.1',{checkedAt:at-1})]));assert.equal(b.records.length,2);assert.deepEqual(b.records.find(r=>r.checkedAt===at).houses,['1','2']);assert(b.records.every(r=>r.scope==='house'&&r.expiresAt===expiresAt));
 });
 test('a partial fresh house replaces its prior group member without dropping untouched houses',()=>{
- const old=compactSnapshot(packet([row('a','1'),row('b','2')]));const b=mergeSnapshots(old,packet([row('new','1','2.1')]),at);assert.equal(b.records.filter(r=>r.houses.includes('1')).length,1);assert.equal(b.records.find(r=>r.houses.includes('1')).queue,'2.1');assert(b.records.some(r=>r.houses.includes('2')));
+ const old=compactSnapshot(packet([row('a','1'),row('b','2')]));const b=mergeSnapshots(old,{...packet([row('new','1','2.1',{checkedAt:at+1})]),generatedAt:at+1},at+1);assert.equal(b.records.filter(r=>r.houses.includes('1')).length,1);assert.equal(b.records.find(r=>r.houses.includes('1')).queue,'2.1');assert(b.records.some(r=>r.houses.includes('2')));
 });
 test('different official street identities are preserved for user selection',()=>{
  const a=row('a','1','1.1',{officialCityId:'branch-a'}),b=row('b','1','1.1',{officialCityId:'branch-b'});const merged=mergeSnapshots(packet([a]),packet([b]),at);assert.equal(compactSnapshot(merged).records.length,2);
