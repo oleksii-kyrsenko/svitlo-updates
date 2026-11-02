@@ -385,7 +385,7 @@ class Audit:
                     numeric = [n for n in options if re.match(r'^\d', n.get('content-desc'))]
                 result['houseDirectoryAttempts'].append({'street':result['selectedStreetLabel'],
                     'visibleHouses':[n.get('content-desc') for n in numeric], 'visibleText':self.texts(xml)})
-                if numeric:
+                if numeric or case.get('exactHouse'):
                     break
                 self.screenshot('empty-house-list-'+str(len(tried_streets)), xml)
                 if not case.get('exactHouse'):self.tap('Закрити список адрес')
