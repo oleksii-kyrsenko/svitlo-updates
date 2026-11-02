@@ -35,6 +35,14 @@ def street_key(value):
     return (kind or '')+'|'+name
 
 
+def street_name_key(value):
+    text=norm(value)
+    reduced=re.sub(r'\b(?:гетьмана|митрополита)\b', ' ', text)
+    reduced=re.sub(r'\bгероя\s+україни\b', ' ', reduced)
+    words=reduced.split()
+    return tuple(sorted(words if len(words)>=2 else text.split()))
+
+
 def street_matches(label,target):
     target_kind,target_name=street_identity(target)
     current_kind,_=street_identity(label.split(' · ')[0])
@@ -42,7 +50,7 @@ def street_matches(label,target):
         old=part.startswith('раніше ')
         kind,name=street_identity(re.sub(r'^раніше\s+', '', part))
         if old and kind is None:kind=current_kind
-        if kind==target_kind and name==target_name:return True
+        if kind==target_kind and street_name_key(name)==street_name_key(target_name):return True
     return False
 
 
@@ -345,7 +353,9 @@ class Audit:
             self.screenshot('city-selected-from-list', xml)
             self.choose_option(matches[0])
             result['stage'] = 'street'
-            queries = [street_identity(case['exactStreet'])[1]] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
+            core=street_identity(case['exactStreet'])[1] if case.get('exactStreet') else case.get('preferredStreet','')
+            reduced=' '.join(street_name_key(core))
+            queries=list(dict.fromkeys([core,reduced,max(core.split(),key=len) if core.split() else core]))
             selected = None
             street_open = False
             tried_streets = set()
