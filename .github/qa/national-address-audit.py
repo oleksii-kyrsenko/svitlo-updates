@@ -345,7 +345,7 @@ class Audit:
             self.screenshot('city-selected-from-list', xml)
             self.choose_option(matches[0])
             result['stage'] = 'street'
-            queries = [street_key(case['exactStreet'])] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
+            queries = [street_identity(case['exactStreet'])[1]] if case.get('exactStreet') else list(dict.fromkeys([case.get('preferredStreet', 'Шевченка'), 'Миру', 'Садова', '']))
             selected = None
             street_open = False
             tried_streets = set()
