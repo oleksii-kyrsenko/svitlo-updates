@@ -1,0 +1,53 @@
+name: Ordinary browser research of official sources
+on:
+  schedule:
+    - cron: '41 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      operators:
+        description: Comma-separated registry IDs (vinnytsia,sumy,poltava,chernihiv,kherson)
+        required: true
+        default: vinnytsia,sumy,poltava,chernihiv,kherson
+      request_limit:
+        description: Maximum public form requests for each supported collector (1..120)
+        required: true
+        default: '60'
+permissions:
+  contents: read
+concurrency:
+  group: official-source-browser-research
+  cancel-in-progress: false
+jobs:
+  research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify browser boundaries without contacting sources
+        run: python3 coverage/qa/test-official-browser.py
+      - name: Install ordinary free Chromium
+        run: |
+          pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - uses: actions/cache@v4
+        with:
+          path: browser-source-state/
+          key: public-browser-state-${{ hashFiles('coverage/collect-city-forms.py', 'coverage/browser-official.py') }}-${{ github.run_id }}
+          restore-keys: public-browser-state-${{ hashFiles('coverage/collect-city-forms.py', 'coverage/browser-official.py') }}-
+      - name: Research official sources and collect bounded public form candidates
+        env:
+          BROWSER_OPERATORS: ${{ inputs.operators || 'vinnytsia,sumy,poltava,chernihiv,kherson' }}
+          BROWSER_REQUEST_LIMIT: ${{ inputs.request_limit || '60' }}
+        run: |
+          python3 coverage/browser-official.py --operators "$BROWSER_OPERATORS" --request-limit "$BROWSER_REQUEST_LIMIT" --collect --state-directory browser-source-state --output browser-source-evidence
+      - name: Retain research and unpromoted candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-browser-${{ github.run_id }}
+          path: browser-source-evidence/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": 1793606717810,
+  "sourceSnapshot": "coverage/capital-geography.source.json",
+  "sourceSnapshotSha256": "f5333227cb743d20379ef2938758562b2170deeddf5467d140001e94407c1c13",
+  "purpose": "Settlement-only collection targets and sourced identity; no address or queue assignments. Exclusions apply only to this capital-coverage test/collection target list.",
+  "cities": [
+    {
+      "cityId": "osm-relation-361818",
+      "regionId": "UA-05",
+      "settlement": "Вінниця",
+      "community": "Вінницька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 361818,
+      "sourceRecordSha256": "91781dd9fdbc7bd6f01408f76d56d4777b0453a21ff9454b7a4d3fcb81b648ad"
+    },
+    {
+      "cityId": "osm-relation-1951964",
+      "regionId": "UA-07",
+      "settlement": "Луцьк",
+      "community": "Луцька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1951964,
+      "sourceRecordSha256": "c235657793a83d85c3a870ea4dbcddc36e32fd2bbfd65bfdc31d22395875fec2"
+    },
+    {
+      "cityId": "osm-relation-1017311",
+      "regionId": "UA-12",
+      "settlement": "Дніпро",
+      "community": "Дніпровська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1017311,
+      "sourceRecordSha256": "d6f3c1ce7935bdc2d74dc06e1129ff012a4f9417f2d8e28db3e540a4c8fcea88"
+    },
+    {
+      "cityId": "osm-relation-2692156",
+      "regionId": "UA-18",
+      "settlement": "Житомир",
+      "community": "Житомирська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2692156,
+      "sourceRecordSha256": "dd36d02ed74ec3bc41ea97f0b8a9b9d532291e4e1ca8c2b8b829ed11d1c97837"
+    },
+    {
+      "cityId": "osm-relation-2692232",
+      "regionId": "UA-21",
+      "settlement": "Ужгород",
+      "community": "Ужгородська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2692232,
+      "sourceRecordSha256": "54f25c017c298bb135bf1a09f4caa6ad8c21f6fe68c744cc7a3ccc77c280914b"
+    },
+    {
+      "cityId": "osm-relation-1418311",
+      "regionId": "UA-23",
+      "settlement": "Запоріжжя",
+      "community": "Запорізька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1418311,
+      "sourceRecordSha256": "749713d453983a784e14bae3d85b3e871d6fc507df2d3f1b9c23ee117ae8a632"
+    },
+    {
+      "cityId": "osm-relation-2362670",
+      "regionId": "UA-26",
+      "settlement": "Івано-Франківськ",
+      "community": "Івано-Франківська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2362670,
+      "sourceRecordSha256": "2c24369a16713da261e934567b33375361c6bd99ad94c857741b5bcc92ad3e19"
+    },
+    {
+      "cityId": "osm-relation-421866",
+      "regionId": "UA-30",
+      "settlement": "Київ",
+      "community": "Київ",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 421866,
+      "sourceRecordSha256": "e2eb1fd54f754fefa02dd6d981152566b5418a5a3a05e555e42cdf857fbd05d3",
+      "regionUnique": true,
+      "communityKind": "city-region"
+    },
+    {
+      "cityId": "osm-relation-2825228",
+      "regionId": "UA-35",
+      "settlement": "Кропивницький",
+      "community": "Кропивницька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2825228,
+      "sourceRecordSha256": "5e1c70c7262f47cca32039d30bb2e1b267ae69a051ea48eca41b58fc4fbfbf2f"
+    },
+    {
+      "cityId": "osm-relation-2032280",
+      "regionId": "UA-46",
+      "settlement": "Львів",
+      "community": "Львівська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2032280,
+      "sourceRecordSha256": "4fdbebf9c64381bbef0f7377d587d0edd232b232beb9ffb2c4b067730afdb548"
+    },
+    {
+      "cityId": "osm-relation-11622860",
+      "regionId": "UA-48",
+      "settlement": "Миколаїв",
+      "community": "Миколаївська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 11622860,
+      "sourceRecordSha256": "d592af1b092ed8bf970249c3c32770cee1d4564205db32af0b6d2b25cf3c06e1"
+    },
+    {
+      "cityId": "osm-relation-1413934",
+      "regionId": "UA-51",
+      "settlement": "Одеса",
+      "community": "Одеська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1413934,
+      "sourceRecordSha256": "d745dfbabbbff85d944ca1cfc0d2a3be8cf21f78759b6817872efc1e70bde47f"
+    },
+    {
+      "cityId": "osm-relation-1641691",
+      "regionId": "UA-53",
+      "settlement": "Полтава",
+      "community": "Полтавська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1641691,
+      "sourceRecordSha256": "5da2bb118ed139a1d95122b42a1e956f72700075beb11b3b191935ff7f199e6b"
+    },
+    {
+      "cityId": "osm-relation-448930",
+      "regionId": "UA-56",
+      "settlement": "Рівне",
+      "community": "Рівненська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 448930,
+      "sourceRecordSha256": "a8296b91a5952045296f92047075b3cbc93cfbab4a2d083855b56aab036f46d1"
+    },
+    {
+      "cityId": "osm-relation-3678531",
+      "regionId": "UA-59",
+      "settlement": "Суми",
+      "community": "Сумська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 3678531,
+      "sourceRecordSha256": "ed957c5543b32ce89f3957b21c1bb17cdb2e1838776cd094bc8070476bb6d9c7"
+    },
+    {
+      "cityId": "osm-relation-3058686",
+      "regionId": "UA-61",
+      "settlement": "Тернопіль",
+      "community": "Тернопільська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 3058686,
+      "sourceRecordSha256": "28199574e9330afc9b5549a5c6dc3ea33bdbab7a063c9f34cf186ae63609e064"
+    },
+    {
+      "cityId": "osm-relation-3154746",
+      "regionId": "UA-63",
+      "settlement": "Харків",
+      "community": "Харківська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 3154746,
+      "sourceRecordSha256": "76064c635b030c286ce47926e6ee74b613f5fe389767c6bf5940c415a434e307"
+    },
+    {
+      "cityId": "osm-relation-2175078",
+      "regionId": "UA-65",
+      "settlement": "Херсон",
+      "community": "Херсонська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2175078,
+      "sourceRecordSha256": "5f21c900555095b957ba31518691f0a38d224d7fba929a33df82f9bd7d084c49"
+    },
+    {
+      "cityId": "osm-relation-1792913",
+      "regionId": "UA-68",
+      "settlement": "Хмельницький",
+      "community": "Хмельницька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1792913,
+      "sourceRecordSha256": "c0cdb02a278ed68c01d4a066f48f46248ae874f60aeaefd76e3f50824491431b"
+    },
+    {
+      "cityId": "osm-relation-2825507",
+      "regionId": "UA-71",
+      "settlement": "Черкаси",
+      "community": "Черкаська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 2825507,
+      "sourceRecordSha256": "bf5de3a5de628d126a7b22a92e048880c3c58cfcdc44058ff2458baccf5a317e"
+    },
+    {
+      "cityId": "osm-relation-1742393",
+      "regionId": "UA-73",
+      "settlement": "Чернівці",
+      "community": "Чернівецька міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1742393,
+      "sourceRecordSha256": "704a19a6cdeff94bd9f1bb3d5455f103d9eb0272f0a434affaef42bc545cd17d"
+    },
+    {
+      "cityId": "osm-relation-1952636",
+      "regionId": "UA-74",
+      "settlement": "Чернігів",
+      "community": "Чернігівська міська громада",
+      "sourceUrl": "https://nominatim.openstreetmap.org/lookup?osm_ids=R361818%2CR1951964%2CR1017311%2CR2692156%2CR2692232%2CR1418311%2CR2362670%2CR421866%2CR2825228%2CR2032280%2CR11622860%2CR1413934%2CR1641691%2CR448930%2CR3678531%2CR3058686%2CR3154746%2CR2175078%2CR1792913%2CR2825507%2CR1742393%2CR1952636&format=jsonv2&addressdetails=1&accept-language=uk&extratags=1",
+      "checkedAt": 1793606717810,
+      "osmRelation": 1952636,
+      "sourceRecordSha256": "180566991360873d4478f5184e5caef0c0cfdb299df95ded8a7319c3bd17e381"
+    }
+  ]
+}
