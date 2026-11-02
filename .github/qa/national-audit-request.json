@@ -1,1 +1,29 @@
-{"regions":["UA-73"],"limit":5,"caseIds":["UA-73-capital-2"],"runLabel":"Complete exact house2-K through visible Use house button; same frozen address, no queue input"}
+{
+  "regions": [
+    "UA-07",
+    "UA-30",
+    "UA-35",
+    "UA-46",
+    "UA-68",
+    "UA-73"
+  ],
+  "limit": 5,
+  "caseIds": [
+    "UA-07-capital-1",
+    "UA-30-capital-1",
+    "UA-35-capital-1",
+    "UA-46-capital-2",
+    "UA-68-capital-1",
+    "UA-73-capital-2"
+  ],
+  "sample": ".github/qa/capital-baseline.json",
+  "sampleSha256": "369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043",
+  "apkUrl": "https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/feature/capital-coverage-90/candidate/svitlo-candidate-89.apk",
+  "apkSha256": "7f90c2eab142b9d16ae906073b9d6449bebca2bc9a863ae5e7f2490309f1dba8",
+  "apkSize": 82258146,
+  "versionCode": 89,
+  "version": "0.1.53",
+  "androidApi": 35,
+  "chunkSize": 5,
+  "runLabel": "Candidate89 visible UI calibration; six unchanged baseline addresses; not an acceptance coverage cycle"
+}
