@@ -369,7 +369,7 @@ class Audit:
                     self.type_search('Вулиця', query)
                     options, xml = self.wait_options()
                 result['streetOptions']=[n.get('content-desc') for n in options]
-                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or street_matches(n.get('content-desc'),case['exactStreet']))), None)
+                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or any(street_matches(n.get('content-desc'),v) for v in [case['exactStreet']]+case.get('confirmedStreetVariants',[])))), None)
                 if selected is None:
                     continue
                 result['selectedStreetLabel'] = selected.get('content-desc')
