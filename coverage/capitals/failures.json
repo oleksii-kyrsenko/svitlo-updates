@@ -1,0 +1,1375 @@
+{
+  "schemaVersion": 1,
+  "baselineSha256": "369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043",
+  "generatedFrom": "APK88 real UI audit; observed causes are investigation categories, not diagnoses",
+  "cards": [
+    {
+      "id": "UA-05-capital-1",
+      "city": "Вінниця",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "address": "Вінниця, вулиця Магістратська, 56",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:29:57.594046+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097762187/UA-05-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-05-capital-2",
+      "city": "Вінниця",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "address": "Вінниця, узвіз Бузький, 20",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:30:45.990751+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097762187/UA-05-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-05-capital-3",
+      "city": "Вінниця",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "address": "Вінниця, провулок Турбівський, 5",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:31:33.752794+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097762187/UA-05-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-05-capital-4",
+      "city": "Вінниця",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "address": "Вінниця, вулиця Андріївська, 17",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:32:20.627498+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097762187/UA-05-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-05-capital-5",
+      "city": "Вінниця",
+      "regionId": "UA-05",
+      "operatorId": "vinnytsia",
+      "address": "Вінниця, тупик Святошинський, 9",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:33:06.852261+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097762187/UA-05-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-07-capital-1",
+      "city": "Луцьк",
+      "regionId": "UA-07",
+      "operatorId": "volyn",
+      "address": "Луцьк, вулиця Словацького, 12",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:29:57.389037+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097304801/UA-07-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-07-capital-2",
+      "city": "Луцьк",
+      "regionId": "UA-07",
+      "operatorId": "volyn",
+      "address": "Луцьк, вулиця Братковського, 35",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:30:45.071218+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097304801/UA-07-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-07-capital-3",
+      "city": "Луцьк",
+      "regionId": "UA-07",
+      "operatorId": "volyn",
+      "address": "Луцьк, вулиця Гущанська, 83",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:31:33.556713+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097304801/UA-07-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-07-capital-4",
+      "city": "Луцьк",
+      "regionId": "UA-07",
+      "operatorId": "volyn",
+      "address": "Луцьк, вулиця Дачна, 9",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:32:21.965897+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097304801/UA-07-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-07-capital-5",
+      "city": "Луцьк",
+      "regionId": "UA-07",
+      "operatorId": null,
+      "address": "Луцьк, вулиця Волі, 32-Б",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-02T06:40:40.204082+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13121880337/UA-07-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-12-capital-1",
+      "city": "Дніпро",
+      "regionId": "UA-12",
+      "operatorId": null,
+      "address": "Дніпро, Набережна вулиця Січеславська, 16-А",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:29:28.566753+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097482864/UA-12-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-12-capital-4",
+      "city": "Дніпро",
+      "regionId": "UA-12",
+      "operatorId": "dtek-dnipro",
+      "address": "Дніпро, проспект Богдана Хмельницького, 247б",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Знайдено кілька схожих вулиць. Уточніть назву за довідником оператора.",
+      "observedAt": "2026-11-02T06:41:26.194224+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13121407357/UA-12-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-18-capital-4",
+      "city": "Житомир",
+      "regionId": "UA-18",
+      "operatorId": "zhytomyr",
+      "address": "Житомир, вулиця Козятинська, 15",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Вулицю не знайдено однозначно в оператора.",
+      "observedAt": "2026-11-01T19:31:36.116890+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097971465/UA-18-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-18-capital-5",
+      "city": "Житомир",
+      "regionId": "UA-18",
+      "operatorId": "zhytomyr",
+      "address": "Житомир, провулок 7-й Соколовський, 5",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Вулицю не знайдено однозначно в оператора.",
+      "observedAt": "2026-11-01T19:32:18.996285+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097971465/UA-18-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-21-capital-4",
+      "city": "Ужгород",
+      "regionId": "UA-21",
+      "operatorId": "zakarpattia",
+      "address": "Ужгород, вулиця Юрія Кондратюка, 25",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Вулиця не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:31:26.136223+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097677004/UA-21-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-21-capital-5",
+      "city": "Ужгород",
+      "regionId": "UA-21",
+      "operatorId": "zakarpattia",
+      "address": "Ужгород, вулиця Світла, 23",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Вулиця не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:32:11.429149+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13097677004/UA-21-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-23-capital-1",
+      "city": "Запоріжжя",
+      "regionId": "UA-23",
+      "operatorId": "zaporizhzhia",
+      "address": "Запоріжжя, вулиця Незалежної України, 40",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:30:19.053130+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13098101689/UA-23-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-23-capital-2",
+      "city": "Запоріжжя",
+      "regionId": "UA-23",
+      "operatorId": "zaporizhzhia",
+      "address": "Запоріжжя, вулиця Південноукраїнська, 19",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:31:22.816974+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13098101689/UA-23-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-23-capital-3",
+      "city": "Запоріжжя",
+      "regionId": "UA-23",
+      "operatorId": "zaporizhzhia",
+      "address": "Запоріжжя, вулиця Військбуд, 101",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:32:28.656770+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13098101689/UA-23-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-23-capital-4",
+      "city": "Запоріжжя",
+      "regionId": "UA-23",
+      "operatorId": "zaporizhzhia",
+      "address": "Запоріжжя, вулиця Барикадна, 6",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:33:32.460404+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13098101689/UA-23-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-23-capital-5",
+      "city": "Запоріжжя",
+      "regionId": "UA-23",
+      "operatorId": "zaporizhzhia",
+      "address": "Запоріжжя, вулиця Зелена, 53",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:34:36.754191+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41341729192",
+        "artifactCasePath": "13098101689/UA-23-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-26-capital-2",
+      "city": "Івано-Франківськ",
+      "regionId": "UA-26",
+      "operatorId": "prykarpattia",
+      "address": "Івано-Франківськ, вулиця Євгена Коновальця, 42",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:46:07.070931+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098193632/UA-26-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-30-capital-1",
+      "city": "Київ",
+      "regionId": "UA-30",
+      "operatorId": "dtek-kyiv",
+      "address": "Київ, вулиця Трьохсвятительська, 11",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Номер будинку не знайдено однозначно в офіційному джерелі. Уточніть номер.",
+      "observedAt": "2026-11-02T06:41:04.562796+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13121169803/UA-30-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-30-capital-3",
+      "city": "Київ",
+      "regionId": "UA-30",
+      "operatorId": "dtek-kyiv",
+      "address": "Київ, вулиця Лісна, 1",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Знайдено кілька схожих вулиць. Уточніть назву за довідником оператора.",
+      "observedAt": "2026-11-02T06:42:42.411298+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13121169803/UA-30-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-30-capital-5",
+      "city": "Київ",
+      "regionId": "UA-30",
+      "operatorId": "dtek-kyiv",
+      "address": "Київ, вулиця Оборони Києва, 1",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Вулицю не знайдено однозначно в офіційному джерелі. Перевірте назву.",
+      "observedAt": "2026-11-02T06:44:21.770999+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13121169803/UA-30-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-35-capital-5",
+      "city": "Кропивницький",
+      "regionId": "UA-35",
+      "operatorId": "kirovohrad",
+      "address": "Кропивницький, вулиця Василя Стефаника, 1",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Будинок не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:48:11.922288+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097644727/UA-35-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-48-capital-1",
+      "city": "Миколаїв",
+      "regionId": "UA-48",
+      "operatorId": "mykolaiv",
+      "address": "Миколаїв, вулиця Набережна, 7",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Будинок не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:45:06.262126+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097398797/UA-48-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-48-capital-3",
+      "city": "Миколаїв",
+      "regionId": "UA-48",
+      "operatorId": "mykolaiv",
+      "address": "Миколаїв, вулиця Серебрича, 22",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Будинок не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:46:30.796942+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097398797/UA-48-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-48-capital-4",
+      "city": "Миколаїв",
+      "regionId": "UA-48",
+      "operatorId": "mykolaiv",
+      "address": "Миколаїв, вулиця Просвіти, 32",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Будинок не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:47:16.629802+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097398797/UA-48-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-51-capital-1",
+      "city": "Одеса",
+      "regionId": "UA-51",
+      "operatorId": "dtek-odesa",
+      "address": "Одеса, вулиця Софіївська, 17",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Будинок не знайдено однозначно в офіційному довіднику. Перевірте адресу.",
+      "observedAt": "2026-11-01T19:45:24.373470+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097747883/UA-51-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-51-capital-3",
+      "city": "Одеса",
+      "regionId": "UA-51",
+      "operatorId": null,
+      "address": "Одеса, вулиця 28-ї Бригади, 2-Б",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:46:31.020165+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097747883/UA-51-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-53-capital-1",
+      "city": "Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "address": "Полтава, майдан Незалежності, 6а",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:45:16.787668+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098088901/UA-53-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-53-capital-2",
+      "city": "Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "address": "Полтава, вулиця Юліана Матвійчука, 41/28",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:46:05.045465+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098088901/UA-53-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-53-capital-3",
+      "city": "Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "address": "Полтава, вулиця Анатолія Дергая, 7",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:46:53.636603+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098088901/UA-53-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-53-capital-4",
+      "city": "Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "address": "Полтава, вулиця Сільськогосподарська, 25",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:47:43.035491+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098088901/UA-53-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-53-capital-5",
+      "city": "Полтава",
+      "regionId": "UA-53",
+      "operatorId": "poltava",
+      "address": "Полтава, вулиця Чумаківська, 1",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:48:31.224518+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098088901/UA-53-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-56-capital-1",
+      "city": "Рівне",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "address": "Рівне, вулиця Кавказька, 32-Б",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Перелік прочитано, але точну чергу цієї адреси безпечно встановити не вдалося.",
+      "observedAt": "2026-11-01T19:45:11.017627+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098492067/UA-56-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-56-capital-2",
+      "city": "Рівне",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "address": "Рівне, вулиця Казимира Любомирського, 8",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Перелік прочитано, але точну чергу цієї адреси безпечно встановити не вдалося.",
+      "observedAt": "2026-11-01T19:45:58.222817+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098492067/UA-56-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-56-capital-3",
+      "city": "Рівне",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "address": "Рівне, вулиця Київська, 137М",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Перелік прочитано, але точну чергу цієї адреси безпечно встановити не вдалося.",
+      "observedAt": "2026-11-01T19:46:46.335186+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098492067/UA-56-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-56-capital-4",
+      "city": "Рівне",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "address": "Рівне, вулиця Павла Скоропадського, 52",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Перелік прочитано, але точну чергу цієї адреси безпечно встановити не вдалося.",
+      "observedAt": "2026-11-01T19:47:32.723900+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098492067/UA-56-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-56-capital-5",
+      "city": "Рівне",
+      "regionId": "UA-56",
+      "operatorId": "rivne",
+      "address": "Рівне, вулиця Олександра Васильєва, 21",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Перелік прочитано, але точну чергу цієї адреси безпечно встановити не вдалося.",
+      "observedAt": "2026-11-01T19:48:19.874890+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098492067/UA-56-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-59-capital-1",
+      "city": "Суми",
+      "regionId": "UA-59",
+      "operatorId": "sumy",
+      "address": "Суми, вулиця Новомістенська, 28",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Оператор не підтвердив єдину чергу ГПВ для цього підключення. Аварійна черга не замінює ГПВ.",
+      "observedAt": "2026-11-01T19:49:28.867420+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098403437/UA-59-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-59-capital-2",
+      "city": "Суми",
+      "regionId": "UA-59",
+      "operatorId": "sumy",
+      "address": "Суми, провулок Стадіонний, 2",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Оператор не підтвердив єдину чергу ГПВ для цього підключення. Аварійна черга не замінює ГПВ.",
+      "observedAt": "2026-11-01T19:50:13.629027+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098403437/UA-59-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-59-capital-3",
+      "city": "Суми",
+      "regionId": "UA-59",
+      "operatorId": "sumy",
+      "address": "Суми, вулиця Одеська, 39",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Оператор не підтвердив єдину чергу ГПВ для цього підключення. Аварійна черга не замінює ГПВ.",
+      "observedAt": "2026-11-01T19:50:59.092280+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098403437/UA-59-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-59-capital-4",
+      "city": "Суми",
+      "regionId": "UA-59",
+      "operatorId": "sumy",
+      "address": "Суми, вулиця Війська Запорозького, 11",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Оператор не підтвердив єдину чергу ГПВ для цього підключення. Аварійна черга не замінює ГПВ.",
+      "observedAt": "2026-11-01T19:51:45.850612+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098403437/UA-59-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-59-capital-5",
+      "city": "Суми",
+      "regionId": "UA-59",
+      "operatorId": "sumy",
+      "address": "Суми, вулиця Сонячна, 26",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Оператор не підтвердив єдину чергу ГПВ для цього підключення. Аварійна черга не замінює ГПВ.",
+      "observedAt": "2026-11-01T19:52:31.889587+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098403437/UA-59-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-63-capital-1",
+      "city": "Харків",
+      "regionId": "UA-63",
+      "operatorId": "kharkiv",
+      "address": "Харків, вулиця Римарська, 23а",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:51:18.254167+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098725561/UA-63-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-63-capital-2",
+      "city": "Харків",
+      "regionId": "UA-63",
+      "operatorId": "kharkiv",
+      "address": "Харків, вулиця Кооперативна, 2",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:52:01.731715+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098725561/UA-63-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-63-capital-3",
+      "city": "Харків",
+      "regionId": "UA-63",
+      "operatorId": "kharkiv",
+      "address": "Харків, вулиця Нескорених, 32",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:52:46.479472+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098725561/UA-63-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-63-capital-4",
+      "city": "Харків",
+      "regionId": "UA-63",
+      "operatorId": "kharkiv",
+      "address": "Харків, вулиця Велика Жихорська, 147",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:53:30.721933+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098725561/UA-63-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-63-capital-5",
+      "city": "Харків",
+      "regionId": "UA-63",
+      "operatorId": "kharkiv",
+      "address": "Харків, проспект Людвіга Свободи, 60",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:54:13.782895+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098725561/UA-63-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-65-capital-1",
+      "city": "Херсон",
+      "regionId": "UA-65",
+      "operatorId": null,
+      "address": "Херсон, вулиця 295-ї Херсонської Стрілецької Дивізії, 25",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:51:47.448482+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097998473/UA-65-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-65-capital-2",
+      "city": "Херсон",
+      "regionId": "UA-65",
+      "operatorId": "kherson",
+      "address": "Херсон, вулиця Театральна, 12",
+      "status": "open",
+      "initialCategory": "integration_required",
+      "observedMessage": "Джерело публікує адресні списки в документах. Автоматичне зіставлення для цього оператора ще не готове. Чергу можна вказати вручну.",
+      "observedAt": "2026-11-01T19:52:33.428363+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097998473/UA-65-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-65-capital-3",
+      "city": "Херсон",
+      "regionId": "UA-65",
+      "operatorId": "kherson",
+      "address": "Херсон, провулок Вишневий, 30",
+      "status": "open",
+      "initialCategory": "integration_required",
+      "observedMessage": "Джерело публікує адресні списки в документах. Автоматичне зіставлення для цього оператора ще не готове. Чергу можна вказати вручну.",
+      "observedAt": "2026-11-01T19:53:17.547041+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097998473/UA-65-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-65-capital-4",
+      "city": "Херсон",
+      "regionId": "UA-65",
+      "operatorId": "kherson",
+      "address": "Херсон, шосе Острівське, 36",
+      "status": "open",
+      "initialCategory": "integration_required",
+      "observedMessage": "Джерело публікує адресні списки в документах. Автоматичне зіставлення для цього оператора ще не готове. Чергу можна вказати вручну.",
+      "observedAt": "2026-11-01T19:54:04.392175+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097998473/UA-65-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-65-capital-5",
+      "city": "Херсон",
+      "regionId": "UA-65",
+      "operatorId": null,
+      "address": "Херсон, вулиця 2-а Лісова, 21б",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:54:26.318198+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13097998473/UA-65-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-68-capital-1",
+      "city": "Хмельницький",
+      "regionId": "UA-68",
+      "operatorId": "khmelnytskyi",
+      "address": "Хмельницький, вулиця Камʼянецька, 48",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "Актуальні переліки прочитано, але точний будинок у них не підтверджено.",
+      "observedAt": "2026-11-01T19:51:36.088646+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098621360/UA-68-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-68-capital-2",
+      "city": "Хмельницький",
+      "regionId": "UA-68",
+      "operatorId": null,
+      "address": "Хмельницький, вулиця Петраківського, 14б",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:51:55.915291+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098621360/UA-68-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-68-capital-3",
+      "city": "Хмельницький",
+      "regionId": "UA-68",
+      "operatorId": null,
+      "address": "Хмельницький, провулок 3-й Нектарний, 23",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:52:22.464990+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098621360/UA-68-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-68-capital-4",
+      "city": "Хмельницький",
+      "regionId": "UA-68",
+      "operatorId": null,
+      "address": "Хмельницький, проїзд 1-й Книжковецький, 21",
+      "status": "open",
+      "initialCategory": "address_not_selected",
+      "observedMessage": null,
+      "observedAt": "2026-11-01T19:52:48.303031+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098621360/UA-68-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-68-capital-5",
+      "city": "Хмельницький",
+      "regionId": "UA-68",
+      "operatorId": "khmelnytskyi",
+      "address": "Хмельницький, вулиця Північна, 2",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Офіційні переліки містять різні відомості для будинку.",
+      "observedAt": "2026-11-01T19:53:50.556189+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098621360/UA-68-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-71-capital-2",
+      "city": "Черкаси",
+      "regionId": "UA-71",
+      "operatorId": "cherkasy",
+      "address": "Черкаси, вулиця Благовісна, 172",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Для будинку є кілька особових рахунків. Для точної черги уточніть квартиру на офіційному сайті.",
+      "observedAt": "2026-11-01T19:52:39.742382+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098339011/UA-71-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-71-capital-3",
+      "city": "Черкаси",
+      "regionId": "UA-71",
+      "operatorId": "cherkasy",
+      "address": "Черкаси, вулиця Нижня Горова, 135",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Для будинку є кілька особових рахунків. Для точної черги уточніть квартиру на офіційному сайті.",
+      "observedAt": "2026-11-01T19:53:21.482545+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098339011/UA-71-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-71-capital-4",
+      "city": "Черкаси",
+      "regionId": "UA-71",
+      "operatorId": "cherkasy",
+      "address": "Черкаси, вулиця Попівка, 1",
+      "status": "open",
+      "initialCategory": "unresolved",
+      "observedMessage": "У переліку є цей населений пункт, але чергу цього будинку не підтверджено. Її можна уточнити за офіційним переліком.",
+      "observedAt": "2026-11-01T19:54:03.790287+00:00",
+      "ownerRole": "adapter-engineer",
+      "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098339011/UA-71-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-73-capital-1",
+      "city": "Чернівці",
+      "regionId": "UA-73",
+      "operatorId": "chernivtsi",
+      "address": "Чернівці, вулиця Андрея Шептицького, 3",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-02T06:48:18.983547+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401832379",
+        "artifactCasePath": "13121437718/UA-73-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-73-capital-5",
+      "city": "Чернівці",
+      "regionId": "UA-73",
+      "operatorId": "chernivtsi",
+      "address": "Чернівці, вулиця Каштанова, 53-А",
+      "status": "open",
+      "initialCategory": "source_protected",
+      "observedMessage": "Офіційний сайт обмежив автоматичний доступ. Повторіть пізніше або відкрийте джерело.",
+      "observedAt": "2026-11-01T19:53:54.887396+00:00",
+      "ownerRole": "official-researcher-1",
+      "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098184590/UA-73-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-46-capital-1",
+      "city": "Львів",
+      "regionId": "UA-46",
+      "operatorId": "lviv",
+      "address": "Львів, проспект Свободи, 12",
+      "status": "open",
+      "initialCategory": "ambiguous_or_selection_required",
+      "observedMessage": "Для будинку не підтверджено єдину чергу ГПВ. Уточніть підключення.",
+      "observedAt": "2026-11-01T19:52:02.123775+00:00",
+      "ownerRole": "address-specialist",
+      "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098164516/UA-46-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-74-capital-1",
+      "city": "Чернігів",
+      "regionId": "UA-74",
+      "operatorId": "chernihiv",
+      "address": "Чернігів, проспект Миру, 21",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-02T06:40:34.606184+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41401092412",
+        "artifactCasePath": "13120479882/UA-74-capital-1/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-74-capital-2",
+      "city": "Чернігів",
+      "regionId": "UA-74",
+      "operatorId": "chernihiv",
+      "address": "Чернігів, вулиця Мстиславська, 42",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:56:45.410078+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098419283/UA-74-capital-2/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-74-capital-3",
+      "city": "Чернігів",
+      "regionId": "UA-74",
+      "operatorId": "chernihiv",
+      "address": "Чернігів, вулиця Незалежності, 68",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:57:32.645107+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098419283/UA-74-capital-3/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-74-capital-4",
+      "city": "Чернігів",
+      "regionId": "UA-74",
+      "operatorId": "chernihiv",
+      "address": "Чернігів, вулиця Всіхсвятська, 12",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:58:18.738831+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098419283/UA-74-capital-4/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    },
+    {
+      "id": "UA-74-capital-5",
+      "city": "Чернігів",
+      "regionId": "UA-74",
+      "operatorId": "chernihiv",
+      "address": "Чернігів, вулиця Лісковицька, 25",
+      "status": "open",
+      "initialCategory": "source_failure",
+      "observedMessage": "Не вдалося з’єднатися з адресним сервісом оператора. Перевірте інтернет і повторіть пошук.",
+      "observedAt": "2026-11-01T19:59:06.296364+00:00",
+      "ownerRole": "official-researcher-2",
+      "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+      "initialEvidence": {
+        "auditRunUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/actions/runs/41343030635",
+        "artifactCasePath": "13098419283/UA-74-capital-5/result.json",
+        "officialSourceUrl": null
+      },
+      "resolution": null
+    }
+  ]
+}

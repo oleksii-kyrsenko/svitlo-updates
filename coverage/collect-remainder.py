@@ -90,12 +90,42 @@ def main():
  try:
   data,url=fetch(source['sourceUrl']);text=data.decode('utf8','replace');report['sourceChecks'].append({'url':url,'status':'available','bytes':len(data)})
   if args.operator=='rivne':
-   links=[urllib.parse.urljoin(url,html.unescape(u)) for u in re.findall(r'href=["\']([^"\']+\.pdf)',text,re.I) if re.search(r'GPV_cherga_Rivnenska_oblast',u,re.I)]
+   from official_rosters import rivne_city_records
+   links=[urllib.parse.urljoin(url,html.unescape(u)) for u in re.findall(r'href=["\']([^"\']+\.pdf)',text,re.I) if re.search(r'GPV_cherga_(?:Rivnenska_oblast|misto_Rivne)',u,re.I)]
+   links=list(dict.fromkeys(links));community=resolve_community('Рівне','UA-56',url)
    import pdfplumber
-   for doc in links[:1]:
+   for doc in links[:2]:
     data,final=fetch(doc)
     with pdfplumber.open(io.BytesIO(data)) as pdf:tables=[t for page in pdf.pages for t in page.extract_tables()]
-    rows.extend(rivne_records(tables,final,now));report['sourceChecks'].append({'url':final,'status':'parsed-official-pdf','tables':len(tables)})
+    city_document=bool(re.search(r'misto_Rivne',doc,re.I))
+    parsed=rivne_city_records(tables,final,now,community) if city_document else rivne_records(tables,final,now)
+    rows.extend(parsed);report['sourceChecks'].append({'url':final,'status':'parsed-official-pdf','tables':len(tables),'kind':'city-addresses' if city_document else 'oblast-localities','records':len(parsed),'sha256':hashlib.sha256(data).hexdigest()})
+   report['collectionScope']={'settlement':'Рівне','sourceTraversal':'complete-linked-documents','addressCoverage':'partial-explicit-house-lists','omissions':['unqualified-ranges','bare-street-or-partial-area-descriptions','conflicting-connections']}
+  elif args.operator=='zaporizhzhia':
+   from official_rosters import Links,zaporizhzhia_roster_links,google_sheet_pages,zaporizhzhia_sheet_records,without_conflicts
+   p=Links();p.feed(text)
+   article=next((urllib.parse.urljoin(url,u) for u,label in p.links if re.search(r'Перелік адрес',label,re.I) and re.search(r'по\s*м\.\s*Запоріжжя',label,re.I)),None)
+   if not article:raise ValueError('official_city_roster_link_missing')
+   data,article=fetch(article);rosters=zaporizhzhia_roster_links(data.decode('utf8','replace'));community=resolve_community('Запоріжжя','UA-23',article)
+   if not rosters:raise ValueError('official_city_queue_links_missing')
+   if not community:raise ValueError('verified_community_missing')
+   completed=[];failed=[]
+   for roster in rosters:
+    try:
+     wrapper,wrapper_url=fetch(roster['url']);pages=google_sheet_pages(wrapper.decode('utf8','replace'),wrapper_url)
+     if not pages:raise ValueError('public_sheet_pages_missing')
+     sheet_rows=[]
+     for sheet in pages[:3]:
+      data,final=fetch(sheet);parsed=zaporizhzhia_sheet_records(data.decode('utf8','replace'),roster['queue'],final,now,community);sheet_rows.extend(parsed)
+      report['sourceChecks'].append({'url':final,'status':'parsed-official-linked-sheet','queue':roster['queue'],'records':len(parsed),'sha256':hashlib.sha256(data).hexdigest()})
+     if not sheet_rows:raise ValueError('no_literal_house_assignments')
+     rows.extend(sheet_rows);completed.append(roster['queue'])
+    except Exception as e:failed.append({'queue':roster['queue'],'error':type(e).__name__,'httpStatus':getattr(e,'code',None)})
+   rows=without_conflicts(rows)
+   report['collectionScope']={'settlement':'Запоріжжя','sourceTraversal':'complete-linked-documents' if not failed else 'partial-linked-documents','completedQueues':completed,'failedQueues':failed,'addressCoverage':'partial-explicit-house-lists','omissions':['unqualified-ranges','conflicting-connections']}
+   # Missing one queue can hide conflicting connections. Do not promote the
+   # remaining lists as a safe city snapshot until all linked lists were read.
+   if failed:rows=[];report['constraint']='incomplete-official-city-roster-read'
   elif args.operator=='atomservice':rows=atom_house_rows(text,url,now,resolve_community)
   else:
    # Discovery preserves links as leads, never treats them as confirmed queues.
@@ -112,7 +142,7 @@ def main():
  report['caseChecks']=[{'settlement':r['settlement'],'community':r['community'],'scope':r['scope'],'street':r.get('street'),'house':r.get('houses',[None])[0],'queue':r['queue'],'sourceUrl':r['sourceUrl'],'check':'explicit-source-scope-and-no-conflicting-queue'} for r in rows[:20]]
  if not rows:report.setdefault('constraint','no-unambiguous-roster-with-verified-community')
  path=Path(args.output);path.parent.mkdir(parents=True,exist_ok=True);Path(args.output+'.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
- if rows:path.write_text(json.dumps({'schemaVersion':1,'operatorId':args.operator,'generatedAt':now,'expiresAt':now+86400000,'records':rows,'completeSnapshot':True},ensure_ascii=False,separators=(',',':'))+'\n')
+ if rows:path.write_text(json.dumps({'schemaVersion':1,'operatorId':args.operator,'generatedAt':now,'expiresAt':now+86400000,'records':rows,'completeSnapshot':args.operator not in ('rivne','zaporizhzhia')},ensure_ascii=False,separators=(',',':'))+'\n')
  print(json.dumps({'operatorId':args.operator,'records':len(rows),'constraint':report.get('constraint')}))
  if not rows:raise SystemExit(2)
 if __name__=='__main__':main()

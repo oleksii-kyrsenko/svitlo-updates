@@ -3,6 +3,7 @@ Fresh official community context is mandatory. Only public address/queue facts s
 """
 import argparse,hashlib,html,json,re,time,urllib.error,urllib.parse,urllib.request
 from pathlib import Path
+from city_crawl import RequestLimit,select_city,scoped_state,request_limit,crawl_report
 CONFIG={
  'ternopil':('UA-61','https://api-poweron.toe.com.ua/api'),
  'zakarpattia':('UA-21','https://api-outage-zakarpat-energy.inneti.net/api'),
@@ -30,16 +31,20 @@ def clean_house(value):
  return value if re.fullmatch(r'\d+[А-Яа-яІіЇїЄєҐґA-Za-z]?(?:[/-][\dА-Яа-яІіЇїЄєҐґA-Za-z]+)?',value) else None
 def houselist(value):return [h for x in str(value or '').split(',') if (h:=clean_house(x))]
 class HTTP:
- def __init__(self):self.last=0;self.observations=[];self.cache={}
+ def __init__(self,limit=2000,referer=None):self.last=0;self.observations=[];self.cache={};self.limit=limit;self.requests=0;self.referer=referer
  def get(self,url,data=None):
   key=(url,json.dumps(data,sort_keys=True))
   if key in self.cache:return self.cache[key]
-  time.sleep(max(0,1-(time.monotonic()-self.last)));self.last=time.monotonic()
-  request=urllib.request.Request(url,data=urllib.parse.urlencode(data).encode() if data is not None else None,headers={'User-Agent':'Svitlo-public-coverage/1.0 (+https://github.com/oleksii-kyrsenko/svitlo-updates)','Accept':'application/json,text/html','Accept-Language':'uk',**({'Content-Type':'application/x-www-form-urlencoded','X-Requested-With':'XMLHttpRequest'} if data is not None else {})})
+  if self.requests>=self.limit:raise RequestLimit('request_limit')
+  self.requests+=1
+  from request_budget import throttle
+  throttle(url)
+  self.last=time.monotonic()
+  request=urllib.request.Request(url,data=urllib.parse.urlencode(data).encode() if data is not None else None,headers={'User-Agent':'Svitlo-public-coverage/1.0 (+https://github.com/oleksii-kyrsenko/svitlo-updates)','Accept':'application/json,text/html','Accept-Language':'uk','X-Requested-With':'XMLHttpRequest',**({'Referer':self.referer} if self.referer else {}),**({'Content-Type':'application/x-www-form-urlencoded','X-Requested-With':'XMLHttpRequest'} if data is not None else {})})
   observed={'url':url,'method':'POST' if data is not None else 'GET','checkedAt':now()}
   try:
    with urllib.request.urlopen(request,timeout=20) as response:
-    value=response.read(8_000_001);observed.update(status=response.status,bytes=len(value))
+    value=response.read(8_000_001);observed.update(status=response.status,bytes=len(value),responseSha256=hashlib.sha256(value).hexdigest())
     if len(value)>8_000_000:raise ValueError('oversize')
     self.cache[key]=value
     return value
@@ -52,10 +57,12 @@ def make_record(operator,region,city,street,house,q,source,observed):
  community=(city.get('otg') or {}).get('name')
  if not community or not city.get('name') or not street.get('name') or not clean_house(house) or not queue(q):return None
  identity=':'.join([operator,str(city['id']),str(street['id']),house])
- return {'id':hashlib.sha256(identity.encode()).hexdigest()[:24],'official':True,'regionId':region,'settlement':city['name'],'community':community,'street':street['name'],'officialCityId':f"{city['id']}:{street['id']}",'scope':'house','houses':[house],'queue':q,'sourceUrl':source,'quote':f"{city['name']}, {street['name']}, буд. {house}: черга {q}",'quoteType':'structured-official-fields','checkedAt':observed,'expiresAt':observed+86400000}
-def collect_asd(operator,http,state,city_limit,street_limit):
+ return {'id':hashlib.sha256(identity.encode()).hexdigest()[:24],'official':True,'regionId':region,'settlement':city['name'],'community':community,'street':street['name'],'officialCityId':f"{city['id']}:{street['id']}",'providerCityId':str(city['id']),'providerStreetId':str(street['id']),'scope':'house','houses':[house],'queue':q,'sourceUrl':source,'quote':f"{city['name']}, {street['name']}, буд. {house}: черга {q}",'quoteType':'structured-official-fields','checkedAt':observed,'expiresAt':observed+86400000}
+def collect_asd(operator,http,state,city_limit,street_limit,target_city=None,full_city=False):
  region,base=CONFIG[operator];cities=rows(http.json(url(base,'/pw_cities')))
  cities=sorted([c for c in cities if isinstance(c,dict) and c.get('id') and (c.get('otg') or {}).get('name')],key=lambda c:int(c['id']))
+ cities=select_city(cities,target_city)
+ state['dictionaryComplete']=bool(full_city)
  records=[];checks=[];completed=[];errors=[];used=0
  if not cities:return records,checks,completed,[{'reason':'no_official_community_context'}]
  index=int(state.get('cityIndex',0))%len(cities)
@@ -65,7 +72,7 @@ def collect_asd(operator,http,state,city_limit,street_limit):
   except Exception as e:errors.append({'stage':'streets','cityId':city['id'],'reason':type(e).__name__});continue
   start=int(state.get('streetIndex',0)) if offset==0 else 0
   for si in range(start,len(streets)):
-   if used>=street_limit or len(checks)>=20:break
+   if used>=street_limit or (not full_city and len(checks)>=20):break
    used+=1;street=streets[si];context=f"{city['id']}:{street['id']}"
    try:
     if operator=='ternopil':
@@ -76,9 +83,10 @@ def collect_asd(operator,http,state,city_limit,street_limit):
      discovered=rows(http.json(url(base,'/pw_address_queues',**{'city.id':city['id'],'street.id':street['id']})))
      houses=sorted({h for row in discovered for h in houselist(row.get('buildingNames'))},key=lambda h:hashlib.sha256((context+':'+h).encode()).hexdigest())
     # Select from source address names, independently of queue value or success.
-    take=min(5,20-len(checks),len(houses));offset=int(state.setdefault('houseOffsets',{}).get(context,0))%max(1,len(houses))
-    selected=(houses[offset:]+houses[:offset])[:take]
-    state['houseOffsets'][context]=(offset+take)%max(1,len(houses))
+    take=len(houses) if full_city else min(5,20-len(checks),len(houses));house_offset=int(state.setdefault('houseOffsets',{}).get(context,0))%max(1,len(houses))
+    selected=(houses[house_offset:] if full_city else houses[house_offset:]+houses[:house_offset])[:take]
+    if not full_city:state['houseOffsets'][context]=(house_offset+take)%max(1,len(houses))
+    street_failed=False
     for house in selected:
      source=base+'/pw-accounts/building-groups?'+urllib.parse.urlencode({'cityId':city['id'],'streetId':street['id'],'buildingNames':house}) if operator=='ternopil' else url(base,'/pw_address_queues',**{'city.id':city['id'],'street.id':street['id'],'buildingNames':house})
      try:
@@ -89,17 +97,120 @@ def collect_asd(operator,http,state,city_limit,street_limit):
       else:
        matches=[r for r in rows(response) if house in houselist(r.get('buildingNames')) and str((r.get('city') or {}).get('id'))==str(city['id']) and str((r.get('street') or {}).get('id'))==str(street['id'])]
       q=consensus(r.get('chergGpv') for r in matches);observed=now()
-      checks.append({'settlement':city['name'],'community':city['otg']['name'],'street':street['name'],'house':house,'status':'ready' if q else 'unconfirmed','queue':q,'sourceUrl':source,'checkedAt':observed})
+      checks.append({'settlement':city['name'],'community':city['otg']['name'],'street':street['name'],'providerStreetId':str(street['id']),'house':house,'status':'ready' if q else 'unconfirmed','queue':q,'sourceUrl':source,'checkedAt':observed})
+      if full_city:state['houseOffsets'][context]=(houses.index(house)+1)%max(1,len(houses))
       if q:
        record=make_record(operator,region,city,street,house,q,source,observed)
        if record:records.append(record)
-     except Exception as e:checks.append({'settlement':city['name'],'street':street['name'],'house':house,'status':'source_failed','reason':type(e).__name__,'sourceUrl':source})
+     except Exception as e:
+      checks.append({'settlement':city['name'],'street':street['name'],'house':house,'status':'source_failed','reason':type(e).__name__,'sourceUrl':source})
+      if full_city:street_failed=True;break
+    if full_city and not street_failed and house_offset==0:completed.append(context)
+    if full_city and street_failed:
+     state.update(cityIndex=(index+offset)%len(cities),streetIndex=si,crawlStatus='partial')
+     return records,checks,completed,errors
     # This is a bounded house sample, not a complete street snapshot.
-   except Exception as e:errors.append({'stage':'houses','cityId':city['id'],'streetId':street['id'],'reason':type(e).__name__})
+   except Exception as e:
+    errors.append({'stage':'houses','cityId':city['id'],'streetId':street['id'],'reason':type(e).__name__})
+    if full_city:
+     state.update(cityIndex=(index+offset)%len(cities),streetIndex=si,crawlStatus='partial')
+     return records,checks,completed,errors
    state.update(cityIndex=(index+offset)%len(cities),streetIndex=si+1)
-  if used>=street_limit or len(checks)>=20:break
-  state.update(cityIndex=(index+offset+1)%len(cities),streetIndex=0)
+  if used>=street_limit or (not full_city and len(checks)>=20):break
+  state.update(cityIndex=(index+offset+1)%len(cities),streetIndex=0,crawlStatus='complete' if full_city else 'partial')
  return records,checks,completed,errors
+
+def khmel_queue(page):
+ # GPV and GAV are different products. Never read the GAV strong tag as GPV.
+ blocks=re.findall(r'<div\b[^>]*>(.*?)</div>',page,re.I|re.S)
+ values=[]
+ for block in blocks:
+  text=html.unescape(re.sub(r'<[^>]+>',' ',block))
+  if not re.search(r'погодинних\s+відключень|\(ГПВ\)',text,re.I):continue
+  strong=re.findall(r'<strong\b[^>]*>(.*?)</strong>',block,re.I|re.S)
+  if len(strong)!=1:return None
+  tokens=[html.unescape(re.sub('<[^>]+>','',x)).strip() for x in re.split(r'[,;]',strong[0])]
+  q=consensus(tokens)
+  if not q:return None
+  values.append(q)
+ return consensus(values)
+
+
+def khmel_city(value):
+ match=re.fullmatch(r'\s*(?:м\.\s*|місто\s+)?(.+?)\s*\(([^()]+?\s+громада)\)\s*',value.get('text',''),re.I)
+ if not match or value.get('id') is None:return None
+ return {'id':value['id'],'name':match.group(1).strip(),'otg':{'name':match.group(2).strip()}}
+
+
+def khmel(operator,http,state,city_limit,street_limit,target_city=None,full_city=False):
+ region,base=CONFIG[operator];origin='https://hoe.com.ua'
+ city_url=origin+'/settlements?'+urllib.parse.urlencode({'term':target_city or ''})
+ city_rows=http.json(city_url)
+ if not isinstance(city_rows,list):raise ValueError('invalid_city_dictionary')
+ cities=[city for row in city_rows if isinstance(row,dict) and (city:=khmel_city(row))]
+ cities=select_city(cities,target_city)
+ if not cities:raise ValueError('no_official_community_context')
+ # Select2's autocomplete is limited to30 rows. An alphabet crawl remains
+ # partial until every search branch is exhausted. Never treat page1 as fullcity.
+ alphabet=" абвгґдеєжзиіїйклмнопрстуфхцчшщьюяыэъёabcdefghijklmnopqrstuvwxyz0123456789.-’'()/№"
+ index=int(state.get('cityIndex',0))%len(cities);city=cities[index]
+ inventory=state.setdefault('streetInventories',{}).setdefault(str(city['id']),{'queries':[''],'done':[],'streets':{},'blocked':[]})
+ query_budget=max(1,min(20,http.limit//4));attempted=0;errors=[]
+ while inventory['queries'] and attempted<query_budget:
+  term=inventory['queries'][0]
+  try:
+   rows_=http.json(origin+'/streets/'+str(city['id'])+'?'+urllib.parse.urlencode({'term':term}))
+   if not isinstance(rows_,list) or any(not isinstance(r,dict) or r.get('id') is None or not isinstance(r.get('text'),str) for r in rows_):raise ValueError('invalid_street_dictionary')
+  except Exception as error:
+   errors.append({'stage':'street_inventory','cityId':city['id'],'reason':type(error).__name__});break
+  attempted+=1;inventory['queries'].pop(0);inventory['done'].append(term)
+  for row in rows_:inventory['streets'][str(row['id'])]={'id':row['id'],'name':row['text'].strip()}
+  if len(rows_)>=30:
+   if len(term)<80 and len(inventory['queries'])+len(inventory['done'])<10000:
+    known=set(inventory['queries'])|set(inventory['done'])
+    for char in alphabet:
+     if term+char not in known:inventory['queries'].append(term+char);known.add(term+char)
+   else:inventory['blocked'].append(term)
+ state['dictionaryComplete']=not inventory['queries'] and not inventory['blocked']
+ state['inventoryMethod']='bounded-autocomplete-substring-frontier-cap30'
+ state['inventoryPendingQueries']=len(inventory['queries'])
+ streets=sorted(inventory['streets'].values(),key=lambda r:int(r['id']))
+ records=[];checks=[];completed=[];processed=state.setdefault('processedStreetIds',[]);used=0
+ for street in streets:
+  context=str(city['id'])+':'+str(street['id'])
+  if context in processed:continue
+  if used>=street_limit:break
+  used+=1
+  try:
+   houses=http.json(origin+'/houses/'+str(street['id']))
+   if not isinstance(houses,list) or any(not isinstance(h,str) for h in houses):raise ValueError('invalid_house_dictionary')
+   houses=list(dict.fromkeys(houses));offset=int(state.setdefault('houseOffsets',{}).get(context,0));street_failed=False
+   selected=houses[offset:] if full_city else houses[offset:offset+5]
+   for house in selected:
+    if not clean_house(house):
+     errors.append({'stage':'house_identity','streetId':street['id'],'reason':'unsupported_house_format'});continue
+    source=origin+'/shutdown-queues'
+    try:
+     response=http.get(source,{'streetId':street['id'],'house':house}).decode('utf-8','replace');q=khmel_queue(response);observed=now()
+     checks.append({'settlement':city['name'],'community':city['otg']['name'],'street':street['name'],'providerStreetId':str(street['id']),'house':house,'status':'ready' if q else 'unconfirmed','queue':q,'sourceUrl':source,'checkedAt':observed})
+     if q:
+      item=make_record(operator,region,city,street,house,q,source,observed)
+      if item:records.append(item)
+     state['houseOffsets'][context]=houses.index(house)+1
+    except Exception as error:
+     errors.append({'stage':'queue','streetId':street['id'],'house':house,'reason':type(error).__name__});street_failed=True;break
+   if street_failed:break
+   if state['houseOffsets'].get(context,0)>=len(houses) or not houses:
+    processed.append(context);state['houseOffsets'][context]=0
+    if offset==0 and full_city:completed.append(context)
+  except Exception as error:
+   errors.append({'stage':'houses','streetId':street['id'],'reason':type(error).__name__});break
+ if state['dictionaryComplete'] and len(processed)==len(streets):
+  state.update(crawlStatus='complete',processedStreetIds=[],houseOffsets={},streetInventories={})
+  state['cityIndex']=(index+1)%len(cities)
+ else:state['crawlStatus']='partial'
+ return records,checks,completed,errors
+
 
 def probe_other(operator,http):
  _,base=CONFIG[operator];page=http.get(base).decode('utf-8','replace')
@@ -111,18 +222,21 @@ def probe_other(operator,http):
   http.json(base+'/city/'+offices[0][0],{'ajax':1,'token':token.group(1)});return 'city_response_requires_supported_format'
  return 'public_freeform_lookup_requires_geographic_address_discovery'
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--operator',required=True,choices=CONFIG);parser.add_argument('--output',required=True);parser.add_argument('--state');parser.add_argument('--street-limit',type=int,default=4);parser.add_argument('--city-limit',type=int,default=3);args=parser.parse_args()
- if not 1<=args.street_limit<=20 or not 1<=args.city_limit<=10:raise ValueError('unbounded_budget')
- out=Path(args.output);out.parent.mkdir(parents=True,exist_ok=True);statefile=Path(args.state) if args.state else out.with_suffix('.state.json');state=json.loads(statefile.read_text()) if statefile.exists() else {'schemaVersion':1,'cityIndex':0,'streetIndex':0}
- http=HTTP();records=[];checks=[];completed=[];errors=[]
+ parser=argparse.ArgumentParser();parser.add_argument('--operator',required=True,choices=CONFIG);parser.add_argument('--output',required=True);parser.add_argument('--state');parser.add_argument('--street-limit',type=int,default=4);parser.add_argument('--city-limit',type=int,default=3);parser.add_argument('--target-city');parser.add_argument('--full-city',action='store_true');parser.add_argument('--request-limit',type=request_limit,default=200);args=parser.parse_args()
+ if not 1<=args.street_limit<=(2000 if args.full_city else 20) or not 1<=args.city_limit<=10:raise ValueError('unbounded_budget')
+ out=Path(args.output);out.parent.mkdir(parents=True,exist_ok=True);statefile=Path(args.state) if args.state else out.with_suffix('.state.json');saved=json.loads(statefile.read_text()) if statefile.exists() else {'schemaVersion':1,'cityIndex':0,'streetIndex':0}
+ state=scoped_state(saved,args.target_city,args.full_city);state['crawlStatus']='partial'
+ http=HTTP(args.request_limit,CONFIG[args.operator][1]);records=[];checks=[];completed=[];errors=[]
  try:
-  if args.operator in ('ternopil','zakarpattia'):records,checks,completed,errors=collect_asd(args.operator,http,state,args.city_limit,args.street_limit)
+  if args.operator in ('ternopil','zakarpattia'):records,checks,completed,errors=collect_asd(args.operator,http,state,args.city_limit,args.request_limit if args.full_city else args.street_limit,args.target_city,args.full_city)
+  elif args.operator=='khmelnytskyi':records,checks,completed,errors=khmel(args.operator,http,state,args.city_limit,args.request_limit if args.full_city else args.street_limit,args.target_city,args.full_city)
   else:errors.append({'reason':probe_other(args.operator,http)})
  except Exception as error:errors.append({'reason':type(error).__name__})
- generated=now();state['updatedAt']=generated;statefile.write_text(json.dumps(state,indent=2)+'\n')
- report={'operatorId':args.operator,'checkedAt':generated,'records':len(records),'addressChecks':checks,'sampleMethod':'up-to20 queue-blind hash-selected official address names; up-to5 perstreet; independent followup queue request; not nationwide random coverage','completedStreetIds':completed,'requests':http.observations,'errors':errors,'status':'collected' if records else 'blocked_or_unresolved'}
+ generated=now();state['updatedAt']=generated;statefile.parent.mkdir(parents=True,exist_ok=True);temp=statefile.with_suffix('.tmp');temp.write_text(json.dumps(saved,ensure_ascii=False,indent=2)+'\n');temp.replace(statefile)
+ report={'operatorId':args.operator,'checkedAt':generated,'records':len(records),'addressChecks':checks,'sampleMethod':'resumable official city directory' if args.full_city else 'up-to20 queue-blind hash-selected official address names; up-to5 perstreet; independent followup queue request; not nationwide random coverage','cityCrawl':crawl_report(state,args.target_city,args.full_city),'completedStreetIds':completed,'requests':http.observations,'errors':errors,'status':'collected' if records else 'blocked_or_unresolved'}
  Path(str(out)+'.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
- if not records:raise SystemExit('No verified records; previous output preserved; see report')
- bundle={'schemaVersion':1,'operatorId':args.operator,'generatedAt':generated,'expiresAt':generated+86400000,'records':records,'completedStreetIds':completed}
+ observed=[{'regionId':CONFIG[args.operator][0],**{k:check[k] for k in ('settlement','community','street','house','providerStreetId') if k in check}} for check in checks if check.get('status') in ('ready','unconfirmed') and check.get('community')]
+ if not records and not observed:raise SystemExit('No verified observations; previous output preserved; see report')
+ bundle={'schemaVersion':1,'operatorId':args.operator,'generatedAt':generated,'expiresAt':generated+86400000,'records':records,'completedStreetIds':completed,'observedHouses':observed}
  out.write_text(json.dumps(bundle,ensure_ascii=False,separators=(',',':'))+'\n');print(json.dumps({'operatorId':args.operator,'records':len(records),'checks':len(checks)}))
 if __name__=='__main__':main()

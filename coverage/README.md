@@ -1,3 +1,36 @@
+## Capital coverage work, 2November2026
+
+Published APK remains0.1.52/build88. Candidate89 adds a separately signed city
+protocol and postal-independent street selection. No90%coverage or newAPKrelease
+is claimed. Frozen QA:110 original addresses with38 successes;440 independent
+geographic holdout addresses in22capitals; Donetsk/Luhansk/Crimea excluded only
+from this test. See `capitals/README.md` for immutable hashes and actual-UI gates.
+
+Source collection now prioritizes sourced capital identities from
+`capital-geography.json`. Complete public dictionaries are traversed with
+resumable city cursors; capped autocomplete responses retain their search
+frontiers. A bounded run and a reachable homepage never establish city coverage.
+New Kirovohrad/Volyn city forms, Khmelnytskyi AJAX and Rivne/Zaporizhzhia linked
+rosters preserve original source boundaries; unsupported/protected services
+remain explicit gaps. Prykarpattia geographic inventory and Vinnytsia Drupal
+protocol do not imply live success where original sources are unavailable.
+
+The publisher keeps v1 for88 and creates `dynamic-coverage/v2/manifest.json`,
+SHA256 city bundles and a signed publisher-only normalized source cache. Phones
+fetch their own city, never the publisher's full operator snapshots. IDs for
+geography and provider city/street are separate. Original observation deadlines,
+revisions/signatures, withdrawal and last-good-cache rules remain mandatory.
+Oversize constraints are reported rather than counted as complete coverage.
+
+Seven bounded work roles use a persisted fair queue and dispatch ledger every
+six hours. This schedules auditable tasks; it does not claim seven permanently
+running models or that a dispatch resolved an address. Existing free local CPU
+public-evidence extraction runs separately, now rotates through its entire
+source registry instead of repeatedly ignoring the tail. Parser changes still
+need source review and tests; verified compatible data can update without APK.
+
+---
+
 # Dynamic coverage operations
 
 DTEK audit, 1November2026: all seven sites in the state source directory are

@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "basis": "StateOSRdirectorysourcehosts plus existingAPK88 independently recorded successful official-source hosts; this host allowlist does not assert endpoint health or queue coverage. New hosts require explicit official authority review.",
+  "operators": [
+    {
+      "operatorId": "vinnytsia",
+      "approvedHosts": [
+        "www.voe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "volyn",
+      "approvedHosts": [
+        "energy.volyn.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "approvedHosts": [
+        "static.yasno.ua",
+        "www.dtek-dnem.com.ua",
+        "app.yasno.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "app.yasno.ua",
+          "authorityUrl": "https://static.yasno.ua/dnipro/outages/",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "authorityHtmlSha256": "2ad65ff4b53a5625671d5ce228d24f28dabcd98399b0077b5361bd259a829aad",
+          "linkingAssets": [
+            {
+              "url": "https://static.yasno.ua/outages/assets/index-BEV9Cygv.js",
+              "sha256": "3f75310c64e9cdc658335ec844905f3d470a5a5473350916999288f6add24b1a",
+              "quote": "e:i9.links,children:eL.map(({variant:n,url:r})=>T.jsx(Bk,{className:i9.link,url:r,variant:n},n))})]})},n7={API:\"https://app.yasno.ua/\",CMS_API:\"https://yasno.ua/cms\",YASNO_URL:\"https://yasno.ua\"};function nL(e,t){return function(){return e.apply(t,arguments)}}const{toString:a0e}=Object.prototype,{ge"
+            }
+          ],
+          "reason": "Official frontend JavaScript explicitly configures this address API host."
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "approvedHosts": [
+        "www.dtek-dem.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "zhytomyr",
+      "approvedHosts": [
+        "www.ztoe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "zakarpattia",
+      "approvedHosts": [
+        "zakarpat.energy"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "zaporizhzhia",
+      "approvedHosts": [
+        "www.zoe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "linkedResources": [
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1JxeTi3tR7vRLPIhM6v32W3C_0-Ig28sjT--3wECuw9M/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "1.1"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/19q7Gj5qW6k6GMixakc7cuUAxqyCW5x8cr-tViD3xIQw/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "1.2"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1BPbAd3VV4h8Hkle1Cczi4GCt2EggmbPhh396MxBz3hU/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "2.2"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1tiInJeUJrAS0jy-v_Pad4YIa6LEF2vOfVH_m0hGsil8/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "3.1"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1WeC9RtYQWb3y8Xy7oacB_WUl743ynT6IuqAj9WdOffI/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "3.2"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1kIS8FDTLvfq1eZTcaiuSJwHippVKlsO-N_a10FAyksA/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "4.1"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1MvwotnCvVA7BzYERRQ_CES80LWVbbEwE5DTfrm9D-jA/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "4.2"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1ecxXysI0ls1ztebMuF1ZERWzt9lV84fUO-UxAhMG7SY/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "5.1"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/19kPmcvFtFDJSre-HiiV0Xs607CURnN4fHV_L-p6K4P0/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "5.2"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1CSl6docaZLiCNDQNjoQuRWFpK_OdkNCJRF7H0oACycA/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "6.1"
+        },
+        {
+          "urlPrefix": "https://docs.google.com/spreadsheets/d/1Isd584TNNw5k0vhrate9kR9z-52LMnFjU24MIkaexkg/",
+          "authorityUrl": "https://www.zoe.com.ua/%d0%bf%d0%b5%d1%80%d0%b5%d0%bb%d1%96%d0%ba-%d0%b0%d0%b4%d1%80%d0%b5%d1%81-%d0%b4%d0%bb%d1%8f-%d0%ba%d0%be%d0%b6%d0%bd%d0%be%d1%97-%d0%b7-%d1%87%d0%b5%d1%80%d0%b3-%d0%b7-%d0%bf%d1%96%d0%b4%d1%87/",
+          "authoritySha256": "a9b116da1d5980a426099bc47a90454eb1166283864f0d64ee4be74ab58af489",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "queueLabel": "6.2"
+        }
+      ],
+      "linkedResourcePolicy": "Only these exact spreadsheet IDs linked from the retained official article are eligible; docs.google.com is not approved globally."
+    },
+    {
+      "operatorId": "dtek-kyiv",
+      "approvedHosts": [
+        "static.yasno.ua",
+        "www.dtek-kem.com.ua",
+        "app.yasno.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "app.yasno.ua",
+          "authorityUrl": "https://static.yasno.ua/kyiv/outages/",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "authorityHtmlSha256": "3b4133685444a91282b86133e3b7298ff70e4379b544af4ac8884cf241f628b8",
+          "linkingAssets": [
+            {
+              "url": "https://static.yasno.ua/outages/assets/index-BEV9Cygv.js",
+              "sha256": "3f75310c64e9cdc658335ec844905f3d470a5a5473350916999288f6add24b1a",
+              "quote": "e:i9.links,children:eL.map(({variant:n,url:r})=>T.jsx(Bk,{className:i9.link,url:r,variant:n},n))})]})},n7={API:\"https://app.yasno.ua/\",CMS_API:\"https://yasno.ua/cms\",YASNO_URL:\"https://yasno.ua\"};function nL(e,t){return function(){return e.apply(t,arguments)}}const{toString:a0e}=Object.prototype,{ge"
+            }
+          ],
+          "reason": "Official frontend JavaScript explicitly configures this address API host."
+        }
+      ]
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "approvedHosts": [
+        "www.dtek-krem.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "kirovohrad",
+      "approvedHosts": [
+        "kiroe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "luhansk",
+      "approvedHosts": [
+        "www.nerc.gov.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "lviv",
+      "approvedHosts": [
+        "poweron.loe.lviv.ua",
+        "power-api.loe.lviv.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "power-api.loe.lviv.ua",
+          "authorityUrl": "https://poweron.loe.lviv.ua/",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "authorityHtmlSha256": "f5838f8f1d3ca5d86bc81f9adb1a83683b37edbc83ef13f9d03457c96cb309cf",
+          "linkingAssets": [
+            {
+              "url": "https://poweron.loe.lviv.ua/static/js/main.862ef645.js",
+              "sha256": "c4ae3250c7f40daebff726d08ba5ad2c794d19a1860b1f6aecde758efe0f1ab6",
+              "quote": "lviv.ua/api\",params:{jsonld:1},timeout:3e4,headers:{\"Content-Type\":\"application/json\"}}),Yl=Wl.create({baseURL:\"https://power-api.loe.lviv.ua/api\",timeout:3e4,headers:{\"Content-Type\":\"application/json\"}}),Gl=async function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:\"\";return(awai"
+            }
+          ],
+          "reason": "Official frontend JavaScript explicitly configures this address API host."
+        }
+      ]
+    },
+    {
+      "operatorId": "mykolaiv",
+      "approvedHosts": [
+        "off.energy.mk.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "approvedHosts": [
+        "www.dtek-oem.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "poltava",
+      "approvedHosts": [
+        "www.poe.pl.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "prykarpattia",
+      "approvedHosts": [
+        "oe.if.ua",
+        "svitlo.oe.if.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "sumy",
+      "approvedHosts": [
+        "www.soe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "rivne",
+      "approvedHosts": [
+        "www.roe.vsei.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "ternopil",
+      "approvedHosts": [
+        "poweron.toe.com.ua",
+        "www.toe.com.ua",
+        "api-poweron.toe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "api-poweron.toe.com.ua",
+          "authorityUrl": "https://poweron.toe.com.ua/",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "authorityHtmlSha256": "5fa0ee05052849111fadb9cf6bea8e571eeec9d7e8d8df2010523d09109d7f12",
+          "linkingAssets": [
+            {
+              "url": "https://poweron.toe.com.ua/static/js/main.c63cd454.js",
+              "sha256": "5e0ce40ced809f8e4190ef292bc881bfa44043651e4a4192a3e8debecb5549b3",
+              "quote": "=Il,Al=(Fl.create({baseURL:\"/api\",timeout:3e4,headers:{\"Content-Type\":\"application/json\"}}),Fl.create({baseURL:\"https://api-poweron.toe.com.ua/api\",timeout:3e4,headers:{\"Content-Type\":\"application/json\"}})),zl=async function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:\"\";return(aw"
+            }
+          ],
+          "reason": "Official frontend JavaScript explicitly configures this address API host."
+        }
+      ]
+    },
+    {
+      "operatorId": "kharkiv",
+      "approvedHosts": [
+        "oblenergo.kharkiv.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "kherson",
+      "approvedHosts": [
+        "ksoe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "khmelnytskyi",
+      "approvedHosts": [
+        "hoe.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "cherkasy",
+      "approvedHosts": [
+        "www.cherkasyoblenergo.com"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "chernivtsi",
+      "approvedHosts": [
+        "oblenergo.cv.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "chernihiv",
+      "approvedHosts": [
+        "chernihivoblenergo.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "dtek-pem",
+      "approvedHosts": [
+        "www.dtek-pem.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "dtek-vvm",
+      "approvedHosts": [
+        "www.dtek-vvm.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "cek",
+      "approvedHosts": [
+        "cek.dp.ua",
+        "app.yasno.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "app.yasno.ua",
+          "authorityUrl": "https://static.yasno.ua/dnipro/outages/",
+          "verifiedAt": "2026-11-02T12:02:48.453329+00:00",
+          "authorityHtmlSha256": "2ad65ff4b53a5625671d5ce228d24f28dabcd98399b0077b5361bd259a829aad",
+          "linkingAssets": [
+            {
+              "url": "https://static.yasno.ua/outages/assets/index-BEV9Cygv.js",
+              "sha256": "3f75310c64e9cdc658335ec844905f3d470a5a5473350916999288f6add24b1a",
+              "quote": "e:i9.links,children:eL.map(({variant:n,url:r})=>T.jsx(Bk,{className:i9.link,url:r,variant:n},n))})]})},n7={API:\"https://app.yasno.ua/\",CMS_API:\"https://yasno.ua/cms\",YASNO_URL:\"https://yasno.ua\"};function nL(e,t){return function(){return e.apply(t,arguments)}}const{toString:a0e}=Object.prototype,{ge"
+            }
+          ],
+          "reason": "Official frontend JavaScript explicitly configures this address API host.",
+          "operatorAssociation": {
+            "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/regions",
+            "sha256": "846e43392aa24ddbe7f2044be8a45571fba88fa5da52aff81d35b3109a166437",
+            "regionId": 3,
+            "dso": {
+              "id": 303,
+              "name": "ЦЕК"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "operatorId": "naftogaz-teplo",
+      "approvedHosts": [
+        "www.naftogazteplo.com.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "ukrzaliznytsia",
+      "approvedHosts": [
+        "uz.gov.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "regional-networks",
+      "approvedHosts": [
+        "www.nerc.gov.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    },
+    {
+      "operatorId": "atomservice",
+      "approvedHosts": [
+        "info.dpem.mk.ua"
+      ],
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+    }
+  ]
+}

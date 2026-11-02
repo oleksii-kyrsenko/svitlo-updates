@@ -4,3 +4,7 @@ coverage/qa/__pycache__/
 
 coverage/geography-cache.json*
 coverage/batch-a-state-*.json
+
+# Generated local Python caches
+__pycache__/
+*.py[cod]

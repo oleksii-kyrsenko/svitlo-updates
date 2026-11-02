@@ -152,35 +152,46 @@ def verification_agent(claim,message,source):
  if source['operatorId'].startswith('dtek-'):record['adapter']='dtek'
  return record
 
+def rotating_sources(items, key, limit, cursors):
+ """Resume bounded research across all sources instead of starving the tail."""
+ if not items:return
+ start=int(cursors.get(key,0))%len(items)
+ for offset in range(min(limit,len(items))):
+  index=(start+offset)%len(items)
+  yield items[index]
+  cursors[key]=(index+1)%len(items)
+
+
 def collect():
  from history import read_telegram,read_articles
  from discovery import discover_links,search_sources
  from coverage import parse_roster
  from documents import watch_documents
  deadline=time.monotonic()+18*60;now=NOW();state_path=ROOT/'history-state.json';history_state=json.loads(state_path.read_text()) if state_path.exists() else {};config=json.loads((ROOT/'sources.json').read_text());report={'startedAt':now,'agents':{'official':[],'discovery':[],'community':[],'extraction':{'messages':0,'relevantMessages':0,'modelCalls':0},'verification':{}},'errors':[]};candidates=[];archive=[];discoveries=[];feeds=[];seen_publications=set()
- for source in config['official']:
+ source_cursors=history_state.setdefault('_sourceCursors',{})
+ for source in rotating_sources(config['official'],'official',len(config['official']),source_cursors):
   if time.monotonic()>deadline:break
   try:report['agents']['official'].append(official_agent(source))
   except Exception as e:report['errors'].append({'agent':'official','url':source['url'],'error':str(e)[:200]})
  # Linked-document observations stay outside the runtime manifest. A news
  # date does not establish the publication date or validity of its attachment.
  document_reports=[]
- for source in config.get('documents',[])[:4]:
+ for source in rotating_sources(config.get('documents',[]),'documents',8,source_cursors):
   if time.monotonic()>deadline:break
   try:document_reports.append(watch_documents(source,fetch,now,deadline))
   except Exception as e:document_reports.append({'indexUrl':source['url'],'error':str(e)[:200],'runtimeRecords':0})
  report['agents']['documents']=document_reports
- for source in config.get('discovery',[])[:20]:
+ for source in rotating_sources(config.get('discovery',[]),'discovery',20,source_cursors):
   if time.monotonic()>deadline:break
   try:
    raw,_,url=fetch(source['url']);links=discover_links(raw,url);discoveries.extend({**x,'regionId':source['regionId'],'community':source.get('community')} for x in links);report['agents']['discovery'].append({'url':url,'candidates':len(links)})
   except Exception as e:report['errors'].append({'agent':'discovery','url':source['url'],'error':str(e)[:200]})
- for query in config.get('searches',[])[:6]:
+ for query in rotating_sources(config.get('searches',[]),'searches',6,source_cursors):
   if time.monotonic()>deadline:break
   try:
    result=search_sources(query['query'],query['terms'],fetch);discoveries.extend(result['results']);report['agents']['discovery'].append(result)
   except Exception as e:report['errors'].append({'agent':'search','query':query['query'],'error':str(e)[:200]})
- for source in config['community'][:40]:
+ for source in rotating_sources(config['community'],'community',40,source_cursors):
   if time.monotonic()>deadline:break
   try:
    if urllib.parse.urlsplit(source['url']).hostname=='t.me':messages,stats=read_telegram(source,fetch,now,days=180,max_pages=source.get('maxPages',4),backfill_cursor=history_state.get(source['url'],{}).get('backfillCursor'));history_state[source['url']]={'backfillCursor':stats.get('nextBackfillCursor') if stats['stopReason']=='page_limit' else None,'lastScanAt':now,'stopReason':stats['stopReason']}
@@ -225,7 +236,7 @@ def collect():
  records=list({c['id']:c for c in candidates if c.get('expiresAt',0)>now}.values())[:10000]
  archive=list({c['id']:c for c in archive}.values())[:500]
  if len(json.dumps(records,ensure_ascii=False).encode())>1800000:raise ValueError('Public manifest size budget exceeded; previous manifest retained')
- report['agents']['verification']={'accepted':len(records),'archivedLeads':len(archive),'mode':'active' if config.get('enabled') else 'shadow','modelBudgetExhausted':len(pending)>18};report['finishedAt']=NOW()
+ report['agents']['verification']={'accepted':len(records),'archivedLeads':len(archive),'mode':'active' if config.get('enabled') else 'shadow','modelBudgetExhausted':len(pending)>18};report['finishedAt']=NOW();report['sourceCursors']=dict(source_cursors);report['sourceTotals']={key:len(config.get(key,[])) for key in ['official','documents','discovery','searches','community']}
  (ROOT/'discovered-sources.json').write_text(json.dumps(discoveries,ensure_ascii=False,indent=2)+'\n')
  (ROOT/'research-candidates.json').write_text(json.dumps({'generatedAt':NOW(),'records':archive,'note':'Historical leads only; not loaded by the app'},ensure_ascii=False,indent=2)+'\n')
  (ROOT/'history-state.json').write_text(json.dumps(history_state,ensure_ascii=False,indent=2)+'\n')

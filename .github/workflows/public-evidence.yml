@@ -1,7 +1,7 @@
 name: Public evidence agents
 on:
   schedule:
-    - cron: '47 4 * * *'
+    - cron: '47 */6 * * *'
   workflow_dispatch:
   push:
     branches: [feature/public-evidence-agents, feature/targeted-public-coverage, feature/poltava-dynamic-sources]
@@ -43,7 +43,9 @@ jobs:
           else:raise RuntimeError('Local model did not start')
           PY
       - name: Verify discovery and address boundary controls
-        run: python public-evidence/qa/test_coverage.py
+        run: |
+          python public-evidence/qa/test_coverage.py
+          python public-evidence/qa/test_rotation.py
       - name: Quality gate before processing live publications
         run: python public-evidence/qa/benchmark.py
       - name: Four roles collect, extract and verify public evidence

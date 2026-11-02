@@ -1,13 +1,19 @@
 import {createHash} from 'node:crypto';
-export const canonicalStreet=s=>typeof s==='string'?s.replace(/(^|\s)(вул|просп|пров|пл|бульв|бул)\.(?=\S)/giu,'$1$2. '):s;
-const key=(r,h)=>JSON.stringify([r.regionId,r.settlement,r.community,canonicalStreet(r.street),r.officialCityId||null,h]);
+export const canonicalStreet=s=>typeof s==='string'?s.replace(/(^|[\s.])(вул|просп|пров|пл|бульв|бул)\.(?=\S)/giu,'$1$2. '):s;
+export const canonicalHouse=value=>String(value ?? '').normalize('NFKC').toLocaleLowerCase('uk').replace(/[\s№]/g,'').replace(/[aceopx]/g,c=>({a:'а',c:'с',e:'е',o:'о',p:'р',x:'х'})[c]).replace(/(\d)[‐‑‒–—-](?=[а-яіїєґ]$)/gu,'$1');
+const name=value=>String(value??'').normalize('NFKC').toLocaleLowerCase('uk').replace(/[’ʼ`]/g,"'").replace(/\s+/g,' ').trim();
+const locality=value=>name(value).replace(/^(?:(?:м|с|г)\.\s*|(?:місто|село|селище|смт)\s+)/u,'');
+const sameGeography=(a,b)=>a.regionId===b.regionId&&locality(a.settlement)===locality(b.settlement)&&name(a.community)===name(b.community);
+const key=(r,h)=>JSON.stringify([r.regionId,locality(r.settlement),name(r.community),name(canonicalStreet(r.street)),r.officialCityId||null,canonicalHouse(h)]);
 // Partial house batches replace only observed houses, never every house in a street.
 export function mergeSnapshots(previous,fresh,now=Date.now()){
  const touched=new Set(fresh.completedStreetIds||[]),observed=new Set(fresh.records.filter(r=>r.scope==='house').flatMap(r=>r.houses.map(h=>key(r,h))));
+ const negative=fresh.observedHouses||[];
+ const wasObserved=(r,h)=>negative.some(o=>sameGeography(o,r)&&name(canonicalStreet(o.street))===name(canonicalStreet(r.street))&&canonicalHouse(o.house)===canonicalHouse(h)&&(!o.providerStreetId||!r.providerStreetId||o.providerStreetId===r.providerStreetId));
  const retained=[];
  for(const r of previous?.records||[]){
   if(r.expiresAt<=now||touched.has(r.officialCityId))continue;
-  if(r.scope==='house'){const houses=r.houses.filter(h=>!observed.has(key(r,h)));if(houses.length)retained.push({...r,houses});}
+  if(r.scope==='house'){const houses=r.houses.filter(h=>!observed.has(key(r,h))&&!wasObserved(r,h));if(houses.length)retained.push({...r,houses});}
   else retained.push(r);
  }
  const rows=new Map();for(const r of [...retained,...fresh.records])rows.set(r.id,r);

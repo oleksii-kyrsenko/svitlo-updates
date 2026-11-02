@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "goalPercent": 100,
+  "minimumAggregatePercent": 90,
+  "baselineCount": 110,
+  "baselineMinimumOfficial": 99,
+  "baselineSampleSha256": "369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043",
+  "origin120SampleSha256": "6a82c50017af85161c6d8581080ac5d2910be16eb043b6488a4dfd9dccca7a56",
+  "holdoutCount": 440,
+  "holdoutPerCity": 20,
+  "holdoutMinimumOfficial": 396,
+  "holdoutStatus": "frozen",
+  "holdoutSelection": {
+    "centerPerCity": 8,
+    "peripheryPerCity": 12,
+    "differentStreetRequired": true,
+    "minimumDistanceMetres": 250,
+    "minimumPeripheralQuadrants": 3,
+    "noSourceCoverageInputs": true,
+    "excludeBaselineAddresses": true,
+    "verifyCityMembership": true,
+    "peripheryDefinition": "Each quadrant independently: radius >= max(1.5km, 60% of geographically verified city extent in that quadrant). This geography-only definition was fixed before any holdout queue lookup."
+  },
+  "cityCount": 22,
+  "excludedTestRegionIds": [
+    "UA-14",
+    "UA-40",
+    "UA-43",
+    "UA-44"
+  ],
+  "minimumConsecutiveCycles": 3,
+  "minimumObservationHours": 24,
+  "officialRegressionsToPreserve": 38,
+  "nativeAndroidApis": [
+    30,
+    35,
+    36
+  ],
+  "requiredProvenance": "official independently verified original source",
+  "manualQueueAllowed": false,
+  "geographicInput": "OpenStreetMap residential addresses plus municipality-membership and address verification evidence",
+  "coverageClaim": "Passing samples does not establish100%ofallcityaddresses; goal100%appliestoallremainingverifiedfailures.",
+  "holdoutSampleSha256": "15f9281c575adfcc0c7e795a3c8a45e60c3ef34569bb74fc082529d9144b751e"
+}

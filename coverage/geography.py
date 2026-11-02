@@ -113,6 +113,50 @@ class GeographyResolver:
             return south<=lat<=north and west<=lon<=east and metres<=500
         except (KeyError,ValueError,TypeError):return False
 
+    @staticmethod
+    def _city_region(record, settlement, region):
+        """A published city-region is its own administrative context.
+
+        This is deliberately narrower than a missing municipality: an ordinary
+        city, town, county or a matching city name cannot establish this fact.
+        Nominatim publishes the city-region boundary at rank8 with the ISO4
+        code on that same relation (for example Kyiv). No community is coined.
+        """
+        if not GeographyResolver._matches(record, settlement, region):
+            return False
+        address = record.get('address', {})
+        return (record.get('osm_type') == 'relation'
+                and isinstance(record.get('osm_id'), int) and record['osm_id'] > 0
+                and record.get('category') == 'boundary'
+                and record.get('type') == 'administrative'
+                and record.get('addresstype') == 'city'
+                and record.get('place_rank') == 8
+                and address.get('ISO3166-2-lvl4') == region
+                and not any(address.get(k) for k in ('municipality', 'state', 'county', 'district')))
+
+    @staticmethod
+    def context_from_record(record, settlement, region, source_url, checked_at):
+        """Extract only explicit source context; shared by snapshot tooling."""
+        if not https(source_url) or not GeographyResolver._matches(record, settlement, region):
+            return None
+        address = record['address']
+        city_region = GeographyResolver._city_region(record, settlement, region)
+        community = address.get('municipality')
+        if city_region:
+            community = address['city']
+        if not isinstance(community, str) or not community.strip():
+            return None
+        result = {'status': 'resolved', 'community': community.strip(),
+                  'sourceUrl': source_url, 'checkedAt': checked_at,
+                  'method': 'nominatim-city-region' if city_region else 'nominatim-municipality'}
+        if (record.get('osm_type') in ('relation', 'node')
+                and isinstance(record.get('osm_id'), int) and record['osm_id'] > 0
+                and record.get('addresstype') in ('city', 'town', 'village', 'hamlet')):
+            result['cityId'] = 'osm-' + record['osm_type'] + '-' + str(record['osm_id'])
+        if city_region:
+            result.update(communityKind='city-region', regionUnique=True)
+        return result
+
     def resolve(self, query):
         if not isinstance(query, dict):
             return {'status': 'unresolved', 'reason': 'invalid_input'}
@@ -134,9 +178,18 @@ class GeographyResolver:
                 return {'status': 'unresolved', 'reason': 'invalid_coordinates'}
         # Coordinates distinguish same-name localities; unresolved name-only results
         # must not poison later coordinate-specific requests.
-        key = json.dumps(['geo-v4', region, name_key(settlement), [lat, lon] if coordinates is not None else None], ensure_ascii=False)
+        key = json.dumps(['geo-v5', region, name_key(settlement), [lat, lon] if coordinates is not None else None], ensure_ascii=False)
         try:
             cached = self._cache(key)
+            if cached is None:
+                # Preserve still-live successful v4 observations with their
+                # original timestamps; only negative v4 caches need reprobe.
+                legacy_key = json.dumps(['geo-v4', region, name_key(settlement), [lat, lon] if coordinates is not None else None], ensure_ascii=False)
+                legacy = self._cache(legacy_key)
+                if (legacy and legacy.get('status') == 'resolved'
+                        and isinstance(legacy.get('community'), str) and legacy['community'].strip()
+                        and https(legacy.get('sourceUrl'))):
+                    cached = legacy
         except OSError:
             cached = None
         if cached:
@@ -161,11 +214,13 @@ class GeographyResolver:
             if len(candidates) == 1:
                 candidate = candidates[0]
                 community = candidate['address'].get('municipality')
-                if not community and coordinates is None and candidate.get('lat') and candidate.get('lon'):
+                if (not community and not self._city_region(candidate, settlement, region)
+                        and coordinates is None and candidate.get('lat') and candidate.get('lon')):
                     candidate, source_url = self._request('reverse', {**params, 'lat': candidate['lat'], 'lon': candidate['lon'], 'zoom': 12})
                     community = candidate.get('address', {}).get('municipality') if self._matches(candidate, settlement, region) else None
-                if isinstance(community, str) and community.strip():
-                    result = {'status': 'resolved', 'community': community.strip(), 'sourceUrl': source_url, 'checkedAt': int(self.clock() * 1000), 'method': 'nominatim-municipality'}
+                context = self.context_from_record(candidate, settlement, region, source_url, int(self.clock() * 1000))
+                if context:
+                    result = context
                 else:
                     result['reason'] = 'community_not_published'
             elif len(candidates) > 1:

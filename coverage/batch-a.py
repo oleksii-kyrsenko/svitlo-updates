@@ -55,8 +55,12 @@ def parse_chernivtsi(body,branch):
  return rows
 
 class Collector:
- def __init__(self,operator,budget=100,state=None,geography=None):
+ def __init__(self,operator,budget=100,state=None,geography=None,target_city=None,full_city=False):
   self.op=operator;self.f=Fetch(budget);self.state=state or {};self.rows=[];self.errors=[];self.checks=[];self.contexts=[];self.completed=[];self.deadline=time.monotonic()+180;self.verifyForms={}
+  self.target_city=target_city;self.full_city=full_city;self.traversal={'targetCity':target_city,'cycleComplete':False,'mode':'resumable-city-dictionary' if full_city else 'legacy-bounded-discovery'}
+  if full_city:
+   if not target_city:raise ValueError('full_city_requires_target_city')
+   self.deadline=time.monotonic()+900;self.f.deadline=self.deadline
   if geography is None:
    from geography import GeographyResolver
    geography=GeographyResolver(cache_path='coverage/geography-cache.json')
@@ -71,6 +75,107 @@ class Collector:
  def error(self,stage,error):self.errors.append({'stage':stage,'error':type(error).__name__,'httpStatus':getattr(error,'code',None)})
  def check(self,settlement,street,house,queue,status='confirmed'):
   self.checks.append({'settlement':settlement,'street':street,'house':house,'queue':queue,'status':status})
+ def city_entries(self):
+  """Discover the requested city from official dictionaries, not an address fixture."""
+  entries=[]
+  if self.op=='mykolaiv':
+   base=URLS[self.op]+'api/';branches=self.f.json(base+'addr/filii')
+   for branch in branches:
+    for city in self.f.json(base+f"addr/filii/{branch['idfilial']}/ns"):
+     name=next((city[k] for k in ('naznaspunkt','naspunkt','name','fullname') if city.get(k)),None)
+     if locality(name)==locality(self.target_city):entries.append({'id':str(city['idnaspunkt']),'name':name})
+  elif self.op=='zhytomyr':
+   url=URLS[self.op];deps=form(self.f.text(url)).options.get('rem_id',[])
+   if not deps:raise ValueError('department_form_missing')
+   for dep in deps:
+    for city in form(self.f.text(url,{'rem_id':dep['id']})).options.get('naspunkt_id',[]):
+     if locality(city['name'])==locality(self.target_city):entries.append({'id':city['id'],'departmentId':dep['id'],'name':city['name']})
+  elif self.op=='cherkasy':
+   api='https://cabinet.cherkasyoblenergo.com/api_new/disconn.php'
+   def query(**params):
+    value=self.f.json(api+'?'+urllib.parse.urlencode(params));return list(value.values()) if isinstance(value,dict) else value
+   for branch in query(op='department_list'):
+    for city in query(op='city_list',dept_id=branch['ID']):
+     if locality(city['NAME'])==locality(self.target_city):entries.append({'id':str(city['ID']),'name':city['NAME'],'community':city.get('community')})
+  # Duplicate city IDs returned under different branches represent one official
+  # city dictionary; do not waste each cycle rereading it.
+  return list({(entry.get('departmentId'),entry['id']):entry for entry in entries}.values())
+ def collect_city(self):
+  if self.op=='chernivtsi':
+   self.chernivtsi();return
+  if self.op=='sumy':
+   self.sumy();return
+  entries=self.city_entries()
+  if not entries:raise ValueError('target_city_not_in_official_dictionary')
+  signature=hashlib.sha256(json.dumps(entries,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
+  cursor=self.state.get('targetCursor',{})
+  if cursor.get('target')!=locality(self.target_city) or cursor.get('directorySignature')!=signature:cursor={'target':locality(self.target_city),'directorySignature':signature,'entryIndex':0,'streetIndex':0,'houseIndex':0}
+  self.state['targetCursor']=cursor
+  while cursor['entryIndex']<len(entries):
+   entry=entries[cursor['entryIndex']];community=entry.get('community') or self.context(entry['name'])
+   if not community:raise ValueError('verified_target_community_missing')
+   self.collect_entry(entry,community,cursor)
+   if cursor.get('entryComplete'):
+    cursor.update(entryIndex=cursor['entryIndex']+1,streetIndex=0,houseIndex=0,entryComplete=False)
+   else:return
+  self.traversal.update(cycleComplete=True,officialCityCount=len(entries));cursor.update(entryIndex=0,streetIndex=0,houseIndex=0)
+ def collect_entry(self,entry,community,cursor):
+  """Resume on the first unread house/street; never first-N random streets."""
+  if self.op=='mykolaiv':
+   base=URLS[self.op]+'api/'
+   streets=self.f.json(base+f"addr/ns/{entry['id']}/street")
+  elif self.op=='zhytomyr':
+   fields={'rem_id':entry['departmentId'],'naspunkt_id':entry['id']}
+   streets=form(self.f.text(URLS[self.op],fields)).options.get('vulica_id',[])
+  else:
+   api='https://cabinet.cherkasyoblenergo.com/api_new/disconn.php'
+   def q(**params):
+    value=self.f.json(api+'?'+urllib.parse.urlencode(params));return value if params.get('op')=='disconn_by_ls' else list(value.values()) if isinstance(value,dict) else value
+   streets=q(op='street_list',city_id=entry['id'],search_name='')
+  if not isinstance(streets,list) or not streets:raise ValueError('target_street_dictionary_missing')
+  for si in range(cursor['streetIndex'],len(streets)):
+   if self.f.calls>=self.f.budget-5 or time.monotonic()>self.deadline:return
+   street=streets[si]
+   if self.op=='zhytomyr':
+    request_fields={**fields,'vulica_id':street['id']};parsed=form(self.f.text(URLS[self.op],request_fields))
+    if parsed.hidden:request_fields=parsed.hidden;parsed=form(self.f.text(URLS[self.op],request_fields))
+    for row in parsed.rows:
+     if len(row)!=7 or locality(row[1])!=locality(entry['name']) or not re.fullmatch('[1-6]',row[4]) or not re.fullmatch('[12]',row[5]):continue
+     for house in houses(row[3]):
+      r=self.add(entry['name'],community,row[2],house,row[4]+'.'+row[5],URLS[self.op])
+      if r:self.check(entry['name'],row[2],house,r['queue'],'confirmed_official_form')
+    cursor.update(streetIndex=si+1,houseIndex=0);continue
+   if self.op=='mykolaiv':house_rows=self.f.json(base+f"addr/street/{street['idstreet']}/dom")
+   else:house_rows=q(op='house_list',street_id=street['ID'],search_name='')
+   if not isinstance(house_rows,list):raise ValueError('target_house_dictionary_invalid')
+   for hi in range(cursor['houseIndex'],len(house_rows)):
+    if self.f.calls>=self.f.budget-5 or time.monotonic()>self.deadline:return
+    h=house_rows[hi]
+    if self.op=='mykolaiv':
+     sn=next((street[k] for k in ('nazstreet','street','name','fullname') if street.get(k)),None);hn=str(next((h[k] for k in ('nazdom','dom','name','fullname') if h.get(k)),''))
+     qr=self.f.json(base+f"addr/dom/{h['iddom']}/outage-queue");values=[str(v['outage'].get('name','')) for v in qr if v.get('outage',{}).get('type_id')==3]
+     queue=values[0] if values and len(set(values))==1 and all(re.fullmatch(r'\d{1,2}(?:\.\d{1,2})?',v) for v in values) else None
+    else:
+     sn=street['NAME'];hn=str(h['HOUSE']);accounts=q(op='ls_list_by_addr',street_id=street['ID'],house=hn);values=[]
+     if len(accounts)>64:self.check(entry['name'],sn,hn,None,'too_many_connections');cursor['houseIndex']=hi+1;continue
+     # No partially read connection list can confirm a whole house.
+     if self.f.calls+len(accounts)>self.f.budget-2:return
+     for account in accounts:
+      date=datetime.datetime.now(datetime.timezone.utc).strftime('%d.%m.%Y')
+      data=q(op='disconn_by_ls',disconn_selector='2',n_date=date,k_date=date,abon_ls=account['LS'])
+      sections=data.get('DISCONN_QUEUQ',{}) if isinstance(data,dict) else {}
+      sections=list(sections.values()) if isinstance(sections,dict) else sections;found=[]
+      for section in sections:
+       for part in re.split(r'(?=(?:СГАВ|ГАВ|ГПВ))',clean(section.get('QUEUE_INFO',''))):
+        if 'ГПВ' in part or 'погодин' in part.lower():
+         found.extend(a+'.'+b for a,b in re.findall(r'([1-6])\s*черг[аиу]\s*[,;:–—-]?\s*([12])\s*підчерг[аиу]',part,re.I));found.extend(a+'.'+b for a,b in re.findall(r'(?<![\d.])([1-6])\s*[.,]\s*([12])(?![\d.])',part))
+      values.append(found[0] if found and len(set(found))==1 else None)
+     queue=values[0] if values and all(values) and len(set(values))==1 else None
+    if queue:self.add(entry['name'],community,sn,hn,queue,URLS[self.op]);self.check(entry['name'],sn,hn,queue)
+    else:self.check(entry['name'],sn,hn,None,'ambiguous_or_no_gpv')
+    cursor['houseIndex']=hi+1
+   cursor.update(streetIndex=si+1,houseIndex=0)
+  cursor['entryComplete']=True
  def mykolaiv(self):
   base=URLS[self.op]+'api/';branches=self.f.json(base+'addr/filii');start=self.state.get('branchIndex',0)%len(branches)
   for bi in range(start,min(len(branches),start+3)):
@@ -102,7 +207,8 @@ class Collector:
  def chernivtsi(self):
   branch=self.state.get('branch',1);url=f'https://oblenergo.cv.ua/shutdowns-search/{branch}/';body=self.f.text(url);source_rows=parse_chernivtsi(body,branch);by_city={}
   for r in source_rows:by_city.setdefault(r['settlement'],[]).append(r)
-  for name,rows in list(by_city.items())[:6]:
+  selected=[(name,rows) for name,rows in by_city.items() if not self.full_city or locality(name)==locality(self.target_city)]
+  for name,rows in selected if self.full_city else selected[:6]:
    community=self.context(name)
    if not community:continue
    claims={}
@@ -120,6 +226,7 @@ class Collector:
    for r in sample:
     values=lookup.get((r['settlement'],r['street'],r['houses'][0]),set());self.check(r['settlement'],r['street'],r['houses'][0],r['queue'],'confirmed_source_reread' if values=={r['queue']} else 'conflict')
   self.state['branch']=branch%12+1
+  if self.full_city:self.traversal.update(sourceBranch=branch,targetCityInBranch=bool(selected),branchComplete=True,cycleComplete=False,remainingBranchesMustBeChecked=True)
  def zhytomyr(self):
   url=URLS[self.op];initial=form(self.f.text(url));deps=initial.options.get('rem_id',[])
   if not deps:raise ValueError('department_form_missing')
@@ -184,17 +291,18 @@ class Collector:
  def sumy(self):
   # Protection is reported before a response decoder is invented. No account endpoints.
   data=self.f.json('https://www.soe.com.ua/next-api/shutdowns/cities?search=')
-  self.errors.append({'stage':'cities','error':'unimplemented_or_protected_codec','responseShape':list(data) if isinstance(data,dict) else type(data).__name__})
+  self.errors.append({'stage':'cities','error':'unimplemented_or_protected_codec','responseShape':list(data) if isinstance(data,dict) else type(data).__name__,'publicWebsiteRoutes':['/next-api/shutdowns/cities','/next-api/shutdowns/streets','/next-api/shutdowns/queues-by-street'],'protocolSource':'https://www.soe.com.ua/consumers/shutdowns'})
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--operator',required=True,choices=REGIONS);p.add_argument('--output',required=True);p.add_argument('--budget',type=int,default=60);p.add_argument('--state');a=p.parse_args()
- if not 1<=a.budget<=200:raise ValueError('invalid_budget')
- state_path=Path(a.state or 'coverage/batch-a-state-'+a.operator+'.json');states=json.loads(state_path.read_text()) if state_path.exists() else {};c=Collector(a.operator,a.budget,states.get(a.operator,{}));started=int(time.time()*1000)
- try:getattr(c,a.operator)()
+ p=argparse.ArgumentParser();p.add_argument('--operator',required=True,choices=REGIONS);p.add_argument('--output',required=True);p.add_argument('--budget',type=int,default=60);p.add_argument('--state');p.add_argument('--target-city');p.add_argument('--full-city',action='store_true');p.add_argument('--request-limit',type=int);a=p.parse_args()
+ budget=a.request_limit if a.request_limit is not None else a.budget
+ if not 1<=budget<=5000:raise ValueError('invalid_budget')
+ state_path=Path(a.state or 'coverage/batch-a-state-'+a.operator+'.json');states=json.loads(state_path.read_text()) if state_path.exists() else {};c=Collector(a.operator,budget,states.get(a.operator,{}),target_city=a.target_city,full_city=a.full_city);started=int(time.time()*1000)
+ try:c.collect_city() if c.full_city else getattr(c,a.operator)()
  except Exception as e:c.error('collection',e)
  c.rows=consensus(c.rows);now=int(time.time()*1000);out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True)
  states[a.operator]=c.state;state_path.parent.mkdir(parents=True,exist_ok=True);state_path.write_text(json.dumps(states,indent=2)+'\n')
- report={'schemaVersion':1,'operatorId':a.operator,'startedAt':started,'finishedAt':now,'records':len(c.rows),'checks':c.checks,'confirmedSampleAddresses':sum(x['status'].startswith('confirmed') for x in c.checks),'sampleMethod':'source-derived address sample; selected before queue queries or independently reread official roster; not Android UI audit','http':c.f.trace,'errors':c.errors,'geography':c.contexts,'nextState':c.state,'status':'collected' if c.rows else 'blocked_or_no_confirmed_context'}
+ report={'schemaVersion':1,'operatorId':a.operator,'startedAt':started,'finishedAt':now,'records':len(c.rows),'checks':c.checks,'confirmedSampleAddresses':sum(x['status'].startswith('confirmed') for x in c.checks),'sampleMethod':'source-derived address sample; selected before queue queries or independently reread official roster; not Android UI audit','http':c.f.trace,'errors':c.errors,'geography':c.contexts,'nextState':c.state,'traversal':c.traversal,'status':'collected' if c.rows else 'blocked_or_no_confirmed_context'}
  out.with_suffix(out.suffix+'.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
  if not c.rows:print(json.dumps({'operator':a.operator,'records':0,'errors':len(c.errors)}));raise SystemExit(1)
  bundle={'schemaVersion':1,'operatorId':a.operator,'generatedAt':now,'expiresAt':min(r['expiresAt'] for r in c.rows),'records':c.rows,'completedStreetIds':c.completed}

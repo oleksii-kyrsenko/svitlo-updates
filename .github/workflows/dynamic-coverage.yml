@@ -12,7 +12,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,14 +33,21 @@ jobs:
           if [ ! -f coverage/geography-cache.json ]; then cp coverage/geography-bootstrap.json coverage/geography-cache.json; fi
       - name: Validate publisher and monitor
         run: |
-          node --test coverage/qa/build.test.mjs coverage/qa/refresh.test.mjs
+          node --test coverage/qa/*.test.mjs
           python3 coverage/qa/test-monitor.py
           python3 coverage/qa/test-crawl.py
           python3 coverage/test_geography.py
+          python3 coverage/qa/test-capital-geography.py
+          python3 -m unittest discover -s coverage/qa -p 'test_capital*.py'
+          python3 coverage/qa/test_city_crawl.py
+          python3 coverage/qa/test-official-rosters.py
+          python3 coverage/qa/test-city-forms.py
           python3 coverage/qa/test-remainder.py
           python3 coverage/qa/test-batches.py
       - name: Monitor every operator and discover registry changes
         run: python3 coverage/monitor.py --registry
+      - name: Schedule seven bounded capital coverage roles
+        run: python3 coverage/capitals/workqueue.py --state coverage/capitals/work-state.json --output coverage/capitals/workqueue.json
       - name: Maintain one investigation task
         env:
           GH_TOKEN: ${{ github.token }}
@@ -49,7 +56,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add coverage/report.json
+          git add coverage/report.json coverage/capitals/work-state.json coverage/capitals/workqueue.json
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh operator source health'
             git pull --rebase origin main
@@ -71,11 +78,13 @@ jobs:
         env:
           COVERAGE_STREET_BUDGET: ${{ vars.COVERAGE_STREET_BUDGET || '8' }}
           COVERAGE_ADDRESS_BUDGET: ${{ vars.COVERAGE_ADDRESS_BUDGET || '20' }}
+          COVERAGE_CITY_REQUEST_LIMIT: ${{ vars.COVERAGE_CITY_REQUEST_LIMIT || '400' }}
           COVERAGE_OPERATORS: ${{ vars.COVERAGE_OPERATORS }}
           SVITLO_GEOGRAPHY_CACHE: coverage/geography-cache.json
         run: |
           node coverage/refresh.mjs
           node coverage/verify.mjs
+          node coverage/verify-v2.mjs
       - name: Publish complete data packages
         run: |
           git config user.name 'github-actions[bot]'
@@ -112,6 +121,8 @@ jobs:
           name: dynamic-coverage-${{ github.run_id }}
           path: |
             coverage/report.json
+            coverage/capitals/work-state.json
+            coverage/capitals/workqueue.json
             coverage/refresh-report.json
             coverage/crawl-state.json
             coverage/staging/*.report.json

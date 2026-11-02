@@ -41,3 +41,9 @@ test('spacing after a street abbreviation cannot duplicate a retained legacy sel
  const fresh={...packet([row('fresh','1','1.1',{street:'вул.Нова'})]),operatorId:'dtek-odesa'};
  const result=combineSnapshots([old],[fresh],at);assert.equal(result.errors.length,0);assert.equal(result.bundles[0].records.length,1);assert.equal(result.bundles[0].records[0].officialCityId,'Зразок');assert.equal(result.bundles[0].records[0].street,'вул. Нова');
 });
+
+test('source-type suffix spacing cannot invalidate an otherwise working complete city refresh',()=>{
+ const previous={...packet([row('old','1','1.1',{street:'ЗРАЗКОВА.ПРОВ.1',officialCityId:'branch:street'})]),operatorId:'chernivtsi'};
+ const fresh={...packet([row('new','1','1.1',{street:'ЗРАЗКОВА.ПРОВ. 1',officialCityId:'branch:street'})]),operatorId:'chernivtsi'};
+ const result=combineSnapshots([previous],[fresh],at);assert.equal(result.errors.length,0);assert.equal(result.bundles[0].records.length,1);
+});
