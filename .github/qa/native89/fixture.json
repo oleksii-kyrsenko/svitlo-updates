@@ -1,0 +1,37 @@
+{
+  "places": [
+    {
+      "id": "public-apk-qa",
+      "name": "QA",
+      "address": "Попівка, провулок Романенка, 2а",
+      "latitude": 49,
+      "longitude": 31,
+      "regionId": "UA-71",
+      "operatorId": "cherkasy",
+      "operatorConfirmed": true,
+      "queue": "3.1",
+      "queueOrigin": "official",
+      "queueScope": "house",
+      "queueConfirmed": true,
+      "queueCheckedAt": 0,
+      "addressContext": {
+        "regionId": "UA-71",
+        "settlement": "Попівка"
+      },
+      "reminders": {
+        "enabled": false,
+        "off": false,
+        "on": false,
+        "changes": false,
+        "offMinutes": 10,
+        "onMinutes": 10
+      }
+    }
+  ],
+  "deleted": [],
+  "snapshots": {},
+  "endpoint": "",
+  "gpsAsked": true,
+  "pushToken": null,
+  "notificationsEnabled": false
+}
