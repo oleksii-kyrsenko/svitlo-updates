@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "cityIndex": 0,
-  "streetIndex": 71,
+  "streetIndex": 76,
   "cityId": "1",
-  "streetId": "26324",
+  "streetId": "26565",
   "consecutiveFailures": 1,
   "cycles": 0,
-  "updatedAt": 1793667423833,
+  "updatedAt": 1793737885413,
   "cityCrawls": {
     "7aa6bf1a2eb5943f732a": {
       "schemaVersion": 1,
@@ -20,5 +20,7 @@
       "dictionaryComplete": false,
       "crawlStatus": "partial"
     }
-  }
+  },
+  "dictionaryComplete": false,
+  "crawlStatus": "partial"
 }

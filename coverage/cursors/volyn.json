@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "cityIndex": 0,
   "streetIndex": 0,
-  "updatedAt": 1793667425503,
+  "updatedAt": 1793737888269,
   "cityCrawls": {
     "8483b86caa3b7cf7315e": {
       "crawlStatus": "partial",
@@ -542,5 +542,6 @@
       "knownStreets": 492,
       "pendingSearchTerms": 34
     }
-  }
+  },
+  "crawlStatus": "partial"
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "cityIndex": 0,
-  "streetIndex": 31,
+  "streetIndex": 36,
   "houseOffsets": {
     "1:1": 5,
     "1:2": 5,
@@ -33,9 +33,14 @@
     "1:181": 5,
     "1:183": 5,
     "1:184": 5,
-    "1:185": 5
+    "1:185": 5,
+    "1:186": 5,
+    "1:213": 0,
+    "1:273": 0,
+    "1:291": 5,
+    "1:342": 3
   },
-  "updatedAt": 1793667451939,
+  "updatedAt": 1793737917181,
   "cityCrawls": {
     "07f42951e15db46eddfa": {
       "crawlStatus": "partial",
@@ -57,5 +62,7 @@
       "streetIndex": 10,
       "updatedAt": 1793688405350
     }
-  }
+  },
+  "crawlStatus": "partial",
+  "dictionaryComplete": false
 }

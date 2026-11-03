@@ -12,21 +12,40 @@
           "status": "resolved",
           "community": "Черкаська селищна громада",
           "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B7%D0%B0%D1%80%D1%96%D1%87%D0%BD%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-          "checkedAt": 1793546981149,
-          "method": "nominatim-municipality"
+          "checkedAt": 1793737963989,
+          "method": "nominatim-municipality",
+          "cityId": "osm-relation-3513051"
         }
       },
-      "auditSamples": [],
+      "auditSamples": [
+        {
+          "settlement": "с. Зарічне",
+          "street": "вул. Буркіна",
+          "house": "1",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=12&houseId=5500",
+          "checkedAt": 1793737958709
+        },
+        {
+          "settlement": "с. Зарічне",
+          "street": "вул. Буркіна",
+          "house": "2",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=12&houseId=5501",
+          "checkedAt": 1793737958709
+        }
+      ],
       "houseIndex": 0,
       "streetIndex": 0,
       "cityIndex": 1,
-      "queryIndex": 5,
+      "queryIndex": 6,
       "lastContext": {
         "status": "resolved",
         "community": "Черкаська селищна громада",
         "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B7%D0%B0%D1%80%D1%96%D1%87%D0%BD%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1793546981149,
-        "method": "nominatim-municipality"
+        "checkedAt": 1793737963989,
+        "method": "nominatim-municipality",
+        "cityId": "osm-relation-3513051"
       },
       "cityCrawls": {
         "3e3484743d535dfa0bd7": {
@@ -5019,7 +5038,9 @@
             ]
           }
         }
-      }
+      },
+      "crawlStatus": "partial",
+      "observedHouses": []
     }
   }
 }

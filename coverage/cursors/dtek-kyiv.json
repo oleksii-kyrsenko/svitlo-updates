@@ -3,10 +3,14 @@
     "dtek-kyiv": {
       "contexts": {
         "UA-30|Київ": {
-          "status": "unresolved",
-          "reason": "community_not_published",
-          "sourceUrl": "https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&accept-language=uk&lat=50.4500336&lon=30.5241361&zoom=12",
-          "checkedAt": 1793634365776
+          "status": "resolved",
+          "community": "Київ",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%BA%D0%B8%D1%97%D0%B2%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793715424788,
+          "method": "nominatim-city-region",
+          "cityId": "osm-relation-421866",
+          "communityKind": "city-region",
+          "regionUnique": true
         }
       },
       "auditSamples": [
@@ -16,7 +20,7 @@
           "house": "діл43",
           "queue": "44.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1&houseId=5",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -24,7 +28,7 @@
           "house": "16",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=11&houseId=968",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -32,7 +36,7 @@
           "house": "34/35",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=11&houseId=969",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -40,7 +44,7 @@
           "house": "1",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1045",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -48,7 +52,7 @@
           "house": "1А",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1046",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -56,7 +60,7 @@
           "house": "1Б",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1047",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -64,7 +68,7 @@
           "house": "2",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1048",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -72,7 +76,7 @@
           "house": "3",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1049",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -80,7 +84,7 @@
           "house": "3А",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1050",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -88,7 +92,7 @@
           "house": "3Б",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1051",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -96,7 +100,7 @@
           "house": "4",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1052",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -104,7 +108,7 @@
           "house": "4/2",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1053",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -112,7 +116,7 @@
           "house": "5",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1054",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -120,7 +124,7 @@
           "house": "5А",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1055",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -128,7 +132,7 @@
           "house": "5Б",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1056",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -136,7 +140,7 @@
           "house": "6А",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1057",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -144,7 +148,7 @@
           "house": "6Б",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1059",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -152,7 +156,7 @@
           "house": "6В",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1058",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -160,7 +164,7 @@
           "house": "6Г",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=12&houseId=1060",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         },
         {
           "settlement": "Київ",
@@ -168,18 +172,22 @@
           "house": "33",
           "queue": "8.1",
           "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=13&houseId=1067",
-          "checkedAt": 1793667447470
+          "checkedAt": 1793737917281
         }
       ],
       "houseIndex": 0,
-      "streetIndex": 0,
+      "streetIndex": 4,
       "cityIndex": 0,
       "queryIndex": 0,
       "lastContext": {
-        "status": "unresolved",
-        "reason": "community_not_published",
-        "sourceUrl": "https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&accept-language=uk&lat=50.4500336&lon=30.5241361&zoom=12",
-        "checkedAt": 1793634365776
+        "status": "resolved",
+        "community": "Київ",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%BA%D0%B8%D1%97%D0%B2%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793715424788,
+        "method": "nominatim-city-region",
+        "cityId": "osm-relation-421866",
+        "communityKind": "city-region",
+        "regionUnique": true
       },
       "cityCrawls": {
         "e574b8438a7d7344c26c": {
@@ -7654,7 +7662,9 @@
             ]
           }
         }
-      }
+      },
+      "crawlStatus": "partial",
+      "observedHouses": []
     }
   }
 }
