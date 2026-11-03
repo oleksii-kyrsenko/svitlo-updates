@@ -1,57 +1,64 @@
 {
   "https://t.me/s/suspilnepoltava": {
-    "backfillCursor": 52968,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 52819,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/suspilnekherson": {
-    "backfillCursor": 84578,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 84518,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/pat_cherkasyoblenergo": {
-    "backfillCursor": 1780,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 1718,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/stryzhavska_rada": {
-    "backfillCursor": 9597,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 9524,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/lutskradanews": {
-    "backfillCursor": 15921,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 15846,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/rada_poltava": {
-    "backfillCursor": 7429,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 7363,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/sarnyrada": {
     "backfillCursor": null,
-    "lastScanAt": 1793623984752,
+    "lastScanAt": 1793716874223,
     "stopReason": "history_window"
   },
   "https://t.me/s/bilokrynycka_gromada": {
-    "backfillCursor": null,
-    "lastScanAt": 1793623984752,
-    "stopReason": "history_window"
+    "backfillCursor": 2876,
+    "lastScanAt": 1793716874223,
+    "stopReason": "page_limit"
   },
   "https://t.me/s/ok_kremen": {
-    "backfillCursor": 58932,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 58869,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/SarnyNewsCity": {
-    "backfillCursor": 10726,
-    "lastScanAt": 1793623984752,
+    "backfillCursor": 10666,
+    "lastScanAt": 1793716874223,
     "stopReason": "page_limit"
   },
   "https://t.me/s/sherbani": {
     "backfillCursor": null,
-    "lastScanAt": 1793623984752,
+    "lastScanAt": 1793716874223,
     "stopReason": "history_window"
+  },
+  "_sourceCursors": {
+    "official": 0,
+    "documents": 0,
+    "discovery": 0,
+    "searches": 0,
+    "community": 0
   }
 }
