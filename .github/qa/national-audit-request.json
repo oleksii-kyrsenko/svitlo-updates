@@ -1,19 +1,9 @@
 {
   "regions": [
-    "UA-07",
-    "UA-30",
-    "UA-35",
-    "UA-46",
-    "UA-68",
     "UA-73"
   ],
   "limit": 5,
   "caseIds": [
-    "UA-07-capital-1",
-    "UA-30-capital-1",
-    "UA-35-capital-1",
-    "UA-46-capital-2",
-    "UA-68-capital-1",
     "UA-73-capital-2"
   ],
   "sample": ".github/qa/capital-baseline.json",
@@ -25,5 +15,5 @@
   "version": "0.1.53",
   "androidApi": 35,
   "chunkSize": 5,
-  "runLabel": "Candidate89 UI calibration after signature-verifier repair; same six frozen cases, no substantive address attempt previously ran"
+  "runLabel": "Chernivtsi only: retry technical uncommitted-input failure with bounded React-state wait; same frozen2-Khouse; no queue/source-result retries"
 }

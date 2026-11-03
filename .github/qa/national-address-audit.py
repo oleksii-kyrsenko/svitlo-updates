@@ -77,6 +77,40 @@ def validate_saved_address(case,result,place):
     if norm(parts.get('house',''))!=norm(case['exactHouse']):raise RuntimeError('Saved house/letter/corpus differs from frozen target')
 
 
+class SearchInputNotCommitted(RuntimeError):
+    def __init__(self,label,state):
+        self.state=state
+        super().__init__('Search input was not committed by the app: '+label+'; '+json.dumps(state,ensure_ascii=False))
+
+
+class AddressSearchTimeout(RuntimeError):
+    """The app accepted the query, but its visible address list stayed pending."""
+    def __init__(self,label,xml):
+        self.xml=xml
+        super().__init__('Address source still loading after accepted search: '+label)
+
+
+def search_input_state(xml, label, text):
+    nodes=list(ET.fromstring(xml).iter())
+    inputs=[n for n in nodes if n.get('class')=='android.widget.EditText' and
+            n.get('content-desc')=='Пошук: '+label and n.get('displayed')!='false']
+    values=[n.get('text','') for n in inputs]
+    native_matches=len(inputs)==1 and norm(values[0])==norm(text)
+    clear=any(n.get('displayed')!='false' and n.get('enabled')!='false' and
+              (n.get('resource-id','').split('/')[-1]=='address-search-input-clear' or
+               n.get('content-desc')=='Очистити пошук') for n in nodes)
+    loading=any(n.get('displayed')!='false' and
+                (n.get('class')=='android.widget.ProgressBar' or
+                 n.get('resource-id','').split('/')[-1]=='ui-loader' or
+                 n.get('content-desc')=='Завантаження') for n in nodes)
+    # Native ACTION_SET_TEXT can update EditText before React consumes its
+    # change event. The app-owned Clear button proves the controlled value;
+    # loading is not a substitute for that proof (Input does not hide Clear).
+    committed=native_matches and (clear if text else not clear)
+    return {'nativeMatches':native_matches,'committed':committed,'loading':loading,
+            'observedValues':values,'clearVisible':clear}
+
+
 class Audit:
     def __init__(self, apk, out, contract=None):
         self.contract=contract or audit_contract.contract({})
@@ -232,6 +266,21 @@ class Audit:
             raise RuntimeError('UI action unavailable: ' + label)
         return False
 
+    def wait_search_commit(self, label, text, seconds=6, loading_seconds=45):
+        start=time.monotonic()
+        while True:
+            xml=self.source();state=search_input_state(xml,label,text)
+            if state['committed']:
+                return xml
+            elapsed=time.monotonic()-start
+            # Do not keep replacing already-correct native text while the app
+            # is busy opening its first city directory. Retrying would race
+            # the same pending React event; keep one bounded wait instead.
+            limit=loading_seconds if state['nativeMatches'] and state['loading'] else seconds
+            if elapsed>=limit:
+                raise SearchInputNotCommitted(label,state)
+            time.sleep(.65)
+
     def type_search(self, label, text):
         self.current_query = text
         self.current_field = label
@@ -258,15 +307,16 @@ class Audit:
                         'contentType':'plaintext'}]})
                     self.adb('shell','input','keyevent','279')
             try:
-                self.wait(lambda xml:(not text and 'Очистити пошук' not in xml) or
-                    (bool(text) and 'Очистити пошук' in xml and any(
-                        n.get('content-desc')=='Пошук: '+label and n.get('text')==text
-                        for n in ET.fromstring(xml).iter())), 6)
+                self.wait_search_commit(label,text)
                 time.sleep(.65)
                 return
-            except RuntimeError:
+            except RuntimeError as error:
                 self.screenshot('search-input-retry-'+str(len(self.input_retries)))
                 self.input_retries.append({'field':label,'attempt':attempt+1})
+                if isinstance(error,SearchInputNotCommitted) and error.state['nativeMatches'] and error.state['loading']:
+                    # Replacing the same pending value again cannot establish
+                    # React commitment. Preserve this bounded busy-state failure.
+                    raise
         raise RuntimeError('Native search input did not accept text: '+label)
 
     def options(self, xml):
@@ -276,12 +326,15 @@ class Audit:
                 and not n.get('content-desc').startswith(exclude)
                 and n.get('class') != 'android.widget.EditText']
 
-    def wait_options(self, seconds=26):
+    def wait_options(self, seconds=45):
         until = time.monotonic()+seconds
         while True:
             xml = self.source()
             if 'Закрити список адрес' not in xml or 'Пошук:' not in xml:
                 raise RuntimeError('Address list closed before an option was selected')
+            state=search_input_state(xml,getattr(self,'current_field',''),getattr(self,'current_query',''))
+            if not state['committed']:
+                raise RuntimeError('Address search input changed after typing: '+json.dumps(state,ensure_ascii=False))
             options = self.options(xml)
             if options:
                 query=getattr(self,'current_query','')
@@ -293,10 +346,11 @@ class Audit:
                     matching = [n for n in options if all(token in norm(n.get('content-desc')) for token in tokens)]
                 if matching:
                     return matching, xml
-            loading = any(n.get('class') == 'android.widget.ProgressBar' for n in ET.fromstring(xml).iter())
+            loading=state['loading']
             if not loading and ('Нічого не знайдено' in xml or 'не відповів' in xml or 'недоступн' in xml or 'Номера немає' in xml):
                 return [], xml
             if time.monotonic() > until:
+                if loading:raise AddressSearchTimeout(getattr(self,'current_field',''),xml)
                 return [], xml
             time.sleep(.65)
 
@@ -527,6 +581,11 @@ class Audit:
                 result['saved'] = False
                 result['uiIssues'].append('Selected address cannot be saved; see footer and operator selection.')
             result['stage'] = 'complete'
+        except AddressSearchTimeout as error:
+            result.update(outcome='address_source_timeout',addressSearchError=str(error),
+                          addressSearchField=getattr(self,'current_field',None),
+                          addressSearchQuery=getattr(self,'current_query',None),visibleText=self.texts(error.xml))
+            (self.case_dir/'address-source-timeout.xml').write_text(error.xml)
         except Exception as error:
             result.update(outcome='harness_error', automationError=str(error)[:1800],
                 automationPhase=self.phase, automationTraceback=traceback.format_exc())

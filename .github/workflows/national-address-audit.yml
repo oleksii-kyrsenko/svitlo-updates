@@ -46,7 +46,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test binary, frozen-sample and structured-address audit controls
-        run: python3 .github/qa/test-audit-contract.py
+        run: |
+          python3 .github/qa/test-audit-contract.py
+          python3 .github/qa/test-audit-search-input.py
       - name: Validate and freeze requested audit chunks
         id: plan
         env:
