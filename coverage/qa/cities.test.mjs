@@ -39,3 +39,9 @@ test('Cherkasy capital uses current official documents while the global crawl re
  assert.equal(capital.args[0],'coverage/collect-cherkasy-documents.py');assert(!capital.args.includes('--budget'));assert(capital.args.includes('--full-city'));
  const global=collectorCommand('cherkasy');assert.equal(global.args[0],'coverage/batch-a.py');assert(global.args.includes('--budget'));
 });
+test('Vinnytsia and Prykarpattia capital documents preserve the legacy all-settlement routes',()=>{
+ for(const [operator,city,script] of [['vinnytsia','Вінниця','collect-vinnytsia-documents.py'],['prykarpattia','Івано-Франківськ','collect-western-official.py']]){
+  const capital=collectorCommand(operator,{targetCity:city,fullCity:true,requestLimit:16});assert.equal(capital.args[0],'coverage/'+script);assert(!capital.args.includes('--street-limit'));assert(!capital.args.includes('--budget'));assert(capital.args.includes('--target-city'));
+  const global=collectorCommand(operator);assert.equal(global.args[0],'coverage/collect-batch-b.py');assert(global.args.includes('--street-limit'));
+ }
+});

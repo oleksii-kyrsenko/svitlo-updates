@@ -1,12 +1,31 @@
 """Bounded standalone official address collectors. No private application imports.
 Only explicit house/queue assignments survive. Subscriber identifiers stay in memory.
 """
-import argparse,datetime,hashlib,json,random,re,time,urllib.parse
+import argparse,datetime,hashlib,http.client,http.cookiejar,json,random,re,ssl,subprocess,time,urllib.parse,urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 from source_utils import Fetch,clean,locality,record
 REGIONS={'mykolaiv':('UA-48','Миколаївська область'),'chernivtsi':('UA-73','Чернівецька область'),'zhytomyr':('UA-18','Житомирська область'),'cherkasy':('UA-71','Черкаська область'),'sumy':('UA-59','Сумська область')}
 URLS={'mykolaiv':'https://off.energy.mk.ua/','chernivtsi':'https://oblenergo.cv.ua/shutdowns/','zhytomyr':'https://www.ztoe.com.ua/unhooking-search.php','cherkasy':'https://www.cherkasyoblenergo.com/off','sumy':'https://www.soe.com.ua/consumers/shutdowns'}
+CHERKASY_CA_SHA256='8c54c334b66ba4e426772af4a3f9136c19a1aec729fdb28c535c07a5a4ef22e0'
+def cherkasy_tls_context(certificate=None):
+ # The official API sends only its leaf. This public intermediate is already
+ # used by Android; authenticate it through system roots before completing the
+ # chain. A missing/changed/untrusted certificate stops collection.
+ certificate=Path(certificate) if certificate else Path(__file__).parent/'certificates/sectigo-dv-r36.pem'
+ der=ssl.PEM_cert_to_DER_cert(certificate.read_text())
+ if hashlib.sha256(der).hexdigest()!=CHERKASY_CA_SHA256:raise ValueError('official_intermediate_fingerprint_mismatch')
+ if subprocess.run(['openssl','verify',str(certificate)],capture_output=True,timeout=15).returncode:raise ValueError('official_intermediate_system_root_verification_failed')
+ context=ssl.create_default_context();context.load_verify_locations(str(certificate));return context
+
+class CherkasyHTTPSHandler(urllib.request.HTTPSHandler):
+ def __init__(self):
+  super().__init__();self.official_context=cherkasy_tls_context()
+ def https_open(self,req):
+  target=urllib.parse.urlsplit(req.full_url)
+  approved=target.scheme=='https' and target.netloc in ('cabinet.cherkasyoblenergo.com','cabinet.cherkasyoblenergo.com:443') and target.path=='/api_new/disconn.php'
+  # Other hosts, redirects and paths retain the ordinary system context.
+  return self.do_open(http.client.HTTPSConnection,req,context=self.official_context if approved else None,check_hostname=True)
 class Form(HTMLParser):
  def __init__(self):super().__init__(convert_charrefs=True);self.select=None;self.option=None;self.options={};self.row=None;self.cell=None;self.rows=[];self.hidden={};self.activeform=None
  def handle_starttag(self,tag,attrs):
@@ -57,6 +76,7 @@ def parse_chernivtsi(body,branch):
 class Collector:
  def __init__(self,operator,budget=100,state=None,geography=None,target_city=None,full_city=False):
   self.op=operator;self.f=Fetch(budget);self.state=state or {};self.rows=[];self.errors=[];self.checks=[];self.contexts=[];self.completed=[];self.deadline=time.monotonic()+180;self.verifyForms={}
+  if operator=='cherkasy':self.f.opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()),CherkasyHTTPSHandler())
   self.target_city=target_city;self.full_city=full_city;self.traversal={'targetCity':target_city,'cycleComplete':False,'mode':'resumable-city-dictionary' if full_city else 'legacy-bounded-discovery'}
   if full_city:
    if not target_city:raise ValueError('full_city_requires_target_city')
