@@ -5,6 +5,7 @@ is used without stealth, CAPTCHA interaction, credentials or subscriber input.
 The Chernihiv mode collects public protocol evidence, not guessed queue facts.
 """
 import argparse
+import base64
 import hashlib
 import importlib.util
 import json
@@ -63,11 +64,24 @@ class DirectoryPage(HTMLParser):
         self.option = None
         self.options = []
         self.base = None
+        self.anchor = None
+        self.anchor_text = []
+        self.document_links = []
+        self.section_archive = False
+        self.heading = None
+        self.heading_text = []
+        self.archive_depth = 0
+        self.stack = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        archived=bool(re.search(r'архів|архив|archive|history',str(attrs.get('class',''))+' '+str(attrs.get('id','')),re.I))
+        self.stack.append((tag,archived))
+        if archived:self.archive_depth+=1
+        if re.fullmatch('h[1-6]',tag):self.heading=tag;self.heading_text=[]
         if tag == 'a' and attrs.get('href'):
-            self.links.append(attrs['href'])
+            self.links.append(attrs['href']);self.anchor=attrs['href'];self.anchor_text=[]
+            self.anchor_archived=self.section_archive or self.archive_depth>0
         if tag == 'meta' and attrs.get('property') == 'og:url':
             self.base = attrs.get('content')
         if tag == 'select':
@@ -76,10 +90,19 @@ class DirectoryPage(HTMLParser):
             self.option = {'id': attrs.get('value'), 'name': '', 'disabled': 'disabled' in attrs}
 
     def handle_data(self, value):
+        if self.anchor is not None:self.anchor_text.append(value)
+        if self.heading is not None:self.heading_text.append(value)
         if self.option is not None:
             self.option['name'] += value
 
     def handle_endtag(self, tag):
+        if tag=='a' and self.anchor is not None:
+            self.document_links.append({'href':self.anchor,'label':clean(' '.join(self.anchor_text)),'archived':self.anchor_archived});self.anchor=None;self.anchor_text=[]
+        if tag==self.heading:
+            self.section_archive=bool(re.search(r'архів|архив|archive|history',' '.join(self.heading_text),re.I));self.heading=None
+        for i in range(len(self.stack)-1,-1,-1):
+            if self.stack[i][0]==tag:
+                self.archive_depth-=sum(int(v[1]) for v in self.stack[i:]);del self.stack[i:];break
         if tag == 'option' and self.option is not None:
             if not self.option['disabled'] and re.fullmatch(r'[1-9]\d{0,3}', str(self.option['id'] or '')):
                 self.options.append({'id': self.option['id'], 'name': clean(self.option['name'])})
@@ -206,6 +229,52 @@ def origin(url):
     return parsed.scheme + '://' + parsed.netloc
 
 
+def current_roster_link(body, source):
+    """Require the current operator page's active GPV attachment, not a URL lead."""
+    links=[]
+    for item in parse_directory(body).document_links:
+        label=item['label']
+        if not re.search(r'ГПВ|погодинн',label,re.I) or re.search(r'ГАВ|СГАВ|аварійн',label,re.I):continue
+        if item['archived'] or re.search(r'архів|архив|archive|застаріл|втратив чинність|нечинн|скасован',label,re.I):continue
+        # An explicit end date is not converted to a new validity window by fetch.
+        if re.search(r'(?:діяв|діє|чинн[а-яіїє]*)\s+до\s*\d{1,2}[./]\d{1,2}[./]\d{4}',label,re.I):continue
+        url=urllib.parse.urljoin(source,item['href'])
+        if not official_url(url,source) or not urllib.parse.urlsplit(url).path.lower().endswith('.pdf'):continue
+        links.append({'sourceUrl':url,'activeLinkLabel':label,'currentParentUrl':source})
+    unique={v['sourceUrl']:v for v in links}
+    if len(unique)!=1:raise ValueError('current_official_gpv_attachment_not_unique')
+    return next(iter(unique.values()))
+
+
+def retain_current_roster_pdf(page, source, out, parent):
+    link=current_roster_link(page.content(),source)
+    if reason:=BROWSER.visible_block(page):raise BROWSER.SourceStop(reason)
+    from request_budget import throttle
+    throttle(link['sourceUrl'])
+    result=page.evaluate("""async ({url,limit})=>{
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),30000);
+      try {
+       const response=await fetch(url,{credentials:'same-origin',redirect:'manual',signal:controller.signal});
+       if(response.type==='opaqueredirect'||response.status!==200)return {status:response.status,blocked:true};
+       if(Number(response.headers.get('content-length'))>limit)throw Error('public-roster-size-limit');
+       const reader=response.body.getReader(),parts=[];let size=0;
+       try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;
+         if(size>limit){controller.abort();throw Error('public-roster-size-limit');}parts.push(value);}}
+       finally{reader.releaseLock();}
+       let binary='';for(const part of parts)for(let i=0;i<part.length;i+=32768)binary+=String.fromCharCode(...part.subarray(i,i+32768));
+       return {status:response.status,url:response.url,size,base64:btoa(binary)};
+      }finally{clearTimeout(timer);}
+    }""",{'url':link['sourceUrl'],'limit':20_000_000})
+    if result.get('blocked') or not official_url(result.get('url'),source):raise ValueError('current_official_pdf_unavailable')
+    raw=base64.b64decode(result.get('base64',''),validate=True)
+    if not raw.startswith(b'%PDF') or len(raw)>20_000_000 or len(raw)!=result.get('size'):raise ValueError('invalid_public_roster_pdf')
+    path=out/'official-gpv-roster.pdf';path.write_bytes(raw)
+    return {**link,'original':{'path':path.name,'sha256':digest(raw),'bytes':len(raw)},
+            'checkedAt':int(time.time()*1000),'parentProof':parent,
+            'method':'actual-current-official-parent-link-and-ordinary-browser-public-pdf-fetch',
+            'currentness':'Active operator GPV attachment; original effective/publication dates must be read from PDF, never replaced by fetch time.'}
+
+
 def research_chernihiv(page, source, out, script_responses):
     """Retain anonymous public source/iframe/static-code authority chain.
 
@@ -246,8 +315,10 @@ def research_chernihiv(page, source, out, script_responses):
         scripts.append({'sourceUrl': url, 'path': path.name, 'sha256': digest(raw), 'bytes': len(raw),
                         'authorityParent': parent, 'sourceLinkedFrame': next((f for f in linked if origin(f) == origin(url)), None),
                         'protocolLeadsForReview': leads})
+    try:roster=retain_current_roster_pdf(page,source,out,parent)
+    except Exception as error:roster={'constraint':error.reason if isinstance(error,BROWSER.SourceStop) else str(error)}
     return {'status': 'official-public-protocol-evidence-only', 'queueIntegrationVerified': False,
-            'records': 0, 'officialParent': parent, 'sourceLinkedFrames': linked, 'publicScripts': scripts,
+            'records': 0, 'officialParent': parent, 'sourceLinkedFrames': linked, 'publicScripts': scripts,'currentOfficialRoster':roster,
             'constraint': 'address-api-codec-and-public-scope-require-independent-review-before-collection'}
 
 

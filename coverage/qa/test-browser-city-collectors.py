@@ -78,6 +78,18 @@ class BrowserCityControls(unittest.TestCase):
         self.assertEqual(len(result['publicScripts']),1);self.assertEqual(result['records'],0)
         self.assertFalse(result['queueIntegrationVerified']);self.assertEqual(result['publicScripts'][0]['sourceLinkedFrame'],'https://interruptions.energy.cn.ua/')
 
+    def test_current_gpv_link_requires_active_official_parent_not_archive_or_other_product(self):
+        source='https://chernihivoblenergo.com.ua/blackouts'
+        good='<h1>Перерви</h1><a href="/files/other/current.pdf">Графік погодинних відключень (ГПВ)</a>'
+        self.assertEqual(m.current_roster_link(good,source)['sourceUrl'],'https://chernihivoblenergo.com.ua/files/other/current.pdf')
+        cases=[good.replace('ГПВ','ГАВ'),good.replace('<h1>Перерви</h1>','<h1>Архів</h1>'),
+               '<div class="archive">'+good+'</div>',good.replace('ГПВ','ГПВ діяв до01.01.2026'),
+               good.replace('/files/other/current.pdf','https://thirdparty.example/current.pdf'),
+               good+'<a href="/files/other/replacement.pdf">ГПВ</a>']
+        for changed in cases:
+            with self.assertRaises(ValueError):m.current_roster_link(changed,source)
+
+
     def test_failed_fresh_browser_read_cannot_reuse_an_old_candidate(self):
         import tempfile
         from unittest.mock import patch
