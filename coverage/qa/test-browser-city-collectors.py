@@ -78,5 +78,27 @@ class BrowserCityControls(unittest.TestCase):
         self.assertEqual(len(result['publicScripts']),1);self.assertEqual(result['records'],0)
         self.assertFalse(result['queueIntegrationVerified']);self.assertEqual(result['publicScripts'][0]['sourceLinkedFrame'],'https://interruptions.energy.cn.ua/')
 
+    def test_failed_fresh_browser_read_cannot_reuse_an_old_candidate(self):
+        import tempfile
+        from unittest.mock import patch
+        class Page:
+            def on(self,*args):pass
+            def goto(self,*args,**kwargs):raise m.BROWSER.SourceStop('source-protection-interstitial')
+        class Context:
+            def new_page(self):return Page()
+            def close(self):pass
+        class Browser:
+            def new_context(self,**kwargs):return Context()
+            def close(self):pass
+        class Engine:
+            chromium=type('Chromium',(),{'launch':lambda self:Browser()})()
+            def __enter__(self):return self
+            def __exit__(self,*args):pass
+        with tempfile.TemporaryDirectory() as temp:
+            old=Path(temp)/'chernivtsi'/'normalized-candidates.json';old.parent.mkdir();old.write_text('{"records":["old"]}')
+            with patch('request_budget.throttle'),patch.object(m.BROWSER,'page_artifacts',return_value={}):
+                result=m.run(['chernivtsi'],temp,4,playwright_factory=Engine)
+            self.assertFalse(old.exists());self.assertEqual(result['operators'][0]['status'],'stopped-source-protection-interstitial')
+
 
 if __name__=='__main__':unittest.main()

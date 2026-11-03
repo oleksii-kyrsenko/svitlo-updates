@@ -47,3 +47,10 @@ test('source-type suffix spacing cannot invalidate an otherwise working complete
  const fresh={...packet([row('new','1','1.1',{street:'ЗРАЗКОВА.ПРОВ. 1',officialCityId:'branch:street'})]),operatorId:'chernivtsi'};
  const result=combineSnapshots([previous],[fresh],at);assert.equal(result.errors.length,0);assert.equal(result.bundles[0].records.length,1);
 });
+
+test('phone bundles expose public queue facts without publisher crawl and negative observation state',()=>{
+ const fresh={...packet([row('a','1')]),observedHouses:[{regionId:'UA-46',settlement:'Зразок',community:'Зразкова',street:'Нова',house:'2'}],completedStreetIds:['done'],completeSnapshot:true};
+ const result=combineSnapshots([], [fresh], at);assert.equal(result.errors.length,0);
+ assert.deepEqual(Object.keys(result.bundles[0]).sort(),['schemaVersion','operatorId','generatedAt','expiresAt','records'].sort());
+ assert.equal(result.sourceSnapshots[0].negativeHouseWatermarks.length,1);
+});

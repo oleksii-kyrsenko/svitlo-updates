@@ -39,7 +39,7 @@ export function combineSnapshots(previous,collected,now=Date.now()){
   validatePublisherSnapshot(merged,now);result.set(fresh.operatorId,merged);
  }catch{errors.push({operatorId:fresh?.operatorId,error:'fresh_snapshot_invalid_previous_unexpired_preserved'});}}
  const sourceSnapshots=[...result.values()];
- const bundles=sourceSnapshots.filter(b=>b.records.length).map(({negativeHouseWatermarks,...bundle})=>bundle);
+ const bundles=sourceSnapshots.filter(b=>b.records.length).map(b=>({schemaVersion:1,operatorId:b.operatorId,generatedAt:b.generatedAt,expiresAt:b.expiresAt,records:b.records}));
  return {bundles,sourceSnapshots,errors,withdrawnOperators:sourceSnapshots.filter(b=>!b.records.length).map(b=>b.operatorId)};
 }
 function checkedPrevious(envelope,version,key,now){
