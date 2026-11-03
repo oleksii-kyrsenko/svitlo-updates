@@ -1,4 +1,7 @@
-import importlib.util,sys,unittest
+import importlib.util,sys,unittest,io,tempfile,hashlib,json
+from email.message import Message
+from types import SimpleNamespace
+from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 spec=importlib.util.spec_from_file_location('cityforms',Path(__file__).resolve().parents[1]/'collect-city-forms.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
@@ -12,6 +15,13 @@ class KirovHTTP:
   if '/street/' in url:return {'success':True,'data':[{'StreetId':'8','StreetName':'вул. Нова'}]}
   return {'success':True,'data':[{'CityId':'7','StreetId':'8','HouseName':'2-А','chergGpv':'1.2'},{'CityId':'7','StreetId':'8','HouseName':'2-А','chergGpv':'2.1'},{'CityId':'7','StreetId':'8','HouseName':'4','chergGpv':'3.1'}]}
 class Controls(unittest.TestCase):
+ def test_retained_original_matches_response_hash_without_request_token(self):
+  raw='{"data":"офіційна публічна відповідь"}'.encode();response=io.BytesIO(raw);response.code=200;response.headers=Message();response.headers['Content-Type']='application/json; charset=utf-8'
+  with tempfile.TemporaryDirectory() as folder,patch('request_budget.throttle'):
+   http=m.HTTP(evidence_directory=folder);http.opener=SimpleNamespace(open=lambda *a,**k:response)
+   self.assertEqual(http.text('https://example.org/public/houses',{'token':'transient-request-token'}),raw.decode())
+   event=http.trace[0];self.assertEqual(event['sha256'],hashlib.sha256(raw).hexdigest());self.assertEqual((Path(folder)/event['originalFile']).read_bytes(),raw)
+   self.assertNotIn('transient-request-token',json.dumps(event));self.assertNotIn('Cookie',json.dumps(event))
  def test_all_connections_must_agree_and_unknown_is_not_ignored(self):
   self.assertEqual(m.consensus_rows([{'h':'1','q':'1.1'},{'h':'1','q':''},{'h':'2','q':'2.1'}],'h','q'),[('1',None),('2','2.1')])
  def test_house_ranges_and_corpora_are_not_collapsed(self):

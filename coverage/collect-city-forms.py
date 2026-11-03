@@ -17,8 +17,9 @@ CONFIG={
 }
 
 class HTTP:
- def __init__(self,limit=120):
+ def __init__(self,limit=120,evidence_directory=None):
   self.limit=limit;self.calls=0;self.deadline=time.monotonic()+480;self.trace=[]
+  self.evidence_directory=Path(evidence_directory) if evidence_directory else None
   self.opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
  def text(self,url,fields=None,*,ajax=False,referer=None,accepted=()):
   if self.calls>=self.limit or time.monotonic()>=self.deadline:raise ValueError('request_budget')
@@ -39,6 +40,10 @@ class HTTP:
     raw=response.read(8_000_001)
     if len(raw)>8_000_000:raise ValueError('source_response_limit')
     event.update(httpStatus=response.code,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())
+    if self.evidence_directory:
+     self.evidence_directory.mkdir(parents=True,exist_ok=True)
+     original=event['sha256']+'.bin';(self.evidence_directory/original).write_bytes(raw)
+     event['originalFile']=original
     charset=response.headers.get_content_charset() or ('cp1251' if re.search(rb'charset\s*=\s*["\x27]?windows-1251',raw[:2500],re.I) else 'utf-8')
     return raw.decode(charset,'replace')
   except Exception as e:event.update(error=type(e).__name__,httpStatus=getattr(e,'code',None));raise
@@ -364,8 +369,8 @@ def vinnytsia(http,geo,state):
 
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--operator',required=True,choices=CONFIG);p.add_argument('--target-city',required=True);p.add_argument('--output',required=True);p.add_argument('--state');p.add_argument('--full-city',action='store_true');p.add_argument('--request-limit',type=request_limit,default=120);p.add_argument('--budget',type=int);p.add_argument('--street-limit',type=int);p.add_argument('--city-limit',type=int);args=p.parse_args()
- geo=geography(args.operator,args.target_city);path=Path(args.output);statefile=Path(args.state) if args.state else path.with_suffix('.state.json');saved=json.loads(statefile.read_text()) if statefile.exists() else {};state=scoped_state(saved,args.target_city,True);http=HTTP(args.request_limit);rows=[];observed=[];completed=[];errors=[];metadata={}
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--operator',required=True,choices=CONFIG);p.add_argument('--target-city',required=True);p.add_argument('--output',required=True);p.add_argument('--state');p.add_argument('--full-city',action='store_true');p.add_argument('--request-limit',type=request_limit,default=120);p.add_argument('--budget',type=int);p.add_argument('--street-limit',type=int);p.add_argument('--city-limit',type=int);p.add_argument('--evidence-directory');args=p.parse_args()
+ geo=geography(args.operator,args.target_city);path=Path(args.output);statefile=Path(args.state) if args.state else path.with_suffix('.state.json');saved=json.loads(statefile.read_text()) if statefile.exists() else {};state=scoped_state(saved,args.target_city,True);http=HTTP(args.request_limit,args.evidence_directory);rows=[];observed=[];completed=[];errors=[];metadata={}
  try:
   if args.operator=='kirovohrad':rows,observed,completed,errors,metadata=kirovohrad(http,geo,state)
   elif args.operator=='volyn':rows,observed,completed,errors,metadata=volyn(http,geo,state)
