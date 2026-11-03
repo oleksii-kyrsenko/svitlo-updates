@@ -5,13 +5,17 @@ save actions use the app's controls. SQLite is read solely to verify what the ap
 actually persisted, and is never written by this audit.
 """
 import argparse, base64, datetime, hashlib, importlib.util, json, os, pathlib, re, sqlite3, subprocess, time, traceback
-import urllib.error, urllib.request, xml.etree.ElementTree as ET
+import urllib.error, urllib.request, urllib.parse, xml.etree.ElementTree as ET
 
 _spec=importlib.util.spec_from_file_location('audit_contract',pathlib.Path(__file__).with_name('audit-contract.py'))
 audit_contract=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(audit_contract)
 
 PKG = 'ua.svitlo.app.testing'
 EID = 'element-6066-11e4-a52e-4f735466cecf'
+REVIEWED_DISPLAY_VARIANTS = pathlib.Path(__file__).with_name('capital-reviewed-display-variants.json')
+REVIEWED_DISPLAY_VARIANTS_SHA256 = '5bf4f083c9740e4f552acd39ed668f8a9d01cf2b0c50c437b0d88a7bfc57c8df'
+REVIEWED_BASELINE_SHA256 = '369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043'
+REVIEWED_CASE_IDS = {'UA-73-capital-1','UA-73-capital-2','UA-46-capital-2'}
 
 
 def stamp():
@@ -57,6 +61,72 @@ def street_matches(label,target):
     return False
 
 
+def validate_reviewed_display_metadata(metadata,cases):
+    variants=metadata.get('variants')
+    if not isinstance(variants,dict) or set(variants)!=REVIEWED_CASE_IDS:
+        raise ValueError('Only the three previously reviewed baseline aliases are permitted')
+    indexed={case['id']:case for case in cases}
+    if len(indexed)!=len(cases) or not REVIEWED_CASE_IDS.issubset(indexed):
+        raise ValueError('Reviewed aliases require the unchanged complete baseline case identities')
+    short=metadata.get('lvivShortNameEvidence') or {}
+    url=urllib.parse.urlsplit(short.get('url',''))
+    query=urllib.parse.parse_qs(url.query)
+    parts=[value.strip() for value in query.get('q',[''])[0].split(',')]
+    lviv=indexed['UA-46-capital-2']
+    if (url.scheme!='https' or url.hostname!='nominatim.openstreetmap.org' or url.path!='/search' or
+        url.username or url.password or query.get('countrycodes')!=['ua'] or len(parts)!=3 or
+        norm(parts[0])!=norm(lviv['city']) or norm(parts[2])!=norm(lviv['exactHouse']) or
+        lviv.get('osmType')!='way' or short.get('sameFrozenOsmId')!=lviv.get('osmId')):
+        raise ValueError('Reviewed short-name evidence differs from the frozen OSM building or house')
+    short_name=parts[1]
+    if short_name not in variants['UA-46-capital-2']:
+        raise ValueError('Short-name proof does not identify one of the reviewed labels')
+    for case_id,names in variants.items():
+        case=indexed[case_id];kind,full_name=street_identity(case['exactStreet'])
+        if not isinstance(names,list) or not names or len(names)>5 or len(set(names))!=len(names):
+            raise ValueError('Invalid reviewed street label list')
+        for name in names:
+            if not isinstance(name,str) or not name.strip() or len(name)>250 or re.search(r'[,;\d]',name):
+                raise ValueError('Reviewed person-name street aliases cannot include a house or another address')
+            alias_kind,alias_name=street_identity(name)
+            if not kind or alias_kind!=kind:
+                raise ValueError('Reviewed street alias changes the frozen street type')
+            if case_id=='UA-46-capital-2' and name==short_name:
+                continue
+            if street_name_key(alias_name)!=street_name_key(full_name):
+                raise ValueError('Reviewed street alias changes the complete person name')
+    return variants
+
+
+def attach_reviewed_display_variants(cases,sample_sha256,path=REVIEWED_DISPLAY_VARIANTS):
+    raw=pathlib.Path(path).read_bytes();actual=hashlib.sha256(raw).hexdigest()
+    if actual!=REVIEWED_DISPLAY_VARIANTS_SHA256:
+        raise ValueError('Reviewed display alias artifact differs from its pinned review')
+    # A holdout never receives these baseline-only exceptions, even if a case
+    # supplies a similarly named field. The geographic fixture itself is untouched.
+    aliases=validate_reviewed_display_metadata(json.loads(raw),cases) if sample_sha256==REVIEWED_BASELINE_SHA256 else {}
+    result=[]
+    for case in cases:
+        copy={k:v for k,v in case.items() if k not in ['reviewedDisplayStreetVariants','reviewedDisplayVariantsSha256']}
+        copy['reviewedDisplayVariantsSha256']=actual
+        if case['id'] in aliases:copy['reviewedDisplayStreetVariants']=list(aliases[case['id']])
+        result.append(copy)
+    return result,actual,raw
+
+
+def case_street_variants(case):
+    reviewed=case.get('reviewedDisplayStreetVariants',[]) if case.get('reviewedDisplayVariantsSha256')==REVIEWED_DISPLAY_VARIANTS_SHA256 and case.get('id') in REVIEWED_CASE_IDS else []
+    return list(dict.fromkeys([case['exactStreet'],*case.get('confirmedStreetVariants',[]),*reviewed]))
+
+
+def case_street_queries(case):
+    queries=[]
+    for name in case_street_variants(case):
+        core=street_identity(name)[1]
+        queries.extend([core,' '.join(street_name_key(core)),max(core.split(),key=len) if core.split() else core])
+    return list(dict.fromkeys(query for query in queries if query))
+
+
 def validate_saved_address(case,result,place):
     selection=place.get('addressSelection') or {}
     street=selection.get('street') or {};house=selection.get('house') or {}
@@ -72,7 +142,7 @@ def validate_saved_address(case,result,place):
     if not(house.get('id') or result.get('houseEnteredThroughUI') or (house.get('source')=='official-roster' and result.get('houseSelectedFromList'))):raise RuntimeError('House was not selected or entered through the UI')
     parts=place.get('addressParts') or {}
     if norm(parts.get('settlement',''))!=norm(case['city']):raise RuntimeError('Saved city differs from frozen target')
-    variants=[case['exactStreet']]+case.get('confirmedStreetVariants',[])
+    variants=case_street_variants(case)
     if not any(street_matches(parts.get('street',''),variant) for variant in variants):raise RuntimeError('Saved street/type differs from frozen target')
     if norm(parts.get('house',''))!=norm(case['exactHouse']):raise RuntimeError('Saved house/letter/corpus differs from frozen target')
 
@@ -409,6 +479,7 @@ class Audit:
         start = time.monotonic()
         result = {**case, 'startedAt': stamp(), 'method': 'signed-apk-visible-ui', 'stage': 'open', 'uiIssues': [],
                   'auditRunId':os.environ.get('GITHUB_RUN_ID'), 'auditCommit':os.environ.get('GITHUB_SHA'),
+                  'reviewedDisplayVariantsSha256':case.get('reviewedDisplayVariantsSha256'),
                   'apkVersion':self.contract['version'], 'apkCode':self.contract['versionCode'], 'apkSha256':self.installed_apk_sha256, 'androidApi':self.contract['androidApi'], 'sampleSha256':self.contract['sampleSha256'], 'queueEnteredManually':False, 'addressStorageSeeded':False}
         try:
             self.open_new_editor()
@@ -447,9 +518,7 @@ class Audit:
             self.screenshot('city-selected-from-list', xml)
             self.choose_option(matches[0])
             result['stage'] = 'street'
-            core=street_identity(case['exactStreet'])[1] if case.get('exactStreet') else case.get('preferredStreet','')
-            reduced=' '.join(street_name_key(core))
-            queries=list(dict.fromkeys([core,reduced,max(core.split(),key=len) if core.split() else core]))
+            queries=case_street_queries(case) if case.get('exactStreet') else [case.get('preferredStreet','')]
             selected = None
             street_open = False
             tried_streets = set()
@@ -463,7 +532,7 @@ class Audit:
                     self.type_search('Вулиця', query)
                     options, xml = self.wait_options()
                 result['streetOptions']=[n.get('content-desc') for n in options]
-                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or any(street_matches(n.get('content-desc'),v) for v in [case['exactStreet']]+case.get('confirmedStreetVariants',[])))), None)
+                selected = next((n for n in options if n.get('content-desc') not in tried_streets and (not case.get('exactStreet') or any(street_matches(n.get('content-desc'),v) for v in case_street_variants(case)))), None)
                 if selected is None:
                     continue
                 result['selectedStreetLabel'] = selected.get('content-desc')
@@ -622,6 +691,9 @@ def main():
     binary=audit_contract.contract(json.loads(args.contract.read_text()) if args.contract else {})
     if args.sample and str(args.sample)!=binary['sample']:raise ValueError('Sample override differs from pinned contract')
     data=json.loads(audit_contract.sample_path('.',binary['sample']).read_text())
+    data['cases'],alias_sha256,alias_raw=attach_reviewed_display_variants(data['cases'],binary['sampleSha256'])
+    (args.out/'reviewed-display-variants.json').write_bytes(alias_raw)
+    binary['reviewedDisplayVariantsSha256']=alias_sha256
     if not 1<=args.limit<=20:raise ValueError('Audit limit must be1..20')
     selected = set(filter(None,args.case_ids.split(',')))
     cases = [c for c in data['cases'] if c['regionId'] == args.region and (not selected or c['id'] in selected)][:args.limit]
@@ -642,7 +714,7 @@ def main():
             print('AUDIT_CASE_START', case['id'], case['city'], stamp(), flush=True)
             result = audit.run_case(case)
             results.append(result)
-            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1,'apkVersion':binary['version'],'apkCode':binary['versionCode'],'apkSha256':binary['apkSha256'],'androidApi':binary['androidApi'],'sampleSha256':binary['sampleSha256'],'noAddressStorageSeeding':True,'noManualQueueInputs':True,
+            (args.out/'results.json').write_text(json.dumps({'schemaVersion':1,'apkVersion':binary['version'],'apkCode':binary['versionCode'],'apkSha256':binary['apkSha256'],'androidApi':binary['androidApi'],'sampleSha256':binary['sampleSha256'],'reviewedDisplayVariantsSha256':alias_sha256,'noAddressStorageSeeding':True,'noManualQueueInputs':True,
                 'region':args.region,'cases':results}, ensure_ascii=False, indent=2)+'\n')
             print('AUDIT_CASE_RESULT', json.dumps({k:result.get(k) for k in ['id','city','outcome','actualAddress','visibleQueue','lookupSeconds','totalSeconds','automationError']}, ensure_ascii=False), flush=True)
     finally:

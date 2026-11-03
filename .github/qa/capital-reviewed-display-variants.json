@@ -1,0 +1,20 @@
+{
+  "method": "Explicit review: same complete person name with word order/honorific differences, same street type and house; frozen geographic addresses unchanged",
+  "variants": {
+    "UA-73-capital-1": [
+      "вулиця Шептицького Андрея Митрополита"
+    ],
+    "UA-73-capital-2": [
+      "вулиця Аксенина Василя"
+    ],
+    "UA-46-capital-2": [
+      "вулиця Петра Дорошенка",
+      "вулиця Дорошенка Петра",
+      "вулиця Дорошенка"
+    ]
+  },
+  "lvivShortNameEvidence": {
+    "url": "https://nominatim.openstreetmap.org/search?q=%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%2C+%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%94%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%BD%D0%BA%D0%B0%2C+52&countrycodes=ua&format=jsonv2&addressdetails=1&accept-language=uk&limit=5",
+    "sameFrozenOsmId": 164256483
+  }
+}
