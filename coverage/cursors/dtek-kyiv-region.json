@@ -6,127 +6,347 @@
           "status": "resolved",
           "community": "Ірпінська міська громада",
           "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D1%80%D0%BF%D1%96%D0%BD%D1%8C%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-          "checkedAt": 1793546473313,
-          "method": "nominatim-municipality"
+          "checkedAt": 1793688895773,
+          "method": "nominatim-municipality",
+          "cityId": "osm-relation-11092577"
         }
       },
       "lastContext": {
         "status": "resolved",
         "community": "Ірпінська міська громада",
         "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%96%D1%80%D0%BF%D1%96%D0%BD%D1%8C%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1793546473313,
-        "method": "nominatim-municipality"
+        "checkedAt": 1793688895773,
+        "method": "nominatim-municipality",
+        "cityId": "osm-relation-11092577"
       },
       "auditSamples": [
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "7-Д/2",
-          "queue": "4.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12-А/4",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "7-Д/5",
-          "queue": "6.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12А",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "7Д/3",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "13",
+          "queue": "3.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "7Е/7",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "13/1",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/68",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/77",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14-Г",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/78",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14А",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/80",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "15",
+          "queue": "3.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/85",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "15А",
+          "queue": "3.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/89",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "16",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": "9/95",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "17",
+          "queue": "3.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": ":0078",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "17/1",
+          "queue": "3.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. 11-а Лінія",
-          "house": ":0079",
-          "queue": "2.1",
+          "street": "вул. Сингаївського Миколи",
+          "house": "18",
+          "queue": "3.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1793667467628
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "19",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А",
+          "queue": "3.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_41",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_42",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_43",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_44",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1М",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1793688893137
         }
       ],
-      "houseIndex": 23,
+      "houseIndex": 43,
       "streetIndex": 2,
       "crawlStatus": "partial",
-      "observedHouses": []
+      "observedHouses": [
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12-А/4",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "13",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "13/1",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14-Г",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "15",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "15А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "16",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "17",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "17/1",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "18",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "19",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_41",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_42",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_43",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_44",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1М",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        }
+      ],
+      "dictionaryComplete": true
     }
   }
 }

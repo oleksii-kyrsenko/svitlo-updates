@@ -25,23 +25,187 @@
           "status": "resolved",
           "community": "Білозерська міська громада",
           "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%BE%D0%B7%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-          "checkedAt": 1793570484899,
-          "method": "nominatim-municipality"
+          "checkedAt": 1793688898825,
+          "method": "nominatim-municipality",
+          "cityId": "osm-relation-3940065"
         }
       },
       "lastContext": {
         "status": "resolved",
         "community": "Білозерська міська громада",
         "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B1%D1%96%D0%BB%D0%BE%D0%B7%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1793570484899,
-        "method": "nominatim-municipality"
+        "checkedAt": 1793688898825,
+        "method": "nominatim-municipality",
+        "cityId": "osm-relation-3940065"
       },
       "auditSamples": [],
-      "houseIndex": 0,
-      "streetIndex": 4,
+      "houseIndex": 17,
+      "streetIndex": 5,
       "cityIndex": 4,
       "crawlStatus": "partial",
-      "observedHouses": []
+      "observedHouses": [
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Шкільна",
+          "house": "31",
+          "providerStreetId": "вул. Шкільна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Шкільна",
+          "house": "62",
+          "providerStreetId": "вул. Шкільна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Шкільна",
+          "house": "84",
+          "providerStreetId": "вул. Шкільна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "1",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "10",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "11",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "12",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "13",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "14",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "15",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "16",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "17",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "18",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "1а",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "21",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "22",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "23",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "24",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "26",
+          "providerStreetId": "вул. Ватутіна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Білозерське",
+          "community": "Білозерська міська громада",
+          "street": "вул. Ватутіна",
+          "house": "28",
+          "providerStreetId": "вул. Ватутіна"
+        }
+      ],
+      "dictionaryComplete": true
     }
   }
 }
