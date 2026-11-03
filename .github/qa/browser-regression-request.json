@@ -1,6 +1,9 @@
 {
   "schemaVersion": 1,
-  "caseIds": ["UA-12-capital-3", "UA-71-capital-1", "UA-71-capital-5"],
-  "purpose": "Capture actual anonymous official source responses for the three blocked same-response regressions; no private application source or expected queues are provided.",
-  "runLabel": "First ordinary Chromium capture of remaining original-success source blockers"
+  "caseIds": [
+    "UA-71-capital-1",
+    "UA-71-capital-5"
+  ],
+  "purpose": "Diagnose actual anonymous official source responses for the two unresolved Cherkasy regressions; no private application source or expected queues are provided.",
+  "runLabel": "Diagnose only the two unresolved Cherkasy source requests with fixed TLS/DNS/timeout error codes; Dnipro capture already verified"
 }

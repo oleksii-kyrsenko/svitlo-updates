@@ -25,7 +25,14 @@ jobs:
           pip install playwright==1.56.0
           python3 -m playwright install --with-deps chromium
       - name: Capture anonymous official HTTP evidence without private application code
-        run: python3 .github/qa/browser-regression-capture.py --out browser-regression-evidence --request-limit 160
+        run: |
+          python3 - <<'PY'
+          import json,re,subprocess
+          request=json.load(open('.github/qa/browser-regression-request.json'))
+          cases=request.get('caseIds',[])
+          assert isinstance(cases,list) and all(isinstance(c,str) and re.fullmatch(r'UA-\d{2}-capital-\d+',c) for c in cases)
+          subprocess.run(['python3','.github/qa/browser-regression-capture.py','--out','browser-regression-evidence','--request-limit','160','--case-ids',','.join(cases)],check=True)
+          PY
       - name: Preserve source evidence including unresolved blockers
         if: always()
         uses: actions/upload-artifact@v4

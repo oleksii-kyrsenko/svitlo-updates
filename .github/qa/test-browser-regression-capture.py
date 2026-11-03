@@ -63,4 +63,8 @@ class CaptureControls(unittest.TestCase):
   self.assertNotEqual(m.house_key('1/2'),m.house_key('12'));self.assertNotEqual(m.house_key('2'),m.house_key('2К'))
  def test_errors_do_not_print_request_urls_account_or_exception_body(self):
   self.assertEqual(m.clean_error(RuntimeError('https://example.org?abon_ls=private'))['reason'],'official-request-failed')
+ def test_request_diagnostics_retain_only_safe_fixed_codes(self):
+  samples=[('net::ERR_CERT_AUTHORITY_INVALID at https://example.org?abon_ls=private','official-tls-certificate-error'),('SSL_ERROR_UNSUPPORTED_VERSION private','official-tls-protocol-error'),('Request timed out private','official-request-timeout'),('getaddrinfo ENOTFOUND private','official-dns-unavailable'),('ECONNRESET private','official-connection-reset'),('Something private','official-request-unavailable')]
+  for message,expected in samples:
+   self.assertEqual(m.request_failure(RuntimeError(message)),expected);self.assertNotIn('private',m.request_failure(RuntimeError(message)))
 if __name__=='__main__':unittest.main()

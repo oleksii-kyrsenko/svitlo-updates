@@ -42,11 +42,13 @@ A source failure or natural change of queue is a blocker, not a preserved queue.
 This check is separate from actual Android UI coverage and cannot count toward
 99/110 or396/440.
 
-Verified3November2026:35of38 original expected queues reproduced in both pinned
-runtimes, zero candidate-only regressions and zero replay misses. One Dnipro
-case needs an actual ordinary browser response instead of its Incapsula script
-challenge; two Cherkasy cases receiveHTTP503. The full38 gate remains failed.
-Proofs: `capital-coverage-90/same-response-combined-2026-11-03/report.json` in the
+Verified3November2026:36of38 original expected queues reproduced in both pinned
+runtimes, zero candidate-only regressions and zero replay misses. The Dnipro case was recovered by actual ordinary Chromium source capture in public
+CI run41592098789 and both pinned runtimes return5.2 without network during replay.
+Two Cherkasy cases remain blocked by official-source unavailability; their browser
+captures contain no responses and cannot establish a successful regression. The
+full38 gate remains failed.
+Proofs: `capital-coverage-90/same-response-combined-browser-41592098789/report.json` in the
 session's retained Library, including the original attempt ledger.
 
 The separate `browser-regression-capture.yml` workflow can capture the three
@@ -56,3 +58,9 @@ visible CAPTCHA/login, never solves challenges, and persists no cookies or raw
 subscriber identifiers. A complete capture is still only source evidence; run
 both pinned private runtimes locally against that exact snapshot before claiming
 a preserved result. An incomplete source capture remains an explicit blocker.
+
+The source capture can restrict work to request.caseIds, without revisiting passed
+cases. Safe fixed error codes distinguish TLS certificate/protocol, DNS, timeout
+and connection-reset blockers; raw browser exception text and private query
+references are never persisted. The next request selects only the two unresolved
+Cherkasy cases. This is source diagnosis, not a retry selected to improve coverage.

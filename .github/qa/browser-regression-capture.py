@@ -29,6 +29,18 @@ def house_key(s):return re.sub(r'(\d)[‐‑‒–—-](?=[а-яіїєґ]$)','\\
 def values(x):return list(x.values()) if isinstance(x,dict) else x if isinstance(x,list) else []
 def query(params):return urllib.parse.urlencode(sorted((str(k),str(v)) for k,v in params.items()),safe='*')
 def encoded_body(params):return urllib.parse.urlencode(params,safe='*')
+def request_failure(error):
+ # Match fixed diagnostic classes without retaining the original exception.
+ # Browser errors may embed a URL containing a transient subscriber reference.
+ value=str(error).lower()
+ for pattern,reason in [
+  (r'err_cert|certificate|cert_has_expired|unable.to.verify|self.signed','official-tls-certificate-error'),
+  (r'unsupported.protocol|protocol.version|ssl_error|err_ssl|tlsv1_alert|wrong.version.number|version.or.cipher|eproto|unsafe.legacy.renegotiation','official-tls-protocol-error'),
+  (r'timed?.?out|timeout|etimedout','official-request-timeout'),
+  (r'err_name|enotfound|eai_again|name.not.resolved','official-dns-unavailable'),
+  (r'econnreset|connection.reset|socket.hang.up','official-connection-reset')]:
+  if re.search(pattern,value):return reason
+ return 'official-request-unavailable'
 def clean_error(error):return {'kind':type(error).__name__,'reason':str(error) if isinstance(error,Stop) else 'official-request-failed'}
 
 def sanitize(url,value,pseudonyms):
@@ -87,7 +99,7 @@ class Capture:
     if int(response.headers.get('content-length','0') or 0)>MAX_RESPONSE:raise Stop('source-response-budget')
     raw=response.body();status=response.status;kind=response.headers.get('content-type','')
   except Stop:raise
-  except Exception:raise Stop('official-request-unavailable')
+  except Exception as error:raise Stop(request_failure(error))
   if len(raw)>MAX_RESPONSE:raise Stop('source-response-budget')
   try:original=json.loads(raw);safe=sanitize(url,original,self.pseudonyms);saved=json.dumps(safe,ensure_ascii=False,separators=(',',':')).encode();kind='application/json;charset=utf-8'
   except json.JSONDecodeError:
@@ -187,6 +199,9 @@ def cherkasy(capture,case,recorded_at):
 def run(args):
  from playwright.sync_api import sync_playwright
  config=json.loads(Path(args.inputs).read_text());out=Path(args.out);out.mkdir(parents=True,exist_ok=True);reports=[]
+ selected=set(filter(None,args.case_ids.split(',')))
+ if selected-set(c['id'] for c in config['cases']):raise ValueError('unknown-frozen-case-selection')
+ if selected:config['cases']=[c for c in config['cases'] if c['id'] in selected]
  with sync_playwright() as p:
   browser=p.chromium.launch(headless=True)
   try:
@@ -205,6 +220,6 @@ def run(args):
   finally:browser.close()
  (out/'report.json').write_text(json.dumps({'schemaVersion':1,'method':'ordinary-chromium-source-only-capture-no-application-code','queueCoverageClaim':False,'cases':reports},ensure_ascii=False,indent=2)+'\n')
 if __name__=='__main__':
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--inputs',default='.github/qa/browser-regression-inputs.json');parser.add_argument('--out',default='browser-regression-evidence');parser.add_argument('--request-limit',type=int,default=160);args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--inputs',default='.github/qa/browser-regression-inputs.json');parser.add_argument('--out',default='browser-regression-evidence');parser.add_argument('--request-limit',type=int,default=160);parser.add_argument('--case-ids',default='');args=parser.parse_args()
  if not 1<=args.request_limit<=200:raise ValueError('request_limit')
  run(args)
