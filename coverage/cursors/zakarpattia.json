@@ -37,5 +37,18 @@
     "5:3354": 5,
     "5:3482": 5
   },
-  "updatedAt": 1793667458752
+  "updatedAt": 1793667458752,
+  "cityCrawls": {
+    "33de95108297f23754b2": {
+      "crawlStatus": "partial",
+      "dictionaryComplete": true,
+      "houseOffsets": {
+        "769:9335": 0,
+        "769:9336": 69
+      },
+      "cityIndex": 0,
+      "streetIndex": 1,
+      "updatedAt": 1793620647462
+    }
+  }
 }

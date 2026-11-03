@@ -19,7 +19,13 @@
       },
       "auditSamples": [],
       "houseIndex": 20,
-      "streetIndex": 4
+      "streetIndex": 4,
+      "cityCrawls": {
+        "1bd2ea9e843f0b95f0ee": {
+          "crawlStatus": "partial",
+          "observedHouses": []
+        }
+      }
     }
   }
 }

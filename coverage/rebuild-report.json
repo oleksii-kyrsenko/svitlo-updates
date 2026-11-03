@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": 1793687473656,
+  "method": "rebuild-from-retained-source-snapshots-without-network-or-observation-renewal",
+  "dryRun": false,
+  "inputs": [
+    {
+      "operatorId": "volyn",
+      "file": "volyn.json",
+      "sha256": "0782cc9e59b233d48b7b25b842bec3cc46bdce3b81518a53688c7db60899985d",
+      "generatedAt": 1793641566264,
+      "expiresAt": 1793727966264,
+      "records": 2655
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "file": "dtek-dnipro.json",
+      "sha256": "c5c5b9af70fd919005650a400c2dfa94a2112cba3297d6c403b5abe9ff165aa6",
+      "generatedAt": 1793620937934,
+      "expiresAt": 1793707335787,
+      "records": 39
+    },
+    {
+      "operatorId": "zhytomyr",
+      "file": "zhytomyr.json",
+      "sha256": "5a17bd136a93d3e18d3a5bbd415746d3821da888806b4fd9b9eeedf00769a3b2",
+      "generatedAt": 1793620675048,
+      "expiresAt": 1793706938456,
+      "records": 1314
+    },
+    {
+      "operatorId": "zakarpattia",
+      "file": "zakarpattia.json",
+      "sha256": "2a2f183a651ce66ce74cd0afdc8351c4bea0d726af45aa704ef9f585f9255834",
+      "generatedAt": 1793620647462,
+      "expiresAt": 1793707047462,
+      "records": 116
+    },
+    {
+      "operatorId": "zaporizhzhia",
+      "file": "zaporizhzhia.json",
+      "sha256": "e9471929c34fc50487f70bbf3ebb01dcf33162d7e9ce9d66d012c95790921935",
+      "generatedAt": 1793620763337,
+      "expiresAt": 1793707163337,
+      "records": 1080
+    },
+    {
+      "operatorId": "dtek-kyiv",
+      "file": "dtek-kyiv.json",
+      "sha256": "316e3f4fd7cb2883bba28ae1af83342b9b897ef3fde00d9284de93540181fcf6",
+      "generatedAt": 1793620756633,
+      "expiresAt": 1793707151362,
+      "records": 7
+    },
+    {
+      "operatorId": "kirovohrad",
+      "file": "kirovohrad.json",
+      "sha256": "ad6f7d2fc76916448135ea071ed3803122e091c77b26fd8cd204f519215c3d2d",
+      "generatedAt": 1793621319227,
+      "expiresAt": 1793707647039,
+      "records": 2853
+    },
+    {
+      "operatorId": "lviv",
+      "file": "lviv.json",
+      "sha256": "f7234896a77b003bce2590eeb9b45ae120a77a15803a92831ce0676ef76ce196",
+      "generatedAt": 1793620507204,
+      "expiresAt": 1793706907204,
+      "records": 569
+    },
+    {
+      "operatorId": "mykolaiv",
+      "file": "mykolaiv.json",
+      "sha256": "1666a976e513a726257da139f2032579fd1af0d0f1543cfd8438d229e6ed3b84",
+      "generatedAt": 1793620627617,
+      "expiresAt": 1793706932084,
+      "records": 80
+    },
+    {
+      "operatorId": "rivne",
+      "file": "rivne.json",
+      "sha256": "76699028841041d2aa8bd3f0bd95ec9308d7bdc33dd62d3a0a66332e20d7ec35",
+      "generatedAt": 1793620758440,
+      "expiresAt": 1793707158440,
+      "records": 295
+    },
+    {
+      "operatorId": "ternopil",
+      "file": "ternopil.json",
+      "sha256": "f73ec133e223cf1d8a0fd4a857f8186bdf581a5f789903e9ce658414f49700a1",
+      "generatedAt": 1793620640809,
+      "expiresAt": 1793707040809,
+      "records": 112
+    },
+    {
+      "operatorId": "khmelnytskyi",
+      "file": "khmelnytskyi.json",
+      "sha256": "eaa0fd89eacdd7e065362b7c172124c38a470a2f7c04995c6e3929a7e4584abf",
+      "generatedAt": 1793620757463,
+      "expiresAt": 1793707157463,
+      "records": 90
+    },
+    {
+      "operatorId": "chernivtsi",
+      "file": "chernivtsi.json",
+      "sha256": "437b4147bb8ed92d7385f61efd803eeb09a6ce55b9a179db066731e42053189c",
+      "generatedAt": 1793620511406,
+      "expiresAt": 1793706909225,
+      "records": 25618
+    },
+    {
+      "operatorId": "cek",
+      "file": "cek.json",
+      "sha256": "0664321780bb7891ac598009a827a27ece4eb7815f250558255e0e42795c9b2f",
+      "generatedAt": 1793620941464,
+      "expiresAt": 1793707340432,
+      "records": 43
+    },
+    {
+      "operatorId": "atomservice",
+      "file": "atomservice.json",
+      "sha256": "3a2c7cfceba2caf054a9ac94a249b539b9aa086309dc43cf9bbda49b8a6486ba",
+      "generatedAt": 1793620775750,
+      "expiresAt": 1793707175750,
+      "records": 29
+    }
+  ],
+  "errors": [],
+  "legacyConstraints": [],
+  "withdrawnOperators": [],
+  "revision": 19,
+  "proposedLegacyOperators": 17,
+  "proposedSourceOperators": 17,
+  "proposedSourceRecords": 4315,
+  "publication": {
+    "revision": 19,
+    "operators": 17,
+    "records": 4315
+  },
+  "cityPublication": {
+    "revision": 19,
+    "cities": 122,
+    "retiredCities": 7,
+    "records": 4315,
+    "skippedCities": [],
+    "sourceSnapshots": 17,
+    "sourceCacheConstraints": []
+  }
+}

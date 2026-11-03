@@ -2,5 +2,11 @@
   "schemaVersion": 1,
   "cityIndex": 0,
   "streetIndex": 0,
-  "updatedAt": 1793667425094
+  "updatedAt": 1793667425094,
+  "cityCrawls": {
+    "442e98060e50e5055b07": {
+      "crawlStatus": "partial",
+      "updatedAt": 1793620513196
+    }
+  }
 }
