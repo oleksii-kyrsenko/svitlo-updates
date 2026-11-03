@@ -34,6 +34,41 @@ class ContractChecks(unittest.TestCase):
   self.assertRaises(ValueError,contract.verify_apk,apk,c,sdk,wrong_cert)
   self.assertRaises(ValueError,contract.verify_apk,apk,{**c,'versionCode':89},sdk,runner)
 
+
+class SignerFormatChecks(unittest.TestCase):
+ def test_sdk_signer_formats_keep_exact_certificate_pin(self):
+  pin=contract.CERTIFICATE
+  colon=':'.join(pin[i:i+2] for i in range(0,len(pin),2)).upper()
+  for label,value in [('Signer #1',pin),('Signer #1 (minSdkVersion=24, maxSdkVersion=36)',colon),('Signer (minSdkVersion=24, maxSdkVersion=36)',pin.upper())]:
+   self.assertEqual(contract.signing_certificate('Number of signers: 1\n'+label+' certificate SHA-256 digest: '+value+'\n'),pin)
+ def test_other_fingerprints_cannot_replace_actual_signer(self):
+  pin=contract.CERTIFICATE
+  for text in ['Signer #1 public key SHA-256 digest: '+pin,'Source Stamp Signer certificate SHA-256 digest: '+pin,'Signer #1 certificate SHA-256 digest: '+'0'*64+'\nSource Stamp Signer certificate SHA-256 digest: '+pin,'Signer #2 certificate SHA-256 digest: '+pin]:
+   self.assertRaises(ValueError,contract.signing_certificate,text)
+ def test_multiple_and_truncated_signers_are_rejected(self):
+  line='Signer #1 certificate SHA-256 digest: '+contract.CERTIFICATE+'\n'
+  for text in [line+line,line+line.replace('#1','#2'),line+'Signer #2 certificate SHA-256 digest: malformed\n','Number of signers: 2\n'+line,line[:-3]]:
+   self.assertRaises(ValueError,contract.signing_certificate,text)
+ def test_stable_native_build_tools_take_precedence_over_preview(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   sdk=pathlib.Path(tmp)
+   for version in ['35.0.0','36.0.0','37.0.0-rc2']:
+    b=sdk/'build-tools'/version;b.mkdir(parents=True)
+    for name in ['aapt','apksigner']:(b/name).touch()
+   self.assertEqual(contract.tools(sdk).name,'36.0.0')
+ def test_signature_failure_retains_actual_output_and_selected_tool(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=pathlib.Path(tmp);apk=root/'fixture.apk';apk.write_bytes(b'fixture')
+   sdk=root/'sdk';tools=sdk/'build-tools'/'36.0.0';tools.mkdir(parents=True)
+   for name in ['aapt','apksigner']:(tools/name).touch()
+   c={**contract.DEFAULT,'apkSize':apk.stat().st_size,'apkSha256':contract.sha256(apk)}
+   signature='Signer #1 certificate SHA-256 digest: '+'0'*64+'\n'
+   def runner(*args,**kwargs):return signature
+   proof=root/'proof'
+   self.assertRaises(ValueError,contract.verify_apk,apk,c,sdk,runner,proof)
+   self.assertEqual((proof/'signature-output.txt').read_text(),signature)
+   self.assertEqual(json.loads((proof/'verification-tools.json').read_text())['buildTools'],'36.0.0')
+
 class VisibleAddressChecks(unittest.TestCase):
  def setUp(self):
   self.case={'city':'Зразок','exactStreet':'вулиця Нова','exactHouse':'7-А'}

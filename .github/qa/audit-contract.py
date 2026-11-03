@@ -54,21 +54,47 @@ def plan(request,root='.'):
 def tools(sdk=None):
  root=pathlib.Path(sdk or os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT','/opt/android-sdk'))
  candidates=sorted((root/'build-tools').glob('*'),key=lambda p:tuple(int(v) for v in re.findall(r'\d+',p.name)),reverse=True)
+ # Use the same stable build-tools as the native builder when installed.
+ # Preview/latest SDK output is not the verifier contract for this candidate.
+ candidates.sort(key=lambda p:p.name!='36.0.0')
  found=next((p for p in candidates if (p/'aapt').is_file() and (p/'apksigner').is_file()),None)
  if not found:raise ValueError('Android build tools unavailable')
  return found
 
-def verify_apk(path,c,sdk=None,runner=subprocess.check_output):
+def signing_certificate(signature):
+ # apksigner formats vary across SDKs (numbered signer, SDK range, uppercase
+ # or colon-delimited digest). Parse only signer certificates, never public-key
+ # or SourceStamp fingerprints, while retaining the exact single-signer pin.
+ counts=re.findall(r'^\s*Number of signers:\s*(\d+)\s*$',signature,re.M|re.I)
+ if counts and counts!=['1']:raise ValueError('unexpected additional APK signer')
+ headers=re.findall(r'^\s*Signer[^\r\n]*\bcertificate\s+SHA-256\s+digest:',signature,re.M|re.I)
+ if len(headers)!=1:raise ValueError('expected exactly one APK signer certificate digest')
+ matches=re.findall(r'^\s*(Signer(?:\s+#\d+)?(?:\s*\([^\r\n)]*\))?)\s+certificate\s+SHA-256\s+digest:\s*([a-f0-9: \t]+)\s*$',signature,re.M|re.I)
+ if len(matches)!=1:raise ValueError('expected exactly one APK signer certificate digest')
+ label,value=matches[0];number=re.search(r'#(\d+)',label)
+ if number and number[1]!='1':raise ValueError('unexpected APK signer identity')
+ actual=re.sub(r'[: \t]','',value).lower()
+ if not re.fullmatch(r'[a-f0-9]{64}',actual) or actual!=CERTIFICATE:raise ValueError('APK signing certificate differs')
+ return actual
+
+def verify_apk(path,c,sdk=None,runner=subprocess.check_output,diagnostics=None):
  path=pathlib.Path(path)
  if path.stat().st_size!=c['apkSize'] or sha256(path)!=c['apkSha256']:raise ValueError('APK bytes differ from requested binary')
- bin=tools(sdk)
- signature=runner([str(bin/'apksigner'),'verify','--verbose','--print-certs',str(path)],text=True,stderr=subprocess.STDOUT)
- if 'Signer #1 certificate SHA-256 digest: '+CERTIFICATE not in signature:raise ValueError('APK signing certificate differs')
- if len(re.findall(r'Signer #\d+ certificate SHA-256 digest:',signature))!=1:raise ValueError('unexpected additional APK signer')
+ bin=tools(sdk);proof=pathlib.Path(diagnostics) if diagnostics else None
+ if proof:
+  proof.mkdir(parents=True,exist_ok=True)
+  (proof/'verification-tools.json').write_text(json.dumps({'buildTools':bin.name,'directory':str(bin),'apkSha256':c['apkSha256'],'expectedCertificateSha256':CERTIFICATE},indent=2)+'\n')
+ try:signature=runner([str(bin/'apksigner'),'verify','--verbose','--print-certs',str(path)],text=True,stderr=subprocess.STDOUT)
+ except subprocess.CalledProcessError as error:
+  if proof:(proof/'signature-output.txt').write_text(error.output.decode(errors='replace') if isinstance(error.output,bytes) else str(error.output or ''))
+  raise
+ if proof:(proof/'signature-output.txt').write_text(signature)
+ actual=signing_certificate(signature)
  badging=runner([str(bin/'aapt'),'dump','badging',str(path)],text=True,stderr=subprocess.STDOUT)
+ if proof:(proof/'apk-badging.txt').write_text(badging)
  package=re.search(r"^package: name='([^']+)' versionCode='(\d+)' versionName='([^']+)'",badging,re.M)
  if not package or package.groups()!=(PACKAGE,str(c['versionCode']),c['version']):raise ValueError('APK package/version differs')
- return {'apkSha256':c['apkSha256'],'apkSize':c['apkSize'],'versionCode':c['versionCode'],'version':c['version'],'packageName':PACKAGE,'certificateSha256':CERTIFICATE,'signatureVerified':True}
+ return {'apkSha256':c['apkSha256'],'apkSize':c['apkSize'],'versionCode':c['versionCode'],'version':c['version'],'packageName':PACKAGE,'certificateSha256':actual,'signatureVerified':True,'buildTools':bin.name}
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=['plan','verify']);p.add_argument('--request',default='.github/qa/national-audit-request.json');p.add_argument('--apk');p.add_argument('--output');a=p.parse_args()
@@ -84,7 +110,7 @@ def main():
    with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('contract='+json.dumps(c,ensure_ascii=False)+'\nmatrix='+json.dumps(m)+'\n')
   print(json.dumps({'contract':c,'matrix':m},ensure_ascii=False))
  else:
-  c=contract(request);report=verify_apk(a.apk,c)
+  c=contract(request);report=verify_apk(a.apk,c,diagnostics=pathlib.Path(a.output).parent if a.output else None)
   if a.output:pathlib.Path(a.output).write_text(json.dumps(report,indent=2)+'\n')
   print(json.dumps(report))
 if __name__=='__main__':main()

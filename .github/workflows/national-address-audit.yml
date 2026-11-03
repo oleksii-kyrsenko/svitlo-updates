@@ -84,6 +84,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - name: Select the native builder's stable Android verification tools
+        run: |
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            sdkmanager --install 'build-tools;36.0.0'
+          fi
       - name: Fetch and verify the exact signed binary and its pinned metadata
         run: |
           mkdir -p artifacts national-audit
@@ -91,6 +96,7 @@ jobs:
           import json,os,pathlib,urllib.request
           c=json.loads(os.environ['AUDIT_CONTRACT'])
           pathlib.Path('artifacts/contract.json').write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
+          pathlib.Path('national-audit/contract.json').write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
           # Download only this pinned binary. Redirects do not change the
           # required size/hash/certificate/package/version checks below.
           with urllib.request.urlopen(c['apkUrl'],timeout=150) as source,open('artifacts/candidate.apk','wb') as target:
