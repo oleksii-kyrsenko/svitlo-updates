@@ -1,0 +1,33 @@
+name: Ordinary browser current Poltava document proof
+on:
+  push:
+    branches: [feature/capital-coverage-90]
+    paths: ['.github/qa/poltava-document-request.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source scope, active-link and validity controls
+        run: python3 .github/qa/test-poltava-document-probe.py
+      - name: Install ordinary free Chromium and public PDF reader
+        run: |
+          pip install playwright==1.56.0 pdfplumber==0.11.9
+          python3 -m playwright install --with-deps chromium
+      - name: Probe public official index and current reviewed PDF lead
+        run: python3 .github/qa/poltava-document-probe.py
+      - name: Retain unpromoted original source proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poltava-document-${{ github.run_id }}
+          path: poltava-document-evidence/
+          if-no-files-found: error
+          retention-days: 30
