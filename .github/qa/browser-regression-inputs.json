@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "baselineSha256": "369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043",
+  "purpose": "Source-only capture of3blocked regression cases. No saved/expected queue is supplied.",
+  "cases": [
+    {
+      "id": "UA-12-capital-3",
+      "city": "Дніпро",
+      "exactStreet": "вулиця Вʼєтнамська",
+      "exactHouse": "52",
+      "operatorId": "dtek-dnipro",
+      "addressFingerprint": "bb7312a014545f080f6da8f3ba3f4016af924c6dedf3c7ac0e1845eeba3e1944",
+      "input": {
+        "regionId": "UA-12",
+        "operatorId": "dtek-dnipro",
+        "operatorOrigin": null,
+        "operatorConfirmed": true,
+        "address": "Дніпро, вулиця В'єтнамська, 52",
+        "addressParts": {
+          "settlement": "Дніпро",
+          "street": "вулиця В'єтнамська",
+          "house": "52"
+        },
+        "addressContext": {
+          "regionId": "UA-12",
+          "settlement": "Дніпро",
+          "district": "Дніпровський",
+          "community": "Дніпровська",
+          "katottg": "12020010010037010",
+          "postcode": null
+        },
+        "officialCityId": "м. Дніпро",
+        "addressSelection": {
+          "region": {
+            "id": "UA-12",
+            "label": "Дніпропетровська область",
+            "name": "Дніпропетровська область",
+            "postalId": "264",
+            "regionIds": [
+              "UA-12"
+            ],
+            "postalIds": [
+              "264"
+            ]
+          },
+          "district": {
+            "id": "301",
+            "name": "Дніпровський",
+            "label": "Дніпровський",
+            "regionId": "UA-12",
+            "postalId": "264"
+          },
+          "city": {
+            "regionId": "UA-12",
+            "postalId": "264",
+            "districtName": "Дніпровський",
+            "id": "3641",
+            "districtId": "301",
+            "name": "Дніпро",
+            "label": "м. Дніпро · Дніпровська громада · КАТОТТГ 12020010010037010",
+            "community": "Дніпровська",
+            "katottg": "12020010010037010",
+            "latitude": 48.46163,
+            "longitude": 34.960485
+          },
+          "street": {
+            "id": "175256",
+            "oldName": "",
+            "registryName": "В'єтнамська",
+            "registryType": "вулиця",
+            "name": "вулиця В'єтнамська",
+            "label": "вулиця В'єтнамська"
+          },
+          "house": {
+            "id": null,
+            "name": "52",
+            "label": "52",
+            "manual": true
+          }
+        },
+        "latitude": 48.4648189,
+        "longitude": 35.2138525
+      },
+      "publicDictionaryProbes": [
+        {
+          "method": "GET",
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/cities?dsoId=301&query=%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE&regionId=3",
+          "body": "",
+          "headers": {
+            "accept": "application/json",
+            "accept-language": "uk",
+            "user-agent": "Svitlo/0.1.3 Android"
+          }
+        },
+        {
+          "method": "GET",
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/cities?dsoId=303&query=%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE&regionId=3",
+          "body": "",
+          "headers": {
+            "accept": "application/json",
+            "accept-language": "uk",
+            "user-agent": "Svitlo/0.1.3 Android"
+          }
+        },
+        {
+          "method": "GET",
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/streets?cityId=6&dsoId=301&query=%D0%B2%D1%94%D1%82%D0%BD%D0%B0%D0%BC%D1%81%D1%8C%D0%BA%D0%B0&regionId=3",
+          "body": "",
+          "headers": {
+            "accept": "application/json",
+            "accept-language": "uk",
+            "user-agent": "Svitlo/0.1.3 Android"
+          }
+        },
+        {
+          "method": "GET",
+          "url": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/streets?cityId=6&dsoId=303&query=%D0%B2%D1%94%D1%82%D0%BD%D0%B0%D0%BC%D1%81%D1%8C%D0%BA%D0%B0&regionId=3",
+          "body": "",
+          "headers": {
+            "accept": "application/json",
+            "accept-language": "uk",
+            "user-agent": "Svitlo/0.1.3 Android"
+          }
+        }
+      ]
+    },
+    {
+      "id": "UA-71-capital-1",
+      "city": "Черкаси",
+      "exactStreet": "вулиця Кавказька",
+      "exactHouse": "231",
+      "operatorId": "cherkasy",
+      "addressFingerprint": "c333b5ae08c5e90ba542097e46bb8aa5c6310f975663b4296e5172b7a6c31b3d",
+      "input": {
+        "regionId": "UA-71",
+        "operatorId": "cherkasy",
+        "operatorOrigin": null,
+        "operatorConfirmed": true,
+        "address": "Черкаси, вулиця Кавказька, 231",
+        "addressParts": {
+          "settlement": "Черкаси",
+          "street": "вулиця Кавказька",
+          "house": "231"
+        },
+        "addressContext": {
+          "regionId": "UA-71",
+          "settlement": "Черкаси",
+          "district": "Черкаський",
+          "community": "Черкаська",
+          "katottg": "71080490010015879",
+          "postcode": null
+        },
+        "officialCityId": "1",
+        "addressSelection": {
+          "region": {
+            "id": "UA-71",
+            "label": "Черкаська область",
+            "name": "Черкаська область",
+            "postalId": "283",
+            "regionIds": [
+              "UA-71"
+            ],
+            "postalIds": [
+              "283"
+            ]
+          },
+          "district": {
+            "id": "408",
+            "name": "Черкаський",
+            "label": "Черкаський",
+            "regionId": "UA-71",
+            "postalId": "283"
+          },
+          "city": {
+            "regionId": "UA-71",
+            "postalId": "283",
+            "districtName": "Черкаський",
+            "id": "27760",
+            "districtId": "408",
+            "name": "Черкаси",
+            "label": "м. Черкаси · Черкаська громада · КАТОТТГ 71080490010015879",
+            "community": "Черкаська",
+            "katottg": "71080490010015879",
+            "latitude": 49.431809,
+            "longitude": 32.047341
+          },
+          "street": {
+            "id": "234104",
+            "oldName": "",
+            "registryName": "Кавказька",
+            "registryType": "вулиця",
+            "name": "вулиця Кавказька",
+            "label": "вулиця Кавказька"
+          },
+          "house": {
+            "id": null,
+            "name": "231",
+            "label": "231",
+            "manual": true
+          }
+        },
+        "latitude": null,
+        "longitude": null
+      },
+      "publicDictionaryProbes": []
+    },
+    {
+      "id": "UA-71-capital-5",
+      "city": "Черкаси",
+      "exactStreet": "провулок Людмили Старицької-Черняхівської",
+      "exactHouse": "2",
+      "operatorId": "cherkasy",
+      "addressFingerprint": "6bef14fa2647e8d2390c7b9e9be12d7ce123dbed576fcc6dfc066bed3cdbaaf8",
+      "input": {
+        "regionId": "UA-71",
+        "operatorId": "cherkasy",
+        "operatorOrigin": null,
+        "operatorConfirmed": true,
+        "address": "Черкаси, провулок Людмили Старицької-Черняхівської, 2",
+        "addressParts": {
+          "settlement": "Черкаси",
+          "street": "провулок Людмили Старицької-Черняхівської",
+          "house": "2"
+        },
+        "addressContext": {
+          "regionId": "UA-71",
+          "settlement": "Черкаси",
+          "district": "Черкаський",
+          "community": "Черкаська",
+          "katottg": "71080490010015879",
+          "postcode": "18035"
+        },
+        "officialCityId": "1",
+        "addressSelection": {
+          "region": {
+            "id": "UA-71",
+            "label": "Черкаська область",
+            "name": "Черкаська область",
+            "postalId": "283",
+            "regionIds": [
+              "UA-71"
+            ],
+            "postalIds": [
+              "283"
+            ]
+          },
+          "district": {
+            "id": "408",
+            "name": "Черкаський",
+            "label": "Черкаський",
+            "regionId": "UA-71",
+            "postalId": "283"
+          },
+          "city": {
+            "regionId": "UA-71",
+            "postalId": "283",
+            "districtName": "Черкаський",
+            "id": "27760",
+            "districtId": "408",
+            "name": "Черкаси",
+            "label": "м. Черкаси · Черкаська громада · КАТОТТГ 71080490010015879",
+            "community": "Черкаська",
+            "katottg": "71080490010015879",
+            "latitude": 49.431809,
+            "longitude": 32.047341
+          },
+          "street": {
+            "id": "234255",
+            "oldName": "пров. Віктора Бабанського",
+            "registryName": "Людмили Старицької-Черняхівської",
+            "registryType": "провулок",
+            "name": "провулок Людмили Старицької-Черняхівської",
+            "label": "провулок Людмили Старицької-Черняхівської · раніше пров. Віктора Бабанського"
+          },
+          "house": {
+            "id": "234255:2:18035",
+            "name": "2",
+            "label": "2",
+            "postcode": "18035"
+          }
+        },
+        "latitude": null,
+        "longitude": null
+      },
+      "publicDictionaryProbes": []
+    }
+  ]
+}

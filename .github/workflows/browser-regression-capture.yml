@@ -1,0 +1,36 @@
+name: Ordinary browser source capture for blocked regressions
+on:
+  push:
+    branches: [feature/capital-coverage-90]
+    paths: ['.github/qa/browser-regression-request.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: capital-regression-source-capture
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify privacy and source-boundary controls
+        run: python3 .github/qa/test-browser-regression-capture.py
+      - name: Install ordinary free Chromium
+        run: |
+          pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Capture anonymous official HTTP evidence without private application code
+        run: python3 .github/qa/browser-regression-capture.py --out browser-regression-evidence --request-limit 160
+      - name: Preserve source evidence including unresolved blockers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-regression-${{ github.run_id }}
+          path: browser-regression-evidence/
+          if-no-files-found: warn
+          retention-days: 30
