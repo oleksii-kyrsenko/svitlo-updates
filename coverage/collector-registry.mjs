@@ -9,13 +9,13 @@ export function collectorCommand(operatorId,{budget=20,streetBudget=8,targetCity
  const output=`coverage/staging/${operatorId}.json`,group=Object.keys(GROUPS).find(k=>GROUPS[k].includes(operatorId));
  if(!group)throw Error('unknown_collector_operator');
  const scripts={asd:'collect-asd.py',a:'batch-a.py',b:'collect-batch-b.py',c:'collect-batch-c.py',remainder:'collect-remainder.py'};
- const script=targetCity&&['ternopil','zhytomyr','sumy'].includes(operatorId)?'collect-official-bulk.py':targetCity&&['kirovohrad','volyn'].includes(operatorId)?'collect-city-forms.py':scripts[group];
+ const script=targetCity&&operatorId==='cherkasy'?'collect-cherkasy-documents.py':targetCity&&['ternopil','zhytomyr','sumy'].includes(operatorId)?'collect-official-bulk.py':targetCity&&['kirovohrad','volyn'].includes(operatorId)?'collect-city-forms.py':scripts[group];
  const args=[`coverage/${script}`,'--output',output];
  if(group==='asd')args.push('--street-limit',String(streetBudget),'--state','coverage/crawl-state.json');
  else{
   args.push('--operator',operatorId,'--state',`coverage/cursors/${operatorId}.json`);
   if(group==='b')args.push('--street-limit',String(streetBudget),'--city-limit','1');
-  else args.push('--budget',String(group==='a'?Math.max(80,budget*4):budget));
+  else if(script!=='collect-cherkasy-documents.py')args.push('--budget',String(group==='a'?Math.max(80,budget*4):budget));
  }
  const targeted=targetCity&&group!=='remainder';
  if(targeted){

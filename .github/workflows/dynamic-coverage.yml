@@ -56,6 +56,7 @@ jobs:
           python3 coverage/qa/test-official-rosters.py
           python3 coverage/qa/test-city-forms.py
           python3 coverage/qa/test-official-bulk.py
+          python3 coverage/qa/test-cherkasy-documents.py
           python3 coverage/qa/test-remainder.py
           python3 coverage/qa/test-batches.py
       - name: Monitor every operator and discover registry changes

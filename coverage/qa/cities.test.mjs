@@ -34,3 +34,8 @@ test('capital priority preserves a separate scheduled all-settlement cursor mode
  const capital=collectionPlan(ops,cities,null,{requestLimit:100})[0];assert.equal(capital.args[0],'coverage/collect-official-bulk.py');assert(capital.args.includes('--full-city'));
  const global=collectionPlan(ops,cities,null,{capitalPriority:false})[0];assert.equal(global.args[0],'coverage/collect-batch-b.py');assert(!global.args.includes('--target-city'));assert.equal(global.targetCity,null);
 });
+test('Cherkasy capital uses current official documents while the global crawl retains its API',()=>{
+ const capital=collectorCommand('cherkasy',{targetCity:'Черкаси',fullCity:true,requestLimit:16});
+ assert.equal(capital.args[0],'coverage/collect-cherkasy-documents.py');assert(!capital.args.includes('--budget'));assert(capital.args.includes('--full-city'));
+ const global=collectorCommand('cherkasy');assert.equal(global.args[0],'coverage/batch-a.py');assert(global.args.includes('--budget'));
+});
