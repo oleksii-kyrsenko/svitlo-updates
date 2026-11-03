@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1793634347850,
+  "checkedAt": 1793667423725,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -26,6 +26,10 @@
       "error": "collector_failed"
     },
     {
+      "operatorId": "zhytomyr",
+      "error": "collector_failed"
+    },
+    {
       "operatorId": "kirovohrad",
       "error": "collector_failed"
     },
@@ -35,6 +39,10 @@
     },
     {
       "operatorId": "cek",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-odesa",
       "error": "collector_failed"
     },
     {
@@ -82,11 +90,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "ukrzaliznytsia",
+      "operatorId": "poltava",
       "error": "collector_failed"
     },
     {
-      "operatorId": "poltava",
+      "operatorId": "ukrzaliznytsia",
       "error": "collector_failed"
     }
   ],
@@ -136,16 +144,16 @@
     {
       "operatorId": "lviv",
       "status": "collected",
-      "records": 137,
+      "records": 135,
       "constraint": null,
       "caseChecks": null
     },
     {
       "operatorId": "zhytomyr",
-      "status": "collected",
-      "records": 22,
+      "status": "not_collected",
+      "records": 0,
       "constraint": null,
-      "caseChecks": 20
+      "caseChecks": 0
     },
     {
       "operatorId": "kirovohrad",
@@ -171,9 +179,9 @@
     {
       "operatorId": "zakarpattia",
       "status": "collected",
-      "records": 13,
+      "records": 20,
       "constraint": null,
-      "caseChecks": 17
+      "caseChecks": 20
     },
     {
       "operatorId": "cek",
@@ -185,15 +193,15 @@
     {
       "operatorId": "dtek-kyiv-region",
       "status": "collected",
-      "records": 18,
+      "records": 13,
       "constraint": null,
       "caseChecks": 20
     },
     {
       "operatorId": "dtek-odesa",
-      "status": "collected",
-      "records": 20,
-      "constraint": null,
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
       "caseChecks": 20
     },
     {
@@ -225,18 +233,18 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "rivne",
-      "status": "collected",
-      "records": 97,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
       "operatorId": "mykolaiv",
       "status": "collected",
       "records": 60,
       "constraint": null,
       "caseChecks": 60
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
     },
     {
       "operatorId": "kharkiv",
@@ -267,9 +275,9 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "dtek-dnipro",
+      "operatorId": "rivne",
       "status": "collected",
-      "records": 20,
+      "records": 97,
       "constraint": null,
       "caseChecks": 20
     },
@@ -302,24 +310,24 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "ukrzaliznytsia",
+      "operatorId": "poltava",
       "status": "not_collected",
       "records": 0,
       "constraint": "collection-unavailable",
       "caseChecks": 0
     },
     {
-      "operatorId": "poltava",
+      "operatorId": "ukrzaliznytsia",
       "status": "not_collected",
       "records": 0,
       "constraint": "collection-unavailable",
       "caseChecks": 0
     }
   ],
-  "publicationCheckedAt": 1793634452376,
+  "publicationCheckedAt": 1793667535513,
   "publication": {
-    "revision": 16,
-    "operators": 11,
-    "records": 661
+    "revision": 17,
+    "operators": 10,
+    "records": 506
   }
 }
