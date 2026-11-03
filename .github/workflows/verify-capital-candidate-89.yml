@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       max-parallel: 6
       matrix:
-        api: [35]
-        theme: [aurora]
+        api: [30, 35, 36]
+        theme: [aurora, moss]
     env:
       SAVED_THEME: ${{ matrix.theme }}
     steps:
