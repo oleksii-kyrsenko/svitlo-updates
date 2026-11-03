@@ -64,8 +64,16 @@ class CaptureControls(unittest.TestCase):
  def test_actual_official_city_prefix_matches_frozen_city_without_crossing_localities(self):
   # Official city_list reply from strict-TLS capture41716316536, department1.
   rows=[{'ID':'1','NAME':'м. Черкаси'},{'ID':'3','NAME':'с. Свидівок'},{'ID':'4','NAME':'с. Слобода'}]
-  self.assertEqual([r['ID'] for r in rows if m.locality(r['NAME'])==m.locality('Черкаси')],['1'])
-  self.assertNotEqual(m.locality('м. Черкаси'),m.locality('Черкаська'))
+  class OfficialCapture:
+   def __init__(self):self.calls=[]
+   def warm(self,url):pass
+   def request(self,url,headers,network_url=None):
+    params=dict(m.urllib.parse.parse_qsl(m.urllib.parse.urlsplit(url).query));self.calls.append(params)
+    return ({'department_list':[{'ID':'1','NAME':'Черкаські міські енергетичні мережі'}],'city_list':rows,'street_list':[]}[params['op']], '')
+  capture=OfficialCapture()
+  with self.assertRaisesRegex(m.Stop,'exact-official-house-not-published'):
+   m.cherkasy(capture,{'city':'Черкаси','exactHouse':'231','input':{'officialCityId':'1','addressParts':{'street':'вулиця Кавказька'}}},1793739088344)
+  self.assertEqual([c['city_id'] for c in capture.calls if c['op']=='street_list'],['1'])
  def test_errors_do_not_print_request_urls_account_or_exception_body(self):
   self.assertEqual(m.clean_error(RuntimeError('https://example.org?abon_ls=private'))['reason'],'official-request-failed')
  def test_request_diagnostics_retain_only_safe_fixed_codes(self):

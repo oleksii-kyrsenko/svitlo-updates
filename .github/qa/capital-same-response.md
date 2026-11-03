@@ -42,14 +42,18 @@ A source failure or natural change of queue is a blocker, not a preserved queue.
 This check is separate from actual Android UI coverage and cannot count toward
 99/110 or396/440.
 
-Verified3November2026:36of38 original expected queues reproduced in both pinned
+Verified3November2026:38of38 original expected queues reproduced in both pinned
 runtimes, zero candidate-only regressions and zero replay misses. The Dnipro case was recovered by actual ordinary Chromium source capture in public
 CI run41592098789 and both pinned runtimes return5.2 without network during replay.
-Two Cherkasy cases remain blocked by official-source unavailability; their browser
-captures contain no responses and cannot establish a successful regression. The
-full38 gate remains failed.
-Proofs: `capital-coverage-90/same-response-combined-browser-41592098789/report.json` in the
-session's retained Library, including the original attempt ledger.
+The two Cherkasy cases were recovered by strict-TLS source capture41716724701:
+the exact frozen houses reproduce4.1 and6.1 in both runtimes. The API serves only
+its leaf certificate. Completing the chain with the same public intermediate
+already bundled in Android restores verified access; an unrelated source-harness
+locality-prefix comparison was also corrected. Neither runtime was changed.
+Proofs: `capital-coverage-90/same-response-combined-browser-41716724701/report.json`
+in the session's retained Library, including the original attempt ledger. Report
+SHA256: `5c1e294f68ac697f00ec41e5b483d96a4689b83e93aeffd4f15591b78e8ccfe0`.
+Earlier incomplete captures and their36/38 report are retained separately.
 
 The separate `browser-regression-capture.yml` workflow can capture the selected
 source protocols using ordinary Chromium on the public CI network.
@@ -74,3 +78,14 @@ The exact original artifact ZIP SHA256 is
 `805eee07f5b9ef1117998c9c62171a529e85353fde515c758f5d803008c9100d`.
 Retained proof directory: `capital-coverage-90/browser-regression-41636605058/`.
 TLS verification remains enabled.
+
+The subsequent complete source capture41716724701 contains69 real official API
+responses across the two exact Cherkasy cases. Its original ZIP SHA256 is
+`39cc175afc7ad0ae3fa74cc0d42040d0150adf5bef7b9a5aedd0645baeb85810`.
+The source capture report, strict certificate-chain proof, sanitized response
+files and a privacy verification are retained in
+`capital-coverage-90/browser-regression-41716724701/`.
+Both runtimes replayed these exact snapshots with network forbidden; the other
+36 original successful snapshots were retained byte for byte. This source
+regression pass does not measure Android UI coverage or pass any release gate
+that requires the110/440 independent address samples.
