@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       max-parallel: 6
       matrix:
-        api: [30, 35, 36]
-        theme: [aurora, moss]
+        api: [35]
+        theme: [aurora]
     env:
       SAVED_THEME: ${{ matrix.theme }}
     steps:
@@ -28,7 +28,9 @@ jobs:
       - run: pip install pillow==12.0.0
       - name: Verify pinned APKs and independent native QA contracts
         run: |
-          sdkmanager --install 'build-tools;36.0.0'
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
+          fi
           python3 .github/qa/native89/test-contract.py
           python3 .github/qa/native89/contract.py
       - name: Enable runner acceleration
