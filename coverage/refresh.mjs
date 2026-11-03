@@ -63,8 +63,13 @@ export async function previousSnapshot(out,now,{publicKey}={}){
  if(cityEnvelope){
   const cityManifest=checkedPrevious(cityEnvelope,2,key,now);revision=Math.max(revision,cityManifest.revision+1);
   if(!cityManifest.enabled)return {revision,bundles:[],legacyBundles:[]};
-  const full=await readSourceSnapshots(cityManifest,out+'/v2',now),fullIds=new Set(full.map(b=>b.operatorId));
-  return {revision,bundles:[...bundles.filter(b=>!fullIds.has(b.operatorId)),...full],legacyBundles:bundles};
+  const full=await readSourceSnapshots(cityManifest,out+'/v2',now);
+  // A newer legacy publication can coexist with an older full source cache
+  // after a compatible bot update. Merge positive facts by observation time;
+  // the partial legacy view must never withdraw unrepresented full-city rows.
+  const views=bundles.map(b=>({schemaVersion:1,operatorId:b.operatorId,generatedAt:b.generatedAt,expiresAt:b.expiresAt,records:b.records}));
+  const merged=combineSnapshots(full,views,now);if(merged.errors.length)throw Error('previous_source_views_cannot_be_merged');
+  return {revision,bundles:merged.sourceSnapshots,legacyBundles:bundles};
  }
  return {revision,bundles,legacyBundles:bundles};
 }

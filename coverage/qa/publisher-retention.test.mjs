@@ -60,3 +60,14 @@ test('a successful negative source observation withdraws the last old operator i
  const old=packet([row(1,{houses:['1-А']})]),fresh={...packet([]),observedHouses:[{regionId:'UA-46',settlement:'Навчальне',community:'Навчальна громада',street:'вул. Нова',house:'1A'}]};
  const result=combineSnapshots([old],[fresh],now+1);assert.deepEqual(result.bundles,[]);assert.deepEqual(result.withdrawnOperators,['lviv']);assert.deepEqual(result.errors,[]);
 });
+
+test('a newer signed legacy view updates old full cache without losing unrepresented city houses',async()=>{
+ const out=await mkdtemp(tmpdir()+'/publisher-newer-view-');await mkdir(out+'/bundles');await mkdir(out+'/v2');
+ const older=packet([row(1,{checkedAt:now-1000,queue:'1.1'}),row(2,{checkedAt:now-1000})]),newer=packet([row(1,{queue:'2.1'})]);
+ const bytes=Buffer.from(JSON.stringify(newer)+'\n'),sha256=hash(bytes);await writeFile(out+'/bundles/'+sha256+'.json',bytes);
+ await writeSigned(out,'manifest.json',manifest(1,{bundles:[{operatorId:'lviv',url:BASE+'bundles/'+sha256+'.json',sha256,size:bytes.length,expiresAt}]}));
+ const cache=await storeSourceSnapshots([older],out+'/v2',now);await writeSigned(out,'v2/manifest.json',manifest(2,{sourceSnapshots:cache.descriptors}));
+ const restored=await previousSnapshot(out,now+1,{publicKey});assert.equal(restored.bundles.length,1);
+ assert.equal(restored.bundles[0].records.find(r=>r.houses.includes('2')).queue,'2.1');
+ assert(restored.bundles[0].records.some(r=>r.houses.includes('3')));assert(restored.bundles[0].records.every(r=>r.expiresAt===expiresAt));
+});
