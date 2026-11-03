@@ -1,0 +1,47 @@
+name: Ordinary browser city sources
+on:
+  schedule:
+    - cron: '53 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      operators:
+        description: Official city sources (chernivtsi,chernihiv)
+        required: true
+        default: chernivtsi,chernihiv
+      request_limit:
+        description: Bounded public requests per city (4..120)
+        required: true
+        default: '20'
+permissions:
+  contents: read
+concurrency:
+  group: official-browser-city-sources
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source boundaries and exact-house consensus
+        run: python3 coverage/qa/test-browser-city-collectors.py
+      - name: Install ordinary free Chromium
+        run: |
+          pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Collect official city candidates and public protocol evidence
+        env:
+          CITY_OPERATORS: ${{ inputs.operators || 'chernivtsi,chernihiv' }}
+          CITY_REQUEST_LIMIT: ${{ inputs.request_limit || '20' }}
+        run: python3 coverage/browser-city-collectors.py --operators "$CITY_OPERATORS" --request-limit "$CITY_REQUEST_LIMIT" --output browser-city-evidence
+      - name: Retain unpromoted candidates and original public evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-city-${{ github.run_id }}
+          path: browser-city-evidence/
+          if-no-files-found: error
+          retention-days: 30
