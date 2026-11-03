@@ -67,6 +67,7 @@ class DirectoryPage(HTMLParser):
         self.anchor = None
         self.anchor_text = []
         self.document_links = []
+        self.commented_roster_references = []
         self.section_archive = False
         self.heading = None
         self.heading_text = []
@@ -94,6 +95,13 @@ class DirectoryPage(HTMLParser):
         if self.heading is not None:self.heading_text.append(value)
         if self.option is not None:
             self.option['name'] += value
+
+    def handle_comment(self, data):
+        # A retired/commented-out link is evidence of non-currentness, never an
+        # attachment that this collector may promote as an active roster.
+        for href in re.findall(r'href=["\']([^"\']+\.pdf)["\']',data,re.I):
+            if re.search(r'ГПВ|погодинн|Grafik_obmezhen',data,re.I):
+                self.commented_roster_references.append(href)
 
     def handle_endtag(self, tag):
         if tag=='a' and self.anchor is not None:
@@ -232,7 +240,8 @@ def origin(url):
 def current_roster_link(body, source):
     """Require the current operator page's active GPV attachment, not a URL lead."""
     links=[]
-    for item in parse_directory(body).document_links:
+    directory=parse_directory(body)
+    for item in directory.document_links:
         label=item['label']
         if not re.search(r'ГПВ|погодинн',label,re.I) or re.search(r'ГАВ|СГАВ|аварійн',label,re.I):continue
         if item['archived'] or re.search(r'архів|архив|archive|застаріл|втратив чинність|нечинн|скасован',label,re.I):continue
@@ -242,7 +251,9 @@ def current_roster_link(body, source):
         if not official_url(url,source) or not urllib.parse.urlsplit(url).path.lower().endswith('.pdf'):continue
         links.append({'sourceUrl':url,'activeLinkLabel':label,'currentParentUrl':source})
     unique={v['sourceUrl']:v for v in links}
-    if len(unique)!=1:raise ValueError('current_official_gpv_attachment_not_unique')
+    if len(unique)!=1:
+        if not unique and directory.commented_roster_references:raise ValueError('official_gpv_roster_link_is_commented_out')
+        raise ValueError('current_official_gpv_attachment_not_unique')
     return next(iter(unique.values()))
 
 
@@ -319,6 +330,7 @@ def research_chernihiv(page, source, out, script_responses):
     except Exception as error:roster={'constraint':error.reason if isinstance(error,BROWSER.SourceStop) else str(error)}
     return {'status': 'official-public-protocol-evidence-only', 'queueIntegrationVerified': False,
             'records': 0, 'officialParent': parent, 'sourceLinkedFrames': linked, 'publicScripts': scripts,'currentOfficialRoster':roster,
+            'commentedRosterReferences':[urllib.parse.urljoin(source,u) for u in parse_directory(page.content()).commented_roster_references],
             'constraint': 'address-api-codec-and-public-scope-require-independent-review-before-collection'}
 
 

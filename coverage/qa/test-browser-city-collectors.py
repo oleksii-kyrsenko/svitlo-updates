@@ -90,6 +90,13 @@ class BrowserCityControls(unittest.TestCase):
             with self.assertRaises(ValueError):m.current_roster_link(changed,source)
 
 
+    def test_commented_out_former_roster_is_not_a_current_source(self):
+        source='https://chernihivoblenergo.com.ua/blackouts'
+        body='<!-- <a href="/files/other/Grafik_obmezhen.pdf">Графік погодинних відключень (ГПВ)</a> -->'
+        body+='<a href="/files/other/schedule_groups.jpg">Години застосування ГПВ</a>'
+        with self.assertRaisesRegex(ValueError,'commented_out'):m.current_roster_link(body,source)
+        self.assertEqual(m.parse_directory(body).commented_roster_references,['/files/other/Grafik_obmezhen.pdf'])
+
     def test_failed_fresh_browser_read_cannot_reuse_an_old_candidate(self):
         import tempfile
         from unittest.mock import patch
