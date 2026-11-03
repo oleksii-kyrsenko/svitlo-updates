@@ -5,5 +5,5 @@
     "UA-71-capital-5"
   ],
   "purpose": "Diagnose actual anonymous official source responses for the two unresolved Cherkasy regressions; no private application source or expected queues are provided.",
-  "runLabel": "Diagnose only the two unresolved Cherkasy source requests with fixed TLS/DNS/timeout error codes; Dnipro capture already verified"
+  "runLabel": "Reproduce Android's verified public Sectigo intermediate trust for the two unresolved Cherkasy source requests; strict hostname/TLS checks and original chain proofs retained"
 }

@@ -20,6 +20,10 @@ jobs:
           python-version: '3.12'
       - name: Verify privacy and source-boundary controls
         run: python3 .github/qa/test-browser-regression-capture.py
+      - name: Verify the application's public intermediate and record strict source TLS evidence
+        run: |
+          python3 .github/qa/verify-cherkasy-source-trust.py --out browser-regression-evidence/official-tls
+          echo "NODE_EXTRA_CA_CERTS=$GITHUB_WORKSPACE/.github/qa/certificates/sectigo-dv-r36.pem" >> "$GITHUB_ENV"
       - name: Install ordinary free Chromium
         run: |
           pip install playwright==1.56.0
