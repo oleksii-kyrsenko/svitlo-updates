@@ -1,13 +1,18 @@
 {
   "schemaVersion": 1,
-  "cityIndex": 0,
-  "streetIndex": 0,
-  "updatedAt": 1793737889036,
-  "cityCrawls": {
-    "943ac0d7fabfafe66aac": {
-      "crawlStatus": "partial",
-      "updatedAt": 1793715031494
-    }
-  },
-  "crawlStatus": "partial"
+  "lastCompleteAt": 1793748133435,
+  "currentDocumentHashes": [
+    "cd8b968c7ee9bfe61cbf1ec5e8bfceb1e96ff7647a7fbeb3fa89e870ce076eba",
+    "0a3dea19c1ab6e00b3acf6d44cfa6f9d725cb88d84bf9584843298c50c22b848",
+    "26300c370587923f961c00dbb94e2ec0597b0ef39f554605bb99e15df25112d7",
+    "30648c5bacf524e57cdc3062d6d2331fdff0dc5a46fbc86b33ae5140efdb1322",
+    "95dd3d595c7dff79656afd79ff2919d93cf02336d6d8b6ca57a77f3ab9055c5e",
+    "68b9d2c5ca811aef60c747e840ebedd7f7b3b00f83279595e565f1792cc2ed0e",
+    "4507ebae6551439cafcfaad19947c7bb14cc8a082805d434f008128a6cf704e8",
+    "0061b41c214ae0675336f8b8a5a52c782b99bffa9415b221eda6c1921c3cd35c",
+    "85f84f7f4180b7301ae1308eacf78db47e3b420fc559c60306dd4392813e6466",
+    "87eecc2ce094b6030cbf8564f350347680d6a760acd39ab4f58e03d028ccd6b8",
+    "aa489f0bf8ff9cec70259ea4dda3b579a6283c6d73a1201c087dd91c63d78be1",
+    "fd036ff2bbeb4dfa304fbee2fa00bb8d602f69a3b9ee0352ab7780a84706dbcb"
+  ]
 }
