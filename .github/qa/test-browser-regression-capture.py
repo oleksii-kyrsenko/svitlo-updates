@@ -61,6 +61,11 @@ class CaptureControls(unittest.TestCase):
  def test_exact_houses_do_not_collapse_letters_or_fractions(self):
   self.assertEqual(m.house_key('2-К'),m.house_key('2К'));self.assertEqual(m.house_key('1A'),m.house_key('1-А'))
   self.assertNotEqual(m.house_key('1/2'),m.house_key('12'));self.assertNotEqual(m.house_key('2'),m.house_key('2К'))
+ def test_actual_official_city_prefix_matches_frozen_city_without_crossing_localities(self):
+  # Official city_list reply from strict-TLS capture41716316536, department1.
+  rows=[{'ID':'1','NAME':'м. Черкаси'},{'ID':'3','NAME':'с. Свидівок'},{'ID':'4','NAME':'с. Слобода'}]
+  self.assertEqual([r['ID'] for r in rows if m.locality(r['NAME'])==m.locality('Черкаси')],['1'])
+  self.assertNotEqual(m.locality('м. Черкаси'),m.locality('Черкаська'))
  def test_errors_do_not_print_request_urls_account_or_exception_body(self):
   self.assertEqual(m.clean_error(RuntimeError('https://example.org?abon_ls=private'))['reason'],'official-request-failed')
  def test_request_diagnostics_retain_only_safe_fixed_codes(self):

@@ -172,7 +172,7 @@ def cherkasy(capture,case,recorded_at):
  departments=values(q({'op':'department_list'}));cities=[]
  for dep in departments:
   for city in values(q({'op':'city_list','dept_id':dep['ID']})):
-   if normal(city.get('NAME'))==normal(case['city']):cities.append(city)
+   if locality(city.get('NAME'))==locality(case['city']):cities.append(city)
  if not cities:raise Stop('official-city-not-published')
  selected=case['input'].get('officialCityId');matches=[]
  for city in cities:

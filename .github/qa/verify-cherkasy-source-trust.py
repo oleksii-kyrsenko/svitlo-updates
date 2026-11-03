@@ -59,6 +59,8 @@ def capture(folder):
                                                         'metadata': parsed.stdout.decode().splitlines()})
                 match = re.search(rb'Verify return code: (\d+)', raw)
                 observation['verifyReturnCode'] = int(match[1]) if match else None
+                observation['verificationErrors'] = [int(code) for code in re.findall(rb'verify error:num=(\d+):', raw)]
+                observation['verified'] = reply.returncode == 0 and observation['verifyReturnCode'] == 0
             except subprocess.TimeoutExpired:
                 observation['error'] = 'official_tls_diagnostic_timeout'
             report['observations'].append(observation)
