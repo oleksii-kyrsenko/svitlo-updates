@@ -9,7 +9,7 @@ export function collectorCommand(operatorId,{budget=20,streetBudget=8,targetCity
  const output=`coverage/staging/${operatorId}.json`,group=Object.keys(GROUPS).find(k=>GROUPS[k].includes(operatorId));
  if(!group)throw Error('unknown_collector_operator');
  const scripts={asd:'collect-asd.py',a:'batch-a.py',b:'collect-batch-b.py',c:'collect-batch-c.py',remainder:'collect-remainder.py'};
- const script=targetCity&&['kirovohrad','volyn'].includes(operatorId)?'collect-city-forms.py':scripts[group];
+ const script=targetCity&&['ternopil','zhytomyr','sumy'].includes(operatorId)?'collect-official-bulk.py':targetCity&&['kirovohrad','volyn'].includes(operatorId)?'collect-city-forms.py':scripts[group];
  const args=[`coverage/${script}`,'--output',output];
  if(group==='asd')args.push('--street-limit',String(streetBudget),'--state','coverage/crawl-state.json');
  else{
@@ -29,7 +29,7 @@ export function collectorCommand(operatorId,{budget=20,streetBudget=8,targetCity
 export function collectionPlan(operators,cities,selected,options={}){
  const ids=selected||operators.map(o=>o.id),commands=ids.map(id=>{
   const operator=operators.find(o=>o.id===id);if(!operator)throw Error('unknown_requested_operator');
-  const targets=cities.filter(c=>operator.regionIds.includes(c.regionId));
+  const targets=options.capitalPriority===false?[]:cities.filter(c=>operator.regionIds.includes(c.regionId));
   // Ambiguous multi-city regions must receive explicit scheduled tasks rather
   // than silently picking one locality. The current capital directory has one.
   const target=targets.length===1?targets[0]:null;

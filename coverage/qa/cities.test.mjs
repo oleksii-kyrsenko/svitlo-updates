@@ -29,3 +29,8 @@ test('a newly observed unknown house removes its old queue without removing unto
  const old=packet([row({houses:['14-А','16']})]);const fresh={...packet([]),observedHouses:[{regionId:'UA-30',settlement:'м. Київ',community:'Київ',street:'вул. Зразкова',house:'14-А'}]};
  const result=mergeSnapshots(old,fresh,now);assert.deepEqual(result.records[0].houses,['16']);assert.equal(result.records[0].expiresAt,expiresAt);
 });
+test('capital priority preserves a separate scheduled all-settlement cursor mode',()=>{
+ const ops=[{id:'ternopil',regionIds:['UA-61']}],cities=[{settlement:'Тернопіль',regionId:'UA-61'}];
+ const capital=collectionPlan(ops,cities,null,{requestLimit:100})[0];assert.equal(capital.args[0],'coverage/collect-official-bulk.py');assert(capital.args.includes('--full-city'));
+ const global=collectionPlan(ops,cities,null,{capitalPriority:false})[0];assert.equal(global.args[0],'coverage/collect-batch-b.py');assert(!global.args.includes('--target-city'));assert.equal(global.targetCity,null);
+});

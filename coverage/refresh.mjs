@@ -82,7 +82,8 @@ export async function refresh(){
  if(!Number.isInteger(budget)||!Number.isInteger(streetBudget))throw Error('invalid_budget');
  const cfg=JSON.parse(await readFile('coverage/sources.json')),geography=JSON.parse(await readFile('coverage/capital-geography.json'));
  const requestLimit=Number(process.env.COVERAGE_CITY_REQUEST_LIMIT||400);
- const commands=collectionPlan(cfg.operators,geography.cities,selected,{budget,streetBudget,requestLimit}),collected=[];let next=0;
+ const mode=process.env.COVERAGE_COLLECTION_MODE||'capital';if(!['capital','legacy'].includes(mode))throw Error('unknown_collection_mode');report.collectionMode=mode;
+ const commands=collectionPlan(cfg.operators,geography.cities,selected,{budget,streetBudget,requestLimit,capitalPriority:mode==='capital'}),collected=[];let next=0;
  async function worker(){while(next<commands.length){const c=commands[next++];await rm(c.output,{force:true});let error=null;
   try{await run('python3',c.args,{timeout:c.fullCity?540000:240000,maxBuffer:1024*1024});collected.push(JSON.parse(await readFile(c.output)));}catch(e){error=e.killed?'collector_timeout':'collector_failed';report.errors.push({operatorId:c.operatorId,error});}
   let sidecar=null;try{sidecar=JSON.parse(await readFile(c.output+'.report.json'));}catch{}

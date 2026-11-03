@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-03",
+  "collector": "coverage/collect-official-bulk.py",
+  "testCommand": "python coverage/qa/test-official-bulk.py",
+  "testsPassed": 16,
+  "purpose": "Verified anonymous official-source bulk collection. Counts are source-derived address facts, not independent Android user-flow coverage.",
+  "safety": [
+    "No private app imports, subscriber identifiers, account queries, login or CAPTCHA bypass. Only anonymous public forms/APIs and their published client protocol.",
+    "No hardcoded benchmark addresses or queue assignments. Geographic metadata and OpenStreetMap street names discover source IDs only; queues come exclusively from each official source.",
+    "House letters and fractions remain distinct. No numeric range expansion. Duplicate/unknown connections participate in queue consensus. Exclusion or partial entrance scope cannot produce a whole-house queue.",
+    "Complete dictionary means the currently offered source was traversed; it does not establish 100% of all geographic houses.",
+    "Positive facts and explicit observations expire after 24h; cached discovery metadata never renews a house fact timestamp.",
+    "Original response archives contain public source bodies plus URL/method/hash/time and submitted public form fields. Normalized archives are local proof artifacts, not a release."
+  ],
+  "operators": {
+    "ternopil": {
+      "sourceUrl": "https://api-poweron.toe.com.ua/api/pw_address_queues?pagination=false",
+      "protocol": "One complete public grouped JSON table; select exact sourced city/community, use chergGpv only, literal house lists and actual provider IDs.",
+      "latestRun": {
+        "checkedAt": "2026-11-03T12:18:01.305000+00:00",
+        "positiveHouseFacts": 6539,
+        "houseObservations": 6595,
+        "requests": 1,
+        "errors": [],
+        "cityCrawl": {
+          "targetCity": "Тернопіль",
+          "mode": "official-public-bulk-table",
+          "status": "complete",
+          "sourceRows": 11965,
+          "targetRows": 471,
+          "targetCityIds": [
+            "1032"
+          ],
+          "dictionaryComplete": true,
+          "sourceTraversal": "complete-public-grouped-table"
+        }
+      },
+      "independentSourceReread": {
+        "count": 5,
+        "matched": 5,
+        "method": "Deterministically selected source-derived positives were re-read via official /api/pw-accounts/building-groups. This checks API compatibility, not benchmark coverage."
+      },
+      "artifacts": [
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/ternopil/normalized-final.zip",
+          "sha256": "6d84e36a9e66ceb64cf16566850a9723dee4e2bbb110e53762f6202fce2f4cea",
+          "bytes": 219156
+        },
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/ternopil/independent-source-rereads.zip",
+          "sha256": "528b0f8ecd5cef87f23fe31d50126ee40d557e48f59719e266f73d7b3248efbb",
+          "bytes": 1288
+        }
+      ],
+      "limitations": [
+        "The official table can omit houses absent from its published rows. Unknown or conflicting connections remain unknown."
+      ]
+    },
+    "zhytomyr": {
+      "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
+      "protocol": "Discover all 19 official rem_id department forms; identify every department offering the target city, submit only offered anonymous mainform2 hidden and all-button fields, parse strict 7-column queue/subqueue table, then consolidate across all target branches.",
+      "latestRun": {
+        "checkedAt": "2026-11-03T12:18:18.867000+00:00",
+        "positiveHouseFacts": 13543,
+        "houseObservations": 18062,
+        "requests": 3,
+        "errors": [],
+        "cityCrawl": {
+          "targetCity": "Житомир",
+          "mode": "official-public-bulk-table",
+          "status": "complete",
+          "departmentIdsRead": [
+            "7"
+          ],
+          "targetDepartmentIds": [
+            "7"
+          ],
+          "departmentsKnown": 19,
+          "dictionaryComplete": true,
+          "sourceTraversal": "all-official-city-branches-before-house-consensus"
+        }
+      },
+      "coldStartRequests": 21,
+      "warmStartRequests": 3,
+      "artifacts": [
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/zhytomyr/normalized-final.zip",
+          "sha256": "3d4dbc080effc3acd2ca6ac32a41cc98065b12ece843271635c4b6feb5ee9e46",
+          "bytes": 439764
+        }
+      ],
+      "limitations": [
+        "Prior normalized.zip contains historical pre-guard14183positive claims and must not be published in place of final13543. The final guard refuses640claims potentially affected by exclusions or entrance/connection scope.",
+        "Literal house observations do not expand ranges and do not claim all geographic houses."
+      ]
+    },
+    "sumy": {
+      "sourceUrl": "https://www.soe.com.ua/consumers/shutdowns",
+      "protocol": {
+        "headers": {
+          "X-Source": "soe-website",
+          "Referer": "https://www.soe.com.ua/consumers/shutdowns",
+          "Origin": "https://www.soe.com.ua"
+        },
+        "endpoints": [
+          "/next-api/shutdowns/cities?search=",
+          "/next-api/shutdowns/streets?cityId=&search=",
+          "/next-api/shutdowns/queues-by-street?streetId="
+        ],
+        "anonymousResponseCodec": "AES-GCM matches the current published official frontend, including public client key derivation; tampered payloads fail authentication.",
+        "verifiedGpvColumn": 3,
+        "otherProductsNotSubstituted": "ACHR index1 is a separate outage product; its non-null values never substitute for missing GPV.",
+        "runtimeDependency": "cryptography==50.0.0 verified locally",
+        "proof": [
+          {
+            "url": "https://www.soe.com.ua/_next/static/chunks/3065_9tk1io81.js",
+            "sha256": "43595c7a021f3d45eb1ec196a64768e8b34f5e89e53ae060a23b4692c4c1eca3",
+            "kind": "public-client-codec"
+          },
+          {
+            "url": "https://www.soe.com.ua/_next/static/chunks/352imawz9e4fe.js",
+            "sha256": "c13d1780300e47368d9b399cd4b7c7a19f0e28850c470f76d3e252dc16e80db1",
+            "kind": "GPV-array-index3"
+          }
+        ]
+      },
+      "latestRun": {
+        "checkedAt": "2026-11-03T12:16:13.715000+00:00",
+        "positiveHouseFacts": 0,
+        "houseObservations": 2132,
+        "requests": 100,
+        "errors": [
+          {
+            "stage": "street_queue",
+            "streetId": "13702",
+            "error": "Bound"
+          }
+        ],
+        "cityCrawl": {
+          "targetCity": "Суми",
+          "mode": "official-public-bulk-table",
+          "status": "partial",
+          "dictionaryComplete": false,
+          "officialStreetCount": 61,
+          "geographicDiscoveryQueries": 58,
+          "geographicInventory": {
+            "sourceUrl": "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A35%5D%3Barea%283603678531%29-%3E.a%3Bway%5B%22highway%22%5D%5B%22name%22%5D%28area.a%29%3Bout+tags%3B",
+            "sha256": "b869fdaf579de116ac58d225fe3c22c2b207d6f6e421dc1d235f9eba090ee50c",
+            "streets": 618,
+            "terms": 964,
+            "checkedAt": 1793688209010,
+            "attribution": "© OpenStreetMap contributors, ODbL",
+            "method": "current independent complete highway-name response, cached after ordinary GET succeeded; no queue inputs"
+          },
+          "publicProtocolProof": [
+            {
+              "url": "https://www.soe.com.ua/_next/static/chunks/3065_9tk1io81.js",
+              "sha256": "43595c7a021f3d45eb1ec196a64768e8b34f5e89e53ae060a23b4692c4c1eca3",
+              "kind": "public-client-codec"
+            },
+            {
+              "url": "https://www.soe.com.ua/_next/static/chunks/352imawz9e4fe.js",
+              "sha256": "c13d1780300e47368d9b399cd4b7c7a19f0e28850c470f76d3e252dc16e80db1",
+              "kind": "GPV-array-index3"
+            }
+          ],
+          "sourceTraversal": "OSM-discovery-to-official-city/street-dictionary-and-house-GPV-column3"
+        }
+      },
+      "officialStreetsRead": 50,
+      "artifacts": [
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/sumy/normalized-negative-observations-continued.zip",
+          "sha256": "9a65d5a884f0d03f408065cb7533fbd37e5076d4ffc366ffb524d853c925d416",
+          "bytes": 27060
+        },
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/sumy/current-gpv-pdf.zip",
+          "sha256": "aaf64c1248de47615a3781edaede0f1f6fe03be6f69217a218845b45b51696b5",
+          "bytes": 580538
+        },
+        {
+          "evidencePath": "/workspace/library-files/capital-coverage-90/official-bulk/sumy/geographic-inventory.zip",
+          "sha256": "e1621074b2d25452105de2e694d349196761de07d0f84ab36d8a9df97d41ef2d",
+          "bytes": 62125
+        }
+      ],
+      "currentGpvPdf": {
+        "url": "https://www.soe.com.ua/uploads/images/docs/sposhivacham/ГПВ%202026-2027%20на%20сайт.pdf",
+        "sha256": "9cda79d0e972bcf84b8dff0121d121e75397198da7b98845e8c04cae5b1fe4a9",
+        "bytes": 591756,
+        "pages": 16,
+        "validFrom": "2026-10-01",
+        "validTo": "2027-04-01",
+        "currentnessEvidence": "Both official current frontend and PDF heading state the period; fetch time alone is not used.",
+        "cityMentionsInExtractedText": 0
+      },
+      "limitations": [
+        "All2132checked public house observations in this bounded continuation had no published GPV at index3. This is not evidence that the whole city is exempt or that every city house was checked.",
+        "The current official GPV PDF does not mention the city Sumy. Rows for other towns must not be reassigned to Sumy.",
+        "Partial traversal stopped at request budget100;61officialstreetIDs discovered,50streets read this run. Cursor persists, so later runs continue.",
+        "Geographic inventory is external OSM discovery only,618streetnames/964terms; it supplies no queues."
+      ]
+    }
+  }
+}

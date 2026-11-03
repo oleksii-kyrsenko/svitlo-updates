@@ -1,0 +1,14 @@
+name: Continue all-settlement public source crawl
+on:
+  schedule:
+    - cron: '17 2,8,14,20 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  refresh:
+    uses: ./.github/workflows/dynamic-coverage.yml
+    with:
+      collection_mode: legacy
+    secrets: inherit

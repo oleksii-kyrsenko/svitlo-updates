@@ -1,8 +1,21 @@
 name: Dynamic coverage data and source monitor
 on:
+  workflow_call:
+    inputs:
+      collection_mode:
+        type: string
+        default: capital
+    secrets:
+      DYNAMIC_COVERAGE_SIGNING_KEY:
+        required: true
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
+    inputs:
+      collection_mode:
+        type: choice
+        options: [capital, legacy]
+        default: capital
 permissions:
   contents: write
   issues: write
@@ -22,7 +35,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install bounded public PDF reader
-        run: pip install pdfplumber==0.11.9
+        run: pip install pdfplumber==0.11.9 cryptography==50.0.0
       - uses: actions/cache@v4
         with:
           path: coverage/geography-cache.json
@@ -42,6 +55,7 @@ jobs:
           python3 coverage/qa/test_city_crawl.py
           python3 coverage/qa/test-official-rosters.py
           python3 coverage/qa/test-city-forms.py
+          python3 coverage/qa/test-official-bulk.py
           python3 coverage/qa/test-remainder.py
           python3 coverage/qa/test-batches.py
       - name: Monitor every operator and discover registry changes
@@ -78,6 +92,7 @@ jobs:
         env:
           COVERAGE_STREET_BUDGET: ${{ vars.COVERAGE_STREET_BUDGET || '8' }}
           COVERAGE_ADDRESS_BUDGET: ${{ vars.COVERAGE_ADDRESS_BUDGET || '20' }}
+          COVERAGE_COLLECTION_MODE: ${{ inputs.collection_mode || 'capital' }}
           COVERAGE_CITY_REQUEST_LIMIT: ${{ vars.COVERAGE_CITY_REQUEST_LIMIT || '400' }}
           COVERAGE_OPERATORS: ${{ vars.COVERAGE_OPERATORS }}
           SVITLO_GEOGRAPHY_CACHE: coverage/geography-cache.json
