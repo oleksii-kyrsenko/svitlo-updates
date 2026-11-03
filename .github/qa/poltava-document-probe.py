@@ -104,6 +104,8 @@ def main():
                 try:
                     response = context.request.get(url, timeout=45000, headers={'Referer': INDEX})
                     item['status'] = response.status
+                    item['finalUrl'] = response.url
+                    if not official_pdf(response.url): raise ValueError('unreviewed_document_redirect')
                     length = response.headers.get('content-length')
                     if length and int(length) > MAX_BODY: raise ValueError('public_document_size_limit')
                     raw = response.body()
