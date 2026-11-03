@@ -51,8 +51,8 @@ full38 gate remains failed.
 Proofs: `capital-coverage-90/same-response-combined-browser-41592098789/report.json` in the
 session's retained Library, including the original attempt ledger.
 
-The separate `browser-regression-capture.yml` workflow can capture the three
-remaining source protocols using ordinary Chromium on the public CI network.
+The separate `browser-regression-capture.yml` workflow can capture the selected
+source protocols using ordinary Chromium on the public CI network.
 It contains only source-side HTTP code and frozen public QA inputs. It stops at
 visible CAPTCHA/login, never solves challenges, and persists no cookies or raw
 subscriber identifiers. A complete capture is still only source evidence; run
@@ -62,5 +62,15 @@ a preserved result. An incomplete source capture remains an explicit blocker.
 The source capture can restrict work to request.caseIds, without revisiting passed
 cases. Safe fixed error codes distinguish TLS certificate/protocol, DNS, timeout
 and connection-reset blockers; raw browser exception text and private query
-references are never persisted. The next request selects only the two unresolved
+references are never persisted. The committed request selects only the two unresolved
 Cherkasy cases. This is source diagnosis, not a retry selected to improve coverage.
+
+Focused public CI run41636605058 (3November2026, commitca3b8dd) completed the
+diagnostic workflow, but both cases stopped at `official-tls-certificate-error`
+on their first address API request, after the ordinary official page rendered.
+Both captures have `captureComplete:false` and no response fixtures or queue
+proofs. Workflow success therefore does not change the36/38 regression result.
+The exact original artifact ZIP SHA256 is
+`805eee07f5b9ef1117998c9c62171a529e85353fde515c758f5d803008c9100d`.
+Retained proof directory: `capital-coverage-90/browser-regression-41636605058/`.
+TLS verification remains enabled.
