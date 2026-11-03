@@ -10,5 +10,18 @@
       "streetIndex": 90,
       "houseIndex": 0
     }
+  },
+  "cityCrawls": {
+    "d218dd80a595e5c12607": {
+      "targetDirectory": {
+        "signature": "7ee0e08a8b2ccc4cb27059f1696ba15a0919b7f77c4b9e24a40b05e7fbe8554d",
+        "index": 19,
+        "targets": [
+          "7"
+        ],
+        "checkedAt": 1793715009790,
+        "complete": true
+      }
+    }
   }
 }

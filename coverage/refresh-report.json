@@ -1,16 +1,8 @@
 {
-  "checkedAt": 1793687979544,
+  "checkedAt": 1793715006831,
   "errors": [
     {
       "operatorId": "chernivtsi",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "cherkasy",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "sumy",
       "error": "collector_failed"
     },
     {
@@ -26,8 +18,16 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "zhytomyr",
-      "error": "collector_timeout"
+      "operatorId": "sumy",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-odesa",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "error": "collector_failed"
     },
     {
       "operatorId": "dtek-pem",
@@ -62,15 +62,15 @@
       "error": "collector_failed"
     },
     {
+      "operatorId": "ukrzaliznytsia",
+      "error": "collector_failed"
+    },
+    {
       "operatorId": "luhansk",
       "error": "collector_failed"
     },
     {
       "operatorId": "regional-networks",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "ukrzaliznytsia",
       "error": "collector_failed"
     }
   ],
@@ -89,30 +89,34 @@
       "caseChecks": 0
     },
     {
+      "operatorId": "lviv",
+      "targetCity": "Львів",
+      "cityCrawl": {
+        "targetCity": "Львів",
+        "mode": "city-directory",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 218,
+      "constraint": null,
+      "caseChecks": null
+    },
+    {
       "operatorId": "cherkasy",
       "targetCity": "Черкаси",
       "cityCrawl": {
         "targetCity": "Черкаси",
-        "cycleComplete": false,
-        "mode": "resumable-city-dictionary"
+        "mode": "official-current-GPV-city-house-documents",
+        "status": "complete",
+        "dictionaryComplete": false,
+        "allCurrentQueueDocumentsRead": true,
+        "queueDocuments": 12
       },
-      "status": "not_collected",
-      "records": 0,
+      "status": "collected",
+      "records": 510,
       "constraint": null,
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "sumy",
-      "targetCity": "Суми",
-      "cityCrawl": {
-        "targetCity": "Суми",
-        "cycleComplete": false,
-        "mode": "resumable-city-dictionary"
-      },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": null,
-      "caseChecks": 0
+      "caseChecks": null
     },
     {
       "operatorId": "vinnytsia",
@@ -160,16 +164,57 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "lviv",
-      "targetCity": "Львів",
+      "operatorId": "ternopil",
+      "targetCity": "Тернопіль",
       "cityCrawl": {
-        "targetCity": "Львів",
-        "mode": "city-directory",
-        "status": "partial",
-        "dictionaryComplete": false
+        "targetCity": "Тернопіль",
+        "mode": "official-public-bulk-table",
+        "status": "complete",
+        "sourceRows": 11965,
+        "targetRows": 471,
+        "targetCityIds": [
+          "1032"
+        ],
+        "dictionaryComplete": true,
+        "sourceTraversal": "complete-public-grouped-table"
       },
       "status": "collected",
-      "records": 157,
+      "records": 6539,
+      "constraint": null,
+      "caseChecks": null
+    },
+    {
+      "operatorId": "zhytomyr",
+      "targetCity": "Житомир",
+      "cityCrawl": {
+        "targetCity": "Житомир",
+        "mode": "official-public-bulk-table",
+        "status": "complete",
+        "departmentIdsRead": [
+          "7"
+        ],
+        "targetDepartmentIds": [
+          "7"
+        ],
+        "departmentsKnown": 19,
+        "dictionaryComplete": true,
+        "sourceTraversal": "all-official-city-branches-before-house-consensus"
+      },
+      "status": "collected",
+      "records": 13543,
+      "constraint": null,
+      "caseChecks": null
+    },
+    {
+      "operatorId": "sumy",
+      "targetCity": "Суми",
+      "cityCrawl": {
+        "targetCity": "Суми",
+        "mode": "official-public-bulk-table",
+        "status": "partial"
+      },
+      "status": "not_collected",
+      "records": 0,
       "constraint": null,
       "caseChecks": null
     },
@@ -182,23 +227,27 @@
         "mode": "resumable-city-dictionary"
       },
       "status": "collected",
-      "records": 302,
+      "records": 338,
       "constraint": null,
-      "caseChecks": 369
+      "caseChecks": 370
     },
     {
-      "operatorId": "ternopil",
-      "targetCity": "Тернопіль",
+      "operatorId": "kirovohrad",
+      "targetCity": "Кропивницький",
       "cityCrawl": {
-        "targetCity": "Тернопіль",
-        "mode": "city-directory",
-        "status": "partial",
-        "dictionaryComplete": true
+        "targetCity": "Кропивницький",
+        "mode": "resumable-official-city-form",
+        "status": "complete",
+        "dictionaryComplete": true,
+        "sourceCityId": "1471",
+        "streetsRead": 352,
+        "streetsKnown": 866,
+        "startedAtStreet": 514
       },
       "status": "collected",
-      "records": 341,
+      "records": 904,
       "constraint": null,
-      "caseChecks": 388
+      "caseChecks": null
     },
     {
       "operatorId": "zakarpattia",
@@ -210,36 +259,9 @@
         "dictionaryComplete": true
       },
       "status": "collected",
-      "records": 381,
+      "records": 382,
       "constraint": null,
-      "caseChecks": 390
-    },
-    {
-      "operatorId": "zhytomyr",
-      "targetCity": "Житомир",
-      "cityCrawl": null,
-      "status": "not_collected",
-      "records": null,
-      "constraint": null,
-      "caseChecks": null
-    },
-    {
-      "operatorId": "kirovohrad",
-      "targetCity": "Кропивницький",
-      "cityCrawl": {
-        "targetCity": "Кропивницький",
-        "mode": "resumable-official-city-form",
-        "status": "partial",
-        "dictionaryComplete": true,
-        "sourceCityId": "1471",
-        "streetsRead": 397,
-        "streetsKnown": 866,
-        "startedAtStreet": 117
-      },
-      "status": "collected",
-      "records": 1747,
-      "constraint": null,
-      "caseChecks": null
+      "caseChecks": 391
     },
     {
       "operatorId": "khmelnytskyi",
@@ -251,23 +273,23 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 351,
+      "records": 317,
       "constraint": null,
       "caseChecks": 367
     },
     {
-      "operatorId": "dtek-kyiv",
-      "targetCity": "Київ",
+      "operatorId": "dtek-odesa",
+      "targetCity": "Одеса",
       "cityCrawl": {
-        "targetCity": "Київ",
+        "targetCity": "Одеса",
         "mode": "city-directory",
         "status": "partial",
-        "dictionaryComplete": false
+        "dictionaryComplete": true
       },
-      "status": "collected",
-      "records": 77,
-      "constraint": null,
-      "caseChecks": 77
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
     },
     {
       "operatorId": "dtek-kyiv-region",
@@ -279,7 +301,7 @@
         "dictionaryComplete": true
       },
       "status": "collected",
-      "records": 20,
+      "records": 17,
       "constraint": null,
       "caseChecks": 20
     },
@@ -292,10 +314,10 @@
         "status": "partial",
         "dictionaryComplete": true
       },
-      "status": "collected",
+      "status": "not_collected",
       "records": 0,
       "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 20
+      "caseChecks": 0
     },
     {
       "operatorId": "dtek-pem",
@@ -398,18 +420,13 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-dnipro",
-      "targetCity": "Дніпро",
-      "cityCrawl": {
-        "targetCity": "Дніпро",
-        "mode": "city-directory",
-        "status": "partial",
-        "dictionaryComplete": false
-      },
-      "status": "collected",
-      "records": 67,
-      "constraint": null,
-      "caseChecks": 67
+      "operatorId": "ukrzaliznytsia",
+      "targetCity": null,
+      "cityCrawl": null,
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
+      "caseChecks": 0
     },
     {
       "operatorId": "luhansk",
@@ -430,27 +447,32 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "ukrzaliznytsia",
-      "targetCity": null,
-      "cityCrawl": null,
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "collection-unavailable",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "dtek-odesa",
-      "targetCity": "Одеса",
+      "operatorId": "dtek-kyiv",
+      "targetCity": "Київ",
       "cityCrawl": {
-        "targetCity": "Одеса",
+        "targetCity": "Київ",
         "mode": "city-directory",
         "status": "partial",
-        "dictionaryComplete": true
+        "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 0
+      "records": 48,
+      "constraint": null,
+      "caseChecks": 49
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "targetCity": "Дніпро",
+      "cityCrawl": {
+        "targetCity": "Дніпро",
+        "mode": "city-directory",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 29,
+      "constraint": null,
+      "caseChecks": 29
     },
     {
       "operatorId": "cek",
@@ -462,25 +484,26 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 120,
+      "records": 40,
       "constraint": null,
-      "caseChecks": 120
+      "caseChecks": 40
     }
   ],
-  "publicationCheckedAt": 1793689299510,
+  "collectionMode": "capital",
+  "publicationCheckedAt": 1793715940196,
   "legacyConstraints": [],
   "publication": {
-    "revision": 20,
-    "operators": 17,
-    "records": 6056
+    "revision": 21,
+    "operators": 16,
+    "records": 5381
   },
   "cityPublication": {
-    "revision": 20,
-    "cities": 122,
-    "retiredCities": 7,
-    "records": 6056,
+    "revision": 21,
+    "cities": 121,
+    "retiredCities": 9,
+    "records": 5381,
     "skippedCities": [],
-    "sourceSnapshots": 18,
+    "sourceSnapshots": 17,
     "sourceCacheConstraints": []
   }
 }
