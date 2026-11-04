@@ -9,6 +9,43 @@ def word(text, x, y, width=20): return {'text': text, 'x0': x, 'x1': x+width, 't
 def claim(text, queue='1.1'): return m.parse_paragraph({'text': text, 'queue': queue}, 1, D)
 
 class OfficialDocuments(unittest.TestCase):
+    def test_actual_numbered_lane_corrects_old_street_collision_and_observes_withdrawal(self):
+        # Official 2026–27 PDF page2, SHA256 b64d468074c1548fe684c0f29cfcc718534da45a822a63e28292d02cbb1f4e65.
+        rows,obs,_=m.consolidate(claim('вул.Громова 2-15,17 2-й провул.Громова 8'),G,1793739000000,D['effectiveUntil'])
+        facts={(r['street'],h) for r in rows for h in r['houses']}
+        self.assertEqual(facts,{('вул. Громова','17'),('пров. 2-й Громова','8')})
+        self.assertIn(('вул. Громова','8'),{(o['street'],o['house']) for o in obs})
+        self.assertTrue(all(o['checkedAt']==1793739000000 and o['expiresAt']==1793825400000 for o in obs))
+
+    def test_actual_anniversary_street_is_a_name_not_a_house_number(self):
+        rows,_,_=m.consolidate(claim('вул. 600-річчя 7,9,9а,11,12,14,16,18,26,28,30,32а,36,40,40а,42,44,46,48;','6.2'),G,1793739000000,D['effectiveUntil'])
+        self.assertEqual(len(rows),1);self.assertEqual(rows[0]['street'],'вул. 600-річчя')
+        self.assertEqual(set(rows[0]['houses']),{'7','9','9а','11','12','14','16','18','26','28','30','32а','36','40','40а','42','44','46','48'})
+        self.assertNotIn('600',rows[0]['houses'])
+
+    def test_actual_ordinal_before_lane_keeps_its_literal_houses(self):
+        rows,_,_=m.consolidate(claim('1-й пров. Індустріальний 3,8,10,12','5.1'),G,1793739000000,D['effectiveUntil'])
+        self.assertEqual([(r['street'],r['houses']) for r in rows],[('пров. 1-й Індустріальний',['3','8','10','12'])])
+        self.assertIn('1-й пров. Індустріальний',rows[0]['quote'])
+
+    def test_unqualified_number_before_lane_is_not_promoted_to_an_ordinal(self):
+        rows,_,_=m.consolidate(claim('вул. Навчальна 2 провулок Комунальний 5,8,23'),G,1793739000000,D['effectiveUntil'])
+        self.assertFalse(rows)
+
+    def test_numbered_lane_ranges_and_house_ranges_are_not_expanded(self):
+        for text in ['1-3-й пров. Навчальний 4','пров. 1-3-й Навчальний 4']:
+            rows,_,_=m.consolidate(claim(text),G,1793739000000,D['effectiveUntil']);self.assertFalse(rows)
+        rows,_,_=m.consolidate(claim('1-й пров. Навчальний 1-9,12-А'),G,1793739000000,D['effectiveUntil'])
+        self.assertEqual([(r['street'],r['houses']) for r in rows],[('пров. 1-й Навчальний',['12-А'])])
+
+    def test_ordinal_and_unqualified_lane_cannot_share_a_house(self):
+        rows,_,_=m.consolidate(claim('пров. Навчальний 8; 2-й пров. Навчальний 8','1.1')+claim('пров. Навчальний 8','2.1'),G,1793739000000,D['effectiveUntil'])
+        self.assertEqual([(r['street'],r['queue']) for r in rows],[('пров. 2-й Навчальний','1.1')])
+
+    def test_temporary_numeric_name_labels_never_rewrite_an_existing_source_name(self):
+        rows,_,_=m.consolidate(claim('вул. Sourcescannednamea 4; вул. 700-річчя 9'),G,1793739000000,D['effectiveUntil'])
+        self.assertEqual({(r['street'],h) for r in rows for h in r['houses']},{('вул. Sourcescannednamea','4'),('вул. 700-річчя','9')})
+
     def test_current_index_rejects_expired_comments_and_foreign_document(self):
         html = '<div class="component-file__title">ГПВ ВОЕ (з 1 жовтня 2026 року по 1 квітня 2027 року)</div><div class="component-file__btn"><a href="/current.pdf">Завантажити</a>'
         self.assertEqual(m.current_document(html,1793739000000)['url'],D['url'])

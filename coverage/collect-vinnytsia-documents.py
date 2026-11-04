@@ -90,8 +90,48 @@ def city_claims(raw, document):
     if not ended or seen != {f'{a}.{b}' for a in range(1, 7) for b in [1, 2]}: raise ValueError('incomplete_municipal_queue_section')
     return claims, excerpts
 
-def parse_paragraph(paragraph, page, document):
-    text = paragraph['text']
+def numbered_names(text):
+    """Keep explicitly typed numeric street names and single numbered lanes.
+
+    The shared literal reader starts names with a letter. Temporary alphabetic
+    labels let it apply the same house/range/partial-house rules without
+    confusing a lane ordinal with the preceding street's house number. Every
+    label is restored to the source name before a claim leaves this reader.
+    Numbered lane ranges and omitted street types remain unsupported.
+    """
+    letters = literal.LETTERS
+    lane = r'(?:провулок|провул\.?|пров\.)'
+    # Without the ordinal suffix, "... Нова 2 пров. Інший ..." can mean
+    # house2 of the preceding street. Do not manufacture a numbered lane.
+    rank = r'\d{1,2}\s*[-–]\s*й'
+    name = rf'[{letters}][{letters} .’\'\-]{{1,85}}?'
+    patterns = [
+        re.compile(rf'(?<![\w/–—-])(?P<rank>{rank})\s*(?P<type>{lane})\s*(?P<name>{name})\s*,?\s*(?=\d)', re.I),
+        re.compile(rf'(?<![\w])(?P<type>{lane})\s*(?P<rank>{rank})\s+(?P<name>{name})\s*,?\s*(?=\d)', re.I),
+        # A numeral is part of this explicitly typed source name, not a house.
+        re.compile(rf'(?<![\w])(?P<type>вулиця\s+|вул\.\s*)(?P<name>\d{{1,4}}[-–][{letters}]{{2,30}})\s*,?\s*(?=\d)', re.I),
+    ]
+    names = {}
+    def replace(match):
+        body = clean(match['name'])
+        if re.search(r'\b(?:вул|вулиця|пров|провулок|проїзд|просп|тупик|узвіз|шосе)\b', body, re.I): return match[0]
+        number = match.groupdict().get('rank')
+        source_name = (clean(number) + ' ' if number else '') + body
+        # Alphabetic unique labels are accepted by the existing name grammar.
+        index = len(names); suffix = ''
+        while True:
+            suffix = chr(97 + index % 26) + suffix; index = index // 26 - 1
+            if index < 0: break
+        label = 'Sourcescannedname' + suffix
+        while label.casefold() in text.casefold() or label in names: label += 'x'
+        names[label] = source_name
+        prefix = 'пров. ' if number else 'вул. '
+        return '; ' + prefix + label + ' '
+    for pattern in patterns: text = pattern.sub(replace, text)
+    return text, names
+
+def literal_paragraph(text, paragraph, page, document, names=None):
+    names = names or {}
     # A lane ordinal before its type is not a house of the preceding street.
     # Numbered lanes are deliberately omitted until their source name grammar
     # is supported; the marker has no known street type and cannot be promoted.
@@ -103,12 +143,29 @@ def parse_paragraph(paragraph, page, document):
     text = re.sub(r'(\d+)\s*[-–—]\s*(\d+)\s*[А-Яа-яІіЇїЄєҐґ](?![\w])', r'\1-\2', text)
     values = literal.parse_cell({'page': page, 'text': text}, {**document, 'queue': paragraph['queue']})
     for value in values:
+        value['street'] = names.get(value['street'], value['street'])
         value['houses'] = [h for h in value['houses'] if not re.search(r'[- ](?:й|я)$', h, re.I)]
         # Unqualified names can veto an explicit conflicting claim, but this
         # collector does not infer their street/lane type for a positive fact.
         if not value['kind']: value['queue'] = None
         value['excerpt'] = paragraph['text'][:2400]
     return [v for v in values if (v['houses'] or v.get('ranges')) and not re.search(r'\b(?:пров|вул|проїзд)\b', v['street'], re.I)]
+
+def parse_paragraph(paragraph, page, document):
+    text, names = numbered_names(paragraph['text'])
+    values = literal_paragraph(text, paragraph, page, document, names)
+    if names:
+        # Older normalization could consume only "пров" from "провул." and
+        # misread the remaining "ул.Name" as an ordinary street. Explicitly
+        # observe any formerly misattributed literal as unknown; otherwise a
+        # retained publisher snapshot could keep its old positive until expiry.
+        before = literal_paragraph(paragraph['text'], paragraph, page, document)
+        present = {(v['kind'], literal.name_key(v['street']), literal.house_key(h)) for v in values for h in v['houses']}
+        for previous in before:
+            removed = [h for h in previous['houses'] if (previous['kind'], literal.name_key(previous['street']), literal.house_key(h)) not in present]
+            if removed and previous['kind'] and previous['queue']:
+                values.append({**previous, 'houses': removed, 'ranges': [], 'queue': None})
+    return values
 
 def consolidate(claims, geography, checked_at, effective_until):
     # Reuse the already exercised literal/range/qualifier conflict policy;
