@@ -1,5 +1,5 @@
 """Visible input/async-directory controls; no application imports or emulator."""
-import importlib.util,pathlib,tempfile,unittest
+import importlib.util,pathlib,tempfile,unittest,json,sqlite3,shutil,hashlib
 from unittest.mock import patch
 from xml.sax.saxutils import escape
 
@@ -38,6 +38,41 @@ class InputAudit(audit.Audit):
 
 
 class SearchInputControls(unittest.TestCase):
+    def state_capture_driver(self,folder):
+        source=folder/'source';source.mkdir();database=source/'RKStorage'
+        with sqlite3.connect(database) as connection:
+            connection.execute('CREATE TABLE catalystLocalStorage (key TEXT PRIMARY KEY,value TEXT)')
+            connection.execute('INSERT INTO catalystLocalStorage VALUES (?,?)',('svitlo.state.v1',json.dumps({'activePlaceId':'app-written','places':[]})))
+        class CaptureAudit(audit.Audit):
+            def __init__(self):self.case_dir=folder/'case';self.pulls=[]
+            def adb(self,*args,**kwargs):
+                assert args[:2]==('pull','/data/data/'+audit.PKG+'/databases')
+                target=pathlib.Path(args[2])/'databases';target.mkdir();shutil.copy2(database,target/'RKStorage')
+                if not self.pulls:(target/'RKStorage-journal').write_bytes(b'first captured journal')
+                self.pulls.append(target);return ''
+        return CaptureAudit()
+
+    def test_live_hot_journal_retries_a_distinct_readonly_capture_and_retains_originals(self):
+        with tempfile.TemporaryDirectory() as temp:
+            driver=self.state_capture_driver(pathlib.Path(temp));connect=sqlite3.connect;calls=[]
+            def reader(location,**kwargs):
+                calls.append(location);self.assertTrue(location.endswith('?mode=ro'));self.assertTrue(kwargs['uri'])
+                if len(calls)==1:raise sqlite3.OperationalError('attempt to write a readonly database')
+                return connect(location,**kwargs)
+            with patch.object(audit.sqlite3,'connect',reader),patch.object(audit.time,'sleep'):
+                self.assertEqual(driver.read_state(),{'activePlaceId':'app-written','places':[]})
+            self.assertEqual(len(driver.pulls),2);self.assertNotEqual(driver.pulls[0],driver.pulls[1]);self.assertTrue((driver.pulls[0]/'RKStorage-journal').exists());self.assertFalse((driver.pulls[1]/'RKStorage-journal').exists())
+            proof=json.loads((driver.pulls[0].parent/'capture.json').read_text());self.assertEqual(proof['captureError'],'sqlite-readonly-hot-journal-recovery')
+            original=next(x for x in proof['files'] if x['path'].endswith('RKStorage-journal'));self.assertEqual(original['sha256'],hashlib.sha256(b'first captured journal').hexdigest())
+
+    def test_hot_journal_capture_retries_are_bounded_and_other_sqlite_errors_are_not_hidden(self):
+        for error,count in [('attempt to write a readonly database',3),('database disk image is malformed',1)]:
+            with tempfile.TemporaryDirectory() as temp:
+                driver=self.state_capture_driver(pathlib.Path(temp))
+                with patch.object(audit.sqlite3,'connect',side_effect=sqlite3.OperationalError(error)),patch.object(audit.time,'sleep'):
+                    with self.assertRaisesRegex(sqlite3.OperationalError,error):driver.read_state()
+                self.assertEqual(len(driver.pulls),count)
+
     def test_selection_transition_completed_in_retry_tree_is_accepted_without_another_tap(self):
         # Actual UA-18-capital-1: the 2s wait saw the list, but the next tree
         # already showed the editor and selected street. Old code treated the

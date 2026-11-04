@@ -437,24 +437,44 @@ class Audit:
         return self.wait_options()
 
     def read_state(self):
-        directory = self.case_dir/'database'
-        directory.mkdir(exist_ok=True)
-        self.adb('pull', f'/data/data/{PKG}/databases', str(directory), check=False)
-        db = next(directory.rglob('RKStorage'), None)
-        if not db:
-            return {}
-        with sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True) as connection:
-            self.coverage_snapshot=None;self.city_coverage_snapshot=None
-            for schema,key in [(1,'@svitlo/dynamic-coverage-v1'),(2,'@svitlo/dynamic-coverage-v2')]:
-                coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',(key,)).fetchone()
-                if not coverage:continue
-                try:
-                    envelope=json.loads(coverage[0]);manifest=json.loads(base64.b64decode(envelope['payload']));snapshot={k:manifest.get(k) for k in ['schemaVersion','revision','generatedAt','expiresAt','enabled']};snapshot['envelopeSha256']=hashlib.sha256(coverage[0].encode()).hexdigest()
-                except (ValueError,KeyError):snapshot={'unparsed':True}
-                if schema==1:self.coverage_snapshot=snapshot
-                else:self.city_coverage_snapshot=snapshot
-            row = connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?', ('svitlo.state.v1',)).fetchone()
-        return json.loads(row[0]) if row else {}
+        # Pulling a live SQLite directory can catch a hot journal. Keep each
+        # original capture, including its sidecars, and retry a fresh pull only
+        # for SQLite's explicit read-only recovery error. Never ignore a journal
+        # or modify the database on the device to make an audit pass.
+        root = self.case_dir/'database'
+        for attempt in range(3):
+            index=getattr(self,'database_capture_count',0)+1
+            while (root/('capture-'+str(index).zfill(3))).exists():index+=1
+            self.database_capture_count=index
+            directory=root/('capture-'+str(index).zfill(3));directory.mkdir(parents=True)
+            self.adb('pull', f'/data/data/{PKG}/databases', str(directory), check=False)
+            capture={'capturedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                     'readOnly':True,'files':[{'path':str(p.relative_to(directory)),'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(directory.rglob('*')) if p.is_file()]}
+            proof=directory/'capture.json';proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
+            db = next(directory.rglob('RKStorage'), None)
+            if not db:
+                return {}
+            try:
+                with sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True) as connection:
+                    self.coverage_snapshot=None;self.city_coverage_snapshot=None
+                    for schema,key in [(1,'@svitlo/dynamic-coverage-v1'),(2,'@svitlo/dynamic-coverage-v2')]:
+                        coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',(key,)).fetchone()
+                        if not coverage:continue
+                        try:
+                            envelope=json.loads(coverage[0]);manifest=json.loads(base64.b64decode(envelope['payload']));snapshot={k:manifest.get(k) for k in ['schemaVersion','revision','generatedAt','expiresAt','enabled']};snapshot['envelopeSha256']=hashlib.sha256(coverage[0].encode()).hexdigest()
+                        except (ValueError,KeyError):snapshot={'unparsed':True}
+                        if schema==1:self.coverage_snapshot=snapshot
+                        else:self.city_coverage_snapshot=snapshot
+                    row = connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?', ('svitlo.state.v1',)).fetchone()
+            except sqlite3.OperationalError as error:
+                if str(error)!='attempt to write a readonly database':raise
+                capture.update(captureError='sqlite-readonly-hot-journal-recovery',retry=attempt<2)
+                proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
+                if attempt==2:raise
+                time.sleep(.25)
+                continue
+            capture['readCompleted']=True;proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
+            return json.loads(row[0]) if row else {}
 
     def open_new_editor(self):
         self.phase = 'return-to-main-screen'
