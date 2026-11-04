@@ -20,6 +20,7 @@ class HTTP:
  def __init__(self,limit=120,evidence_directory=None):
   self.limit=limit;self.calls=0;self.deadline=time.monotonic()+480;self.trace=[]
   self.evidence_directory=Path(evidence_directory) if evidence_directory else None
+  self.checkpoint=None
   self.opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
  def text(self,url,fields=None,*,ajax=False,referer=None,accepted=()):
   if self.calls>=self.limit or time.monotonic()>=self.deadline:raise ValueError('request_budget')
@@ -93,11 +94,33 @@ def emitted(operator,geo,street,house_name,q,url,observed,city_id=None,street_id
  return item
 
 
-def observe(geo,street,house_name,street_id=None):
- return {'regionId':geo['regionId'],'settlement':geo['settlement'],'community':geo['community'],'street':street,'house':house_name,**({'providerStreetId':str(street_id)} if street_id is not None else {})}
+def observe(geo,street,house_name,street_id=None,checked_at=None):
+ return {'regionId':geo['regionId'],'settlement':geo['settlement'],'community':geo['community'],'street':street,'house':house_name,**({'providerStreetId':str(street_id)} if street_id is not None else {}),**({'checkedAt':checked_at,'expiresAt':checked_at+86400000} if checked_at is not None else {})}
+
+
+def atomic_json(path,value):
+ path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);temporary=path.with_suffix(path.suffix+'.tmp');temporary.write_text(json.dumps(value,ensure_ascii=False,separators=(',',':'))+'\n');temporary.replace(path)
+
+
+def persist_progress(operator,path,statefile,saved,state,http,rows,observed,completed,errors,metadata,geo):
+ now=int(time.time()*1000)
+ # Publish facts before advancing the cursor. An interruption may repeat a
+ # street, but cannot skip facts whose updated cursor was already persisted.
+ if rows or observed:
+  expires=max([r['expiresAt'] for r in rows]+[o.get('expiresAt',now+86400000) for o in observed])
+  atomic_json(path,{'schemaVersion':1,'operatorId':operator,'generatedAt':now,'expiresAt':expires,'records':rows,'observedHouses':observed,'completedStreetIds':completed})
+ state['updatedAt']=now;atomic_json(statefile,saved)
+ report={'operatorId':operator,'checkedAt':now,'records':len(rows),'observedHouses':len(observed),'completedStreetIds':completed,'requests':http.trace,'errors':errors,'cityCrawl':{'targetCity':geo['settlement'],'mode':'resumable-official-city-form','status':state.get('crawlStatus','partial'),'dictionaryComplete':state.get('dictionaryComplete',False),**metadata},'method':'source-derived public city dictionary; not independent Android UI coverage'}
+ atomic_json(str(path)+'.report.json',report)
+
+
+def checkpoint(http,rows,observed,completed,errors,metadata):
+ callback=getattr(http,'checkpoint',None)
+ if callback:callback(rows,observed,completed,errors,metadata)
 
 
 def kirovohrad(http,geo,state):
+ state['requestLimitReached']=False
  base=CONFIG['kirovohrad'][1];page=http.text(base);token=re.search(r'ajaxToken:\s*["\']([^"\']+)',page)
  select=re.search(r'<select\b[^>]*id=["\']fn_office["\'][^>]*>(.*?)</select>',page,re.I|re.S)
  if not token or not select:raise ValueError('official_city_form_changed')
@@ -120,6 +143,7 @@ def kirovohrad(http,geo,state):
  city=next(iter(unique.values()));city_id=str(city['CityId']);streets=query('/street/'+city_id)
  if any(not isinstance(s,dict) or not s.get('StreetId') for s in streets):raise ValueError('invalid_street_dictionary')
  streets=sorted(streets,key=lambda s:str(s['StreetId']));position=int(state.get('streetIndex',0))%max(1,len(streets));rows=[];observed=[];completed=[];errors=[];start=position
+ state.update(dictionaryComplete=True,crawlStatus='partial',knownStreets=len(streets))
  while position<len(streets):
   street=streets[position];name=clean(' '.join([str(street.get('StreetType','')),str(street.get('StreetName',''))]))
   try:
@@ -129,16 +153,20 @@ def kirovohrad(http,geo,state):
    if any(str(h.get('CityId',city_id))!=city_id or str(h.get('StreetId',street['StreetId']))!=str(street['StreetId']) for h in raw):raise ValueError('house_dictionary_crosses_street')
    at=int(time.time()*1000)
    for h,q in consensus_rows(raw,'HouseName','chergGpv'):
-    observed.append(observe(geo,name,h,street['StreetId']))
+    observed.append(observe(geo,name,h,street['StreetId'],at))
     if q:
      r=emitted('kirovohrad',geo,name,h,q,base,at,city_id,street['StreetId'])
      if r:rows.append(r)
    completed.append(city_id+':'+str(street['StreetId']));position+=1;state['streetIndex']=position
-  except Exception as e:errors.append({'stage':'houses','streetId':str(street['StreetId']),'error':type(e).__name__,'httpStatus':getattr(e,'code',None)});break
+   checkpoint(http,rows,observed,completed,errors,{'sourceCityId':city_id,'streetsRead':len(completed),'streetsKnown':len(streets),'startedAtStreet':start})
+  except Exception as e:
+   if isinstance(e,ValueError) and str(e)=='request_budget':state['requestLimitReached']=True
+   else:errors.append({'stage':'houses','streetId':str(street['StreetId']),'error':type(e).__name__,'httpStatus':getattr(e,'code',None)})
+   break
  done=position>=len(streets)
  state['dictionaryComplete']=True;state['crawlStatus']='complete' if done else 'partial';state['knownStreets']=len(streets)
  if done:state['streetIndex']=0;state['cycles']=int(state.get('cycles',0))+1
- return rows,observed,completed,errors,{'sourceCityId':city_id,'streetsRead':len(completed),'streetsKnown':len(streets),'startedAtStreet':start}
+ return rows,observed,completed,errors,{'sourceCityId':city_id,'streetsRead':len(completed),'streetsKnown':len(streets),'startedAtStreet':start,'requestBudgetReached':state['requestLimitReached']}
 
 
 class Table(HTMLParser):
@@ -178,6 +206,7 @@ def volyn_rows(body,target,query_term=None):
 
 
 def volyn(http,geo,state):
+ state['requestLimitReached']=False
  base=CONFIG['volyn'][1];frontier=state.setdefault('searchTerms',list('абвгґдеєжзиіїйклмнопрстуфхцчшщьюя0123456789'));inventory=state.setdefault('streetNames',[])
  # Discovery uses ordinary one-character form searches accepted by the source.
  # Each discovered exact street gets a separate follow-up before publication.
@@ -200,17 +229,22 @@ def volyn(http,geo,state):
    for h,q in consensus_rows(exact,'house','queue'):
     number=int(re.match(r'\d+',h)[0])
     if any(r.get('_range') and r['_range'][0]<=number<=r['_range'][1] and queue(r.get('queue'))!=q for r in exact):q=None
-    observed.append(observe(geo,street,h))
+    observed.append(observe(geo,street,h,checked_at=at))
     if q:
      r=emitted('volyn',geo,street,h,q,base,at)
      if r:rows.append(r)
    count+=1;position+=1;state['streetIndex']=position
-  except Exception as e:errors.append({'stage':'street_followup','street':street,'error':type(e).__name__,'httpStatus':getattr(e,'code',None)});break
+   state.update(dictionaryComplete=False,crawlStatus='partial',knownStreets=len(inventory),pendingSearchTerms=len(frontier))
+   checkpoint(http,rows,observed,completed,errors,{'streetFollowups':count,'discoveredStreets':len(inventory),'sourceSearchExhausted':not frontier})
+  except Exception as e:
+   if isinstance(e,ValueError) and str(e)=='request_budget':state['requestLimitReached']=True
+   else:errors.append({'stage':'street_followup','street':street,'error':type(e).__name__,'httpStatus':getattr(e,'code',None)})
+   break
  # The form exposes no untruncated directory contract. Exhausting this search
  # alphabet is reported separately and is not asserted to mean 100% of streets.
  state.update(dictionaryComplete=False,crawlStatus='partial',knownStreets=len(inventory),pendingSearchTerms=len(frontier))
  if position>=len(inventory):state['streetIndex']=0;state['cycles']=int(state.get('cycles',0))+1
- return rows,observed,completed,errors,{'streetFollowups':count,'discoveredStreets':len(inventory),'sourceSearchExhausted':not frontier}
+ return rows,observed,completed,errors,{'streetFollowups':count,'discoveredStreets':len(inventory),'sourceSearchExhausted':not frontier,'requestBudgetReached':state['requestLimitReached']}
 
 
 def geographic_addresses(http,geo,state):
@@ -371,6 +405,7 @@ def vinnytsia(http,geo,state):
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--operator',required=True,choices=CONFIG);p.add_argument('--target-city',required=True);p.add_argument('--output',required=True);p.add_argument('--state');p.add_argument('--full-city',action='store_true');p.add_argument('--request-limit',type=request_limit,default=120);p.add_argument('--budget',type=int);p.add_argument('--street-limit',type=int);p.add_argument('--city-limit',type=int);p.add_argument('--evidence-directory');args=p.parse_args()
  geo=geography(args.operator,args.target_city);path=Path(args.output);statefile=Path(args.state) if args.state else path.with_suffix('.state.json');saved=json.loads(statefile.read_text()) if statefile.exists() else {};state=scoped_state(saved,args.target_city,True);http=HTTP(args.request_limit,args.evidence_directory);rows=[];observed=[];completed=[];errors=[];metadata={}
+ http.checkpoint=lambda rows,observed,completed,errors,metadata:persist_progress(args.operator,path,statefile,saved,state,http,rows,observed,completed,errors,metadata,geo)
  try:
   if args.operator=='kirovohrad':rows,observed,completed,errors,metadata=kirovohrad(http,geo,state)
   elif args.operator=='volyn':rows,observed,completed,errors,metadata=volyn(http,geo,state)
@@ -378,10 +413,7 @@ def main():
   elif args.operator=='vinnytsia':rows,observed,completed,errors,metadata=vinnytsia(http,geo,state)
   else:raise ValueError('public_geographic_address_inventory_required')
  except Exception as e:errors.append({'stage':'collection','error':type(e).__name__,'httpStatus':getattr(e,'code',None),'reason':str(e)[:180]})
- now=int(time.time()*1000);state['updatedAt']=now;path.parent.mkdir(parents=True,exist_ok=True);statefile.parent.mkdir(parents=True,exist_ok=True);temp=statefile.with_suffix('.tmp');temp.write_text(json.dumps(saved,ensure_ascii=False,indent=2)+'\n');temp.replace(statefile)
- report={'operatorId':args.operator,'checkedAt':now,'records':len(rows),'observedHouses':len(observed),'completedStreetIds':completed,'requests':http.trace,'errors':errors,'cityCrawl':{'targetCity':geo['settlement'],'mode':'resumable-official-city-form','status':state.get('crawlStatus','blocked'),'dictionaryComplete':state.get('dictionaryComplete',False),**metadata},'method':'source-derived public city dictionary; not independent Android UI coverage'}
- Path(str(path)+'.report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
- if rows or observed:path.write_text(json.dumps({'schemaVersion':1,'operatorId':args.operator,'generatedAt':now,'expiresAt':max((r['expiresAt'] for r in rows),default=now+86400000),'records':rows,'observedHouses':observed,'completedStreetIds':completed},ensure_ascii=False,separators=(',',':'))+'\n')
+ persist_progress(args.operator,path,statefile,saved,state,http,rows,observed,completed,errors,metadata,geo)
  print(json.dumps({'operatorId':args.operator,'records':len(rows),'observedHouses':len(observed),'errors':len(errors)}))
  if not rows and not observed:raise SystemExit(2)
 if __name__=='__main__':main()

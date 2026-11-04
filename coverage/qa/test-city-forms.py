@@ -15,6 +15,35 @@ class KirovHTTP:
   if '/street/' in url:return {'success':True,'data':[{'StreetId':'8','StreetName':'вул. Нова'}]}
   return {'success':True,'data':[{'CityId':'7','StreetId':'8','HouseName':'2-А','chergGpv':'1.2'},{'CityId':'7','StreetId':'8','HouseName':'2-А','chergGpv':'2.1'},{'CityId':'7','StreetId':'8','HouseName':'4','chergGpv':'3.1'}]}
 class Controls(unittest.TestCase):
+ def test_expected_request_bound_retains_partial_progress_without_source_error(self):
+  class Bounded(KirovHTTP):
+   def json(self,url,*args,**kwargs):
+    if '/street/' in url:return {'success':True,'data':[{'StreetId':'8','StreetName':'вул. Нова'},{'StreetId':'9','StreetName':'вул. Друга'}]}
+    if '/house/9' in url:raise ValueError('request_budget')
+    return super().json(url,*args,**kwargs)
+  state={};rows,observed,completed,errors,meta=m.kirovohrad(Bounded(),GEO,state)
+  self.assertTrue(rows);self.assertTrue(observed);self.assertEqual(completed,['7:8']);self.assertFalse(errors);self.assertTrue(meta['requestBudgetReached']);self.assertEqual(state['crawlStatus'],'partial');self.assertEqual(state['streetIndex'],1)
+ def test_interrupted_city_read_retains_completed_street_and_original_observation_age(self):
+  class Interrupted(KirovHTTP):
+   def json(self,url,*args,**kwargs):
+    if '/street/' in url:return {'success':True,'data':[{'StreetId':'8','StreetName':'вул. Нова'},{'StreetId':'9','StreetName':'вул. Друга'}]}
+    if '/house/9' in url:raise KeyboardInterrupt('simulated process interruption')
+    return super().json(url,*args,**kwargs)
+  with tempfile.TemporaryDirectory() as folder:
+   packet=Path(folder)/'packet.json';cursor=Path(folder)/'state.json';saved={};state=m.scoped_state(saved,'Навчальне',True);http=Interrupted();http.trace=[]
+   http.checkpoint=lambda rows,observed,completed,errors,metadata:m.persist_progress('kirovohrad',packet,cursor,saved,state,http,rows,observed,completed,errors,metadata,GEO)
+   with patch.object(m.time,'time',return_value=1000):
+    with self.assertRaises(KeyboardInterrupt):m.kirovohrad(http,GEO,state)
+   first=json.loads(packet.read_text());self.assertEqual(len(first['records']),1);self.assertEqual(len(first['observedHouses']),2);self.assertEqual(first['completedStreetIds'],['7:8']);self.assertEqual(next(iter(json.loads(cursor.read_text())['cityCrawls'].values()))['streetIndex'],1)
+   self.assertTrue(all(o['checkedAt']==1000000 and o['expiresAt']==87400000 for o in first['observedHouses']))
+   with patch.object(m.time,'time',return_value=2000):m.persist_progress('kirovohrad',packet,cursor,saved,state,http,first['records'],first['observedHouses'],first['completedStreetIds'],[],{},GEO)
+   later=json.loads(packet.read_text());self.assertEqual(later['generatedAt'],2000000);self.assertEqual(later['records'],first['records']);self.assertEqual(later['observedHouses'],first['observedHouses']);self.assertEqual(later['expiresAt'],87400000)
+ def test_cursor_is_not_committed_before_source_packet(self):
+  with tempfile.TemporaryDirectory() as folder:
+   packet=Path(folder)/'packet.json';cursor=Path(folder)/'state.json';cursor.write_text('{"original":true}')
+   with patch.object(m,'atomic_json',side_effect=OSError('disk write failed')):
+    with self.assertRaises(OSError):m.persist_progress('volyn',packet,cursor,{'advanced':True},{},type('HTTP',(),{'trace':[]})(),[],[{'expiresAt':87400000}],[],[],{},GEO)
+   self.assertEqual(json.loads(cursor.read_text()),{'original':True});self.assertFalse(packet.exists())
  def test_retained_original_matches_response_hash_without_request_token(self):
   raw='{"data":"офіційна публічна відповідь"}'.encode();response=io.BytesIO(raw);response.code=200;response.headers=Message();response.headers['Content-Type']='application/json; charset=utf-8'
   with tempfile.TemporaryDirectory() as folder,patch('request_budget.throttle'):
