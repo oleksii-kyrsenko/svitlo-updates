@@ -50,7 +50,7 @@ def main():
  request=json.loads(pathlib.Path(a.request).read_text());trace=[];report={'schemaVersion':1,'method':'actual ordinary Chromium; current operator-linked anonymous Apps Script frontend getData on page load; no account/EIC/address input','coverageMeasured':False,'sourceUrl':INDEX,'checkedAt':int(time.time()*1000),'recordClaims':0,'requests':trace};start=time.monotonic()
  try:
   with sync_playwright() as api:
-   browser=api.chromium.launch(headless=True);context=browser.new_context(locale='uk-UA');page=context.new_page();request_count=[0]
+   browser=api.chromium.launch(headless=True);context=browser.new_context(locale='uk-UA');page=context.new_page();request_count=[0];parent_seen={}
    def route(r):
     if not allowed(r.request.url) or r.request.resource_type in ['image','media','font','stylesheet']:r.abort();return
     request_count[0]+=1
@@ -64,6 +64,7 @@ def main():
       body=r.body()
       if len(body)>MAX_BYTES:raise ValueError('source_response_too_large')
       item.update(bytes=len(body),sha256=sha(body))
+      if r.request.resource_type=='document' and u.hostname=='www.zoe.com.ua' and u.path=='/outage/':parent_seen.update(status=r.status,body=body,checkedAt=int(time.time()*1000))
     except Exception as error:item['bodyError']=type(error).__name__
     trace.append(item)
    page.on('response',response)
@@ -73,14 +74,17 @@ def main():
     report['liveParentAttempt']={'error':type(error).__name__,'reason':str(error)[:250]}
     temporary=type(error).__name__=='TimeoutError'
     if not temporary:raise
-   if parent is not None:
-    raw=parent.body();report['liveParentAttempt']={'httpStatus':parent.status,'sha256':sha(raw),'bytes':len(raw)}
+   status=parent.status if parent is not None else parent_seen.get('status')
+   if status is not None:
+    # Even a DOM-loading timeout can follow a completed200 response. Its
+    # readable removal/withdrawal must not be hidden by the saved authority.
+    raw=parent.body() if parent is not None else parent_seen['body'];report['liveParentAttempt']={'httpStatus':status,'sha256':sha(raw),'bytes':len(raw)}
     if len(raw)>2000000:raise ValueError('official_parent_too_large')
     (out/'official-parent-attempt.html').write_bytes(raw)
-    if parent.status==200:
+    if status==200:
      # A readable removal/changed link always wins over a saved authority.
-     link=app_link(raw.decode('utf8'),request['reviewedPublicAppUrl']);at=int(time.time()*1000);authority={'sourceUrl':INDEX,'checkedAt':at,'expiresAt':at+86400000,'sha256':sha(raw),'method':'current-live-official-parent'}
-    elif parent.status in [408,425,429,500,502,503,504]:temporary=True
+     link=app_link(raw.decode('utf8'),request['reviewedPublicAppUrl']);at=parent_seen.get('checkedAt',int(time.time()*1000));authority={'sourceUrl':INDEX,'checkedAt':at,'expiresAt':at+86400000,'sha256':sha(raw),'method':'current-live-official-parent'};temporary=False
+    elif status in [408,425,429,500,502,503,504]:temporary=True
     else:raise ValueError('official_parent_denied_or_removed')
    if temporary:
     meta=json.loads(pathlib.Path(request['reviewedAuthorityMetadata']).read_text());original=pathlib.Path(meta['originalFile']).resolve()
