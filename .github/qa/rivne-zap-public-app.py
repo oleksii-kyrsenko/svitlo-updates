@@ -3,13 +3,20 @@
 This is source-only evidence, not Android coverage and not a signed publication.
 No address, account or EIC is submitted. The official page itself calls getData.
 """
-import argparse, hashlib, json, pathlib, re, time, urllib.parse
+import argparse, hashlib, json, pathlib, re, time, urllib.parse, unicodedata
 from html.parser import HTMLParser
 from playwright.sync_api import sync_playwright
 
 INDEX='https://www.zoe.com.ua/outage/'
 MAX_BYTES=10000000
 def sha(raw):return hashlib.sha256(raw).hexdigest()
+def source_street_hash(value):
+ value=unicodedata.normalize('NFKC',value).casefold();value=re.sub(r'\([^)]*\)',' ',value);value=re.sub(r'[’ʼ`\x27]','',value)
+ aliases=[('street',r'вулиця\s+|вул\.\s*|вул\s+'),('lane',r'провулок\s+|пров\.\s*|пров\s+'),('avenue',r'проспект\s+|просп\.\s*|пр-т\s+'),('boulevard',r'бульвар\s+|бул\.\s*'),('square',r'площа\s+|пл\.\s*'),('embankment',r'набережна\s+|наб\.\s*')]
+ for kind,pattern in aliases:
+  match=re.match(r'^(?:'+pattern+r')',value,re.I)
+  if match:value=kind+'|'+value[match.end():];break
+ return sha(re.sub(r'\s+',' ',value).strip().encode())
 def structured_house_list(value):
  house=r'\d{1,4}(?:[- ]?[А-Яа-яІіЇїЄєҐґA-Za-z])?(?:/\d{1,4}[А-Яа-яІіЇїЄєҐґA-Za-z]?)?'
  term=house+r'(?:\s*[-–—]\s*'+house+r'(?:\s*\((?:парні|непарні|усі|всі)\))?)?'
@@ -50,7 +57,7 @@ def project(data):
    long_digits=bool(re.search(r'\d{9,}',value));account_like=bool(re.search(r'\b[0-9A-Z]{16}\b',value,re.I))
    if len(value)>limit or long_digits or account_like:issues.append({'field':label,'length':len(value),'longDigits':long_digits,'accountLike':account_like})
   if issues:
-   quarantine.append({'rowSha256':sha(json.dumps(r,ensure_ascii=False,separators=(',',':')).encode()),'fieldIssues':issues})
+   quarantine.append({'rowSha256':sha(json.dumps(r,ensure_ascii=False,separators=(',',':')).encode()),'sourceStreetSha256':None if any(v['field']=='street' for v in issues) or not street else source_street_hash(street),'fieldIssues':issues})
    if any(v['field'] in ['street','house'] for v in issues):continue
    gpv=None # Retain the safe address as unknown, never as a positive queue.
   # GPV is column2, ZOVA/partial exemptions column3; GAV column4 is NEVER
@@ -125,7 +132,7 @@ def main():
    canonical=json.dumps(data,ensure_ascii=False,separators=(',',':')).encode();rows,headers,quarantine=project(data)
    checked=int(time.time()*1000);expires=min(checked+86400000,authority['expiresAt'])
    if checked>=expires:raise ValueError('authority_expired_during_fresh_data_read')
-   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':checked,'expiresAt':expires,'authority':authority,'officialCityScopeLabel':link['label'],'frontendSchema':report['frontendSchema'],'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted; unsafe address fields quarantined, unsafe GPV becomes unknown','projectionComplete':not quarantine,'quarantinedRows':quarantine,'columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
+   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':checked,'expiresAt':expires,'authority':authority,'officialCityScopeLabel':link['label'],'frontendSchema':report['frontendSchema'],'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted; unsafe address fields quarantined, unsafe GPV becomes unknown','quarantineStreetBinding':'source_street_hash-v1; normalized typed road label SHA only; no quarantined address/negative address is fabricated','projectionComplete':not quarantine,'quarantinedRows':quarantine,'columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
    encoded=json.dumps(projection,ensure_ascii=False,separators=(',',':')).encode();(out/'anonymous-public-address-projection.json').write_bytes(encoded+b'\n');page.screenshot(path=str(out/'official-public-app.png'),full_page=False)
    report.update(captureComplete=True,originalBusinessRows=len(data),projectedRows=len(rows),headerRowsExcluded=headers,quarantinedRows=len(quarantine),projectionComplete=not quarantine,projectionSha256=sha(encoded+b'\n'),originalBusinessDataSha256=sha(canonical),requestCount=request_count[0],recordClaims=0,elapsedSeconds=round(time.monotonic()-start,3))
    browser.close()

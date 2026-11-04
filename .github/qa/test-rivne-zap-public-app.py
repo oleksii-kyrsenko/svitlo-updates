@@ -21,6 +21,9 @@ class Projection(unittest.TestCase):
   self.assertEqual(rows,[['вул. Нова','2','1.2',False],['вул. Нова','4','',True]])
  def test_unexpected_long_account_like_address_is_not_persisted(self):
   rows,_,q=m.project([['вул. Нова','1234567890123','1.2','',9]]);self.assertFalse(rows);self.assertEqual(q[0]['fieldIssues'][0]['field'],'house');self.assertNotIn('1234567890123',str(q))
+  self.assertEqual(q[0]['sourceStreetSha256'],m.source_street_hash('вулиця Нова'));self.assertNotIn('вул. Нова',str(q))
+ def test_unknown_street_cannot_produce_a_fake_binding(self):
+  rows,_,q=m.project([['street1234567890123','2','1.2','',9]]);self.assertFalse(rows);self.assertIsNone(q[0]['sourceStreetSha256'])
  def test_exemption_text_extra_columns_and_gav_are_not_persisted(self):
   rows,_,_=m.project([['вул. Нова','2','1.2','private exemption text',9,'private extra']]);self.assertEqual(rows,[['вул. Нова','2','1.2',True]])
  def test_unsafe_queue_field_keeps_safe_address_only_as_unknown(self):
