@@ -17,28 +17,11 @@
           "cityId": "osm-relation-3513051"
         }
       },
-      "auditSamples": [
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Буркіна",
-          "house": "1",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=12&houseId=5500",
-          "checkedAt": 1793737958709
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Буркіна",
-          "house": "2",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=12&houseId=5501",
-          "checkedAt": 1793737958709
-        }
-      ],
+      "auditSamples": [],
       "houseIndex": 0,
       "streetIndex": 0,
       "cityIndex": 1,
-      "queryIndex": 6,
+      "queryIndex": 7,
       "lastContext": {
         "status": "resolved",
         "community": "Черкаська селищна громада",
