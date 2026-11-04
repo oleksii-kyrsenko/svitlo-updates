@@ -1,0 +1,100 @@
+name: Current official capital document source smoke
+on:
+  push:
+    branches: [feature/capital-coverage-90]
+    paths: ['.github/qa/capital-document-smoke-request.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    name: Ordinary official documents ${{ matrix.operator }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - operator: vinnytsia
+            city: Вінниця
+            script: collect-vinnytsia-documents.py
+            tests: test-vinnytsia-documents.py
+          - operator: prykarpattia
+            city: Івано-Франківськ
+            script: collect-western-official.py
+            tests: test-western-official.py
+    env:
+      SMOKE_OPERATOR: ${{ matrix.operator }}
+      SMOKE_CITY: ${{ matrix.city }}
+      SMOKE_SCRIPT: ${{ matrix.script }}
+      SMOKE_TESTS: ${{ matrix.tests }}
+    steps:
+      - name: Read the current public source implementation
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare bounded public PDF reader and implementation proof
+        run: |
+          pip install pdfplumber==0.11.9
+          mkdir -p official-document-smoke/raw
+          git rev-parse HEAD > official-document-smoke/source-head.txt
+          python3 - <<'PY'
+          import json,os,pathlib,datetime
+          pathlib.Path('official-document-smoke/run.json').write_text(json.dumps({
+            'runId':os.environ['GITHUB_RUN_ID'],
+            'operatorId':os.environ['SMOKE_OPERATOR'],
+            'targetCity':os.environ['SMOKE_CITY'],
+            'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'method':'ordinary-hosted-HTTPS-public-document-source-smoke',
+            'signing':False,'publication':False,'androidCoverage':False
+          },ensure_ascii=False,indent=2)+'\n')
+          PY
+      - name: Check source parsing and abstention controls
+        run: python3 "coverage/qa/$SMOKE_TESTS"
+      - name: Read the actual current official index and documents
+        run: |
+          python3 "coverage/$SMOKE_SCRIPT" \
+            --operator "$SMOKE_OPERATOR" --target-city "$SMOKE_CITY" \
+            --full-city --request-limit 16 \
+            --output "official-document-smoke/$SMOKE_OPERATOR.json" \
+            --state "$RUNNER_TEMP/official-document-smoke-state.json" \
+            --evidence-directory official-document-smoke/raw
+      - name: Validate publisher contract and bounded city shard
+        run: |
+          node --input-type=module <<'JS'
+          import {readFile,writeFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          import {validateBundle} from './coverage/build.mjs';
+          import {cityShards,validateCityShard} from './coverage/build-v2.mjs';
+          const operator=process.env.SMOKE_OPERATOR;
+          const bytes=await readFile('official-document-smoke/'+operator+'.json');
+          const now=Date.now(),packet=validateBundle(JSON.parse(bytes),now);
+          if(packet.operatorId!==operator||!packet.records.length)throw Error('missing_actual_positive_source_facts');
+          const geography=JSON.parse(await readFile('coverage/capital-geography.json'));
+          const shards=cityShards([packet],{geography,now});
+          if(shards.length!==1)throw Error('source_crossed_target_city');
+          const city=validateCityShard(shards[0],now);
+          const cityBytes=Buffer.byteLength(JSON.stringify(city)+'\n');
+          if(cityBytes>8*1024*1024)throw Error('city_packet_exceeds_phone_limit');
+          const report={verified:true,operatorId:operator,generatedAt:packet.generatedAt,expiresAt:packet.expiresAt,
+            normalizedSha256:createHash('sha256').update(bytes).digest('hex'),normalizedBytes:bytes.length,
+            groupedRows:packet.records.length,positiveHouseFacts:packet.records.reduce((n,r)=>n+(r.houses||[]).length,0),
+            cityId:city.cityId,cityBytes,androidCoverage:false,signing:false,publication:false};
+          await writeFile('official-document-smoke/validation.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report));
+          JS
+      - name: Retain original responses and every failed or successful observation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-document-smoke-${{ matrix.operator }}-${{ github.run_id }}
+          path: official-document-smoke/
+          if-no-files-found: error
+          retention-days: 30
