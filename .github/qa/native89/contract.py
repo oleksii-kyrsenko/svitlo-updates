@@ -46,7 +46,8 @@ def prepare():
  root=pathlib.Path('.github/qa/native89');out=pathlib.Path('apk-diagnostics');out.mkdir(exist_ok=True)
  spec=importlib.util.spec_from_file_location('audit_contract','.github/qa/audit-contract.py');c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c)
  candidate=json.loads((root/'meta.json').read_text());baseline=json.loads((root/'baseline-88.json').read_text())
- candidate['apkUrl']='https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/feature/capital-coverage-90/candidate/svitlo-candidate-89.apk'
+ if not re.fullmatch(r'svitlo-candidate-[0-9]+(?:-[a-z0-9]+)*\.apk',candidate['fileName']):raise ValueError('Invalid pinned candidate file name')
+ candidate['apkUrl']='https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/feature/capital-coverage-90/candidate/'+candidate['fileName']
  for m,path,label in [(candidate,'candidate/'+candidate['fileName'],'candidate'),(baseline,'previous.apk','baseline')]:
   if not pathlib.Path(path).exists():download(m,path)
   assert_bytes(path,m)
