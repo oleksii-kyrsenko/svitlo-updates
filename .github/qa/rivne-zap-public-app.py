@@ -10,6 +10,14 @@ from playwright.sync_api import sync_playwright
 INDEX='https://www.zoe.com.ua/outage/'
 MAX_BYTES=10000000
 def sha(raw):return hashlib.sha256(raw).hexdigest()
+def structured_house_list(value):
+ house=r'\d{1,4}(?:[- ]?[А-Яа-яІіЇїЄєҐґA-Za-z])?(?:/\d{1,4}[А-Яа-яІіЇїЄєҐґA-Za-z]?)?'
+ term=house+r'(?:\s*[-–—]\s*'+house+r'(?:\s*\((?:парні|непарні|усі|всі)\))?)?'
+ return bool(value) and all(re.fullmatch(term,v.strip(),re.I) for v in re.split(r'[|;,]',value))
+def verify_frontend(code):
+ if not all(isinstance(code.get(k),str) for k in ['loadData','loadHouses','showQueue','filterStreets']):raise ValueError('public_frontend_schema_functions_missing')
+ patterns=[('loadData',r'getData\s*\('),('loadHouses',r'row\[0\]\s*===\s*street'),('loadHouses',r'row\[1\]'),('showQueue',r'row\[0\]\s*===\s*street\s*&&\s*row\[1\]\s*===\s*house'),('showQueue',r'gpvQueue\s*=\s*row\[2\]'),('showQueue',r'zova\s*=\s*row\[3\]'),('showQueue',r'gavQueue\s*=\s*row\[4\]')]
+ if any(not re.search(pattern,code[key]) for key,pattern in patterns):raise ValueError('public_frontend_address_or_GPV_schema_changed')
 class Links(HTMLParser):
  def __init__(self):super().__init__(convert_charrefs=True);self.href=None;self.text='';self.links=[]
  def handle_starttag(self,tag,attrs):
@@ -38,7 +46,7 @@ def project(data):
   if not house and not street:continue
   if re.search('будин|будів',house,re.I) and re.search('вулиц',street,re.I):headers+=1;continue
   issues=[]
-  for label,value,limit in [('street',street,250),('house',house,50),('gpv',gpv,100)]:
+  for label,value,limit in [('street',street,250),('house',house,1000 if structured_house_list(house) else 50),('gpv',gpv,100)]:
    long_digits=bool(re.search(r'\d{9,}',value));account_like=bool(re.search(r'\b[0-9A-Z]{16}\b',value,re.I))
    if len(value)>limit or long_digits or account_like:issues.append({'field':label,'length':len(value),'longDigits':long_digits,'accountLike':account_like})
   if issues:
@@ -102,20 +110,22 @@ def main():
    report['officialAppLink']=link
    app=page.goto(link['url'],wait_until='domcontentloaded',timeout=45000)
    if not app or app.status!=200:raise ValueError('anonymous_public_app_unavailable')
-   data=None;deadline=time.monotonic()+120
+   data=None;data_frame=None;deadline=time.monotonic()+120
    while time.monotonic()<deadline:
     for frame in page.frames:
      try:
       value=frame.evaluate("()=>typeof streetData!=='undefined'&&Array.isArray(streetData)&&streetData.length?streetData:null")
-      if value:data=value;break
+      if value:data=value;data_frame=frame;break
      except Exception:pass
     if data is not None:break
     page.wait_for_timeout(500)
    if data is None:raise ValueError('anonymous_public_getData_did_not_complete')
+   frontend=data_frame.evaluate("()=>Object.fromEntries(['loadData','loadHouses','showQueue','filterStreets'].map(n=>[n,typeof window[n]==='function'?Function.prototype.toString.call(window[n]):null]))")
+   verify_frontend(frontend);front_bytes=json.dumps(frontend,ensure_ascii=False,indent=2).encode();(out/'official-public-frontend-functions.json').write_bytes(front_bytes+b'\n');report['frontendSchema']={'sourceUrl':link['url'],'sha256':sha(front_bytes+b'\n'),'GPVcolumn':2,'partialExemptionsColumn':3,'GAVcolumnNeverSubstituted':4,'independentExactStreetAndHouseRows':True}
    canonical=json.dumps(data,ensure_ascii=False,separators=(',',':')).encode();rows,headers,quarantine=project(data)
    checked=int(time.time()*1000);expires=min(checked+86400000,authority['expiresAt'])
    if checked>=expires:raise ValueError('authority_expired_during_fresh_data_read')
-   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':checked,'expiresAt':expires,'authority':authority,'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted; unsafe address fields quarantined, unsafe GPV becomes unknown','projectionComplete':not quarantine,'quarantinedRows':quarantine,'columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
+   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':checked,'expiresAt':expires,'authority':authority,'officialCityScopeLabel':link['label'],'frontendSchema':report['frontendSchema'],'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted; unsafe address fields quarantined, unsafe GPV becomes unknown','projectionComplete':not quarantine,'quarantinedRows':quarantine,'columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
    encoded=json.dumps(projection,ensure_ascii=False,separators=(',',':')).encode();(out/'anonymous-public-address-projection.json').write_bytes(encoded+b'\n');page.screenshot(path=str(out/'official-public-app.png'),full_page=False)
    report.update(captureComplete=True,originalBusinessRows=len(data),projectedRows=len(rows),headerRowsExcluded=headers,quarantinedRows=len(quarantine),projectionComplete=not quarantine,projectionSha256=sha(encoded+b'\n'),originalBusinessDataSha256=sha(canonical),requestCount=request_count[0],recordClaims=0,elapsedSeconds=round(time.monotonic()-start,3))
    browser.close()
