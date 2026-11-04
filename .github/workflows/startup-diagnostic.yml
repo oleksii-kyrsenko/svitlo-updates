@@ -1,0 +1,69 @@
+name: Same APK startup rendering and ordinary input diagnostic
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/capital-coverage-90]
+    paths: ['.github/qa/startup-diagnostic-request.json']
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      APPIUM_HOME: /tmp/svitlo-startup-appium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download and verify the unchanged pinned failure APK
+        run: |
+          pip install pillow==12.0.0
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'; fi
+          mkdir -p artifacts startup-diagnostic
+          python3 - <<'PY'
+          import importlib.util,json,pathlib,urllib.request
+          s=importlib.util.spec_from_file_location('contract','.github/qa/audit-contract.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+          c=m.contract(json.loads(pathlib.Path('.github/qa/national-audit-request.json').read_text()));request=json.loads(pathlib.Path('.github/qa/startup-diagnostic-request.json').read_text());assert c['apkSha256']==request['apkSha256']
+          pathlib.Path('startup-diagnostic/contract.json').write_text(json.dumps(c,indent=2)+'\n')
+          with urllib.request.urlopen(c['apkUrl'],timeout=150) as r,open('artifacts/candidate.apk','wb') as target:
+            size=0
+            while True:
+              block=r.read(1048576)
+              if not block:break
+              size+=len(block);assert size<=c['apkSize'];target.write(block)
+          m.verify_apk('artifacts/candidate.apk',c,diagnostics=pathlib.Path('startup-diagnostic/binary-verification'))
+          PY
+      - name: Install ordinary native UI automation
+        run: |
+          npm install --prefix "$RUNNER_TEMP/startup-ui" --no-audit --no-fund appium@3.8.0
+          echo "$RUNNER_TEMP/startup-ui/node_modules/.bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/startup-ui/node_modules/.bin/appium" driver install --source=npm appium-uiautomator2-driver@8.7.0
+          sudo chmod 666 /dev/kvm
+      - name: Observe the fresh emulator without changing app data
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          cores: 2
+          ram-size: 4096M
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: |
+            appium --address 127.0.0.1 --port 4723 --log startup-diagnostic/appium.log > startup-diagnostic/appium-stdout.log 2>&1 &
+            python3 -c "import time,urllib.request;exec('for i in range(30):\n try:\n  urllib.request.urlopen(\"http://127.0.0.1:4723/status\",timeout=2);break\n except Exception:time.sleep(1)\nelse:raise RuntimeError(\"Appium did not start\")')"
+            python3 .github/qa/startup-diagnostic.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: startup-diagnostic-${{ github.run_id }}
+          path: startup-diagnostic/
+          if-no-files-found: error
+          retention-days: 30
