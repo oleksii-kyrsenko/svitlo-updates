@@ -1,5 +1,5 @@
 """Visible input/async-directory controls; no application imports or emulator."""
-import importlib.util,pathlib,tempfile,unittest,json,sqlite3,shutil,hashlib
+import importlib.util,pathlib,tempfile,unittest,json,sqlite3,shutil,hashlib,copy
 from unittest.mock import patch
 from xml.sax.saxutils import escape
 
@@ -38,6 +38,63 @@ class InputAudit(audit.Audit):
 
 
 class SearchInputControls(unittest.TestCase):
+    def post_save_fixture(self,clock):
+        case={'city':'Зразок','exactStreet':'вулиця Нова','exactHouse':'7-А'}
+        place={'id':'app-active','addressOrigin':'postal','addressParts':{'settlement':'Зразок','street':'вулиця Нова','house':'7-А'},'addressSelection':{'city':{'id':'city'},'street':{'id':'street'},'house':{'id':'house'}},'queueConfirmed':True,'queueOrigin':'official','queue':'3.1'}
+        state={'activePlaceId':place['id'],'places':[place]};result={'visibleQueue':None,'addressFromUI':'Зразок, вулиця Нова, 7-А','preSaveObservation':{'outcome':'source_protected','visibleQueue':None,'screenshot':'queue-result.png'}}
+        class PostSaveAudit(audit.Audit):
+            def __init__(self):self.state=copy.deepcopy(state);self.visible_address=result['addressFromUI'];self.show_queue=True;self.source_reads=0;self.state_reads=0;self.screens=[]
+            def source(self):
+                self.source_reads+=1
+                body='<node resource-id="current-address-name" text="'+escape(self.visible_address)+'"/>'
+                if clock.now<.5:body+='<node text="Шукаємо чергу за офіційною адресою…"/>'
+                elif self.show_queue:body+='<node text="Черга 3.1"/>'
+                return '<hierarchy>'+body+'</hierarchy>'
+            def read_state(self):self.state_reads+=1;return self.state
+            def screenshot(self,name,xml=None):self.screens.append((name,xml))
+        return PostSaveAudit(),case,result,state,place
+
+    def test_late_official_queue_requires_visible_current_home_and_a_fresh_snapshot(self):
+        clock=Clock();driver,case,result,state,place=self.post_save_fixture(clock)
+        with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+            fresh,selected=driver.observe_post_save_queue(case,result,state,place,2)
+        self.assertEqual(selected['queue'],'3.1');self.assertEqual(fresh['activePlaceId'],'app-active');self.assertEqual(driver.state_reads,1)
+        self.assertEqual(result['visibleQueue'],'3.1');self.assertEqual(result['visibleQueueStage'],'post-save-home');self.assertEqual(result['preSaveObservation']['outcome'],'source_protected');self.assertIsNone(result['preSaveObservation']['visibleQueue'])
+        self.assertTrue(result['postSaveObservation']['pendingSeen']);self.assertLess(clock.now,2);self.assertEqual(driver.screens[0][0],'post-save-queue')
+
+    def test_late_queue_on_another_visible_address_or_changed_active_id_is_rejected(self):
+        for changed in ['visible','active']:
+            clock=Clock();driver,case,result,state,place=self.post_save_fixture(clock)
+            if changed=='visible':driver.visible_address='Зразок, вулиця Інша, 7-А'
+            else:driver.state['activePlaceId']='another-address'
+            with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+                with self.assertRaisesRegex(RuntimeError,'address'):driver.observe_post_save_queue(case,result,state,place,2)
+            self.assertIsNone(result['visibleQueue'])
+
+    def test_state_only_queue_and_exhausted_original_deadline_never_become_visible_success(self):
+        for deadline in [0,1]:
+            clock=Clock();driver,case,result,state,place=self.post_save_fixture(clock);driver.show_queue=False
+            with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+                with self.assertRaisesRegex(RuntimeError,'original queue deadline exhausted'):driver.observe_post_save_queue(case,result,state,place,deadline)
+            self.assertEqual(driver.state_reads,0);self.assertIsNone(result['visibleQueue']);self.assertLessEqual(clock.now,deadline)
+            if deadline==0:self.assertEqual(driver.source_reads,0)
+
+    def test_an_earlier_visible_queue_mismatch_and_nonofficial_state_are_not_forgiven(self):
+        clock=Clock();driver,case,result,state,place=self.post_save_fixture(clock);result['visibleQueue']='2.1'
+        with self.assertRaisesRegex(RuntimeError,'earlier visible queue mismatch'):driver.observe_post_save_queue(case,result,state,place,200)
+        result['visibleQueue']=None;place['queueOrigin']='public'
+        with self.assertRaisesRegex(RuntimeError,'confirmed official'):driver.observe_post_save_queue(case,result,state,place,200)
+        self.assertEqual(driver.source_reads,0)
+
+    def test_a_source_response_after_the_original_deadline_does_not_count(self):
+        clock=Clock();driver,case,result,state,place=self.post_save_fixture(clock)
+        source=driver.source
+        def delayed():clock.now+=2;return source()
+        driver.source=delayed
+        with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+            with self.assertRaisesRegex(RuntimeError,'original queue deadline exhausted'):driver.observe_post_save_queue(case,result,state,place,1)
+        self.assertIsNone(result['visibleQueue']);self.assertEqual(driver.state_reads,0)
+
     def test_actual_editor_pending_caption_prevents_an_early_save(self):
         for caption in ['Перевіряємо чергу за адресою…', 'Шукаємо чергу за адресою…',
                         'Чергу ще перевіряємо. Адресу вже можна зберегти.']:

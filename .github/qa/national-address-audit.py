@@ -30,6 +30,7 @@ def queue_lookup_pending(text):
     return any(label in text for label in (
         'Перевіряємо чергу за адресою',
         'Шукаємо чергу за адресою',
+        'Шукаємо чергу за офіційною адресою',
         'Чергу ще перевіряємо',
     ))
 
@@ -484,6 +485,44 @@ class Audit:
             capture['readCompleted']=True;proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
             return json.loads(row[0]) if row else {}
 
+    def observe_post_save_queue(self,case,result,state,place,deadline):
+        # A lookup may complete after the user saved a source-error/pending
+        # editor. State alone is insufficient: retain that earlier observation
+        # and require a visible result for the same active address before the
+        # ORIGINAL queue deadline, followed by another read-only state capture.
+        if result.get('visibleQueue') is not None:
+            raise RuntimeError('An earlier visible queue mismatch remains a failure')
+        if not(place.get('queueConfirmed') and place.get('queue') and place.get('queueOrigin')=='official'):
+            raise RuntimeError('Post-save observation requires an app-confirmed official queue')
+        active=state.get('activePlaceId');queue=place['queue']
+        if not active or place.get('id')!=active:raise RuntimeError('Post-save active address changed')
+        validate_saved_address(case,result,place)
+        observation={'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'remainingOriginalDeadlineSeconds':round(max(0,deadline-time.monotonic()),3),'initialActivePlaceId':active,'initialAppWrittenQueue':queue,'pendingSeen':False}
+        result['postSaveObservation']=observation
+        while time.monotonic()<deadline:
+            xml=self.source()
+            if time.monotonic()>=deadline:break
+            nodes=ET.fromstring(xml).iter()
+            names=[n.get('text','') for n in nodes if n.get('resource-id','').split('/')[-1]=='current-address-name' and n.get('displayed')!='false']
+            if names:
+                if len(names)!=1 or norm(names[0])!=norm(result['addressFromUI']):
+                    raise RuntimeError('Post-save visible current address differs from frozen selection')
+                texts=self.texts(xml);observation['pendingSeen']|=queue_lookup_pending(' '.join(texts))
+                values={m.group(1) for text in texts if (m:=re.fullmatch(r'Черга\s+(\d+(?:\.\d+)?)',text.strip()))}
+                if values:
+                    if values!={queue}:raise RuntimeError('Post-save visible queue differs from app-written queue')
+                    self.screenshot('post-save-queue',xml)
+                    fresh=self.read_state();selected=next((p for p in fresh.get('places',[]) if p.get('id')==fresh.get('activePlaceId')),None)
+                    if fresh.get('activePlaceId')!=active or not selected:raise RuntimeError('Post-save active address changed')
+                    validate_saved_address(case,result,selected)
+                    if not(selected.get('queueConfirmed') and selected.get('queueOrigin')=='official' and selected.get('queue')==queue):
+                        raise RuntimeError('Visible post-save queue differs from fresh confirmed official state')
+                    observation.update(completedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),visibleQueue=queue,visibleText=texts,screenshot='post-save-queue.png',xml='post-save-queue.xml')
+                    result.update(visibleQueue=queue,visibleText=texts,visibleQueueStage='post-save-home',visibleQueueScreenshot='post-save-queue.png',visibleQueueXML='post-save-queue.xml')
+                    return fresh,selected
+            time.sleep(min(.5,max(0,deadline-time.monotonic())))
+        raise RuntimeError('Remaining original queue deadline exhausted without visible post-save confirmation')
+
     def open_new_editor(self):
         self.phase = 'return-to-main-screen'
         for _ in range(12):
@@ -655,6 +694,7 @@ class Audit:
                 result['outcome'] = 'queue_timeout'
             result['lookupSeconds'] = round(time.monotonic()-lookup_start, 1)
             result['visibleText'] = self.texts(final_xml)
+            result['preSaveObservation']={'outcome':result['outcome'],'visibleQueue':result.get('visibleQueue'),'visibleText':result['visibleText'],'screenshot':'queue-result.png','xml':'queue-result.xml'}
             self.screenshot('queue-result', final_xml)
             # Save using the app control; inspect only the state the APK writes.
             result['stage'] = 'save'
@@ -663,6 +703,8 @@ class Audit:
                 time.sleep(3)
                 state = self.read_state()
                 place = next((p for p in state.get('places', []) if p.get('id') == state.get('activePlaceId')), None)
+                if place and result.get('visibleQueue') is None and place.get('queueConfirmed') and place.get('queue') and place.get('queueOrigin')=='official':
+                    state,place=self.observe_post_save_queue(case,result,state,place,deadline)
                 result['dynamicCoverageFromApp']=self.coverage_snapshot
                 result['cityDynamicCoverageFromApp']=self.city_coverage_snapshot
                 result['persistedPlace'] = place
