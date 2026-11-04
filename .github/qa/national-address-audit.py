@@ -314,7 +314,13 @@ class Audit:
                 self.wait(lambda x:'Закрити список адрес' not in x, 2)
                 return
             except RuntimeError:
-                nodes = self.options(self.source())
+                # The transition may finish between the bounded wait's final
+                # observation and the retry tree. Confirm that current tree
+                # before treating a missing option as a selection failure.
+                current = self.source()
+                if 'Закрити список адрес' not in current:
+                    return
+                nodes = self.options(current)
                 node = next((n for n in nodes if n.get('content-desc')==label), None)
                 if node is None:
                     break

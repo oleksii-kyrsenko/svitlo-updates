@@ -38,6 +38,30 @@ class InputAudit(audit.Audit):
 
 
 class SearchInputControls(unittest.TestCase):
+    def test_selection_transition_completed_in_retry_tree_is_accepted_without_another_tap(self):
+        # Actual UA-18-capital-1: the 2s wait saw the list, but the next tree
+        # already showed the editor and selected street. Old code treated the
+        # correctly absent option as a failed selection.
+        class SelectionAudit(audit.Audit):
+            def __init__(self):self.taps=0;self.reads=0
+            def click_node(self,node):self.taps+=1
+            def wait(self,predicate,seconds):
+                self.asserted_seconds=seconds
+                raise RuntimeError('transition still visible in final bounded observation')
+            def source(self):self.reads+=1;return '<hierarchy><node content-desc="Обрати: Вулиця" text="вулиця Зразкова"/></hierarchy>'
+            def options(self,xml):raise AssertionError('Closed list must not be searched or tapped again')
+        driver=SelectionAudit();driver.choose_option(audit.ET.fromstring('<node content-desc="вулиця Зразкова"/>'))
+        self.assertEqual((driver.taps,driver.reads,driver.asserted_seconds),(1,1,2))
+
+    def test_missing_option_in_a_still_open_list_remains_a_failure(self):
+        class SelectionAudit(audit.Audit):
+            def __init__(self):pass
+            def click_node(self,node):pass
+            def wait(self,predicate,seconds):raise RuntimeError('still open')
+            def source(self):return tree(option='вулиця Інша')
+        with self.assertRaisesRegex(RuntimeError,'Selected address option did not close'):
+            SelectionAudit().choose_option(audit.ET.fromstring('<node content-desc="вулиця Зразкова"/>'))
+
     def test_menu_transition_does_not_reuse_the_previous_home_tree(self):
         # Actual UA-68-capital-5 failure: the cached tree still mentioned the
         # home menu button, while the current screen already showed its menu.
