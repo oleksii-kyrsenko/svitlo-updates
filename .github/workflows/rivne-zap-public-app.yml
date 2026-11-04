@@ -1,0 +1,29 @@
+name: Read official anonymous Zaporizhzhia address dictionary
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/capital-coverage-90]
+    paths: ['.github/qa/rivne-zap-public-app-request.json']
+permissions:
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 .github/qa/test-rivne-zap-public-app.py
+      - run: pip install playwright==1.56.0
+      - run: python3 -m playwright install --with-deps chromium
+      - name: Read currently linked public dictionary using its normal frontend
+        run: python3 .github/qa/rivne-zap-public-app.py --request .github/qa/rivne-zap-public-app-request.json --out rivne-zap-public-app
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-anonymous-zaporizhzhia-${{ github.run_id }}
+          path: rivne-zap-public-app/
+          if-no-files-found: error
+          retention-days: 30
