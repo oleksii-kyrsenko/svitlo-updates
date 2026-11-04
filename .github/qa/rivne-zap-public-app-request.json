@@ -1,4 +1,6 @@
 {
   "reviewedPublicAppUrl": "https://script.google.com/macros/s/AKfycbwFgBo9W8JL_7FqghJ1hDiE-Fyxzs4GZJAq2xhTseOiv5ZnkusMKj0_g9R0DJKko19r/exec",
-  "purpose": "Current operator-linked anonymous Zaporizhzhia city GPV dictionary; ordinary Chromium frontend load only, no account/EIC/address queries or publication."
+  "purpose": "Current operator-linked anonymous Zaporizhzhia city GPV dictionary; ordinary Chromium frontend load only, no account/EIC/address queries or publication.",
+  "reviewedAuthorityMetadata": ".github/qa/rivne-zap-public-app-authority.json",
+  "runLabel": "Fresh public getData using original unexpired reviewed authority only during temporary parent timeout; explicit live removal never falls back"
 }

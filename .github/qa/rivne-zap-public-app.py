@@ -4,11 +4,28 @@ This is source-only evidence, not Android coverage and not a signed publication.
 No address, account or EIC is submitted. The official page itself calls getData.
 """
 import argparse, hashlib, json, pathlib, re, time, urllib.parse
+from html.parser import HTMLParser
 from playwright.sync_api import sync_playwright
 
 INDEX='https://www.zoe.com.ua/outage/'
 MAX_BYTES=10000000
 def sha(raw):return hashlib.sha256(raw).hexdigest()
+class Links(HTMLParser):
+ def __init__(self):super().__init__(convert_charrefs=True);self.href=None;self.text='';self.links=[]
+ def handle_starttag(self,tag,attrs):
+  if tag=='a':self.href=dict(attrs).get('href');self.text=''
+ def handle_data(self,data):
+  if self.href is not None:self.text+=data
+ def handle_endtag(self,tag):
+  if tag=='a' and self.href is not None:self.links.append({'url':self.href,'label':self.text.strip()});self.href=None
+def app_link(body,expected):
+ p=Links();p.feed(body);links=[v for v in p.links if re.search(r'Дізнатися\s+свою\s+чергу.*м\.\s*Запоріжжя',v['label'],re.I) and re.fullmatch(r'https://script\.google\.com/macros/s/[-\w]+/exec',v['url'])]
+ if len({v['url'] for v in links})!=1 or links[0]['url']!=expected:raise ValueError('official_public_app_resource_changed_review_required')
+ return links[0]
+def authority_snapshot(raw,meta,expected,now):
+ at=meta.get('checkedAt');expires=meta.get('expiresAt')
+ if meta.get('sourceUrl')!=INDEX or not isinstance(at,int) or not isinstance(expires,int) or not 0<at<=now<expires or expires!=at+86400000 or len(raw)>2000000 or sha(raw)!=meta.get('sha256'):raise ValueError('invalid_or_expired_reviewed_official_authority')
+ return app_link(raw.decode('utf8'),expected)
 def allowed(url):
  u=urllib.parse.urlsplit(url);h=u.hostname or ''
  return u.scheme=='https' and not u.username and not u.password and (h in ['www.zoe.com.ua','script.google.com','www.gstatic.com','ssl.gstatic.com','fonts.googleapis.com','fonts.gstatic.com'] or h.endswith('.googleusercontent.com'))
@@ -50,16 +67,27 @@ def main():
     except Exception as error:item['bodyError']=type(error).__name__
     trace.append(item)
    page.on('response',response)
-   parent=page.goto(INDEX,wait_until='domcontentloaded',timeout=45000)
-   if not parent or parent.status!=200:raise ValueError('official_parent_unavailable')
-   raw=parent.body()
-   if len(raw)>2000000:raise ValueError('official_parent_too_large')
-   (out/'official-parent.html').write_bytes(raw);report['officialParent']={'url':page.url,'sha256':sha(raw),'bytes':len(raw),'httpStatus':parent.status}
-   candidates=page.locator('a').evaluate_all("nodes=>nodes.map(n=>({url:n.href,label:n.textContent.trim()}))")
-   links=[v for v in candidates if re.search(r'Дізнатися\s+свою\s+чергу.*м\.\s*Запоріжжя',v['label'],re.I) and re.fullmatch(r'https://script\.google\.com/macros/s/[-\w]+/exec',v['url'])]
-   if len({v['url'] for v in links})!=1:raise ValueError('official_anonymous_city_app_link_not_unique')
-   link=links[0]
-   if link['url']!=request['reviewedPublicAppUrl']:raise ValueError('official_public_app_resource_changed_review_required')
+   parent=None;temporary=False
+   try:parent=page.goto(INDEX,wait_until='domcontentloaded',timeout=45000)
+   except Exception as error:
+    report['liveParentAttempt']={'error':type(error).__name__,'reason':str(error)[:250]}
+    temporary=type(error).__name__=='TimeoutError'
+    if not temporary:raise
+   if parent is not None:
+    raw=parent.body();report['liveParentAttempt']={'httpStatus':parent.status,'sha256':sha(raw),'bytes':len(raw)}
+    if len(raw)>2000000:raise ValueError('official_parent_too_large')
+    (out/'official-parent-attempt.html').write_bytes(raw)
+    if parent.status==200:
+     # A readable removal/changed link always wins over a saved authority.
+     link=app_link(raw.decode('utf8'),request['reviewedPublicAppUrl']);at=int(time.time()*1000);authority={'sourceUrl':INDEX,'checkedAt':at,'expiresAt':at+86400000,'sha256':sha(raw),'method':'current-live-official-parent'}
+    elif parent.status in [408,425,429,500,502,503,504]:temporary=True
+    else:raise ValueError('official_parent_denied_or_removed')
+   if temporary:
+    meta=json.loads(pathlib.Path(request['reviewedAuthorityMetadata']).read_text());original=pathlib.Path(meta['originalFile']).resolve()
+    if not original.is_relative_to(pathlib.Path.cwd().resolve()):raise ValueError('authority_path_escape')
+    raw=original.read_bytes();link=authority_snapshot(raw,meta,request['reviewedPublicAppUrl'],int(time.time()*1000));authority={**meta,'method':'previously-reviewed-official-parent-during-temporary-unavailability'}
+    (out/'reviewed-authority-original.html').write_bytes(raw)
+   report['officialParent']=authority
    report['officialAppLink']=link
    app=page.goto(link['url'],wait_until='domcontentloaded',timeout=45000)
    if not app or app.status!=200:raise ValueError('anonymous_public_app_unavailable')
@@ -74,7 +102,9 @@ def main():
     page.wait_for_timeout(500)
    if data is None:raise ValueError('anonymous_public_getData_did_not_complete')
    canonical=json.dumps(data,ensure_ascii=False,separators=(',',':')).encode();rows,headers=project(data)
-   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':int(time.time()*1000),'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted','columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
+   checked=int(time.time()*1000);expires=min(checked+86400000,authority['expiresAt'])
+   if checked>=expires:raise ValueError('authority_expired_during_fresh_data_read')
+   projection={'schemaVersion':1,'operatorId':'zaporizhzhia','regionId':'UA-23','settlement':'Запоріжжя','sourceUrl':link['url'],'checkedAt':checked,'expiresAt':expires,'authority':authority,'originalBusinessDataSha256':sha(canonical),'projection':'columns0street,1house,2GPV,boolean(column3ZOVA); column4GAV/extra columns never used for GPV; no raw exemption or extra fields persisted','columns':['street','house','gpv','hasPartialExemptions'],'rows':rows}
    encoded=json.dumps(projection,ensure_ascii=False,separators=(',',':')).encode();(out/'anonymous-public-address-projection.json').write_bytes(encoded+b'\n');page.screenshot(path=str(out/'official-public-app.png'),full_page=False)
    report.update(captureComplete=True,originalBusinessRows=len(data),projectedRows=len(rows),headerRowsExcluded=headers,projectionSha256=sha(encoded+b'\n'),originalBusinessDataSha256=sha(canonical),requestCount=request_count[0],recordClaims=0,elapsedSeconds=round(time.monotonic()-start,3))
    browser.close()
