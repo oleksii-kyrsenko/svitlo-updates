@@ -35,8 +35,9 @@ def main():
   with sync_playwright() as api:
    browser=api.chromium.launch(headless=True);context=browser.new_context(locale='uk-UA');page=context.new_page();request_count=[0]
    def route(r):
+    if not allowed(r.request.url) or r.request.resource_type in ['image','media','font','stylesheet']:r.abort();return
     request_count[0]+=1
-    if request_count[0]>60 or not allowed(r.request.url) or r.request.resource_type in ['image','media','font']:r.abort()
+    if request_count[0]>60:r.abort()
     else:r.continue_()
    context.route('**/*',route)
    def response(r):
