@@ -96,14 +96,20 @@ def verify_apk(path,c,sdk=None,runner=subprocess.check_output,diagnostics=None):
  if not package or package.groups()!=(PACKAGE,str(c['versionCode']),c['version']):raise ValueError('APK package/version differs')
  return {'apkSha256':c['apkSha256'],'apkSize':c['apkSize'],'versionCode':c['versionCode'],'version':c['version'],'packageName':PACKAGE,'certificateSha256':actual,'signatureVerified':True,'buildTools':bin.name}
 
+def dispatch_request(request,environ=None):
+ request={**request};environ=os.environ if environ is None else environ
+ fields={'INPUT_REGIONS':'regions','INPUT_LIMIT':'limit','INPUT_APK_URL':'apkUrl','INPUT_APK_SHA256':'apkSha256','INPUT_APK_SIZE':'apkSize','INPUT_VERSION_CODE':'versionCode','INPUT_VERSION':'version','INPUT_API':'androidApi','INPUT_SAMPLE':'sample','INPUT_CHUNK_SIZE':'chunkSize'}
+ for env,key in fields.items():
+  if environ.get(env):request[key]=json.loads(environ[env]) if key=='regions' else environ[env]
+ if environ.get('INPUT_REGIONS'):request['caseIds']=[]
+ if environ.get('INPUT_CASE_IDS'):request['caseIds']=json.loads(environ['INPUT_CASE_IDS'])
+ return request
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=['plan','verify']);p.add_argument('--request',default='.github/qa/national-audit-request.json');p.add_argument('--apk');p.add_argument('--output');a=p.parse_args()
  request=json.loads(pathlib.Path(a.request).read_text()) if pathlib.Path(a.request).is_file() else {}
  if a.action=='plan':
-  fields={'INPUT_REGIONS':'regions','INPUT_LIMIT':'limit','INPUT_APK_URL':'apkUrl','INPUT_APK_SHA256':'apkSha256','INPUT_APK_SIZE':'apkSize','INPUT_VERSION_CODE':'versionCode','INPUT_VERSION':'version','INPUT_API':'androidApi','INPUT_SAMPLE':'sample','INPUT_CHUNK_SIZE':'chunkSize'}
-  for env,key in fields.items():
-   if os.environ.get(env):request[key]=json.loads(os.environ[env]) if key=='regions' else os.environ[env]
-  if os.environ.get('INPUT_REGIONS'):request['caseIds']=[]
+  request=dispatch_request(request)
   c,m=plan(request)
   if a.output:pathlib.Path(a.output).write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n')
   if os.environ.get('GITHUB_OUTPUT'):

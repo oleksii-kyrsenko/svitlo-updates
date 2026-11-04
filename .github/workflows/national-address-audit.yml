@@ -8,6 +8,9 @@ on:
       regions:
         description: Region IDs as JSON array (empty uses the committed request)
         required: false
+      case_ids:
+        description: Optional exact frozen case IDs as JSON array (validated within the selected regions)
+        required: false
       limit:
         description: Frozen addresses per city, 1..20 (empty uses the committed request)
         required: false
@@ -54,6 +57,7 @@ jobs:
         id: plan
         env:
           INPUT_REGIONS: ${{ inputs.regions }}
+          INPUT_CASE_IDS: ${{ inputs.case_ids }}
           INPUT_LIMIT: ${{ inputs.limit }}
           INPUT_APK_URL: ${{ inputs.apk_url }}
           INPUT_APK_SHA256: ${{ inputs.apk_sha256 }}

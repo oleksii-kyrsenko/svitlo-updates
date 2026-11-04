@@ -7,7 +7,7 @@ contract=load('audit-contract');audit=load('national-address-audit')
 class ContractChecks(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.root=pathlib.Path(self.tmp.name)
-  (self.root/'sample.json').write_text(json.dumps({'cases':[{'id':f'UA-30-holdout-{i}','regionId':'UA-30'} for i in range(1,21)]}))
+  (self.root/'sample.json').write_text(json.dumps({'cases':[{'id':f'UA-30-holdout-{i}','regionId':'UA-30'} for i in range(1,21)]+[{'id':'UA-12-holdout-1','regionId':'UA-12'}]}))
   self.request={'regions':['UA-30'],'limit':20,'sample':'sample.json','sampleSha256':contract.sha256(self.root/'sample.json')}
  def tearDown(self):self.tmp.cleanup()
  def test_twenty_cases_split_once_in_original_frozen_order(self):
@@ -18,6 +18,18 @@ class ContractChecks(unittest.TestCase):
   bad=copy.deepcopy(self.request);bad['sampleSha256']='0'*64
   self.assertRaises(ValueError,contract.plan,bad,self.root)
   bad=copy.deepcopy(self.request);bad['caseIds']=['another-case'];self.assertRaises(ValueError,contract.plan,bad,self.root)
+ def test_optional_dispatch_ids_use_frozen_order_without_changing_the_committed_request(self):
+  source={**self.request,'caseIds':['UA-30-holdout-3']};before=copy.deepcopy(source)
+  self.assertEqual(contract.dispatch_request(source,{}),before)
+  requested=contract.dispatch_request(source,{'INPUT_REGIONS':'["UA-30"]','INPUT_CASE_IDS':'["UA-30-holdout-5","UA-30-holdout-1"]'})
+  _,matrix=contract.plan(requested,self.root)
+  self.assertEqual(matrix['include'][0]['caseIds'],'UA-30-holdout-1,UA-30-holdout-5');self.assertEqual(source,before)
+  self.assertEqual(contract.dispatch_request(source,{'INPUT_REGIONS':'["UA-30"]'})['caseIds'],[])
+ def test_dispatch_case_ids_reject_malformed_duplicates_and_another_region(self):
+  self.assertRaises(ValueError,contract.dispatch_request,self.request,{'INPUT_CASE_IDS':'[invalid'})
+  for selected in ['null','"UA-30-holdout-1"','["unknown"]','["UA-30-holdout-1","UA-30-holdout-1"]','["UA-12-holdout-1"]']:
+   requested=contract.dispatch_request(self.request,{'INPUT_CASE_IDS':selected})
+   self.assertRaises(ValueError,contract.plan,requested,self.root)
  def test_sample_escape_and_binary_inputs_fail_closed(self):
   for patch in [{'sample':'../sample.json'},{'androidApi':34},{'chunkSize':6},{'apkUrl':'https://user:pass@example.org/a.apk'},{'apkSha256':'bogus'},{'versionCode':0}]:
    self.assertRaises(ValueError,contract.contract,{**self.request,**patch},self.root)
