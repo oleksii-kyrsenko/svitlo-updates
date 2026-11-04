@@ -1,10 +1,27 @@
 {
   "regions": [
+    "UA-05",
+    "UA-07",
+    "UA-12",
     "UA-18",
+    "UA-21",
+    "UA-23",
+    "UA-26",
+    "UA-30",
+    "UA-35",
+    "UA-48",
+    "UA-51",
+    "UA-53",
+    "UA-56",
+    "UA-59",
     "UA-61",
+    "UA-63",
+    "UA-65",
     "UA-68",
     "UA-71",
-    "UA-73"
+    "UA-73",
+    "UA-46",
+    "UA-74"
   ],
   "limit": 5,
   "sample": ".github/qa/capital-baseline.json",
@@ -16,21 +33,5 @@
   "version": "0.1.53",
   "androidApi": 35,
   "chunkSize": 5,
-  "runLabel": "Diagnostic pilot for new ff5fbb6 runtime: all12 prior UI/harness failures plus2 address-source timeouts, unchanged frozen houses. Preserve original110 attempts; this pilot cannot replace full baseline or count as release coverage.",
-  "caseIds": [
-    "UA-18-capital-1",
-    "UA-61-capital-1",
-    "UA-61-capital-2",
-    "UA-68-capital-5",
-    "UA-71-capital-1",
-    "UA-71-capital-2",
-    "UA-71-capital-3",
-    "UA-71-capital-4",
-    "UA-71-capital-5",
-    "UA-73-capital-1",
-    "UA-73-capital-2",
-    "UA-73-capital-3",
-    "UA-73-capital-4",
-    "UA-73-capital-5"
-  ]
+  "runLabel": "Full110 unchanged frozen baseline, exact ff5fbb6 performance APK, verified current data, completed navigation/selection/readonly-capture/pending-caption QA repairs. Original110+14pilotattempts preserved. No manualqueue/storageseeding."
 }
