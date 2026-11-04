@@ -3,7 +3,7 @@
 No queue lookup, address selection, storage seeding or product changes. Each
 ordinary input phase retains actual PNG/XML, logcat and Android service state.
 """
-import hashlib, importlib.util, json, pathlib, subprocess, time, traceback
+import datetime, hashlib, importlib.util, json, pathlib, subprocess, time, traceback
 import xml.etree.ElementTree as ET
 from PIL import Image
 
@@ -11,7 +11,7 @@ ROOT=pathlib.Path('.github/qa');OUT=pathlib.Path('startup-diagnostic');OUT.mkdir
 spec=importlib.util.spec_from_file_location('audit',ROOT/'national-address-audit.py');audit=importlib.util.module_from_spec(spec);spec.loader.exec_module(audit)
 contract=json.loads((OUT/'contract.json').read_text());request=json.loads((ROOT/'startup-diagnostic-request.json').read_text())
 if contract['apkSha256']!=request['apkSha256']:raise ValueError('Diagnostic APK differs from the requested failure binary')
-report={'schemaVersion':1,'scope':'diagnostic only; not address coverage','sourceFailureRun':request['sourceFailureRun'],'apkSha256':contract['apkSha256'],'phases':[],'noAddressStorageSeeding':True,'noQueueInputs':True}
+report={'schemaVersion':1,'scope':'diagnostic only; not address coverage','sourceFailureRun':request['sourceFailureRun'],'apkSha256':contract['apkSha256'],'phases':[],'noAddressStorageSeeding':True,'noQueueInputs':True,'visualReviewRequired':True,'lateFrameTargetDelaySeconds':2}
 driver=None
 
 def command(args,path):
@@ -27,11 +27,12 @@ def services(label):
 def raw_source():return driver.call('GET','/source')
 
 def capture(label):
-    xml=raw_source();driver.screenshot(label,xml);png=driver.case_dir/(label+'.png')
+    started=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    xml=raw_source();driver.screenshot(label,xml);png=driver.case_dir/(label+'.png');captured=time.monotonic();finished=datetime.datetime.now(datetime.timezone.utc).isoformat()
     with Image.open(png).convert('RGB') as image:
         w,h=image.size;body=image.crop((0,80,w,max(81,h-80)));pixels=body.getdata();black=sum(1 for pixel in pixels if max(pixel)==0)/max(1,body.width*body.height)
     services(label)
-    return xml,{'png':str(png.relative_to(OUT)),'pngSha256':hashlib.sha256(png.read_bytes()).hexdigest(),'xmlSha256':hashlib.sha256(xml.encode()).hexdigest(),'blackBodyFraction':round(black,5),'editorVisible':'Обрати: Область' in xml,'homeVisible':'Ввести адресу' in xml}
+    return xml,{'captureStartedAtUTC':started,'pngCapturedAtUTC':finished,'pngCapturedAtMonotonic':captured,'png':str(png.relative_to(OUT)),'pngSha256':hashlib.sha256(png.read_bytes()).hexdigest(),'xmlSha256':hashlib.sha256(xml.encode()).hexdigest(),'blackBodyFraction':round(black,5),'editorVisible':'Обрати: Область' in xml,'homeVisible':'Ввести адресу' in xml}
 
 try:
     driver=audit.Audit(pathlib.Path('artifacts/candidate.apk'),OUT,contract)
@@ -58,8 +59,13 @@ try:
             if 'Обрати: Область' in raw_source():break
             time.sleep(.5)
         phase['secondsAfterInput']=round(time.monotonic()-started,3)
-        _,phase['after']=capture(label+'-after');report['phases'].append(phase)
-    report['allPhasesResponded']=all(p.get('after',{}).get('editorVisible') and p['after']['blackBodyFraction']<.98 for p in report['phases']) and len(report['phases'])==3
+        _,phase['after']=capture(label+'-after')
+        remaining=phase['after']['pngCapturedAtMonotonic']+2-time.monotonic()
+        if remaining>0:time.sleep(remaining)
+        _,phase['late']=capture(label+'-late')
+        phase['actualLateFrameDeltaSeconds']=round(phase['late']['pngCapturedAtMonotonic']-phase['after']['pngCapturedAtMonotonic'],3)
+        report['phases'].append(phase)
+    report['allPhasesReachedEditorXML']=all(p.get('after',{}).get('editorVisible') for p in report['phases']) and len(report['phases'])==3
     report['limitations']=['The first launch is cold; later fresh processes retain only ordinary app-created caches. An A/B/A difference cannot alone prove the input method caused a failure.','A successful diagnostic does not erase the five original failures or establish address coverage.']
 except Exception as error:
     report.update(errorType=type(error).__name__,error=str(error),traceback=traceback.format_exc())
@@ -70,4 +76,4 @@ finally:
         try:driver.call('DELETE','')
         except Exception:pass
     (OUT/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-    print(json.dumps({key:report.get(key) for key in ['allPhasesResponded','errorType','scope']}))
+    print(json.dumps({key:report.get(key) for key in ['allPhasesReachedEditorXML','visualReviewRequired','errorType','scope']}))
