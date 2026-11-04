@@ -45,3 +45,8 @@ test('Vinnytsia and Prykarpattia capital documents preserve the legacy all-settl
   const global=collectorCommand(operator);assert.equal(global.args[0],'coverage/collect-batch-b.py');assert(global.args.includes('--street-limit'));
  }
 });
+test('Rivne current city document uses bounded capital metadata and preserves the global roster route',()=>{
+ const c=collectorCommand('rivne',{targetCity:'Рівне',fullCity:true,requestLimit:400});
+ assert.equal(c.args[0],'coverage/collect-rivne-zap.py');assert.equal(c.targetCity,'Рівне');assert(c.args.includes('--full-city'));assert(!c.args.includes('--budget'));assert.equal(c.args[c.args.indexOf('--request-limit')+1],'32');
+ const global=collectorCommand('rivne');assert.equal(global.args[0],'coverage/collect-remainder.py');assert(!global.args.includes('--target-city'));
+});

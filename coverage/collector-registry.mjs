@@ -9,7 +9,7 @@ export function collectorCommand(operatorId,{budget=20,streetBudget=8,targetCity
  const output=`coverage/staging/${operatorId}.json`,group=Object.keys(GROUPS).find(k=>GROUPS[k].includes(operatorId));
  if(!group)throw Error('unknown_collector_operator');
  const scripts={asd:'collect-asd.py',a:'batch-a.py',b:'collect-batch-b.py',c:'collect-batch-c.py',remainder:'collect-remainder.py'};
- const documents={cherkasy:'collect-cherkasy-documents.py',vinnytsia:'collect-vinnytsia-documents.py',prykarpattia:'collect-western-official.py'};
+ const documents={cherkasy:'collect-cherkasy-documents.py',vinnytsia:'collect-vinnytsia-documents.py',prykarpattia:'collect-western-official.py',rivne:'collect-rivne-zap.py'};
  const documentCollector=Boolean(targetCity&&documents[operatorId]);
  const script=documentCollector?documents[operatorId]:targetCity&&['ternopil','zhytomyr','sumy'].includes(operatorId)?'collect-official-bulk.py':targetCity&&['kirovohrad','volyn'].includes(operatorId)?'collect-city-forms.py':scripts[group];
  const args=[`coverage/${script}`,'--output',output];
@@ -21,10 +21,10 @@ export function collectorCommand(operatorId,{budget=20,streetBudget=8,targetCity
    else args.push('--budget',String(group==='a'?Math.max(80,budget*4):budget));
   }
  }
- const targeted=targetCity&&group!=='remainder';
+ const targeted=targetCity&&(group!=='remainder'||documentCollector);
  if(targeted){
   if(typeof targetCity!=='string'||!targetCity.trim()||targetCity.length>250||!Number.isInteger(requestLimit)||requestLimit<1||requestLimit>2000)throw Error('invalid_city_request');
-  args.push('--target-city',targetCity,'--request-limit',String(requestLimit));if(fullCity)args.push('--full-city');
+  args.push('--target-city',targetCity,'--request-limit',String(operatorId==='rivne'?Math.min(requestLimit,32):requestLimit));if(fullCity)args.push('--full-city');
  }
  return {operatorId,output,args,group,targetCity:targeted?targetCity:null,fullCity:Boolean(targeted&&fullCity)};
 }

@@ -59,6 +59,7 @@ jobs:
           python3 coverage/qa/test-cherkasy-documents.py
           python3 coverage/qa/test-vinnytsia-documents.py
           python3 coverage/qa/test-western-official.py
+          python3 coverage/qa/test-rivne-zap.py
           python3 coverage/qa/test-cherkasy-tls.py
           python3 coverage/qa/test-remainder.py
           python3 coverage/qa/test-batches.py
