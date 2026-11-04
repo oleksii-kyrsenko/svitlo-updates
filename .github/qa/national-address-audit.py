@@ -26,6 +26,14 @@ def norm(value):
     return re.sub(r'\s+', ' ', value.lower().replace('’', "'").replace('ʼ', "'")).strip()
 
 
+def queue_lookup_pending(text):
+    return any(label in text for label in (
+        'Перевіряємо чергу за адресою',
+        'Шукаємо чергу за адресою',
+        'Чергу ще перевіряємо',
+    ))
+
+
 def street_identity(value):
     value=norm(value).strip(' .,-')
     types=[('вулиця',r'вулиця|вул\.?'),('провулок',r'провулок|пров\.?'),('проспект',r'проспект|просп\.?|пр-т'),('площа',r'площа|пл\.?'),('бульвар',r'бульвар|бульв\.?|бул\.?'),('узвіз',r'узвіз'),('набережна',r'набережна'),('шосе',r'шосе'),('алея',r'алея'),('тупик',r'тупик'),('проїзд',r'проїзд'),('дорога',r'дорога')]
@@ -631,7 +639,7 @@ class Audit:
                 final_xml = self.source()
                 texts = self.texts(final_xml)
                 joined = ' '.join(texts)
-                pending = any(label in joined for label in ['Перевіряємо чергу за адресою', 'Шукаємо чергу за адресою'])
+                pending = queue_lookup_pending(joined)
                 ready = re.search(r'(?:Черга|Ймовірна черга)\s+([\d.\-]+)\s*·\s*(знайдено автоматично|за офіційним переліком|публічне джерело)', joined)
                 if ready:
                     result.update(outcome='queue_found', visibleQueue=ready.group(1))

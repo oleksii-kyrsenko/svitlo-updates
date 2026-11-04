@@ -38,6 +38,13 @@ class InputAudit(audit.Audit):
 
 
 class SearchInputControls(unittest.TestCase):
+    def test_actual_editor_pending_caption_prevents_an_early_save(self):
+        for caption in ['Перевіряємо чергу за адресою…', 'Шукаємо чергу за адресою…',
+                        'Чергу ще перевіряємо. Адресу вже можна зберегти.']:
+            self.assertTrue(audit.queue_lookup_pending('Будинок 8 '+caption))
+        for caption in ['Черга 2.1 · знайдено автоматично', 'Чергу не знайдено',
+                        'Уточніть підключення', 'Джерело тимчасово недоступне']:
+            self.assertFalse(audit.queue_lookup_pending(caption))
     def state_capture_driver(self,folder):
         source=folder/'source';source.mkdir();database=source/'RKStorage'
         with sqlite3.connect(database) as connection:
