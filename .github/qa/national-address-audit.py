@@ -466,8 +466,12 @@ class Audit:
                 if self.tap('Ввести адресу',required=False) or self.tap('Додати адресу',required=False):
                     self.wait(lambda x:'Обрати: Область' in x,15)
                     return
-                if 'app-menu-button' in xml:
-                    self.tap('app-menu-button')
+                # An asynchronous menu transition can complete while the
+                # optional add-address actions above are being located. Never
+                # act on the old home-screen tree after those round trips.
+                current = self.source()
+                if 'app-menu-button' in current:
+                    self.tap('app-menu-button',required=False)
             time.sleep(1)
         raise RuntimeError('Could not return from the previous editor to a new empty place')
 

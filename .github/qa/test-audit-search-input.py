@@ -38,6 +38,31 @@ class InputAudit(audit.Audit):
 
 
 class SearchInputControls(unittest.TestCase):
+    def test_menu_transition_does_not_reuse_the_previous_home_tree(self):
+        # Actual UA-68-capital-5 failure: the cached tree still mentioned the
+        # home menu button, while the current screen already showed its menu.
+        clock=Clock()
+        class NavigationAudit(audit.Audit):
+            def __init__(self):self.stage='home';self.add_checks=0;self.actions=[]
+            def source(self):
+                return {'home':'<hierarchy><node resource-id="app-menu-button"/></hierarchy>',
+                        'menu':'<hierarchy><node content-desc="Додати адресу"/></hierarchy>',
+                        'editor':'<hierarchy><node content-desc="Обрати: Область"/></hierarchy>'}[self.stage]
+            def tap(self,label,scroll=False,required=True):
+                self.actions.append(label)
+                if label=='Додати адресу':
+                    self.add_checks+=1
+                    if self.add_checks==1:self.stage='menu';return False
+                    self.stage='editor';return True
+                if label=='app-menu-button':raise RuntimeError('cached home button is unavailable')
+                return False
+            def wait(self,predicate,seconds=25):
+                xml=self.source()
+                if not predicate(xml):raise RuntimeError('did not open the empty editor')
+                return xml
+        driver=NavigationAudit()
+        with patch.object(audit.time,'sleep',clock.sleep):driver.open_new_editor()
+        self.assertEqual(driver.stage,'editor');self.assertNotIn('app-menu-button',driver.actions)
     def test_native_text_and_custom_loader_do_not_fake_react_commit(self):
         # Actual failed Chernivtsi shape: the text is present, custom loader is
         # visible, and the app-owned Clear control has not rendered yet.
