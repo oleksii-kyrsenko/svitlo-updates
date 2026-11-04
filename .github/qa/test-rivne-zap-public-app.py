@@ -11,12 +11,14 @@ class Projection(unittest.TestCase):
   for invalid in [b'link removed',b'<!--'+raw+b'-->']:
    with self.assertRaises(ValueError):m.authority_snapshot(invalid,{**meta,'sha256':m.sha(invalid)},url,2000)
  def test_gpvisfixedcolumn_exemptionsveto_and_gav_never_substitutes(self):
-  rows,_=m.project([['вул. Нова','2','1.2','',9],['вул. Нова','4','','частина будинку',8]])
+  rows,_,_=m.project([['вул. Нова','2','1.2','',9],['вул. Нова','4','','частина будинку',8]])
   self.assertEqual(rows,[['вул. Нова','2','1.2',False],['вул. Нова','4','',True]])
  def test_unexpected_long_account_like_address_is_not_persisted(self):
-  with self.assertRaises(ValueError):m.project([['вул. Нова','1234567890123','1.2','',9]])
+  rows,_,q=m.project([['вул. Нова','1234567890123','1.2','',9]]);self.assertFalse(rows);self.assertEqual(q[0]['fieldIssues'][0]['field'],'house');self.assertNotIn('1234567890123',str(q))
  def test_exemption_text_extra_columns_and_gav_are_not_persisted(self):
-  rows,_=m.project([['вул. Нова','2','1.2','private exemption text',9,'private extra']]);self.assertEqual(rows,[['вул. Нова','2','1.2',True]])
+  rows,_,_=m.project([['вул. Нова','2','1.2','private exemption text',9,'private extra']]);self.assertEqual(rows,[['вул. Нова','2','1.2',True]])
+ def test_unsafe_queue_field_keeps_safe_address_only_as_unknown(self):
+  rows,_,q=m.project([['вул. Нова','2','account1234567890123','',9]]);self.assertEqual(rows,[['вул. Нова','2',None,False]]);self.assertNotIn('1234567890123',str(q))
  def test_no_arbitrary_sources_or_accounts(self):
   self.assertTrue(m.allowed('https://script.google.com/macros/s/public/exec'));self.assertFalse(m.allowed('https://accounts.google.com/ServiceLogin'));self.assertFalse(m.allowed('http://script.google.com/'));self.assertFalse(m.allowed('https://attacker.example/'))
 if __name__=='__main__':unittest.main()
