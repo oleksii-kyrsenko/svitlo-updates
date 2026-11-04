@@ -26,13 +26,23 @@ def services(label):
 
 def raw_source():return driver.call('GET','/source')
 
-def capture(label):
+def capture(label,adb_first=False):
     started=datetime.datetime.now(datetime.timezone.utc).isoformat()
-    xml=raw_source();driver.screenshot(label,xml);png=driver.case_dir/(label+'.png');captured=time.monotonic();finished=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    xml=raw_source();png=driver.case_dir/(label+'.png');adb_png=driver.case_dir/(label+'-adb.png');times={}
+    def appium_capture():
+        driver.screenshot(label,xml);times['appiumMono']=time.monotonic();times['appiumUTC']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    def adb_capture():
+        value=subprocess.run(['adb','exec-out','screencap','-p'],capture_output=True,timeout=30)
+        if value.returncode or not value.stdout.startswith(b'\x89PNG\r\n\x1a\n'):raise RuntimeError('Ordinary ADB screenshot failed')
+        adb_png.write_bytes(value.stdout);times['adbMono']=time.monotonic();times['adbUTC']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    if adb_first:adb_capture();appium_capture()
+    else:appium_capture();adb_capture()
     with Image.open(png).convert('RGB') as image:
         w,h=image.size;body=image.crop((0,80,w,max(81,h-80)));pixels=body.getdata();black=sum(1 for pixel in pixels if max(pixel)==0)/max(1,body.width*body.height)
+    with Image.open(adb_png).convert('RGB') as image:
+        w,h=image.size;body=image.crop((0,80,w,max(81,h-80)));adb_black=sum(1 for pixel in body.getdata() if max(pixel)==0)/max(1,body.width*body.height)
     services(label)
-    return xml,{'captureStartedAtUTC':started,'pngCapturedAtUTC':finished,'pngCapturedAtMonotonic':captured,'png':str(png.relative_to(OUT)),'pngSha256':hashlib.sha256(png.read_bytes()).hexdigest(),'xmlSha256':hashlib.sha256(xml.encode()).hexdigest(),'blackBodyFraction':round(black,5),'editorVisible':'Обрати: Область' in xml,'homeVisible':'Ввести адресу' in xml}
+    return xml,{'captureStartedAtUTC':started,'captureOrder':'adb-then-appium' if adb_first else 'appium-then-adb','pngCapturedAtUTC':times['appiumUTC'],'pngCapturedAtMonotonic':times['appiumMono'],'png':str(png.relative_to(OUT)),'pngSha256':hashlib.sha256(png.read_bytes()).hexdigest(),'adbPNG':str(adb_png.relative_to(OUT)),'adbPNGSha256':hashlib.sha256(adb_png.read_bytes()).hexdigest(),'adbCapturedAtUTC':times['adbUTC'],'pairCaptureDeltaSeconds':round(abs(times['adbMono']-times['appiumMono']),3),'xmlSha256':hashlib.sha256(xml.encode()).hexdigest(),'blackBodyFraction':round(black,5),'adbBlackBodyFraction':round(adb_black,5),'editorVisible':'Обрати: Область' in xml,'homeVisible':'Ввести адресу' in xml}
 
 try:
     driver=audit.Audit(pathlib.Path('artifacts/candidate.apk'),OUT,contract)
@@ -62,7 +72,7 @@ try:
         _,phase['after']=capture(label+'-after')
         remaining=phase['after']['pngCapturedAtMonotonic']+2-time.monotonic()
         if remaining>0:time.sleep(remaining)
-        _,phase['late']=capture(label+'-late')
+        _,phase['late']=capture(label+'-late',adb_first=True)
         phase['actualLateFrameDeltaSeconds']=round(phase['late']['pngCapturedAtMonotonic']-phase['after']['pngCapturedAtMonotonic'],3)
         report['phases'].append(phase)
     report['allPhasesReachedEditorXML']=all(p.get('after',{}).get('editorVisible') for p in report['phases']) and len(report['phases'])==3

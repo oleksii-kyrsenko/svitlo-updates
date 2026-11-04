@@ -1,6 +1,8 @@
 {
   "schemaVersion": 1,
-  "observationVersion": 2,
+  "observationVersion": 3,
+  "pairedAppiumAndADBCaptures": true,
+  "lateCaptureOrder": "adb-then-appium",
   "lateFrameTargetDelaySeconds": 2,
   "scope": "Same signed APK on a fresh emulator: observe startup rendering and ordinary accessibility / physical tap; no address or queue entry and no coverage counting",
   "sourceFailureRun": 41822856037,
