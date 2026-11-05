@@ -17,6 +17,205 @@
   "queues": {
     "coordinator": [
       {
+        "taskId": "city:UA-53:Полтава",
+        "city": "Полтава",
+        "regionId": "UA-53",
+        "operatorId": "poltava",
+        "caseIds": [
+          "UA-53-capital-1",
+          "UA-53-capital-2",
+          "UA-53-capital-3",
+          "UA-53-capital-4",
+          "UA-53-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-53-capital-1",
+          "UA-53-capital-2",
+          "UA-53-capital-3",
+          "UA-53-capital-4",
+          "UA-53-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-56:Рівне",
+        "city": "Рівне",
+        "regionId": "UA-56",
+        "operatorId": "rivne",
+        "caseIds": [
+          "UA-56-capital-1",
+          "UA-56-capital-2",
+          "UA-56-capital-3",
+          "UA-56-capital-4",
+          "UA-56-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-56-capital-1",
+          "UA-56-capital-2",
+          "UA-56-capital-3",
+          "UA-56-capital-4",
+          "UA-56-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-59:Суми",
+        "city": "Суми",
+        "regionId": "UA-59",
+        "operatorId": "sumy",
+        "caseIds": [
+          "UA-59-capital-1",
+          "UA-59-capital-2",
+          "UA-59-capital-3",
+          "UA-59-capital-4",
+          "UA-59-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-59-capital-1",
+          "UA-59-capital-2",
+          "UA-59-capital-3",
+          "UA-59-capital-4",
+          "UA-59-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-61:Тернопіль",
+        "city": "Тернопіль",
+        "regionId": "UA-61",
+        "operatorId": "ternopil",
+        "caseIds": [
+          "UA-61-capital-1",
+          "UA-61-capital-2",
+          "UA-61-capital-3",
+          "UA-61-capital-4",
+          "UA-61-capital-5"
+        ],
+        "unresolvedCaseIds": [],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-63:Харків",
+        "city": "Харків",
+        "regionId": "UA-63",
+        "operatorId": "kharkiv",
+        "caseIds": [
+          "UA-63-capital-1",
+          "UA-63-capital-2",
+          "UA-63-capital-3",
+          "UA-63-capital-4",
+          "UA-63-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-63-capital-1",
+          "UA-63-capital-2",
+          "UA-63-capital-3",
+          "UA-63-capital-4",
+          "UA-63-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-65:Херсон",
+        "city": "Херсон",
+        "regionId": "UA-65",
+        "operatorId": "kherson",
+        "caseIds": [
+          "UA-65-capital-1",
+          "UA-65-capital-2",
+          "UA-65-capital-3",
+          "UA-65-capital-4",
+          "UA-65-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-65-capital-1",
+          "UA-65-capital-2",
+          "UA-65-capital-3",
+          "UA-65-capital-4",
+          "UA-65-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-68:Хмельницький",
+        "city": "Хмельницький",
+        "regionId": "UA-68",
+        "operatorId": "khmelnytskyi",
+        "caseIds": [
+          "UA-68-capital-1",
+          "UA-68-capital-2",
+          "UA-68-capital-3",
+          "UA-68-capital-4",
+          "UA-68-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-68-capital-1",
+          "UA-68-capital-2",
+          "UA-68-capital-3",
+          "UA-68-capital-4",
+          "UA-68-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-71:Черкаси",
+        "city": "Черкаси",
+        "regionId": "UA-71",
+        "operatorId": "cherkasy",
+        "caseIds": [
+          "UA-71-capital-1",
+          "UA-71-capital-2",
+          "UA-71-capital-3",
+          "UA-71-capital-4",
+          "UA-71-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-71-capital-2",
+          "UA-71-capital-3",
+          "UA-71-capital-4"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-73:Чернівці",
+        "city": "Чернівці",
+        "regionId": "UA-73",
+        "operatorId": "chernivtsi",
+        "caseIds": [
+          "UA-73-capital-1",
+          "UA-73-capital-2",
+          "UA-73-capital-3",
+          "UA-73-capital-4",
+          "UA-73-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-73-capital-1",
+          "UA-73-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
+        "taskId": "city:UA-74:Чернігів",
+        "city": "Чернігів",
+        "regionId": "UA-74",
+        "operatorId": "chernihiv",
+        "caseIds": [
+          "UA-74-capital-1",
+          "UA-74-capital-2",
+          "UA-74-capital-3",
+          "UA-74-capital-4",
+          "UA-74-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-74-capital-1",
+          "UA-74-capital-2",
+          "UA-74-capital-3",
+          "UA-74-capital-4",
+          "UA-74-capital-5"
+        ],
+        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
+      },
+      {
         "taskId": "city:UA-05:Вінниця",
         "city": "Вінниця",
         "regionId": "UA-05",
@@ -57,191 +256,49 @@
           "UA-07-capital-5"
         ],
         "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-12:Дніпро",
-        "city": "Дніпро",
-        "regionId": "UA-12",
-        "operatorId": "dtek-dnipro",
-        "caseIds": [
-          "UA-12-capital-1",
-          "UA-12-capital-2",
-          "UA-12-capital-3",
-          "UA-12-capital-4",
-          "UA-12-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-12-capital-1",
-          "UA-12-capital-4"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-18:Житомир",
-        "city": "Житомир",
-        "regionId": "UA-18",
-        "operatorId": "zhytomyr",
-        "caseIds": [
-          "UA-18-capital-1",
-          "UA-18-capital-2",
-          "UA-18-capital-3",
-          "UA-18-capital-4",
-          "UA-18-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-18-capital-4",
-          "UA-18-capital-5"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-21:Ужгород",
-        "city": "Ужгород",
-        "regionId": "UA-21",
-        "operatorId": "zakarpattia",
-        "caseIds": [
-          "UA-21-capital-1",
-          "UA-21-capital-2",
-          "UA-21-capital-3",
-          "UA-21-capital-4",
-          "UA-21-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-21-capital-4",
-          "UA-21-capital-5"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-23:Запоріжжя",
-        "city": "Запоріжжя",
-        "regionId": "UA-23",
-        "operatorId": "zaporizhzhia",
-        "caseIds": [
-          "UA-23-capital-1",
-          "UA-23-capital-2",
-          "UA-23-capital-3",
-          "UA-23-capital-4",
-          "UA-23-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-23-capital-1",
-          "UA-23-capital-2",
-          "UA-23-capital-3",
-          "UA-23-capital-4",
-          "UA-23-capital-5"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-26:Івано-Франківськ",
-        "city": "Івано-Франківськ",
-        "regionId": "UA-26",
-        "operatorId": "prykarpattia",
-        "caseIds": [
-          "UA-26-capital-1",
-          "UA-26-capital-2",
-          "UA-26-capital-3",
-          "UA-26-capital-4",
-          "UA-26-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-26-capital-2"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-30:Київ",
-        "city": "Київ",
-        "regionId": "UA-30",
-        "operatorId": "dtek-kyiv",
-        "caseIds": [
-          "UA-30-capital-1",
-          "UA-30-capital-2",
-          "UA-30-capital-3",
-          "UA-30-capital-4",
-          "UA-30-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-30-capital-1",
-          "UA-30-capital-3",
-          "UA-30-capital-5"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-35:Кропивницький",
-        "city": "Кропивницький",
-        "regionId": "UA-35",
-        "operatorId": "kirovohrad",
-        "caseIds": [
-          "UA-35-capital-1",
-          "UA-35-capital-2",
-          "UA-35-capital-3",
-          "UA-35-capital-4",
-          "UA-35-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-35-capital-5"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-46:Львів",
-        "city": "Львів",
-        "regionId": "UA-46",
-        "operatorId": "lviv",
-        "caseIds": [
-          "UA-46-capital-1",
-          "UA-46-capital-2",
-          "UA-46-capital-3",
-          "UA-46-capital-4",
-          "UA-46-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-46-capital-1"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-48:Миколаїв",
-        "city": "Миколаїв",
-        "regionId": "UA-48",
-        "operatorId": "mykolaiv",
-        "caseIds": [
-          "UA-48-capital-1",
-          "UA-48-capital-2",
-          "UA-48-capital-3",
-          "UA-48-capital-4",
-          "UA-48-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-48-capital-1",
-          "UA-48-capital-3",
-          "UA-48-capital-4"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
-      },
-      {
-        "taskId": "city:UA-51:Одеса",
-        "city": "Одеса",
-        "regionId": "UA-51",
-        "operatorId": "dtek-odesa",
-        "caseIds": [
-          "UA-51-capital-1",
-          "UA-51-capital-2",
-          "UA-51-capital-3",
-          "UA-51-capital-4",
-          "UA-51-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-51-capital-1",
-          "UA-51-capital-3"
-        ],
-        "nextStep": "Review every city including prior successes, retain remaining failures toward100%, and verify independent acceptance gates."
       }
     ],
     "official-researcher-1": [
+      {
+        "taskId": "case:UA-05-capital-1",
+        "caseId": "UA-05-capital-1",
+        "city": "Вінниця",
+        "operatorId": "vinnytsia",
+        "initialCause": "source_protected",
+        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-07-capital-1",
+        "caseId": "UA-07-capital-1",
+        "city": "Луцьк",
+        "operatorId": "volyn",
+        "initialCause": "source_protected",
+        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-63-capital-1",
+        "caseId": "UA-63-capital-1",
+        "city": "Харків",
+        "operatorId": "kharkiv",
+        "initialCause": "source_protected",
+        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-73-capital-1",
+        "caseId": "UA-73-capital-1",
+        "city": "Чернівці",
+        "operatorId": "chernivtsi",
+        "initialCause": "source_protected",
+        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
       {
         "taskId": "case:UA-05-capital-2",
         "caseId": "UA-05-capital-2",
@@ -321,49 +378,79 @@
         "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-07-capital-4",
-        "caseId": "UA-07-capital-4",
-        "city": "Луцьк",
-        "operatorId": "volyn",
-        "initialCause": "source_protected",
-        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-63-capital-4",
-        "caseId": "UA-63-capital-4",
-        "city": "Харків",
-        "operatorId": "kharkiv",
-        "initialCause": "source_protected",
-        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-05-capital-5",
-        "caseId": "UA-05-capital-5",
-        "city": "Вінниця",
-        "operatorId": "vinnytsia",
-        "initialCause": "source_protected",
-        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-63-capital-5",
-        "caseId": "UA-63-capital-5",
-        "city": "Харків",
-        "operatorId": "kharkiv",
-        "initialCause": "source_protected",
-        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
       }
     ],
     "official-researcher-2": [
+      {
+        "taskId": "case:UA-74-capital-3",
+        "caseId": "UA-74-capital-3",
+        "city": "Чернігів",
+        "operatorId": "chernihiv",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-23-capital-4",
+        "caseId": "UA-23-capital-4",
+        "city": "Запоріжжя",
+        "operatorId": "zaporizhzhia",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-53-capital-4",
+        "caseId": "UA-53-capital-4",
+        "city": "Полтава",
+        "operatorId": "poltava",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-65-capital-4",
+        "caseId": "UA-65-capital-4",
+        "city": "Херсон",
+        "operatorId": "kherson",
+        "initialCause": "integration_required",
+        "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-74-capital-4",
+        "caseId": "UA-74-capital-4",
+        "city": "Чернігів",
+        "operatorId": "chernihiv",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-23-capital-5",
+        "caseId": "UA-23-capital-5",
+        "city": "Запоріжжя",
+        "operatorId": "zaporizhzhia",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-53-capital-5",
+        "caseId": "UA-53-capital-5",
+        "city": "Полтава",
+        "operatorId": "poltava",
+        "initialCause": "source_failure",
+        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
       {
         "taskId": "case:UA-74-capital-5",
         "caseId": "UA-74-capital-5",
@@ -413,79 +500,29 @@
         "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-23-capital-2",
-        "caseId": "UA-23-capital-2",
-        "city": "Запоріжжя",
-        "operatorId": "zaporizhzhia",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-53-capital-2",
-        "caseId": "UA-53-capital-2",
-        "city": "Полтава",
-        "operatorId": "poltava",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-65-capital-2",
-        "caseId": "UA-65-capital-2",
-        "city": "Херсон",
-        "operatorId": "kherson",
-        "initialCause": "integration_required",
-        "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-74-capital-2",
-        "caseId": "UA-74-capital-2",
-        "city": "Чернігів",
-        "operatorId": "chernihiv",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-23-capital-3",
-        "caseId": "UA-23-capital-3",
-        "city": "Запоріжжя",
-        "operatorId": "zaporizhzhia",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-53-capital-3",
-        "caseId": "UA-53-capital-3",
-        "city": "Полтава",
-        "operatorId": "poltava",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-65-capital-3",
-        "caseId": "UA-65-capital-3",
-        "city": "Херсон",
-        "operatorId": "kherson",
-        "initialCause": "integration_required",
-        "nextStep": "Locate a working official address-to-queue source, document its protocol and implement a verified adapter.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
       }
     ],
     "address-specialist": [
+      {
+        "taskId": "case:UA-68-capital-2",
+        "caseId": "UA-68-capital-2",
+        "city": "Хмельницький",
+        "operatorId": null,
+        "initialCause": "address_not_selected",
+        "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-30-capital-3",
+        "caseId": "UA-30-capital-3",
+        "city": "Київ",
+        "operatorId": "dtek-kyiv",
+        "initialCause": "ambiguous_or_selection_required",
+        "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
       {
         "taskId": "case:UA-71-capital-3",
         "caseId": "UA-71-capital-3",
@@ -585,29 +622,119 @@
         "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-12-capital-1",
-        "caseId": "UA-12-capital-1",
-        "city": "Дніпро",
-        "operatorId": null,
-        "initialCause": "address_not_selected",
-        "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-46-capital-1",
-        "caseId": "UA-46-capital-1",
-        "city": "Львів",
-        "operatorId": "lviv",
-        "initialCause": "ambiguous_or_selection_required",
-        "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
       }
     ],
     "adapter-engineer": [
+      {
+        "taskId": "case:UA-51-capital-1",
+        "caseId": "UA-51-capital-1",
+        "city": "Одеса",
+        "operatorId": "dtek-odesa",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-21-capital-4",
+        "caseId": "UA-21-capital-4",
+        "city": "Ужгород",
+        "operatorId": "zakarpattia",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-35-capital-5",
+        "caseId": "UA-35-capital-5",
+        "city": "Кропивницький",
+        "operatorId": "kirovohrad",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-56-capital-2",
+        "caseId": "UA-56-capital-2",
+        "city": "Рівне",
+        "operatorId": "rivne",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-59-capital-2",
+        "caseId": "UA-59-capital-2",
+        "city": "Суми",
+        "operatorId": "sumy",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-48-capital-3",
+        "caseId": "UA-48-capital-3",
+        "city": "Миколаїв",
+        "operatorId": "mykolaiv",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-18-capital-5",
+        "caseId": "UA-18-capital-5",
+        "city": "Житомир",
+        "operatorId": "zhytomyr",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-21-capital-5",
+        "caseId": "UA-21-capital-5",
+        "city": "Ужгород",
+        "operatorId": "zakarpattia",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-56-capital-3",
+        "caseId": "UA-56-capital-3",
+        "city": "Рівне",
+        "operatorId": "rivne",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-59-capital-3",
+        "caseId": "UA-59-capital-3",
+        "city": "Суми",
+        "operatorId": "sumy",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-30-capital-5",
+        "caseId": "UA-30-capital-5",
+        "city": "Київ",
+        "operatorId": "dtek-kyiv",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
       {
         "taskId": "case:UA-48-capital-4",
         "caseId": "UA-48-capital-4",
@@ -617,119 +744,208 @@
         "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-71-capital-4",
-        "caseId": "UA-71-capital-4",
-        "city": "Черкаси",
-        "operatorId": "cherkasy",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-56-capital-4",
-        "caseId": "UA-56-capital-4",
-        "city": "Рівне",
-        "operatorId": "rivne",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-59-capital-4",
-        "caseId": "UA-59-capital-4",
-        "city": "Суми",
-        "operatorId": "sumy",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-56-capital-5",
-        "caseId": "UA-56-capital-5",
-        "city": "Рівне",
-        "operatorId": "rivne",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-59-capital-5",
-        "caseId": "UA-59-capital-5",
-        "city": "Суми",
-        "operatorId": "sumy",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-56-capital-1",
-        "caseId": "UA-56-capital-1",
-        "city": "Рівне",
-        "operatorId": "rivne",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-59-capital-1",
-        "caseId": "UA-59-capital-1",
-        "city": "Суми",
-        "operatorId": "sumy",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-68-capital-1",
-        "caseId": "UA-68-capital-1",
-        "city": "Хмельницький",
-        "operatorId": "khmelnytskyi",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-30-capital-1",
-        "caseId": "UA-30-capital-1",
-        "city": "Київ",
-        "operatorId": "dtek-kyiv",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-48-capital-1",
-        "caseId": "UA-48-capital-1",
-        "city": "Миколаїв",
-        "operatorId": "mykolaiv",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-18-capital-4",
-        "caseId": "UA-18-capital-4",
-        "city": "Житомир",
-        "operatorId": "zhytomyr",
-        "initialCause": "unresolved",
-        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
       }
     ],
     "monitoring-specialist": [
+      {
+        "taskId": "city:UA-53:Полтава",
+        "city": "Полтава",
+        "regionId": "UA-53",
+        "operatorId": "poltava",
+        "caseIds": [
+          "UA-53-capital-1",
+          "UA-53-capital-2",
+          "UA-53-capital-3",
+          "UA-53-capital-4",
+          "UA-53-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-53-capital-1",
+          "UA-53-capital-2",
+          "UA-53-capital-3",
+          "UA-53-capital-4",
+          "UA-53-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-56:Рівне",
+        "city": "Рівне",
+        "regionId": "UA-56",
+        "operatorId": "rivne",
+        "caseIds": [
+          "UA-56-capital-1",
+          "UA-56-capital-2",
+          "UA-56-capital-3",
+          "UA-56-capital-4",
+          "UA-56-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-56-capital-1",
+          "UA-56-capital-2",
+          "UA-56-capital-3",
+          "UA-56-capital-4",
+          "UA-56-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-59:Суми",
+        "city": "Суми",
+        "regionId": "UA-59",
+        "operatorId": "sumy",
+        "caseIds": [
+          "UA-59-capital-1",
+          "UA-59-capital-2",
+          "UA-59-capital-3",
+          "UA-59-capital-4",
+          "UA-59-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-59-capital-1",
+          "UA-59-capital-2",
+          "UA-59-capital-3",
+          "UA-59-capital-4",
+          "UA-59-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-61:Тернопіль",
+        "city": "Тернопіль",
+        "regionId": "UA-61",
+        "operatorId": "ternopil",
+        "caseIds": [
+          "UA-61-capital-1",
+          "UA-61-capital-2",
+          "UA-61-capital-3",
+          "UA-61-capital-4",
+          "UA-61-capital-5"
+        ],
+        "unresolvedCaseIds": [],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-63:Харків",
+        "city": "Харків",
+        "regionId": "UA-63",
+        "operatorId": "kharkiv",
+        "caseIds": [
+          "UA-63-capital-1",
+          "UA-63-capital-2",
+          "UA-63-capital-3",
+          "UA-63-capital-4",
+          "UA-63-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-63-capital-1",
+          "UA-63-capital-2",
+          "UA-63-capital-3",
+          "UA-63-capital-4",
+          "UA-63-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-65:Херсон",
+        "city": "Херсон",
+        "regionId": "UA-65",
+        "operatorId": "kherson",
+        "caseIds": [
+          "UA-65-capital-1",
+          "UA-65-capital-2",
+          "UA-65-capital-3",
+          "UA-65-capital-4",
+          "UA-65-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-65-capital-1",
+          "UA-65-capital-2",
+          "UA-65-capital-3",
+          "UA-65-capital-4",
+          "UA-65-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-68:Хмельницький",
+        "city": "Хмельницький",
+        "regionId": "UA-68",
+        "operatorId": "khmelnytskyi",
+        "caseIds": [
+          "UA-68-capital-1",
+          "UA-68-capital-2",
+          "UA-68-capital-3",
+          "UA-68-capital-4",
+          "UA-68-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-68-capital-1",
+          "UA-68-capital-2",
+          "UA-68-capital-3",
+          "UA-68-capital-4",
+          "UA-68-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-71:Черкаси",
+        "city": "Черкаси",
+        "regionId": "UA-71",
+        "operatorId": "cherkasy",
+        "caseIds": [
+          "UA-71-capital-1",
+          "UA-71-capital-2",
+          "UA-71-capital-3",
+          "UA-71-capital-4",
+          "UA-71-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-71-capital-2",
+          "UA-71-capital-3",
+          "UA-71-capital-4"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-73:Чернівці",
+        "city": "Чернівці",
+        "regionId": "UA-73",
+        "operatorId": "chernivtsi",
+        "caseIds": [
+          "UA-73-capital-1",
+          "UA-73-capital-2",
+          "UA-73-capital-3",
+          "UA-73-capital-4",
+          "UA-73-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-73-capital-1",
+          "UA-73-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
+      {
+        "taskId": "city:UA-74:Чернігів",
+        "city": "Чернігів",
+        "regionId": "UA-74",
+        "operatorId": "chernihiv",
+        "caseIds": [
+          "UA-74-capital-1",
+          "UA-74-capital-2",
+          "UA-74-capital-3",
+          "UA-74-capital-4",
+          "UA-74-capital-5"
+        ],
+        "unresolvedCaseIds": [
+          "UA-74-capital-1",
+          "UA-74-capital-2",
+          "UA-74-capital-3",
+          "UA-74-capital-4",
+          "UA-74-capital-5"
+        ],
+        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
+      },
       {
         "taskId": "city:UA-05:Вінниця",
         "city": "Вінниця",
@@ -771,214 +987,12 @@
           "UA-07-capital-5"
         ],
         "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-12:Дніпро",
-        "city": "Дніпро",
-        "regionId": "UA-12",
-        "operatorId": "dtek-dnipro",
-        "caseIds": [
-          "UA-12-capital-1",
-          "UA-12-capital-2",
-          "UA-12-capital-3",
-          "UA-12-capital-4",
-          "UA-12-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-12-capital-1",
-          "UA-12-capital-4"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-18:Житомир",
-        "city": "Житомир",
-        "regionId": "UA-18",
-        "operatorId": "zhytomyr",
-        "caseIds": [
-          "UA-18-capital-1",
-          "UA-18-capital-2",
-          "UA-18-capital-3",
-          "UA-18-capital-4",
-          "UA-18-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-18-capital-4",
-          "UA-18-capital-5"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-21:Ужгород",
-        "city": "Ужгород",
-        "regionId": "UA-21",
-        "operatorId": "zakarpattia",
-        "caseIds": [
-          "UA-21-capital-1",
-          "UA-21-capital-2",
-          "UA-21-capital-3",
-          "UA-21-capital-4",
-          "UA-21-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-21-capital-4",
-          "UA-21-capital-5"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-23:Запоріжжя",
-        "city": "Запоріжжя",
-        "regionId": "UA-23",
-        "operatorId": "zaporizhzhia",
-        "caseIds": [
-          "UA-23-capital-1",
-          "UA-23-capital-2",
-          "UA-23-capital-3",
-          "UA-23-capital-4",
-          "UA-23-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-23-capital-1",
-          "UA-23-capital-2",
-          "UA-23-capital-3",
-          "UA-23-capital-4",
-          "UA-23-capital-5"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-26:Івано-Франківськ",
-        "city": "Івано-Франківськ",
-        "regionId": "UA-26",
-        "operatorId": "prykarpattia",
-        "caseIds": [
-          "UA-26-capital-1",
-          "UA-26-capital-2",
-          "UA-26-capital-3",
-          "UA-26-capital-4",
-          "UA-26-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-26-capital-2"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-30:Київ",
-        "city": "Київ",
-        "regionId": "UA-30",
-        "operatorId": "dtek-kyiv",
-        "caseIds": [
-          "UA-30-capital-1",
-          "UA-30-capital-2",
-          "UA-30-capital-3",
-          "UA-30-capital-4",
-          "UA-30-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-30-capital-1",
-          "UA-30-capital-3",
-          "UA-30-capital-5"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-35:Кропивницький",
-        "city": "Кропивницький",
-        "regionId": "UA-35",
-        "operatorId": "kirovohrad",
-        "caseIds": [
-          "UA-35-capital-1",
-          "UA-35-capital-2",
-          "UA-35-capital-3",
-          "UA-35-capital-4",
-          "UA-35-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-35-capital-5"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-46:Львів",
-        "city": "Львів",
-        "regionId": "UA-46",
-        "operatorId": "lviv",
-        "caseIds": [
-          "UA-46-capital-1",
-          "UA-46-capital-2",
-          "UA-46-capital-3",
-          "UA-46-capital-4",
-          "UA-46-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-46-capital-1"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-48:Миколаїв",
-        "city": "Миколаїв",
-        "regionId": "UA-48",
-        "operatorId": "mykolaiv",
-        "caseIds": [
-          "UA-48-capital-1",
-          "UA-48-capital-2",
-          "UA-48-capital-3",
-          "UA-48-capital-4",
-          "UA-48-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-48-capital-1",
-          "UA-48-capital-3",
-          "UA-48-capital-4"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
-      },
-      {
-        "taskId": "city:UA-51:Одеса",
-        "city": "Одеса",
-        "regionId": "UA-51",
-        "operatorId": "dtek-odesa",
-        "caseIds": [
-          "UA-51-capital-1",
-          "UA-51-capital-2",
-          "UA-51-capital-3",
-          "UA-51-capital-4",
-          "UA-51-capital-5"
-        ],
-        "unresolvedCaseIds": [
-          "UA-51-capital-1",
-          "UA-51-capital-3"
-        ],
-        "nextStep": "Verify actual address endpoints, provenance, TTL/revocation and complete-city crawl; homepage200 is insufficient."
       }
     ],
     "independent-verifier": [
       {
-        "taskId": "case:UA-68-capital-4",
-        "caseId": "UA-68-capital-4",
-        "city": "Хмельницький",
-        "operatorId": null,
-        "initialCause": "address_not_selected",
-        "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-74-capital-4",
-        "caseId": "UA-74-capital-4",
-        "city": "Чернігів",
-        "operatorId": "chernihiv",
-        "initialCause": "source_failure",
-        "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
-        "lastVerifiedStatus": "open",
-        "evidenceReportIds": []
-      },
-      {
-        "taskId": "case:UA-05-capital-5",
-        "caseId": "UA-05-capital-5",
+        "taskId": "case:UA-05-capital-1",
+        "caseId": "UA-05-capital-1",
         "city": "Вінниця",
         "operatorId": "vinnytsia",
         "initialCause": "source_protected",
@@ -987,8 +1001,8 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-23-capital-5",
-        "caseId": "UA-23-capital-5",
+        "taskId": "case:UA-23-capital-1",
+        "caseId": "UA-23-capital-1",
         "city": "Запоріжжя",
         "operatorId": "zaporizhzhia",
         "initialCause": "source_failure",
@@ -997,18 +1011,18 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-07-capital-5",
-        "caseId": "UA-07-capital-5",
+        "taskId": "case:UA-07-capital-1",
+        "caseId": "UA-07-capital-1",
         "city": "Луцьк",
-        "operatorId": null,
-        "initialCause": "address_not_selected",
-        "nextStep": "Compare frozen building/street identity against postal and official registries; support confirmed variants or structured street entry without changing the target.",
+        "operatorId": "volyn",
+        "initialCause": "source_protected",
+        "nextStep": "Find and verify an accessible official alternative, public dictionary or normal browser collection; preserve protection evidence. Do not bypass CAPTCHA.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-53-capital-5",
-        "caseId": "UA-53-capital-5",
+        "taskId": "case:UA-53-capital-1",
+        "caseId": "UA-53-capital-1",
         "city": "Полтава",
         "operatorId": "poltava",
         "initialCause": "source_failure",
@@ -1017,8 +1031,8 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-56-capital-5",
-        "caseId": "UA-56-capital-5",
+        "taskId": "case:UA-56-capital-1",
+        "caseId": "UA-56-capital-1",
         "city": "Рівне",
         "operatorId": "rivne",
         "initialCause": "unresolved",
@@ -1027,8 +1041,8 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-59-capital-5",
-        "caseId": "UA-59-capital-5",
+        "taskId": "case:UA-59-capital-1",
+        "caseId": "UA-59-capital-1",
         "city": "Суми",
         "operatorId": "sumy",
         "initialCause": "unresolved",
@@ -1037,8 +1051,8 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-63-capital-5",
-        "caseId": "UA-63-capital-5",
+        "taskId": "case:UA-63-capital-1",
+        "caseId": "UA-63-capital-1",
         "city": "Харків",
         "operatorId": "kharkiv",
         "initialCause": "source_protected",
@@ -1047,8 +1061,8 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-65-capital-5",
-        "caseId": "UA-65-capital-5",
+        "taskId": "case:UA-65-capital-1",
+        "caseId": "UA-65-capital-1",
         "city": "Херсон",
         "operatorId": null,
         "initialCause": "address_not_selected",
@@ -1057,22 +1071,42 @@
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-68-capital-5",
-        "caseId": "UA-68-capital-5",
+        "taskId": "case:UA-68-capital-1",
+        "caseId": "UA-68-capital-1",
         "city": "Хмельницький",
         "operatorId": "khmelnytskyi",
-        "initialCause": "ambiguous_or_selection_required",
-        "nextStep": "Inspect official alternatives and connection boundaries; request sufficient detail, never silently select a queue.",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
       },
       {
-        "taskId": "case:UA-74-capital-5",
-        "caseId": "UA-74-capital-5",
+        "taskId": "case:UA-74-capital-1",
+        "caseId": "UA-74-capital-1",
         "city": "Чернігів",
         "operatorId": "chernihiv",
         "initialCause": "source_failure",
         "nextStep": "Reproduce transport/protocol failure, verify current official address endpoint, implement or repair the collector and record original response.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-30-capital-1",
+        "caseId": "UA-30-capital-1",
+        "city": "Київ",
+        "operatorId": "dtek-kyiv",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
+        "lastVerifiedStatus": "open",
+        "evidenceReportIds": []
+      },
+      {
+        "taskId": "case:UA-48-capital-1",
+        "caseId": "UA-48-capital-1",
+        "city": "Миколаїв",
+        "operatorId": "mykolaiv",
+        "initialCause": "unresolved",
+        "nextStep": "Inspect official city/street/house identifiers, missing traversal and dynamic context; distinguish source absence from collection/matching failure.",
         "lastVerifiedStatus": "open",
         "evidenceReportIds": []
       }
@@ -1081,24 +1115,24 @@
   "state": {
     "schemaVersion": 1,
     "cursors": {
-      "coordinator": 12,
-      "official-researcher-1": 0,
-      "official-researcher-2": 11,
-      "address-specialist": 4,
-      "adapter-engineer": 6,
-      "monitoring-specialist": 12,
-      "independent-verifier": 0
+      "coordinator": 2,
+      "official-researcher-1": 12,
+      "official-researcher-2": 4,
+      "address-specialist": 2,
+      "adapter-engineer": 18,
+      "monitoring-specialist": 2,
+      "independent-verifier": 12
     },
     "ledger": {
       "coordinator/city:UA-05:Вінниця": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-07:Луцьк": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-12:Дніпро": {
         "dispatches": 7,
@@ -1151,84 +1185,84 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "official-researcher-1/case:UA-05-capital-1": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-07-capital-1": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-63-capital-1": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-73-capital-1": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-05-capital-2": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-07-capital-2": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-63-capital-2": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-73-capital-5": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-05-capital-3": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-07-capital-3": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-63-capital-3": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-05-capital-4": {
-        "dispatches": 9,
+        "dispatches": 10,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-23-capital-1": {
-        "dispatches": 8,
+        "dispatches": 9,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-53-capital-1": {
-        "dispatches": 8,
+        "dispatches": 9,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-74-capital-1": {
-        "dispatches": 8,
+        "dispatches": 9,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-26-capital-2": {
-        "dispatches": 8,
+        "dispatches": 9,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-23-capital-2": {
         "dispatches": 8,
@@ -1266,19 +1300,19 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "official-researcher-2/case:UA-74-capital-3": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-65-capital-1": {
-        "dispatches": 11,
+        "dispatches": 12,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-71-capital-2": {
-        "dispatches": 11,
+        "dispatches": 12,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-12-capital-1": {
         "dispatches": 11,
@@ -1291,44 +1325,44 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "address-specialist/case:UA-68-capital-2": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-30-capital-3": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-71-capital-3": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-12-capital-4": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-51-capital-3": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-68-capital-3": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-68-capital-4": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-07-capital-5": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-56-capital-1": {
         "dispatches": 7,
@@ -1361,44 +1395,44 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "adapter-engineer/case:UA-51-capital-1": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-21-capital-4": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-35-capital-5": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-56-capital-2": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-59-capital-2": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-48-capital-3": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-05:Вінниця": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-07:Луцьк": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-12:Дніпро": {
         "dispatches": 7,
@@ -1451,114 +1485,114 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "independent-verifier/case:UA-05-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-23-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-07-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-53-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-56-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-59-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-63-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-65-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-68-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-74-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-30-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-48-capital-1": {
-        "dispatches": 2,
+        "dispatches": 3,
         "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-        "lastDispatchedAt": "2026-11-04T09:09:47.853453+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-53:Полтава": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-56:Рівне": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-59:Суми": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-61:Тернопіль": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-63:Харків": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-65:Херсон": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-68:Хмельницький": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-71:Черкаси": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-73:Чернівці": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "coordinator/city:UA-74:Чернігів": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-1/case:UA-07-capital-4": {
         "dispatches": 9,
@@ -1581,79 +1615,79 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "official-researcher-2/case:UA-23-capital-4": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-53-capital-4": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-65-capital-4": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-74-capital-4": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-23-capital-5": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-53-capital-5": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "official-researcher-2/case:UA-74-capital-5": {
-        "dispatches": 7,
+        "dispatches": 8,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-65-capital-5": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "address-specialist/case:UA-68-capital-5": {
-        "dispatches": 10,
+        "dispatches": 11,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-18-capital-5": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-21-capital-5": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-56-capital-3": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-59-capital-3": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-30-capital-5": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-48-capital-4": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "adapter-engineer/case:UA-71-capital-4": {
         "dispatches": 6,
@@ -1681,54 +1715,54 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       },
       "monitoring-specialist/city:UA-53:Полтава": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-56:Рівне": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-59:Суми": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-61:Тернопіль": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-63:Харків": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-65:Херсон": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-68:Хмельницький": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-71:Черкаси": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-73:Чернівці": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "monitoring-specialist/city:UA-74:Чернігів": {
-        "dispatches": 6,
+        "dispatches": 7,
         "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-        "lastDispatchedAt": "2026-11-05T06:43:33.488870+00:00"
+        "lastDispatchedAt": "2026-11-05T19:56:40.168459+00:00"
       },
       "independent-verifier/case:UA-71-capital-2": {
         "dispatches": 2,
@@ -2031,7 +2065,7 @@
         "lastDispatchedAt": "2026-11-05T09:29:49.145149+00:00"
       }
     },
-    "updatedAt": "2026-11-05T09:29:49.145149+00:00"
+    "updatedAt": "2026-11-05T19:56:40.168459+00:00"
   },
   "poolSizes": {
     "coordinator": 22,
