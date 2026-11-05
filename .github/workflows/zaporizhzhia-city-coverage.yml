@@ -1,0 +1,90 @@
+name: Refresh the official Zaporizhzhia city checker
+on:
+  schedule:
+    - cron: '47 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: dynamic-coverage-publisher
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source boundaries and publisher
+        run: |
+          python3 coverage/qa/test-browser-zap-app.py
+          python3 coverage/qa/test-rivne-zap-app.py
+          python3 coverage/qa/test-zap-app-authority-cache.py
+          node --test coverage/qa/*.test.mjs
+      - name: Install free ordinary Chromium
+        run: |
+          pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Read the active official parent and anonymous city dictionary
+        run: >-
+          python3 coverage/browser-zap-app.py
+          --request coverage/zap-app-request.json
+          --out "$RUNNER_TEMP/zap-source"
+      - name: Normalize exact houses and preserve source abstentions
+        run: >-
+          python3 coverage/collect-rivne-zap-app.py
+          --projection "$RUNNER_TEMP/zap-source/anonymous-public-address-projection.json"
+          --output "$RUNNER_TEMP/zap-staging/zaporizhzhia.json"
+      - name: Read the latest signed publisher state before merging
+        run: git pull --rebase origin main
+      - name: Load the existing signing key
+        env:
+          COVERAGE_SIGNING_KEY: ${{ secrets.DYNAMIC_COVERAGE_SIGNING_KEY }}
+        run: |
+          test -n "$COVERAGE_SIGNING_KEY"
+          umask 077
+          printf '%s\n' "$COVERAGE_SIGNING_KEY" > "$RUNNER_TEMP/coverage-signing.pem"
+          echo "DYNAMIC_COVERAGE_KEY_FILE=$RUNNER_TEMP/coverage-signing.pem" >> "$GITHUB_ENV"
+      - name: Merge source clocks and sign both compatible indexes
+        run: |
+          node --input-type=module <<'JS'
+          import {rebuildFromStaging} from './coverage/rebuild-from-staging.mjs';
+          const report=await rebuildFromStaging({staging:process.env.RUNNER_TEMP+'/zap-staging',reportFile:process.env.RUNNER_TEMP+'/zap-source/publication.json'});
+          if(report.errors.length)throw Error('Source merge rejected; previous remote indexes are preserved');
+          JS
+          node coverage/verify.mjs
+          node coverage/verify-v2.mjs
+      - name: Retain fresh parent authority without renewing fallback observations
+        run: >-
+          python3 coverage/cache-zap-app-authority.py
+          --projection "$RUNNER_TEMP/zap-source/anonymous-public-address-projection.json"
+          --request coverage/zap-app-request.json
+      - name: Publish only verified index references and authority cache
+        run: |
+          node coverage/stage-current-publication.mjs
+          git add -- coverage/authorities/zaporizhzhia-index.html coverage/authorities/zaporizhzhia-index.json
+          git diff --exit-code HEAD -- latest.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh verified Zaporizhzhia city source observations'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Retain public source evidence and failure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zaporizhzhia-city-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/zap-source/
+            ${{ runner.temp }}/zap-staging/*.report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Remove the ephemeral signing key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/coverage-signing.pem"
