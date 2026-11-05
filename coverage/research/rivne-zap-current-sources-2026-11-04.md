@@ -126,6 +126,22 @@ freshly fetched. A readable deletion or changed link always stops collection.
 Automatic renewal of this authority has not been established; the read-only
 workflow never signs or publishes data.
 
+### Scheduled publisher added on November5
+
+`zaporizhzhia-city-coverage.yml` now reads the same reviewed deployment every six
+hours using ordinary free Chromium. It shares the existing
+`dynamic-coverage-publisher` concurrency group, validates and merges source
+observations, verifies both signatures and stages only current index references.
+The existing signing secret is used; the APK update channel is untouched.
+
+A fresh readable official parent must still actively link the exact reviewed
+city deployment. Only such an actual reread may refresh the retained authority
+cache. During a temporary parent timeout/5xx, the prior original may be reused
+only until its original expiry; signing or repacking never renews it. Changed,
+removed, denied or expired authority aborts collection and leaves remote data
+unchanged. The scheduled hook alone does not establish that hosted parent reads
+or subsequent automatic renewal work: the first full hosted run must be reviewed.
+
 Full provenance/abstentions/validation/summary and the609944-byte source-proof ZIP
 are in the permanent `rivne-zap-nov4/` evidence folder. Source-proof ZIP SHA256:
 `1054e93cfbfbe0776fb704307635cdd8cbdf017d58bb453422bc3d497df86e1c`.

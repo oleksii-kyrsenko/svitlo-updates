@@ -1,0 +1,2 @@
+# Official response originals retain exact bytes for their SHA256 proofs.
+coverage/authorities/*.html -text -diff
