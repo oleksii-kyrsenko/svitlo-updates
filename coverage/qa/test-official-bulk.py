@@ -70,6 +70,37 @@ class WholeCityBranches(unittest.TestCase):
   claim={'cityId':'7','streetId':'8','street':'вул. Нова','houses':['1'],'queue':'1.1','sourceUrl':'https://example.org','checkedAt':1000}
   rows,obs=m.consolidate('sumy',G,[claim,{**claim,'checkedAt':2000}],3000)
   self.assertEqual(rows[0]['checkedAt'],1000);self.assertEqual(rows[0]['expiresAt'],1000+86400000);self.assertEqual(obs[0]['checkedAt'],1000)
+class ExplicitNotationAliases(unittest.TestCase):
+ def claim(self,name,h='7-А',q='2.1',**extra):
+  return {'streetId':None,'street':name,'houses':[h],'ranges':[],'queue':q,'sourceUrl':'https://example.org/public','checkedAt':1000,**extra}
+ def test_source_abbreviation_adds_a_literal_display_spelling_without_changing_old_rows_or_clocks(self):
+  rows,obs=m.consolidate('zhytomyr',G,[self.claim('пров 2-й Навчальний')],2000)
+  self.assertEqual({r['street'] for r in rows},{'пров 2-й Навчальний','провулок 2-й Навчальний'})
+  alias=next(r for r in rows if r['street'].startswith('провулок'))
+  self.assertEqual(alias['houses'],['7-А']);self.assertEqual(alias['checkedAt'],1000);self.assertEqual(alias['expiresAt'],86401000)
+  self.assertEqual(alias['quoteType'],'official-source-notation')
+  self.assertIn('позначення в оригінальному переліку: пров 2-й Навчальний',alias['quote']);self.assertEqual(len(obs),2)
+ def test_never_invents_an_ordinal_or_changes_a_date_letter_or_road_type(self):
+  for source,want in [('3 пров. Навчальний','3 провулок Навчальний'),('3-й пров. Навчальний','3-й провулок Навчальний'),('пров 12 Березня','провулок 12 Березня'),('пр-д Навчальний Б','проїзд Навчальний Б')]:
+   self.assertEqual(m.notation_street(source),want)
+  for source in ['вул. Провідна','Навчальний провулок','3 Навчальний','провулок Навчальний']:
+   self.assertIsNone(m.notation_street(source))
+ def test_unknown_and_conflicting_alias_connections_cannot_create_a_new_positive(self):
+  for q in [None,'3.2']:
+   rows,obs=m.consolidate('zhytomyr',G,[self.claim('пров 2-й Навчальний'),self.claim('пров. 2-й Навчальний','7A',q)],2000)
+   self.assertFalse([r for r in rows if r['street']=='провулок 2-й Навчальний']);self.assertTrue(any(o['street']=='провулок 2-й Навчальний' for o in obs))
+ def test_partial_scopes_and_unsupported_ranges_remain_vetoes_for_the_new_spelling(self):
+  for guard in [self.claim('пров. 2-й Навчальний',uncertainScope=True),self.claim('пров. 2-й Навчальний',h='99',q=None,ranges=[(1,9)])]:
+   rows,_=m.consolidate('zhytomyr',G,[self.claim('пров 2-й Навчальний'),guard],2000)
+   self.assertFalse([r for r in rows if r['street']=='провулок 2-й Навчальний'])
+ def test_real_provider_identities_and_existing_canonical_source_rows_are_never_relabelled(self):
+  self.assertFalse(m.notation_aliases([self.claim('пров 2-й Навчальний',streetId='source-id')]))
+  self.assertFalse(m.notation_aliases([self.claim('пров 2-й Навчальний',cityId='source-city')]))
+  claims=[self.claim('пров 2-й Навчальний'),self.claim('провулок 2-й Навчальний',q=None)]
+  self.assertFalse(m.notation_aliases(claims))
+ def test_other_operators_do_not_gain_inferred_provider_aliases(self):
+  rows,_=m.consolidate('sumy',G,[self.claim('пров 2-й Навчальний')],2000)
+  self.assertEqual([r['street'] for r in rows],['пров 2-й Навчальний'])
 class AdaptiveDiscovery(unittest.TestCase):
  def test_source_names_discover_only_streets_not_queues(self):
   names,queries=m.geographic_queries({'elements':[{'tags':{'name':'вулиця Навчальна','outage:queue':'6.2'}},{'tags':{'name':'Нова вулиця'}}]})

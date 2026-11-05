@@ -20,20 +20,44 @@ class WholeHouseConsensus(unittest.TestCase):
  def test_Cyrillic_Latin_suffixes_share_same_conflict_identity(self):
   rows,obs,_=decode([['вул. Нова','2-А','1.2',False],['вул. Нова','2A','2.1',False]])
   self.assertFalse(rows);self.assertEqual(len(obs),1)
- def test_pipe_never_generates_house_or_fraction_and_unknown_pipe_vetoes_literal(self):
+ def test_explicit_list_keeps_members_separate_and_never_generates_a_fraction(self):
   rows,obs,_=decode([['вул. Нова','1|3','1.2',False]])
-  self.assertFalse(rows);self.assertFalse(obs)
+  self.assertEqual([r['houses'] for r in rows],[['1'],['3']]);self.assertEqual([o['house'] for o in obs],['1','3'])
   rows,obs,_=decode([['вул. Нова','1|3','',False],['вул. Нова','1/3','1.2',False]])
-  self.assertFalse(rows);self.assertEqual(obs[0]['house'],'1/3')
+  self.assertFalse(rows);self.assertEqual({o['house'] for o in obs},{'1','3','1/3'})
  def test_unqualified_range_never_expands_and_vetoes_conflicting_literal(self):
   rows,obs,_=decode([['вул. Нова','1-9','2.1',False],['вул. Нова','4','1.2',False]])
   self.assertFalse(rows);self.assertEqual({o['house'] for o in obs},{'4'})
  def test_partial_entrance_unknown_connection_cannot_be_ignored(self):
   rows,_,_=decode([['вул. Нова','10','1.2',False],['вул. Нова','10 п.1–2','',False]])
   self.assertFalse(rows)
- def test_same_queue_uncertain_encoding_does_not_create_new_positive(self):
+ def test_same_queue_explicit_list_deduplicates_an_already_observed_literal(self):
   rows,obs,_=decode([['вул. Нова','1','1.2',False],['вул. Нова','1|3','1.2',False]])
-  self.assertEqual([r['houses'] for r in rows],[['1']]);self.assertEqual([o['house'] for o in obs],['1'])
+  self.assertEqual([r['houses'] for r in rows],[['1'],['3']]);self.assertEqual([o['house'] for o in obs],['1','3'])
+ def test_slash_and_letter_members_preserve_original_whole_list_quote(self):
+  for label,expected in [('4/1|4/2|6',['4/1','4/2','6']),('9,11',['9','11']),('2-А; 2Б',['2-А','2Б'])]:
+   rows,obs,report=decode([['вул. Нова',label,'5.1',False]])
+   self.assertEqual([r['houses'][0] for r in rows],expected)
+   for row in rows:self.assertIn('будинок: '+label+';',row['quote']);self.assertIn('обраний номер з явного переліку: '+row['houses'][0],row['quote']);self.assertEqual(row['quoteType'],'official-source-list-members')
+   self.assertEqual(report['literalListRows'][0]['sourceHouse'],label)
+ def test_one_invalid_member_range_or_partial_unit_does_not_generate_any_address(self):
+  for label in ['1|3-9','1|3 п.2','1|','|1','1,,3','1/2/3|4','1|?','1|3 (непарні)','|'.join(map(str,range(1,66)))]:
+   rows,obs,report=decode([['вул. Нова',label,'5.1',False]])
+   self.assertFalse(rows);self.assertFalse(obs);self.assertFalse(report['literalListRows'])
+ def test_list_unknown_exemption_and_conflicting_connection_veto_each_exact_member(self):
+  for gpv,excluded in [('',False),('1.2',True),('2.1',False)]:
+   rows,obs,_=decode([['вул. Нова','1','1.2',False],['вул. Нова','3','1.2',False],['вул. Нова','1|3',gpv,excluded]])
+   self.assertFalse(rows);self.assertEqual({o['house'] for o in obs},{'1','3'})
+ def test_conflicting_extra_connection_blocks_only_the_affected_list_member(self):
+  rows,obs,_=decode([['вул. Нова','1|3','1.2',False],['вул. Нова','3','2.1',False]])
+  self.assertEqual([r['houses'] for r in rows],[['1']]);self.assertEqual({o['house'] for o in obs},{'1','3'})
+ def test_unsupported_range_still_vetoes_new_list_members(self):
+  rows,obs,_=decode([['вул. Нова','2|4','1.2',False],['вул. Нова','1-9','',False]])
+  self.assertFalse(rows);self.assertEqual({o['house'] for o in obs},{'2','4'})
+ def test_quarantined_road_blocks_list_members_without_losing_negative_observations(self):
+  q=[{'sourceStreetSha256':m.source_street_hash('вул. Нова'),'fieldIssues':[{'field':'house'}]}]
+  rows,obs,_=decode([['вул. Нова','2|4','1.2',False]],q)
+  self.assertFalse(rows);self.assertEqual({o['house'] for o in obs},{'2','4'})
  def test_quarantine_road_hash_blocks_known_literal_without_creating_an_address(self):
   q=[{'sourceStreetSha256':m.source_street_hash('вул.Нова'),'fieldIssues':[{'field':'house'}]}];rows,obs,_=decode([['вул. Нова','2','1.2',False]],q)
   self.assertFalse(rows);self.assertEqual([o['house'] for o in obs],['2'])

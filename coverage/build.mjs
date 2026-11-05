@@ -31,6 +31,15 @@ export function validateBundle(b,now=Date.now()){
  }
  return b;
 }
+// Signed packets retain original row clocks. Like both Android protocols, an
+// already-published packet is structurally checked at its creation time; one
+// later-expiring row must not invalidate its still-live neighbours. Lookup
+// independently filters rows at use time. Fresh build inputs remain strict.
+export function validatePublishedBundle(b,now=Date.now()){
+ validateBundle(b,b?.generatedAt);
+ if(b.generatedAt>now||b.expiresAt<=now)throw Error('published_bundle_expired_or_future');
+ return b;
+}
 export async function build({catalog,bundles,revision,keyFile,out,now=Date.now(),allowEmptyPublication=false}){
  if(!Number.isSafeInteger(revision)||revision<1)throw Error('invalid_revision');
  if(catalog?.schemaVersion!==1||!Array.isArray(catalog.operators)||catalog.operators.length<1||catalog.operators.length>100||catalog.expiresAt<=now||catalog.expiresAt>now+86400000)throw Error('invalid_catalog');

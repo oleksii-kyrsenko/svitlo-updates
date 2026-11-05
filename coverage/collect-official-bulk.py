@@ -81,8 +81,33 @@ def house_parts(value):
   if m and int(m[1])<=int(m[2]):ranges.append((int(m[1]),int(m[2])))
  return list(dict.fromkeys(literals)),ranges
 
+def notation_street(value):
+ """Expand an explicit lane/drive abbreviation without altering its name.
+
+ Numbers, letters, ordinal suffixes and word order remain exactly as supplied.
+ This adds a display spelling; every original source row survives unchanged.
+ """
+ value=clean(value)
+ match=re.fullmatch(r'(?:(\d{1,3}(?:-й)?)\s+)?(провулок\s+|пров\.\s*|пров\s+|проїзд\s+|пр-д\s+)(.+)',value,re.I)
+ if not match:return None
+ number,kind,name=match.groups();kind='провулок' if kind.casefold().startswith('пров') else 'проїзд'
+ if not re.search(r'[А-Яа-яІіЇїЄєҐґA-Za-z]{3}',name):return None
+ canonical=(number+' ' if number else '')+kind+' '+name
+ return canonical if canonical!=value else None
+
+def notation_aliases(claims):
+ aliases=[];existing={clean(c['street']).casefold() for c in claims}
+ for claim in claims:
+  # The city-wide anonymous table has no street IDs. Never conflate distinct
+  # provider IDs in operators whose dictionaries expose those identities.
+  if claim.get('streetId') or claim.get('cityId') is not None or claim.get('notationSourceStreet'):continue
+  canonical=notation_street(claim['street'])
+  if canonical and canonical.casefold() not in existing:aliases.append({**claim,'street':canonical,'notationSourceStreet':claim['street']})
+ return aliases
+
 def consolidate(operator,g,claims,at):
  """Every duplicate/unknown connection participates before any queue is chosen."""
+ if operator=='zhytomyr':claims=[*claims,*notation_aliases(claims)]
  grouped={};ranges={};uncertain_streets={(c['streetId'],c['street']) for c in claims if c.get('uncertainScope')}
  for c in claims:
   key=(c['streetId'],c['street'])
@@ -100,6 +125,9 @@ def consolidate(operator,g,claims,at):
   if not q:continue
   item=record(operator,g['regionId'],g['settlement'],g['community'],street,h,q,selected['sourceUrl'],observed_at)
   if not item:continue
+  if selected.get('notationSourceStreet'):
+   item['quote']+='; позначення в оригінальному переліку: '+selected['notationSourceStreet']+'; розгорнуто лише скорочення типу, власну назву, літери й номери збережено.'
+   item['quoteType']='official-source-notation'
   if selected.get('cityId') is not None:item['providerCityId']=str(selected['cityId'])
   if sid:item['providerStreetId']=str(sid)
   if sid and selected.get('cityId') is not None:item['officialCityId']=str(selected['cityId'])+':'+str(sid)

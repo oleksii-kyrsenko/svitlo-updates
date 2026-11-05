@@ -1,8 +1,8 @@
 """Normalize an actual operator-linked anonymous Zaporizhzhia getData capture.
 
-Only independently scoped typed roads and literal houses can be positive. Other
-house encodings never generate addresses; they can only veto literal addresses
-already observed elsewhere in the same public dictionary.
+Only independently scoped typed roads and literal houses, including explicit
+lists of literal houses, can be positive. Other house encodings never generate
+addresses; they can only veto observed literal addresses.
 """
 import argparse, hashlib, json, re, time, unicodedata
 from pathlib import Path
@@ -38,6 +38,16 @@ def hkey(value):
 def queue(value):
     value=clean(value).replace(',','.') if value is not None else ''
     return value if re.fullmatch(r'[1-6]\.[12]',value) else None
+def literal_house_list(value):
+    # The official house selector offers these complete lists as one option.
+    # Keep slash/suffix members intact; a single range, qualifier or empty
+    # component makes the whole field uncertainty rather than new addresses.
+    value=clean(value)
+    house=r'\d{1,4}(?:-?[А-Яа-яІіЇїЄєҐґA-Za-z])?(?:/\d{1,4}[А-Яа-яІіЇїЄєҐґA-Za-z]?)?'
+    if not re.fullmatch(r'\s*'+house+r'\s*(?:[|;,]\s*'+house+r'\s*){1,63}',value):return None
+    values=[literal_house(part) for part in re.split(r'[|;,]',value)]
+    if any(part is None for part in values):return None
+    return list(dict.fromkeys(values))
 def possible_house(label,house):
     # This predicate never emits a house. It only checks an existing literal
     # candidate against uncertainty (ranges, pipe lists, entrances, etc.).
@@ -64,7 +74,7 @@ def verify_projection(p,path,now):
     return {'operatorCityScopeLabel':p['officialCityScopeLabel'],'authoritySha256':a['sha256'],'authorityCheckedAt':a['checkedAt'],'authorityExpiresAt':a['expiresAt'],'frontendSha256':f['sha256'],'rowsAreIndependent':True,'GPVcolumn':2,'ZOVAIsExclusionNotQueue':True,'GAVNeverUsed':True}
 
 def decode(p,geo):
-    groups={};unknown=[];declined=[];blocked=set();unbound=0
+    groups={};unknown=[];declined=[];blocked=set();unbound=0;lists=[]
     for q in p.get('quarantinedRows',[]):
         if any(v.get('field') in ['street','house'] for v in q.get('fieldIssues',[])):
             if q.get('sourceStreetSha256'):blocked.add(q['sourceStreetSha256'])
@@ -74,9 +84,16 @@ def decode(p,geo):
         if not isinstance(item,list) or len(item)!=4 or not isinstance(item[3],bool):raise ValueError('projection_row_shape_changed')
         label,raw_house,gpv,excluded=item;r=road(label);digest=sha(json.dumps(item,ensure_ascii=False,separators=(',',':')).encode())
         if r is None:declined.append({'rowSha256':digest,'reason':'untyped_locality_or_landmark_scope','streetLength':len(str(label)),'houseLength':len(str(raw_house))});continue
-        q=queue(gpv);house=literal_house(raw_house)
-        if house is None:unknown.append({'road':r,'label':str(raw_house),'queue':q,'excluded':excluded,'rowSha256':digest});continue
-        key=(r['key'],hkey(house));g=groups.setdefault(key,{'street':r['name'],'house':house,'connections':[],'sourceHashes':set()});g['sourceHashes'].add(r['sourceHash']);g['connections'].append({'queue':q,'excluded':excluded,'sourceStreet':str(label),'sourceHouse':str(raw_house),'rowSha256':digest})
+        q=queue(gpv);house=literal_house(raw_house);members=[house] if house is not None else literal_house_list(raw_house)
+        if house is None:
+            # Retain the previous conservative overlap veto as well as every
+            # explicit member. New list support cannot resurrect an old
+            # uncertain fraction, entrance or suffix connection.
+            unknown.append({'road':r,'label':str(raw_house),'queue':q,'excluded':excluded,'rowSha256':digest})
+            if members:lists.append({'rowSha256':digest,'sourceStreet':str(label),'sourceHouse':str(raw_house),'members':members})
+        if not members:continue
+        for member in members:
+            key=(r['key'],hkey(member));g=groups.setdefault(key,{'street':r['name'],'house':member,'connections':[],'sourceHashes':set()});g['sourceHashes'].add(r['sourceHash']);g['connections'].append({'queue':q,'excluded':excluded,'sourceStreet':str(label),'sourceHouse':str(raw_house),'listMember':member if house is None else None,'rowSha256':digest})
     by_road={}
     for u in unknown:by_road.setdefault(u['road']['key'],[]).append(u)
     records=[];observations=[];abstentions=[]
@@ -91,9 +108,9 @@ def decode(p,geo):
                 if possible_house(u['label'],g['house']) and (u['excluded'] or u['queue'] is None or u['queue'] not in queues):reason='overlapping_unsupported_house_connection';break
         observation={'regionId':'UA-23','settlement':geo['settlement'],'community':geo['community'],'street':g['street'],'house':g['house'],'checkedAt':p['checkedAt'],'expiresAt':p['expiresAt']};observations.append(observation)
         if reason:abstentions.append({**observation,'reason':reason,'connections':len(c)});continue
-        q=next(iter(queues));source=c[0];quote=f"Міський сервіс Запоріжжя; вулиця: {source['sourceStreet']}; будинок: {source['sourceHouse']}; ГПВ: {q}; усі опубліковані з'єднання цього точного будинку узгоджені, позначок ЗОВА немає."
-        records.append({'id':sha(('zaporizhzhia|'+road_key+'|'+house_key+'|'+q).encode())[:24],'official':True,'regionId':'UA-23','settlement':geo['settlement'],'community':geo['community'],'street':g['street'],'scope':'house','houses':[g['house']],'queue':q,'sourceUrl':p['sourceUrl'],'quote':quote,'quoteType':'structured-official-fields','checkedAt':p['checkedAt'],'expiresAt':p['expiresAt']})
-    report={'literalHouseIdentities':len(groups),'positiveHouseFacts':len(records),'abstentions':abstentions,'declinedRows':declined,'unsupportedHouseRows':[{'rowSha256':u['rowSha256'],'reason':'unsupported_house_encoding_only_veto_never_positive','houseLength':len(u['label'])} for u in unknown],'quarantinedRoadHashes':sorted(blocked),'unboundQuarantinedRows':unbound,'method':'Only typed city-default roads and literal houses; no positive pipe/range expansion, no GAV substitution; unknown GPV/ZOVA/overlapping uncertainty veto whole-house assignment. No whole-city completeness claim.'}
+        q=next(iter(queues));source=c[0];membership=f"; обраний номер з явного переліку: {source['listMember']}" if source['listMember'] else '';quote=f"Міський сервіс Запоріжжя; вулиця: {source['sourceStreet']}; будинок: {source['sourceHouse']}{membership}; ГПВ: {q}; усі опубліковані з'єднання цього точного будинку узгоджені, позначок ЗОВА немає."
+        records.append({'id':sha(('zaporizhzhia|'+road_key+'|'+house_key+'|'+q).encode())[:24],'official':True,'regionId':'UA-23','settlement':geo['settlement'],'community':geo['community'],'street':g['street'],'scope':'house','houses':[g['house']],'queue':q,'sourceUrl':p['sourceUrl'],'quote':quote,'quoteType':'official-source-list-members' if source['listMember'] else 'structured-official-fields','checkedAt':p['checkedAt'],'expiresAt':p['expiresAt']})
+    report={'literalHouseIdentities':len(groups),'positiveHouseFacts':len(records),'abstentions':abstentions,'declinedRows':declined,'literalListRows':lists,'unsupportedHouseRows':[{'rowSha256':u['rowSha256'],'reason':'original_composite_field_retained_as_conservative_overlap_veto','houseLength':len(u['label'])} for u in unknown],'quarantinedRoadHashes':sorted(blocked),'unboundQuarantinedRows':unbound,'method':'Only typed city-default roads and literal houses or fully explicit lists (max64members); no positive range/partial-unit expansion, no GAV substitution; unknown GPV/ZOVA/overlapping uncertainty veto whole-house assignment. Original composite fields and quotes are preserved. No whole-city completeness claim.'}
     return records,observations,report
 
 def main():
