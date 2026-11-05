@@ -51,5 +51,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: candidate89-native-api${{ matrix.api }}-${{ matrix.theme }}
+          name: candidate89-native-api${{ matrix.api }}-${{ matrix.theme }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
           path: apk-diagnostics/
+          retention-days: 90
