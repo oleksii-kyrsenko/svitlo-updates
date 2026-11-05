@@ -3,7 +3,7 @@
 This is source-only evidence, not Android coverage and not a signed publication.
 No address, account or EIC is submitted. The official page itself calls getData.
 """
-import argparse, hashlib, json, pathlib, re, time, urllib.parse, unicodedata
+import argparse, hashlib, json, pathlib, re, time, urllib.parse, urllib.request, urllib.error, unicodedata
 from html.parser import HTMLParser
 from playwright.sync_api import sync_playwright
 
@@ -46,6 +46,21 @@ def allowed(url):
  return u.scheme=='https' and not u.username and not u.password and (h in ['www.zoe.com.ua','script.google.com','www.gstatic.com','ssl.gstatic.com','fonts.googleapis.com','fonts.gstatic.com'] or h.endswith('.googleusercontent.com'))
 def official_parent_response(url):
  if url!=INDEX:raise ValueError('official_parent_redirected_review_required')
+class ParentResponse:
+ def __init__(self,status,url,body,checked_at):self.status=status;self.url=url;self.raw=body;self.checkedAt=checked_at
+ def body(self):return self.raw
+def ordinary_parent(opener=urllib.request.urlopen,clock=lambda:int(time.time()*1000)):
+ # A bounded ordinary HTTPS GET is an alternative transport after a browser
+ # request timeout. No challenge, account or credential interaction is attempted.
+ request=urllib.request.Request(INDEX,headers={'User-Agent':'Mozilla/5.0 (KolySvitlo public source collector)','Accept':'text/html','Accept-Language':'uk'})
+ try:response=opener(request,timeout=15)
+ except urllib.error.HTTPError as error:response=error
+ with response:
+  official_parent_response(response.geturl());raw=response.read(2000001)
+  if len(raw)>2000000:raise ValueError('official_parent_too_large')
+  return ParentResponse(response.status,response.geturl(),raw,clock())
+def temporary_timeout(error):
+ return isinstance(error,TimeoutError) or isinstance(error,urllib.error.URLError) and isinstance(error.reason,TimeoutError)
 def project(data):
  if not isinstance(data,list) or not 1<=len(data)<=100000:raise ValueError('unexpected_public_dictionary_shape')
  rows=[];headers=0;quarantine=[]
@@ -98,6 +113,11 @@ def main():
     report['liveParentAttempt']={'error':type(error).__name__,'reason':str(error)[:250]}
     temporary=type(error).__name__=='TimeoutError'
     if not temporary:raise
+    try:
+     parent=ordinary_parent();report['alternativeParentAttempt']={'transport':'ordinary strict HTTPS GET','httpStatus':parent.status,'checkedAt':parent.checkedAt}
+    except Exception as alternative:
+     report['alternativeParentAttempt']={'transport':'ordinary strict HTTPS GET','error':type(alternative).__name__}
+     if not temporary_timeout(alternative):raise
    status=parent.status if parent is not None else parent_seen.get('status')
    if status is not None:
     # Even a DOM-loading timeout can follow a completed200 response. Its
@@ -108,7 +128,7 @@ def main():
     (out/'official-parent-attempt.html').write_bytes(raw)
     if status==200:
      # A readable removal/changed link always wins over a saved authority.
-     link=app_link(raw.decode('utf8'),request['reviewedPublicAppUrl']);at=parent_seen.get('checkedAt',int(time.time()*1000));authority={'sourceUrl':INDEX,'checkedAt':at,'expiresAt':at+86400000,'sha256':sha(raw),'method':'current-live-official-parent'};temporary=False
+     link=app_link(raw.decode('utf8'),request['reviewedPublicAppUrl']);at=getattr(parent,'checkedAt',None) or parent_seen.get('checkedAt',int(time.time()*1000));authority={'sourceUrl':INDEX,'checkedAt':at,'expiresAt':at+86400000,'sha256':sha(raw),'method':'current-live-official-parent'};temporary=False
     elif status in [408,425,429,500,502,503,504]:temporary=True
     else:raise ValueError('official_parent_denied_or_removed')
    if temporary:

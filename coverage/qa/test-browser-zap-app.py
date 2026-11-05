@@ -34,4 +34,31 @@ class Projection(unittest.TestCase):
   m.official_parent_response(m.INDEX)
   for url in ['https://attacker.example/outage/','http://www.zoe.com.ua/outage/','https://www.zoe.com.ua/new-source/','https://www.zoe.com.ua@attacker.example/outage/']:
    with self.assertRaisesRegex(ValueError,'redirected_review_required'):m.official_parent_response(url)
+ def test_ordinary_parent_preserves_response_status_original_bytes_and_real_clock(self):
+  class Response:
+   status=403
+   def __enter__(self):return self
+   def __exit__(self,*args):pass
+   def geturl(self):return m.INDEX
+   def read(self,limit):self.limit=limit;return b'access denied'
+  original=Response()
+  def opener(request,timeout):
+   self.assertEqual(request.full_url,m.INDEX);self.assertEqual(timeout,15);return original
+  response=m.ordinary_parent(opener=opener,clock=lambda:1234)
+  self.assertEqual((response.status,response.body(),response.checkedAt),(403,b'access denied',1234));self.assertEqual(original.limit,2000001)
+ def test_ordinary_parent_rejects_oversize_source_and_an_unreviewed_redirect(self):
+  class Response:
+   status=200
+   def __enter__(self):return self
+   def __exit__(self,*args):pass
+   def geturl(self):return m.INDEX
+   def read(self,limit):return b'x'*2000001
+  with self.assertRaisesRegex(ValueError,'too_large'):m.ordinary_parent(opener=lambda *a,**k:Response())
+  Response.geturl=lambda self:'https://attacker.example/'
+  with self.assertRaisesRegex(ValueError,'redirected_review_required'):m.ordinary_parent(opener=lambda *a,**k:Response())
+ def test_only_real_timeout_is_a_temporary_alternative_transport_failure(self):
+  self.assertTrue(m.temporary_timeout(TimeoutError()))
+  self.assertTrue(m.temporary_timeout(m.urllib.error.URLError(TimeoutError())))
+  self.assertFalse(m.temporary_timeout(m.urllib.error.URLError('certificate verification failed')))
+  self.assertFalse(m.temporary_timeout(ValueError('source changed')))
 if __name__=='__main__':unittest.main()
