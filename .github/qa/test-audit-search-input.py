@@ -234,4 +234,111 @@ class SearchInputControls(unittest.TestCase):
         self.assertRaisesRegex(RuntimeError,'changed after typing',driver.wait_options,1)
 
 
+class SourceBoundRenames(unittest.TestCase):
+    def fixture(self):
+        case={'id':'synthetic-rename','city':'Зразок','regionId':'UA-99','exactStreet':'вулиця Стара','exactHouse':'7-А'}
+        city={'REGION_ID':'299','DISTRICT_ID':'9','CITY_ID':'123','CITY_KATOTTG':'12345678901234567','CITY_UA':'Зразок'}
+        street={**{k:city[k] for k in ['REGION_ID','DISTRICT_ID','CITY_ID']},'STREET_ID':'55','STREET_UA':'Нова','STREETTYPE_UA':'вулиця','OLDSTREET_UA':'Стара'}
+        city_label='м. Зразок · Громада · КАТОТТГ '+city['CITY_KATOTTG'];label='вулиця Нова · раніше Стара'
+        result={'selectedCityLabel':city_label,'selectedStreetLabel':label}
+        place={'regionId':'UA-99','addressOrigin':'postal','addressParts':{'settlement':'Зразок','street':'вулиця Нова','house':'7-А'},'addressSelection':{'region':{'id':'UA-99'},'city':{'id':'123','postalId':'299','districtId':'9','katottg':city['CITY_KATOTTG'],'label':city_label},'street':{'id':'55','name':'вулиця Нова','registryName':'Нова','registryType':'вулиця','oldName':'Стара','label':label},'house':{'id':'55:7-А:12345'}}}
+        return case,result,place,city,street
+
+    def captured(self,temp,city,streets):
+        records=[city] if isinstance(city,dict) else city
+        bodies=[json.dumps({'Entries':{'Entry':records}},ensure_ascii=False).encode(),json.dumps({'Entries':{'Entry':streets}},ensure_ascii=False).encode()]
+        calls=[]
+        class Response:
+            status=200
+            def __init__(self,url,body):self.url=url;self.body=body
+            def __enter__(self):return self
+            def __exit__(self,*args):return False
+            def read(self,bound):assert bound==4000001;return self.body
+        def reader(request,timeout):
+            self.assertEqual(timeout,25);calls.append(request.full_url)
+            return Response(request.full_url,bodies[len(calls)-1])
+        return bodies,calls,reader
+
+    def proof(self,temp):
+        case,result,place,city,street=self.fixture();bodies,calls,reader=self.captured(temp,city,[street])
+        with patch.object(audit.urllib.request,'urlopen',reader):result['selectedPostalRenameIdentity']=audit.capture_postal_rename_identity(case,result,result['selectedStreetLabel'],temp)
+        return case,result,place,bodies,calls
+
+    def test_source_read_before_click_binds_unique_city_street_id_and_keeps_original_bodies(self):
+        with tempfile.TemporaryDirectory() as temp:
+            case,result,place,bodies,calls=self.proof(pathlib.Path(temp))
+            self.assertEqual(len(calls),2);audit.validate_saved_address(case,result,place)
+            for index,evidence in enumerate(result['selectedPostalRenameIdentity']['responses']):
+                original=(pathlib.Path(temp)/evidence['artifact']).read_bytes();self.assertEqual(original,bodies[index]);self.assertEqual(hashlib.sha256(original).hexdigest(),evidence['sha256'])
+            self.assertEqual(result['selectedPostalRenameIdentity']['street']['STREET_ID'],'55')
+
+    def test_current_name_selection_needs_no_extra_request_and_arbitrary_saved_old_name_cannot_prove_rename(self):
+        case,result,place,_,_=self.fixture()
+        with patch.object(audit.urllib.request,'urlopen',side_effect=AssertionError('No read for ordinary current name')):
+            current={**case,'exactStreet':'вулиця Нова'}
+            self.assertIsNone(audit.capture_postal_rename_identity(current,result,result['selectedStreetLabel'],pathlib.Path('/unused')))
+        with self.assertRaisesRegex(RuntimeError,'Saved street/type differs'):audit.validate_saved_address(case,result,place)
+
+    def test_other_id_locality_current_name_alias_or_visible_label_cannot_borrow_valid_source_proof(self):
+        with tempfile.TemporaryDirectory() as temp:
+            case,result,place,_,_=self.proof(pathlib.Path(temp))
+            changes=[lambda p:p['addressSelection']['street'].update(id='56'),lambda p:p['addressSelection']['city'].update(id='999'),lambda p:p['addressSelection']['city'].update(katottg='98765432109876543'),lambda p:p['addressSelection']['street'].update(oldName='Інша'),lambda p:p['addressSelection']['street'].update(registryName='Інша'),lambda p:p['addressSelection']['street'].update(label='вулиця Інша · раніше Стара'),lambda p:p.update(regionId='UA-98'),lambda p:p['addressParts'].update(street='провулок Нова')]
+            for change in changes:
+                changed=copy.deepcopy(place);change(changed)
+                with self.assertRaisesRegex(RuntimeError,'Saved street/type differs'):audit.validate_saved_address(case,result,changed)
+
+    def test_rename_proof_does_not_drop_road_type_or_house_letter_and_rejects_unrelated_source_query(self):
+        with tempfile.TemporaryDirectory() as temp:
+            case,result,place,_,_=self.proof(pathlib.Path(temp))
+            for target in [{**case,'exactStreet':'провулок Стара'},{**case,'exactHouse':'7'}]:
+                with self.assertRaises(RuntimeError):audit.validate_saved_address(target,result,place)
+            result['selectedPostalRenameIdentity']['responses'][1]['url']=audit.POSTAL_API+'?method=unrelated'
+            with self.assertRaisesRegex(RuntimeError,'Saved street/type differs'):audit.validate_saved_address(case,result,place)
+
+    def test_ambiguous_independent_city_or_street_rows_fail_without_selecting_an_id(self):
+        for ambiguous in ['city','street']:
+            with tempfile.TemporaryDirectory() as temp:
+                case,result,place,city,street=self.fixture();cities=[city,copy.deepcopy(city)] if ambiguous=='city' else city
+                streets=[street,{**street,'STREET_ID':'56'}] if ambiguous=='street' else [street]
+                _,_,reader=self.captured(pathlib.Path(temp),cities,streets)
+                with patch.object(audit.urllib.request,'urlopen',reader):
+                    with self.assertRaisesRegex(RuntimeError,'not unique|not a unique'):audit.capture_postal_rename_identity(case,result,result['selectedStreetLabel'],pathlib.Path(temp))
+
+
+class SelectionMissingElementRace(unittest.TestCase):
+    def driver(self,closed,initial_missing=False,error_kind='no such element'):
+        class SelectionAudit(audit.Audit):
+            def __init__(self):self.current_field='Вулиця';self.taps=0;self.reads=0;self.screens=[]
+            def click_node(self,node):
+                self.taps+=1
+                if initial_missing or self.taps==2:raise RuntimeError(json.dumps({'value':{'error':error_kind}}))
+            def wait(self,predicate,seconds):
+                assert seconds==2
+                raise RuntimeError('final transition observation still showed list')
+            def source(self):
+                self.reads+=1
+                return tree(option='вулиця Зразкова') if self.reads==1 and not initial_missing else closed
+            def screenshot(self,name,xml=None):self.screens.append((name,xml))
+        return SelectionAudit()
+
+    def closed(self,value='вулиця Зразкова'):
+        return '<hierarchy><node content-desc="Обрати: Вулиця" bounds="[0,100][400,150]"><node text="'+value+'"/></node></hierarchy>'
+
+    def test_successful_click_then_missing_retry_requires_closed_editor_with_exact_selected_field(self):
+        driver=self.driver(self.closed());driver.choose_option(audit.ET.fromstring('<node content-desc="вулиця Зразкова"/>'))
+        self.assertEqual(driver.taps,2);self.assertEqual(driver.reads,2);self.assertEqual(driver.screens[0][0],'selected-street-transition-confirmed')
+
+    def test_wrong_selected_road_absent_field_or_still_open_modal_never_forgives_missing_retry(self):
+        for closed in [self.closed('вулиця Інша'),self.closed('провулок Зразкова'),'<hierarchy/>',tree(option='вулиця Зразкова')]:
+            driver=self.driver(closed)
+            with self.assertRaisesRegex(RuntimeError,'no such element'):driver.choose_option(audit.ET.fromstring('<node content-desc="вулиця Зразкова"/>'))
+            self.assertEqual(driver.screens,[])
+
+    def test_first_click_missing_or_other_automation_error_is_not_accepted_from_a_matching_editor(self):
+        for initial,kind in [(True,'no such element'),(False,'unknown error')]:
+            driver=self.driver(self.closed(),initial_missing=initial,error_kind=kind)
+            with self.assertRaisesRegex(RuntimeError,kind):driver.choose_option(audit.ET.fromstring('<node content-desc="вулиця Зразкова"/>'))
+            self.assertEqual(driver.screens,[])
+
+
 if __name__=='__main__':unittest.main()

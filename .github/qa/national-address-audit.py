@@ -136,6 +136,86 @@ def case_street_queries(case):
     return list(dict.fromkeys(query for query in queries if query))
 
 
+POSTAL_API='https://index.ukrposhta.ua/endpoints-for-apps/index.php'
+
+
+def capture_postal_rename_identity(case,result,label,case_dir):
+    """Bind an offered old-name label to a unique current public postal ID.
+
+    Capture before clicking, independently of the saved state or queue. Normal
+    current-name selections do not need another source read.
+    """
+    variants=case_street_variants(case)
+    current=label.split(' · ')[0]
+    if ' · раніше ' not in label or any(street_matches(current,v) for v in variants):return None
+    if not any(street_matches(label,v) for v in variants):raise RuntimeError('Renamed option differs from frozen street')
+    katottg=re.search(r'КАТОТТГ (\d{17})(?:$|\s)',result.get('selectedCityLabel',''))
+    if not katottg:raise RuntimeError('Renamed postal street requires the visibly selected locality identity')
+    evidence=[]
+    def read(params,name):
+        url=POSTAL_API+'?'+urllib.parse.urlencode(params)
+        request=urllib.request.Request(url,headers={'Accept':'application/json','Accept-Language':'uk'})
+        checked=stamp()
+        with urllib.request.urlopen(request,timeout=25) as response:
+            final=urllib.parse.urlsplit(response.url)
+            if response.status!=200 or final.scheme!='https' or final.netloc!='index.ukrposhta.ua' or final.path!='/endpoints-for-apps/index.php':raise RuntimeError('Postal rename source identity changed')
+            raw=response.read(4000001)
+        if len(raw)>4000000:raise RuntimeError('Postal rename source exceeds bounded size')
+        data=json.loads(raw)
+        rows=data.get('Entries',{}).get('Entry',data.get('Entry')) if isinstance(data,dict) else None
+        if isinstance(rows,dict):rows=[rows]
+        if not isinstance(rows,list) or any(not isinstance(row,dict) for row in rows):raise RuntimeError('Postal rename source schema changed')
+        path=pathlib.Path(case_dir)/('selected-rename-'+name+'.json');path.write_bytes(raw)
+        evidence.append({'url':url,'checkedAt':checked,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'artifact':path.name})
+        return rows
+    cities=read({'method':'get_city_by_region_id_and_district_id_and_city_ua','city_ua':case['city']},'cities')
+    cities=[row for row in cities if str(row.get('CITY_KATOTTG',''))==katottg.group(1) and norm(str(row.get('CITY_UA','')))==norm(case['city'])]
+    if len(cities)!=1:raise RuntimeError('Renamed street locality is not unique in the independent postal response')
+    city=cities[0]
+    rows=read({'method':'get_street_by_region_id_and_district_id_and_city_id_and_street_ua','region_id':city['REGION_ID'],'district_id':city['DISTRICT_ID'],'city_id':city['CITY_ID'],'street_ua':''},'streets')
+    matches=[]
+    for row in rows:
+        if any(str(row.get(key,''))!=str(city.get(key,'')) for key in ['REGION_ID','DISTRICT_ID','CITY_ID']):continue
+        kind=str(row.get('STREETTYPE_UA') or row.get('SHORTSTREETTYPE_UA') or '').strip()
+        canonical=(str(row.get('STREET_UA',''))+' '+kind) if kind=='шосе' else (kind+' '+str(row.get('STREET_UA','')))
+        source_label=canonical.strip()+' · раніше '+str(row.get('OLDSTREET_UA','')).strip()
+        if norm(source_label)==norm(label) and str(row.get('STREET_ID','')).strip():matches.append(row)
+    if len(matches)!=1:raise RuntimeError('Renamed option is not a unique current postal street identity')
+    return {'kind':'current-postal-rename-before-click','selectedLabel':label,'city':city,'street':matches[0],'responses':evidence}
+
+
+def saved_postal_rename_matches(case,result,place):
+    proof=result.get('selectedPostalRenameIdentity') or {}
+    if proof.get('kind')!='current-postal-rename-before-click' or place.get('addressOrigin')!='postal':return False
+    selection=place.get('addressSelection') or {};street=selection.get('street') or {};city=selection.get('city') or {};parts=place.get('addressParts') or {};raw=proof.get('street') or {};raw_city=proof.get('city') or {}
+    if place.get('regionId')!=case.get('regionId') or selection.get('region',{}).get('id')!=case.get('regionId'):return False
+    if any(not str(raw_city.get(key,'')).strip() for key in ['REGION_ID','DISTRICT_ID','CITY_ID','CITY_KATOTTG']):return False
+    if result.get('selectedCityLabel')!=city.get('label') or 'КАТОТТГ '+str(raw_city['CITY_KATOTTG']) not in result.get('selectedCityLabel',''):return False
+    label=result.get('selectedStreetLabel','')
+    if not label or proof.get('selectedLabel')!=label or street.get('label')!=label:return False
+    if not raw.get('STREET_ID') or str(raw['STREET_ID'])!=str(street.get('id','')):return False
+    if any(str(raw.get(key,''))!=str(raw_city.get(key,'')) for key in ['REGION_ID','DISTRICT_ID','CITY_ID']):return False
+    if str(raw_city.get('CITY_ID',''))!=str(city.get('id','')) or str(raw_city.get('CITY_KATOTTG',''))!=str(city.get('katottg','')):return False
+    if str(raw_city.get('REGION_ID',''))!=str(city.get('postalId','')) or str(raw_city.get('DISTRICT_ID',''))!=str(city.get('districtId','')):return False
+    if norm(str(raw_city.get('CITY_UA','')))!=norm(case['city']) or norm(parts.get('settlement',''))!=norm(case['city']):return False
+    if street.get('oldName')!=raw.get('OLDSTREET_UA') or street.get('registryName')!=raw.get('STREET_UA'):return False
+    kind=str(raw.get('STREETTYPE_UA') or raw.get('SHORTSTREETTYPE_UA') or '').strip()
+    canonical=(str(raw.get('STREET_UA',''))+' '+kind) if kind=='шосе' else (kind+' '+str(raw.get('STREET_UA','')))
+    if street.get('registryType')!=kind or norm(parts.get('street',''))!=norm(canonical):return False
+    if norm(label)!=norm(canonical.strip()+' · раніше '+str(raw.get('OLDSTREET_UA','')).strip()):return False
+    evidence=proof.get('responses')
+    if not isinstance(evidence,list) or len(evidence)!=2:return False
+    for index,response in enumerate(evidence):
+        url=urllib.parse.urlsplit(response.get('url',''))
+        if url.scheme!='https' or url.netloc!='index.ukrposhta.ua' or url.path!='/endpoints-for-apps/index.php' or not re.fullmatch(r'[a-f0-9]{64}',response.get('sha256','')):return False
+        query=urllib.parse.parse_qs(url.query,keep_blank_values=True)
+        expected={'method':'get_city_by_region_id_and_district_id_and_city_ua','city_ua':case['city']} if index==0 else {'method':'get_street_by_region_id_and_district_id_and_city_id_and_street_ua','region_id':str(raw_city['REGION_ID']),'district_id':str(raw_city['DISTRICT_ID']),'city_id':str(raw_city['CITY_ID']),'street_ua':''}
+        if query!={k:[v] for k,v in expected.items()}:return False
+    # The pre-click offered current/old label must match the frozen complete
+    # road type/name. An arbitrary oldName in saved state cannot provide proof.
+    return any(street_matches(label,v) for v in case_street_variants(case))
+
+
 def validate_saved_address(case,result,place):
     selection=place.get('addressSelection') or {}
     street=selection.get('street') or {};house=selection.get('house') or {}
@@ -152,7 +232,7 @@ def validate_saved_address(case,result,place):
     parts=place.get('addressParts') or {}
     if norm(parts.get('settlement',''))!=norm(case['city']):raise RuntimeError('Saved city differs from frozen target')
     variants=case_street_variants(case)
-    if not any(street_matches(parts.get('street',''),variant) for variant in variants):raise RuntimeError('Saved street/type differs from frozen target')
+    if not any(street_matches(parts.get('street',''),variant) for variant in variants) and not saved_postal_rename_matches(case,result,place):raise RuntimeError('Saved street/type differs from frozen target')
     if norm(parts.get('house',''))!=norm(case['exactHouse']):raise RuntimeError('Saved house/letter/corpus differs from frozen target')
 
 
@@ -317,8 +397,23 @@ class Audit:
 
     def choose_option(self, node):
         label = node.get('content-desc')
+        clicked=False
         for _ in range(3):
-            self.click_node(node)
+            try:
+                self.click_node(node)
+                clicked=True
+            except RuntimeError as error:
+                try:missing=json.loads(str(error)).get('value',{}).get('error')=='no such element'
+                except (ValueError,AttributeError):missing=False
+                if clicked and missing and getattr(self,'current_field',None)=='Вулиця':
+                    current=self.source()
+                    if 'Закрити список адрес' not in current:
+                        fields=[n for n in ET.fromstring(current).iter('node') if n.get('content-desc')=='Обрати: Вулиця']
+                        value=norm(label.split(' · ')[0])
+                        if len(fields)==1 and self.box(fields[0]) and any(norm(n.get('text',''))==value for n in fields[0].iter('node')):
+                            self.screenshot('selected-street-transition-confirmed',current)
+                            return
+                raise
             try:
                 self.wait(lambda x:'Закрити список адрес' not in x, 2)
                 return
@@ -613,6 +708,8 @@ class Audit:
                 if selected is None:
                     continue
                 result['selectedStreetLabel'] = selected.get('content-desc')
+                rename=capture_postal_rename_identity(case,result,result['selectedStreetLabel'],self.case_dir)
+                if rename:result['selectedPostalRenameIdentity']=rename
                 tried_streets.add(result['selectedStreetLabel'])
                 self.choose_option(selected)
                 street_open = False
