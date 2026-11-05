@@ -44,6 +44,8 @@ def authority_snapshot(raw,meta,expected,now):
 def allowed(url):
  u=urllib.parse.urlsplit(url);h=u.hostname or ''
  return u.scheme=='https' and not u.username and not u.password and (h in ['www.zoe.com.ua','script.google.com','www.gstatic.com','ssl.gstatic.com','fonts.googleapis.com','fonts.gstatic.com'] or h.endswith('.googleusercontent.com'))
+def official_parent_response(url):
+ if url!=INDEX:raise ValueError('official_parent_redirected_review_required')
 def project(data):
  if not isinstance(data,list) or not 1<=len(data)<=100000:raise ValueError('unexpected_public_dictionary_shape')
  rows=[];headers=0;quarantine=[]
@@ -100,6 +102,7 @@ def main():
    if status is not None:
     # Even a DOM-loading timeout can follow a completed200 response. Its
     # readable removal/withdrawal must not be hidden by the saved authority.
+    if parent is not None:official_parent_response(parent.url)
     raw=parent.body() if parent is not None else parent_seen['body'];report['liveParentAttempt']={'httpStatus':status,'sha256':sha(raw),'bytes':len(raw)}
     if len(raw)>2000000:raise ValueError('official_parent_too_large')
     (out/'official-parent-attempt.html').write_bytes(raw)

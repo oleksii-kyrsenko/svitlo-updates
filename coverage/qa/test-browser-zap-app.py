@@ -30,4 +30,8 @@ class Projection(unittest.TestCase):
   rows,_,q=m.project([['вул. Нова','2','account1234567890123','',9]]);self.assertEqual(rows,[['вул. Нова','2',None,False]]);self.assertNotIn('1234567890123',str(q))
  def test_no_arbitrary_sources_or_accounts(self):
   self.assertTrue(m.allowed('https://script.google.com/macros/s/public/exec'));self.assertFalse(m.allowed('https://accounts.google.com/ServiceLogin'));self.assertFalse(m.allowed('http://script.google.com/'));self.assertFalse(m.allowed('https://attacker.example/'))
+ def test_official_parent_redirect_cannot_be_attributed_to_original_operator_page(self):
+  m.official_parent_response(m.INDEX)
+  for url in ['https://attacker.example/outage/','http://www.zoe.com.ua/outage/','https://www.zoe.com.ua/new-source/','https://www.zoe.com.ua@attacker.example/outage/']:
+   with self.assertRaisesRegex(ValueError,'redirected_review_required'):m.official_parent_response(url)
 if __name__=='__main__':unittest.main()
