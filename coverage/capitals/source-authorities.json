@@ -5,9 +5,24 @@
     {
       "operatorId": "vinnytsia",
       "approvedHosts": [
-        "www.voe.com.ua"
+        "www.voe.com.ua",
+        "voe.com.ua"
       ],
-      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu"
+      "authorityUrl": "https://sies.gov.ua/zvernennya-gromadyan/najbilsh-zapituvana-informaciya/grafiki-vidklyuchen-elektropostachannya-operatoriv-sistemi-rozpodilu",
+      "hostReviews": [
+        {
+          "host": "voe.com.ua",
+          "authorityUrl": "https://www.voe.com.ua/",
+          "verifiedAt": "2026-11-05T06:50:19.088Z",
+          "authorityHtmlSha256": "38915f17301d7b61ac83389790d40821558a407dad0aa8f5c4fc08e052984a6f",
+          "linkedOfficialPages": [
+            "https://voe.com.ua/household-consumers/tariffs",
+            "https://voe.com.ua/informatsiya-shchodo-zahalnykh-ta-harantovanykh-standartiv-yakosti-elektropostachannya-rozmiriv",
+            "https://voe.com.ua/suputni-posluhy-standartnoho-pryyednannya"
+          ],
+          "reason": "The already approved official operator homepage directly links its bare-host consumer pages; this adds only the exact reviewed hostname."
+        }
+      ]
     },
     {
       "operatorId": "volyn",
