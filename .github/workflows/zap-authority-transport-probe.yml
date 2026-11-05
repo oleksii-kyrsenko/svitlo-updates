@@ -1,0 +1,28 @@
+name: Compare ordinary free hosted official-parent transports
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm, windows-latest, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read the one reviewed official parent using ordinary strict HTTPS
+        run: python coverage/probe-zap-authority.py --out authority-probe
+      - name: Retain source transport result without promoting it
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-authority-${{ matrix.runner }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: authority-probe/
+          if-no-files-found: warn
+          retention-days: 14

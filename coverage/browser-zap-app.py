@@ -5,7 +5,6 @@ No address, account or EIC is submitted. The official page itself calls getData.
 """
 import argparse, hashlib, json, pathlib, re, time, urllib.parse, urllib.request, urllib.error, unicodedata
 from html.parser import HTMLParser
-from playwright.sync_api import sync_playwright
 
 INDEX='https://www.zoe.com.ua/outage/'
 MAX_BYTES=10000000
@@ -85,6 +84,7 @@ def project(data):
  return rows,headers,quarantine
 
 def main():
+ from playwright.sync_api import sync_playwright
  p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--request',required=True);a=p.parse_args();out=pathlib.Path(a.out);out.mkdir(parents=True,exist_ok=True)
  request=json.loads(pathlib.Path(a.request).read_text());trace=[];report={'schemaVersion':1,'method':'actual ordinary Chromium; current operator-linked anonymous Apps Script frontend getData on page load; no account/EIC/address input','coverageMeasured':False,'sourceUrl':INDEX,'checkedAt':int(time.time()*1000),'recordClaims':0,'requests':trace};start=time.monotonic()
  try:
