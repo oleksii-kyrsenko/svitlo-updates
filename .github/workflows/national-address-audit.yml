@@ -147,7 +147,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: national-audit-${{ matrix.region }}-chunk${{ matrix.chunk }}-${{ github.run_id }}
+          name: national-audit-${{ matrix.region }}-chunk${{ matrix.chunk }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
           path: national-audit/
           if-no-files-found: error
           retention-days: 30

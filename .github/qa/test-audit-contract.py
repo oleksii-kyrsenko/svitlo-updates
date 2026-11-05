@@ -30,6 +30,30 @@ class ContractChecks(unittest.TestCase):
   for selected in ['null','"UA-30-holdout-1"','["unknown"]','["UA-30-holdout-1","UA-30-holdout-1"]','["UA-12-holdout-1"]']:
    requested=contract.dispatch_request(self.request,{'INPUT_CASE_IDS':selected})
    self.assertRaises(ValueError,contract.plan,requested,self.root)
+ def test_holdout_dispatch_uses_its_fixed_digest_and_covers_all440_once(self):
+  root=pathlib.Path(__file__).resolve().parents[2]
+  baseline='.github/qa/capital-baseline.json';holdout='.github/qa/capital-holdout.json'
+  frozen=json.loads((root/holdout).read_text())['cases']
+  regions=list(dict.fromkeys(row['regionId'] for row in frozen))
+  original={'sample':baseline,'sampleSha256':contract.FROZEN_SAMPLES[baseline],'regions':regions,'limit':5}
+  before=copy.deepcopy(original)
+  request=contract.dispatch_request(original,{'INPUT_SAMPLE':holdout,'INPUT_LIMIT':'20','INPUT_CHUNK_SIZE':'5'})
+  c,matrix=contract.plan(request,root)
+  self.assertEqual(c['sampleSha256'],'15f9281c575adfcc0c7e795a3c8a45e60c3ef34569bb74fc082529d9144b751e')
+  chunks=matrix['include'];actual=[case for chunk in chunks for case in chunk['caseIds'].split(',')]
+  self.assertEqual(len(regions),22);self.assertEqual(len(chunks),88)
+  self.assertEqual(len(actual),440);self.assertEqual(len(set(actual)),440)
+  self.assertEqual(set(actual),{row['id'] for row in frozen})
+  for region in regions:
+   self.assertEqual([case for chunk in chunks if chunk['region']==region for case in chunk['caseIds'].split(',')],[row['id'] for row in frozen if row['regionId']==region])
+  self.assertEqual(original,before)
+ def test_sample_dispatch_does_not_drop_pins_or_accept_an_unreviewed_sample(self):
+  baseline='.github/qa/capital-baseline.json';holdout='.github/qa/capital-holdout.json'
+  source={'sample':holdout,'sampleSha256':contract.FROZEN_SAMPLES[holdout]}
+  self.assertEqual(contract.dispatch_request(source,{'INPUT_SAMPLE':baseline})['sampleSha256'],contract.FROZEN_SAMPLES[baseline])
+  self.assertEqual(contract.dispatch_request(source,{'INPUT_SAMPLE':holdout}),source)
+  for sample in ['../capital-holdout.json','sample.json','.github/qa/unreviewed.json']:
+   self.assertRaises(ValueError,contract.dispatch_request,source,{'INPUT_SAMPLE':sample})
  def test_sample_escape_and_binary_inputs_fail_closed(self):
   for patch in [{'sample':'../sample.json'},{'androidApi':34},{'chunkSize':6},{'apkUrl':'https://user:pass@example.org/a.apk'},{'apkSha256':'bogus'},{'versionCode':0}]:
    self.assertRaises(ValueError,contract.contract,{**self.request,**patch},self.root)

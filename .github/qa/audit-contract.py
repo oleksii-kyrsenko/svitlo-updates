@@ -4,6 +4,10 @@ from urllib.parse import urlsplit
 
 PACKAGE = 'ua.svitlo.app.testing'
 CERTIFICATE = 'fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c'
+FROZEN_SAMPLES = {
+ '.github/qa/capital-baseline.json':'369aa30d4e4ec1f502b4d996f53b4555df953682ef4bf0449198d7c6eca97043',
+ '.github/qa/capital-holdout.json':'15f9281c575adfcc0c7e795a3c8a45e60c3ef34569bb74fc082529d9144b751e',
+}
 DEFAULT = {'apkUrl':'https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/svitlo-test-88.apk',
  'apkSha256':'da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a','apkSize':82323533,
  'versionCode':88,'version':'0.1.52','androidApi':35,'sample':'.github/qa/national-address-cases.json','chunkSize':5}
@@ -98,6 +102,13 @@ def verify_apk(path,c,sdk=None,runner=subprocess.check_output,diagnostics=None):
 
 def dispatch_request(request,environ=None):
  request={**request};environ=os.environ if environ is None else environ
+ # A different frozen sample has its own digest. Retaining the committed
+ # baseline digest makes a legitimate holdout dispatch fail before any case;
+ # dropping the digest would silently permit replacing the frozen sample.
+ sample=environ.get('INPUT_SAMPLE')
+ if sample and sample!=request.get('sample'):
+  if sample not in FROZEN_SAMPLES:raise ValueError('sample override must select a pinned frozen capital sample')
+  request['sampleSha256']=FROZEN_SAMPLES[sample]
  fields={'INPUT_REGIONS':'regions','INPUT_LIMIT':'limit','INPUT_APK_URL':'apkUrl','INPUT_APK_SHA256':'apkSha256','INPUT_APK_SIZE':'apkSize','INPUT_VERSION_CODE':'versionCode','INPUT_VERSION':'version','INPUT_API':'androidApi','INPUT_SAMPLE':'sample','INPUT_CHUNK_SIZE':'chunkSize'}
  for env,key in fields.items():
   if environ.get(env):request[key]=json.loads(environ[env]) if key=='regions' else environ[env]
