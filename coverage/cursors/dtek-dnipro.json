@@ -13,47 +13,167 @@
       "auditSamples": [
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Елеваторна",
+          "street": "пров. Благодатний",
+          "house": "2",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4023",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "4",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4030",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
           "house": "6",
           "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=20&houseId=939",
-          "checkedAt": 1793957023475
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4031",
+          "checkedAt": 1793996926436
         },
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Елеваторна",
-          "house": "7",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=20&houseId=940",
-          "checkedAt": 1793957023475
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "вул. Елеваторна",
+          "street": "пров. Благодатний",
           "house": "8",
           "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=20&houseId=941",
-          "checkedAt": 1793957023475
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4032",
+          "checkedAt": 1793996926436
         },
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Енергетична",
+          "street": "пров. Благодатний",
+          "house": "10",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4018",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "12",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4019",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "14",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4020",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "16",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4021",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
           "house": "18",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=21&houseId=942",
-          "checkedAt": 1793957023475
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4022",
+          "checkedAt": 1793996926436
         },
         {
           "settlement": "м. Апостолове",
-          "street": "вул. Енергетична",
+          "street": "пров. Благодатний",
+          "house": "20",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4024",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "22",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4025",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "24",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4026",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
           "house": "26",
-          "queue": "4.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=21&houseId=943",
-          "checkedAt": 1793957023475
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4027",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "30",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4028",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Благодатний",
+          "house": "32",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=81&houseId=4029",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Васильковий",
+          "house": "1",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=82&houseId=4033",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Васильковий",
+          "house": "7",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=82&houseId=4034",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Васильковий",
+          "house": "9",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=82&houseId=4035",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Веселий",
+          "house": "1",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=83&houseId=4036",
+          "checkedAt": 1793996926436
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "пров. Веселий",
+          "house": "2",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=83&houseId=4037",
+          "checkedAt": 1793996926436
         }
       ],
-      "houseIndex": 0,
-      "streetIndex": 0,
+      "houseIndex": 2,
+      "streetIndex": 2,
       "lastContext": {
         "status": "resolved",
         "community": "Апостолівська міська громада",
