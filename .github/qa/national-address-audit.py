@@ -408,9 +408,9 @@ class Audit:
                 if clicked and missing and getattr(self,'current_field',None)=='Вулиця':
                     current=self.source()
                     if 'Закрити список адрес' not in current:
-                        fields=[n for n in ET.fromstring(current).iter('node') if n.get('content-desc')=='Обрати: Вулиця']
+                        fields=[n for n in ET.fromstring(current).iter() if n.get('content-desc')=='Обрати: Вулиця']
                         value=norm(label.split(' · ')[0])
-                        if len(fields)==1 and self.box(fields[0]) and any(norm(n.get('text',''))==value for n in fields[0].iter('node')):
+                        if len(fields)==1 and self.box(fields[0]) and any(norm(n.get('text',''))==value for n in fields[0].iter()):
                             self.screenshot('selected-street-transition-confirmed',current)
                             return
                 raise
@@ -543,7 +543,7 @@ class Audit:
     def read_state(self):
         # Pulling a live SQLite directory can catch a hot journal. Keep each
         # original capture, including its sidecars, and retry a fresh pull only
-        # for SQLite's explicit read-only recovery error. Never ignore a journal
+        # for explicit read-only recovery or malformed-capture errors. Never ignore a journal
         # or modify the database on the device to make an audit pass.
         root = self.case_dir/'database'
         for attempt in range(3):
@@ -570,10 +570,12 @@ class Audit:
                         if schema==1:self.coverage_snapshot=snapshot
                         else:self.city_coverage_snapshot=snapshot
                     row = connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?', ('svitlo.state.v1',)).fetchone()
-            except sqlite3.OperationalError as error:
-                if str(error)!='attempt to write a readonly database':raise
-                capture.update(captureError='sqlite-readonly-hot-journal-recovery',retry=attempt<2)
+            except sqlite3.DatabaseError as error:
+                reasons={'attempt to write a readonly database':'sqlite-readonly-hot-journal-recovery',
+                         'database disk image is malformed':'sqlite-malformed-readonly-capture'}
+                capture.update(captureError=reasons.get(str(error),'sqlite-unhandled-readonly-error'),sqliteError=str(error),retry=str(error) in reasons and attempt<2)
                 proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
+                if str(error) not in reasons:raise
                 if attempt==2:raise
                 time.sleep(.25)
                 continue
@@ -594,27 +596,67 @@ class Audit:
         validate_saved_address(case,result,place)
         observation={'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'remainingOriginalDeadlineSeconds':round(max(0,deadline-time.monotonic()),3),'initialActivePlaceId':active,'initialAppWrittenQueue':queue,'pendingSeen':False}
         result['postSaveObservation']=observation
+        bound=False;down_scrolls=0;up_scrolls=0
+        def visible_nodes(node):
+            if node.get('displayed')=='false':return []
+            values=[node]
+            for child in node:values.extend(visible_nodes(child))
+            return values
+        def visible_texts(node):return [n.get('text') for n in visible_nodes(node) if n.get('text')]
         while time.monotonic()<deadline:
             xml=self.source()
             if time.monotonic()>=deadline:break
-            nodes=ET.fromstring(xml).iter()
+            root=ET.fromstring(xml);nodes=visible_nodes(root)
             names=[n.get('text','') for n in nodes if n.get('resource-id','').split('/')[-1]=='current-address-name' and n.get('displayed')!='false']
             if names:
                 if len(names)!=1 or norm(names[0])!=norm(result['addressFromUI']):
                     raise RuntimeError('Post-save visible current address differs from frozen selection')
-                texts=self.texts(xml);observation['pendingSeen']|=queue_lookup_pending(' '.join(texts))
-                values={m.group(1) for text in texts if (m:=re.fullmatch(r'Черга\s+(\d+(?:\.\d+)?)',text.strip()))}
+                bound=True
+            texts=visible_texts(root);pending=queue_lookup_pending(' '.join(texts));observation['pendingSeen']|=pending
+            blocks=[n for n in nodes if n.get('resource-id','').split('/')[-1]=='address-block' and n.get('displayed')!='false']
+            if len(blocks)>1:raise RuntimeError('Post-save source address is not unique')
+            block_texts=visible_texts(blocks[0]) if blocks else []
+            address_visible=any(norm(text)==norm(result['addressFromUI']) for text in block_texts)
+            # The first visible address-card text is the address when its
+            # whole row is in view. A later cache timestamp also contains a
+            # comma and must not be mistaken for another street address.
+            if block_texts and block_texts[0].count(',')>=2 and norm(block_texts[0])!=norm(result['addressFromUI']):
+                raise RuntimeError('Post-save visible source address differs from frozen selection')
+            if bound and (names or address_visible):
+                # Once the top card scrolls away, only a visible source card
+                # containing this exact address can bind its queue badge.
+                candidates=block_texts if blocks else texts if names and not observation.get('scrolls') else []
+                values={m.group(1) for text in candidates if (m:=re.fullmatch(r'Черга\s+(\d+(?:\.\d+)?)',text.strip()))}
+                if blocks and not address_visible:values=set()
                 if values:
                     if values!={queue}:raise RuntimeError('Post-save visible queue differs from app-written queue')
+                    if time.monotonic()>=deadline:break
                     self.screenshot('post-save-queue',xml)
+                    if time.monotonic()>=deadline:break
                     fresh=self.read_state();selected=next((p for p in fresh.get('places',[]) if p.get('id')==fresh.get('activePlaceId')),None)
                     if fresh.get('activePlaceId')!=active or not selected:raise RuntimeError('Post-save active address changed')
                     validate_saved_address(case,result,selected)
                     if not(selected.get('queueConfirmed') and selected.get('queueOrigin')=='official' and selected.get('queue')==queue):
                         raise RuntimeError('Visible post-save queue differs from fresh confirmed official state')
+                    if time.monotonic()>=deadline:break
                     observation.update(completedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),visibleQueue=queue,visibleText=texts,screenshot='post-save-queue.png',xml='post-save-queue.xml')
                     result.update(visibleQueue=queue,visibleText=texts,visibleQueueStage='post-save-home',visibleQueueScreenshot='post-save-queue.png',visibleQueueXML='post-save-queue.xml')
                     return fresh,selected
+            # A long daily chart can put the source queue below the viewport.
+            # Scroll only this saved screen, never restarting a lookup or its
+            # original deadline. Keep the pre-scroll observation as evidence.
+            direction=None
+            if not bound and up_scrolls<8:direction=False;up_scrolls+=1
+            elif bound and not pending and down_scrolls<16:direction=True;down_scrolls+=1
+            if direction is not None:
+                if 'beforeScroll' not in observation:
+                    self.screenshot('post-save-before-scroll-retry',xml)
+                    observation['beforeScroll']={'screenshot':'post-save-before-scroll-retry.png','xml':'post-save-before-scroll-retry.xml'}
+                if deadline-time.monotonic()<=.3:
+                    time.sleep(max(0,deadline-time.monotonic()))
+                    break
+                observation.setdefault('scrolls',[]).append({'direction':'down' if direction else 'up','remainingOriginalDeadlineSeconds':round(max(0,deadline-time.monotonic()),3)})
+                self.scroll(down=direction)
             time.sleep(min(.5,max(0,deadline-time.monotonic())))
         raise RuntimeError('Remaining original queue deadline exhausted without visible post-save confirmation')
 
