@@ -19,11 +19,333 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [],
-      "houseIndex": 60,
+      "auditSamples": [
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "3 д/0",
+          "queue": "1.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "3-Д",
+          "queue": "1.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "31/1",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "31/2",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "33",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "35",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "35/1",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "35/2",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "35/3",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "35/4",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37-Г",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37-Ж",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37-в",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/1",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/10",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/15",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/16",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/18",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/2",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Тищенка",
+          "house": "37/4",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794077295917
+        }
+      ],
+      "houseIndex": 80,
       "streetIndex": 8,
       "crawlStatus": "partial",
-      "observedHouses": [],
+      "observedHouses": [
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "3 д/0",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "3-Д",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "31/1",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "31/2",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "33",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "35",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "35/1",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "35/2",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "35/3",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "35/4",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37-Г",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37-Ж",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37-в",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/1",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/10",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/15",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/16",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/18",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/2",
+          "providerStreetId": "вул. Тищенка"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Тищенка",
+          "house": "37/4",
+          "providerStreetId": "вул. Тищенка"
+        }
+      ],
       "dictionaryComplete": true
     }
   }
