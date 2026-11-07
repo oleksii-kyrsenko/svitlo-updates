@@ -17,116 +17,11 @@
           "cityId": "osm-relation-3513051"
         }
       },
-      "auditSamples": [
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "1",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5503",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "2",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5504",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "3",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5505",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "4",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5506",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "5",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5507",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "6",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5508",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "7",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5509",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "8",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5510",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "9",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5511",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "10",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5512",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "11",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5513",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "12",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5514",
-          "checkedAt": 1794077264095
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Захисників України (Гагаріна)",
-          "house": "14",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=11&houseId=5515",
-          "checkedAt": 1794077264095
-        }
-      ],
+      "auditSamples": [],
       "houseIndex": 0,
       "streetIndex": 0,
       "cityIndex": 1,
-      "queryIndex": 14,
+      "queryIndex": 15,
       "lastContext": {
         "status": "resolved",
         "community": "Черкаська селищна громада",
