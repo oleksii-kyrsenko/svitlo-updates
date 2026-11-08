@@ -1,12 +1,12 @@
 {
-  "checkedAt": 1794163859766,
+  "checkedAt": 1794181374404,
   "errors": [
     {
-      "operatorId": "chernivtsi",
+      "operatorId": "cherkasy",
       "error": "collector_failed"
     },
     {
-      "operatorId": "cherkasy",
+      "operatorId": "chernivtsi",
       "error": "collector_failed"
     },
     {
@@ -34,6 +34,10 @@
       "error": "collector_failed"
     },
     {
+      "operatorId": "dtek-odesa",
+      "error": "collector_failed"
+    },
+    {
       "operatorId": "dtek-donetsk",
       "error": "collector_failed"
     },
@@ -50,11 +54,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "chernihiv",
+      "operatorId": "kherson",
       "error": "collector_failed"
     },
     {
-      "operatorId": "kherson",
+      "operatorId": "chernihiv",
       "error": "collector_failed"
     },
     {
@@ -80,11 +84,15 @@
     {
       "operatorId": "poltava",
       "error": "collector_failed"
+    },
+    {
+      "operatorId": "zakarpattia",
+      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
     }
   ],
   "collections": [
     {
-      "operatorId": "chernivtsi",
+      "operatorId": "cherkasy",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
@@ -97,7 +105,7 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "cherkasy",
+      "operatorId": "chernivtsi",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
@@ -174,7 +182,7 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 35,
+      "records": 31,
       "constraint": null,
       "caseChecks": null
     },
@@ -187,7 +195,7 @@
         "mode": "legacy-bounded-discovery"
       },
       "status": "collected",
-      "records": 29,
+      "records": 89,
       "constraint": null,
       "caseChecks": 20
     },
@@ -229,7 +237,7 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 17,
+      "records": 20,
       "constraint": null,
       "caseChecks": 20
     },
@@ -243,9 +251,9 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 15,
+      "records": 14,
       "constraint": null,
-      "caseChecks": 15
+      "caseChecks": 16
     },
     {
       "operatorId": "cek",
@@ -284,10 +292,23 @@
         "status": "partial",
         "dictionaryComplete": true
       },
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "mykolaiv",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "cycleComplete": false,
+        "mode": "legacy-bounded-discovery"
+      },
       "status": "collected",
-      "records": 20,
+      "records": 46,
       "constraint": null,
-      "caseChecks": 20
+      "caseChecks": 46
     },
     {
       "operatorId": "dtek-donetsk",
@@ -346,19 +367,6 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "mykolaiv",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "cycleComplete": false,
-        "mode": "legacy-bounded-discovery"
-      },
-      "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
-    },
-    {
       "operatorId": "rivne",
       "targetCity": null,
       "cityCrawl": null,
@@ -377,18 +385,13 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-dnipro",
+      "operatorId": "kherson",
       "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
-      },
-      "status": "collected",
-      "records": 20,
-      "constraint": null,
-      "caseChecks": 20
+      "cityCrawl": null,
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "address-protocol-or-geographic-context-not-yet-verified",
+      "caseChecks": 0
     },
     {
       "operatorId": "chernihiv",
@@ -397,15 +400,6 @@
       "status": "not_collected",
       "records": 0,
       "constraint": "collection-unavailable",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "kherson",
-      "targetCity": null,
-      "cityCrawl": null,
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "address-protocol-or-geographic-context-not-yet-verified",
       "caseChecks": 0
     },
     {
@@ -425,6 +419,20 @@
       "records": 0,
       "constraint": "address-protocol-or-geographic-context-not-yet-verified",
       "caseChecks": 0
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
     },
     {
       "operatorId": "luhansk",
@@ -473,18 +481,18 @@
     }
   ],
   "collectionMode": "legacy",
-  "publicationCheckedAt": 1794163971930,
+  "publicationCheckedAt": 1794181484571,
   "legacyConstraints": [],
   "publication": {
-    "revision": 60,
+    "revision": 61,
     "operators": 16,
-    "records": 9976
+    "records": 8721
   },
   "cityPublication": {
-    "revision": 60,
+    "revision": 61,
     "cities": 122,
-    "retiredCities": 26,
-    "records": 9976,
+    "retiredCities": 27,
+    "records": 8721,
     "skippedCities": [],
     "sourceSnapshots": 16,
     "sourceCacheConstraints": []
