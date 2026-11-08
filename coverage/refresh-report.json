@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1794128367690,
+  "checkedAt": 1794163859766,
   "errors": [
     {
       "operatorId": "chernivtsi",
@@ -74,11 +74,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "poltava",
+      "operatorId": "ukrzaliznytsia",
       "error": "collector_failed"
     },
     {
-      "operatorId": "ukrzaliznytsia",
+      "operatorId": "poltava",
       "error": "collector_failed"
     }
   ],
@@ -174,7 +174,7 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 71,
+      "records": 35,
       "constraint": null,
       "caseChecks": null
     },
@@ -187,7 +187,7 @@
         "mode": "legacy-bounded-discovery"
       },
       "status": "collected",
-      "records": 39,
+      "records": 29,
       "constraint": null,
       "caseChecks": 20
     },
@@ -215,9 +215,9 @@
         "dictionaryComplete": true
       },
       "status": "collected",
-      "records": 7,
+      "records": 5,
       "constraint": null,
-      "caseChecks": 7
+      "caseChecks": 5
     },
     {
       "operatorId": "ternopil",
@@ -229,7 +229,7 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 20,
+      "records": 17,
       "constraint": null,
       "caseChecks": 20
     },
@@ -245,7 +245,7 @@
       "status": "collected",
       "records": 15,
       "constraint": null,
-      "caseChecks": 20
+      "caseChecks": 15
     },
     {
       "operatorId": "cek",
@@ -332,19 +332,6 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "mykolaiv",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "cycleComplete": false,
-        "mode": "legacy-bounded-discovery"
-      },
-      "status": "collected",
-      "records": 59,
-      "constraint": null,
-      "caseChecks": 59
-    },
-    {
       "operatorId": "dtek-kyiv",
       "targetCity": null,
       "cityCrawl": {
@@ -359,16 +346,24 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "dtek-dnipro",
+      "operatorId": "mykolaiv",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
+        "cycleComplete": false,
+        "mode": "legacy-bounded-discovery"
       },
       "status": "collected",
-      "records": 20,
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
+    },
+    {
+      "operatorId": "rivne",
+      "targetCity": null,
+      "cityCrawl": null,
+      "status": "collected",
+      "records": 295,
       "constraint": null,
       "caseChecks": 20
     },
@@ -382,11 +377,16 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "rivne",
+      "operatorId": "dtek-dnipro",
       "targetCity": null,
-      "cityCrawl": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
       "status": "collected",
-      "records": 295,
+      "records": 20,
       "constraint": null,
       "caseChecks": 20
     },
@@ -454,7 +454,7 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "poltava",
+      "operatorId": "ukrzaliznytsia",
       "targetCity": null,
       "cityCrawl": null,
       "status": "not_collected",
@@ -463,7 +463,7 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "ukrzaliznytsia",
+      "operatorId": "poltava",
       "targetCity": null,
       "cityCrawl": null,
       "status": "not_collected",
@@ -473,18 +473,18 @@
     }
   ],
   "collectionMode": "legacy",
-  "publicationCheckedAt": 1794128489484,
+  "publicationCheckedAt": 1794163971930,
   "legacyConstraints": [],
   "publication": {
-    "revision": 59,
+    "revision": 60,
     "operators": 16,
-    "records": 11198
+    "records": 9976
   },
   "cityPublication": {
-    "revision": 59,
-    "cities": 123,
-    "retiredCities": 24,
-    "records": 11198,
+    "revision": 60,
+    "cities": 122,
+    "retiredCities": 26,
+    "records": 9976,
     "skippedCities": [],
     "sourceSnapshots": 16,
     "sourceCacheConstraints": []
