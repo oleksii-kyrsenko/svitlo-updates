@@ -16,169 +16,121 @@
       "auditSamples": [
         {
           "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "16/1",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2691",
-          "checkedAt": 1794181397964
+          "street": "вул. Автозаводська",
+          "house": "13А",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2704",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "18/2",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2692",
-          "checkedAt": 1794181397964
+          "street": "вул. Автозаводська",
+          "house": "15А",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2705",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
+          "street": "вул. Автозаводська",
+          "house": "17",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2706",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
+          "house": "17А",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2707",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
+          "house": "18",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2708",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
+          "house": "18К",
+          "queue": "4.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2709",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
           "house": "19",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2693",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "20/1",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2694",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "20А",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2695",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "21",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2696",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "22/2",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2697",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаконструкторська",
-          "house": "23",
-          "queue": "12.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=26&houseId=2698",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаційна (с. Гнідин)",
-          "house": "43",
-          "queue": "38.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=27&houseId=2701",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Авіаційна (с. Гнідин)",
-          "house": "50",
-          "queue": "38.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=27&houseId=2702",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "2",
           "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2711",
-          "checkedAt": 1794181397964
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2710",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
           "street": "вул. Автозаводська",
+          "house": "21А",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2712",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
+          "house": "24",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2713",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автозаводська",
+          "house": "24/1",
+          "queue": "11.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2714",
+          "checkedAt": 1794217736322
+        },
+        {
+          "settlement": "Київ",
+          "street": "вул. Автопаркова",
           "house": "5",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2729",
-          "checkedAt": 1794181397964
+          "queue": "43.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=29&houseId=712",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "5А",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2730",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "5Б",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2734",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
+          "street": "вул. Автопаркова",
           "house": "7",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2740",
-          "checkedAt": 1794181397964
+          "queue": "44.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=29&houseId=713",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
-          "street": "вул. Автозаводська",
+          "street": "вул. Автопаркова",
           "house": "7А",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2741",
-          "checkedAt": 1794181397964
+          "queue": "43.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=29&houseId=714",
+          "checkedAt": 1794217736322
         },
         {
           "settlement": "Київ",
-          "street": "вул. Автозаводська",
+          "street": "вул. Автопаркова",
           "house": "7Б",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2742",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "8А",
-          "queue": "3.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2753",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "9А",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2754",
-          "checkedAt": 1794181397964
-        },
-        {
-          "settlement": "Київ",
-          "street": "вул. Автозаводська",
-          "house": "11",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=2703",
-          "checkedAt": 1794181397964
+          "queue": "44.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=29&houseId=715",
+          "checkedAt": 1794217736322
         }
       ],
-      "houseIndex": 10,
-      "streetIndex": 18,
+      "houseIndex": 0,
+      "streetIndex": 0,
       "cityIndex": 0,
-      "queryIndex": 0,
+      "queryIndex": 1,
       "lastContext": {
         "status": "resolved",
         "community": "Київ",

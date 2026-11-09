@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1794181374404,
+  "checkedAt": 1794217707914,
   "errors": [
     {
       "operatorId": "cherkasy",
@@ -30,19 +30,11 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "cek",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "dtek-odesa",
+      "operatorId": "dtek-pem",
       "error": "collector_failed"
     },
     {
       "operatorId": "dtek-donetsk",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "dtek-pem",
       "error": "collector_failed"
     },
     {
@@ -84,10 +76,6 @@
     {
       "operatorId": "poltava",
       "error": "collector_failed"
-    },
-    {
-      "operatorId": "zakarpattia",
-      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
     }
   ],
   "collections": [
@@ -182,7 +170,7 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 31,
+      "records": 88,
       "constraint": null,
       "caseChecks": null
     },
@@ -195,7 +183,7 @@
         "mode": "legacy-bounded-discovery"
       },
       "status": "collected",
-      "records": 89,
+      "records": 39,
       "constraint": null,
       "caseChecks": 20
     },
@@ -251,9 +239,9 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 14,
+      "records": 20,
       "constraint": null,
-      "caseChecks": 16
+      "caseChecks": 20
     },
     {
       "operatorId": "cek",
@@ -264,10 +252,24 @@
         "status": "partial",
         "dictionaryComplete": false
       },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 0
+      "status": "collected",
+      "records": 5,
+      "constraint": null,
+      "caseChecks": 5
+    },
+    {
+      "operatorId": "dtek-kyiv",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 14,
+      "constraint": null,
+      "caseChecks": 14
     },
     {
       "operatorId": "dtek-kyiv-region",
@@ -292,36 +294,9 @@
         "status": "partial",
         "dictionaryComplete": true
       },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "mykolaiv",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "cycleComplete": false,
-        "mode": "legacy-bounded-discovery"
-      },
       "status": "collected",
-      "records": 46,
+      "records": 20,
       "constraint": null,
-      "caseChecks": 46
-    },
-    {
-      "operatorId": "dtek-donetsk",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": true
-      },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
       "caseChecks": 20
     },
     {
@@ -339,6 +314,20 @@
       "caseChecks": 0
     },
     {
+      "operatorId": "dtek-donetsk",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "complete",
+        "dictionaryComplete": true
+      },
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 14
+    },
+    {
       "operatorId": "dtek-vvm",
       "targetCity": null,
       "cityCrawl": {
@@ -353,7 +342,20 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-kyiv",
+      "operatorId": "mykolaiv",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "cycleComplete": false,
+        "mode": "legacy-bounded-discovery"
+      },
+      "status": "collected",
+      "records": 60,
+      "constraint": null,
+      "caseChecks": 60
+    },
+    {
+      "operatorId": "dtek-dnipro",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
@@ -363,15 +365,6 @@
       },
       "status": "collected",
       "records": 20,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "rivne",
-      "targetCity": null,
-      "cityCrawl": null,
-      "status": "collected",
-      "records": 295,
       "constraint": null,
       "caseChecks": 20
     },
@@ -412,6 +405,15 @@
       "caseChecks": 20
     },
     {
+      "operatorId": "rivne",
+      "targetCity": null,
+      "cityCrawl": null,
+      "status": "collected",
+      "records": 295,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
       "operatorId": "naftogaz-teplo",
       "targetCity": null,
       "cityCrawl": null,
@@ -419,20 +421,6 @@
       "records": 0,
       "constraint": "address-protocol-or-geographic-context-not-yet-verified",
       "caseChecks": 0
-    },
-    {
-      "operatorId": "dtek-dnipro",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
-      },
-      "status": "collected",
-      "records": 20,
-      "constraint": null,
-      "caseChecks": 20
     },
     {
       "operatorId": "luhansk",
@@ -481,20 +469,20 @@
     }
   ],
   "collectionMode": "legacy",
-  "publicationCheckedAt": 1794181484571,
+  "publicationCheckedAt": 1794217835223,
   "legacyConstraints": [],
   "publication": {
-    "revision": 61,
-    "operators": 16,
-    "records": 8721
+    "revision": 62,
+    "operators": 13,
+    "records": 712
   },
   "cityPublication": {
-    "revision": 61,
-    "cities": 122,
-    "retiredCities": 27,
-    "records": 8721,
+    "revision": 62,
+    "cities": 112,
+    "retiredCities": 38,
+    "records": 712,
     "skippedCities": [],
-    "sourceSnapshots": 16,
+    "sourceSnapshots": 13,
     "sourceCacheConstraints": []
   }
 }
