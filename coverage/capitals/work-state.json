@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "cursors": {
-    "coordinator": 10,
-    "official-researcher-1": 0,
-    "official-researcher-2": 4,
-    "address-specialist": 6,
-    "adapter-engineer": 16,
-    "monitoring-specialist": 10,
-    "independent-verifier": 24
+    "coordinator": 0,
+    "official-researcher-1": 12,
+    "official-researcher-2": 16,
+    "address-specialist": 4,
+    "adapter-engineer": 5,
+    "monitoring-specialist": 0,
+    "independent-verifier": 36
   },
   "ledger": {
     "coordinator/city:UA-05:Вінниця": {
@@ -61,74 +61,74 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "coordinator/city:UA-48:Миколаїв": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-51:Одеса": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-05-capital-1": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-07-capital-1": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-63-capital-1": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-73-capital-1": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-05-capital-2": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-07-capital-2": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-63-capital-2": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-73-capital-5": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-05-capital-3": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-07-capital-3": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-63-capital-3": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-05-capital-4": {
-      "dispatches": 24,
+      "dispatches": 25,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-23-capital-1": {
       "dispatches": 21,
@@ -151,64 +151,64 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "official-researcher-2/case:UA-23-capital-2": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-53-capital-2": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-65-capital-2": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-74-capital-2": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-23-capital-3": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-53-capital-3": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-65-capital-3": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-74-capital-3": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-65-capital-1": {
-      "dispatches": 28,
+      "dispatches": 29,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-71-capital-2": {
-      "dispatches": 28,
+      "dispatches": 29,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-12-capital-1": {
-      "dispatches": 28,
+      "dispatches": 29,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-46-capital-1": {
-      "dispatches": 28,
+      "dispatches": 29,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-68-capital-2": {
       "dispatches": 28,
@@ -221,59 +221,59 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "address-specialist/case:UA-71-capital-3": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-12-capital-4": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-51-capital-3": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-68-capital-3": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-68-capital-4": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-07-capital-5": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-56-capital-1": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-59-capital-1": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-68-capital-1": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-30-capital-1": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-48-capital-1": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-18-capital-4": {
       "dispatches": 17,
@@ -361,14 +361,14 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "monitoring-specialist/city:UA-48:Миколаїв": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-51:Одеса": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-02T12:12:36.700967+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-05-capital-1": {
       "dispatches": 6,
@@ -431,54 +431,54 @@
       "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
     },
     "coordinator/city:UA-53:Полтава": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-56:Рівне": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-59:Суми": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-61:Тернопіль": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-63:Харків": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-65:Херсон": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-68:Хмельницький": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-71:Черкаси": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-73:Чернівці": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "coordinator/city:UA-74:Чернігів": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-1/case:UA-07-capital-4": {
       "dispatches": 24,
@@ -501,24 +501,24 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "official-researcher-2/case:UA-23-capital-4": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-53-capital-4": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-65-capital-4": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-74-capital-4": {
-      "dispatches": 20,
+      "dispatches": 21,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "official-researcher-2/case:UA-23-capital-5": {
       "dispatches": 20,
@@ -536,14 +536,14 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "address-specialist/case:UA-65-capital-5": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "address-specialist/case:UA-68-capital-5": {
-      "dispatches": 27,
+      "dispatches": 28,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-18-capital-5": {
       "dispatches": 17,
@@ -566,89 +566,89 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "adapter-engineer/case:UA-30-capital-5": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-48-capital-4": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-71-capital-4": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-56-capital-4": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-59-capital-4": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-56-capital-5": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "adapter-engineer/case:UA-59-capital-5": {
-      "dispatches": 16,
+      "dispatches": 17,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-53:Полтава": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-56:Рівне": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-59:Суми": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-61:Тернопіль": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-63:Харків": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-65:Херсон": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-68:Хмельницький": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-71:Черкаси": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T06:22:56.010423+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-73:Чернівці": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "monitoring-specialist/city:UA-74:Чернігів": {
-      "dispatches": 17,
+      "dispatches": 18,
       "firstDispatchedAt": "2026-11-03T06:39:35.219402+00:00",
-      "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-71-capital-2": {
       "dispatches": 6,
@@ -711,64 +711,64 @@
       "lastDispatchedAt": "2026-11-09T09:48:24.172508+00:00"
     },
     "independent-verifier/case:UA-53-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-56-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-59-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-63-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-65-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-68-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-74-capital-2": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-30-capital-3": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-48-capital-3": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-71-capital-3": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-12-capital-4": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-18-capital-5": {
-      "dispatches": 5,
+      "dispatches": 6,
       "firstDispatchedAt": "2026-11-03T14:10:01.857029+00:00",
-      "lastDispatchedAt": "2026-11-08T13:22:09.154265+00:00"
+      "lastDispatchedAt": "2026-11-09T22:20:13.996347+00:00"
     },
     "independent-verifier/case:UA-51-capital-3": {
       "dispatches": 5,
@@ -951,5 +951,5 @@
       "lastDispatchedAt": "2026-11-08T23:42:50.908466+00:00"
     }
   },
-  "updatedAt": "2026-11-09T09:48:24.172508+00:00"
+  "updatedAt": "2026-11-09T22:20:13.996347+00:00"
 }
