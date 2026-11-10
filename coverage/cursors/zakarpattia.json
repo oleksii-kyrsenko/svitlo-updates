@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "cityIndex": 6,
-  "streetIndex": 0,
+  "streetIndex": 4,
   "houseOffsets": {
     "3:19": 5,
     "3:264": 5,
@@ -120,9 +120,13 @@
     "8:16641": 5,
     "8:16642": 0,
     "8:16647": 0,
-    "8:16649": 0
+    "8:16649": 0,
+    "9:26": 5,
+    "9:59": 5,
+    "9:162": 5,
+    "9:185": 5
   },
-  "updatedAt": 1794266875607,
+  "updatedAt": 1794304047702,
   "cityCrawls": {
     "33de95108297f23754b2": {
       "crawlStatus": "partial",
