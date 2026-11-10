@@ -189,48 +189,8 @@
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "бул. Слави",
-              "house": "61А",
-              "providerStreetId": "427"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "бул. Слави",
-              "house": "61Б",
-              "providerStreetId": "427"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "14",
-              "providerStreetId": "429"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "14Г",
-              "providerStreetId": "429"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "18",
-              "providerStreetId": "429"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
               "street": "вул. Аеродромна",
-              "house": "57",
+              "house": "7",
               "providerStreetId": "436"
             },
             {
@@ -238,7 +198,7 @@
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
               "street": "вул. Аеродромна",
-              "house": "59",
+              "house": "71",
               "providerStreetId": "436"
             },
             {
@@ -246,7 +206,7 @@
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
               "street": "вул. Аеродромна",
-              "house": "61",
+              "house": "8",
               "providerStreetId": "436"
             },
             {
@@ -254,23 +214,7 @@
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
               "street": "вул. Аеродромна",
-              "house": "65",
-              "providerStreetId": "436"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "67",
-              "providerStreetId": "436"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "69",
+              "house": "9",
               "providerStreetId": "436"
             }
           ],
@@ -295,146 +239,43 @@
           "auditSamples": [
             {
               "settlement": "м. Дніпро",
-              "street": "бул. Слави",
-              "house": "61А",
+              "street": "вул. Аеродромна",
+              "house": "7",
               "queue": "5.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=427&houseId=12322",
-              "checkedAt": 1794295575403
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "бул. Слави",
-              "house": "61Б",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=427&houseId=12323",
-              "checkedAt": 1794295581601
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "14",
-              "queue": "3.1",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=429&houseId=12609",
-              "checkedAt": 1794295625904
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "14Г",
-              "queue": "3.1",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=429&houseId=12610",
-              "checkedAt": 1794295632076
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. 20-річчя Перемоги",
-              "house": "18",
-              "queue": "3.1",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=429&houseId=12614",
-              "checkedAt": 1794295638437
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12905",
+              "checkedAt": 1794340719768
             },
             {
               "settlement": "м. Дніпро",
               "street": "вул. Аеродромна",
-              "house": "57",
+              "house": "71",
               "queue": "5.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12898",
-              "checkedAt": 1794295846347
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12909",
+              "checkedAt": 1794340728113
             },
             {
               "settlement": "м. Дніпро",
               "street": "вул. Аеродромна",
-              "house": "59",
+              "house": "8",
               "queue": "5.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12899",
-              "checkedAt": 1794295855847
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12910",
+              "checkedAt": 1794340750102
             },
             {
               "settlement": "м. Дніпро",
               "street": "вул. Аеродромна",
-              "house": "61",
+              "house": "9",
               "queue": "5.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12900",
-              "checkedAt": 1794295865347
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "65",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12902",
-              "checkedAt": 1794295873934
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "67",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12903",
-              "checkedAt": 1794295879991
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "69",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12904",
-              "checkedAt": 1794295888451
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12911",
+              "checkedAt": 1794340764915
             }
           ],
           "streetInventory": {
             "queries": [
-              "шосе й",
-              "шосе к",
-              "шосе л",
-              "шосе м",
-              "шосе н",
-              "шосе о",
-              "шосе п",
-              "шосе р",
-              "шосе с",
-              "шосе т",
-              "шосе у",
-              "шосе ф",
-              "шосе х",
-              "шосе ц",
-              "шосе ч",
-              "шосе ш",
-              "шосе щ",
-              "шосе ь",
-              "шосе ю",
-              "шосе я",
-              "шосе 0",
-              "шосе 1",
-              "шосе 2",
-              "шосе 3",
-              "шосе 4",
-              "шосе 5",
-              "шосе 6",
-              "шосе 7",
-              "шосе 8",
-              "шосе 9",
-              "дорога а",
-              "дорога б",
-              "дорога в",
-              "дорога г",
-              "дорога ґ",
-              "дорога д",
-              "дорога е",
-              "дорога є",
-              "дорога ж",
-              "дорога з",
               "дорога и",
               "дорога і",
               "дорога ї",
@@ -3466,7 +3307,47 @@
               "шосе з",
               "шосе и",
               "шосе і",
-              "шосе ї"
+              "шосе ї",
+              "шосе й",
+              "шосе к",
+              "шосе л",
+              "шосе м",
+              "шосе н",
+              "шосе о",
+              "шосе п",
+              "шосе р",
+              "шосе с",
+              "шосе т",
+              "шосе у",
+              "шосе ф",
+              "шосе х",
+              "шосе ц",
+              "шосе ч",
+              "шосе ш",
+              "шосе щ",
+              "шосе ь",
+              "шосе ю",
+              "шосе я",
+              "шосе 0",
+              "шосе 1",
+              "шосе 2",
+              "шосе 3",
+              "шосе 4",
+              "шосе 5",
+              "шосе 6",
+              "шосе 7",
+              "шосе 8",
+              "шосе 9",
+              "дорога а",
+              "дорога б",
+              "дорога в",
+              "дорога г",
+              "дорога ґ",
+              "дорога д",
+              "дорога е",
+              "дорога є",
+              "дорога ж",
+              "дорога з"
             ],
             "items": {
               "430": {
@@ -5907,7 +5788,7 @@
               },
               "1968": {
                 "id": 1968,
-                "value": "пров. Здоров’я"
+                "value": "шосе Криворізьке"
               },
               "2270": {
                 "id": 2270,
@@ -6891,7 +6772,7 @@
               },
               "1674": {
                 "id": 1674,
-                "value": "бул. Європейський"
+                "value": "шосе Полтавське"
               },
               "1919": {
                 "id": 1919,
@@ -7072,13 +6953,17 @@
               "2611": {
                 "id": 2611,
                 "value": "ріг шосе Запорізьке/вул. Шинна"
+              },
+              "2474": {
+                "id": 2474,
+                "value": "ріг шосе Полтавське/вул. Передова"
               }
             },
             "unexpanded": []
           },
           "dictionaryComplete": false,
           "inventoryMethod": "source-limited-autocomplete-min3-cap20",
-          "inventoryPendingQueries": 2455,
+          "inventoryPendingQueries": 2415,
           "processedStreetIds": [
             "434",
             "435",
@@ -7087,18 +6972,6 @@
           "houseInventories": {
             "430": {
               "queries": [
-                "  к",
-                "  л",
-                "  м",
-                "  н",
-                "  о",
-                "  п",
-                "  р",
-                "  с",
-                "  т",
-                "  у",
-                "  ф",
-                "  х",
                 "  ц",
                 "  ч",
                 "  ш",
@@ -7417,7 +7290,19 @@
                 "  и",
                 "  і",
                 "  ї",
-                "  й"
+                "  й",
+                "  к",
+                "  л",
+                "  м",
+                "  н",
+                "  о",
+                "  п",
+                "  р",
+                "  с",
+                "  т",
+                "  у",
+                "  ф",
+                "  х"
               ],
               "items": {
                 "12487": {
@@ -7641,18 +7526,6 @@
             },
             "431": {
               "queries": [
-                "  к",
-                "  л",
-                "  м",
-                "  н",
-                "  о",
-                "  п",
-                "  р",
-                "  с",
-                "  т",
-                "  у",
-                "  ф",
-                "  х",
                 "  ц",
                 "  ч",
                 "  ш",
@@ -7971,7 +7844,19 @@
                 "  и",
                 "  і",
                 "  ї",
-                "  й"
+                "  й",
+                "  к",
+                "  л",
+                "  м",
+                "  н",
+                "  о",
+                "  п",
+                "  р",
+                "  с",
+                "  т",
+                "  у",
+                "  ф",
+                "  х"
               ],
               "items": {
                 "12598": {
@@ -8195,18 +8080,6 @@
             },
             "429": {
               "queries": [
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
-                " и",
-                " і",
-                " ї",
-                " й",
                 " к",
                 " л",
                 " м",
@@ -8525,7 +8398,19 @@
                 "3№",
                 "  ",
                 " а",
-                " б"
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і",
+                " ї",
+                " й"
               ],
               "items": {
                 "12252": {
@@ -8893,18 +8778,6 @@
             },
             "432": {
               "queries": [
-                " 9",
-                " .",
-                " -",
-                " ’",
-                " '",
-                " (",
-                " )",
-                " /",
-                " №",
-                "   ",
-                "  а",
-                "  б",
                 "  в",
                 "  г",
                 "  ґ",
@@ -9141,7 +9014,19 @@
                 " 5",
                 " 6",
                 " 7",
-                " 8"
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №",
+                "   ",
+                "  а",
+                "  б"
               ],
               "items": {
                 "12632": {
@@ -9347,24 +9232,16 @@
                 "12627": {
                   "id": 12627,
                   "value": "21"
+                },
+                "12730": {
+                  "id": 12730,
+                  "value": "25"
                 }
               },
               "unexpanded": []
             },
             "433": {
               "queries": [
-                " l",
-                " m",
-                " n",
-                " o",
-                " p",
-                " q",
-                " r",
-                " s",
-                " t",
-                " u",
-                " v",
-                " w",
                 " x",
                 " y",
                 " z",
@@ -9519,7 +9396,19 @@
                 " h",
                 " i",
                 " j",
-                " k"
+                " k",
+                " l",
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w"
               ],
               "items": {
                 "12669": {
@@ -9833,18 +9722,6 @@
             },
             "436": {
               "queries": [
-                "1ф",
-                "1х",
-                "1ц",
-                "1ч",
-                "1ш",
-                "1щ",
-                "1ь",
-                "1ю",
-                "1я",
-                "1ы",
-                "1э",
-                "1ъ",
                 "1ё",
                 "1a",
                 "1b",
@@ -10163,7 +10040,19 @@
                 "1р",
                 "1с",
                 "1т",
-                "1у"
+                "1у",
+                "1ф",
+                "1х",
+                "1ц",
+                "1ч",
+                "1ш",
+                "1щ",
+                "1ь",
+                "1ю",
+                "1я",
+                "1ы",
+                "1э",
+                "1ъ"
               ],
               "items": {
                 "12736": {
@@ -11304,18 +11193,6 @@
             },
             "427": {
               "queries": [
-                "1ї",
-                "1й",
-                "1к",
-                "1л",
-                "1м",
-                "1н",
-                "1о",
-                "1п",
-                "1р",
-                "1с",
-                "1т",
-                "1у",
                 "1ф",
                 "1х",
                 "1ц",
@@ -11880,7 +11757,19 @@
                 "1ж",
                 "1з",
                 "1и",
-                "1і"
+                "1і",
+                "1ї",
+                "1й",
+                "1к",
+                "1л",
+                "1м",
+                "1н",
+                "1о",
+                "1п",
+                "1р",
+                "1с",
+                "1т",
+                "1у"
               ],
               "items": {
                 "12160": {
@@ -12641,7 +12530,11 @@
               "61",
               "65",
               "67",
-              "69"
+              "69",
+              "7",
+              "71",
+              "8",
+              "9"
             ],
             "437": [
               "10",
