@@ -22,161 +22,314 @@
       "auditSamples": [
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "22",
-          "queue": "6.2",
+          "street": "вул. Київська",
+          "house": "22-з,пр.29",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
+          "street": "вул. Київська",
+          "house": "22В",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "22е",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "22ж",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "22з",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
           "house": "23",
-          "queue": "6.2",
+          "queue": "1.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "23/1",
-          "queue": "6.2",
+          "street": "вул. Київська",
+          "house": "24",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "23/2",
-          "queue": "6.2",
+          "street": "вул. Київська",
+          "house": "24-а",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "23А",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "23в",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
+          "street": "вул. Київська",
           "house": "25",
-          "queue": "6.2",
+          "queue": "1.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "25-в",
-          "queue": "6.2",
+          "street": "вул. Київська",
+          "house": "26",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
+          "street": "вул. Київська",
+          "house": "26-а",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "26-а/1",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "26-а/4",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "26-б",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
+          "house": "26а",
+          "queue": "2.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794343874778
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Київська",
           "house": "27",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "29",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "2А",
           "queue": "1.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "2Б",
-          "queue": "1.2",
+          "street": "вул. Київська",
+          "house": "28",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         },
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "3",
-          "queue": "6.2",
+          "street": "вул. Київська",
+          "house": "28-З",
+          "queue": "2.2",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "3/2",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "31",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "33",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "35",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "37",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Громадянська",
-          "house": "39",
-          "queue": "6.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794304085407
+          "checkedAt": 1794343874778
         }
       ],
-      "houseIndex": 40,
+      "houseIndex": 60,
       "streetIndex": 15,
       "crawlStatus": "partial",
-      "observedHouses": [],
+      "observedHouses": [
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22-е,пр.34",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22-з",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22-з,пр.29",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22В",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22е",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22ж",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "22з",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "23",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "24",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "24-а",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "25",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26-а",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26-а/1",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26-а/4",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26-б",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "26а",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "27",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "28",
+          "providerStreetId": "вул. Київська"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Київська",
+          "house": "28-З",
+          "providerStreetId": "вул. Київська"
+        }
+      ],
       "dictionaryComplete": true
     }
   }
