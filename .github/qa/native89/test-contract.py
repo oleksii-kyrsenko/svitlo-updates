@@ -11,6 +11,13 @@ class NativeContract(unittest.TestCase):
    p=pathlib.Path(d)/'proof.json';m.verify_installed(adb,meta,p);self.assertTrue(json.loads(p.read_text())['verified']);self.assertFalse(p.with_suffix('.apk').exists())
    with self.assertRaises(ValueError):m.verify_installed(adb,{**meta,'sha256':'0'*64},p)
    with self.assertRaises(ValueError):m.verify_installed(adb,{**meta,'versionCode':88},p)
+ def test_candidate_url_binds_hotfix_branch_and_exact_public_file(self):
+  candidate={'fileName':'svitlo-candidate-89-popivka-nov11.apk'}
+  good='https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/fix/popivka-schedule/candidate/'+candidate['fileName']
+  self.assertEqual(m.candidate_url({**candidate,'apkUrl':good}),good)
+  self.assertIn('/feature/capital-coverage-90/',m.candidate_url(candidate))
+  for bad in [good.replace('/oleksii-kyrsenko/','/other/'),good+'?v=1',good+'#fragment',good.replace('/fix/','/fix/../'),good.replace('/fix/','/fix/%2e%2e/'),good.replace(candidate['fileName'],'wrong.apk'),good.replace('https://','http://'),good.replace('raw.githubusercontent.com','raw.githubusercontent.com:443')]:
+   with self.subTest(url=bad),self.assertRaises(ValueError):m.candidate_url({**candidate,'apkUrl':bad})
  def test_ipv4_and_ipv6_isolation_must_both_be_present(self):
   with tempfile.TemporaryDirectory() as d:
    calls=[]

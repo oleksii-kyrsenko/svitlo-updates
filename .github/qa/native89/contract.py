@@ -42,12 +42,23 @@ def block_app_network(adb,proof):
   rules[table]=listing
  pathlib.Path(proof).write_text(json.dumps({'scope':'test emulator only; all application UID IPv4/IPv6 output blocked','uid':uid,'rules':rules},indent=2)+'\n')
 
+def candidate_url(candidate):
+ from urllib.parse import urlsplit
+ url=candidate.get('apkUrl','https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/feature/capital-coverage-90/candidate/'+candidate['fileName'])
+ parsed=urlsplit(url);parts=parsed.path.split('/')[1:]
+ if (parsed.scheme!='https' or parsed.netloc!='raw.githubusercontent.com' or
+     parts[:2]!=['oleksii-kyrsenko','svitlo-updates'] or len(parts)<5 or
+     parts[-2:]!=['candidate',candidate['fileName']] or parsed.query or parsed.fragment or
+     any(part in ['.','..'] or not re.fullmatch(r'[A-Za-z0-9_.-]+',part) for part in parts)):
+  raise ValueError('Candidate URL must bind the pinned public QA file')
+ return url
+
 def prepare():
  root=pathlib.Path('.github/qa/native89');out=pathlib.Path('apk-diagnostics');out.mkdir(exist_ok=True)
  spec=importlib.util.spec_from_file_location('audit_contract','.github/qa/audit-contract.py');c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c)
  candidate=json.loads((root/'meta.json').read_text());baseline=json.loads((root/'baseline-88.json').read_text())
  if not re.fullmatch(r'svitlo-candidate-[0-9]+(?:-[a-z0-9]+)*\.apk',candidate['fileName']):raise ValueError('Invalid pinned candidate file name')
- candidate['apkUrl']='https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/feature/capital-coverage-90/candidate/'+candidate['fileName']
+ candidate['apkUrl']=candidate_url(candidate)
  for m,path,label in [(candidate,'candidate/'+candidate['fileName'],'candidate'),(baseline,'previous.apk','baseline')]:
   if not pathlib.Path(path).exists():download(m,path)
   assert_bytes(path,m)

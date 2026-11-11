@@ -1,11 +1,12 @@
 {
-  "kind": "unpublished-signed-qa-candidate",
+  "kind": "unpublished-signed-qa-hotfix",
   "version": "0.1.53",
   "versionCode": 89,
   "packageName": "ua.svitlo.app.testing",
-  "sha256": "5ccae436133467b70f7770934cdaf67f899945c7b7790647c9a267aea88dac7c",
-  "size": 82291870,
-  "sourceCommit": "586a1913f75f4e6186de9f925ec30bd83aac0e15",
+  "sha256": "f2309b850e9b953e6d94cbf9b63c8a6e4d6b01af570d512155a15401ee15017d",
+  "size": 82248242,
+  "sourceCommit": "3dd84b4aec81f96c59dba280bdef911289a070e6",
   "publishedToUpdateChannel": false,
-  "fileName": "svitlo-candidate-89-khmel-nov5.apk"
+  "fileName": "svitlo-candidate-89-popivka-nov11.apk",
+  "apkUrl": "https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/fix/popivka-schedule/candidate/svitlo-candidate-89-popivka-nov11.apk"
 }
