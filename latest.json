@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "packageName": "ua.svitlo.app.testing",
-  "version": "0.1.52",
-  "versionCode": 88,
-  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-88/svitlo-test-88.apk",
-  "size": 82323533,
-  "sha256": "da4afbf50c9f1f4a563ef67fb56decdd0ba0e5ffde95f19789b97aff8e9ffc1a",
-  "notes": "Динамічні джерела й каталог ОСР, покращений пошук адрес та пропозиції черги з місцевих джерел із вашим підтвердженням. Збережені адреси, ручні виправлення та офлайн-дані залишаються.",
+  "version": "0.1.53",
+  "versionCode": 89,
+  "apkUrl": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/android-test-89/svitlo-test-89.apk",
+  "size": 82248242,
+  "sha256": "f2309b850e9b953e6d94cbf9b63c8a6e4d6b01af570d512155a15401ee15017d",
+  "notes": "Виправлено читання офіційних графіків Черкасиобленерго, зокрема для Попівки. Збережені адреси, черги, налаштування й офлайн-кеш залишаються.",
   "services": {
     "reverse": "https://nominatim.openstreetmap.org/reverse",
     "nearby": "https://overpass-api.de/api/interpreter"
   },
-  "publishedAt": "2026-11-01T14:19:27.577662+00:00",
-  "sourceCommit": "243a9a339b1fdcfa44f3850aee2e051e121b0dff"
+  "publishedAt": "2026-11-11T08:37:58.890Z",
+  "sourceCommit": "3dd84b4aec81f96c59dba280bdef911289a070e6"
 }
