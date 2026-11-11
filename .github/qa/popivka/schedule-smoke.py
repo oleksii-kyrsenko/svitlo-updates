@@ -99,7 +99,13 @@ try:
  expected=source.observe(out/'source-before-candidate');result['officialBeforeCandidate']=expected;launch();state,snapshot=wait_snapshot(original,expected,'candidate-live');visible_graph('candidate89-live-graph',expected);result['candidateSnapshot']=snapshot;flags['CandidateRealOfficialTodayIntervalsMatch']=True
  # Capture the queue/source card in its own screenshot; a long graph may place it below the viewport.
  c['wait_source']('Черга '+original['queue'],original['address']);evidence('candidate89-source-address',xml());flags['ExactAddressAndQueueVisible']=True
- contract.block_app_network(adb,out/'offline-isolation.json');adb('shell','am','force-stop',pkg);launch();c['wait_for']('current-address-card','schedule-graph');time.sleep(5);visible_graph('candidate89-offline-restart',expected);offline=dump_state('offline-restart');same_place(offline,original)
+ contract.block_app_network(adb,out/'offline-isolation.json');adb('shell','am','force-stop',pkg)
+ # While graph/source screenshots were taken, a legitimate online refresh may
+ # have committed a newer checkedAt. Anchor the last persisted successful cache
+ # AFTER network isolation and force-stop, before the offline restart.
+ frozen=dump_state('network-blocked-before-restart');snapshot=expected_snapshot(frozen,original,expected)
+ result['lastSuccessfulSnapshotBeforeOfflineRestart']=snapshot
+ launch();c['wait_for']('current-address-card','schedule-graph');time.sleep(5);visible_graph('candidate89-offline-restart',expected);offline=dump_state('offline-restart');same_place(offline,original)
  cached=offline.get('snapshots',{}).get(original['id'],{}).get('today',{});assert cached.get('date')==snapshot['date'] and cached.get('queue')==snapshot['queue'];assert cached.get('intervals')==snapshot['intervals'];assert cached.get('checkedAt')==snapshot['checkedAt'];flags['OfflineRestartKeepsExactOfficialCacheAndSourceTimestamp']=True
 finally:
  result.update(flags=flags,allPassed=len(flags)==5 and all(flags.values()))

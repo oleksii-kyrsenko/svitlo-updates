@@ -1,6 +1,13 @@
 name: Native candidate89 retention, UI and live schedule acceptance
 on:
   workflow_dispatch:
+    inputs:
+      suite:
+        description: Acceptance suite
+        type: choice
+        options: [all, live]
+        default: all
+        required: false
   push:
     branches: [feature/capital-coverage-90]
     paths: ['.github/qa/native89/**', '.github/workflows/verify-capital-candidate-89.yml']
@@ -8,6 +15,7 @@ permissions:
   contents: read
 jobs:
   native:
+    if: inputs.suite != 'live'
     name: Android API${{ matrix.api }} saved${{ matrix.theme }} 88to89
     runs-on: ubuntu-24.04
     timeout-minutes: 45
