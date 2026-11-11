@@ -330,6 +330,74 @@ class PostSaveScrolling(unittest.TestCase):
                 self.assertIsNone(result['visibleQueue']);self.assertEqual(driver.state_reads,1)
 
 
+class FlattenedSourceBlock(unittest.TestCase):
+    def fixture(self,clock,change=lambda xml:xml):
+        driver,case,result,state,place=SearchInputControls().post_save_fixture(clock)
+        case.update(city='Одеса',exactStreet='вулиця Зелена Балка',exactHouse='103')
+        place['addressParts'].update(settlement=case['city'],street=case['exactStreet'],house=case['exactHouse']);place['queue']='4.2';driver.state=copy.deepcopy(state)
+        result['addressFromUI']='Одеса, вулиця Зелена Балка, 103'
+        initial='<hierarchy><android.widget.ScrollView resource-id="main-scroll" bounds="[0,221][1080,1857]" displayed="true"><android.view.View resource-id="current-address-name" text="'+result['addressFromUI']+'" displayed="true"/></android.widget.ScrollView></hierarchy>'
+        # Actual UA-51-holdout-9 structure and coordinates: address-block is
+        # self-closing; address/queue are sibling TextViews in the source card.
+        final='''<hierarchy><android.widget.ScrollView resource-id="main-scroll" bounds="[0,221][1080,1857]" displayed="true">
+          <android.view.ViewGroup resource-id="schedule-source" bounds="[32,1238][1049,1795]" displayed="true">
+            <android.view.View text="Джерело: ДТЕК Одеські електромережі" bounds="[66,1272][1016,1335]" displayed="true"/>
+            <android.view.ViewGroup resource-id="address-block" bounds="[66,1361][1014,1477]" displayed="true"/>
+            <android.widget.TextView text="Одеса, вулиця Зелена Балка, 103" bounds="[150,1363][787,1411]" displayed="true"/>
+            <android.widget.TextView text="Черга 4.2" bounds="[150,1421][787,1474]" displayed="true"/>
+            <android.widget.Button content-desc="Редагувати" bounds="[812,1361][1015,1477]" displayed="true"/>
+            <android.widget.TextView text="Збережена копія офіційного переліку · перевірено 06.11.2026, 07:28" bounds="[150,1490][787,1530]" displayed="true"/>
+          </android.view.ViewGroup></android.widget.ScrollView></hierarchy>'''
+        final=change(final)
+        driver.source=lambda:final if driver.scrolls else initial
+        return driver,case,result,state,place,initial,final
+
+    def test_actual_flattened_source_siblings_confirm_exact_visible_address_and_fresh_state(self):
+        clock=Clock();driver,case,result,state,place,initial,final=self.fixture(clock)
+        with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+            _,selected=driver.observe_post_save_queue(case,result,state,place,2)
+        self.assertEqual(selected['queue'],'4.2');self.assertEqual(driver.state_reads,1);self.assertEqual(driver.scrolls,[True])
+        self.assertEqual(driver.screens,[('post-save-before-scroll-retry',initial),('post-save-queue',final)])
+        self.assertEqual(result['postSaveObservation']['sourceAddressBinding'],'contained-source-sibling-texts');self.assertLess(clock.now,2)
+        self.assertEqual(result['preSaveObservation']['outcome'],'source_protected')
+
+    def test_other_card_or_outside_block_or_clipped_or_hidden_text_cannot_prove_the_queue(self):
+        changes=[
+            lambda x:x.replace('resource-id="schedule-source"','resource-id="other-card"'),
+            lambda x:x.replace('[150,1421][787,1474]','[150,1480][787,1533]'),
+            lambda x:x.replace('[0,221][1080,1857]','[0,221][1080,1450]'),
+            lambda x:x.replace('text="Черга 4.2" bounds="[150,1421][787,1474]" displayed="true"','text="Черга 4.2" bounds="[150,1421][787,1474]" displayed="false"'),
+            lambda x:x.replace('text="Одеса, вулиця Зелена Балка, 103"','text="Збережена копія · 06.11.2026, 07:28"'),
+            lambda x:x.replace('bounds="[150,1421][787,1474]"','bounds="[-787,-1474][-150,-1421]"'),
+            lambda x:x.replace('bounds="[66,1361][1014,1477]"','bounds="invalid"'),
+            lambda x:x.replace('<android.widget.TextView text="Черга 4.2" bounds="[150,1421][787,1474]" displayed="true"/>','<android.view.ViewGroup resource-id="tooltip"><android.widget.TextView text="Черга 4.2" bounds="[150,1421][787,1474]" displayed="true"/></android.view.ViewGroup>'),
+            # Same coordinates cannot borrow text from another card/tooltip.
+            lambda x:x.replace('<android.widget.TextView text="Черга 4.2"','</android.view.ViewGroup><android.view.ViewGroup resource-id="tooltip"><android.widget.TextView text="Черга 4.2"'),
+        ]
+        for i,change in enumerate(changes):
+            with self.subTest(change=i):
+                clock=Clock();driver,case,result,state,place,_,_=self.fixture(clock,change)
+                with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+                    with self.assertRaisesRegex(RuntimeError,'deadline exhausted'):driver.observe_post_save_queue(case,result,state,place,2)
+                self.assertIsNone(result['visibleQueue']);self.assertEqual(driver.state_reads,0)
+
+    def test_flattened_wrong_address_queue_active_id_and_expired_deadline_still_fail(self):
+        for changed in ['address','queue','active','deadline']:
+            with self.subTest(changed=changed):
+                clock=Clock();change=lambda xml:xml
+                if changed=='address':change=lambda xml:xml.replace('Одеса, вулиця Зелена Балка, 103','Одеса, вулиця Інша, 103')
+                elif changed=='queue':change=lambda xml:xml.replace('Черга 4.2','Черга 3.1')
+                driver,case,result,state,place,_,_=self.fixture(clock,change)
+                if changed=='active':driver.state['activePlaceId']='another-place'
+                elif changed=='deadline':
+                    reader=driver.read_state
+                    def late_read():clock.now=2;return reader()
+                    driver.read_state=late_read
+                with patch.object(audit.time,'monotonic',clock.monotonic),patch.object(audit.time,'sleep',clock.sleep):
+                    with self.assertRaises(RuntimeError):driver.observe_post_save_queue(case,result,state,place,2)
+                self.assertIsNone(result['visibleQueue'])
+
+
 class SourceBoundRenames(unittest.TestCase):
     def fixture(self):
         case={'id':'synthetic-rename','city':'Зразок','regionId':'UA-99','exactStreet':'вулиця Стара','exactHouse':'7-А'}

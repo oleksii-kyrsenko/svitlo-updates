@@ -603,6 +603,26 @@ class Audit:
             for child in node:values.extend(visible_nodes(child))
             return values
         def visible_texts(node):return [n.get('text') for n in visible_nodes(node) if n.get('text')]
+        def bounds(node):
+            match=re.fullmatch(r'\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]',node.get('bounds',''))
+            box=tuple(map(int,match.groups())) if match else None
+            return box if box and box[2]>box[0] and box[3]>box[1] else None
+        def contains(outer,inner):return outer and inner and outer[0]<=inner[0]<inner[2]<=outer[2] and outer[1]<=inner[1]<inner[3]<=outer[3]
+        def flattened_block_texts(block,root,nodes):
+            # React Native can expose this testID as an empty accessibility
+            # sibling of its text, rather than their XML parent. Accept only
+            # text siblings inside this block's actual on-screen rectangle,
+            # under the same source card and visible main scroll viewport.
+            if len(block):return []
+            parents={child:parent for parent in root.iter() for child in parent};ancestors=[];ancestor=block
+            while ancestor in parents:
+                ancestor=parents[ancestor];ancestors.append(ancestor)
+            cards=[n for n in ancestors if n.get('resource-id','').split('/')[-1]=='schedule-source']
+            scrolls=[n for n in ancestors if n.get('resource-id','').split('/')[-1]=='main-scroll']
+            if len(cards)!=1 or len(scrolls)!=1 or cards[0] not in nodes or scrolls[0] not in nodes:return []
+            block_box=bounds(block);card_box=bounds(cards[0]);viewport=bounds(scrolls[0])
+            if not block_box or not contains(card_box,block_box):return []
+            return [n.get('text') for n in parents[block] if n in nodes and not len(n) and n.get('text') and contains(block_box,bounds(n)) and contains(viewport,bounds(n))]
         while time.monotonic()<deadline:
             xml=self.source()
             if time.monotonic()>=deadline:break
@@ -616,6 +636,8 @@ class Audit:
             blocks=[n for n in nodes if n.get('resource-id','').split('/')[-1]=='address-block' and n.get('displayed')!='false']
             if len(blocks)>1:raise RuntimeError('Post-save source address is not unique')
             block_texts=visible_texts(blocks[0]) if blocks else []
+            flattened=bool(blocks and not block_texts)
+            if flattened:block_texts=flattened_block_texts(blocks[0],root,nodes)
             address_visible=any(norm(text)==norm(result['addressFromUI']) for text in block_texts)
             # The first visible address-card text is the address when its
             # whole row is in view. A later cache timestamp also contains a
@@ -639,7 +661,7 @@ class Audit:
                     if not(selected.get('queueConfirmed') and selected.get('queueOrigin')=='official' and selected.get('queue')==queue):
                         raise RuntimeError('Visible post-save queue differs from fresh confirmed official state')
                     if time.monotonic()>=deadline:break
-                    observation.update(completedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),visibleQueue=queue,visibleText=texts,screenshot='post-save-queue.png',xml='post-save-queue.xml')
+                    observation.update(completedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),visibleQueue=queue,visibleText=texts,screenshot='post-save-queue.png',xml='post-save-queue.xml',sourceAddressBinding='contained-source-sibling-texts' if flattened else 'descendant-texts' if blocks else 'current-address-screen')
                     result.update(visibleQueue=queue,visibleText=texts,visibleQueueStage='post-save-home',visibleQueueScreenshot='post-save-queue.png',visibleQueueXML='post-save-queue.xml')
                     return fresh,selected
             # A long daily chart can put the source queue below the viewport.
