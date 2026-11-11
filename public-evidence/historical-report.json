@@ -1,0 +1,31 @@
+{
+  "startedAt": 1794421157524,
+  "sources": [
+    {
+      "id": "prosvitlo-poltava-city",
+      "url": "https://raw.githubusercontent.com/Elvis129/prosvitlo-addresses-db/abb932c0a46474864c67ecd80bfd7e117500785c/addresses_pl_v1.json",
+      "sha256": "ccf8490374eff3eab4c30f933406133492d1b3067e2bb0adec0f92926b76487a",
+      "publishedAt": 1792244685000,
+      "sourceHouses": 25469,
+      "vetoedHouses": 4398,
+      "unsupportedSelectors": 677,
+      "unsupportedStreetHouses": 9974,
+      "streetCollisionHouses": 47,
+      "records": 749,
+      "acceptedHouses": 11050,
+      "revisionMonitor": {
+        "url": "https://api.github.com/repos/Elvis129/prosvitlo-addresses-db/contents/addresses_pl_v1.json",
+        "pinnedBlobSha1": "715165e566fb106dd48dbccdd60e21ce94304a40",
+        "upstreamBlobSha1": "715165e566fb106dd48dbccdd60e21ce94304a40",
+        "changed": false,
+        "action": "unchanged-publication"
+      }
+    }
+  ],
+  "errors": [],
+  "finishedAt": 1794421157524,
+  "records": 749,
+  "totalRuntimeRecords": 749,
+  "serializedBytes": 1450418,
+  "mode": "historical-user-confirmation"
+}
