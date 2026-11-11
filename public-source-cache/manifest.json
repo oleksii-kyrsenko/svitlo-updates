@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": 1794340399978,
+  "generatedAt": 1794379819769,
   "operators": [
     {
       "operatorId": "cherkasy",
-      "fetchedAt": 1794340400003,
-      "expiresAt": 1794383600003,
+      "fetchedAt": 1794379819802,
+      "expiresAt": 1794423019802,
       "sha256": "70671e79a8f00c88d54ce1345aad9df0a89be9cd4b32c65ba8da64956d3feb6a",
       "size": 249418,
       "decodedSize": 1298369,
@@ -13,21 +13,21 @@
     },
     {
       "operatorId": "khmelnytskyi",
-      "fetchedAt": 1794340405786,
-      "expiresAt": 1794383605786,
-      "sha256": "f5c0f44c2ff493ac9478222ec14d21db05d898b806dff9cef636dcc214971b5f",
+      "fetchedAt": 1794379825187,
+      "expiresAt": 1794423025187,
+      "sha256": "36085257ba119ccd78d3d126860847d83e5d7a13655a8e85b6de597e68526b57",
       "size": 555177,
       "decodedSize": 3774305,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-f5c0f44c2ff493ac9478222ec14d21db05d898b806dff9cef636dcc214971b5f.json.gz"
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-36085257ba119ccd78d3d126860847d83e5d7a13655a8e85b6de597e68526b57.json.gz"
     },
     {
       "operatorId": "rivne",
-      "fetchedAt": 1794340413357,
-      "expiresAt": 1794383613357,
-      "sha256": "8db28a64522e808ddd702fadec5e5af9eea911e492dab81bf5b953431535eac8",
-      "size": 118084,
+      "fetchedAt": 1794379832310,
+      "expiresAt": 1794423032310,
+      "sha256": "f30b9b0ab64adc76ed20119b8c73ebc56f6740541f9dc52814877104ddb65413",
+      "size": 118087,
       "decodedSize": 892907,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-8db28a64522e808ddd702fadec5e5af9eea911e492dab81bf5b953431535eac8.json.gz"
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-f30b9b0ab64adc76ed20119b8c73ebc56f6740541f9dc52814877104ddb65413.json.gz"
     }
   ],
   "failures": [
