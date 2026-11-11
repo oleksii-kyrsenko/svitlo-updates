@@ -1,0 +1,51 @@
+name: Historical public exact-house suggestions
+on:
+  schedule:
+    - cron: '37 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [feature/historical-public-hints]
+    paths: ['public-evidence/historical/**', 'public-evidence/qa/test_historical.py', '.github/workflows/public-historical.yml']
+permissions:
+  contents: write
+concurrency:
+  group: public-evidence-agents
+  cancel-in-progress: false
+jobs:
+  historical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing public reader dependency for merge controls
+        run: pip install beautifulsoup4==4.14.2
+      - name: Verify immutable provenance, exact houses and negative overlap
+        run: python public-evidence/qa/test_historical.py
+      - name: Read reviewed pins and merge historical user-confirmed suggestions
+        run: python public-evidence/historical/importer.py --monitor --proof-dir /tmp/historical-public-proof
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: historical-public-${{ github.run_id }}
+          path: |
+            public-evidence/historical-report.json
+            public-evidence/manifest.json
+            /tmp/historical-public-proof
+          retention-days: 90
+      - name: Publish merged public evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public-evidence/manifest.json public-evidence/historical-report.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh historical public suggestions with original source dates'
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}

@@ -4,6 +4,7 @@ No subscriber queries, hosted inference APIs, credentials or autonomous tools.
 import argparse,datetime,hashlib,html,json,pathlib,re,time,urllib.request,urllib.parse,concurrent.futures,ipaddress,socket
 from html.parser import HTMLParser
 ROOT=pathlib.Path(__file__).parent
+from manifest_io import serialize_manifest,write_manifest
 NOW=lambda:int(time.time()*1000)
 MAX_AGE=7*86400000
 class Page(HTMLParser):
@@ -231,15 +232,19 @@ def collect():
  # claims survive a pagination window, subject to their original expiry.
  previous=ROOT/'manifest.json'
  if previous.exists():
-  try:candidates.extend(r for r in json.loads(previous.read_text()).get('records',[]) if r.get('expiresAt',0)>now and r.get('sourceUrl') not in seen_publications and (not r.get('validity') or now-r.get('fetchedAt',0)<=36*3600000))
-  except Exception:pass
- records=list({c['id']:c for c in candidates if c.get('expiresAt',0)>now}.values())[:10000]
+  value=json.loads(previous.read_text())
+  if value.get('schemaVersion')!=2 or not isinstance(value.get('records'),list):raise ValueError('Unsupported previous public manifest; previous manifest retained')
+  # A news scan owns message/roster records. Merely visiting a directory URL
+  # cannot retract another reader's house facts or renew its source clocks.
+  candidates.extend(r for r in value['records'] if r.get('expiresAt',0)>now and (r.get('evidenceType') in ['address-directory','historical-directory'] or r.get('sourceUrl') not in seen_publications) and (not r.get('validity') or now-r.get('fetchedAt',0)<=36*3600000))
+ records=list({c['id']:c for c in candidates if c.get('expiresAt',0)>now}.values())
  archive=list({c['id']:c for c in archive}.values())[:500]
- if len(json.dumps(records,ensure_ascii=False).encode())>1800000:raise ValueError('Public manifest size budget exceeded; previous manifest retained')
+ manifest={'schemaVersion':2,'enabled':config.get('enabled') is True,'generatedAt':NOW(),'records':records}
+ serialize_manifest(manifest)
  report['agents']['verification']={'accepted':len(records),'archivedLeads':len(archive),'mode':'active' if config.get('enabled') else 'shadow','modelBudgetExhausted':len(pending)>18};report['finishedAt']=NOW();report['sourceCursors']=dict(source_cursors);report['sourceTotals']={key:len(config.get(key,[])) for key in ['official','documents','discovery','searches','community']}
  (ROOT/'discovered-sources.json').write_text(json.dumps(discoveries,ensure_ascii=False,indent=2)+'\n')
  (ROOT/'research-candidates.json').write_text(json.dumps({'generatedAt':NOW(),'records':archive,'note':'Historical leads only; not loaded by the app'},ensure_ascii=False,indent=2)+'\n')
  (ROOT/'history-state.json').write_text(json.dumps(history_state,ensure_ascii=False,indent=2)+'\n')
- (ROOT/'manifest.json').write_text(json.dumps({'schemaVersion':2,'enabled':config.get('enabled') is True,'generatedAt':NOW(),'records':records},ensure_ascii=False,indent=2)+'\n')
+ write_manifest(ROOT/'manifest.json',manifest)
  (ROOT/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__':collect()

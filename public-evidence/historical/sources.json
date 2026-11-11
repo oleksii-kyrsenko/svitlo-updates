@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "sources": [
+    {
+      "id": "prosvitlo-poltava-city",
+      "format": "settlements-streets-gpv-v1",
+      "repository": "Elvis129/prosvitlo-addresses-db",
+      "commit": "abb932c0a46474864c67ecd80bfd7e117500785c",
+      "path": "addresses_pl_v1.json",
+      "sha256": "ccf8490374eff3eab4c30f933406133492d1b3067e2bb0adec0f92926b76487a",
+      "publishedCommit": "0d5a090c80c62e765fcaf44a1d9e13a7add80168",
+      "publishedAt": "2026-10-17T13:44:45Z",
+      "operatorId": "poltava",
+      "regionId": "UA-53",
+      "sourceDsoCode": "ploe",
+      "settlement": "Полтава",
+      "community": "Полтавська громада",
+      "katottg": "UA53080370010073240",
+      "originalSourceUrl": "https://www.poe.pl.ua/customs/search-disconnection-cabinet.php",
+      "reviewNote": "Publisher says individual city house queries; rural sampled inheritance is excluded. GPV publication is 17 October; 19 October added GAV, and the global version date must not renew these facts. Third-party historical suggestions only."
+    }
+  ]
+}
