@@ -1,22 +1,71 @@
-name: Native candidate89 retention and UI acceptance
+name: Candidate90 Android retention, live graph and historical hints
 on:
   workflow_dispatch:
-  push:
-    branches: [feature/capital-coverage-90]
-    paths: ['.github/qa/native89/**', '.github/workflows/verify-capital-candidate-89.yml']
+    inputs:
+      suite:
+        description: Acceptance suite for the same sealed candidate90
+        type: choice
+        options: [all, native, live, historical]
+        default: all
+        required: false
+      api:
+        description: Android API selection
+        type: choice
+        options: [all, '30', '35', '36']
+        default: all
+        required: false
+      theme:
+        description: Persisted theme for retention fixtures only
+        type: choice
+        options: [all, aurora, moss]
+        default: all
+        required: false
 permissions:
   contents: read
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      runNative: ${{ steps.select.outputs.runNative }}
+      runLive: ${{ steps.select.outputs.runLive }}
+      runHistorical: ${{ steps.select.outputs.runHistorical }}
+      nativeMatrix: ${{ steps.select.outputs.nativeMatrix }}
+      liveMatrix: ${{ steps.select.outputs.liveMatrix }}
+      historicalMatrix: ${{ steps.select.outputs.historicalMatrix }}
+      apkUrl: ${{ steps.binary.outputs.apkUrl }}
+      apkSha256: ${{ steps.binary.outputs.apkSha256 }}
+      apkSize: ${{ steps.binary.outputs.apkSize }}
+      version: ${{ steps.binary.outputs.version }}
+      versionCode: ${{ steps.binary.outputs.versionCode }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check acceptance contracts before allocating emulators
+        run: |
+          python3 .github/qa/native90/test-contract.py
+          python3 .github/qa/native90/test-tap-target.py
+          python3 .github/qa/native90/test-selection.py
+          python3 .github/qa/native90/test-historical-screen.py
+          python3 .github/qa/test-historical-hint-audit.py
+      - name: Select bounded acceptance jobs
+        id: select
+        env:
+          INPUT_SUITE: ${{ inputs.suite || 'all' }}
+          INPUT_API: ${{ inputs.api || 'all' }}
+          INPUT_THEME: ${{ inputs.theme || 'all' }}
+        run: python3 .github/qa/native90/selection.py
+      - name: Bind the real sealed candidate and published89 baseline
+        id: binary
+        run: python3 .github/qa/native90/metadata-plan.py
   native:
-    name: Android API${{ matrix.api }} saved${{ matrix.theme }} 88to89
+    needs: plan
+    if: needs.plan.outputs.runNative == 'true'
+    name: Retention API${{ matrix.api }} saved${{ matrix.theme }} 89to90
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     strategy:
       fail-fast: false
       max-parallel: 6
-      matrix:
-        api: [30, 35, 36]
-        theme: [aurora, moss]
+      matrix: ${{ fromJSON(needs.plan.outputs.nativeMatrix) }}
     env:
       SAVED_THEME: ${{ matrix.theme }}
     steps:
@@ -26,17 +75,14 @@ jobs:
           distribution: temurin
           java-version: '17'
       - run: pip install pillow==12.0.0
-      - name: Verify pinned APKs and independent native QA contracts
+      - name: Verify exact baseline and candidate packages, hashes and certificate
         run: |
           if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
             "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
           fi
-          python3 .github/qa/native89/test-contract.py
-          python3 .github/qa/native89/contract.py
-      - name: Enable runner acceleration
-        run: |
-          test -c /dev/kvm
-          sudo chmod 666 /dev/kvm
+          python3 .github/qa/native90/contract.py
+      - name: Enable acceleration
+        run: test -c /dev/kvm && sudo chmod 666 /dev/kvm
       - uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api }}
@@ -47,10 +93,145 @@ jobs:
           cores: 2
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu swiftshader
-          script: python3 .github/qa/native89/prepare-emulator.py && python3 -u .github/qa/native89/theme-smoke.py
+          script: python3 .github/qa/native90/prepare-emulator.py && python3 -u .github/qa/native90/theme-smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: candidate89-native-api${{ matrix.api }}-${{ matrix.theme }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          name: candidate90-native-api${{ matrix.api }}-${{ matrix.theme }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
           path: apk-diagnostics/
+          retention-days: 90
+  live:
+    needs: plan
+    if: needs.plan.outputs.runLive == 'true'
+    name: Popivka live graph API${{ matrix.api }} 89to90
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix: ${{ fromJSON(needs.plan.outputs.liveMatrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Verify independent source and binary contracts
+        run: |
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
+          fi
+          python3 .github/qa/native90/popivka/test-source.py
+          python3 .github/qa/native90/popivka/test-screen.py
+          python3 .github/qa/native90/contract.py
+      - name: Enable acceleration
+        run: test -c /dev/kvm && sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu swiftshader
+          script: python3 .github/qa/native90/prepare-emulator.py && python3 -u .github/qa/native90/popivka/schedule-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate90-popivka-api${{ matrix.api }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          path: apk-diagnostics/
+          retention-days: 90
+  historical-plan:
+    needs: plan
+    if: needs.plan.outputs.runHistorical == 'true'
+    runs-on: ubuntu-24.04
+    outputs:
+      sha256: ${{ steps.freeze.outputs.plan_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Freeze one source-grounded UI case across all three Android versions
+        id: freeze
+        env:
+          CANDIDATE_URL: ${{ needs.plan.outputs.apkUrl }}
+          CANDIDATE_SHA: ${{ needs.plan.outputs.apkSha256 }}
+          CANDIDATE_SIZE: ${{ needs.plan.outputs.apkSize }}
+          CANDIDATE_VERSION: ${{ needs.plan.outputs.version }}
+          CANDIDATE_CODE: ${{ needs.plan.outputs.versionCode }}
+        run: >-
+          python3 .github/qa/historical-hint-audit.py plan
+          --apk-url "$CANDIDATE_URL" --apk-sha256 "$CANDIDATE_SHA"
+          --apk-size "$CANDIDATE_SIZE" --version "$CANDIDATE_VERSION"
+          --version-code "$CANDIDATE_CODE" --case-id UA-53-capital-5 --out historical-plan
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate90-historical-plan-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          path: historical-plan/
+          retention-days: 90
+  historical:
+    needs: [plan, historical-plan]
+    if: needs.plan.outputs.runHistorical == 'true'
+    name: Historical hint real UI API${{ matrix.api }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      APPIUM_HOME: /tmp/svitlo-historical-appium
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix: ${{ fromJSON(needs.plan.outputs.historicalMatrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/download-artifact@v4
+        with:
+          name: candidate90-historical-plan-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          path: historical-plan
+      - name: Verify the candidate and install Unicode-capable UI automation
+        run: |
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
+          fi
+          python3 .github/qa/native90/contract.py
+          npm install --prefix "$RUNNER_TEMP/svitlo-ui-tools" --no-audit --no-fund appium@3.8.0
+          echo "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin/appium" driver install --source=npm appium-uiautomator2-driver@8.7.0
+      - name: Enable acceleration
+        run: test -c /dev/kvm && sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu swiftshader
+          script: |
+            set -e
+            mkdir -p historical-audit
+            appium --address 127.0.0.1 --port 4723 --log-no-colors --log-timestamp > historical-audit/appium.log 2>&1 &
+            for attempt in $(seq 1 60); do
+              if curl -fsS http://127.0.0.1:4723/status > /dev/null; then break; fi
+              sleep 1
+            done
+            curl -fsS http://127.0.0.1:4723/status > historical-audit/appium-ready.json
+            candidate_file=$(python3 -c 'import json;print(json.load(open(".github/qa/native90/meta.json"))["fileName"])')
+            python3 -u .github/qa/historical-hint-audit.py run --apk "candidate/$candidate_file" --plan historical-plan/plan.json --plan-sha256 '${{ needs.historical-plan.outputs.sha256 }}' --api ${{ matrix.api }} --out historical-audit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate90-historical-api${{ matrix.api }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          path: |
+            historical-audit/
+            apk-diagnostics/
           retention-days: 90

@@ -1,0 +1,120 @@
+"""Native display-name/update acceptance; external fixtures never enter the product."""
+import pathlib,json,sqlite3,time,copy,datetime,zoneinfo,xml.etree.ElementTree as E,os,subprocess
+import hashlib
+from PIL import Image,ImageChops
+c={'__name__':'launcher_helpers'};exec(compile(pathlib.Path('.github/qa/native90/apk-smoke.py').read_text().split('\nflags={}')[0],'launcher_helpers','exec'),c)
+adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait_for'];launch=c['launch'];evidence=c['evidence'];out=c['out'];pkg=c['pkg'];meta=c['meta'];bounds=c['bounds'];flags={};metrics={}
+def seed(state,theme):
+ adb('shell','am','force-stop',pkg);p=out/'launcher-RKStorage'
+ for suffix in ['', '-wal', '-shm']:pathlib.Path(str(p)+suffix).unlink(missing_ok=True)
+ db=sqlite3.connect(p)
+ try:
+  db.execute('CREATE TABLE catalystLocalStorage(key TEXT PRIMARY KEY,value TEXT NOT NULL)');db.execute('PRAGMA user_version=1')
+  for k,v in [('svitlo.state.v1',state),('svitlo.appearance.v1',{'version':1,'theme':theme})]:db.execute('INSERT INTO catalystLocalStorage VALUES (?,?)',(k,json.dumps(v,ensure_ascii=False)))
+  db.commit()
+ finally:db.close()
+ remote=f'/data/data/{pkg}/databases';adb('shell','mkdir','-p',remote)
+ adb('shell','rm','-f',remote+'/RKStorage',remote+'/RKStorage-wal',remote+'/RKStorage-shm')
+ adb('push',str(p),remote+'/RKStorage');uid=adb('shell','stat','-c','%u',f'/data/data/{pkg}').strip();assert uid.isdigit();adb('shell','chown','-R',f'{uid}:{uid}',remote);adb('shell','restorecon','-R',remote)
+def saved():
+ # Storage seeding is restricted to this disposable retention fixture. Every
+ # subsequent observation is a new read-only capture with all original sidecars.
+ adb('shell','am','force-stop',pkg);root=out/'database'
+ for attempt in range(3):
+  index=len(list(root.glob('capture-*')))+1;directory=root/('capture-'+str(index).zfill(3));directory.mkdir(parents=True,exist_ok=False)
+  adb('pull',f'/data/data/{pkg}/databases',str(directory));files=[]
+  for path in sorted(directory.rglob('*')):
+   if path.is_file():files.append({'path':str(path.relative_to(directory)),'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+  proof={'capturedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'readOnly':True,'files':files};target=directory/'capture.json';target.write_text(json.dumps(proof,indent=2)+'\n')
+  database=next(directory.rglob('RKStorage'),None)
+  if not database:raise AssertionError('Retained SQLite state is missing')
+  try:
+   with sqlite3.connect('file:'+str(database.resolve())+'?mode=ro',uri=True) as db:
+    integrity=db.execute('PRAGMA integrity_check').fetchone()[0]
+    if integrity!='ok':raise AssertionError('Retained SQLite integrity check failed: '+integrity)
+    values={k:json.loads(v) for k,v in db.execute('SELECT key,value FROM catalystLocalStorage WHERE key IN (?,?)',('svitlo.state.v1','svitlo.appearance.v1'))}
+  except sqlite3.DatabaseError as error:
+   proof['sqliteError']=str(error);proof['retry']=str(error) in ['attempt to write a readonly database','database disk image is malformed'] and attempt<2;target.write_text(json.dumps(proof,indent=2)+'\n')
+   if not proof['retry']:raise
+   time.sleep(.25);continue
+  proof.update(integrity=integrity,readCompleted=True);target.write_text(json.dumps(proof,indent=2)+'\n')
+  (out/'saved-state.json').write_text(json.dumps(values,ensure_ascii=False,indent=2)+'\n');return values
+
+def icon_node(s):return next((n for n in E.fromstring(s).iter('node') if n.get('text')=='Коли світло' or n.get('content-desc')=='Коли світло'),None)
+def by_id(s,id):return next((n for n in E.fromstring(s).iter('node') if n.get('resource-id','').split('/')[-1]==id),None)
+def full_field(id):
+ for attempt in range(14):
+  s=xml();n=by_id(s,id)
+  if n is not None:
+   b=bounds(n)
+   if b[2]>b[0] and 180<b[1]<b[3]<2120:return s
+  c['scroll_down'](E.fromstring(s))
+ raise AssertionError('Form field not visible: '+id)
+def hide_keyboard():
+ status=adb('shell','dumpsys','input_method')
+ if 'mInputShown=true' in status or 'mIsInputViewShown=true' in status:
+  adb('shell','input','keyevent','4');time.sleep(.5)
+ # A stale platform IME flag must not accidentally discard the editor.
+ s=xml()
+ if by_id(s,'app-message-dialog') is not None:tap('Продовжити')
+def dialog_capture(name,theme):
+ s=wait('app-message-dialog');assert 'android:id/alertTitle' not in s;evidence(name,s)
+ n=by_id(s,'app-message-dialog');b=bounds(n);im=Image.open(out/(name+'.png')).convert('RGB');pixels=[im.getpixel((x,y)) for y in range(max(0,b[1]+10),min(im.height,b[3]-10)) for x in range(max(0,b[0]+10),min(im.width,b[2]-10))]
+ count=sum(blue>red+12 and blue>green for red,green,blue in pixels) if theme=='aurora' else sum(min(red,green,blue)>180 and blue>red+3 for red,green,blue in pixels)
+ metrics[name+'ThemedPixels']=count;assert count>5000,(name,count)
+def home_after_editor():
+ wait('app-menu-button');c['top']();wait('current-address-card')
+def replace_text(id,value):
+ result=adb('shell','am','instrument','-w','-r','-e','resource',id,'-e','value',value,'ua.svitlo.qa.input/.InputBridge')
+ assert 'inputResult=ok' in result and 'INSTRUMENTATION_CODE: -1' in result,result
+ c['wait_edit'](value)
+def popup_checks(theme):
+ c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');full_field('address-name-input');replace_text('address-name-input','QA_Draft');hide_keyboard();tap('Закрити');wait('Залишити редагування?','app-message-dialog');dialog_capture('discard-dialog-'+theme,theme)
+ tap('Продовжити');wait('Налаштування адреси');assert by_id(xml(),'address-name-input').get('text')=='QA_Draft';hide_keyboard();tap('Закрити');wait('app-message-dialog');adb('shell','input','keyevent','4');wait('Налаштування адреси');assert by_id(xml(),'app-message-dialog') is None and by_id(xml(),'address-name-input').get('text')=='QA_Draft'
+ hide_keyboard();tap('Закрити');wait('app-message-dialog');tap('Відкинути зміни');home_after_editor();flags['themedConfirmationCancelBackAndDiscard']=True
+ c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');full_field('address-queue-input');replace_text('address-queue-input','@@@');hide_keyboard();tap('save-place');wait('app-message-dialog','Перевірте номер черги');dialog_capture('validation-dialog-'+theme,theme);tap('Зрозуміло');wait('Налаштування адреси');assert by_id(xml(),'address-queue-input').get('text')=='@@@';hide_keyboard();tap('Закрити');wait('app-message-dialog');tap('Відкинути зміни');home_after_editor();flags['themedValidationPreservesDraftAndSavedQueue']=True
+ c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');tap('Видалити адресу',scroll=True);s=wait('delete-place-dialog');assert 'android:id/alertTitle' not in s;evidence('delete-dialog-'+theme,s);tap('cancel-delete-place');wait('Налаштування адреси');tap('Закрити');home_after_editor();flags['existingDeleteDialogRetainsThemeAndCancel']=True
+ current=saved();assert current['svitlo.state.v1']['places'][0]['name']==p['name'] and current['svitlo.state.v1']['places'][0]['queue']=='3.1';assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme};launch();wait('current-address-card');flags['popupDecisionsDoNotChangeSavedAddressThemeOrQueue']=True
+def appearance_check():
+ c['top']();c['navigate']('Налаштування');wait('Вигляд');tap('Вигляд');s=wait('theme-aurora')
+ assert by_id(s,'theme-moss') is None and 'Aurora Light' not in s and 'Moss Studio' not in s
+ assert by_id(s,'theme-aurora').get('checked')=='true' or 'Aurora Glass' in s
+ evidence('appearance-'+savedTheme,s);tap('Закрити');wait('current-address-card')
+def graph(name):
+ wait('current-address-card','schedule-graph');tap('Завтра');time.sleep(1);s=xml();evidence(name,s);return Image.open(out/(name+'.png')).convert('RGB')
+def dark_difference(reference,current):
+ roi=(0,200,current.width,1600);diff=ImageChops.difference(reference.crop(roi),current.crop(roi));return sum(max(v)>12 for v in diff.getdata())/(diff.width*diff.height)
+import importlib.util
+spec=importlib.util.spec_from_file_location('native_contract','.github/qa/native90/contract.py');native_contract=importlib.util.module_from_spec(spec);spec.loader.exec_module(native_contract)
+baseline=json.loads(pathlib.Path('.github/qa/native90/baseline-89.json').read_text())
+try:
+ adb('install','-r','.github/qa/native90/qa-input-helper.apk');api=adb('shell','getprop','ro.build.version.sdk').strip()
+ adb('shell','wm','size','1080x2340');adb('shell','wm','density','440');adb('shell','settings','put','system','font_scale','1.0');adb('shell','svc','wifi','disable');adb('shell','svc','data','disable')
+ state=json.loads(pathlib.Path('.github/qa/native90/fixture.json').read_text());p=state['places'][0];p.update(name='Дім',queue='3.1',queueOrigin='manual',queueConfirmed=True)
+ stamp=int(adb('shell','date','+%s').strip());instant=datetime.datetime.fromtimestamp(stamp,datetime.timezone.utc);day=instant.astimezone(zoneinfo.ZoneInfo('Europe/Kyiv')).date()
+ slots=[{'start':0,'end':600,'type':'NotPlanned'},{'start':600,'end':720,'type':'Definite'},{'start':720,'end':1440,'type':'NotPlanned'}]
+ plans={key:{'operatorId':p['operatorId'],'queue':p['queue'],'status':'ready','date':(day+datetime.timedelta(days=offset)).isoformat(),'checkedAt':instant.isoformat(),'validUntil':(stamp+86400)*1000,'intervals':[],'slots':slots,'refreshError':{'status':'source_unavailable','attemptedAt':instant.isoformat()}} for key,offset in [('today',0),('tomorrow',1)]}
+ state.update(activePlaceId=p['id'],snapshots={p['id']:plans},notificationsEnabled=False,gpsAsked=True)
+ initialTheme=os.environ['SAVED_THEME'];assert initialTheme in ['aurora','moss'];savedTheme=initialTheme
+ # One baseline installation per emulator; never uninstall/reinstall an older version between cases.
+ adb('install','-r','-g','--abi','x86_64','previous.apk');native_contract.verify_installed(adb,baseline,out/'baseline-installed.json');native_contract.block_app_network(adb,out/'offline-isolation.json');seed(copy.deepcopy(state),'aurora');launch();reference=graph('baseline-89-aurora')
+ if savedTheme=='moss':
+  seed(copy.deepcopy(state),'moss');launch();baseline=graph('baseline-89-moss');assert dark_difference(reference,baseline)<.005,'Baseline89 saved moss must already render dark'
+ adb('shell','am','force-stop',pkg);adb('install','-r','-g','--abi','x86_64','candidate/'+meta['fileName']);native_contract.verify_installed(adb,meta,out/'candidate-installed.json');native_contract.block_app_network(adb,out/'offline-isolation-after-upgrade.json');launch();candidate=graph('upgraded-90-'+savedTheme)
+ fraction=dark_difference(reference,candidate);metrics['appGraphChangedPixelFraction']=fraction;assert fraction<.005,(savedTheme,fraction);flags['UpgradeUsesUnchangedAuroraGlass']=True
+ appearance_check();current=saved();assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme}
+ v=current['svitlo.state.v1'];assert v['activePlaceId']==p['id'] and v['places'][0]['reminders']==p['reminders'] and v['notificationsEnabled']==state['notificationsEnabled'];assert v['places'][0]['id']==p['id'] and v['places'][0]['address']==p['address'] and v['places'][0]['queue']=='3.1' and v['places'][0]['queueOrigin']=='manual'
+ for key in ['today','tomorrow']:assert v['snapshots'][p['id']][key]['slots']==slots and v['snapshots'][p['id']][key]['checkedAt']==plans[key]['checkedAt']
+ flags['AppearanceAddressManualQueueAndOfflineCachePreserved']=True
+ launch();restarted=graph('restarted-90-'+savedTheme);assert dark_difference(reference,restarted)<.005;flags['RestartRetainsDarkAppearanceAndCache']=True
+ # Dialogs and editor still work for an installation whose persisted selection is light.
+ popup_checks('aurora')
+ c['wait_source']('Редагувати адресу');tap('Редагувати адресу',scroll=True);wait('Налаштування адреси');full_field('address-queue-input');replace_text('address-queue-input','2.2');hide_keyboard();tap('save-place');home_after_editor();c['wait_source']('Черга 2.2');evidence('manual-queue-saved',xml());current=saved();assert current['svitlo.state.v1']['places'][0]['queue']=='2.2' and current['svitlo.state.v1']['places'][0]['queueOrigin']=='manual';assert current['svitlo.appearance.v1']=={'version':1,'theme':savedTheme};flags['ManualQueueEditWorksAfterThemeFallback']=True
+ adb('shell','pm','clear',pkg);launch();s=wait('Ввести адресу');evidence('clean-start-90',s);savedTheme='clean';appearance_check();flags['CleanStartOffersOnlyAuroraGlass']=True
+finally:
+ try:
+  (out/'final-logcat.txt').write_text(adb('logcat','-d',check=False));(out/'final-window.png').write_bytes(subprocess.check_output(['adb','exec-out','screencap','-p'],timeout=60))
+ except Exception as diagnostic_error:print('Diagnostic collection:',str(diagnostic_error),flush=True)
+ result={'savedTheme':os.environ['SAVED_THEME'],'api':adb('shell','getprop','ro.build.version.sdk').strip(),'apkSha256':meta['sha256'],'flags':flags,'metrics':metrics,'allPassed':len(flags)==9 and all(flags.values()),'scope':'EXTERNAL RETENTION FIXTURE ONLY, not queue coverage. Per-UID IPv4/IPv6 OUTPUT DROP proves offline isolation. Exact installed hashes verified for both APKs. Exact signed APK89→90 upgrade; six independent emulator/theme cases cover both saved IDs; Aurora Glass rendering matches89 dark baseline, light option hidden, original appearance key retained, address/manual queue/offline cache and timestamps survive restart. Themed confirmation/validation/delete actions and manual queue editing checked; clean launch. External emulator fixtures and QA input helper only.'};(out/'theme-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print('THEME_RESULT',json.dumps(result),flush=True)
+
+assert result['allPassed'], 'Native retention/UI acceptance did not complete'
