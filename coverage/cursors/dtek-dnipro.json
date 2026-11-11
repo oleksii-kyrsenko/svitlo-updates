@@ -10,80 +10,7 @@
           "method": "nominatim-municipality"
         }
       },
-      "auditSamples": [
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "12",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4275",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "13",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4276",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "14",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4277",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "15",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4278",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "16",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4279",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "17",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4280",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "18",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4281",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "19",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4282",
-          "checkedAt": 1794389027008
-        },
-        {
-          "settlement": "м. Апостолове",
-          "street": "пров. Тупий",
-          "house": "20",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=100&houseId=4284",
-          "checkedAt": 1794389027008
-        }
-      ],
+      "auditSamples": [],
       "houseIndex": 0,
       "streetIndex": 0,
       "lastContext": {
@@ -12510,7 +12437,7 @@
       },
       "crawlStatus": "partial",
       "observedHouses": [],
-      "queryIndex": 2
+      "queryIndex": 3
     }
   }
 }
