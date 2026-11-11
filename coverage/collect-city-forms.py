@@ -11,7 +11,7 @@ from source_utils import clean,record
 
 CONFIG={
  'kirovohrad':('UA-35','https://kiroe.com.ua/electricity-blackout'),
- 'volyn':('UA-07','https://www.energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/cherga/'),
+ 'volyn':('UA-07','https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/cherga/'),
  'prykarpattia':('UA-26','https://svitlo.oe.if.ua/'),
  'vinnytsia':('UA-05','https://www.voe.com.ua/disconnection/detailed'),
 }

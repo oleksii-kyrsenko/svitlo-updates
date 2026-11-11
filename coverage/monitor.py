@@ -1,7 +1,7 @@
 """Bounded public source health and discovery; availability is not coverage."""
 import argparse,concurrent.futures,datetime,hashlib,json,re,time,urllib.request,urllib.error
 from html.parser import HTMLParser
-from urllib.parse import urljoin,urlsplit
+from urllib.parse import quote,urljoin,urlsplit,urlunsplit
 from pathlib import Path
 MAX_BYTES=2_000_000
 class Links(HTMLParser):
@@ -12,8 +12,14 @@ class Links(HTMLParser):
 def classify(status,text):
  if status in (403,429) or re.search(r'cf-chl-|challenge-platform|Incapsula incident|Request unsuccessful\. Incapsula|verify you are human',text,re.I):return 'source_protected'
  return 'page_available' if status==200 else 'source_unavailable'
+def request_url(url):
+ # urllib's HTTP request line must be ASCII. Encode only path/query text;
+ # preserve already encoded bytes and keep the reviewed origin unchanged.
+ parsed=urlsplit(url)
+ if parsed.scheme!='https' or not parsed.netloc or not parsed.netloc.isascii() or parsed.username is not None or parsed.password is not None or parsed.fragment or any(ord(c)<32 for c in url):raise ValueError('invalid_public_source_url')
+ return urlunsplit((parsed.scheme,parsed.netloc,quote(parsed.path,safe="/%:@!$&'()*+,;=-._~"),quote(parsed.query,safe="%=&?/:;+@!$'()*,-._~"),''))
 def fetch(url):
- req=urllib.request.Request(url,headers={'User-Agent':'KolySvitloSourceMonitor/1.0 (+https://github.com/oleksii-kyrsenko/svitlo-updates)'})
+ req=urllib.request.Request(request_url(url),headers={'User-Agent':'KolySvitloSourceMonitor/1.0 (+https://github.com/oleksii-kyrsenko/svitlo-updates)'})
  try:
   with urllib.request.urlopen(req,timeout=20) as r:
    data=r.read(MAX_BYTES+1)

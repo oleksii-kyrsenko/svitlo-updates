@@ -8,7 +8,7 @@ CONFIG={
  'ternopil':('UA-61','https://api-poweron.toe.com.ua/api'),
  'zakarpattia':('UA-21','https://api-outage-zakarpat-energy.inneti.net/api'),
  'vinnytsia':('UA-05','https://www.voe.com.ua/disconnection/detailed'),
- 'volyn':('UA-07','https://www.energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/cherga/'),
+ 'volyn':('UA-07','https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/cherga/'),
  'prykarpattia':('UA-26','https://svitlo.oe.if.ua/'),
  'kirovohrad':('UA-35','https://kiroe.com.ua/electricity-blackout'),
  'khmelnytskyi':('UA-68','https://hoe.com.ua/shutdown/queue')}

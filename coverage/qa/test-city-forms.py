@@ -67,6 +67,21 @@ class Controls(unittest.TestCase):
     return result
   rows,observed,completed,errors,meta=m.kirovohrad(Bad(),GEO,{})
   self.assertFalse(rows);self.assertFalse(observed);self.assertFalse(completed);self.assertTrue(errors)
+ def test_volyn_discovery_followup_and_provenance_use_current_official_host(self):
+  # The current official schedule index links the bare host, whose ordinary
+  # public form succeeds. Keep discovery, follow-up and emitted provenance on it.
+  expected='https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/cherga/'
+  class HTTP:
+   limit=8
+   def __init__(self):self.requests=[]
+   def text(self,url,fields):
+    self.requests.append((url,fields.copy()))
+    return '<table><tr><td>Район</td><td>Населений пункт</td><td>Вулиця</td><td>Будинок</td><td>ГПВ</td><td>ГАВ</td></tr><tr><td>Район</td><td>Навчальне</td><td>Нова</td><td>2</td><td>1.2</td><td>7</td></tr></table>'
+  http=HTTP();rows,observed,_,errors,_=m.volyn(http,GEO,{'searchTerms':['н'],'streetNames':[]})
+  self.assertEqual(http.requests,[(expected,{'formCity':'Навчальне','formStreet':'н'}),(expected,{'formCity':'Навчальне','formStreet':'Нова'})])
+  self.assertFalse(errors);self.assertEqual(rows[0]['sourceUrl'],expected);self.assertEqual(rows[0]['queue'],'1.2');self.assertEqual(len(observed),1)
+  legacy=Path(__file__).resolve().parents[1]/'collect-batch-b.py';spec=importlib.util.spec_from_file_location('legacy_batch_b_current_host',legacy);batch=importlib.util.module_from_spec(spec);spec.loader.exec_module(batch)
+  self.assertEqual(batch.CONFIG['volyn'][1],expected)
  def test_volyn_uses_gpv_column_exact_city_and_literal_houses_only(self):
   body='<table><tr><th>Район</th><th>Населений пункт</th><th>Вулиця</th><th>Будинок</th><th>ГПВ</th><th>ГАВ</th></tr>'
   body+='<tr><td>Район</td><td>Навчальне</td><td>Нова</td><td>1-А, 3/2</td><td>2.1</td><td>9</td></tr>'
