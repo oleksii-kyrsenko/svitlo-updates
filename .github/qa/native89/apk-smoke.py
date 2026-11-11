@@ -55,6 +55,16 @@ def scroll_down(tree):
     b=max(candidates,key=lambda b:(b[2]-b[0])*(b[3]-b[1]));x=(b[0]+b[2])//2;height=b[3]-b[1]
     adb('shell','input','swipe',str(x),str(b[1]+height*4//5),str(x),str(b[1]+height//4),'350');time.sleep(1)
 def tap(label,scroll=False):
+    if label in ['Видалити адресу','delete-place']:
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('native_tap_target',root/'tap_target.py');target=importlib.util.module_from_spec(spec);spec.loader.exec_module(target)
+        def retain(stage,s,selected,attempt,probe):
+            name='delete-tap-'+str(attempt)+'-'+str(probe)+'-'+stage
+            (out/(name+'.xml')).write_text(s)
+            (out/(name+'.json')).write_text(json.dumps({'capturedAt':time.time(),'stage':stage,**selected},ensure_ascii=False,indent=2)+'\n')
+            if stage!='tap':(out/(name+'.png')).write_bytes(subprocess.check_output(['adb','exec-out','screencap','-p'],timeout=60))
+        target.activate_delete(xml,lambda x,y:adb('shell','input','tap',str(x),str(y)),scroll_down,retain,time.sleep)
+        return
     for _ in range(8 if scroll else 1):
         r=E.fromstring(xml())
         for node in r.iter('node'):

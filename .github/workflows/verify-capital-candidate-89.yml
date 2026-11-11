@@ -5,7 +5,19 @@ on:
       suite:
         description: Acceptance suite
         type: choice
-        options: [all, live]
+        options: [all, native, live]
+        default: all
+        required: false
+      api:
+        description: Android API selection
+        type: choice
+        options: [all, '30', '35', '36']
+        default: all
+        required: false
+      theme:
+        description: Persisted theme selection for native checks
+        type: choice
+        options: [all, aurora, moss]
         default: all
         required: false
   push:
@@ -14,17 +26,35 @@ on:
 permissions:
   contents: read
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      runNative: ${{ steps.select.outputs.runNative }}
+      runLive: ${{ steps.select.outputs.runLive }}
+      nativeMatrix: ${{ steps.select.outputs.nativeMatrix }}
+      liveMatrix: ${{ steps.select.outputs.liveMatrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bounded acceptance selection
+        id: select
+        env:
+          INPUT_SUITE: ${{ inputs.suite || 'all' }}
+          INPUT_API: ${{ inputs.api || 'all' }}
+          INPUT_THEME: ${{ inputs.theme || 'all' }}
+        run: |
+          python3 .github/qa/native89/test-selection.py
+          python3 .github/qa/native89/test-tap-target.py
+          python3 .github/qa/native89/selection.py
   native:
-    if: inputs.suite != 'live'
+    needs: plan
+    if: needs.plan.outputs.runNative == 'true'
     name: Android API${{ matrix.api }} saved${{ matrix.theme }} 88to89
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     strategy:
       fail-fast: false
       max-parallel: 6
-      matrix:
-        api: [30, 35, 36]
-        theme: [aurora, moss]
+      matrix: ${{ fromJSON(needs.plan.outputs.nativeMatrix) }}
     env:
       SAVED_THEME: ${{ matrix.theme }}
     steps:
@@ -40,6 +70,7 @@ jobs:
             "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
           fi
           python3 .github/qa/native89/test-contract.py
+          python3 .github/qa/native89/test-tap-target.py
           python3 .github/qa/native89/contract.py
       - name: Enable runner acceleration
         run: |
@@ -64,15 +95,15 @@ jobs:
           retention-days: 90
 
   live:
-    if: startsWith(github.ref, 'refs/heads/fix/popivka-schedule')
+    needs: plan
+    if: needs.plan.outputs.runLive == 'true' && startsWith(github.ref, 'refs/heads/fix/popivka-schedule')
     name: Live schedule Android API${{ matrix.api }} 88to89
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     strategy:
       fail-fast: false
       max-parallel: 3
-      matrix:
-        api: [30, 35, 36]
+      matrix: ${{ fromJSON(needs.plan.outputs.liveMatrix) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -87,6 +118,7 @@ jobs:
           python3 .github/qa/popivka/test-source.py
           python3 .github/qa/popivka/test-screen.py
           python3 .github/qa/native89/test-contract.py
+          python3 .github/qa/native89/test-tap-target.py
           python3 .github/qa/native89/contract.py
       - name: Enable runner acceleration
         run: |
