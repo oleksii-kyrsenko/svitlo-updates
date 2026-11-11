@@ -64,7 +64,7 @@ jobs:
           retention-days: 90
 
   live:
-    if: github.ref == 'refs/heads/fix/popivka-schedule'
+    if: startsWith(github.ref, 'refs/heads/fix/popivka-schedule')
     name: Live schedule Android API${{ matrix.api }} 88to89
     runs-on: ubuntu-24.04
     timeout-minutes: 35
