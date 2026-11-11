@@ -189,33 +189,33 @@
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "7",
-              "providerStreetId": "436"
+              "street": "вул. Аеропортівська",
+              "house": "1",
+              "providerStreetId": "437"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "71",
-              "providerStreetId": "436"
+              "street": "вул. Аеропортівська",
+              "house": "2",
+              "providerStreetId": "437"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "8",
-              "providerStreetId": "436"
+              "street": "вул. Аеропортівська",
+              "house": "3",
+              "providerStreetId": "437"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Аеродромна",
-              "house": "9",
-              "providerStreetId": "436"
+              "street": "вул. Аеропортівська",
+              "house": "4",
+              "providerStreetId": "437"
             }
           ],
           "contexts": {
@@ -239,74 +239,43 @@
           "auditSamples": [
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "7",
-              "queue": "5.2",
+              "street": "вул. Аеропортівська",
+              "house": "1",
+              "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12905",
-              "checkedAt": 1794340719768
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=12959",
+              "checkedAt": 1794378390297
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "71",
-              "queue": "5.2",
+              "street": "вул. Аеропортівська",
+              "house": "2",
+              "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12909",
-              "checkedAt": 1794340728113
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=12966",
+              "checkedAt": 1794378394884
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "8",
-              "queue": "5.2",
+              "street": "вул. Аеропортівська",
+              "house": "3",
+              "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12910",
-              "checkedAt": 1794340750102
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=12969",
+              "checkedAt": 1794378414352
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Аеродромна",
-              "house": "9",
-              "queue": "5.2",
+              "street": "вул. Аеропортівська",
+              "house": "4",
+              "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=12911",
-              "checkedAt": 1794340764915
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=12970",
+              "checkedAt": 1794378446006
             }
           ],
           "streetInventory": {
             "queries": [
-              "дорога и",
-              "дорога і",
-              "дорога ї",
-              "дорога й",
-              "дорога к",
-              "дорога л",
-              "дорога м",
-              "дорога н",
-              "дорога о",
-              "дорога п",
-              "дорога р",
-              "дорога с",
-              "дорога т",
-              "дорога у",
-              "дорога ф",
-              "дорога х",
-              "дорога ц",
-              "дорога ч",
-              "дорога ш",
-              "дорога щ",
-              "дорога ь",
-              "дорога ю",
-              "дорога я",
-              "дорога 0",
-              "дорога 1",
-              "дорога 2",
-              "дорога 3",
-              "дорога 4",
-              "дорога 5",
-              "дорога 6",
-              "дорога 7",
               "дорога 8",
               "дорога 9",
               "алея а",
@@ -3347,7 +3316,38 @@
               "дорога е",
               "дорога є",
               "дорога ж",
-              "дорога з"
+              "дорога з",
+              "дорога и",
+              "дорога і",
+              "дорога ї",
+              "дорога й",
+              "дорога к",
+              "дорога л",
+              "дорога м",
+              "дорога н",
+              "дорога о",
+              "дорога п",
+              "дорога р",
+              "дорога с",
+              "дорога т",
+              "дорога у",
+              "дорога ф",
+              "дорога х",
+              "дорога ц",
+              "дорога ч",
+              "дорога ш",
+              "дорога щ",
+              "дорога ь",
+              "дорога ю",
+              "дорога я",
+              "дорога 0",
+              "дорога 1",
+              "дорога 2",
+              "дорога 3",
+              "дорога 4",
+              "дорога 5",
+              "дорога 6",
+              "дорога 7"
             ],
             "items": {
               "430": {
@@ -6963,7 +6963,7 @@
           },
           "dictionaryComplete": false,
           "inventoryMethod": "source-limited-autocomplete-min3-cap20",
-          "inventoryPendingQueries": 2415,
+          "inventoryPendingQueries": 2384,
           "processedStreetIds": [
             "434",
             "435",
@@ -6972,18 +6972,6 @@
           "houseInventories": {
             "430": {
               "queries": [
-                "  ц",
-                "  ч",
-                "  ш",
-                "  щ",
-                "  ь",
-                "  ю",
-                "  я",
-                "  ы",
-                "  э",
-                "  ъ",
-                "  ё",
-                "  a",
                 "  b",
                 "  c",
                 "  d",
@@ -7302,7 +7290,19 @@
                 "  т",
                 "  у",
                 "  ф",
-                "  х"
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a"
               ],
               "items": {
                 "12487": {
@@ -7526,18 +7526,6 @@
             },
             "431": {
               "queries": [
-                "  ц",
-                "  ч",
-                "  ш",
-                "  щ",
-                "  ь",
-                "  ю",
-                "  я",
-                "  ы",
-                "  э",
-                "  ъ",
-                "  ё",
-                "  a",
                 "  b",
                 "  c",
                 "  d",
@@ -7856,7 +7844,19 @@
                 "  т",
                 "  у",
                 "  ф",
-                "  х"
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a"
               ],
               "items": {
                 "12598": {
@@ -8080,18 +8080,6 @@
             },
             "429": {
               "queries": [
-                " к",
-                " л",
-                " м",
-                " н",
-                " о",
-                " п",
-                " р",
-                " с",
-                " т",
-                " у",
-                " ф",
-                " х",
                 " ц",
                 " ч",
                 " ш",
@@ -8410,7 +8398,19 @@
                 " и",
                 " і",
                 " ї",
-                " й"
+                " й",
+                " к",
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х"
               ],
               "items": {
                 "12252": {
@@ -8778,18 +8778,6 @@
             },
             "432": {
               "queries": [
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
                 "  к",
                 "  л",
                 "  м",
@@ -9026,7 +9014,19 @@
                 " №",
                 "   ",
                 "  а",
-                "  б"
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й"
               ],
               "items": {
                 "12632": {
@@ -9242,14 +9242,6 @@
             },
             "433": {
               "queries": [
-                " x",
-                " y",
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
                 " 5",
                 " 6",
                 " 7",
@@ -9408,7 +9400,15 @@
                 " t",
                 " u",
                 " v",
-                " w"
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4"
               ],
               "items": {
                 "12669": {
@@ -9722,18 +9722,6 @@
             },
             "436": {
               "queries": [
-                "1ё",
-                "1a",
-                "1b",
-                "1c",
-                "1d",
-                "1e",
-                "1f",
-                "1g",
-                "1h",
-                "1i",
-                "1j",
-                "1k",
                 "1l",
                 "1m",
                 "1n",
@@ -10052,7 +10040,19 @@
                 "1я",
                 "1ы",
                 "1э",
-                "1ъ"
+                "1ъ",
+                "1ё",
+                "1a",
+                "1b",
+                "1c",
+                "1d",
+                "1e",
+                "1f",
+                "1g",
+                "1h",
+                "1i",
+                "1j",
+                "1k"
               ],
               "items": {
                 "12736": {
@@ -10436,18 +10436,6 @@
             },
             "437": {
               "queries": [
-                "ё",
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
                 "l",
                 "m",
                 "n",
@@ -10766,7 +10754,19 @@
                 "я",
                 "ы",
                 "э",
-                "ъ"
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k"
               ],
               "items": {
                 "12840": {
@@ -11193,18 +11193,6 @@
             },
             "427": {
               "queries": [
-                "1ф",
-                "1х",
-                "1ц",
-                "1ч",
-                "1ш",
-                "1щ",
-                "1ь",
-                "1ю",
-                "1я",
-                "1ы",
-                "1э",
-                "1ъ",
                 "1ё",
                 "1a",
                 "1b",
@@ -11769,7 +11757,19 @@
                 "1р",
                 "1с",
                 "1т",
-                "1у"
+                "1у",
+                "1ф",
+                "1х",
+                "1ц",
+                "1ч",
+                "1ш",
+                "1щ",
+                "1ь",
+                "1ю",
+                "1я",
+                "1ы",
+                "1э",
+                "1ъ"
               ],
               "items": {
                 "12160": {
@@ -12556,7 +12556,11 @@
               "23",
               "24",
               "25",
-              "26"
+              "26",
+              "1",
+              "2",
+              "3",
+              "4"
             ],
             "426": [
               "10",
