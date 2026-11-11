@@ -1,0 +1,97 @@
+name: Publish verified Popivka schedule hotfix89
+on:
+  push:
+    branches: [ops/publish-popivka-89]
+    paths: [.github/workflows/publish-popivka-89.yml]
+permissions:
+  contents: write
+concurrency:
+  group: svitlo-public-updates
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Fetch and verify the exact previously tested signed APK
+        run: |
+          set -euo pipefail
+          mkdir artifact
+          python3 - <<'PY'
+          import hashlib,json,urllib.request,pathlib
+          p=pathlib.Path('artifact/svitlo-test-89.apk');h=hashlib.sha256();size=0
+          url='https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/ee9296fccee866e9a6790fa0b0edfb472d7b9e1e/candidate/svitlo-candidate-89-popivka-nov11.apk'
+          with urllib.request.urlopen(url,timeout=150)as source,p.open('wb')as target:
+           for block in iter(lambda:source.read(1048576),b''):
+            size+=len(block);assert size<=82248242;h.update(block);target.write(block)
+          assert size==82248242 and h.hexdigest()=='f2309b850e9b953e6d94cbf9b63c8a6e4d6b01af570d512155a15401ee15017d'
+          pathlib.Path('artifact/SHA256SUMS.txt').write_text(h.hexdigest()+'  svitlo-test-89.apk\n')
+          PY
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
+          fi
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs artifact/svitlo-test-89.apk > artifact/signature.txt
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging artifact/svitlo-test-89.apk > artifact/badging.txt
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('artifact/signature.txt').read_text();certs=set(re.findall(r'certificate SHA-256 digest: ([a-f0-9]{64})',s));assert certs=={'fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c'}
+          assert "package: name='ua.svitlo.app.testing' versionCode='89' versionName='0.1.53'" in pathlib.Path('artifact/badging.txt').read_text()
+          PY
+          cp THIRD_PARTY_NOTICES.txt artifact/THIRD_PARTY_NOTICES.txt
+      - name: Upload and verify release assets before making them public
+        run: |
+          set -euo pipefail
+          gh release upload android-test-89 artifact/svitlo-test-89.apk artifact/SHA256SUMS.txt artifact/signature.txt artifact/THIRD_PARTY_NOTICES.txt --clobber
+          gh api repos/oleksii-kyrsenko/svitlo-updates/releases/441414739 > artifact/release.json
+          python3 - <<'PY'
+          import json
+          r=json.load(open('artifact/release.json'));a=next(x for x in r['assets'] if x['name']=='svitlo-test-89.apk')
+          assert r['tag_name']=='android-test-89' and a['state']=='uploaded' and a['size']==82248242 and a['digest']=='sha256:f2309b850e9b953e6d94cbf9b63c8a6e4d6b01af570d512155a15401ee15017d'
+          PY
+          gh release edit android-test-89 --draft=false --prerelease
+      - name: Publish the verified app update manifest
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git switch --detach origin/main
+          python3 - <<'PY'
+          import pathlib,json,datetime
+          current=json.loads(pathlib.Path('latest.json').read_text());assert current['versionCode']<=89
+          request={'schemaVersion':1,'createdAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'meta':{'packageName':'ua.svitlo.app.testing','version':'0.1.53','versionCode':89,'fileName':'svitlo-test-89.apk','size':82248242,'sha256':'f2309b850e9b953e6d94cbf9b63c8a6e4d6b01af570d512155a15401ee15017d','sourceCommit':'3dd84b4aec81f96c59dba280bdef911289a070e6','notes':'Виправлено читання офіційних графіків Черкасиобленерго, зокрема для Попівки. Збережені адреси, черги, налаштування й офлайн-кеш залишаються.'}}
+          pathlib.Path('.channel/release-request.json').write_text(json.dumps(request,ensure_ascii=False,indent=2)+'\n')
+          PY
+          node scripts/publish-release.mjs
+          git restore .channel/release-request.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add latest.json certificate.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish verified Popivka schedule hotfix0.1.53 build89'
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" = 3 ]; then exit 1; fi
+              git fetch origin main
+              git rebase origin/main
+            done
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hotfix89-publication-${{ github.run_id }}
+          path: |
+            artifact/signature.txt
+            artifact/badging.txt
+            artifact/SHA256SUMS.txt
+            artifact/release.json
+          retention-days: 90
