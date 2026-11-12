@@ -1,5 +1,5 @@
 {
-  "checkedAt": 1794477010116,
+  "checkedAt": 1794518965046,
   "errors": [
     {
       "operatorId": "cherkasy",
@@ -26,10 +26,6 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "zakarpattia",
-      "error": "collector_failed"
-    },
-    {
       "operatorId": "kirovohrad",
       "error": "collector_failed"
     },
@@ -38,15 +34,15 @@
       "error": "collector_failed"
     },
     {
-      "operatorId": "dtek-dnipro",
-      "error": "collector_failed"
-    },
-    {
       "operatorId": "cek",
       "error": "collector_failed"
     },
     {
       "operatorId": "dtek-pem",
+      "error": "collector_failed"
+    },
+    {
+      "operatorId": "dtek-donetsk",
       "error": "collector_failed"
     },
     {
@@ -70,15 +66,15 @@
       "error": "collector_failed"
     },
     {
+      "operatorId": "zaporizhzhia",
+      "error": "collector_failed"
+    },
+    {
       "operatorId": "luhansk",
       "error": "collector_failed"
     },
     {
       "operatorId": "regional-networks",
-      "error": "collector_failed"
-    },
-    {
-      "operatorId": "zaporizhzhia",
       "error": "collector_failed"
     },
     {
@@ -88,6 +84,10 @@
     {
       "operatorId": "ukrzaliznytsia",
       "error": "collector_failed"
+    },
+    {
+      "operatorId": "zakarpattia",
+      "error": "fresh_snapshot_invalid_previous_unexpired_preserved"
     }
   ],
   "collections": [
@@ -182,23 +182,22 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 51,
+      "records": 31,
       "constraint": null,
       "caseChecks": null
     },
     {
-      "operatorId": "zakarpattia",
+      "operatorId": "zhytomyr",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
+        "cycleComplete": false,
+        "mode": "legacy-bounded-discovery"
       },
-      "status": "not_collected",
-      "records": 0,
+      "status": "collected",
+      "records": 36,
       "constraint": null,
-      "caseChecks": 0
+      "caseChecks": 20
     },
     {
       "operatorId": "kirovohrad",
@@ -215,19 +214,6 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "zhytomyr",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "cycleComplete": false,
-        "mode": "legacy-bounded-discovery"
-      },
-      "status": "collected",
-      "records": 24,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
       "operatorId": "khmelnytskyi",
       "targetCity": null,
       "cityCrawl": {
@@ -242,46 +228,17 @@
       "caseChecks": 0
     },
     {
-      "operatorId": "dtek-dnipro",
+      "operatorId": "mykolaiv",
       "targetCity": null,
       "cityCrawl": {
         "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
-      },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "cek",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": false
-      },
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "dtek-kyiv-region",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": true
+        "cycleComplete": false,
+        "mode": "legacy-bounded-discovery"
       },
       "status": "collected",
-      "records": 12,
+      "records": 24,
       "constraint": null,
-      "caseChecks": 20
+      "caseChecks": 24
     },
     {
       "operatorId": "ternopil",
@@ -293,7 +250,35 @@
         "dictionaryComplete": false
       },
       "status": "collected",
-      "records": 20,
+      "records": 19,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "zakarpattia",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 18,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "dtek-kyiv-region",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": true
+      },
+      "status": "collected",
+      "records": 19,
       "constraint": null,
       "caseChecks": 20
     },
@@ -312,6 +297,20 @@
       "caseChecks": 20
     },
     {
+      "operatorId": "cek",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
+    },
+    {
       "operatorId": "dtek-pem",
       "targetCity": null,
       "cityCrawl": {
@@ -319,6 +318,20 @@
         "mode": "bounded-sample",
         "status": "partial",
         "dictionaryComplete": false
+      },
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "no-verified-geographic-context-or-source-data",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "dtek-donetsk",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "complete",
+        "dictionaryComplete": true
       },
       "status": "not_collected",
       "records": 0,
@@ -340,6 +353,15 @@
       "caseChecks": 0
     },
     {
+      "operatorId": "rivne",
+      "targetCity": null,
+      "cityCrawl": null,
+      "status": "collected",
+      "records": 295,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
       "operatorId": "dtek-kyiv",
       "targetCity": null,
       "cityCrawl": {
@@ -350,29 +372,6 @@
       },
       "status": "collected",
       "records": 20,
-      "constraint": null,
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "dtek-donetsk",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "mode": "bounded-sample",
-        "status": "partial",
-        "dictionaryComplete": true
-      },
-      "status": "collected",
-      "records": 0,
-      "constraint": "no-verified-geographic-context-or-source-data",
-      "caseChecks": 20
-    },
-    {
-      "operatorId": "rivne",
-      "targetCity": null,
-      "cityCrawl": null,
-      "status": "collected",
-      "records": 295,
       "constraint": null,
       "caseChecks": 20
     },
@@ -413,25 +412,35 @@
       "caseChecks": 20
     },
     {
-      "operatorId": "mykolaiv",
-      "targetCity": null,
-      "cityCrawl": {
-        "targetCity": null,
-        "cycleComplete": false,
-        "mode": "legacy-bounded-discovery"
-      },
-      "status": "collected",
-      "records": 60,
-      "constraint": null,
-      "caseChecks": 60
-    },
-    {
       "operatorId": "naftogaz-teplo",
       "targetCity": null,
       "cityCrawl": null,
       "status": "not_collected",
       "records": 0,
       "constraint": "address-protocol-or-geographic-context-not-yet-verified",
+      "caseChecks": 0
+    },
+    {
+      "operatorId": "dtek-dnipro",
+      "targetCity": null,
+      "cityCrawl": {
+        "targetCity": null,
+        "mode": "bounded-sample",
+        "status": "partial",
+        "dictionaryComplete": false
+      },
+      "status": "collected",
+      "records": 20,
+      "constraint": null,
+      "caseChecks": 20
+    },
+    {
+      "operatorId": "zaporizhzhia",
+      "targetCity": null,
+      "cityCrawl": null,
+      "status": "not_collected",
+      "records": 0,
+      "constraint": "collection-unavailable",
       "caseChecks": 0
     },
     {
@@ -450,15 +459,6 @@
       "status": "not_collected",
       "records": 0,
       "constraint": "registry-identity-only-no-address-source",
-      "caseChecks": 0
-    },
-    {
-      "operatorId": "zaporizhzhia",
-      "targetCity": null,
-      "cityCrawl": null,
-      "status": "not_collected",
-      "records": 0,
-      "constraint": "collection-unavailable",
       "caseChecks": 0
     },
     {
@@ -481,20 +481,20 @@
     }
   ],
   "collectionMode": "legacy",
-  "publicationCheckedAt": 1794477111315,
+  "publicationCheckedAt": 1794519074878,
   "legacyConstraints": [],
   "publication": {
-    "revision": 75,
-    "operators": 19,
-    "records": 13735
+    "revision": 76,
+    "operators": 16,
+    "records": 8644
   },
   "cityPublication": {
-    "revision": 75,
-    "cities": 122,
-    "retiredCities": 38,
-    "records": 13735,
+    "revision": 76,
+    "cities": 120,
+    "retiredCities": 42,
+    "records": 8644,
     "skippedCities": [],
-    "sourceSnapshots": 20,
+    "sourceSnapshots": 17,
     "sourceCacheConstraints": []
   }
 }
