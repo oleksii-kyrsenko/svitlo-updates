@@ -192,7 +192,216 @@
       "cityCrawls": {
         "e574b8438a7d7344c26c": {
           "crawlStatus": "partial",
-          "observedHouses": [],
+          "observedHouses": [
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Автопаркова",
+              "house": "7",
+              "providerStreetId": "28"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Альпійська",
+              "house": "9",
+              "providerStreetId": "36"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Ананасна",
+              "house": "7",
+              "providerStreetId": "37"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "1",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "10",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "12",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "13",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "14А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "15",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "15А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "16",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "17",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "17А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "18",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "18А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "23",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "24",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "27",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "30",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "32",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "4А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "7",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "7А",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "8",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "9",
+              "providerStreetId": "38"
+            },
+            {
+              "regionId": "UA-30",
+              "settlement": "Київ",
+              "community": "Київ",
+              "street": "вул. Андріївська",
+              "house": "1",
+              "providerStreetId": "39"
+            }
+          ],
           "contexts": {
             "UA-30|Київ": {
               "status": "resolved",
@@ -215,49 +424,244 @@
             "communityKind": "city-region",
             "regionUnique": true
           },
-          "auditSamples": [],
+          "auditSamples": [
+            {
+              "settlement": "Київ",
+              "street": "вул. Автопаркова",
+              "house": "7",
+              "queue": "44.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=28&houseId=726",
+              "checkedAt": 1794527066977
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Альпійська",
+              "house": "9",
+              "queue": "26.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=36&houseId=2798",
+              "checkedAt": 1794527094204
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Ананасна",
+              "house": "7",
+              "queue": "2.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=37&houseId=2838",
+              "checkedAt": 1794527129965
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "1",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2839",
+              "checkedAt": 1794527161651
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "10",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2840",
+              "checkedAt": 1794527165629
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "12",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2841",
+              "checkedAt": 1794527169835
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "13",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2842",
+              "checkedAt": 1794527174986
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "14А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2843",
+              "checkedAt": 1794527181315
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "15",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2844",
+              "checkedAt": 1794527187841
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "15А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2845",
+              "checkedAt": 1794527193917
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "16",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2846",
+              "checkedAt": 1794527200319
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "17",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2847",
+              "checkedAt": 1794527206800
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "17А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2848",
+              "checkedAt": 1794527212836
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "18",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2849",
+              "checkedAt": 1794527219190
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "18А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2850",
+              "checkedAt": 1794527225450
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "23",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2851",
+              "checkedAt": 1794527231752
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "24",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2852",
+              "checkedAt": 1794527238291
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "27",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2853",
+              "checkedAt": 1794527244364
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "30",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2854",
+              "checkedAt": 1794527250629
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "32",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2855",
+              "checkedAt": 1794527257258
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "4А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2856",
+              "checkedAt": 1794527263273
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "7",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2857",
+              "checkedAt": 1794527269593
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "7А",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2858",
+              "checkedAt": 1794527275988
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "8",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2859",
+              "checkedAt": 1794527282306
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Анатоліївська",
+              "house": "9",
+              "queue": "9.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=38&houseId=2860",
+              "checkedAt": 1794527288556
+            },
+            {
+              "settlement": "Київ",
+              "street": "вул. Андріївська",
+              "house": "1",
+              "queue": "13.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=39&houseId=2862",
+              "checkedAt": 1794527328433
+            }
+          ],
           "streetInventory": {
             "queries": [
-              "вул. аа",
-              "вул. аб",
-              "вул. ав",
-              "вул. аг",
-              "вул. аґ",
-              "вул. ад",
-              "вул. ае",
-              "вул. ає",
-              "вул. аж",
-              "вул. аз",
-              "вул. аи",
-              "вул. аі",
-              "вул. аї",
-              "вул. ай",
-              "вул. ак",
-              "вул. ал",
-              "вул. ам",
-              "вул. ан",
-              "вул. ао",
-              "вул. ап",
-              "вул. ар",
-              "вул. ас",
-              "вул. ат",
-              "вул. ау",
-              "вул. аф",
-              "вул. ах",
-              "вул. ац",
-              "вул. ач",
-              "вул. аш",
-              "вул. ащ",
-              "вул. аь",
-              "вул. аю",
-              "вул. ая",
-              "вул. аы",
-              "вул. аэ",
-              "вул. аъ",
-              "вул. аё",
-              "вул. аa",
-              "вул. аb",
-              "вул. аc",
               "вул. аd",
               "вул. аe",
               "вул. аf",
@@ -3289,88 +3693,128 @@
               "тупик 7",
               "тупик 8",
               "тупик 9",
-              "вул. а "
+              "вул. а ",
+              "вул. аа",
+              "вул. аб",
+              "вул. ав",
+              "вул. аг",
+              "вул. аґ",
+              "вул. ад",
+              "вул. ае",
+              "вул. ає",
+              "вул. аж",
+              "вул. аз",
+              "вул. аи",
+              "вул. аі",
+              "вул. аї",
+              "вул. ай",
+              "вул. ак",
+              "вул. ал",
+              "вул. ам",
+              "вул. ан",
+              "вул. ао",
+              "вул. ап",
+              "вул. ар",
+              "вул. ас",
+              "вул. ат",
+              "вул. ау",
+              "вул. аф",
+              "вул. ах",
+              "вул. ац",
+              "вул. ач",
+              "вул. аш",
+              "вул. ащ",
+              "вул. аь",
+              "вул. аю",
+              "вул. ая",
+              "вул. аы",
+              "вул. аэ",
+              "вул. аъ",
+              "вул. аё",
+              "вул. аa",
+              "вул. аb",
+              "вул. аc"
             ],
             "items": {
               "25": {
                 "id": 25,
-                "value": "вул. 9-а Лінія"
+                "value": "вул. Абрикосова"
               },
               "26": {
                 "id": 26,
-                "value": "вул. 9-го Травня"
+                "value": "вул. Авіаконструкторська"
               },
               "27": {
                 "id": 27,
-                "value": "вул. Авіаційна (с. Гнідин)"
+                "value": "вул. Автозаводська"
               },
               "28": {
                 "id": 28,
-                "value": "вул. Автозаводська"
+                "value": "вул. Автопаркова"
               },
               "29": {
                 "id": 29,
-                "value": "вул. Автопаркова"
+                "value": "вул. Автотранспортна"
               },
               "30": {
                 "id": 30,
-                "value": "вул. Автотранспортна"
+                "value": "вул. Агрегатна"
               },
               "31": {
                 "id": 31,
-                "value": "вул. Агрегатна"
+                "value": "вул. Аеродромна"
               },
               "32": {
                 "id": 32,
-                "value": "вул. Аеродромна"
+                "value": "вул. Азербайджанська"
               },
               "33": {
                 "id": 33,
-                "value": "вул. Азербайджанська"
+                "value": "вул. Азовська"
               },
               "34": {
                 "id": 34,
-                "value": "вул. Азовська"
+                "value": "вул. Академіка Стражеско"
               },
               "35": {
                 "id": 35,
-                "value": "вул. Академіка Стражеско"
+                "value": "вул. Алматинська"
               },
               "36": {
                 "id": 36,
-                "value": "вул. Алматинська"
+                "value": "вул. Альпійська"
               },
               "37": {
                 "id": 37,
-                "value": "вул. Альпійська"
+                "value": "вул. Ананасна"
               },
               "38": {
                 "id": 38,
-                "value": "вул. Ананасна"
+                "value": "вул. Анатоліївська"
               },
               "39": {
                 "id": 39,
-                "value": "вул. Анатоліївська"
+                "value": "вул. Андріївська"
               },
               "40": {
                 "id": 40,
-                "value": "вул. Андріївська"
+                "value": "вул. Анни Ярославни"
               },
               "41": {
                 "id": 41,
-                "value": "вул. Анни Ярославни"
+                "value": "вул. Антіпова Дениса"
               },
               "42": {
                 "id": 42,
-                "value": "вул. Антіпова Дениса"
+                "value": "вул. Антоновича"
               },
               "43": {
                 "id": 43,
-                "value": "вул. Антоновича"
+                "value": "вул. Арсенальна"
               },
               "44": {
                 "id": 44,
-                "value": "вул. Арсенальна"
+                "value": "вул. Архипенка"
               },
               "48": {
                 "id": 48,
@@ -3786,7 +4230,7 @@
               },
               "1360": {
                 "id": 1360,
-                "value": "вул. Єрмака"
+                "value": "вул. Аболмасова Андрія"
               },
               "1483": {
                 "id": 1483,
@@ -6182,7 +6626,7 @@
               },
               "1742": {
                 "id": 1742,
-                "value": "пров. Палія Семена"
+                "value": "вул. Архипенка Олександра"
               },
               "1754": {
                 "id": 1754,
@@ -6394,7 +6838,7 @@
               },
               "1303": {
                 "id": 1303,
-                "value": "пров. Ужгородський"
+                "value": "вул. Академіка Біляшівського"
               },
               "1777": {
                 "id": 1777,
@@ -6758,7 +7202,7 @@
               },
               "1364": {
                 "id": 1364,
-                "value": "бул. Бучми Амвросія"
+                "value": "вул. Афанасьєва Геннадія"
               },
               "1373": {
                 "id": 1373,
@@ -6927,13 +7371,61 @@
               "2463": {
                 "id": 2463,
                 "value": "тупик Фортечний"
+              },
+              "1898": {
+                "id": 1898,
+                "value": "вул. Абрикосова (урочище \"Бортничі\")"
+              },
+              "2426": {
+                "id": 2426,
+                "value": "урочище Бортничі, вул. Абрикосова"
+              },
+              "1691": {
+                "id": 1691,
+                "value": "вул. Автотранспортна (Бортничі)"
+              },
+              "1305": {
+                "id": 1305,
+                "value": "вул. Аляб'єва"
+              },
+              "1361": {
+                "id": 1361,
+                "value": "вул. Алмазова Генерала"
+              },
+              "1263": {
+                "id": 1263,
+                "value": "вул. Амосова Миколи"
+              },
+              "1306": {
+                "id": 1306,
+                "value": "вул. Антоненко-Давидовича"
+              },
+              "1362": {
+                "id": 1362,
+                "value": "вул. Антонова авіаконструктора"
+              },
+              "1363": {
+                "id": 1363,
+                "value": "вул. Ареф’єва Костянтина"
+              },
+              "2331": {
+                "id": 2331,
+                "value": "вул. Архітекторська"
+              },
+              "45": {
+                "id": 45,
+                "value": "вул. Астрономічна"
+              },
+              "1365": {
+                "id": 1365,
+                "value": "вул. Ахматової Анни"
               }
             },
             "unexpanded": []
           },
           "dictionaryComplete": false,
           "inventoryMethod": "source-limited-autocomplete-min3-cap20",
-          "inventoryPendingQueries": 2295,
+          "inventoryPendingQueries": 2255,
           "processedStreetIds": [
             "11",
             "12",
@@ -6959,18 +7451,6 @@
           "houseInventories": {
             "25": {
               "queries": [
-                " ф",
-                " х",
-                " ц",
-                " ч",
-                " ш",
-                " щ",
-                " ь",
-                " ю",
-                " я",
-                " ы",
-                " э",
-                " ъ",
                 " ё",
                 " a",
                 " b",
@@ -7207,7 +7687,19 @@
                 " р",
                 " с",
                 " т",
-                " у"
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч",
+                " ш",
+                " щ",
+                " ь",
+                " ю",
+                " я",
+                " ы",
+                " э",
+                " ъ"
               ],
               "items": {
                 "2437": {
@@ -7654,18 +8146,6 @@
             },
             "16": {
               "queries": [
-                " ъ",
-                " ё",
-                " a",
-                " b",
-                " c",
-                " d",
-                " e",
-                " f",
-                " g",
-                " h",
-                " i",
-                " j",
                 " k",
                 " l",
                 " m",
@@ -7984,7 +8464,19 @@
                 " ю",
                 " я",
                 " ы",
-                " э"
+                " э",
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j"
               ],
               "items": {
                 "1206": {
@@ -8271,18 +8763,6 @@
             },
             "18": {
               "queries": [
-                "  к",
-                "  л",
-                "  м",
-                "  н",
-                "  о",
-                "  п",
-                "  р",
-                "  с",
-                "  т",
-                "  у",
-                "  ф",
-                "  х",
                 "  ц",
                 "  ч",
                 "  ш",
@@ -8601,7 +9081,19 @@
                 "  и",
                 "  і",
                 "  ї",
-                "  й"
+                "  й",
+                "  к",
+                "  л",
+                "  м",
+                "  н",
+                "  о",
+                "  п",
+                "  р",
+                "  с",
+                "  т",
+                "  у",
+                "  ф",
+                "  х"
               ],
               "items": {
                 "1358": {
@@ -8971,18 +9463,6 @@
             },
             "20": {
               "queries": [
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
                 "  к",
                 "  л",
                 "  м",
@@ -9301,7 +9781,19 @@
                 " №",
                 "   ",
                 "  а",
-                "  б"
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й"
               ],
               "items": {
                 "1972": {
@@ -9477,18 +9969,6 @@
             },
             "21": {
               "queries": [
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
                 "  к",
                 "  л",
                 "  м",
@@ -9807,7 +10287,19 @@
                 " №",
                 "   ",
                 "  а",
-                "  б"
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й"
               ],
               "items": {
                 "2274": {
@@ -10043,18 +10535,6 @@
             },
             "22": {
               "queries": [
-                " 9",
-                " .",
-                " -",
-                " ’",
-                " '",
-                " (",
-                " )",
-                " /",
-                " №",
-                "   ",
-                "  а",
-                "  б",
                 "  в",
                 "  г",
                 "  ґ",
@@ -10133,7 +10613,89 @@
                 "  (",
                 "  )",
                 "  /",
-                "  №"
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г",
+                "   ґ",
+                "   д",
+                "   е",
+                "   є",
+                "   ж",
+                "   з",
+                "   и",
+                "   і",
+                "   ї",
+                "   й",
+                "   к",
+                "   л",
+                "   м",
+                "   н",
+                "   о",
+                "   п",
+                "   р",
+                "   с",
+                "   т",
+                "   у",
+                "   ф",
+                "   х",
+                "   ц",
+                "   ч",
+                "   ш",
+                "   щ",
+                "   ь",
+                "   ю",
+                "   я",
+                "   ы",
+                "   э",
+                "   ъ",
+                "   ё",
+                "   a",
+                "   b",
+                "   c",
+                "   d",
+                "   e",
+                "   f",
+                "   g",
+                "   h",
+                "   i",
+                "   j",
+                "   k",
+                "   l",
+                "   m",
+                "   n",
+                "   o",
+                "   p",
+                "   q",
+                "   r",
+                "   s",
+                "   t",
+                "   u",
+                "   v",
+                "   w",
+                "   x",
+                "   y",
+                "   z",
+                "   0",
+                "   1",
+                "   2",
+                "   3",
+                "   4",
+                "   5",
+                "   6",
+                "   7",
+                "   8",
+                "   9",
+                "   .",
+                "   -",
+                "   ’",
+                "   '",
+                "   (",
+                "   )",
+                "   /",
+                "   №"
               ],
               "done": [
                 "",
@@ -10291,7 +10853,19 @@
                 " 5",
                 " 6",
                 " 7",
-                " 8"
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №",
+                "   ",
+                "  а",
+                "  б"
               ],
               "items": {
                 "2373": {
@@ -10601,24 +11175,96 @@
                 "2452": {
                   "id": 2452,
                   "value": "9"
+                },
+                "2302": {
+                  "id": 2302,
+                  "value": "22 (КДТ \"Ч"
+                },
+                "2287": {
+                  "id": 2287,
+                  "value": "1"
+                },
+                "2288": {
+                  "id": 2288,
+                  "value": "1А"
+                },
+                "2298": {
+                  "id": 2298,
+                  "value": "2"
+                },
+                "2299": {
+                  "id": 2299,
+                  "value": "2А"
+                },
+                "2307": {
+                  "id": 2307,
+                  "value": "3"
+                },
+                "2317": {
+                  "id": 2317,
+                  "value": "4"
+                },
+                "2328": {
+                  "id": 2328,
+                  "value": "5"
+                },
+                "2338": {
+                  "id": 2338,
+                  "value": "6"
+                },
+                "2350": {
+                  "id": 2350,
+                  "value": "7"
+                },
+                "2354": {
+                  "id": 2354,
+                  "value": "8"
+                },
+                "2355": {
+                  "id": 2355,
+                  "value": "9"
+                },
+                "2289": {
+                  "id": 2289,
+                  "value": "10"
+                },
+                "2290": {
+                  "id": 2290,
+                  "value": "12"
+                },
+                "2291": {
+                  "id": 2291,
+                  "value": "13"
+                },
+                "2292": {
+                  "id": 2292,
+                  "value": "14"
+                },
+                "2293": {
+                  "id": 2293,
+                  "value": "15"
+                },
+                "2294": {
+                  "id": 2294,
+                  "value": "16"
+                },
+                "2295": {
+                  "id": 2295,
+                  "value": "17"
+                },
+                "2296": {
+                  "id": 2296,
+                  "value": "18"
+                },
+                "2297": {
+                  "id": 2297,
+                  "value": "19"
                 }
               },
               "unexpanded": []
             },
             "23": {
               "queries": [
-                " 9",
-                " .",
-                " -",
-                " ’",
-                " '",
-                " (",
-                " )",
-                " /",
-                " №",
-                "   ",
-                "  а",
-                "  б",
                 "  в",
                 "  г",
                 "  ґ",
@@ -10697,7 +11343,89 @@
                 "  (",
                 "  )",
                 "  /",
-                "  №"
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г",
+                "   ґ",
+                "   д",
+                "   е",
+                "   є",
+                "   ж",
+                "   з",
+                "   и",
+                "   і",
+                "   ї",
+                "   й",
+                "   к",
+                "   л",
+                "   м",
+                "   н",
+                "   о",
+                "   п",
+                "   р",
+                "   с",
+                "   т",
+                "   у",
+                "   ф",
+                "   х",
+                "   ц",
+                "   ч",
+                "   ш",
+                "   щ",
+                "   ь",
+                "   ю",
+                "   я",
+                "   ы",
+                "   э",
+                "   ъ",
+                "   ё",
+                "   a",
+                "   b",
+                "   c",
+                "   d",
+                "   e",
+                "   f",
+                "   g",
+                "   h",
+                "   i",
+                "   j",
+                "   k",
+                "   l",
+                "   m",
+                "   n",
+                "   o",
+                "   p",
+                "   q",
+                "   r",
+                "   s",
+                "   t",
+                "   u",
+                "   v",
+                "   w",
+                "   x",
+                "   y",
+                "   z",
+                "   0",
+                "   1",
+                "   2",
+                "   3",
+                "   4",
+                "   5",
+                "   6",
+                "   7",
+                "   8",
+                "   9",
+                "   .",
+                "   -",
+                "   ’",
+                "   '",
+                "   (",
+                "   )",
+                "   /",
+                "   №"
               ],
               "done": [
                 "",
@@ -10855,7 +11583,19 @@
                 " 5",
                 " 6",
                 " 7",
-                " 8"
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №",
+                "   ",
+                "  а",
+                "  б"
               ],
               "items": {
                 "2472": {
@@ -11113,24 +11853,92 @@
                 "2543": {
                   "id": 2543,
                   "value": "9"
+                },
+                "2386": {
+                  "id": 2386,
+                  "value": "1"
+                },
+                "2387": {
+                  "id": 2387,
+                  "value": "1А"
+                },
+                "2388": {
+                  "id": 2388,
+                  "value": "1Б"
+                },
+                "2400": {
+                  "id": 2400,
+                  "value": "2"
+                },
+                "2403": {
+                  "id": 2403,
+                  "value": "2/Б кЄ"
+                },
+                "2402": {
+                  "id": 2402,
+                  "value": "2/Б кА"
+                },
+                "2401": {
+                  "id": 2401,
+                  "value": "2А"
+                },
+                "2404": {
+                  "id": 2404,
+                  "value": "2В"
+                },
+                "2413": {
+                  "id": 2413,
+                  "value": "3"
+                },
+                "2421": {
+                  "id": 2421,
+                  "value": "4"
+                },
+                "2426": {
+                  "id": 2426,
+                  "value": "5"
+                },
+                "2431": {
+                  "id": 2431,
+                  "value": "6"
+                },
+                "2436": {
+                  "id": 2436,
+                  "value": "7"
+                },
+                "2444": {
+                  "id": 2444,
+                  "value": "8"
+                },
+                "2446": {
+                  "id": 2446,
+                  "value": "9"
+                },
+                "2389": {
+                  "id": 2389,
+                  "value": "10"
+                },
+                "2390": {
+                  "id": 2390,
+                  "value": "11"
+                },
+                "2391": {
+                  "id": 2391,
+                  "value": "12А"
+                },
+                "2392": {
+                  "id": 2392,
+                  "value": "12Б"
+                },
+                "2393": {
+                  "id": 2393,
+                  "value": "13"
                 }
               },
               "unexpanded": []
             },
             "24": {
               "queries": [
-                " x",
-                " y",
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
-                " 5",
-                " 6",
-                " 7",
-                " 8",
                 " 9",
                 " .",
                 " -",
@@ -11367,7 +12175,19 @@
                 " t",
                 " u",
                 " v",
-                " w"
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8"
               ],
               "items": {
                 "2534": {
@@ -11593,18 +12413,6 @@
             },
             "28": {
               "queries": [
-                "7а",
-                "7б",
-                "7в",
-                "7г",
-                "7ґ",
-                "7д",
-                "7е",
-                "7є",
-                "7ж",
-                "7з",
-                "7и",
-                "7і",
                 "7ї",
                 "7й",
                 "7к",
@@ -11841,7 +12649,19 @@
                 ")",
                 "/",
                 "№",
-                "7 "
+                "7 ",
+                "7а",
+                "7б",
+                "7в",
+                "7г",
+                "7ґ",
+                "7д",
+                "7е",
+                "7є",
+                "7ж",
+                "7з",
+                "7и",
+                "7і"
               ],
               "items": {
                 "2674": {
@@ -12099,6 +12919,14 @@
                 "2798": {
                   "id": 2798,
                   "value": "99/14"
+                },
+                "727": {
+                  "id": 727,
+                  "value": "7А"
+                },
+                "728": {
+                  "id": 728,
+                  "value": "7Б"
                 }
               },
               "unexpanded": []
@@ -12194,18 +13022,6 @@
             },
             "2": {
               "queries": [
-                "1x",
-                "1y",
-                "1z",
-                "10",
-                "11",
-                "12",
-                "13",
-                "14",
-                "15",
-                "16",
-                "17",
-                "18",
                 "19",
                 "1.",
                 "1-",
@@ -12524,7 +13340,19 @@
                 "1t",
                 "1u",
                 "1v",
-                "1w"
+                "1w",
+                "1x",
+                "1y",
+                "1z",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18"
               ],
               "items": {
                 "97": {
@@ -12645,43 +13473,43 @@
                 },
                 "122": {
                   "id": 122,
-                  "value": "23А"
+                  "value": "10"
                 },
                 "123": {
                   "id": 123,
-                  "value": "23Б"
+                  "value": "10А"
                 },
                 "124": {
                   "id": 124,
-                  "value": "24"
+                  "value": "12"
                 },
                 "125": {
                   "id": 125,
-                  "value": "24А"
+                  "value": "12А"
                 },
                 "126": {
                   "id": 126,
-                  "value": "25"
+                  "value": "13"
                 },
                 "127": {
                   "id": 127,
-                  "value": "25А"
+                  "value": "14"
                 },
                 "128": {
                   "id": 128,
-                  "value": "26"
+                  "value": "14А"
                 },
                 "129": {
                   "id": 129,
-                  "value": "26А"
+                  "value": "14Б"
                 },
                 "130": {
                   "id": 130,
-                  "value": "26Б"
+                  "value": "16"
                 },
                 "131": {
                   "id": 131,
-                  "value": "26В"
+                  "value": "16Б"
                 },
                 "140": {
                   "id": 140,
@@ -12701,19 +13529,19 @@
                 },
                 "132": {
                   "id": 132,
-                  "value": "27"
+                  "value": "17"
                 },
                 "133": {
                   "id": 133,
-                  "value": "27А"
+                  "value": "18"
                 },
                 "134": {
                   "id": 134,
-                  "value": "27Б"
+                  "value": "18А"
                 },
                 "135": {
                   "id": 135,
-                  "value": "28"
+                  "value": "18Б"
                 },
                 "136": {
                   "id": 136,
@@ -12775,18 +13603,6 @@
             },
             "4": {
               "queries": [
-                " x",
-                " y",
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
-                " 5",
-                " 6",
-                " 7",
-                " 8",
                 " 9",
                 " .",
                 " -",
@@ -13023,7 +13839,19 @@
                 " t",
                 " u",
                 " v",
-                " w"
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8"
               ],
               "items": {
                 "178": {
@@ -13223,18 +14051,6 @@
             },
             "5": {
               "queries": [
-                " x",
-                " y",
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
-                " 5",
-                " 6",
-                " 7",
-                " 8",
                 " 9",
                 " .",
                 " -",
@@ -13471,7 +14287,19 @@
                 " t",
                 " u",
                 " v",
-                " w"
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8"
               ],
               "items": {
                 "350": {
@@ -13697,18 +14525,6 @@
             },
             "8": {
               "queries": [
-                "1l",
-                "1m",
-                "1n",
-                "1o",
-                "1p",
-                "1q",
-                "1r",
-                "1s",
-                "1t",
-                "1u",
-                "1v",
-                "1w",
                 "1x",
                 "1y",
                 "1z",
@@ -13945,7 +14761,19 @@
                 "1h",
                 "1i",
                 "1j",
-                "1k"
+                "1k",
+                "1l",
+                "1m",
+                "1n",
+                "1o",
+                "1p",
+                "1q",
+                "1r",
+                "1s",
+                "1t",
+                "1u",
+                "1v",
+                "1w"
               ],
               "items": {
                 "481": {
@@ -14252,18 +15080,6 @@
             },
             "10": {
               "queries": [
-                " ё",
-                " a",
-                " b",
-                " c",
-                " d",
-                " e",
-                " f",
-                " g",
-                " h",
-                " i",
-                " j",
-                " k",
                 " l",
                 " m",
                 " n",
@@ -14500,7 +15316,19 @@
                 " я",
                 " ы",
                 " э",
-                " ъ"
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j",
+                " k"
               ],
               "items": {
                 "607": {
@@ -14727,18 +15555,6 @@
             },
             "33": {
               "queries": [
-                "ё",
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
                 "l",
                 "m",
                 "n",
@@ -14893,7 +15709,19 @@
                 "я",
                 "ы",
                 "э",
-                "ъ"
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k"
               ],
               "items": {
                 "2774": {
@@ -15119,18 +15947,6 @@
             },
             "36": {
               "queries": [
-                "ф",
-                "х",
-                "ц",
-                "ч",
-                "ш",
-                "щ",
-                "ь",
-                "ю",
-                "я",
-                "ы",
-                "э",
-                "ъ",
                 "ё",
                 "a",
                 "b",
@@ -15531,7 +16347,19 @@
                 "р",
                 "с",
                 "т",
-                "у"
+                "у",
+                "ф",
+                "х",
+                "ц",
+                "ч",
+                "ш",
+                "щ",
+                "ь",
+                "ю",
+                "я",
+                "ы",
+                "э",
+                "ъ"
               ],
               "items": {
                 "2843": {
@@ -15871,18 +16699,6 @@
             },
             "37": {
               "queries": [
-                "ї",
-                "й",
-                "к",
-                "л",
-                "м",
-                "н",
-                "о",
-                "п",
-                "р",
-                "с",
-                "т",
-                "у",
                 "ф",
                 "х",
                 "ц",
@@ -16283,7 +17099,19 @@
                 "ж",
                 "з",
                 "и",
-                "і"
+                "і",
+                "ї",
+                "й",
+                "к",
+                "л",
+                "м",
+                "н",
+                "о",
+                "п",
+                "р",
+                "с",
+                "т",
+                "у"
               ],
               "items": {
                 "2938": {
@@ -16617,6 +17445,343 @@
                 "2998": {
                   "id": 2998,
                   "value": "4 ввод 2"
+                }
+              },
+              "unexpanded": []
+            },
+            "38": {
+              "queries": [
+                "а",
+                "б",
+                "в",
+                "г",
+                "ґ",
+                "д",
+                "е",
+                "є",
+                "ж",
+                "з",
+                "и",
+                "і",
+                "ї",
+                "й",
+                "к",
+                "л",
+                "м",
+                "н",
+                "о",
+                "п",
+                "р",
+                "с",
+                "т",
+                "у",
+                "ф",
+                "х",
+                "ц",
+                "ч",
+                "ш",
+                "щ",
+                "ь",
+                "ю",
+                "я",
+                "ы",
+                "э",
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                ".",
+                "-",
+                "’",
+                "'",
+                "(",
+                ")",
+                "/",
+                "№",
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і",
+                " ї",
+                " й",
+                " к",
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч",
+                " ш",
+                " щ",
+                " ь",
+                " ю",
+                " я",
+                " ы",
+                " э",
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j",
+                " k",
+                " l",
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №"
+              ],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                " "
+              ],
+              "items": {
+                "2839": {
+                  "id": 2839,
+                  "value": "1"
+                },
+                "2856": {
+                  "id": 2856,
+                  "value": "4А"
+                },
+                "2857": {
+                  "id": 2857,
+                  "value": "7"
+                },
+                "2858": {
+                  "id": 2858,
+                  "value": "7А"
+                },
+                "2859": {
+                  "id": 2859,
+                  "value": "8"
+                },
+                "2860": {
+                  "id": 2860,
+                  "value": "9"
+                },
+                "2840": {
+                  "id": 2840,
+                  "value": "10"
+                },
+                "2841": {
+                  "id": 2841,
+                  "value": "12"
+                },
+                "2842": {
+                  "id": 2842,
+                  "value": "13"
+                },
+                "2843": {
+                  "id": 2843,
+                  "value": "14А"
+                },
+                "2844": {
+                  "id": 2844,
+                  "value": "15"
+                },
+                "2845": {
+                  "id": 2845,
+                  "value": "15А"
+                },
+                "2846": {
+                  "id": 2846,
+                  "value": "16"
+                },
+                "2847": {
+                  "id": 2847,
+                  "value": "17"
+                },
+                "2848": {
+                  "id": 2848,
+                  "value": "17А"
+                },
+                "2849": {
+                  "id": 2849,
+                  "value": "18"
+                },
+                "2850": {
+                  "id": 2850,
+                  "value": "18А"
+                },
+                "2851": {
+                  "id": 2851,
+                  "value": "23"
+                },
+                "2852": {
+                  "id": 2852,
+                  "value": "24"
+                },
+                "2853": {
+                  "id": 2853,
+                  "value": "27"
+                },
+                "2854": {
+                  "id": 2854,
+                  "value": "30"
+                },
+                "2861": {
+                  "id": 2861,
+                  "value": "д19"
+                },
+                "2855": {
+                  "id": 2855,
+                  "value": "32"
+                }
+              },
+              "unexpanded": []
+            },
+            "39": {
+              "queries": [],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "items": {
+                "2862": {
+                  "id": 2862,
+                  "value": "1"
+                },
+                "2867": {
+                  "id": 2867,
+                  "value": "1А"
+                },
+                "2868": {
+                  "id": 2868,
+                  "value": "2/12"
+                },
+                "2869": {
+                  "id": 2869,
+                  "value": "4"
+                },
+                "2870": {
+                  "id": 2870,
+                  "value": "5"
+                },
+                "2871": {
+                  "id": 2871,
+                  "value": "7"
+                },
+                "2872": {
+                  "id": 2872,
+                  "value": "8/12"
+                },
+                "2873": {
+                  "id": 2873,
+                  "value": "8/14"
+                },
+                "2874": {
+                  "id": 2874,
+                  "value": "9"
+                },
+                "2863": {
+                  "id": 2863,
+                  "value": "11"
+                },
+                "2864": {
+                  "id": 2864,
+                  "value": "11/7"
+                },
+                "2865": {
+                  "id": 2865,
+                  "value": "15"
+                },
+                "2866": {
+                  "id": 2866,
+                  "value": "19"
                 }
               },
               "unexpanded": []
@@ -17112,7 +18277,8 @@
               "97/5",
               "99/14",
               "99/4",
-              "9А"
+              "9А",
+              "7"
             ],
             "29": [
               "5",
@@ -17534,7 +18700,8 @@
               "93",
               "95",
               "97/1",
-              "99/2"
+              "99/2",
+              "9"
             ],
             "37": [
               "10",
@@ -17587,7 +18754,35 @@
               "47",
               "48",
               "49",
-              "5"
+              "5",
+              "7"
+            ],
+            "38": [
+              "1",
+              "10",
+              "12",
+              "13",
+              "14А",
+              "15",
+              "15А",
+              "16",
+              "17",
+              "17А",
+              "18",
+              "18А",
+              "23",
+              "24",
+              "27",
+              "30",
+              "32",
+              "4А",
+              "7",
+              "7А",
+              "8",
+              "9"
+            ],
+            "39": [
+              "1"
             ]
           }
         }
