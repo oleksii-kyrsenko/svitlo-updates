@@ -1,0 +1,55 @@
+name: Bounded read-only official source evidence
+on:
+  workflow_dispatch:
+    inputs:
+      operator:
+        description: Registry operator with a bounded capital collector
+        type: string
+        required: true
+        default: volyn
+      request_limit:
+        description: Public collector requests (1..100)
+        type: string
+        required: true
+        default: '20'
+permissions:
+  contents: read
+concurrency:
+  group: bounded-official-source-evidence
+  cancel-in-progress: false
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      SOURCE_OPERATOR: ${{ inputs.operator }}
+      SOURCE_REQUEST_LIMIT: ${{ inputs.request_limit }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: coverage
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify isolated input and evidence boundaries
+        run: node --test coverage/qa/bounded-source-probe.test.mjs
+      - name: Resolve registry collector and sourced capital
+        id: plan
+        run: node coverage/probe-official-source.mjs --plan
+      - name: Install small PDF reader only for document collectors
+        if: steps.plan.outputs.needs_pdf == 'true'
+        run: pip install pdfplumber==0.11.9 cryptography==50.0.0
+      - name: Read bounded official source without publication
+        run: node coverage/probe-official-source.mjs
+      - name: Retain only public candidates and sanitized source evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bounded-official-source-${{ github.run_id }}
+          path: ${{ runner.temp }}/official-source-probe/artifact/
+          if-no-files-found: warn
+          retention-days: 7
