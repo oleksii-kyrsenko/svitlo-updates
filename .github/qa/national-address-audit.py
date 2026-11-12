@@ -9,6 +9,8 @@ import urllib.error, urllib.request, urllib.parse, xml.etree.ElementTree as ET
 
 _spec=importlib.util.spec_from_file_location('audit_contract',pathlib.Path(__file__).with_name('audit-contract.py'))
 audit_contract=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(audit_contract)
+_spec=importlib.util.spec_from_file_location('audit_result_evidence',pathlib.Path(__file__).with_name('audit-result-evidence.py'))
+result_evidence=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(result_evidence)
 
 PKG = 'ua.svitlo.app.testing'
 EID = 'element-6066-11e4-a52e-4f735466cecf'
@@ -546,6 +548,7 @@ class Audit:
         # for explicit read-only recovery or malformed-capture errors. Never ignore a journal
         # or modify the database on the device to make an audit pass.
         root = self.case_dir/'database'
+        self.last_state_capture=None
         for attempt in range(3):
             index=getattr(self,'database_capture_count',0)+1
             while (root/('capture-'+str(index).zfill(3))).exists():index+=1
@@ -559,7 +562,7 @@ class Audit:
             if not db:
                 return {}
             try:
-                with sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True) as connection:
+                with result_evidence.read_only_capture(db) as connection:
                     self.coverage_snapshot=None;self.city_coverage_snapshot=None
                     for schema,key in [(1,'@svitlo/dynamic-coverage-v1'),(2,'@svitlo/dynamic-coverage-v2')]:
                         coverage=connection.execute('SELECT value FROM catalystLocalStorage WHERE key=?',(key,)).fetchone()
@@ -580,6 +583,7 @@ class Audit:
                 time.sleep(.25)
                 continue
             capture['readCompleted']=True;proof.write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')
+            self.last_state_capture={'path':str(proof.relative_to(self.case_dir)),'sha256':hashlib.sha256(proof.read_bytes()).hexdigest()}
             return json.loads(row[0]) if row else {}
 
     def observe_post_save_queue(self,case,result,state,place,deadline):
@@ -880,9 +884,12 @@ class Audit:
                     result['queueCheckStatus']=place.get('queueCheckStatus')
                     result['publicCandidates']=place.get('queuePublicCandidates',[])
                     result['queueTransport']=place.get('queueTransport')
+                    result['queueStreetResolution']=place.get('queueStreetResolution')
+                    result['streetResolution']=place.get('queueStreetResolution')
+                    result['queueStreetSelectedAt']=place.get('queueStreetSelectedAt')
+                    result['sourceEvidenceArtifact']=result_evidence.persist_projection(case,result,state,self.last_state_capture,self.case_dir)
                     if place.get('queueConfirmed') and place.get('queue'):
-                        if result.get('visibleQueue')!=place.get('queue'):raise RuntimeError('Visible queue differs from app-written queue')
-                        result['outcome']='queue_found_public' if place.get('queueOrigin')=='public' else 'queue_found_official'
+                        result['outcome']=result_evidence.confirmed_outcome(result,place)
                     elif place.get('queuePublicCandidates'):
                         result['outcome']='public_proposal_requires_confirmation'
                     else:result['outcome']=place.get('queueCheckStatus') or result['outcome']
@@ -903,6 +910,9 @@ class Audit:
             result['finishedAt'] = stamp()
             result['totalSeconds'] = round(time.monotonic()-start, 1)
             result['automationInputRetries'] = self.input_retries
+            result['observedUIOfficialAutomaticContribution']=result_evidence.automatic_contribution(result)
+            result['independentQualificationStatus']='pending'
+            result['independentlyQualifiedCorrect']=None
             try:
                 self.screenshot('last-screen')
                 log = self.adb('logcat', '-d')
@@ -911,6 +921,11 @@ class Audit:
             except Exception:
                 pass
             (self.case_dir/'result.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
+            try:
+                result_evidence.bind_attempt(case,result,self.case_dir)
+            except Exception as error:
+                result.update(outcome='harness_error',evidenceBindingError=str(error),observedUIOfficialAutomaticContribution=0)
+                (self.case_dir/'result.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
         return result
 
     @staticmethod
@@ -956,7 +971,7 @@ def main():
             result = audit.run_case(case)
             results.append(result)
             (args.out/'results.json').write_text(json.dumps({'schemaVersion':1,'apkVersion':binary['version'],'apkCode':binary['versionCode'],'apkSha256':binary['apkSha256'],'androidApi':binary['androidApi'],'sampleSha256':binary['sampleSha256'],'reviewedDisplayVariantsSha256':alias_sha256,'noAddressStorageSeeding':True,'noManualQueueInputs':True,
-                'region':args.region,'cases':results}, ensure_ascii=False, indent=2)+'\n')
+                'region':args.region,'coverageSummary':result_evidence.summary(results),'cases':results}, ensure_ascii=False, indent=2)+'\n')
             print('AUDIT_CASE_RESULT', json.dumps({k:result.get(k) for k in ['id','city','outcome','actualAddress','visibleQueue','lookupSeconds','totalSeconds','automationError']}, ensure_ascii=False), flush=True)
     finally:
         audit.call('DELETE', '')

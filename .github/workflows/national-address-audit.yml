@@ -53,6 +53,7 @@ jobs:
           python3 .github/qa/test-audit-contract.py
           python3 .github/qa/test-audit-search-input.py
           python3 .github/qa/test-audit-reviewed-variants.py
+          python3 .github/qa/test-audit-result-evidence.py
       - name: Validate and freeze requested audit chunks
         id: plan
         env:

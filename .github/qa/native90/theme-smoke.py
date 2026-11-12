@@ -1,7 +1,8 @@
 """Native display-name/update acceptance; external fixtures never enter the product."""
 import pathlib,json,sqlite3,time,copy,datetime,zoneinfo,xml.etree.ElementTree as E,os,subprocess
-import hashlib
+import hashlib,importlib.util
 from PIL import Image,ImageChops
+spec=importlib.util.spec_from_file_location('capture_reader','.github/qa/audit-result-evidence.py');capture_reader=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture_reader)
 c={'__name__':'launcher_helpers'};exec(compile(pathlib.Path('.github/qa/native90/apk-smoke.py').read_text().split('\nflags={}')[0],'launcher_helpers','exec'),c)
 adb=c['adb'];xml=c['xml'];tap=c['tap'];wait=c['wait_for'];launch=c['launch'];evidence=c['evidence'];out=c['out'];pkg=c['pkg'];meta=c['meta'];bounds=c['bounds'];flags={};metrics={}
 def seed(state,theme):
@@ -29,7 +30,7 @@ def saved():
   database=next(directory.rglob('RKStorage'),None)
   if not database:raise AssertionError('Retained SQLite state is missing')
   try:
-   with sqlite3.connect('file:'+str(database.resolve())+'?mode=ro',uri=True) as db:
+   with capture_reader.read_only_capture(database) as db:
     integrity=db.execute('PRAGMA integrity_check').fetchone()[0]
     if integrity!='ok':raise AssertionError('Retained SQLite integrity check failed: '+integrity)
     values={k:json.loads(v) for k,v in db.execute('SELECT key,value FROM catalystLocalStorage WHERE key IN (?,?)',('svitlo.state.v1','svitlo.appearance.v1'))}

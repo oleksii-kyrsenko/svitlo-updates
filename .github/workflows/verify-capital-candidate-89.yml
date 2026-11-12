@@ -46,6 +46,7 @@ jobs:
           python3 .github/qa/native90/test-selection.py
           python3 .github/qa/native90/test-historical-screen.py
           python3 .github/qa/test-historical-hint-audit.py
+          python3 .github/qa/test-audit-result-evidence.py
       - name: Select bounded acceptance jobs
         id: select
         env:

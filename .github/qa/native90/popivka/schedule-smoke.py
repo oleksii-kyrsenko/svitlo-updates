@@ -6,6 +6,7 @@ read from the real official publication independently in source.py.
 """
 import copy,datetime,hashlib,importlib.util,json,pathlib,re,sqlite3,subprocess,time,xml.etree.ElementTree as E
 ROOT=pathlib.Path('.github/qa');spec=importlib.util.spec_from_file_location('screen_evidence',ROOT/'native90/popivka/screen.py');screen=importlib.util.module_from_spec(spec);spec.loader.exec_module(screen);c=screen.load_helpers(ROOT/'native90/apk-smoke.py')
+spec=importlib.util.spec_from_file_location('capture_reader',ROOT/'audit-result-evidence.py');capture_reader=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture_reader)
 adb,xml,launch,evidence,out,pkg=(c[k] for k in ['adb','xml','launch','evidence','out','pkg'])
 spec=importlib.util.spec_from_file_location('native_contract',ROOT/'native90/contract.py');contract=importlib.util.module_from_spec(spec);spec.loader.exec_module(contract)
 spec=importlib.util.spec_from_file_location('official_observation',ROOT/'native90/popivka/source.py');source=importlib.util.module_from_spec(spec);spec.loader.exec_module(source)
@@ -19,7 +20,7 @@ def dump_state(label):
   record={'capturedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'readOnly':True,'files':files};proof=directory/'capture.json';proof.write_text(json.dumps(record,indent=2)+'\n')
   database=next(directory.rglob('RKStorage'))
   try:
-   with sqlite3.connect('file:'+str(database.resolve())+'?mode=ro',uri=True) as db:
+   with capture_reader.read_only_capture(database) as db:
     integrity=db.execute('PRAGMA integrity_check').fetchone()[0]
     if integrity!='ok':raise AssertionError('Retained SQLite integrity check failed: '+integrity)
     row=db.execute('SELECT value FROM catalystLocalStorage WHERE key=?',('svitlo.state.v1',)).fetchone()
