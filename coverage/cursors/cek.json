@@ -39,56 +39,160 @@
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
               "street": "вул. Криворізька",
+              "house": "22",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Криворізька",
+              "house": "22А",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Криворізька",
+              "house": "22Б",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Криворізька",
+              "house": "4",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Криворізька",
+              "house": "6",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Криворізька",
+              "house": "8",
+              "providerStreetId": "44"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
+              "house": "10",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
+              "house": "10А",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
+              "house": "11",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
+              "house": "12",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
               "house": "12А",
-              "providerStreetId": "44"
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
+              "house": "13",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
               "house": "14",
-              "providerStreetId": "44"
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
               "house": "14А",
-              "providerStreetId": "44"
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
+              "house": "15",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
               "house": "16",
-              "providerStreetId": "44"
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
-              "house": "18",
-              "providerStreetId": "44"
+              "street": "вул. Макарова",
+              "house": "17",
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
-              "house": "2",
-              "providerStreetId": "44"
+              "street": "вул. Макарова",
+              "house": "18А",
+              "providerStreetId": "45"
             },
             {
               "regionId": "UA-12",
               "settlement": "Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Криворізька",
-              "house": "20",
-              "providerStreetId": "44"
+              "street": "вул. Макарова",
+              "house": "19",
+              "providerStreetId": "45"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Макарова",
+              "house": "1А",
+              "providerStreetId": "45"
             }
           ],
           "contexts": {
@@ -113,65 +217,182 @@
             {
               "settlement": "Дніпро",
               "street": "вул. Криворізька",
+              "house": "22",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1927",
+              "checkedAt": 1794599766985
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Криворізька",
+              "house": "22А",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1930",
+              "checkedAt": 1794599769375
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Криворізька",
+              "house": "22Б",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1931",
+              "checkedAt": 1794599771208
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Криворізька",
+              "house": "4",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1918",
+              "checkedAt": 1794599773488
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Криворізька",
+              "house": "6",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1919",
+              "checkedAt": 1794599775401
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Криворізька",
+              "house": "8",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1920",
+              "checkedAt": 1794599777505
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
+              "house": "10",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1936",
+              "checkedAt": 1794599792218
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
+              "house": "10А",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1954",
+              "checkedAt": 1794599794292
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
+              "house": "11",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1937",
+              "checkedAt": 1794599796419
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
+              "house": "12",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1938",
+              "checkedAt": 1794599798496
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
               "house": "12А",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1928",
-              "checkedAt": 1794553089898
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1955",
+              "checkedAt": 1794599800603
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
+              "house": "13",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1939",
+              "checkedAt": 1794599802712
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
               "house": "14",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1923",
-              "checkedAt": 1794553096185
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1940",
+              "checkedAt": 1794599804819
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
               "house": "14А",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1929",
-              "checkedAt": 1794553100380
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1956",
+              "checkedAt": 1794599807005
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
+              "street": "вул. Макарова",
+              "house": "15",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1941",
+              "checkedAt": 1794599809343
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
               "house": "16",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1924",
-              "checkedAt": 1794553104558
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1942",
+              "checkedAt": 1794599811157
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
-              "house": "18",
+              "street": "вул. Макарова",
+              "house": "17",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1925",
-              "checkedAt": 1794553108990
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1943",
+              "checkedAt": 1794599813298
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
-              "house": "2",
+              "street": "вул. Макарова",
+              "house": "18А",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1917",
-              "checkedAt": 1794553112980
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1957",
+              "checkedAt": 1794599815634
             },
             {
               "settlement": "Дніпро",
-              "street": "вул. Криворізька",
-              "house": "20",
+              "street": "вул. Макарова",
+              "house": "19",
               "queue": "1.2",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=44&houseId=1926",
-              "checkedAt": 1794553117174
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1944",
+              "checkedAt": 1794599817752
+            },
+            {
+              "settlement": "Дніпро",
+              "street": "вул. Макарова",
+              "house": "1А",
+              "queue": "1.2",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=45&houseId=1958",
+              "checkedAt": 1794599819577
             }
           ],
           "streetInventory": {
@@ -1620,23 +1841,12 @@
             "39",
             "41",
             "42",
-            "43"
+            "43",
+            "44"
           ],
           "houseInventories": {
             "20": {
               "queries": [
-                "2м",
-                "2н",
-                "2о",
-                "2п",
-                "2р",
-                "2с",
-                "2т",
-                "2у",
-                "2ф",
-                "2х",
-                "2ц",
-                "2ч",
                 "2ш",
                 "2щ",
                 "2ь",
@@ -2611,7 +2821,19 @@
                 "2ї",
                 "2й",
                 "2к",
-                "2л"
+                "2л",
+                "2м",
+                "2н",
+                "2о",
+                "2п",
+                "2р",
+                "2с",
+                "2т",
+                "2у",
+                "2ф",
+                "2х",
+                "2ц",
+                "2ч"
               ],
               "items": {
                 "506": {
@@ -3439,18 +3661,6 @@
             },
             "25": {
               "queries": [
-                "    ",
-                "   а",
-                "   б",
-                "   в",
-                "   г",
-                "   ґ",
-                "   д",
-                "   е",
-                "   є",
-                "   ж",
-                "   з",
-                "   и",
                 "   і",
                 "   ї",
                 "   й",
@@ -3520,7 +3730,89 @@
                 "   (",
                 "   )",
                 "   /",
-                "   №"
+                "   №",
+                "     ",
+                "    а",
+                "    б",
+                "    в",
+                "    г",
+                "    ґ",
+                "    д",
+                "    е",
+                "    є",
+                "    ж",
+                "    з",
+                "    и",
+                "    і",
+                "    ї",
+                "    й",
+                "    к",
+                "    л",
+                "    м",
+                "    н",
+                "    о",
+                "    п",
+                "    р",
+                "    с",
+                "    т",
+                "    у",
+                "    ф",
+                "    х",
+                "    ц",
+                "    ч",
+                "    ш",
+                "    щ",
+                "    ь",
+                "    ю",
+                "    я",
+                "    ы",
+                "    э",
+                "    ъ",
+                "    ё",
+                "    a",
+                "    b",
+                "    c",
+                "    d",
+                "    e",
+                "    f",
+                "    g",
+                "    h",
+                "    i",
+                "    j",
+                "    k",
+                "    l",
+                "    m",
+                "    n",
+                "    o",
+                "    p",
+                "    q",
+                "    r",
+                "    s",
+                "    t",
+                "    u",
+                "    v",
+                "    w",
+                "    x",
+                "    y",
+                "    z",
+                "    0",
+                "    1",
+                "    2",
+                "    3",
+                "    4",
+                "    5",
+                "    6",
+                "    7",
+                "    8",
+                "    9",
+                "    .",
+                "    -",
+                "    ’",
+                "    '",
+                "    (",
+                "    )",
+                "    /",
+                "    №"
               ],
               "done": [
                 "",
@@ -3769,7 +4061,19 @@
                 "  (",
                 "  )",
                 "  /",
-                "  №"
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г",
+                "   ґ",
+                "   д",
+                "   е",
+                "   є",
+                "   ж",
+                "   з",
+                "   и"
               ],
               "items": {
                 "903": {
@@ -3945,18 +4249,6 @@
             },
             "26": {
               "queries": [
-                " -",
-                " ’",
-                " '",
-                " (",
-                " )",
-                " /",
-                " №",
-                "   ",
-                "  а",
-                "  б",
-                "  в",
-                "  г",
                 "  ґ",
                 "  д",
                 "  е",
@@ -4033,7 +4325,89 @@
                 "  (",
                 "  )",
                 "  /",
-                "  №"
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г",
+                "   ґ",
+                "   д",
+                "   е",
+                "   є",
+                "   ж",
+                "   з",
+                "   и",
+                "   і",
+                "   ї",
+                "   й",
+                "   к",
+                "   л",
+                "   м",
+                "   н",
+                "   о",
+                "   п",
+                "   р",
+                "   с",
+                "   т",
+                "   у",
+                "   ф",
+                "   х",
+                "   ц",
+                "   ч",
+                "   ш",
+                "   щ",
+                "   ь",
+                "   ю",
+                "   я",
+                "   ы",
+                "   э",
+                "   ъ",
+                "   ё",
+                "   a",
+                "   b",
+                "   c",
+                "   d",
+                "   e",
+                "   f",
+                "   g",
+                "   h",
+                "   i",
+                "   j",
+                "   k",
+                "   l",
+                "   m",
+                "   n",
+                "   o",
+                "   p",
+                "   q",
+                "   r",
+                "   s",
+                "   t",
+                "   u",
+                "   v",
+                "   w",
+                "   x",
+                "   y",
+                "   z",
+                "   0",
+                "   1",
+                "   2",
+                "   3",
+                "   4",
+                "   5",
+                "   6",
+                "   7",
+                "   8",
+                "   9",
+                "   .",
+                "   -",
+                "   ’",
+                "   '",
+                "   (",
+                "   )",
+                "   /",
+                "   №"
               ],
               "done": [
                 "",
@@ -4275,7 +4649,19 @@
                 " 7",
                 " 8",
                 " 9",
-                " ."
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №",
+                "   ",
+                "  а",
+                "  б",
+                "  в",
+                "  г"
               ],
               "items": {
                 "1154": {
@@ -4793,18 +5179,6 @@
             },
             "29": {
               "queries": [
-                " n",
-                " o",
-                " p",
-                " q",
-                " r",
-                " s",
-                " t",
-                " u",
-                " v",
-                " w",
-                " x",
-                " y",
                 " z",
                 " 0",
                 " 1",
@@ -5123,7 +5497,19 @@
                 " j",
                 " k",
                 " l",
-                " m"
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w",
+                " x",
+                " y"
               ],
               "items": {
                 "1374": {
@@ -5395,18 +5781,6 @@
             },
             "30": {
               "queries": [
-                "  ц",
-                "  ч",
-                "  ш",
-                "  щ",
-                "  ь",
-                "  ю",
-                "  я",
-                "  ы",
-                "  э",
-                "  ъ",
-                "  ё",
-                "  a",
                 "  b",
                 "  c",
                 "  d",
@@ -5725,7 +6099,19 @@
                 "  т",
                 "  у",
                 "  ф",
-                "  х"
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a"
               ],
               "items": {
                 "1440": {
@@ -5821,18 +6207,6 @@
             },
             "31": {
               "queries": [
-                "  ц",
-                "  ч",
-                "  ш",
-                "  щ",
-                "  ь",
-                "  ю",
-                "  я",
-                "  ы",
-                "  э",
-                "  ъ",
-                "  ё",
-                "  a",
                 "  b",
                 "  c",
                 "  d",
@@ -6151,7 +6525,19 @@
                 "  т",
                 "  у",
                 "  ф",
-                "  х"
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a"
               ],
               "items": {
                 "1498": {
@@ -6239,18 +6625,6 @@
             },
             "32": {
               "queries": [
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
                 "  к",
                 "  л",
                 "  м",
@@ -6569,7 +6943,19 @@
                 " №",
                 "   ",
                 "  а",
-                "  б"
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й"
               ],
               "items": {
                 "1518": {
@@ -6696,18 +7082,6 @@
             },
             "34": {
               "queries": [
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
                 "  к",
                 "  л",
                 "  м",
@@ -7026,7 +7400,19 @@
                 " №",
                 "   ",
                 "  а",
-                "  б"
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й"
               ],
               "items": {
                 "1543": {
@@ -7245,6 +7631,433 @@
               "unexpanded": []
             },
             "35": {
+              "queries": [
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №",
+                "   ",
+                "  а",
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й",
+                "  к",
+                "  л",
+                "  м",
+                "  н",
+                "  о",
+                "  п",
+                "  р",
+                "  с",
+                "  т",
+                "  у",
+                "  ф",
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a",
+                "  b",
+                "  c",
+                "  d",
+                "  e",
+                "  f",
+                "  g",
+                "  h",
+                "  i",
+                "  j",
+                "  k",
+                "  l",
+                "  m",
+                "  n",
+                "  o",
+                "  p",
+                "  q",
+                "  r",
+                "  s",
+                "  t",
+                "  u",
+                "  v",
+                "  w",
+                "  x",
+                "  y",
+                "  z",
+                "  0",
+                "  1",
+                "  2",
+                "  3",
+                "  4",
+                "  5",
+                "  6",
+                "  7",
+                "  8",
+                "  9",
+                "  .",
+                "  -",
+                "  ’",
+                "  '",
+                "  (",
+                "  )",
+                "  /",
+                "  №"
+              ],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                " ",
+                "а",
+                "б",
+                "в",
+                "г",
+                "ґ",
+                "д",
+                "е",
+                "є",
+                "ж",
+                "з",
+                "и",
+                "і",
+                "ї",
+                "й",
+                "к",
+                "л",
+                "м",
+                "н",
+                "о",
+                "п",
+                "р",
+                "с",
+                "т",
+                "у",
+                "ф",
+                "х",
+                "ц",
+                "ч",
+                "ш",
+                "щ",
+                "ь",
+                "ю",
+                "я",
+                "ы",
+                "э",
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                ".",
+                "-",
+                "’",
+                "'",
+                "(",
+                ")",
+                "/",
+                "№",
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і",
+                " ї",
+                " й",
+                " к",
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч",
+                " ш",
+                " щ",
+                " ь",
+                " ю",
+                " я",
+                " ы",
+                " э",
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j",
+                " k",
+                " l",
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w"
+              ],
+              "items": {
+                "1598": {
+                  "id": 1598,
+                  "value": "1"
+                },
+                "1599": {
+                  "id": 1599,
+                  "value": "2"
+                },
+                "1600": {
+                  "id": 1600,
+                  "value": "3"
+                },
+                "1601": {
+                  "id": 1601,
+                  "value": "4"
+                },
+                "1602": {
+                  "id": 1602,
+                  "value": "5"
+                },
+                "1603": {
+                  "id": 1603,
+                  "value": "6"
+                },
+                "1604": {
+                  "id": 1604,
+                  "value": "7"
+                },
+                "1605": {
+                  "id": 1605,
+                  "value": "8"
+                },
+                "1606": {
+                  "id": 1606,
+                  "value": "9"
+                },
+                "1607": {
+                  "id": 1607,
+                  "value": "10"
+                },
+                "1608": {
+                  "id": 1608,
+                  "value": "11"
+                },
+                "1609": {
+                  "id": 1609,
+                  "value": "12"
+                },
+                "1610": {
+                  "id": 1610,
+                  "value": "13"
+                },
+                "1611": {
+                  "id": 1611,
+                  "value": "14"
+                },
+                "1612": {
+                  "id": 1612,
+                  "value": "15"
+                },
+                "1613": {
+                  "id": 1613,
+                  "value": "16"
+                },
+                "1614": {
+                  "id": 1614,
+                  "value": "17"
+                },
+                "1615": {
+                  "id": 1615,
+                  "value": "18"
+                },
+                "1616": {
+                  "id": 1616,
+                  "value": "19"
+                },
+                "1617": {
+                  "id": 1617,
+                  "value": "20"
+                }
+              },
+              "unexpanded": []
+            },
+            "36": {
+              "queries": [],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "items": {
+                "1648": {
+                  "id": 1648,
+                  "value": "3"
+                },
+                "1649": {
+                  "id": 1649,
+                  "value": "4"
+                },
+                "1650": {
+                  "id": 1650,
+                  "value": "5"
+                },
+                "1651": {
+                  "id": 1651,
+                  "value": "6"
+                },
+                "1652": {
+                  "id": 1652,
+                  "value": "7"
+                },
+                "1653": {
+                  "id": 1653,
+                  "value": "8"
+                },
+                "1654": {
+                  "id": 1654,
+                  "value": "9"
+                },
+                "1655": {
+                  "id": 1655,
+                  "value": "10"
+                },
+                "1656": {
+                  "id": 1656,
+                  "value": "11"
+                },
+                "1657": {
+                  "id": 1657,
+                  "value": "12"
+                },
+                "1658": {
+                  "id": 1658,
+                  "value": "13"
+                },
+                "1659": {
+                  "id": 1659,
+                  "value": "14"
+                },
+                "1660": {
+                  "id": 1660,
+                  "value": "15"
+                },
+                "1661": {
+                  "id": 1661,
+                  "value": "16"
+                },
+                "1662": {
+                  "id": 1662,
+                  "value": "17"
+                },
+                "1663": {
+                  "id": 1663,
+                  "value": "18"
+                },
+                "1664": {
+                  "id": 1664,
+                  "value": "19"
+                },
+                "1665": {
+                  "id": 1665,
+                  "value": "20"
+                }
+              },
+              "unexpanded": []
+            },
+            "37": {
               "queries": [
                 " l",
                 " m",
@@ -7495,433 +8308,6 @@
                 " i",
                 " j",
                 " k"
-              ],
-              "items": {
-                "1598": {
-                  "id": 1598,
-                  "value": "1"
-                },
-                "1599": {
-                  "id": 1599,
-                  "value": "2"
-                },
-                "1600": {
-                  "id": 1600,
-                  "value": "3"
-                },
-                "1601": {
-                  "id": 1601,
-                  "value": "4"
-                },
-                "1602": {
-                  "id": 1602,
-                  "value": "5"
-                },
-                "1603": {
-                  "id": 1603,
-                  "value": "6"
-                },
-                "1604": {
-                  "id": 1604,
-                  "value": "7"
-                },
-                "1605": {
-                  "id": 1605,
-                  "value": "8"
-                },
-                "1606": {
-                  "id": 1606,
-                  "value": "9"
-                },
-                "1607": {
-                  "id": 1607,
-                  "value": "10"
-                },
-                "1608": {
-                  "id": 1608,
-                  "value": "11"
-                },
-                "1609": {
-                  "id": 1609,
-                  "value": "12"
-                },
-                "1610": {
-                  "id": 1610,
-                  "value": "13"
-                },
-                "1611": {
-                  "id": 1611,
-                  "value": "14"
-                },
-                "1612": {
-                  "id": 1612,
-                  "value": "15"
-                },
-                "1613": {
-                  "id": 1613,
-                  "value": "16"
-                },
-                "1614": {
-                  "id": 1614,
-                  "value": "17"
-                },
-                "1615": {
-                  "id": 1615,
-                  "value": "18"
-                },
-                "1616": {
-                  "id": 1616,
-                  "value": "19"
-                },
-                "1617": {
-                  "id": 1617,
-                  "value": "20"
-                }
-              },
-              "unexpanded": []
-            },
-            "36": {
-              "queries": [],
-              "done": [
-                "",
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
-              ],
-              "items": {
-                "1648": {
-                  "id": 1648,
-                  "value": "3"
-                },
-                "1649": {
-                  "id": 1649,
-                  "value": "4"
-                },
-                "1650": {
-                  "id": 1650,
-                  "value": "5"
-                },
-                "1651": {
-                  "id": 1651,
-                  "value": "6"
-                },
-                "1652": {
-                  "id": 1652,
-                  "value": "7"
-                },
-                "1653": {
-                  "id": 1653,
-                  "value": "8"
-                },
-                "1654": {
-                  "id": 1654,
-                  "value": "9"
-                },
-                "1655": {
-                  "id": 1655,
-                  "value": "10"
-                },
-                "1656": {
-                  "id": 1656,
-                  "value": "11"
-                },
-                "1657": {
-                  "id": 1657,
-                  "value": "12"
-                },
-                "1658": {
-                  "id": 1658,
-                  "value": "13"
-                },
-                "1659": {
-                  "id": 1659,
-                  "value": "14"
-                },
-                "1660": {
-                  "id": 1660,
-                  "value": "15"
-                },
-                "1661": {
-                  "id": 1661,
-                  "value": "16"
-                },
-                "1662": {
-                  "id": 1662,
-                  "value": "17"
-                },
-                "1663": {
-                  "id": 1663,
-                  "value": "18"
-                },
-                "1664": {
-                  "id": 1664,
-                  "value": "19"
-                },
-                "1665": {
-                  "id": 1665,
-                  "value": "20"
-                }
-              },
-              "unexpanded": []
-            },
-            "37": {
-              "queries": [
-                " ё",
-                " a",
-                " b",
-                " c",
-                " d",
-                " e",
-                " f",
-                " g",
-                " h",
-                " i",
-                " j",
-                " k",
-                " l",
-                " m",
-                " n",
-                " o",
-                " p",
-                " q",
-                " r",
-                " s",
-                " t",
-                " u",
-                " v",
-                " w",
-                " x",
-                " y",
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
-                " 5",
-                " 6",
-                " 7",
-                " 8",
-                " 9",
-                " .",
-                " -",
-                " ’",
-                " '",
-                " (",
-                " )",
-                " /",
-                " №",
-                "   ",
-                "  а",
-                "  б",
-                "  в",
-                "  г",
-                "  ґ",
-                "  д",
-                "  е",
-                "  є",
-                "  ж",
-                "  з",
-                "  и",
-                "  і",
-                "  ї",
-                "  й",
-                "  к",
-                "  л",
-                "  м",
-                "  н",
-                "  о",
-                "  п",
-                "  р",
-                "  с",
-                "  т",
-                "  у",
-                "  ф",
-                "  х",
-                "  ц",
-                "  ч",
-                "  ш",
-                "  щ",
-                "  ь",
-                "  ю",
-                "  я",
-                "  ы",
-                "  э",
-                "  ъ",
-                "  ё",
-                "  a",
-                "  b",
-                "  c",
-                "  d",
-                "  e",
-                "  f",
-                "  g",
-                "  h",
-                "  i",
-                "  j",
-                "  k",
-                "  l",
-                "  m",
-                "  n",
-                "  o",
-                "  p",
-                "  q",
-                "  r",
-                "  s",
-                "  t",
-                "  u",
-                "  v",
-                "  w",
-                "  x",
-                "  y",
-                "  z",
-                "  0",
-                "  1",
-                "  2",
-                "  3",
-                "  4",
-                "  5",
-                "  6",
-                "  7",
-                "  8",
-                "  9",
-                "  .",
-                "  -",
-                "  ’",
-                "  '",
-                "  (",
-                "  )",
-                "  /",
-                "  №"
-              ],
-              "done": [
-                "",
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                " ",
-                "а",
-                "б",
-                "в",
-                "г",
-                "ґ",
-                "д",
-                "е",
-                "є",
-                "ж",
-                "з",
-                "и",
-                "і",
-                "ї",
-                "й",
-                "к",
-                "л",
-                "м",
-                "н",
-                "о",
-                "п",
-                "р",
-                "с",
-                "т",
-                "у",
-                "ф",
-                "х",
-                "ц",
-                "ч",
-                "ш",
-                "щ",
-                "ь",
-                "ю",
-                "я",
-                "ы",
-                "э",
-                "ъ",
-                "ё",
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
-                "l",
-                "m",
-                "n",
-                "o",
-                "p",
-                "q",
-                "r",
-                "s",
-                "t",
-                "u",
-                "v",
-                "w",
-                "x",
-                "y",
-                "z",
-                ".",
-                "-",
-                "’",
-                "'",
-                "(",
-                ")",
-                "/",
-                "№",
-                "  ",
-                " а",
-                " б",
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
-                " и",
-                " і",
-                " ї",
-                " й",
-                " к",
-                " л",
-                " м",
-                " н",
-                " о",
-                " п",
-                " р",
-                " с",
-                " т",
-                " у",
-                " ф",
-                " х",
-                " ц",
-                " ч",
-                " ш",
-                " щ",
-                " ь",
-                " ю",
-                " я",
-                " ы",
-                " э",
-                " ъ"
               ],
               "items": {
                 "1666": {
@@ -8259,18 +8645,6 @@
             },
             "40": {
               "queries": [
-                "ё",
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
                 "l",
                 "m",
                 "n",
@@ -8425,7 +8799,19 @@
                 "я",
                 "ы",
                 "э",
-                "ъ"
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k"
               ],
               "items": {
                 "1812": {
@@ -8723,6 +9109,316 @@
                 "1931": {
                   "id": 1931,
                   "value": "22Б"
+                }
+              },
+              "unexpanded": []
+            },
+            "45": {
+              "queries": [
+                "а",
+                "б",
+                "в",
+                "г",
+                "ґ",
+                "д",
+                "е",
+                "є",
+                "ж",
+                "з",
+                "и",
+                "і",
+                "ї",
+                "й",
+                "к",
+                "л",
+                "м",
+                "н",
+                "о",
+                "п",
+                "р",
+                "с",
+                "т",
+                "у",
+                "ф",
+                "х",
+                "ц",
+                "ч",
+                "ш",
+                "щ",
+                "ь",
+                "ю",
+                "я",
+                "ы",
+                "э",
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                ".",
+                "-",
+                "’",
+                "'",
+                "(",
+                ")",
+                "/",
+                "№",
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і",
+                " ї",
+                " й",
+                " к",
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч",
+                " ш",
+                " щ",
+                " ь",
+                " ю",
+                " я",
+                " ы",
+                " э",
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j",
+                " k",
+                " l",
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №"
+              ],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                " "
+              ],
+              "items": {
+                "1958": {
+                  "id": 1958,
+                  "value": "1А"
+                },
+                "1959": {
+                  "id": 1959,
+                  "value": "1Б"
+                },
+                "1961": {
+                  "id": 1961,
+                  "value": "2А"
+                },
+                "1932": {
+                  "id": 1932,
+                  "value": "3"
+                },
+                "1965": {
+                  "id": 1965,
+                  "value": "4А"
+                },
+                "1933": {
+                  "id": 1933,
+                  "value": "5"
+                },
+                "1934": {
+                  "id": 1934,
+                  "value": "7"
+                },
+                "1935": {
+                  "id": 1935,
+                  "value": "9"
+                },
+                "1936": {
+                  "id": 1936,
+                  "value": "10"
+                },
+                "1954": {
+                  "id": 1954,
+                  "value": "10А"
+                },
+                "1937": {
+                  "id": 1937,
+                  "value": "11"
+                },
+                "1938": {
+                  "id": 1938,
+                  "value": "12"
+                },
+                "1955": {
+                  "id": 1955,
+                  "value": "12А"
+                },
+                "1939": {
+                  "id": 1939,
+                  "value": "13"
+                },
+                "1940": {
+                  "id": 1940,
+                  "value": "14"
+                },
+                "1956": {
+                  "id": 1956,
+                  "value": "14А"
+                },
+                "1941": {
+                  "id": 1941,
+                  "value": "15"
+                },
+                "1942": {
+                  "id": 1942,
+                  "value": "16"
+                },
+                "1943": {
+                  "id": 1943,
+                  "value": "17"
+                },
+                "1957": {
+                  "id": 1957,
+                  "value": "18А"
+                },
+                "1944": {
+                  "id": 1944,
+                  "value": "19"
+                },
+                "1945": {
+                  "id": 1945,
+                  "value": "21"
+                },
+                "1950": {
+                  "id": 1950,
+                  "value": "31"
+                },
+                "1962": {
+                  "id": 1962,
+                  "value": "31А"
+                },
+                "1946": {
+                  "id": 1946,
+                  "value": "22"
+                },
+                "1947": {
+                  "id": 1947,
+                  "value": "23"
+                },
+                "1948": {
+                  "id": 1948,
+                  "value": "25"
+                },
+                "1949": {
+                  "id": 1949,
+                  "value": "29"
+                },
+                "1960": {
+                  "id": 1960,
+                  "value": "29А"
+                },
+                "1951": {
+                  "id": 1951,
+                  "value": "33"
+                },
+                "1952": {
+                  "id": 1952,
+                  "value": "35"
+                },
+                "1963": {
+                  "id": 1963,
+                  "value": "35А"
+                },
+                "1953": {
+                  "id": 1953,
+                  "value": "37"
+                },
+                "1964": {
+                  "id": 1964,
+                  "value": "37А"
                 }
               },
               "unexpanded": []
@@ -9459,7 +10155,29 @@
               "16",
               "18",
               "2",
-              "20"
+              "20",
+              "22",
+              "22А",
+              "22Б",
+              "4",
+              "6",
+              "8"
+            ],
+            "45": [
+              "10",
+              "10А",
+              "11",
+              "12",
+              "12А",
+              "13",
+              "14",
+              "14А",
+              "15",
+              "16",
+              "17",
+              "18А",
+              "19",
+              "1А"
             ]
           }
         }
