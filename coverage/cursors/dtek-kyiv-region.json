@@ -19,164 +19,172 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-Г/8",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-Г/9",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-г",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-г/11-а",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-г/22а",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2-д",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2/Д",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "20",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2А",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2А/2",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2Б",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2В",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2Г/1",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2Д",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2С",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "2є",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "3",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "4",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Миру",
-          "house": "4А",
-          "queue": "6.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794519003028
-        }
-      ],
-      "houseIndex": 54,
+      "auditSamples": [],
+      "houseIndex": 74,
       "streetIndex": 18,
       "crawlStatus": "partial",
-      "observedHouses": [],
+      "observedHouses": [
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "39",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "39/2",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "4",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "4/3",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "40",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "40/3",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "41",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42-Б",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42-Б/4",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42-а",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42А",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42Б/2",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "42Б/6",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "43",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "44",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "45",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "46",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "46А",
+          "providerStreetId": "вул. Вериківського"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Вериківського",
+          "house": "47",
+          "providerStreetId": "вул. Вериківського"
+        }
+      ],
       "dictionaryComplete": true
     }
   }
