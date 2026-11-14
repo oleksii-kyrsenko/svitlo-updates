@@ -19,170 +19,243 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [],
-      "houseIndex": 60,
-      "streetIndex": 20,
+      "auditSamples": [
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А, 1-Б",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А-11",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А/17",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А/18",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А/19",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-А/22",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "1-в",
+          "queue": "2.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "10",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Білокур",
+          "house": "11",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794695605450
+        }
+      ],
+      "houseIndex": 20,
+      "streetIndex": 21,
       "crawlStatus": "partial",
       "observedHouses": [
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "3/6",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "3/9",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-10",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "30",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А, 1-Б",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "31",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А-11",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "32",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А/17",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "33",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А/18",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "33/1",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А/19",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "34",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-А/22",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "35",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-в",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "36",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-д",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "36-А",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-е",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "37",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-е/1",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "37 Б",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-з/1",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "38",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-н",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "39",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-н/1",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "39/2",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-р",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "4",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1-х",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "4/3",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "1/1",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "40",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "10",
+          "providerStreetId": "вул. Білокур"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Вериківського",
-          "house": "40/3",
-          "providerStreetId": "вул. Вериківського"
+          "street": "вул. Білокур",
+          "house": "11",
+          "providerStreetId": "вул. Білокур"
         }
       ],
       "dictionaryComplete": true
