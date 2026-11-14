@@ -19,8 +19,17 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [],
-      "houseIndex": 20,
+      "auditSamples": [
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Сингаївського Миколи",
+          "house": "10ВКОРП_2",
+          "queue": "3.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794637854478
+        }
+      ],
+      "houseIndex": 40,
       "streetIndex": 19,
       "crawlStatus": "partial",
       "observedHouses": [
@@ -28,161 +37,161 @@
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "/0070",
-          "providerStreetId": "пров. 2-й Український"
+          "street": "вул. Сингаївського Миколи",
+          "house": "10ВКОРП_2",
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "/0071",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "/0077",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "1",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "10",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "10А",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
           "house": "11",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
           "house": "12",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12-А/4",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "12А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
           "house": "13",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
+          "house": "13/1",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
           "house": "14",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14-Г",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "14А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
           "house": "15",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "15/1",
-          "providerStreetId": "пров. 2-й Український"
+          "street": "вул. Сингаївського Миколи",
+          "house": "15А",
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
           "house": "16",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "16А",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "16Б",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
           "house": "17",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
+          "house": "17/1",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
           "house": "18",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "18А",
-          "providerStreetId": "пров. 2-й Український"
-        },
-        {
-          "regionId": "UA-32",
-          "settlement": "м. Ірпінь",
-          "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
+          "street": "вул. Сингаївського Миколи",
           "house": "19",
-          "providerStreetId": "пров. 2-й Український"
+          "providerStreetId": "вул. Сингаївського Миколи"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "пров. 2-й Український",
-          "house": "2",
-          "providerStreetId": "пров. 2-й Український"
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_41",
+          "providerStreetId": "вул. Сингаївського Миколи"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Сингаївського Миколи",
+          "house": "1А_ПР_42",
+          "providerStreetId": "вул. Сингаївського Миколи"
         }
       ],
       "dictionaryComplete": true
