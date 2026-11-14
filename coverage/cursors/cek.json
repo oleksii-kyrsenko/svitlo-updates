@@ -17,36 +17,11 @@
           "cityId": "osm-relation-3513051"
         }
       },
-      "auditSamples": [
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Танкова",
-          "house": "8/2",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=14&houseId=5039",
-          "checkedAt": 1794603336752
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Танкова",
-          "house": "12/3",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=14&houseId=5369",
-          "checkedAt": 1794603336752
-        },
-        {
-          "settlement": "с. Зарічне",
-          "street": "вул. Танкова",
-          "house": "14/1",
-          "queue": "2.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=2&streetId=14&houseId=204",
-          "checkedAt": 1794603336752
-        }
-      ],
+      "auditSamples": [],
       "houseIndex": 0,
       "streetIndex": 0,
       "cityIndex": 1,
-      "queryIndex": 27,
+      "queryIndex": 28,
       "lastContext": {
         "status": "resolved",
         "community": "Черкаська селищна громада",

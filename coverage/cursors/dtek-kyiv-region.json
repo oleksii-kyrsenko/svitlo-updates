@@ -22,176 +22,208 @@
       "auditSamples": [
         {
           "settlement": "м. Ірпінь",
-          "street": "вул. Сингаївського Миколи",
-          "house": "10ВКОРП_2",
-          "queue": "3.2",
+          "street": "вул. Донцова Матвія",
+          "house": "1",
+          "queue": "6.1",
           "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1794637854478
+          "checkedAt": 1794646753874
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Донцова Матвія",
+          "house": "10",
+          "queue": "6.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794646753874
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Донцова Матвія",
+          "house": "10/1",
+          "queue": "6.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794646753874
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Донцова Матвія",
+          "house": "10/5",
+          "queue": "6.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794646753874
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Донцова Матвія",
+          "house": "10/А",
+          "queue": "6.1",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1794646753874
         }
       ],
-      "houseIndex": 40,
-      "streetIndex": 19,
+      "houseIndex": 20,
+      "streetIndex": 20,
       "crawlStatus": "partial",
       "observedHouses": [
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "10ВКОРП_2",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "1",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "11",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "10",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "12",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "10/1",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "12-А/4",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "10/5",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "12А",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "10/А",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "13",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "100",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "13/1",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "101",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "14",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "101/1",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "14-Г",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "102",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "14А",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "103",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "15",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "104",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "15А",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "104/1",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "16",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "104А",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "17",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "104Б",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "17/1",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "105/2",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "18",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "106",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "19",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "106-А",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "1А",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "107",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "1А_ПР_41",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "108",
+          "providerStreetId": "вул. Донцова Матвія"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Сингаївського Миколи",
-          "house": "1А_ПР_42",
-          "providerStreetId": "вул. Сингаївського Миколи"
+          "street": "вул. Донцова Матвія",
+          "house": "109",
+          "providerStreetId": "вул. Донцова Матвія"
         }
       ],
       "dictionaryComplete": true
