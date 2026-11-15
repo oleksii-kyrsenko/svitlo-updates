@@ -45,65 +45,57 @@
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
+              "street": "вул. Айдарівська",
+              "house": "10А",
+              "providerStreetId": "430"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Айдарівська",
+              "house": "2А",
+              "providerStreetId": "430"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Айдарівська",
+              "house": "3А",
+              "providerStreetId": "430"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Айдарівська",
+              "house": "5А",
+              "providerStreetId": "430"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Айдарівська",
               "house": "7",
-              "providerStreetId": "428"
+              "providerStreetId": "430"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
-              "house": "71",
-              "providerStreetId": "428"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
+              "street": "вул. Айдарівська",
               "house": "7А",
-              "providerStreetId": "428"
+              "providerStreetId": "430"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
-              "house": "7Б",
-              "providerStreetId": "428"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
-              "house": "7В",
-              "providerStreetId": "428"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
-              "house": "8",
-              "providerStreetId": "428"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Азербайджанська",
-              "house": "9",
-              "providerStreetId": "428"
-            },
-            {
-              "regionId": "UA-12",
-              "settlement": "м. Дніпро",
-              "community": "Дніпровська міська громада",
-              "street": "вул. Активістів",
-              "house": "1",
-              "providerStreetId": "436"
+              "street": "вул. Айдарівська",
+              "house": "8А",
+              "providerStreetId": "430"
             }
           ],
           "contexts": {
@@ -127,119 +119,70 @@
           "auditSamples": [
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
+              "street": "вул. Айдарівська",
+              "house": "10А",
+              "queue": "1.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=12976",
+              "checkedAt": 1794769528433
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Айдарівська",
+              "house": "2А",
+              "queue": "1.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=12987",
+              "checkedAt": 1794769534845
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Айдарівська",
+              "house": "3А",
+              "queue": "1.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=12999",
+              "checkedAt": 1794769541058
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Айдарівська",
+              "house": "5А",
+              "queue": "1.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=13026",
+              "checkedAt": 1794769547412
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Айдарівська",
               "house": "7",
-              "queue": "5.2",
+              "queue": "1.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12906",
-              "checkedAt": 1794724509808
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=13047",
+              "checkedAt": 1794769553953
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
-              "house": "71",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12910",
-              "checkedAt": 1794724516154
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
+              "street": "вул. Айдарівська",
               "house": "7А",
-              "queue": "5.2",
+              "queue": "1.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12907",
-              "checkedAt": 1794724522171
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=13048",
+              "checkedAt": 1794769560106
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
-              "house": "7Б",
-              "queue": "5.2",
+              "street": "вул. Айдарівська",
+              "house": "8А",
+              "queue": "1.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12908",
-              "checkedAt": 1794724528479
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
-              "house": "7В",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12909",
-              "checkedAt": 1794724534988
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
-              "house": "8",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12911",
-              "checkedAt": 1794724541230
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Азербайджанська",
-              "house": "9",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=428&houseId=12912",
-              "checkedAt": 1794724547415
-            },
-            {
-              "settlement": "м. Дніпро",
-              "street": "вул. Активістів",
-              "house": "1",
-              "queue": "5.2",
-              "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=13108",
-              "checkedAt": 1794724707236
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=430&houseId=13055",
+              "checkedAt": 1794769566297
             }
           ],
           "streetInventory": {
             "queries": [
-              "вул. гх",
-              "вул. гц",
-              "вул. гч",
-              "вул. гш",
-              "вул. гщ",
-              "вул. гь",
-              "вул. гю",
-              "вул. гя",
-              "вул. гы",
-              "вул. гэ",
-              "вул. гъ",
-              "вул. гё",
-              "вул. гa",
-              "вул. гb",
-              "вул. гc",
-              "вул. гd",
-              "вул. гe",
-              "вул. гf",
-              "вул. гg",
-              "вул. гh",
-              "вул. гi",
-              "вул. гj",
-              "вул. гk",
-              "вул. гl",
-              "вул. гm",
-              "вул. гn",
-              "вул. гo",
-              "вул. гp",
-              "вул. гq",
-              "вул. гr",
-              "вул. гs",
-              "вул. гt",
-              "вул. гu",
-              "вул. гv",
-              "вул. гw",
-              "вул. гx",
-              "вул. гy",
-              "вул. гz",
-              "вул. г0",
-              "вул. г1",
               "вул. г2",
               "вул. г3",
               "вул. г4",
@@ -3845,7 +3788,47 @@
               "вул. гс",
               "вул. гт",
               "вул. гу",
-              "вул. гф"
+              "вул. гф",
+              "вул. гх",
+              "вул. гц",
+              "вул. гч",
+              "вул. гш",
+              "вул. гщ",
+              "вул. гь",
+              "вул. гю",
+              "вул. гя",
+              "вул. гы",
+              "вул. гэ",
+              "вул. гъ",
+              "вул. гё",
+              "вул. гa",
+              "вул. гb",
+              "вул. гc",
+              "вул. гd",
+              "вул. гe",
+              "вул. гf",
+              "вул. гg",
+              "вул. гh",
+              "вул. гi",
+              "вул. гj",
+              "вул. гk",
+              "вул. гl",
+              "вул. гm",
+              "вул. гn",
+              "вул. гo",
+              "вул. гp",
+              "вул. гq",
+              "вул. гr",
+              "вул. гs",
+              "вул. гt",
+              "вул. гu",
+              "вул. гv",
+              "вул. гw",
+              "вул. гx",
+              "вул. гy",
+              "вул. гz",
+              "вул. г0",
+              "вул. г1"
             ],
             "items": {
               "430": {
@@ -8477,7 +8460,7 @@
           },
           "dictionaryComplete": false,
           "inventoryMethod": "source-limited-autocomplete-min3-cap20",
-          "inventoryPendingQueries": 2598,
+          "inventoryPendingQueries": 2558,
           "processedStreetIds": [
             "434",
             "435",
@@ -8489,18 +8472,6 @@
           "houseInventories": {
             "430": {
               "queries": [
-                "  -",
-                "  ’",
-                "  '",
-                "  (",
-                "  )",
-                "  /",
-                "  №",
-                "    ",
-                "   а",
-                "   б",
-                "   в",
-                "   г",
                 "   ґ",
                 "   д",
                 "   е",
@@ -8577,7 +8548,89 @@
                 "   (",
                 "   )",
                 "   /",
-                "   №"
+                "   №",
+                "     ",
+                "    а",
+                "    б",
+                "    в",
+                "    г",
+                "    ґ",
+                "    д",
+                "    е",
+                "    є",
+                "    ж",
+                "    з",
+                "    и",
+                "    і",
+                "    ї",
+                "    й",
+                "    к",
+                "    л",
+                "    м",
+                "    н",
+                "    о",
+                "    п",
+                "    р",
+                "    с",
+                "    т",
+                "    у",
+                "    ф",
+                "    х",
+                "    ц",
+                "    ч",
+                "    ш",
+                "    щ",
+                "    ь",
+                "    ю",
+                "    я",
+                "    ы",
+                "    э",
+                "    ъ",
+                "    ё",
+                "    a",
+                "    b",
+                "    c",
+                "    d",
+                "    e",
+                "    f",
+                "    g",
+                "    h",
+                "    i",
+                "    j",
+                "    k",
+                "    l",
+                "    m",
+                "    n",
+                "    o",
+                "    p",
+                "    q",
+                "    r",
+                "    s",
+                "    t",
+                "    u",
+                "    v",
+                "    w",
+                "    x",
+                "    y",
+                "    z",
+                "    0",
+                "    1",
+                "    2",
+                "    3",
+                "    4",
+                "    5",
+                "    6",
+                "    7",
+                "    8",
+                "    9",
+                "    .",
+                "    -",
+                "    ’",
+                "    '",
+                "    (",
+                "    )",
+                "    /",
+                "    №"
               ],
               "done": [
                 "",
@@ -8819,7 +8872,19 @@
                 "  7",
                 "  8",
                 "  9",
-                "  ."
+                "  .",
+                "  -",
+                "  ’",
+                "  '",
+                "  (",
+                "  )",
+                "  /",
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г"
               ],
               "items": {
                 "12487": {
@@ -9037,24 +9102,92 @@
                 "12652": {
                   "id": 12652,
                   "value": "21"
+                },
+                "12975": {
+                  "id": 12975,
+                  "value": "1"
+                },
+                "12986": {
+                  "id": 12986,
+                  "value": "2"
+                },
+                "12987": {
+                  "id": 12987,
+                  "value": "2А"
+                },
+                "12999": {
+                  "id": 12999,
+                  "value": "3А"
+                },
+                "13010": {
+                  "id": 13010,
+                  "value": "4"
+                },
+                "13025": {
+                  "id": 13025,
+                  "value": "5"
+                },
+                "13026": {
+                  "id": 13026,
+                  "value": "5А"
+                },
+                "13035": {
+                  "id": 13035,
+                  "value": "6"
+                },
+                "13047": {
+                  "id": 13047,
+                  "value": "7"
+                },
+                "13048": {
+                  "id": 13048,
+                  "value": "7А"
+                },
+                "13054": {
+                  "id": 13054,
+                  "value": "8"
+                },
+                "13055": {
+                  "id": 13055,
+                  "value": "8А"
+                },
+                "13057": {
+                  "id": 13057,
+                  "value": "9"
+                },
+                "12976": {
+                  "id": 12976,
+                  "value": "10А"
+                },
+                "12977": {
+                  "id": 12977,
+                  "value": "11"
+                },
+                "12978": {
+                  "id": 12978,
+                  "value": "12"
+                },
+                "12979": {
+                  "id": 12979,
+                  "value": "13"
+                },
+                "12980": {
+                  "id": 12980,
+                  "value": "14"
+                },
+                "12981": {
+                  "id": 12981,
+                  "value": "15"
+                },
+                "12982": {
+                  "id": 12982,
+                  "value": "16"
                 }
               },
               "unexpanded": []
             },
             "431": {
               "queries": [
-                "  -",
-                "  ’",
-                "  '",
-                "  (",
-                "  )",
-                "  /",
-                "  №",
-                "    ",
-                "   а",
-                "   б",
-                "   в",
-                "   г",
                 "   ґ",
                 "   д",
                 "   е",
@@ -9373,7 +9506,19 @@
                 "  7",
                 "  8",
                 "  9",
-                "  ."
+                "  .",
+                "  -",
+                "  ’",
+                "  '",
+                "  (",
+                "  )",
+                "  /",
+                "  №",
+                "    ",
+                "   а",
+                "   б",
+                "   в",
+                "   г"
               ],
               "items": {
                 "12598": {
@@ -9591,24 +9736,16 @@
                 "12687": {
                   "id": 12687,
                   "value": "21"
+                },
+                "13064": {
+                  "id": 13064,
+                  "value": "32"
                 }
               },
               "unexpanded": []
             },
             "429": {
               "queries": [
-                " z",
-                " 0",
-                " 1",
-                " 2",
-                " 3",
-                " 4",
-                " 5",
-                " 6",
-                " 7",
-                " 8",
-                " 9",
-                " .",
                 " -",
                 " ’",
                 " '",
@@ -9927,7 +10064,19 @@
                 " v",
                 " w",
                 " x",
-                " y"
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8",
+                " 9",
+                " ."
               ],
               "items": {
                 "12252": {
@@ -12745,18 +12894,6 @@
             },
             "427": {
               "queries": [
-                "2ц",
-                "2ч",
-                "2ш",
-                "2щ",
-                "2ь",
-                "2ю",
-                "2я",
-                "2ы",
-                "2э",
-                "2ъ",
-                "2ё",
-                "2a",
                 "2b",
                 "2c",
                 "2d",
@@ -13321,7 +13458,19 @@
                 "2т",
                 "2у",
                 "2ф",
-                "2х"
+                "2х",
+                "2ц",
+                "2ч",
+                "2ш",
+                "2щ",
+                "2ь",
+                "2ю",
+                "2я",
+                "2ы",
+                "2э",
+                "2ъ",
+                "2ё",
+                "2a"
               ],
               "items": {
                 "12160": {
@@ -13757,18 +13906,6 @@
             },
             "420": {
               "queries": [
-                " а",
-                " б",
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
-                " и",
-                " і",
                 " ї",
                 " й",
                 " к",
@@ -14005,7 +14142,19 @@
                 ")",
                 "/",
                 "№",
-                "  "
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і"
               ],
               "items": {
                 "12491": {
@@ -14145,18 +14294,6 @@
             },
             "421": {
               "queries": [
-                " а",
-                " б",
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
-                " и",
-                " і",
                 " ї",
                 " й",
                 " к",
@@ -14393,7 +14530,19 @@
                 ")",
                 "/",
                 "№",
-                "  "
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і"
               ],
               "items": {
                 "12602": {
@@ -14537,18 +14686,6 @@
             },
             "422": {
               "queries": [
-                " а",
-                " б",
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
-                " и",
-                " і",
                 " ї",
                 " й",
                 " к",
@@ -14785,7 +14922,19 @@
                 ")",
                 "/",
                 "№",
-                "  "
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і"
               ],
               "items": {
                 "12636": {
@@ -14941,18 +15090,6 @@
             },
             "423": {
               "queries": [
-                "x",
-                "y",
-                "z",
-                ".",
-                "-",
-                "’",
-                "'",
-                "(",
-                ")",
-                "/",
-                "№",
-                "  ",
                 " а",
                 " б",
                 " в",
@@ -15033,7 +15170,89 @@
                 " (",
                 " )",
                 " /",
-                " №"
+                " №",
+                "   ",
+                "  а",
+                "  б",
+                "  в",
+                "  г",
+                "  ґ",
+                "  д",
+                "  е",
+                "  є",
+                "  ж",
+                "  з",
+                "  и",
+                "  і",
+                "  ї",
+                "  й",
+                "  к",
+                "  л",
+                "  м",
+                "  н",
+                "  о",
+                "  п",
+                "  р",
+                "  с",
+                "  т",
+                "  у",
+                "  ф",
+                "  х",
+                "  ц",
+                "  ч",
+                "  ш",
+                "  щ",
+                "  ь",
+                "  ю",
+                "  я",
+                "  ы",
+                "  э",
+                "  ъ",
+                "  ё",
+                "  a",
+                "  b",
+                "  c",
+                "  d",
+                "  e",
+                "  f",
+                "  g",
+                "  h",
+                "  i",
+                "  j",
+                "  k",
+                "  l",
+                "  m",
+                "  n",
+                "  o",
+                "  p",
+                "  q",
+                "  r",
+                "  s",
+                "  t",
+                "  u",
+                "  v",
+                "  w",
+                "  x",
+                "  y",
+                "  z",
+                "  0",
+                "  1",
+                "  2",
+                "  3",
+                "  4",
+                "  5",
+                "  6",
+                "  7",
+                "  8",
+                "  9",
+                "  .",
+                "  -",
+                "  ’",
+                "  '",
+                "  (",
+                "  )",
+                "  /",
+                "  №"
               ],
               "done": [
                 "",
@@ -15107,7 +15326,19 @@
                 "t",
                 "u",
                 "v",
-                "w"
+                "w",
+                "x",
+                "y",
+                "z",
+                ".",
+                "-",
+                "’",
+                "'",
+                "(",
+                ")",
+                "/",
+                "№",
+                "  "
               ],
               "items": {
                 "12673": {
@@ -15421,18 +15652,6 @@
             },
             "428": {
               "queries": [
-                "ё",
-                "a",
-                "b",
-                "c",
-                "d",
-                "e",
-                "f",
-                "g",
-                "h",
-                "i",
-                "j",
-                "k",
                 "l",
                 "m",
                 "n",
@@ -15751,7 +15970,19 @@
                 "я",
                 "ы",
                 "э",
-                "ъ"
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k"
               ],
               "items": {
                 "12838": {
@@ -16111,7 +16342,14 @@
               "5",
               "6",
               "8",
-              "9"
+              "9",
+              "10А",
+              "2А",
+              "3А",
+              "5А",
+              "7",
+              "7А",
+              "8А"
             ],
             "431": [
               "1",
