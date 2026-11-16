@@ -105,11 +105,172 @@
         "cityId": "osm-relation-3936275"
       },
       "auditSamples": [],
-      "houseIndex": 0,
-      "streetIndex": 49,
+      "houseIndex": 2,
+      "streetIndex": 66,
       "cityIndex": 13,
       "crawlStatus": "partial",
-      "observedHouses": [],
+      "observedHouses": [
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Економічна",
+          "house": "14",
+          "providerStreetId": "вул. Економічна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Азовська",
+          "house": "4",
+          "providerStreetId": "вул. Азовська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Заслонова",
+          "house": "9",
+          "providerStreetId": "вул. Заслонова"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Подільська",
+          "house": "25",
+          "providerStreetId": "вул. Подільська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Закарпатська",
+          "house": "34",
+          "providerStreetId": "вул. Закарпатська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Мусоргського",
+          "house": "33",
+          "providerStreetId": "вул. Мусоргського"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Філатова",
+          "house": "12",
+          "providerStreetId": "вул. Філатова"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Дачна",
+          "house": "37",
+          "providerStreetId": "вул. Дачна"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Актюбинська",
+          "house": "112",
+          "providerStreetId": "вул. Актюбинська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Актюбинська",
+          "house": "123",
+          "providerStreetId": "вул. Актюбинська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Петра Сагайдачного (Щаденко)",
+          "house": "22",
+          "providerStreetId": "вул. Петра Сагайдачного (Щаденко)"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Чкалова",
+          "house": "40",
+          "providerStreetId": "вул. Чкалова"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Центральна (Н. Світ)",
+          "house": "103",
+          "providerStreetId": "вул. Центральна (Н. Світ)"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Челюскінців",
+          "house": "9",
+          "providerStreetId": "вул. Челюскінців"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Андрія Рубльова  ",
+          "house": "1",
+          "providerStreetId": "вул. Андрія Рубльова  "
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Херсонська",
+          "house": "49",
+          "providerStreetId": "вул. Херсонська"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Аероклубна (Кіма)",
+          "house": "12А",
+          "providerStreetId": "вул. Аероклубна (Кіма)"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Коротка",
+          "house": "12",
+          "providerStreetId": "вул. Коротка"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Танкістів",
+          "house": "43",
+          "providerStreetId": "вул. Танкістів"
+        },
+        {
+          "regionId": "UA-14",
+          "settlement": "м. Краматорськ",
+          "community": "Краматорська міська громада",
+          "street": "вул. Танкістів",
+          "house": "45",
+          "providerStreetId": "вул. Танкістів"
+        }
+      ],
       "dictionaryComplete": true
     }
   }
