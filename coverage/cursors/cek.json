@@ -15,20 +15,57 @@
           "checkedAt": 1793737963989,
           "method": "nominatim-municipality",
           "cityId": "osm-relation-3513051"
+        },
+        "UA-12|с. Петриківка": {
+          "status": "unresolved",
+          "reason": "ambiguous_locality",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%BF%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D1%96%D0%B2%D0%BA%D0%B0%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1794996529206
         }
       },
-      "auditSamples": [],
+      "auditSamples": [
+        {
+          "settlement": "с. Петриківка",
+          "street": "вул. Будівельна",
+          "house": "1",
+          "queue": "4.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=3&streetId=16&houseId=5605",
+          "checkedAt": 1794996523390
+        },
+        {
+          "settlement": "с. Петриківка",
+          "street": "вул. Будівельна",
+          "house": "2",
+          "queue": "4.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=3&streetId=16&houseId=5606",
+          "checkedAt": 1794996523390
+        },
+        {
+          "settlement": "с. Петриківка",
+          "street": "вул. Леваневского",
+          "house": "15",
+          "queue": "4.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=3&streetId=17&houseId=5607",
+          "checkedAt": 1794996523390
+        },
+        {
+          "settlement": "с. Петриківка",
+          "street": "вул. Леваневского",
+          "house": "17",
+          "queue": "4.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=3&streetId=17&houseId=5608",
+          "checkedAt": 1794996523390
+        }
+      ],
       "houseIndex": 0,
       "streetIndex": 0,
-      "cityIndex": 2,
+      "cityIndex": 3,
       "queryIndex": 0,
       "lastContext": {
-        "status": "resolved",
-        "community": "Черкаська селищна громада",
-        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B7%D0%B0%D1%80%D1%96%D1%87%D0%BD%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1793737963989,
-        "method": "nominatim-municipality",
-        "cityId": "osm-relation-3513051"
+        "status": "unresolved",
+        "reason": "ambiguous_locality",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%BF%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D1%96%D0%B2%D0%BA%D0%B0%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1794996529206
       },
       "cityCrawls": {
         "3e3484743d535dfa0bd7": {

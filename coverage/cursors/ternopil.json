@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "cityIndex": 1,
-  "streetIndex": 80,
+  "streetIndex": 85,
   "houseOffsets": {
     "1:1": 5,
     "1:2": 5,
@@ -182,9 +182,14 @@
     "95:845": 5,
     "95:846": 5,
     "95:847": 0,
-    "95:848": 3
+    "95:848": 3,
+    "95:849": 5,
+    "95:850": 5,
+    "95:857": 0,
+    "95:859": 5,
+    "95:860": 5
   },
-  "updatedAt": 1794954128594,
+  "updatedAt": 1794996514044,
   "cityCrawls": {
     "07f42951e15db46eddfa": {
       "crawlStatus": "partial",
