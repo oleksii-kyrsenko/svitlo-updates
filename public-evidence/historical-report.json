@@ -1,5 +1,5 @@
 {
-  "startedAt": 1795035186728,
+  "startedAt": 1795074874900,
   "sources": [
     {
       "id": "prosvitlo-poltava-city",
@@ -14,13 +14,16 @@
       "records": 749,
       "acceptedHouses": 11050,
       "revisionMonitor": {
-        "error": "HTTP Error 403: rate limit exceeded",
-        "action": "retain-reviewed-pin"
+        "url": "https://api.github.com/repos/Elvis129/prosvitlo-addresses-db/contents/addresses_pl_v1.json",
+        "pinnedBlobSha1": "715165e566fb106dd48dbccdd60e21ce94304a40",
+        "upstreamBlobSha1": "715165e566fb106dd48dbccdd60e21ce94304a40",
+        "changed": false,
+        "action": "unchanged-publication"
       }
     }
   ],
   "errors": [],
-  "finishedAt": 1795035186728,
+  "finishedAt": 1795074874900,
   "records": 749,
   "totalRuntimeRecords": 749,
   "serializedBytes": 1450418,
