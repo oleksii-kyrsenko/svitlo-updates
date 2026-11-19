@@ -216,14 +216,14 @@
   "updatedAt": 1795038998060,
   "cityCrawls": {
     "33de95108297f23754b2": {
-      "crawlStatus": "complete",
+      "crawlStatus": "partial",
       "dictionaryComplete": true,
       "houseOffsets": {
         "769:9335": 0,
         "769:9336": 0,
         "769:9337": 0,
         "769:9338": 0,
-        "769:9339": 0,
+        "769:9339": 20,
         "769:9340": 0,
         "769:9342": 0,
         "769:9343": 0,
@@ -694,8 +694,8 @@
         "769:17271": 0
       },
       "cityIndex": 0,
-      "streetIndex": 0,
-      "updatedAt": 1795034119938
+      "streetIndex": 4,
+      "updatedAt": 1795073315098
     }
   },
   "crawlStatus": "partial",
