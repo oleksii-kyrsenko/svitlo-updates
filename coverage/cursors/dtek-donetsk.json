@@ -106,169 +106,25 @@
       },
       "auditSamples": [],
       "houseIndex": 0,
-      "streetIndex": 140,
-      "cityIndex": 13,
-      "crawlStatus": "partial",
+      "streetIndex": 0,
+      "cityIndex": 14,
+      "crawlStatus": "complete",
       "observedHouses": [
         {
           "regionId": "UA-14",
           "settlement": "м. Краматорськ",
           "community": "Краматорська міська громада",
-          "street": "вул. Металістів",
-          "house": "4",
-          "providerStreetId": "вул. Металістів"
+          "street": "вул. Новикова-Прибоя  ",
+          "house": "42",
+          "providerStreetId": "вул. Новикова-Прибоя  "
         },
         {
           "regionId": "UA-14",
           "settlement": "м. Краматорськ",
           "community": "Краматорська міська громада",
-          "street": "пров. Західний",
-          "house": "7",
-          "providerStreetId": "пров. Західний"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Майї Булгакової (Володарського)",
-          "house": "9",
-          "providerStreetId": "вул. Майї Булгакової (Володарського)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Будаєва",
-          "house": "32",
-          "providerStreetId": "вул. Будаєва"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Астраханська",
-          "house": "142",
-          "providerStreetId": "вул. Астраханська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Заводська",
-          "house": "165",
-          "providerStreetId": "вул. Заводська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Заводська",
-          "house": "264",
-          "providerStreetId": "вул. Заводська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Хабаровська",
-          "house": "32",
-          "providerStreetId": "вул. Хабаровська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Героїв України (Вознесенського)",
-          "house": "6",
-          "providerStreetId": "вул. Героїв України (Вознесенського)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Бородіно",
-          "house": "126",
-          "providerStreetId": "вул. Бородіно"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Абая",
-          "house": "53",
-          "providerStreetId": "вул. Абая"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Лікарняна (Лікарняна)",
-          "house": "46",
-          "providerStreetId": "вул. Лікарняна (Лікарняна)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Леваневського",
-          "house": "18",
-          "providerStreetId": "вул. Леваневського"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Кропивницького",
-          "house": "65",
-          "providerStreetId": "вул. Кропивницького"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Михайла Горяйнова (Калініна)",
-          "house": "247",
-          "providerStreetId": "вул. Михайла Горяйнова (Калініна)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Буковинська",
-          "house": "9",
-          "providerStreetId": "вул. Буковинська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Конрада Ґампера (Горького)",
-          "house": "23",
-          "providerStreetId": "вул. Конрада Ґампера (Горького)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Олександрівська (Галана)",
-          "house": "15",
-          "providerStreetId": "вул. Олександрівська (Галана)"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Сухумська",
-          "house": "17",
-          "providerStreetId": "вул. Сухумська"
-        },
-        {
-          "regionId": "UA-14",
-          "settlement": "м. Краматорськ",
-          "community": "Краматорська міська громада",
-          "street": "вул. Пушкіна",
-          "house": "18",
-          "providerStreetId": "вул. Пушкіна"
+          "street": "вул. Волгодонська",
+          "house": "129",
+          "providerStreetId": "вул. Волгодонська"
         }
       ],
       "dictionaryComplete": true
