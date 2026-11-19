@@ -27,179 +27,189 @@
           "reason": "ambiguous_locality",
           "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%87%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
           "checkedAt": 1795039011499
+        },
+        "UA-12|Дніпро": {
+          "status": "resolved",
+          "community": "Дніпровська міська громада",
+          "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B4%D0%BD%D1%96%D0%BF%D1%80%D0%BE%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+          "checkedAt": 1793715456701,
+          "method": "nominatim-municipality",
+          "cityId": "osm-relation-1017311"
         }
       },
       "auditSamples": [
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "1",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5609",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=506",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
-          "house": "1А",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5626",
-          "checkedAt": 1795039005095
-        },
-        {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "2",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5610",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=507",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "3",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5611",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=508",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "4",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5612",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=509",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "5",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5613",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=510",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "6",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5614",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=511",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "7",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5615",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=512",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "8",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5616",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=513",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "9",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5617",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=514",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "10",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5618",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=515",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "11",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5619",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=516",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "12",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5620",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=517",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "13",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5621",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=518",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "14",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5622",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=519",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "15",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5623",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=520",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "16",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5624",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=521",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Лісна",
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
           "house": "17",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=18&houseId=5625",
-          "checkedAt": 1795039005095
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=522",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Миру (Гагаріна)",
-          "house": "1Б",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=19&houseId=5627",
-          "checkedAt": 1795039005095
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
+          "house": "18",
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=523",
+          "checkedAt": 1795083597076
         },
         {
-          "settlement": "с. Черкаське",
-          "street": "вул. Миру (Гагаріна)",
-          "house": "1В",
-          "queue": "6.2",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=4&streetId=19&houseId=5628",
-          "checkedAt": 1795039005095
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
+          "house": "19",
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=524",
+          "checkedAt": 1795083597076
+        },
+        {
+          "settlement": "Дніпро",
+          "street": "вул. Автозаводська",
+          "house": "20",
+          "queue": "1.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=303&cityId=6&streetId=20&houseId=525",
+          "checkedAt": 1795083597076
         }
       ],
       "houseIndex": 0,
-      "streetIndex": 0,
+      "streetIndex": 1,
       "cityIndex": 4,
       "queryIndex": 0,
       "lastContext": {
-        "status": "unresolved",
-        "reason": "ambiguous_locality",
-        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D1%87%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%8C%D0%BA%D0%B5%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
-        "checkedAt": 1795039011499
+        "status": "resolved",
+        "community": "Дніпровська міська громада",
+        "sourceUrl": "https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&accept-language=uk&q=%D0%B4%D0%BD%D1%96%D0%BF%D1%80%D0%BE%2C+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&countrycodes=ua&limit=10",
+        "checkedAt": 1793715456701,
+        "method": "nominatim-municipality",
+        "cityId": "osm-relation-1017311"
       },
       "cityCrawls": {
         "3e3484743d535dfa0bd7": {
