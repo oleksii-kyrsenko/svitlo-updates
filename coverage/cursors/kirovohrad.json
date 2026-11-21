@@ -1,18 +1,1 @@
-{
-  "schemaVersion": 1,
-  "cityIndex": 0,
-  "streetIndex": 0,
-  "updatedAt": 1795211412689,
-  "cityCrawls": {
-    "0450e126c411c4b72a6e": {
-      "crawlStatus": "partial",
-      "updatedAt": 1795206116340,
-      "streetIndex": 794,
-      "dictionaryComplete": true,
-      "knownStreets": 870,
-      "cycles": 12,
-      "requestLimitReached": true
-    }
-  },
-  "crawlStatus": "partial"
-}
+{"schemaVersion":1,"cityIndex":0,"streetIndex":0,"updatedAt":1795211412689,"cityCrawls":{"0450e126c411c4b72a6e":{"crawlStatus":"complete","updatedAt":1795244781567,"streetIndex":0,"dictionaryComplete":true,"knownStreets":870,"cycles":13,"requestLimitReached":false}},"crawlStatus":"partial"}
