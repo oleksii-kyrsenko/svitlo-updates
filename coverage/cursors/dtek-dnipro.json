@@ -10,7 +10,160 @@
           "method": "nominatim-municipality"
         }
       },
-      "auditSamples": [],
+      "auditSamples": [
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "2",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=904",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "3",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=908",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "4",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=909",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "5",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=910",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "6",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=911",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "7",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=912",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "8",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=913",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "9",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=914",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "10",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=896",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "11",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=897",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "12",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=898",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "13",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=899",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "14",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=900",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "16",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=901",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "17",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=902",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "18",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=903",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "20",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=905",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "22",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=906",
+          "checkedAt": 1795293181835
+        },
+        {
+          "settlement": "м. Апостолове",
+          "street": "вул. Дружня",
+          "house": "24",
+          "queue": "2.2",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=2&streetId=19&houseId=907",
+          "checkedAt": 1795293181835
+        }
+      ],
       "houseIndex": 0,
       "streetIndex": 0,
       "lastContext": {
@@ -19586,7 +19739,7 @@
       },
       "crawlStatus": "partial",
       "observedHouses": [],
-      "queryIndex": 9
+      "queryIndex": 10
     }
   }
 }
