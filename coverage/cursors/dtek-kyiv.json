@@ -16,169 +16,121 @@
       "auditSamples": [
         {
           "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
+          "street": "просп. Глушкова Академіка",
+          "house": "4 В",
+          "queue": "31.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49178",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "4 Г",
+          "queue": "31.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49179",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "4 Д",
+          "queue": "31.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49180",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "4 Е",
+          "queue": "31.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49181",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "4Г",
+          "queue": "35.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49196",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "4Е",
+          "queue": "35.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49197",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
           "house": "6",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=26467",
-          "checkedAt": 1795380336604
+          "queue": "35.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49204",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "6А",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=30976",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "6Ж",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=45174",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "8",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=1003",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
+          "street": "просп. Глушкова Академіка",
           "house": "8А",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=25165",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "8Б",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=44992",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "9Б",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=30715",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "9В",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=15101",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "10",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=41277",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "10А",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=27943",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "12В",
-          "queue": "4.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=49442",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "15/1",
-          "queue": "8.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=50510",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "17",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=11940",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Європейського Союзу",
-          "house": "17А",
-          "queue": "11.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1235&houseId=3960",
-          "checkedAt": 1795380336604
-        },
-        {
-          "settlement": "Київ",
-          "street": "просп. Глушкова Академіка",
-          "house": "1",
           "queue": "29.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=46285",
-          "checkedAt": 1795380336604
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49210",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
           "street": "просп. Глушкова Академіка",
-          "house": "2",
-          "queue": "35.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=49556",
-          "checkedAt": 1795380336604
+          "house": "9",
+          "queue": "30.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49211",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
           "street": "просп. Глушкова Академіка",
-          "house": "2 Б",
-          "queue": "31.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=44440",
-          "checkedAt": 1795380336604
+          "house": "9Є",
+          "queue": "29.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49214",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
           "street": "просп. Глушкова Академіка",
-          "house": "2Б",
-          "queue": "35.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=48793",
-          "checkedAt": 1795380336604
+          "house": "9А",
+          "queue": "30.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49215",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
           "street": "просп. Глушкова Академіка",
-          "house": "4",
-          "queue": "35.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=48237",
-          "checkedAt": 1795380336604
+          "house": "9В",
+          "queue": "29.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49216",
+          "checkedAt": 1795430708208
         },
         {
           "settlement": "Київ",
           "street": "просп. Глушкова Академіка",
-          "house": "4 А",
-          "queue": "31.1",
-          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1250&houseId=44441",
-          "checkedAt": 1795380336604
+          "house": "9Г",
+          "queue": "29.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49212",
+          "checkedAt": 1795430708208
+        },
+        {
+          "settlement": "Київ",
+          "street": "просп. Глушкова Академіка",
+          "house": "9Д",
+          "queue": "29.1",
+          "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=25&dsoId=902&streetId=1258&houseId=49213",
+          "checkedAt": 1795430708208
         }
       ],
-      "houseIndex": 6,
-      "streetIndex": 19,
+      "houseIndex": 0,
+      "streetIndex": 0,
       "cityIndex": 0,
-      "queryIndex": 2,
+      "queryIndex": 3,
       "lastContext": {
         "status": "resolved",
         "community": "Київ",
