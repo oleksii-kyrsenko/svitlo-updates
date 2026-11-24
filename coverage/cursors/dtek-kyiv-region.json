@@ -19,140 +19,172 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Зоряна",
-          "house": "11А",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "10",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "11А",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "11А/215",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "11А/216",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "12",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "12/2",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "14",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "14-А",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "16",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "17-Л",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "17Б",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "18",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "2",
-          "queue": "2.1",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "20",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        },
-        {
-          "settlement": "м. Ірпінь",
-          "street": "вул. Антонова",
-          "house": "20-Б",
-          "queue": "1.2",
-          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
-          "checkedAt": 1795430722985
-        }
-      ],
-      "houseIndex": 18,
+      "auditSamples": [],
+      "houseIndex": 38,
       "streetIndex": 26,
       "crawlStatus": "partial",
-      "observedHouses": [],
+      "observedHouses": [
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/11",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/2",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/3",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/4",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/5",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/6",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/7",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/8",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "47/9",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "59 Б/3",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "61А",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "62",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "62/2",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "62кв3",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "64/1",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "64/2",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "64/4",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "64/5",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "66/1",
+          "providerStreetId": "вул. Давидчука"
+        },
+        {
+          "regionId": "UA-32",
+          "settlement": "м. Ірпінь",
+          "community": "Ірпінська міська громада",
+          "street": "вул. Давидчука",
+          "house": "67/3",
+          "providerStreetId": "вул. Давидчука"
+        }
+      ],
       "dictionaryComplete": true
     }
   }
