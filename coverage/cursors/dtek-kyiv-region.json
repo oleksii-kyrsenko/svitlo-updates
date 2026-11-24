@@ -19,9 +19,114 @@
         "method": "nominatim-municipality",
         "cityId": "osm-relation-11092577"
       },
-      "auditSamples": [],
-      "houseIndex": 38,
-      "streetIndex": 26,
+      "auditSamples": [
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "1",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "11",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "11А",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "12",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "13",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "14",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "15",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "16",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "17",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "17А",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "18",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "19",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        },
+        {
+          "settlement": "м. Ірпінь",
+          "street": "вул. Загребельного Павла",
+          "house": "1А",
+          "queue": "6.2",
+          "sourceUrl": "https://www.dtek-krem.com.ua/ua/ajax",
+          "checkedAt": 1795563140670
+        }
+      ],
+      "houseIndex": 13,
+      "streetIndex": 27,
       "crawlStatus": "partial",
       "observedHouses": [
         {
@@ -29,7 +134,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/11",
+          "house": "68-б",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -37,7 +142,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/2",
+          "house": "68/1",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -45,7 +150,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/3",
+          "house": "68Б/1",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -53,7 +158,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/4",
+          "house": "75/2",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -61,7 +166,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/5",
+          "house": "75/4",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -69,7 +174,7 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/6",
+          "house": ":0018",
           "providerStreetId": "вул. Давидчука"
         },
         {
@@ -77,112 +182,112 @@
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
           "street": "вул. Давидчука",
-          "house": "47/7",
+          "house": ":0022",
           "providerStreetId": "вул. Давидчука"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "47/8",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "1",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "47/9",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "11",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "59 Б/3",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "11А",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "61А",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "12",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "62",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "13",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "62/2",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "14",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "62кв3",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "15",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "64/1",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "16",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "64/2",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "17",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "64/4",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "17А",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "64/5",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "18",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "66/1",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "19",
+          "providerStreetId": "вул. Загребельного Павла"
         },
         {
           "regionId": "UA-32",
           "settlement": "м. Ірпінь",
           "community": "Ірпінська міська громада",
-          "street": "вул. Давидчука",
-          "house": "67/3",
-          "providerStreetId": "вул. Давидчука"
+          "street": "вул. Загребельного Павла",
+          "house": "1А",
+          "providerStreetId": "вул. Загребельного Павла"
         }
       ],
       "dictionaryComplete": true
