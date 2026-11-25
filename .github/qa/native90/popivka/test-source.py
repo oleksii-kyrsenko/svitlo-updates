@@ -20,4 +20,10 @@ class Source(unittest.TestCase):
   for q in m.QUEUES-{'3.1'}:
    line='<p>'+q+' '+('15:00 - 19:00' if q=='6.2' else '07:00 - 10:00')+'</p>';raw=raw.replace(line.encode(),b'')
   result=m.parse(raw,self.today,'https://www.cherkasyoblenergo.com/media/test');self.assertTrue(result['partial']);self.assertEqual(list(result['queues']),['3.1'])
+ def test_regional_audience_and_numeric_sidebar_are_scoped_to_one_main(self):
+  body=self.fixture().replace('Години відсутності електропостачання:'.encode(),'Години відсутності електропостачання для всіх споживачів Черкаської області :'.encode())
+  raw=b'<main><header>layout123</header><main>'+body.replace('<p>Свою чергу</p>'.encode(),b'')+b'</main><aside>0 800 501 328</aside></main>'
+  result=m.parse(raw,self.today,'https://www.cherkasyoblenergo.com/media/test');self.assertEqual(result['queues']['3.1'],[(420,600)]);self.assertEqual(len(result['queues']),12)
+  for bad in [raw.replace('Черкаської'.encode(),'Київської'.encode()),raw+b'<main>123</main>',raw.replace(b'</main>',b''),raw.replace(b'<p>6.2 15:00 - 19:00</p>',b'')]:
+   with self.subTest(raw=bad[:30]),self.assertRaises(ValueError):m.parse(bad,self.today,'https://www.cherkasyoblenergo.com/media/test')
 if __name__=='__main__':unittest.main()

@@ -7,22 +7,34 @@ MONTHS=['січня','лютого','березня','квітня','травн�
 QUEUES={str(q)+'.'+str(s) for q in range(1,7) for s in [1,2]}
 class Document(HTMLParser):
  def __init__(self):
-  super().__init__(convert_charrefs=True);self.text=[];self.links=[];self.link=None;self.title=[];self.h1=False;self.skip=0
+  super().__init__(convert_charrefs=True);self.text=[];self.links=[];self.link=None;self.title=[];self.h1=False;self.skip=0;self.main_count=0;self.main_frames=[];self.main_blocks=[];self.main_unbalanced=False
+ def append_text(self,value):
+  self.text.append(value)
+  if self.main_frames:self.main_frames[-1]['text'].append(value)
  def handle_starttag(self,tag,attrs):
   if tag in ['script','style']:self.skip+=1
   if self.skip:return
-  if tag in ['p','div','li','h1','h2','h3','br','tr']:self.text.append('\n')
+  if tag=='main':
+   self.main_count+=1
+   if self.main_frames:self.main_frames[-1]['nested']=True
+   self.main_frames.append({'text':[],'nested':False})
+  if tag in ['p','div','li','h1','h2','h3','br','tr']:self.append_text('\n')
   if tag=='a':self.link=[dict(attrs).get('href',''),[]]
   if tag=='h1':self.h1=True
  def handle_endtag(self,tag):
   if tag in ['script','style']:self.skip=max(0,self.skip-1);return
   if self.skip:return
-  if tag in ['p','div','li','h1','h2','h3','br','tr']:self.text.append('\n')
+  if tag in ['p','div','li','h1','h2','h3','br','tr']:self.append_text('\n')
+  if tag=='main':
+   if not self.main_frames:self.main_unbalanced=True
+   else:
+    frame=self.main_frames.pop()
+    if not frame['nested']:self.main_blocks.append(frame['text'])
   if tag=='a' and self.link:self.links.append((self.link[0],''.join(self.link[1])));self.link=None
   if tag=='h1':self.h1=False
  def handle_data(self,value):
   if self.skip:return
-  self.text.append(value)
+  self.append_text(value)
   if self.link:self.link[1].append(value)
   if self.h1:self.title.append(value)
 def heading_date(title,today):
@@ -37,13 +49,18 @@ def clock(value):
  if not(0<=h<=24 and 0<=m<60 and(h<24 or m==0)):raise ValueError('Invalid clock')
  return h*60+m
 def parse(raw,today,url):
- d=Document();d.feed(raw.decode('utf-8'));title=''.join(d.title);date=heading_date(title,today);text=''.join(d.text)
+ d=Document();d.feed(raw.decode('utf-8'));title=''.join(d.title);date=heading_date(title,today)
+ if d.main_unbalanced or d.main_frames or d.main_count and len(d.main_blocks)!=1:raise ValueError('Article root is not unique and closed')
+ text=''.join(d.main_blocks[0] if d.main_count else d.text)
  stamp=re.search(r'(\d{2})\.(\d{2})\.(\d{4})\s+(\d{2}):(\d{2})',text)
  if not stamp:raise ValueError('Publication timestamp missing')
  published=datetime.datetime(*map(int,[stamp[3],stamp[2],stamp[1],stamp[4],stamp[5]]))
  if not date-datetime.timedelta(days=2)<=published.date()<=date:raise ValueError('Publication date not bounded to target date')
- section=re.split(r'Години відсутності електропостачання\s*:',text,flags=re.I)[-1]
- if section==text:raise ValueError('Intervals section missing')
+ lines=text.splitlines();prefix='Години відсутності електропостачання'
+ headings={prefix+':',prefix+' для всіх споживачів Черкаської області:'}
+ starts=[i for i,line in enumerate(lines) if re.sub(r'\s+:',':',' '.join(line.split())).casefold() in {x.casefold() for x in headings}]
+ if len(starts)!=1:raise ValueError('Intervals section missing or ambiguous')
+ section='\n'.join(lines[starts[0]+1:])
  section=re.split(r'Свою чергу|Також|Сторінка',section,flags=re.I)[0]
  section=re.sub(r'(\d{2})\s*:\s*(\d{2})',r'\1:\2',section)
  markers=list(re.finditer(r'(?<![\d.:])([1-6]\.[12])(?![\d.:])',section));names=[m[1] for m in markers]
