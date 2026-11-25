@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": 1795559959696,
+  "generatedAt": 1795596933038,
   "operators": [
     {
       "operatorId": "cherkasy",
-      "fetchedAt": 1795559960182,
-      "expiresAt": 1795603160182,
+      "fetchedAt": 1795596933361,
+      "expiresAt": 1795640133361,
       "sha256": "8b93948d4cbb06dddda04688cbbcc4fad5fcae47c66c70555638a3e3c79a9962",
       "size": 249494,
       "decodedSize": 1298528,
@@ -13,21 +13,21 @@
     },
     {
       "operatorId": "khmelnytskyi",
-      "fetchedAt": 1795559970720,
-      "expiresAt": 1795603170720,
-      "sha256": "efe36497c0264fb9f4f2ca617f756db81337d85476bf0f8eb241cf9a9b74a50c",
-      "size": 555176,
-      "decodedSize": 3774305,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-efe36497c0264fb9f4f2ca617f756db81337d85476bf0f8eb241cf9a9b74a50c.json.gz"
+      "fetchedAt": 1795596940224,
+      "expiresAt": 1795640140224,
+      "sha256": "9230897189d2c2b66d7df077b7bb15c37f49c82bd8f22ffbc697f8bed3cea50a",
+      "size": 557048,
+      "decodedSize": 3788607,
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-9230897189d2c2b66d7df077b7bb15c37f49c82bd8f22ffbc697f8bed3cea50a.json.gz"
     },
     {
       "operatorId": "rivne",
-      "fetchedAt": 1795559978313,
-      "expiresAt": 1795603178313,
-      "sha256": "dc9e343b4832aa00d0091cace96702465a1980c785059cc3e4ecd434e8a865fc",
-      "size": 118135,
-      "decodedSize": 893063,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-dc9e343b4832aa00d0091cace96702465a1980c785059cc3e4ecd434e8a865fc.json.gz"
+      "fetchedAt": 1795596946474,
+      "expiresAt": 1795640146474,
+      "sha256": "10d14c9529959bf9188bd2ad602c7dbc16d32b0984fff0abdb73cdc338f669c6",
+      "size": 118133,
+      "decodedSize": 893173,
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-10d14c9529959bf9188bd2ad602c7dbc16d32b0984fff0abdb73cdc338f669c6.json.gz"
     }
   ],
   "failures": [
