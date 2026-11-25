@@ -22,4 +22,14 @@ class Screen(unittest.TestCase):
  def test_bad_or_multiple_graph_bounds_fail_closed(self):
   self.assertIsNone(m.graph_evidence(self.fixture().replace('[20,300][1000,1600]','[20,300][20,1600]'),[720,900]))
   self.assertIsNone(m.graph_evidence(self.fixture(extra='<android.view.View resource-id="schedule-graph" bounds="[20,300][1000,1600]"/>'),[720,900]))
+ def failure_fixture(self):
+  title='<android.widget.TextView text="Не вдалося отримати графік" bounds="[40,510][960,560]"/>'
+  detail='<android.widget.TextView text="Спробуйте оновити. Збережену адресу повторно вводити не потрібно." bounds="[40,570][960,650]"/>'
+  state='<android.view.View resource-id="schedule-state" bounds="[30,500][980,700]">'+title+detail+'</android.view.View>'
+  return self.fixture(label='Графік на добу',extra=state)
+ def test_failure_title_and_detail_must_belong_to_actual_visible_graph_state(self):
+  value=self.failure_fixture();self.assertEqual(m.graph_failure_evidence(value)['binding'],'visible-graph-failure-title-and-detail')
+  changes=[lambda x:x.replace('resource-id="schedule-state"','resource-id="other-card"'),lambda x:x.replace('[30,500][980,700]','[30,1700][980,1790]'),lambda x:x.replace('text="Не вдалося отримати графік"','text="Не вдалося отримати графік" displayed="false"'),lambda x:x.replace('text="Спробуйте оновити. Збережену адресу повторно вводити не потрібно."','text="Завантажуємо"'),lambda x:x.replace('[40,570][960,650]','[40,570][960,1850]'),lambda x:x.replace('</hierarchy>','<node resource-id="app-message-dialog"/></hierarchy>')]
+  for change in changes:
+   with self.subTest(xml=change(value)):self.assertIsNone(m.graph_failure_evidence(change(value)))
 if __name__=='__main__':unittest.main()

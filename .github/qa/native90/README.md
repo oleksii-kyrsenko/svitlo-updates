@@ -7,7 +7,7 @@ The sole upgrade baseline is published, user-confirmed 0.1.53/build89: SHA256 `f
 `all` schedules twelve real Android cases:
 
 * Six API30/35/36 × saved `aurora`/`moss` upgrades preserve appearance storage, address UUID, manual queue/reminders and dated offline cache. They exercise themed cancel/back/discard, validation, guarded delete/cancel, manual queue edit and clean start. Historical `moss` storage renders the current dark fallback and remains stored unchanged.
-* Three Popivka cases require both published89 and candidate90 to render today's real official intervals. The independent observer preserves fetched HTML and hashes. The saved-correct-queue regression fixture contains no schedule or intervals. After IPv4 and IPv6 app-UID isolation, force-stop freezes the last successful candidate cache; offline restart must preserve that exact cache and timestamp.
+* Three Popivka cases require candidate90 to render today's real official intervals. Published89 must either match that same source or visibly exhibit its specific known unsupported-format failure while the fresh independent raw article confirms the new regional heading and SHA inside the unique balanced innermost main. This second outcome is retained as an observed baseline failure, never a live graph pass. Crashes, missing addresses, other statuses and incorrect ready intervals fail. The saved-correct-queue regression fixture contains no schedule or intervals. The entire original saved state/cache and appearance must survive installation before first launch. Candidate UUID/settings/appearance remain unchanged. After IPv4 and IPv6 app-UID isolation, force-stop freezes the last successful candidate cache; offline restart must preserve every snapshot field except the added refreshError.
 * Three historical-hint cases use frozen Poltava `UA-53-capital-5` (Чумаківська, будинок1) and the same independent source plan on API30/35/36. Ordinary app controls perform city/street/house selection and save. No address or queue is injected or typed into queue fields. A proposal must leave the queue unassigned until the explicit button click. Visible warnings, original17Oct date, literal source house and source link must belong to the exact on-screen candidate/notice. After selection, public origin, original publication/snapshot, observed/expiry dates, explicit confirmation time and UUID survive offline refresh/restart; reminders remain off.
 
 The two regression suites seed clearly marked disposable emulator retention fixtures only. Their successes contribute zero address-lookup coverage. Historical UI attempts also contribute zero official automatic coverage.
@@ -26,6 +26,7 @@ python3 .github/qa/native90/test-historical-screen.py
 python3 .github/qa/test-historical-hint-audit.py
 python3 .github/qa/native90/popivka/test-source.py
 python3 .github/qa/native90/popivka/test-screen.py
+python3 .github/qa/native90/popivka/test-baseline-gate.py
 ```
 
 These controls validate the acceptance machinery. They are not an Android pass or a release approval. No candidate90 Android result exists until the real APK, public manifest, and emulator runs are available.

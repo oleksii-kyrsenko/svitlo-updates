@@ -124,6 +124,7 @@ jobs:
           fi
           python3 .github/qa/native90/popivka/test-source.py
           python3 .github/qa/native90/popivka/test-screen.py
+          python3 .github/qa/native90/popivka/test-baseline-gate.py
           python3 .github/qa/native90/contract.py
       - name: Enable acceleration
         run: test -c /dev/kvm && sudo chmod 666 /dev/kvm
