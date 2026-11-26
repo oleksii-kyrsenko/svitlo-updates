@@ -44,9 +44,26 @@ class HistoricalControls(unittest.TestCase):
   for patch in [{'publicAddressLabel':address+'а'},{'publicPublishedAt':NOW},{'publicObservedAt':NOW},{'publicExpiresAt':NOW}]:
    with self.subTest(candidate=patch),self.assertRaises(ValueError):m.verify_pending({**place,'queuePublicCandidates':[{**candidate,**patch}]},record,address)
  def test_refresh_and_restart_preserve_uuid_source_dates_and_explicit_choice_time(self):
-  record,_=fixture();stamp=int(time.time()*1000)-100;place=accepted(record,stamp);m.verify_confirmed(place,record,stamp,initial(),stamp)
+  record,_=fixture();stamp=NOW;place=accepted(record,stamp);m.verify_confirmed(place,record,stamp,initial(),stamp,latest=stamp+1000)
   for patch in [{'id':'replacement'},{'queueOrigin':'official'},{'queueOrigin':'manual'},{'queueConfirmed':False},{'queueUserConfirmedAt':stamp+1},{'queuePublicPublishedAt':NOW},{'queuePublicObservedAt':NOW},{'queuePublicExpiresAt':NOW},{'queuePublicAddressLabel':place['queuePublicAddressLabel']+'а'},{'reminders':{'enabled':True}}]:
-   with self.subTest(patch=patch),self.assertRaises(ValueError):m.verify_confirmed({**place,**patch},record,stamp,initial(),stamp)
+   with self.subTest(patch=patch),self.assertRaises(ValueError):m.verify_confirmed({**place,**patch},record,stamp,initial(),stamp,latest=stamp+1000)
+ def test_action_window_uses_android_clock_and_survives_host_clock_offset(self):
+  record,_=fixture();stamp=NOW;place=accepted(record,stamp)
+  with patch.object(m.time,'time',return_value=(stamp-60000)/1000):m.verify_confirmed(place,record,stamp-1,initial(),latest=stamp+1)
+  for value in [stamp-2,stamp+2,True,float('nan'),float('inf'),None]:
+   with self.subTest(value=value),self.assertRaises(ValueError):m.verify_confirmed({**place,'queueUserConfirmedAt':value},record,stamp-1,initial(),latest=stamp+1)
+  with self.assertRaises(ValueError):m.verify_confirmed(place,record,stamp+1,initial(),latest=stamp-1)
+ def test_android_uid_and_clock_are_read_from_this_package_and_fail_closed(self):
+  calls=[]
+  def adb(*args):
+   calls.append(args)
+   return '10279\n' if 'stat' in args else '1795673344\n'
+  self.assertEqual(m.application_uid(adb),'10279');self.assertEqual(m.device_time_ms(adb),1795673344000)
+  self.assertIn(('shell','stat','-c','%u','/data/data/ua.svitlo.app.testing'),calls)
+  for bad in ['0','1000','-10001','u0_a279','10279 extra','10279\n10000']:
+   with self.subTest(uid=bad),self.assertRaises(ValueError):m.application_uid(lambda *args:bad)
+  for bad in ['0','-1795673344','1795673344%3N','not a clock','1795673344\n1795673345']:
+   with self.subTest(clock=bad),self.assertRaises(ValueError):m.device_time_ms(lambda *args:bad)
  def test_frozen_case_is_never_replaced_and_conflicting_claims_are_not_auto_selected(self):
   record,_=fixture();case={'id':'frozen','city':'Полтава','regionId':'UA-53','exactHouse':'12','exactStreet':'вулиця Соборності'};samples={'frozen.json':{'cases':[case]}}
   self.assertEqual(m.select_case([record],samples,NOW)[1],case)

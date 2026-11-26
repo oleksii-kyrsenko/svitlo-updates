@@ -177,13 +177,23 @@ def verify_pending(place,record,source_address):
  if candidate.get('publicObservedAt')!=record['fetchedAt'] or candidate.get('publicExpiresAt')!=record['expiresAt'] or candidate.get('sourceUrl')!=record['sourceUrl']:raise ValueError('Pending observation/eligibility/provenance changed')
  return candidate
 
-def verify_confirmed(place,record,earliest,initial,confirmation=None):
+def device_time_ms(adb):
+ value=adb('shell','date','+%s').strip()
+ if not re.fullmatch(r'[1-9]\d{8,11}',value):raise ValueError('Invalid Android clock receipt')
+ return int(value)*1000
+
+def application_uid(adb):
+ value=adb('shell','stat','-c','%u','/data/data/'+national.PKG).strip()
+ if not re.fullmatch(r'[1-9]\d{3,7}',value) or int(value)<10000:raise ValueError('Invalid application UID for offline isolation')
+ return value
+
+def verify_confirmed(place,record,earliest,initial,confirmation=None,*,latest):
  same_address({'regionId':record['regionId']},initial,place)
  if not(place.get('queueConfirmed') is True and place.get('queueOrigin')=='public' and place.get('queue')==record['queue'] and place.get('queuePublicHistorical') is True and place.get('queueEvidence')=='public-historical-directory'):raise ValueError('User choice was lost or promoted to official/manual')
  if place.get('queuePublicPublishedAt')!=record['publishedAt'] or place.get('queuePublicSnapshot')!=record['sourceSnapshot'] or place.get('queueSource')!=record['sourceUrl']:raise ValueError('Saved original date/provenance changed')
  if place.get('queuePublicObservedAt')!=record['fetchedAt'] or place.get('queuePublicExpiresAt')!=record['expiresAt']:raise ValueError('Saved observation date or eligibility was silently renewed')
  accepted=place.get('queueUserConfirmedAt')
- if not isinstance(accepted,(int,float)) or isinstance(accepted,bool) or accepted<earliest or accepted>int(time.time()*1000)+5000:raise ValueError('Explicit confirmation timestamp missing')
+ if type(accepted) is not int or type(earliest) is not int or type(latest) is not int or not earliest<=accepted<=latest:raise ValueError('Explicit confirmation timestamp outside observed Android action window')
  if place.get('reminders',{}).get('enabled'):raise ValueError('Selecting a historical hint enabled reminders automatically')
  if place.get('queuePublicAddressLabel')!=expected_source_address(record,initial['addressParts']['house']):raise ValueError('Saved literal source address changed')
  if confirmation is not None and accepted!=confirmation:raise ValueError('Refresh or restart replaced the explicit user confirmation timestamp')
@@ -210,9 +220,7 @@ class HistoricalAudit(national.Audit):
    self.scroll()
   raise RuntimeError('Visible historical notice incomplete: '+','.join(sorted(required-found)))
  def firewall(self,enable):
-  dump=self.adb('shell','dumpsys','package',national.PKG);match=re.search(r'^\s*userId=(\d+)\s*$',dump,re.M)
-  if not match:raise RuntimeError('Cannot identify this package UID for offline isolation')
-  uid=match[1];rules=[]
+  uid=application_uid(self.adb);rules=[]
   for tool in ['iptables','ip6tables']:
    if enable:self.adb('shell',tool,'-I','OUTPUT','1','-m','owner','--uid-owner',uid,'-j','DROP')
    self.adb('shell',tool,'-C','OUTPUT','-m','owner','--uid-owner',uid,'-j','DROP')
@@ -240,13 +248,16 @@ def run(args):
   state=audit.read_state();initial=active_place(state);national.validate_saved_address(plan['case'],observed,initial);source_address=expected_source_address(record,plan['case']['exactHouse']);candidate=verify_pending(initial,record,source_address)
   if katottg_key(initial.get('addressContext',{}).get('katottg'))!=katottg_key(record['katottg']):raise ValueError('Selected app city KATOTTG differs from the original source')
   write_json(audit.case_dir/'before-confirmation-state.json',state);result['beforeConfirmation']=audit.scan_notice('before-confirmation',record,source_address,True)
-  audit.screenshot('before-explicit-choice');clicked_at=int(time.time()*1000);audit.tap('confirm-public-candidate-'+record['id'],scroll=True)
-  time.sleep(2);state=audit.read_state();accepted=verify_confirmed(active_place(state),record,clicked_at,initial);write_json(audit.case_dir/'after-confirmation-state.json',state);result['afterConfirmation']=audit.scan_notice('after-confirmation',record,source_address)
+  audit.screenshot('before-explicit-choice');clicked_at=device_time_ms(audit.adb);audit.tap('confirm-public-candidate-'+record['id'],scroll=True)
+  time.sleep(2);state=audit.read_state();write_json(audit.case_dir/'after-confirmation-state.json',state)
+  clicked_until=device_time_ms(audit.adb)+999
+  result['confirmationActionWindow']={'clock':'Android date +%s, one-second measurement precision','earliest':clicked_at,'latest':clicked_until}
+  accepted=verify_confirmed(active_place(state),record,clicked_at,initial,latest=clicked_until);result['afterConfirmation']=audit.scan_notice('after-confirmation',record,source_address)
   result['offlineBeforeRestart']=audit.firewall(True)
   audit.tap('schedule-refresh',scroll=True);audit.wait(lambda xml:'schedule-refresh-result' in xml,180);audit.screenshot('offline-refresh-result')
-  state=audit.read_state();verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt']);write_json(audit.case_dir/'after-offline-refresh-state.json',state)
+  state=audit.read_state();write_json(audit.case_dir/'after-offline-refresh-state.json',state);verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt'],latest=clicked_until)
   audit.adb('shell','am','force-stop',national.PKG);audit.adb('shell','am','start','-W','-n',national.PKG+'/.MainActivity');time.sleep(5)
-  audit.wait(lambda xml:'current-address-name' in xml,55);state=audit.read_state();verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt']);write_json(audit.case_dir/'after-offline-restart-state.json',state)
+  audit.wait(lambda xml:'current-address-name' in xml,55);state=audit.read_state();write_json(audit.case_dir/'after-offline-restart-state.json',state);verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt'],latest=clicked_until)
   result['offlineAfterRestart']=audit.firewall(False);result['afterOfflineRestart']=audit.scan_notice('after-offline-restart',record,source_address)
   result['pass']=True;result['confirmedQueueOrigin']='public';result['preservedActivePlaceId']=accepted['id'];result['sourcePublishedAt']=record['publishedAt'];result['confirmationAt']=accepted['queueUserConfirmedAt']
  except Exception as error:
