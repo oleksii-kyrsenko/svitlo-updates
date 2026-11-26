@@ -1,13 +1,7 @@
 {
-  "startedAt": 1795644111900,
+  "startedAt": 1795683436352,
   "agents": {
     "official": [
-      {
-        "sourceUrl": "https://www.dtek-dnem.com.ua/ua/shutdowns",
-        "sha256": "770cb6b5c4dd0d608da68b366b9246fcb34b5e3004a4a14bc7f904b4cae7f032",
-        "discoveredChannels": [],
-        "links": []
-      },
       {
         "sourceUrl": "https://www.dtek-dem.com.ua/ua/shutdowns",
         "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -16,7 +10,7 @@
       },
       {
         "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
-        "sha256": "adef231633cf1ef1c992283053a78ebd04712a9a8898e7efaa7c0ce3263f1314",
+        "sha256": "f62dcd8ee92cf386c01b0473114057530c2731cc8b472a6b6f38086c6bdf3f64",
         "discoveredChannels": [],
         "links": []
       },
@@ -34,7 +28,7 @@
       },
       {
         "sourceUrl": "https://kiroe.com.ua/electricity-blackout",
-        "sha256": "0a15108d1f3b1ce8aee6894ff50f2ad1e66c2d433732392b2a30991a98af741f",
+        "sha256": "861e2e0d62404d65abb60ed6b680d931e122ee81d2bc847b44761c3a252fdb90",
         "discoveredChannels": [
           {
             "url": "https://t.me/s/SvitloBlagovishenskogoRajonu",
@@ -176,32 +170,32 @@
       },
       {
         "sourceUrl": "https://www.dtek-oem.com.ua/ua/shutdowns",
-        "sha256": "d1b1a49ff04a0011be3d28ad603667e784d916cd58013fad95919681de57a621",
+        "sha256": "fe5be59bf645552ca599e670397598bf55035c7cde2b5a01e7e892f7bbd003a7",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://oe.if.ua/uk/emergency_shutdowns",
-        "sha256": "26c113b30bde1cc1291663fba644fbb2a931b934431022b3c8c08f8c50e29f6a",
+        "sha256": "aaad7604c4213da5ef11662e8be630746418265c346978c65eecf58e9d97269c",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.soe.com.ua/consumers/shutdowns",
-        "sha256": "6645eb3872f115ef249f067b75e26d713129c1ff836f7070afefaaeeff1f86ce",
+        "sha256": "90d722ab693d67854b0f5af4478a3b48e128650e8f69c3476df0f9046a630fbc",
         "discoveredChannels": [],
         "links": []
       },
       {
         "sourceUrl": "https://www.roe.vsei.ua/disconnections",
-        "sha256": "e3f8c78051bfd68adac9d5ab58dd3bf6921839ee55bc6bc59e3114ef79d0a34e",
+        "sha256": "5cd789db59c6f056b1dfae874e1cb925bc8f2c9a28f4f7dfe07383b4a0420293",
         "discoveredChannels": [],
         "links": [
           "https://www.roe.vsei.ua/docs/public/Polityka_PRaT_ROE_schodo_lichylnykiv_elektr_energii.pdf",
           "https://www.roe.vsei.ua/docs/public/Polityka_PRaT_ROE_schodo_lichylnykiv_elektr_energii.pdf",
           "https://www.roe.vsei.ua/wp-content/uploads/2026/10/GPV_cherga_misto_Rivne-1.pdf",
           "https://www.roe.vsei.ua/wp-content/uploads/2026/10/GPV_cherga_Rivnenska_oblast-1.pdf",
-          "https://www.roe.vsei.ua/wp-content/uploads/2026/11/planovi-25.11.2026.xlsx",
+          "https://www.roe.vsei.ua/wp-content/uploads/2026/11/planovi-26.11.2026.xlsx",
           "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2021.xlsx",
           "https://www.roe.vsei.ua/docs/public/ZVITNIST_8_NKREKP_2022.xlsx",
           "https://www.roe.vsei.ua/docs/public/Poriadok_rozghliadu_zvernen.pdf",
@@ -215,7 +209,7 @@
       },
       {
         "sourceUrl": "https://ksoe.com.ua/",
-        "sha256": "99dae83520dc6a9bc10770219f262da6e97e388a7332739d2625012dd7d69bc2",
+        "sha256": "f63274498cb28b755bcf8d4b4eeac65642ecd5d4ce3b63b0e0244bfc934fc995",
         "discoveredChannels": [],
         "links": [
           "https://ksoe.com.ua/statics/web/files/RegisterOfSuppliers_07092026.pdf",
@@ -233,7 +227,7 @@
       },
       {
         "sourceUrl": "https://www.cherkasyoblenergo.com/off",
-        "sha256": "334e2a6b98cb5a0c1a1c5ca83a9da58041fadf635cb470bfdf9c974fc32f7f63",
+        "sha256": "b2c605566fffa8fabb332029a6001477874d39c39d45c84229682a84cd61560d",
         "discoveredChannels": [
           {
             "url": "https://t.me/s/pat_cherkasyoblenergo",
@@ -272,7 +266,7 @@
       },
       {
         "url": "https://sarny-rada.gov.ua/",
-        "candidates": 9
+        "candidates": 8
       },
       {
         "url": "https://bilokrynycka-gromada.gov.ua/",
@@ -302,61 +296,61 @@
       {
         "url": "https://t.me/s/suspilnepoltava",
         "pages": 4,
-        "posts": 66,
-        "oldestPublishedAt": 1780826818000,
+        "posts": 62,
+        "oldestPublishedAt": 1780642643000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 44827,
+        "nextBackfillCursor": 44686,
         "errors": []
       },
       {
         "url": "https://t.me/s/suspilnekherson",
-        "pages": 3,
-        "posts": 33,
-        "oldestPublishedAt": 1780059668000,
+        "pages": 4,
+        "posts": 70,
+        "oldestPublishedAt": 1795073067000,
         "historyDaysRequested": 180,
-        "stopReason": "history_window",
-        "nextBackfillCursor": 81556,
+        "stopReason": "page_limit",
+        "nextBackfillCursor": 85430,
         "errors": []
       },
       {
         "url": "https://t.me/s/pat_cherkasyoblenergo",
         "pages": 4,
-        "posts": 74,
-        "oldestPublishedAt": 1792131363000,
+        "posts": 70,
+        "oldestPublishedAt": 1790316877000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 1841,
+        "nextBackfillCursor": 1780,
         "errors": []
       },
       {
         "url": "https://t.me/s/stryzhavska_rada",
         "pages": 4,
-        "posts": 33,
-        "oldestPublishedAt": 1784037803000,
+        "posts": 26,
+        "oldestPublishedAt": 1782828136000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 9787,
+        "nextBackfillCursor": 9719,
         "errors": []
       },
       {
         "url": "https://t.me/s/lutskradanews",
         "pages": 4,
-        "posts": 33,
-        "oldestPublishedAt": 1793285219000,
+        "posts": 34,
+        "oldestPublishedAt": 1793026297000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 16648,
+        "nextBackfillCursor": 16577,
         "errors": []
       },
       {
         "url": "https://t.me/s/rada_poltava",
         "pages": 4,
-        "posts": 39,
-        "oldestPublishedAt": 1786168515000,
+        "posts": 44,
+        "oldestPublishedAt": 1785492633000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 6841,
+        "nextBackfillCursor": 6781,
         "errors": []
       },
       {
@@ -372,31 +366,31 @@
       {
         "url": "https://t.me/s/bilokrynycka_gromada",
         "pages": 4,
-        "posts": 48,
-        "oldestPublishedAt": 1789548644000,
+        "posts": 37,
+        "oldestPublishedAt": 1788507625000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 2840,
+        "nextBackfillCursor": 2747,
         "errors": []
       },
       {
         "url": "https://t.me/s/ok_kremen",
         "pages": 4,
-        "posts": 73,
-        "oldestPublishedAt": 1785749461000,
+        "posts": 72,
+        "oldestPublishedAt": 1785533626000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 55902,
+        "nextBackfillCursor": 55839,
         "errors": []
       },
       {
         "url": "https://t.me/s/SarnyNewsCity",
         "pages": 4,
         "posts": 80,
-        "oldestPublishedAt": 1791779732000,
+        "oldestPublishedAt": 1791497984000,
         "historyDaysRequested": 180,
         "stopReason": "page_limit",
-        "nextBackfillCursor": 10904,
+        "nextBackfillCursor": 10844,
         "errors": []
       },
       {
@@ -494,7 +488,7 @@
       }
     ],
     "extraction": {
-      "messages": 499,
+      "messages": 515,
       "relevantMessages": 0,
       "modelCalls": 0
     },
@@ -509,7 +503,7 @@
         "indexUrl": "https://poltava.to/project/poltavaoblenergo/",
         "operatorId": "poltava",
         "regionId": "UA-53",
-        "fetchedAt": 1795644111900,
+        "fetchedAt": 1795683436352,
         "articles": [
           {
             "url": "https://poltava.to/project/11386/",
@@ -522,10 +516,6 @@
           {
             "url": "https://poltava.to/news/85268/",
             "publishedAt": 1795546440000
-          },
-          {
-            "url": "https://poltava.to/news/89088/",
-            "publishedAt": 1795520760000
           }
         ],
         "landingPages": [
@@ -556,7 +546,7 @@
         ],
         "errors": [],
         "runtimeRecords": 0,
-        "articleCandidates": 4,
+        "articleCandidates": 3,
         "articleLimitReached": false,
         "stopReason": "complete"
       },
@@ -564,7 +554,7 @@
         "indexUrl": "https://poltava.to/news/",
         "operatorId": "poltava",
         "regionId": "UA-53",
-        "fetchedAt": 1795644111900,
+        "fetchedAt": 1795683436352,
         "articles": [
           {
             "url": "https://poltava.to/news/85268/",
@@ -623,6 +613,11 @@
       "agent": "official",
       "url": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
       "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "agent": "official",
+      "url": "https://www.dtek-dnem.com.ua/ua/shutdowns",
+      "error": "HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nFound"
     },
     {
       "agent": "official",
@@ -695,7 +690,7 @@
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
-  "finishedAt": 1795644434525,
+  "finishedAt": 1795683763897,
   "sourceCursors": {
     "official": 0,
     "documents": 0,

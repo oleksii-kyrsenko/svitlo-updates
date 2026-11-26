@@ -1,6 +1,6 @@
 {
   "model": "Qwen2.5-1.5B-Instruct Q4_K_M",
-  "startedAt": 1795644037997,
+  "startedAt": 1795683361640,
   "cases": [
     {
       "id": "house",
@@ -37,7 +37,7 @@
           "recordVersion": 2
         }
       ],
-      "seconds": 8.84
+      "seconds": 8.58
     },
     {
       "id": "street",
@@ -67,7 +67,7 @@
           "houses": []
         }
       ],
-      "seconds": 5.29
+      "seconds": 5.39
     },
     {
       "id": "settlement",
@@ -97,7 +97,7 @@
           "houses": []
         }
       ],
-      "seconds": 4.3
+      "seconds": 4.39
     },
     {
       "id": "outage",
@@ -119,7 +119,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.86
+      "seconds": 6.09
     },
     {
       "id": "question",
@@ -141,7 +141,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.58
+      "seconds": 5.74
     },
     {
       "id": "uncertain",
@@ -163,7 +163,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.81
+      "seconds": 5.84
     },
     {
       "id": "old",
@@ -185,7 +185,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 5.93
+      "seconds": 6.04
     },
     {
       "id": "correction",
@@ -207,7 +207,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 6.0
+      "seconds": 6.01
     },
     {
       "id": "conflict",
@@ -289,7 +289,7 @@
           "recordVersion": 2
         }
       ],
-      "seconds": 5.72
+      "seconds": 5.81
     },
     {
       "id": "injection",
@@ -311,7 +311,7 @@
         ]
       },
       "accepted": [],
-      "seconds": 4.24
+      "seconds": 4.27
     },
     {
       "id": "no-locality",
@@ -333,9 +333,9 @@
         ]
       },
       "accepted": [],
-      "seconds": 3.96
+      "seconds": 4.15
     }
   ],
-  "seconds": 73.77,
+  "seconds": 74.57,
   "passed": true
 }
