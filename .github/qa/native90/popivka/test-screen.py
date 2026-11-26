@@ -32,4 +32,12 @@ class Screen(unittest.TestCase):
   changes=[lambda x:x.replace('resource-id="schedule-state"','resource-id="other-card"'),lambda x:x.replace('[30,500][980,700]','[30,1700][980,1790]'),lambda x:x.replace('text="Не вдалося отримати графік"','text="Не вдалося отримати графік" displayed="false"'),lambda x:x.replace('text="Спробуйте оновити. Збережену адресу повторно вводити не потрібно."','text="Завантажуємо"'),lambda x:x.replace('[40,570][960,650]','[40,570][960,1850]'),lambda x:x.replace('</hierarchy>','<node resource-id="app-message-dialog"/></hierarchy>')]
   for change in changes:
    with self.subTest(xml=change(value)):self.assertIsNone(m.graph_failure_evidence(change(value)))
+ def test_flattened_failure_text_allows_only_two_horizontal_physical_pixels(self):
+  value=self.failure_fixture().replace('[40,510][960,560]','[30,510][982,560]').replace('[40,570][960,650]','[30,570][982,700]')
+  self.assertEqual(m.graph_failure_evidence(value)['stateHorizontalRoundingPx'],2)
+  left=value.replace('[30,510][982,560]','[28,510][980,560]')
+  self.assertIsNotNone(m.graph_failure_evidence(left))
+  rejected=[value.replace('[982,560]','[983,560]'),left.replace('[28,510]','[27,510]'),value.replace('[30,510]','[30,499]'),value.replace('[982,700]','[982,701]'),value.replace('bounds="[30,510][982,560]"','bounds="[30,510][982,560]" visible-to-user="false"'),value.replace('[20,300][1000,1600]','[20,300][981,1600]'),value.replace('[0,200][1080,1800]','[0,200][981,1800]')]
+  for changed in rejected:
+   with self.subTest(xml=changed):self.assertIsNone(m.graph_failure_evidence(changed))
 if __name__=='__main__':unittest.main()

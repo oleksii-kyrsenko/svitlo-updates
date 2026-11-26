@@ -55,7 +55,13 @@ def graph_failure_evidence(xml):
  graph,graph_box,viewport,nodes=context
  states=[n for n in nodes if n.get('resource-id','').split('/')[-1]=='schedule-state']
  if len(states)!=1:return None
- state_box=bounds(states[0]);labels={n.get('text') for n in nodes if contains(state_box,bounds(n))}
+ state_box=bounds(states[0])
+ # Android rounds the flattened state marker and its sibling TextViews
+ # independently: captured API30/35/36 trees differ by two physical pixels
+ # horizontally. Keep text strictly inside the graph and viewport (nodes),
+ # and keep the state marker's vertical limits exact.
+ label_box=(state_box[0]-2,state_box[1],state_box[2]+2,state_box[3])
+ labels={n.get('text') for n in nodes if contains(label_box,bounds(n))}
  required={'Не вдалося отримати графік','Спробуйте оновити. Збережену адресу повторно вводити не потрібно.'}
  if not required<=labels or 'Графік на добу' not in {n.get('text') for n in nodes}:return None
- return {'binding':'visible-graph-failure-title-and-detail','texts':sorted(required),'stateBounds':state_box,'graphBounds':graph_box,'viewport':viewport}
+ return {'binding':'visible-graph-failure-title-and-detail','texts':sorted(required),'stateBounds':state_box,'stateHorizontalRoundingPx':2,'graphBounds':graph_box,'viewport':viewport}
