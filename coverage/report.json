@@ -1,12 +1,25 @@
 {
   "schemaVersion": 1,
-  "checkedAt": 1795648033164,
+  "checkedAt": 1795680861208,
   "method": "public-page-health-not-address-coverage",
   "operators": [
     {
       "operatorId": "vinnytsia",
       "sourceUrl": "https://www.voe.com.ua/disconnection/detailed",
-      "checkedAt": 1795647987305,
+      "checkedAt": 1795680814721,
+      "status": "source_protected",
+      "httpStatus": 403,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "leads": [],
+      "consecutiveFailures": 118,
+      "regression": false,
+      "elapsedMs": 353
+    },
+    {
+      "operatorId": "volyn",
+      "sourceUrl": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
+      "checkedAt": 1795680814721,
       "status": "source_protected",
       "httpStatus": 403,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -14,47 +27,25 @@
       "leads": [],
       "consecutiveFailures": 117,
       "regression": false,
-      "elapsedMs": 465
-    },
-    {
-      "operatorId": "volyn",
-      "sourceUrl": "https://energy.volyn.ua/spozhyvacham/perervy-u-elektropostachanni/hrafik-vidkliuchen/",
-      "checkedAt": 1795647987305,
-      "status": "source_protected",
-      "httpStatus": 403,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0,
-      "leads": [],
-      "consecutiveFailures": 116,
-      "regression": false,
-      "elapsedMs": 299
+      "elapsedMs": 238
     },
     {
       "operatorId": "dtek-dnipro",
       "sourceUrl": "https://www.dtek-dnem.com.ua/ua/shutdowns",
-      "checkedAt": 1795647987306,
-      "status": "page_available",
-      "httpStatus": 200,
-      "sha256": "79c4c22b282ddd10368c9af62bf60a52ce8978ac44c4889aaad8f6791678feeb",
-      "bytes": 1096582,
-      "leads": [
-        {
-          "url": "https://t.me/DTEKDniprovskiElektromerezhiBot",
-          "status": "needs_source_review"
-        },
-        {
-          "url": "https://www.dtek-dnem.com.ua/ua/shutdowns",
-          "status": "needs_source_review"
-        }
-      ],
-      "consecutiveFailures": 0,
-      "regression": false,
-      "elapsedMs": 3239
+      "checkedAt": 1795680814722,
+      "status": "source_unavailable",
+      "httpStatus": 302,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "leads": [],
+      "consecutiveFailures": 1,
+      "regression": true,
+      "elapsedMs": 182
     },
     {
       "operatorId": "dtek-donetsk",
       "sourceUrl": "https://www.dtek-dem.com.ua/ua/shutdowns",
-      "checkedAt": 1795647987604,
+      "checkedAt": 1795680814904,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -62,15 +53,15 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 127
+      "elapsedMs": 111
     },
     {
       "operatorId": "zhytomyr",
       "sourceUrl": "https://www.ztoe.com.ua/unhooking-search.php",
-      "checkedAt": 1795647987732,
+      "checkedAt": 1795680814960,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "edd569038f918a36a9e5fbe9940f69c109a27baddffbb88c6fb9d469bf9160ff",
+      "sha256": "7c8e5493f7baadb1e8a9839a4a53c5935cb667d4b7cb55e5efbbd184bb862d0b",
       "bytes": 242289,
       "leads": [
         {
@@ -124,35 +115,35 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 2608
+      "elapsedMs": 1848
     },
     {
       "operatorId": "zakarpattia",
       "sourceUrl": "https://zakarpat.energy/customers/break-in-electricity-supply/schedule/",
-      "checkedAt": 1795647987770,
+      "checkedAt": 1795680815015,
       "status": "source_protected",
       "httpStatus": 403,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0,
       "leads": [],
-      "consecutiveFailures": 117,
+      "consecutiveFailures": 118,
       "regression": false,
-      "elapsedMs": 629
+      "elapsedMs": 380
     },
     {
       "operatorId": "zaporizhzhia",
       "sourceUrl": "https://www.zoe.com.ua/графіки-погодинних-стабілізаційних/",
-      "checkedAt": 1795647988400,
+      "checkedAt": 1795680815074,
       "status": "source_unavailable",
       "error": "URLError",
-      "consecutiveFailures": 117,
+      "consecutiveFailures": 118,
       "regression": false,
-      "elapsedMs": 20243
+      "elapsedMs": 20295
     },
     {
       "operatorId": "dtek-kyiv",
       "sourceUrl": "https://www.dtek-kem.com.ua/ua/shutdowns",
-      "checkedAt": 1795647990341,
+      "checkedAt": 1795680815396,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -160,12 +151,12 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 51
+      "elapsedMs": 142
     },
     {
       "operatorId": "dtek-kyiv-region",
       "sourceUrl": "https://www.dtek-krem.com.ua/ua/shutdowns",
-      "checkedAt": 1795647990393,
+      "checkedAt": 1795680815539,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -173,15 +164,15 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 139
+      "elapsedMs": 106
     },
     {
       "operatorId": "kirovohrad",
       "sourceUrl": "https://kiroe.com.ua/electricity-blackout",
-      "checkedAt": 1795647990533,
+      "checkedAt": 1795680815645,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "20fb355d740c50c22b10a4e65d3d8df74377bd97adf67f45c21523a4839dc4d7",
+      "sha256": "551a439ddea8c38db8d1aafdab522e9f6bff4d7c36afdb632aa7ab1e49d7c5b1",
       "bytes": 204931,
       "leads": [
         {
@@ -287,16 +278,16 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1017
+      "elapsedMs": 729
     },
     {
       "operatorId": "luhansk",
       "sourceUrl": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
-      "checkedAt": 1795647990545,
+      "checkedAt": 1795680816375,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "5c84bad31d6765c12fcc03431db2ad4c4c40738a2f9405f0c968870e3944ea43",
-      "bytes": 213981,
+      "sha256": "ba41ddf5e893959265765f4a68068add5fb7a88052e213edcf4762b1b558af7d",
+      "bytes": 213985,
       "leads": [
         {
           "url": "https://t.me/NEURC",
@@ -341,12 +332,12 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 2610
+      "elapsedMs": 2055
     },
     {
       "operatorId": "lviv",
       "sourceUrl": "https://poweron.loe.lviv.ua/",
-      "checkedAt": 1795647991550,
+      "checkedAt": 1795680816809,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "e3159700f96b78143bd1ec1c7f15631778088e2e15f710b8e7d9ef766017a5df",
@@ -354,12 +345,12 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 592
+      "elapsedMs": 273
     },
     {
       "operatorId": "mykolaiv",
       "sourceUrl": "https://off.energy.mk.ua/",
-      "checkedAt": 1795647992143,
+      "checkedAt": 1795680817083,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "56ce5c2d73f8ea98ab065fb3ee52f53865497fa60450095537a14da168ba01ae",
@@ -376,65 +367,71 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 830
+      "elapsedMs": 175
     },
     {
       "operatorId": "dtek-odesa",
       "sourceUrl": "https://www.dtek-oem.com.ua/ua/shutdowns",
-      "checkedAt": 1795647992973,
-      "status": "source_protected",
+      "checkedAt": 1795680817259,
+      "status": "page_available",
       "httpStatus": 200,
-      "sha256": "25c637c532173ce882b56d785d60b8ee0141ecd9a305ba32c7b81c9b2a90d3d0",
-      "bytes": 903,
-      "leads": [],
-      "consecutiveFailures": 1,
-      "regression": true,
-      "elapsedMs": 88
+      "sha256": "eb79097609a1ff8f7ac085b5084d1914ad178c1bade29de7332f1ca3ae596202",
+      "bytes": 918049,
+      "leads": [
+        {
+          "url": "https://t.me/DTEKOdeskiElektromerezhiBot",
+          "status": "needs_source_review"
+        },
+        {
+          "url": "https://www.dtek-oem.com.ua/ua/shutdowns",
+          "status": "needs_source_review"
+        }
+      ],
+      "consecutiveFailures": 0,
+      "regression": false,
+      "elapsedMs": 1639
     },
     {
       "operatorId": "poltava",
       "sourceUrl": "https://www.poe.pl.ua/disconnection/hrafik-pohodynnoho-vidkliuchennia-elektroenerhii/",
-      "checkedAt": 1795647993061,
+      "checkedAt": 1795680818430,
       "status": "source_unavailable",
       "error": "URLError",
-      "consecutiveFailures": 117,
+      "consecutiveFailures": 118,
       "regression": false,
-      "elapsedMs": 40101
+      "elapsedMs": 40122
     },
     {
       "operatorId": "prykarpattia",
       "sourceUrl": "https://oe.if.ua/uk/emergency_shutdowns",
-      "checkedAt": 1795647993156,
+      "checkedAt": 1795680818899,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "9073bf87d73fc442a60228695aeaecf0f4ab61c7d1e1836993361258480bb8b8",
-      "bytes": 11520,
+      "sha256": "63dc4178d88812058ae82b380dd32c45fcbd5948a4fcac7a6cb552e0655d7a89",
+      "bytes": 11518,
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 616
+      "elapsedMs": 368
     },
     {
       "operatorId": "sumy",
       "sourceUrl": "https://www.soe.com.ua/consumers/shutdowns",
-      "checkedAt": 1795647993772,
-      "status": "page_available",
-      "httpStatus": 200,
-      "sha256": "6645eb3872f115ef249f067b75e26d713129c1ff836f7070afefaaeeff1f86ce",
-      "bytes": 48175,
-      "leads": [],
-      "consecutiveFailures": 0,
-      "regression": false,
-      "elapsedMs": 997
+      "checkedAt": 1795680819268,
+      "status": "source_unavailable",
+      "error": "URLError",
+      "consecutiveFailures": 1,
+      "regression": true,
+      "elapsedMs": 20037
     },
     {
       "operatorId": "rivne",
       "sourceUrl": "https://www.roe.vsei.ua/disconnections",
-      "checkedAt": 1795647994770,
+      "checkedAt": 1795680835370,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "c7ee647ddf5f0ebea0ed23dcf3ddaa28695eeb7ab40c0f2ddafb0b706b5fb713",
-      "bytes": 183018,
+      "sha256": "bf6e88246151a690936ae5d094c73991dfceea6150375250a26b5b23d0f1b931",
+      "bytes": 183417,
       "leads": [
         {
           "url": "https://www.roe.vsei.ua/disconnections",
@@ -509,18 +506,31 @@
           "status": "needs_source_review"
         },
         {
-          "url": "https://www.roe.vsei.ua/wp-content/uploads/2026/11/planovi-25.11.2026.xlsx",
+          "url": "https://www.roe.vsei.ua/wp-content/uploads/2026/11/planovi-26.11.2026.xlsx",
           "status": "needs_source_review"
         }
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1397
+      "elapsedMs": 854
     },
     {
       "operatorId": "ternopil",
       "sourceUrl": "https://www.toe.com.ua/",
-      "checkedAt": 1795647996168,
+      "checkedAt": 1795680836225,
+      "status": "source_protected",
+      "httpStatus": 403,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "leads": [],
+      "consecutiveFailures": 118,
+      "regression": false,
+      "elapsedMs": 131
+    },
+    {
+      "operatorId": "kharkiv",
+      "sourceUrl": "https://oblenergo.kharkiv.ua/uk/gaoinfo",
+      "checkedAt": 1795680836357,
       "status": "source_protected",
       "httpStatus": 403,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -528,28 +538,15 @@
       "leads": [],
       "consecutiveFailures": 117,
       "regression": false,
-      "elapsedMs": 108
-    },
-    {
-      "operatorId": "kharkiv",
-      "sourceUrl": "https://oblenergo.kharkiv.ua/uk/gaoinfo",
-      "checkedAt": 1795647996276,
-      "status": "source_protected",
-      "httpStatus": 403,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0,
-      "leads": [],
-      "consecutiveFailures": 116,
-      "regression": false,
-      "elapsedMs": 393
+      "elapsedMs": 278
     },
     {
       "operatorId": "kherson",
       "sourceUrl": "https://ksoe.com.ua/",
-      "checkedAt": 1795647996670,
+      "checkedAt": 1795680836635,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "99dae83520dc6a9bc10770219f262da6e97e388a7332739d2625012dd7d69bc2",
+      "sha256": "e1a165fc904e33a12f1e92dc55b032d8812b8015ffe37b2003d12bf2e9d5326b",
       "bytes": 74391,
       "leads": [
         {
@@ -571,12 +568,12 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1342
+      "elapsedMs": 1063
     },
     {
       "operatorId": "khmelnytskyi",
       "sourceUrl": "https://hoe.com.ua/page/informatsija-vidkljuchennja",
-      "checkedAt": 1795647998012,
+      "checkedAt": 1795680837699,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "71a5b7103d8ad8faf0465025362402f77d6f1e0b3d1f16200560b277ae45de60",
@@ -613,15 +610,15 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1182
+      "elapsedMs": 951
     },
     {
       "operatorId": "cherkasy",
       "sourceUrl": "https://www.cherkasyoblenergo.com/off",
-      "checkedAt": 1795647999194,
+      "checkedAt": 1795680838651,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "334e2a6b98cb5a0c1a1c5ca83a9da58041fadf635cb470bfdf9c974fc32f7f63",
+      "sha256": "b2c605566fffa8fabb332029a6001477874d39c39d45c84229682a84cd61560d",
       "bytes": 131492,
       "leads": [
         {
@@ -643,35 +640,35 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1072
+      "elapsedMs": 730
     },
     {
       "operatorId": "chernivtsi",
       "sourceUrl": "https://oblenergo.cv.ua/shutdowns/",
-      "checkedAt": 1795648000267,
+      "checkedAt": 1795680839306,
       "status": "source_protected",
       "httpStatus": 403,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0,
       "leads": [],
-      "consecutiveFailures": 116,
+      "consecutiveFailures": 117,
       "regression": false,
-      "elapsedMs": 364
+      "elapsedMs": 226
     },
     {
       "operatorId": "chernihiv",
       "sourceUrl": "https://chernihivoblenergo.com.ua/blackouts",
-      "checkedAt": 1795648000631,
+      "checkedAt": 1795680839382,
       "status": "source_unavailable",
       "error": "URLError",
-      "consecutiveFailures": 117,
+      "consecutiveFailures": 118,
       "regression": false,
-      "elapsedMs": 568
+      "elapsedMs": 454
     },
     {
       "operatorId": "dtek-pem",
       "sourceUrl": "https://www.dtek-pem.com.ua/ua/shutdowns-schedule",
-      "checkedAt": 1795648001200,
+      "checkedAt": 1795680839532,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -679,12 +676,12 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 98
+      "elapsedMs": 166
     },
     {
       "operatorId": "dtek-vvm",
       "sourceUrl": "https://www.dtek-vvm.com.ua/ua/shutdowns-schedule",
-      "checkedAt": 1795648001299,
+      "checkedAt": 1795680839699,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
@@ -692,12 +689,12 @@
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 88
+      "elapsedMs": 177
     },
     {
       "operatorId": "cek",
       "sourceUrl": "https://cek.dp.ua/index.php/cpojivaham/vidkliuchennia.html",
-      "checkedAt": 1795648001387,
+      "checkedAt": 1795680839836,
       "status": "page_available",
       "httpStatus": 200,
       "sha256": "e499b5b80eb3020044be37736ed85b238718bc14b116883fdf2431b474704f63",
@@ -742,39 +739,39 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1529
+      "elapsedMs": 1199
     },
     {
       "operatorId": "naftogaz-teplo",
       "sourceUrl": "https://www.naftogazteplo.com.ua/?page_id=4582",
-      "checkedAt": 1795648002916,
+      "checkedAt": 1795680839877,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "0df7e4dbe0b8a027ba2ab9908ee0e22646f4f4f97358f78960346189bb55f975",
+      "sha256": "dce887d5138813f4fda74736c5cf51bc44511f73b48826cf14e2c74286088823",
       "bytes": 1220372,
       "leads": [],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 3242
+      "elapsedMs": 3640
     },
     {
       "operatorId": "ukrzaliznytsia",
       "sourceUrl": "https://uz.gov.ua/about/activity/electropostachannia/electro_consumers/temporary_shutdown/",
-      "checkedAt": 1795648006159,
+      "checkedAt": 1795680841035,
       "status": "source_unavailable",
       "error": "URLError",
-      "consecutiveFailures": 117,
+      "consecutiveFailures": 118,
       "regression": false,
-      "elapsedMs": 20233
+      "elapsedMs": 20171
     },
     {
       "operatorId": "regional-networks",
       "sourceUrl": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
-      "checkedAt": 1795648008643,
+      "checkedAt": 1795680843517,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "5c84bad31d6765c12fcc03431db2ad4c4c40738a2f9405f0c968870e3944ea43",
-      "bytes": 213981,
+      "sha256": "ba41ddf5e893959265765f4a68068add5fb7a88052e213edcf4762b1b558af7d",
+      "bytes": 213985,
       "leads": [
         {
           "url": "https://t.me/NEURC",
@@ -819,15 +816,15 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 1581
+      "elapsedMs": 1165
     },
     {
       "operatorId": "atomservice",
       "sourceUrl": "https://info.dpem.mk.ua/off_graf.html",
-      "checkedAt": 1795648010224,
+      "checkedAt": 1795680844683,
       "status": "page_available",
       "httpStatus": 200,
-      "sha256": "718c2ed84e8e855145996ebe8167fbb6070cac282215619c5ede2c175bba6ab5",
+      "sha256": "81fb852a5486fe846101a5c3155e21e33ade3323a4f3d67f586e3714f8776d0d",
       "bytes": 1829351,
       "leads": [
         {
@@ -905,13 +902,13 @@
       ],
       "consecutiveFailures": 0,
       "regression": false,
-      "elapsedMs": 2363
+      "elapsedMs": 1547
     }
   ],
   "counts": {
-    "page_available": 21,
-    "source_protected": 7,
-    "source_unavailable": 4
+    "page_available": 20,
+    "source_protected": 6,
+    "source_unavailable": 6
   },
   "registry": {
     "pageUrl": "https://www.nerc.gov.ua/reyestri-nkrekp/licenzijnij-reyestr-nkrekp",
