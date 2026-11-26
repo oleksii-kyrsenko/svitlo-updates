@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": 1795682476236,
+  "generatedAt": 1795729566679,
   "operators": [
     {
       "operatorId": "cherkasy",
-      "fetchedAt": 1795682476270,
-      "expiresAt": 1795725676270,
+      "fetchedAt": 1795729567285,
+      "expiresAt": 1795772767285,
       "sha256": "8b93948d4cbb06dddda04688cbbcc4fad5fcae47c66c70555638a3e3c79a9962",
       "size": 249494,
       "decodedSize": 1298528,
@@ -13,21 +13,21 @@
     },
     {
       "operatorId": "khmelnytskyi",
-      "fetchedAt": 1795682485672,
-      "expiresAt": 1795725685672,
-      "sha256": "1c67cf6d2a9295239a791b8adad1198c24912e026c3c47f08a2007af22e78612",
+      "fetchedAt": 1795729576530,
+      "expiresAt": 1795772776530,
+      "sha256": "cf9dd1125979c01e9e7d0fd18e1e2673be4c52220b25fb120aed97e2a7e62219",
       "size": 557050,
       "decodedSize": 3788607,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-1c67cf6d2a9295239a791b8adad1198c24912e026c3c47f08a2007af22e78612.json.gz"
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/khmelnytskyi-cf9dd1125979c01e9e7d0fd18e1e2673be4c52220b25fb120aed97e2a7e62219.json.gz"
     },
     {
       "operatorId": "rivne",
-      "fetchedAt": 1795682493430,
-      "expiresAt": 1795725693430,
-      "sha256": "92000db39c8d48f8bce6820cc2b0d2d6e9c57559a43a9d2fa8d8f1991d536891",
-      "size": 118142,
-      "decodedSize": 893212,
-      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-92000db39c8d48f8bce6820cc2b0d2d6e9c57559a43a9d2fa8d8f1991d536891.json.gz"
+      "fetchedAt": 1795729586042,
+      "expiresAt": 1795772786042,
+      "sha256": "b7f4d1339bbbe0db54bf9d0738fb1f76366cf938c57f4af6209ff56b73801e6a",
+      "size": 118584,
+      "decodedSize": 885999,
+      "url": "https://github.com/oleksii-kyrsenko/svitlo-updates/releases/download/source-cache-data/rivne-b7f4d1339bbbe0db54bf9d0738fb1f76366cf938c57f4af6209ff56b73801e6a.json.gz"
     }
   ],
   "failures": [
