@@ -201,7 +201,11 @@ def verify_confirmed(place,record,earliest,initial,confirmation=None,*,latest):
 
 class HistoricalAudit(national.Audit):
  def scan_notice(self,label,record,source_address,pending=False):
-  for _ in range(16):self.scroll(False)
+  # Stop when the real first card is visible. Blind upward gestures at the
+  # top repeatedly invoke the app's ordinary pull-to-refresh control.
+  for _ in range(16):
+   if historical_screen.visible_control(self.source(),'current-address-card',self.size['width'],self.size['height'],False):break
+   self.scroll(False)
   date=datetime.datetime.fromtimestamp(record['publishedAt']/1000,ZoneInfo('Europe/Kyiv')).strftime('%d.%m.%Y')
   found=set();frames=[]
   for page in range(20):
@@ -219,6 +223,13 @@ class HistoricalAudit(national.Audit):
    if found>=required:return {'flags':sorted(found),'frames':frames,'originalSourceDate':date}
    self.scroll()
   raise RuntimeError('Visible historical notice incomplete: '+','.join(sorted(required-found)))
+ def wait_refresh_idle(self):
+  for _ in range(12):
+   if historical_screen.visible_control(self.source(),'schedule-refresh',self.size['width'],self.size['height'],False):break
+   self.scroll()
+  xml=self.wait(lambda xml:historical_screen.visible_control(xml,'schedule-refresh',self.size['width'],self.size['height']),240)
+  self.screenshot('refresh-idle-before-offline',xml)
+  return historical_screen.visible_control(xml,'schedule-refresh',self.size['width'],self.size['height'])
  def firewall(self,enable):
   uid=application_uid(self.adb);rules=[]
   for tool in ['iptables','ip6tables']:
@@ -253,8 +264,9 @@ def run(args):
   clicked_until=device_time_ms(audit.adb)+999
   result['confirmationActionWindow']={'clock':'Android date +%s, one-second measurement precision','earliest':clicked_at,'latest':clicked_until}
   accepted=verify_confirmed(active_place(state),record,clicked_at,initial,latest=clicked_until);result['afterConfirmation']=audit.scan_notice('after-confirmation',record,source_address)
+  result['refreshIdleBeforeIsolation']=audit.wait_refresh_idle()
   result['offlineBeforeRestart']=audit.firewall(True)
-  audit.tap('schedule-refresh',scroll=True);audit.wait(lambda xml:'schedule-refresh-result' in xml,180);audit.screenshot('offline-refresh-result')
+  audit.tap('schedule-refresh');audit.wait(lambda xml:'schedule-refresh-result' in xml,180);audit.screenshot('offline-refresh-result')
   state=audit.read_state();write_json(audit.case_dir/'after-offline-refresh-state.json',state);verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt'],latest=clicked_until)
   audit.adb('shell','am','force-stop',national.PKG);audit.adb('shell','am','start','-W','-n',national.PKG+'/.MainActivity');time.sleep(5)
   audit.wait(lambda xml:'current-address-name' in xml,55);state=audit.read_state();write_json(audit.case_dir/'after-offline-restart-state.json',state);verify_confirmed(active_place(state),record,clicked_at,initial,accepted['queueUserConfirmedAt'],latest=clicked_until)

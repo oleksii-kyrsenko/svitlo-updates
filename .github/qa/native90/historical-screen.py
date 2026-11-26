@@ -9,6 +9,19 @@ def box(node):
 def contains(outer,inner):return bool(outer and inner and outer[0]<=inner[0]<inner[2]<=outer[2] and outer[1]<=inner[1]<inner[3]<=outer[3])
 def identity(node):return node.get('resource-id','').split('/')[-1]
 
+def visible_control(xml,control_id,width,height,require_enabled=True):
+ root=ET.fromstring(xml);parents={child:parent for parent in root.iter() for child in parent}
+ matches=[n for n in root.iter() if identity(n)==control_id]
+ if len(matches)!=1:return None
+ node=matches[0];ancestors=[];current=node
+ while current in parents:current=parents[current];ancestors.append(current)
+ if any(n.get('displayed')=='false' or n.get('visible-to-user')=='false' for n in [node,*ancestors]):return None
+ if require_enabled and node.get('enabled')=='false':return None
+ scrolls=[n for n in ancestors if identity(n)=='main-scroll']
+ target=box(node)
+ if len(scrolls)!=1 or not contains(box(scrolls[0]),target) or not contains((0,0,width,height),target):return None
+ return {'controlId':control_id,'bounds':target,'viewport':box(scrolls[0]),'enabled':node.get('enabled')!='false'}
+
 def visible_notice(xml,scope_id,width,height):
  root=ET.fromstring(xml);parents={child:parent for parent in root.iter() for child in parent}
  def ancestors(node):

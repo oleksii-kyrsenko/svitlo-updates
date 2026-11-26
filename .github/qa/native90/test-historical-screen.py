@@ -10,6 +10,18 @@ def tree(flattened=False):
  return root,scroll,scope,target
 def capture(root):return m.visible_notice(ET.tostring(root,encoding='unicode'),'public-candidate-id',1080,2340)
 class HistoricalScreen(unittest.TestCase):
+ def test_visible_control_requires_unique_enabled_unclipped_target_in_actual_main_scroll(self):
+  root,scroll,scope,target=tree();scope.set('resource-id','schedule-refresh');scope.set('enabled','true')
+  xml=lambda:ET.tostring(root,encoding='unicode')
+  self.assertTrue(m.visible_control(xml(),'schedule-refresh',1080,2340)['enabled'])
+  scope.set('enabled','false');self.assertIsNone(m.visible_control(xml(),'schedule-refresh',1080,2340));self.assertFalse(m.visible_control(xml(),'schedule-refresh',1080,2340,False)['enabled'])
+  scope.set('enabled','true')
+  for change in [{'bounds':'[30,50][1050,700]'},{'bounds':'[30,150][1081,700]'},{'visible-to-user':'false'},{'displayed':'false'}]:
+   original=dict(scope.attrib);scope.attrib.update(change)
+   with self.subTest(change=change):self.assertIsNone(m.visible_control(xml(),'schedule-refresh',1080,2340))
+   scope.attrib.clear();scope.attrib.update(original)
+  scroll.append(ET.fromstring(ET.tostring(scope)));self.assertIsNone(m.visible_control(xml(),'schedule-refresh',1080,2340))
+  scroll.remove(scroll[-1]);scroll.set('resource-id','other-scroll');self.assertIsNone(m.visible_control(xml(),'schedule-refresh',1080,2340))
  def test_descendant_and_flattened_android_views_bind_only_the_exact_card(self):
   for flattened in [False,True]:
    with self.subTest(flattened=flattened):
