@@ -13,5 +13,13 @@ class Selection(unittest.TestCase):
 class HistoricalSelection(unittest.TestCase):
  def test_historical_case_does_not_start_native_fixture_or_live_schedule_jobs(self):
   value=m.selection('historical','35','all');self.assertFalse(value['runNative']);self.assertFalse(value['runLive']);self.assertTrue(value['runHistorical']);self.assertEqual(value['historicalMatrix'],{'api':[35]})
+class StreetSelection(unittest.TestCase):
+ def test_separate_three_original_cases_never_widen_all_suite(self):
+  spec=importlib.util.spec_from_file_location('controls',pathlib.Path(__file__).with_name('street-controls.py'));controls=importlib.util.module_from_spec(spec);spec.loader.exec_module(controls)
+  value=m.selection('street');self.assertTrue(value['runStreet']);self.assertFalse(value['runNative'] or value['runLive'] or value['runHistorical']);self.assertEqual(value['streetMatrix']['include'],controls.CASES)
+  ordinary=m.selection();self.assertFalse(ordinary['runStreet']);self.assertTrue(ordinary['runHistorical']);self.assertEqual(len(ordinary['nativeMatrix']['api'])*len(ordinary['nativeMatrix']['theme'])+len(ordinary['liveMatrix']['api'])+len(ordinary['historicalMatrix']['api']),12)
+ def test_failed_api_rerun_keeps_its_original_case_not_a_cartesian_product(self):
+  for api,case in [('30','UA-46-capital-2'),('35','UA-61-capital-1'),('36','UA-21-capital-1')]:
+   with self.subTest(api=api):self.assertEqual(m.selection('street',api)['streetMatrix'],{'include':[{'api':int(api),'caseId':case}]})
 
 if __name__=='__main__':unittest.main()

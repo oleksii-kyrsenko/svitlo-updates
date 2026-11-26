@@ -5,7 +5,7 @@ on:
       suite:
         description: Acceptance suite for the same sealed candidate90
         type: choice
-        options: [all, native, live, historical]
+        options: [all, native, live, historical, street]
         default: all
         required: false
       api:
@@ -29,9 +29,11 @@ jobs:
       runNative: ${{ steps.select.outputs.runNative }}
       runLive: ${{ steps.select.outputs.runLive }}
       runHistorical: ${{ steps.select.outputs.runHistorical }}
+      runStreet: ${{ steps.select.outputs.runStreet }}
       nativeMatrix: ${{ steps.select.outputs.nativeMatrix }}
       liveMatrix: ${{ steps.select.outputs.liveMatrix }}
       historicalMatrix: ${{ steps.select.outputs.historicalMatrix }}
+      streetMatrix: ${{ steps.select.outputs.streetMatrix }}
       apkUrl: ${{ steps.binary.outputs.apkUrl }}
       apkSha256: ${{ steps.binary.outputs.apkSha256 }}
       apkSize: ${{ steps.binary.outputs.apkSize }}
@@ -45,6 +47,7 @@ jobs:
           python3 .github/qa/native90/test-tap-target.py
           python3 .github/qa/native90/test-selection.py
           python3 .github/qa/native90/test-historical-screen.py
+          python3 .github/qa/native90/test-street-controls.py
           python3 .github/qa/test-historical-hint-audit.py
           python3 .github/qa/test-audit-result-evidence.py
       - name: Select bounded acceptance jobs
@@ -100,6 +103,57 @@ jobs:
         with:
           name: candidate90-native-api${{ matrix.api }}-${{ matrix.theme }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
           path: apk-diagnostics/
+          retention-days: 90
+  street:
+    needs: plan
+    if: needs.plan.outputs.runStreet == 'true'
+    name: Source street consent API${{ matrix.api }} ${{ matrix.caseId }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      APPIUM_HOME: /tmp/svitlo-street-appium
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix: ${{ fromJSON(needs.plan.outputs.streetMatrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Verify the candidate and install Unicode-capable UI automation
+        run: |
+          if [ ! -x "$ANDROID_HOME/build-tools/36.0.0/apksigner" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;36.0.0'
+          fi
+          python3 .github/qa/native90/contract.py
+          npm install --prefix "$RUNNER_TEMP/svitlo-ui-tools" --no-audit --no-fund appium@3.8.0
+          echo "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/svitlo-ui-tools/node_modules/.bin/appium" driver install --source=npm appium-uiautomator2-driver@8.7.0
+      - name: Enable acceleration
+        run: test -c /dev/kvm && sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          ram-size: 4096M
+          cores: 2
+          disable-animations: true
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -camera-back none -gpu swiftshader
+          script: bash .github/qa/native90/run-street.sh '${{ matrix.api }}' '${{ matrix.caseId }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate90-street-api${{ matrix.api }}-${{ matrix.caseId }}-${{ github.run_id }}-attempt${{ github.run_attempt }}
+          path: |
+            street-audit/
+            apk-diagnostics/
           retention-days: 90
   live:
     needs: plan
