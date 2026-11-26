@@ -156,6 +156,7 @@ jobs:
       - name: Freeze one source-grounded UI case across all three Android versions
         id: freeze
         env:
+          GH_TOKEN: ${{ github.token }}
           CANDIDATE_URL: ${{ needs.plan.outputs.apkUrl }}
           CANDIDATE_SHA: ${{ needs.plan.outputs.apkSha256 }}
           CANDIDATE_SIZE: ${{ needs.plan.outputs.apkSize }}

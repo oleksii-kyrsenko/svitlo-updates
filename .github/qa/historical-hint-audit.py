@@ -25,9 +25,22 @@ def unique_object(pairs):
   result[key]=value
  return result
 
+class NoSourceRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,request,fp,code,message,headers,newurl):
+  raise ValueError('Pinned source redirects are forbidden')
+
+def source_request(url):
+ headers={'Accept':'application/json','User-Agent':'KolySvitloHistoricalUIQA/1.0'}
+ parsed=urllib.parse.urlsplit(url)
+ # The Actions read token avoids the shared runner's anonymous API quota.
+ # Never forward it to the raw snapshot host, other origins or redirects.
+ token=os.environ.get('GH_TOKEN')
+ if token and parsed.scheme=='https' and parsed.netloc=='api.github.com':headers['Authorization']='Bearer '+token
+ return urllib.request.Request(url,headers=headers)
+
 def bounded_read(url,maximum):
- request=urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'KolySvitloHistoricalUIQA/1.0'})
- with urllib.request.urlopen(request,timeout=45) as response:
+ request=source_request(url)
+ with urllib.request.build_opener(NoSourceRedirect()).open(request,timeout=45) as response:
   if response.status!=200 or response.url!=url:raise ValueError('Source status/redirect differs from pinned URL')
   raw=response.read(maximum+1)
  if len(raw)>maximum:raise ValueError('Source exceeds QA size bound')

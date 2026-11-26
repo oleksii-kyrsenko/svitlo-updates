@@ -1,5 +1,6 @@
 """Source and user-choice controls; synthetic records never enter the app."""
 import copy,datetime,hashlib,importlib.util,json,pathlib,time,unittest
+from unittest.mock import patch
 s=importlib.util.spec_from_file_location('historical',pathlib.Path(__file__).with_name('historical-hint-audit.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
 NOW=1794391200000
 def fixture():
@@ -51,4 +52,17 @@ class HistoricalControls(unittest.TestCase):
   self.assertEqual(m.select_case([record],samples,NOW)[1],case)
   for records,case_id in [([record,copy.deepcopy(record)],None),([record],'other')]:
    with self.subTest(case_id=case_id),self.assertRaises(ValueError):m.select_case(records,samples,NOW,case_id)
+class SourceTransport(unittest.TestCase):
+ def test_actions_read_token_is_scoped_to_exact_https_github_api_origin(self):
+  with patch.dict(m.os.environ,{'GH_TOKEN':'qa-read-token-not-a-secret'}):
+   request=m.source_request('https://api.github.com/repos/reviewed/source/commits/'+'a'*40)
+   self.assertEqual(request.get_header('Authorization'),'Bearer qa-read-token-not-a-secret')
+   for url in ['https://raw.githubusercontent.com/reviewed/source/a/data.json','https://api.github.com.example/','https://api.github.com:444/','http://api.github.com/','https://api.github.com@other.example/']:
+    with self.subTest(url=url):self.assertIsNone(m.source_request(url).get_header('Authorization'))
+  with patch.dict(m.os.environ,{},clear=True):self.assertIsNone(m.source_request('https://api.github.com/repos/reviewed/source').get_header('Authorization'))
+ def test_source_redirect_is_rejected_before_an_authorized_request_can_be_forwarded(self):
+  with patch.dict(m.os.environ,{'GH_TOKEN':'qa-read-token-not-a-secret'}):request=m.source_request('https://api.github.com/repos/reviewed/source')
+  for target in ['https://other.example/','https://raw.githubusercontent.com/reviewed/source/a/data.json','https://api.github.com/redirected']:
+   with self.subTest(target=target),self.assertRaisesRegex(ValueError,'redirects are forbidden'):m.NoSourceRedirect().redirect_request(request,None,302,'Found',{},target)
+
 if __name__=='__main__':unittest.main()
