@@ -1,0 +1,22 @@
+{
+  "fileName": "svitlo-candidate-90-53df6ee8d4d6.apk",
+  "apkUrl": "https://raw.githubusercontent.com/oleksii-kyrsenko/svitlo-updates/4dee910bcb3981568ba689c330b401d1f3510582/candidate/svitlo-candidate-90-53df6ee8d4d6.apk",
+  "version": "0.1.54",
+  "versionCode": 90,
+  "packageName": "ua.svitlo.app.testing",
+  "sha256": "53df6ee8d4d6fa3347653bf67d0fd494ec091b5458d8fda422d9940cb9876e47",
+  "size": 82382062,
+  "sourceCommit": "33a2f8f8922e8df7d53bb7b5c7bf91d2f5682e94",
+  "sourceSnapshotSha256": "44a68678b4a5337c3a25c0d70dc750eabfbb96f0d1186393b8f61cff1dbaf5db",
+  "certificateSha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+  "nativeBuild": true,
+  "sourceDirty": false,
+  "abis": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86_64"
+  ],
+  "embeddedBundleSha256": "1d212ca9fc25d08ef13764c0e332c49ea78b1f0f9617e47ccaf027781c01f020",
+  "upgradeFromVersionCode": 89,
+  "publishedToUpdateChannel": false
+}
