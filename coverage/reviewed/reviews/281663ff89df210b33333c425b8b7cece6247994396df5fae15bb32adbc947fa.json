@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed-identical-public-document-snapshot",
+  "operatorId": "chernivtsi",
+  "regionId": "UA-73",
+  "settlement": "Чернівці",
+  "community": "Чернівецька міська громада",
+  "sourceUrl": "https://oblenergo.cv.ua/shutdowns-search/1/",
+  "observedAt": 1795699648621,
+  "expiresAt": 1795786048621,
+  "snapshot": {
+    "path": "coverage/reviewed/snapshots/acb2df9170ac364ea299307784c1ac90aea20ec9ecddae10756d89e7540430a1.json",
+    "sha256": "acb2df9170ac364ea299307784c1ac90aea20ec9ecddae10756d89e7540430a1",
+    "size": 5832825
+  },
+  "source": {
+    "path": "coverage/reviewed/sources/fd667156f7481d57613e00058b08efba7e81b39f86072724e475d35b10009e84.html",
+    "sha256": "fd667156f7481d57613e00058b08efba7e81b39f86072724e475d35b10009e84",
+    "size": 1674899
+  },
+  "reads": [
+    {
+      "sourceUrl": "https://oblenergo.cv.ua/shutdowns-search/1/",
+      "finalUrl": "https://oblenergo.cv.ua/shutdowns-search/1/",
+      "status": 200,
+      "checkedAt": 1795699584388,
+      "sha256": "fd667156f7481d57613e00058b08efba7e81b39f86072724e475d35b10009e84",
+      "bytes": 1674899
+    },
+    {
+      "sourceUrl": "https://oblenergo.cv.ua/shutdowns-search/1/",
+      "finalUrl": "https://oblenergo.cv.ua/shutdowns-search/1/",
+      "status": 200,
+      "checkedAt": 1795699648621,
+      "sha256": "fd667156f7481d57613e00058b08efba7e81b39f86072724e475d35b10009e84",
+      "bytes": 1674899
+    }
+  ],
+  "review": "Two identical ordinary strict HTTPS city-roster reads, explicit official city selector and independent whole-HTML row comparison. Literal houses only; canonical alias conflicts and uncertain range overlaps vetoed. 20,976 positive house facts; 229 derived negative watermarks. Source-only evidence; no Android coverage claim or verified hosted renewal. Original clocks are not renewed."
+}

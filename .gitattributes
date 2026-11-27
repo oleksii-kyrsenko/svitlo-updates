@@ -1,2 +1,2 @@
-# Official response originals retain exact bytes for their SHA256 proofs.
-coverage/authorities/*.html -text -diff
+# Retained HTTP originals must keep their exact bytes, including CRLF.
+coverage/reviewed/sources/*.html -text -diff

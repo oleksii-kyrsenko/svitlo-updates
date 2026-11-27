@@ -1,0 +1,82 @@
+name: Publish reviewed official source observations
+on:
+  workflow_dispatch:
+    inputs:
+      review_path:
+        description: Committed content-addressed coverage/reviewed/reviews JSON path
+        required: true
+        type: string
+      review_sha256:
+        description: Exact reviewed descriptor SHA256
+        required: true
+        type: string
+      operator:
+        description: Registry operator ID bound by the reviewed descriptor
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: dynamic-coverage-publisher
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check source import and publisher controls
+        run: node --test coverage/qa/*.test.mjs
+      - name: Read the latest signed publisher state
+        run: git pull --ff-only origin main
+      - name: Verify exact reviewed bytes and preserve original clocks
+        env:
+          REVIEW_PATH: ${{ inputs.review_path }}
+          REVIEW_SHA256: ${{ inputs.review_sha256 }}
+          REVIEW_OPERATOR: ${{ inputs.operator }}
+        run: >-
+          node coverage/import-reviewed-snapshot.mjs
+          "$REVIEW_PATH" "$REVIEW_SHA256" "$REVIEW_OPERATOR"
+          "$RUNNER_TEMP/reviewed-staging" "$RUNNER_TEMP/reviewed-report/import.json"
+      - name: Load the existing signing key
+        env:
+          COVERAGE_SIGNING_KEY: ${{ secrets.DYNAMIC_COVERAGE_SIGNING_KEY }}
+        run: |
+          test -n "$COVERAGE_SIGNING_KEY"
+          umask 077
+          printf '%s\n' "$COVERAGE_SIGNING_KEY" > "$RUNNER_TEMP/reviewed-coverage-signing.pem"
+          echo "DYNAMIC_COVERAGE_KEY_FILE=$RUNNER_TEMP/reviewed-coverage-signing.pem" >> "$GITHUB_ENV"
+      - name: Merge actual observations and sign both compatible indexes
+        run: |
+          node --input-type=module <<'JS'
+          import {rebuildFromStaging} from './coverage/rebuild-from-staging.mjs';
+          const report=await rebuildFromStaging({staging:process.env.RUNNER_TEMP+'/reviewed-staging',reportFile:process.env.RUNNER_TEMP+'/reviewed-report/publication.json'});
+          if(report.errors.length)throw Error('Reviewed source merge rejected; remote indexes remain unchanged');
+          JS
+          node coverage/verify.mjs
+          node coverage/verify-v2.mjs
+      - name: Publish only verified signed references
+        run: |
+          node coverage/stage-current-publication.mjs
+          git diff --exit-code HEAD -- latest.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git diff --cached --quiet && exit 0
+          git commit -m 'Publish reviewed official source observations with original clocks'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Retain import and publication receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-official-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/reviewed-report/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Remove the ephemeral signing key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/reviewed-coverage-signing.pem"
