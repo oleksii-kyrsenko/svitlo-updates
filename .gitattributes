@@ -1,2 +1,3 @@
 # Retained HTTP originals must keep their exact bytes, including CRLF.
+coverage/authorities/*.html -text -diff
 coverage/reviewed/sources/*.html -text -diff
