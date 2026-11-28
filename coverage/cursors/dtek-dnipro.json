@@ -189,73 +189,113 @@
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Активістів",
-              "house": "1А",
-              "providerStreetId": "436"
+              "street": "вул. Аеропортівська",
+              "house": "2",
+              "providerStreetId": "427"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "56",
-              "providerStreetId": "437"
+              "street": "вул. Аеропортівська",
+              "house": "3",
+              "providerStreetId": "427"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "57",
-              "providerStreetId": "437"
+              "street": "вул. Аеропортівська",
+              "house": "5",
+              "providerStreetId": "427"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "59",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "15",
+              "providerStreetId": "438"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "61",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "17",
+              "providerStreetId": "438"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "63",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "18",
+              "providerStreetId": "438"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "67",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "19",
+              "providerStreetId": "438"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "69",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "21",
+              "providerStreetId": "438"
             },
             {
               "regionId": "UA-12",
               "settlement": "м. Дніпро",
               "community": "Дніпровська міська громада",
-              "street": "вул. Алма-Атинська",
-              "house": "71",
-              "providerStreetId": "437"
+              "street": "вул. Алуштинська",
+              "house": "22",
+              "providerStreetId": "438"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Алуштинська",
+              "house": "23",
+              "providerStreetId": "438"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Алуштинська",
+              "house": "24",
+              "providerStreetId": "438"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Алуштинська",
+              "house": "25",
+              "providerStreetId": "438"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Алуштинська",
+              "house": "26",
+              "providerStreetId": "438"
+            },
+            {
+              "regionId": "UA-12",
+              "settlement": "м. Дніпро",
+              "community": "Дніпровська міська громада",
+              "street": "вул. Алуштинська",
+              "house": "27",
+              "providerStreetId": "438"
             }
           ],
           "contexts": {
@@ -279,128 +319,133 @@
           "auditSamples": [
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Активістів",
-              "house": "1А",
+              "street": "вул. Аеропортівська",
+              "house": "2",
               "queue": "18.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=436&houseId=13858",
-              "checkedAt": 1795814935587
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=427&houseId=12860",
+              "checkedAt": 1795852662012
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "56",
-              "queue": "15.1",
+              "street": "вул. Аеропортівська",
+              "house": "3",
+              "queue": "18.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14035",
-              "checkedAt": 1795815057731
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=427&houseId=12861",
+              "checkedAt": 1795852665859
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "57",
-              "queue": "15.1",
+              "street": "вул. Аеропортівська",
+              "house": "5",
+              "queue": "18.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14036",
-              "checkedAt": 1795815062608
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=427&houseId=12862",
+              "checkedAt": 1795852671220
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "59",
+              "street": "вул. Алуштинська",
+              "house": "15",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14039",
-              "checkedAt": 1795815067022
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14086",
+              "checkedAt": 1795852832782
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "61",
+              "street": "вул. Алуштинська",
+              "house": "17",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14041",
-              "checkedAt": 1795815071375
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14087",
+              "checkedAt": 1795852842201
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "63",
+              "street": "вул. Алуштинська",
+              "house": "18",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14043",
-              "checkedAt": 1795815075230
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14088",
+              "checkedAt": 1795852847089
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "67",
+              "street": "вул. Алуштинська",
+              "house": "19",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14046",
-              "checkedAt": 1795815081469
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14089",
+              "checkedAt": 1795852856977
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "69",
+              "street": "вул. Алуштинська",
+              "house": "21",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14047",
-              "checkedAt": 1795815085657
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14090",
+              "checkedAt": 1795852863421
             },
             {
               "settlement": "м. Дніпро",
-              "street": "вул. Алма-Атинська",
-              "house": "71",
+              "street": "вул. Алуштинська",
+              "house": "22",
               "queue": "15.1",
               "status": "ready",
-              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=437&houseId=14051",
-              "checkedAt": 1795815093160
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14091",
+              "checkedAt": 1795852869017
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Алуштинська",
+              "house": "23",
+              "queue": "15.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14092",
+              "checkedAt": 1795852872983
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Алуштинська",
+              "house": "24",
+              "queue": "15.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14093",
+              "checkedAt": 1795852877972
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Алуштинська",
+              "house": "25",
+              "queue": "15.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14094",
+              "checkedAt": 1795852883381
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Алуштинська",
+              "house": "26",
+              "queue": "15.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14095",
+              "checkedAt": 1795852887724
+            },
+            {
+              "settlement": "м. Дніпро",
+              "street": "вул. Алуштинська",
+              "house": "27",
+              "queue": "15.1",
+              "status": "ready",
+              "sourceUrl": "https://app.yasno.ua/api/blackout-service/public/shutdowns/addresses/v2/group?regionId=3&dsoId=301&cityId=6&streetId=438&houseId=14096",
+              "checkedAt": 1795852892920
             }
           ],
           "streetInventory": {
             "queries": [
-              "вул. уe",
-              "вул. уf",
-              "вул. уg",
-              "вул. уh",
-              "вул. уi",
-              "вул. уj",
-              "вул. уk",
-              "вул. уl",
-              "вул. уm",
-              "вул. уn",
-              "вул. уo",
-              "вул. уp",
-              "вул. уq",
-              "вул. уr",
-              "вул. уs",
-              "вул. уt",
-              "вул. уu",
-              "вул. уv",
-              "вул. уw",
-              "вул. уx",
-              "вул. уy",
-              "вул. уz",
-              "вул. у0",
-              "вул. у1",
-              "вул. у2",
-              "вул. у3",
-              "вул. у4",
-              "вул. у5",
-              "вул. у6",
-              "вул. у7",
-              "вул. у8",
-              "вул. у9",
-              "вул. у.",
-              "вул. у-",
-              "вул. у’",
-              "вул. у'",
-              "вул. у(",
-              "вул. у)",
-              "вул. у/",
-              "вул. у№",
               "вул. х ",
               "вул. ха",
               "вул. хб",
@@ -5236,7 +5281,47 @@
               "вул. уa",
               "вул. уb",
               "вул. уc",
-              "вул. уd"
+              "вул. уd",
+              "вул. уe",
+              "вул. уf",
+              "вул. уg",
+              "вул. уh",
+              "вул. уi",
+              "вул. уj",
+              "вул. уk",
+              "вул. уl",
+              "вул. уm",
+              "вул. уn",
+              "вул. уo",
+              "вул. уp",
+              "вул. уq",
+              "вул. уr",
+              "вул. уs",
+              "вул. уt",
+              "вул. уu",
+              "вул. уv",
+              "вул. уw",
+              "вул. уx",
+              "вул. уy",
+              "вул. уz",
+              "вул. у0",
+              "вул. у1",
+              "вул. у2",
+              "вул. у3",
+              "вул. у4",
+              "вул. у5",
+              "вул. у6",
+              "вул. у7",
+              "вул. у8",
+              "вул. у9",
+              "вул. у.",
+              "вул. у-",
+              "вул. у’",
+              "вул. у'",
+              "вул. у(",
+              "вул. у)",
+              "вул. у/",
+              "вул. у№"
             ],
             "items": {
               "430": {
@@ -11836,7 +11921,7 @@
           },
           "dictionaryComplete": false,
           "inventoryMethod": "source-limited-autocomplete-min3-cap20",
-          "inventoryPendingQueries": 2828,
+          "inventoryPendingQueries": 2788,
           "processedStreetIds": [
             "434",
             "435",
@@ -14971,18 +15056,6 @@
             },
             "436": {
               "queries": [
-                "   ж",
-                "   з",
-                "   и",
-                "   і",
-                "   ї",
-                "   й",
-                "   к",
-                "   л",
-                "   м",
-                "   н",
-                "   о",
-                "   п",
                 "   р",
                 "   с",
                 "   т",
@@ -15547,7 +15620,19 @@
                 "   ґ",
                 "   д",
                 "   е",
-                "   є"
+                "   є",
+                "   ж",
+                "   з",
+                "   и",
+                "   і",
+                "   ї",
+                "   й",
+                "   к",
+                "   л",
+                "   м",
+                "   н",
+                "   о",
+                "   п"
               ],
               "items": {
                 "12736": {
@@ -16131,18 +16216,6 @@
             },
             "437": {
               "queries": [
-                " м",
-                " н",
-                " о",
-                " п",
-                " р",
-                " с",
-                " т",
-                " у",
-                " ф",
-                " х",
-                " ц",
-                " ч",
                 " ш",
                 " щ",
                 " ь",
@@ -16543,7 +16616,19 @@
                 " ї",
                 " й",
                 " к",
-                " л"
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч"
               ],
               "items": {
                 "12840": {
@@ -17082,18 +17167,6 @@
             },
             "427": {
               "queries": [
-                "5№",
-                "  ",
-                " а",
-                " б",
-                " в",
-                " г",
-                " ґ",
-                " д",
-                " е",
-                " є",
-                " ж",
-                " з",
                 " и",
                 " і",
                 " ї",
@@ -17658,7 +17731,19 @@
                 "5'",
                 "5(",
                 "5)",
-                "5/"
+                "5/",
+                "5№",
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з"
               ],
               "items": {
                 "12160": {
@@ -18168,24 +18253,56 @@
                 "12829": {
                   "id": 12829,
                   "value": "48"
+                },
+                "12854": {
+                  "id": 12854,
+                  "value": "/ЗД:0361"
+                },
+                "12855": {
+                  "id": 12855,
+                  "value": "1"
+                },
+                "12860": {
+                  "id": 12860,
+                  "value": "2"
+                },
+                "12861": {
+                  "id": 12861,
+                  "value": "3"
+                },
+                "12862": {
+                  "id": 12862,
+                  "value": "5"
+                },
+                "12863": {
+                  "id": 12863,
+                  "value": "9"
+                },
+                "12856": {
+                  "id": 12856,
+                  "value": "11"
+                },
+                "12857": {
+                  "id": 12857,
+                  "value": "12"
+                },
+                "12858": {
+                  "id": 12858,
+                  "value": "15"
+                },
+                "12859": {
+                  "id": 12859,
+                  "value": "17"
+                },
+                "12864": {
+                  "id": 12864,
+                  "value": "зд 0439"
                 }
               },
               "unexpanded": []
             },
             "420": {
               "queries": [
-                "    r",
-                "    s",
-                "    t",
-                "    u",
-                "    v",
-                "    w",
-                "    x",
-                "    y",
-                "    z",
-                "    0",
-                "    1",
-                "    2",
                 "    3",
                 "    4",
                 "    5",
@@ -18668,7 +18785,19 @@
                 "    n",
                 "    o",
                 "    p",
-                "    q"
+                "    q",
+                "    r",
+                "    s",
+                "    t",
+                "    u",
+                "    v",
+                "    w",
+                "    x",
+                "    y",
+                "    z",
+                "    0",
+                "    1",
+                "    2"
               ],
               "items": {
                 "12491": {
@@ -18976,18 +19105,6 @@
             },
             "421": {
               "queries": [
-                "    r",
-                "    s",
-                "    t",
-                "    u",
-                "    v",
-                "    w",
-                "    x",
-                "    y",
-                "    z",
-                "    0",
-                "    1",
-                "    2",
                 "    3",
                 "    4",
                 "    5",
@@ -19470,7 +19587,19 @@
                 "    n",
                 "    o",
                 "    p",
-                "    q"
+                "    q",
+                "    r",
+                "    s",
+                "    t",
+                "    u",
+                "    v",
+                "    w",
+                "    x",
+                "    y",
+                "    z",
+                "    0",
+                "    1",
+                "    2"
               ],
               "items": {
                 "12602": {
@@ -19726,18 +19855,6 @@
             },
             "422": {
               "queries": [
-                "    r",
-                "    s",
-                "    t",
-                "    u",
-                "    v",
-                "    w",
-                "    x",
-                "    y",
-                "    z",
-                "    0",
-                "    1",
-                "    2",
                 "    3",
                 "    4",
                 "    5",
@@ -20220,7 +20337,19 @@
                 "    n",
                 "    o",
                 "    p",
-                "    q"
+                "    q",
+                "    r",
+                "    s",
+                "    t",
+                "    u",
+                "    v",
+                "    w",
+                "    x",
+                "    y",
+                "    z",
+                "    0",
+                "    1",
+                "    2"
               ],
               "items": {
                 "12636": {
@@ -21809,6 +21938,288 @@
                 }
               },
               "unexpanded": []
+            },
+            "438": {
+              "queries": [
+                "а",
+                "б",
+                "в",
+                "г",
+                "ґ",
+                "д",
+                "е",
+                "є",
+                "ж",
+                "з",
+                "и",
+                "і",
+                "ї",
+                "й",
+                "к",
+                "л",
+                "м",
+                "н",
+                "о",
+                "п",
+                "р",
+                "с",
+                "т",
+                "у",
+                "ф",
+                "х",
+                "ц",
+                "ч",
+                "ш",
+                "щ",
+                "ь",
+                "ю",
+                "я",
+                "ы",
+                "э",
+                "ъ",
+                "ё",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "o",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "u",
+                "v",
+                "w",
+                "x",
+                "y",
+                "z",
+                ".",
+                "-",
+                "’",
+                "'",
+                "(",
+                ")",
+                "/",
+                "№",
+                "  ",
+                " а",
+                " б",
+                " в",
+                " г",
+                " ґ",
+                " д",
+                " е",
+                " є",
+                " ж",
+                " з",
+                " и",
+                " і",
+                " ї",
+                " й",
+                " к",
+                " л",
+                " м",
+                " н",
+                " о",
+                " п",
+                " р",
+                " с",
+                " т",
+                " у",
+                " ф",
+                " х",
+                " ц",
+                " ч",
+                " ш",
+                " щ",
+                " ь",
+                " ю",
+                " я",
+                " ы",
+                " э",
+                " ъ",
+                " ё",
+                " a",
+                " b",
+                " c",
+                " d",
+                " e",
+                " f",
+                " g",
+                " h",
+                " i",
+                " j",
+                " k",
+                " l",
+                " m",
+                " n",
+                " o",
+                " p",
+                " q",
+                " r",
+                " s",
+                " t",
+                " u",
+                " v",
+                " w",
+                " x",
+                " y",
+                " z",
+                " 0",
+                " 1",
+                " 2",
+                " 3",
+                " 4",
+                " 5",
+                " 6",
+                " 7",
+                " 8",
+                " 9",
+                " .",
+                " -",
+                " ’",
+                " '",
+                " (",
+                " )",
+                " /",
+                " №"
+              ],
+              "done": [
+                "",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                " "
+              ],
+              "items": {
+                "14112": {
+                  "id": 14112,
+                  "value": "8"
+                },
+                "14086": {
+                  "id": 14086,
+                  "value": "15"
+                },
+                "14087": {
+                  "id": 14087,
+                  "value": "17"
+                },
+                "14088": {
+                  "id": 14088,
+                  "value": "18"
+                },
+                "14089": {
+                  "id": 14089,
+                  "value": "19"
+                },
+                "14090": {
+                  "id": 14090,
+                  "value": "21"
+                },
+                "14091": {
+                  "id": 14091,
+                  "value": "22"
+                },
+                "14092": {
+                  "id": 14092,
+                  "value": "23"
+                },
+                "14093": {
+                  "id": 14093,
+                  "value": "24"
+                },
+                "14094": {
+                  "id": 14094,
+                  "value": "25"
+                },
+                "14095": {
+                  "id": 14095,
+                  "value": "26"
+                },
+                "14096": {
+                  "id": 14096,
+                  "value": "27"
+                },
+                "14097": {
+                  "id": 14097,
+                  "value": "28"
+                },
+                "14098": {
+                  "id": 14098,
+                  "value": "29"
+                },
+                "14099": {
+                  "id": 14099,
+                  "value": "30"
+                },
+                "14100": {
+                  "id": 14100,
+                  "value": "31"
+                },
+                "14101": {
+                  "id": 14101,
+                  "value": "33"
+                },
+                "14102": {
+                  "id": 14102,
+                  "value": "35"
+                },
+                "14103": {
+                  "id": 14103,
+                  "value": "37"
+                },
+                "14104": {
+                  "id": 14104,
+                  "value": "39"
+                },
+                "14111": {
+                  "id": 14111,
+                  "value": "50"
+                },
+                "14105": {
+                  "id": 14105,
+                  "value": "41"
+                },
+                "14106": {
+                  "id": 14106,
+                  "value": "41А"
+                },
+                "14107": {
+                  "id": 14107,
+                  "value": "43"
+                },
+                "14108": {
+                  "id": 14108,
+                  "value": "45"
+                },
+                "14109": {
+                  "id": 14109,
+                  "value": "47"
+                },
+                "14110": {
+                  "id": 14110,
+                  "value": "49"
+                }
+              },
+              "unexpanded": []
             }
           },
           "checkedHouses": {
@@ -22352,7 +22763,10 @@
               "39",
               "41",
               "42",
-              "48"
+              "48",
+              "2",
+              "3",
+              "5"
             ],
             "420": [
               "1",
@@ -22633,6 +23047,19 @@
               "2",
               "1",
               "1А"
+            ],
+            "438": [
+              "15",
+              "17",
+              "18",
+              "19",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27"
             ]
           }
         }
